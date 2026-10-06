@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "historyMode": "clean-public-import",
   "reason": "Private QA screenshots, raw feedback and environment details were excluded. Public history starts with a new import commit. Original hashes are provenance references, not public Git ancestry or public tags.",
-  "sourceRuntimeVersion": "v0.1.0-alpha.3",
+  "sourceRuntimeVersion": "v0.1.0-alpha.4",
   "newApiScaffoldVersion": "0.0.1",
   "releases": [
     {
@@ -31,6 +31,16 @@
       "originalTagObject": null,
       "originalTagPeeledCommit": null,
       "originalRuntimeSHA256": "f33404dc66779e042b9197c6f6459b3a139d662d22bacb0a19dc16d5fe01922f",
+      "importedRuntime": false,
+      "publicGitCommit": "b6c1a197dddc737b36858632f8617de5918ad613",
+      "publicGitTag": null
+    },
+    {
+      "productLabel": "v0.1.0-alpha.4",
+      "originalSourceCommit": "74cbbad5c83ad2297f1598138ddc72140d4492df",
+      "originalTagObject": null,
+      "originalTagPeeledCommit": null,
+      "originalRuntimeSHA256": "7dc1d4eb903df03745d36b8424041978f6871b414a7b970d5caffed48fa8f41e",
       "importedRuntime": true,
       "publicGitCommit": null,
       "publicGitTag": null

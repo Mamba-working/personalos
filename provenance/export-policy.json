@@ -20,6 +20,8 @@
     "Fresh generated docs replace private source documents",
     "New health/status API scaffold; web demo remains disconnected",
     "Two test-harness-only repairs keep all suites/assertions: actual popstate synchronization and concurrency4; original/public digests recorded",
-    "Four duplicate Three.js build files are not tracked; locked official three@0.180.0 and setup recreate exact expected SHA-256 bytes before checks/use"
+    "Four duplicate Three.js build files are not tracked; locked official three@0.180.0 and setup recreate exact expected SHA-256 bytes before checks/use",
+    "Explicit alpha.4 incremental candidate: two exact runtime deltas, portable solar gates and alpha.3 negative control, source-owned content-history synchronization; preserve public-only compact-feed popstate/concurrency-four repairs and exact vendor setup",
+    "Synchronize root/web/shared status product-version literals and static/contract expected metadata to alpha.4; backend capabilities and API scaffold version remain unchanged"
   ]
 }

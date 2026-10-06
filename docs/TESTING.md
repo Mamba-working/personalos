@@ -29,7 +29,7 @@ The original private release validator/evidence registry is not copied. A public
 
 ## Import harness adjustment
 
-The public-copy-only compact-feed history test replaces a fixed 35 ms delay with the actual popstate event and a 2,000 ms timeout. All original state/node/focus/history assertions remain. The original and public test digests and exact transformation are recorded in provenance/source-allowlist.json. No imported runtime file was changed. The initial load-sensitive failure is not counted as a pass; full verification is rerun after the synchronization repair.
+The public-copy-only compact-feed history test replaces a fixed 35 ms delay with the actual popstate event and a 2,000 ms timeout. All original state/node/focus/history assertions remain. The original and public test digests and exact transformation are recorded in provenance/source-allowlist.json. No imported runtime file was changed by that initial harness adjustment. The initial load-sensitive failure is not counted as a pass; full verification is rerun after the synchronization repair.
 
 ## Tool version basis
 
@@ -40,3 +40,7 @@ The public runner also bounds simultaneous test files to four. Every original su
 ## Exact generated dependency builds
 
 provenance/vendor-dependencies.json records the four generated destinations, exact npm version/integrity and per-file SHA-256. npm run setup:vendor checks package version and all source bytes before writing, refuses approximate files and changed existing output, and is idempotent. npm run check:vendor verifies the reconstructed outputs. Five installer tests cover exact/idempotent reconstruction, missing package, wrong version, wrong bytes and missing/changed outputs.
+
+## Alpha.4 incremental source gates
+
+The alpha.4 candidate imports the exact frozen weather projection and release metadata, the new solar consumer/transition/policy tests, and a byte-pinned alpha.3 negative control. The source content-history test now also waits for actual popstate; the existing public compact-feed popstate repair and concurrency-four runner are preserved. The public provenance guard and source/HTTP aggregates verify this portable snapshot without copying the private release validator, private evidence registry or operational source-checkpoint verifier. These gates remain source/model/DOM checks and do not establish new browser, GPU, device, performance or user acceptance.

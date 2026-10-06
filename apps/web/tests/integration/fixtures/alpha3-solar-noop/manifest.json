@@ -1,0 +1,9 @@
+{
+  "kind": "frozen-negative-control",
+  "version": "v0.1.0-alpha.3",
+  "source": "runtime/modules/weather.js",
+  "sha256": "2d8cc362266dee809a7c82e2e23adc224fee4ca5417f02274d05e034b20f332e",
+  "capturedAt": "2026-10-06T18:12:14.483249+00:00",
+  "scope": "Minimal portable weather source before alpha.4 solar projection fix. No runtime imports.",
+  "expectedFailure": "Wind altitude 22\u219275 updates model sun vector but leaves paint-only field backgroundColor and backgroundImage byte-identical in no-WebGL fallback."
+}

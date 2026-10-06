@@ -1,6 +1,6 @@
 {
   "product": "PersonalOS",
-  "productVersion": "v0.1.0-alpha.3",
+  "productVersion": "v0.1.0-alpha.4",
   "channel": "alpha",
   "reviewLabel": "Alpha QA candidate · acceptance pending",
   "fullUnifiedAcceptance": false,

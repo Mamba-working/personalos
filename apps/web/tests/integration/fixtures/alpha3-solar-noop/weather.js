@@ -23,20 +23,6 @@ export const WEATHER_BUDGET = Object.freeze({rainStrokes: 32, windStrokes: 18, d
 const presetId = value => value === 'cloud' ? 'cloudy' : Object.hasOwn(WEATHER_PRESETS, value) ? value : null;
 const values = p => Object.fromEntries(Object.keys(fields).map(key => [key, p[key]]));
 
-/** An orthographic sky-wash projection of the model's one sun direction.
- * Low sun produces a lower, wider horizon glow; high sun rises and becomes
- * rounder. Energy follows its above-horizon vertical component, with the same
- * twilight visibility and cloud transmission, rather than a saturated label.
- * These are bounded visual atmosphere units, not a photometric simulation.
- */
-export function projectSolarAtmosphere(sun, cloud = 0) {
-  const elevation=clamp(sun[1],-1,1),above=Math.max(0,elevation),horizontal=Math.hypot(sun[0],sun[2]),cover=clamp(cloud);
-  const visibility=smooth(-3,15,Math.asin(elevation)*180/Math.PI);
-  return{x:50+42*sun[0],y:78-84*elevation,
-    radiusX:46+18*horizontal+8*cover,radiusY:30+18*above+8*cover,
-    energy:visibility*above*(1-cover*.67)};
-}
-
 /** Pure state owner. Shared world dt is the only source of elapsed time. */
 export function createWeatherModel(initial = {}) {
   const selected = presetId(initial.preset || initial.selected) || 'cloudy';
@@ -75,9 +61,9 @@ export function createWeatherModel(initial = {}) {
   }
   function getState() {
     const s = effective, angle = s.direction * Math.PI / 180, altitude = s.altitude * Math.PI / 180, azimuth = s.azimuth * Math.PI / 180;
-    const sun=[Math.cos(altitude)*Math.sin(azimuth),Math.sin(altitude),-Math.cos(altitude)*Math.cos(azimuth)],solarProjection=projectSolarAtmosphere(sun,s.cloud);
     return {simulated: true, preset, selected: preset, label: WEATHER_PRESETS[preset].label, custom, enabled, paused, autoSun,
-      target: {...target}, effective: {...s, day: smooth(-8, 7, s.altitude), solarEnergy: solarProjection.energy, solarProjection, sun,
+      target: {...target}, effective: {...s, day: smooth(-8, 7, s.altitude), solarEnergy: smooth(-3, 15, s.altitude) * (1 - s.cloud * .67),
+        sun: [Math.cos(altitude) * Math.sin(azimuth), Math.sin(altitude), -Math.cos(altitude) * Math.cos(azimuth)],
         windVector: [s.wind * Math.cos(angle), s.wind * Math.sin(angle)]}, time, transitioning: unsettled(), disposed};
   }
   setWeather(initial);
@@ -233,11 +219,10 @@ function createAmbientField(container) {
     const cloudAlpha = alpha((.12 + cloud * .35) * calm), sunAlpha = alpha((.14 + s.solarEnergy * .54) * calm);
     const rainAlpha = alpha(rain * .055 * (policy.quiet ? 0 : 1));
     const windAlpha = alpha(smooth(3.1, 7, s.wind) * .16 * calm);
-    const projection=s.solarProjection,percent=value=>Math.round(value*10)/10;
-    const sunX=percent(projection.x),sunY=percent(projection.y),sunRadiusX=percent(projection.radiusX),sunRadiusY=percent(projection.radiusY),rainAngle=Math.round(108+s.direction*.12);
+    const sunX = Math.round(32 + s.azimuth * .35), rainAngle = Math.round(108 + s.direction * .12);
     const wash = [
       'linear-gradient(to bottom, #D9DEE7 0px, transparent 150px)',
-      `radial-gradient(ellipse ${sunRadiusX}% ${sunRadiusY}% at ${sunX}% ${sunY}%, rgba(255,249,237,${sunAlpha}) 0%, transparent 100%)`,
+      `radial-gradient(ellipse at ${sunX}% 5%, rgba(255,249,237,${sunAlpha}) 0%, transparent 65%)`,
       `radial-gradient(ellipse at 86% 32%, rgba(127,151,185,${cloudAlpha}) 0%, transparent 67%)`,
       `radial-gradient(ellipse at 8% 68%, rgba(241,244,247,${cloudAlpha}) 0%, transparent 64%)`,
       `linear-gradient(${rainAngle + 14}deg, transparent 23%, rgba(236,242,250,${windAlpha}) 48%, transparent 76%)`,

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "ab28fd1f02f84036ac05d5a1e9551bf26d6b7bf2",
+  "sourceCommit": "74cbbad5c83ad2297f1598138ddc72140d4492df",
   "files": [
     {
       "sourcePath": "runtime/app.js",
@@ -309,10 +309,10 @@
     {
       "sourcePath": "runtime/modules/weather.js",
       "publicPath": "apps/web/runtime/modules/weather.js",
-      "sourceBlob": "858965305894de5825c1ceeca28c61972f4742d8",
-      "sha256": "2d8cc362266dee809a7c82e2e23adc224fee4ca5417f02274d05e034b20f332e",
-      "transformation": "path-only; exact bytes",
-      "sourceSHA256": "2d8cc362266dee809a7c82e2e23adc224fee4ca5417f02274d05e034b20f332e"
+      "sourceBlob": "43ee9491e9e4d10706273f92461d4ba9e7034b99",
+      "sourceSHA256": "e4ac614e57005b4e46bd89cef9b2937fb3e5e4dd74e2820076823861ddd0b474",
+      "sha256": "e4ac614e57005b4e46bd89cef9b2937fb3e5e4dd74e2820076823861ddd0b474",
+      "transformation": "path-only; exact bytes"
     },
     {
       "sourcePath": "runtime/palette.css",
@@ -325,10 +325,10 @@
     {
       "sourcePath": "runtime/release-meta.json",
       "publicPath": "apps/web/runtime/release-meta.json",
-      "sourceBlob": "9b104a68f83570f447eb804c823afb8df3bcc86f",
-      "sha256": "9460b8f226fc196f976db71088f462c4b8f317f02c70768c8462069f2afa53ff",
-      "transformation": "path-only; exact bytes",
-      "sourceSHA256": "9460b8f226fc196f976db71088f462c4b8f317f02c70768c8462069f2afa53ff"
+      "sourceBlob": "0318dbbb45798b51aae6a64275cb390a7a59c851",
+      "sourceSHA256": "9a1ed1670f9accb5b5391108bb1f9757ce720c850276e580bcc8fa08852845c9",
+      "sha256": "9a1ed1670f9accb5b5391108bb1f9757ce720c850276e580bcc8fa08852845c9",
+      "transformation": "path-only; exact bytes"
     },
     {
       "sourcePath": "runtime/scene-bridge.js",
@@ -613,10 +613,10 @@
     {
       "sourcePath": "tests/integration/content-host.test.mjs",
       "publicPath": "apps/web/tests/integration/content-host.test.mjs",
-      "sourceBlob": "ca810dfca933c206b0d7c722e2a5fbf691f9a651",
-      "sha256": "092b2ade698531303e895379d339161a32b2f8be8dfef602c8178f5c448c0816",
-      "transformation": "path-only; exact bytes",
-      "sourceSHA256": "092b2ade698531303e895379d339161a32b2f8be8dfef602c8178f5c448c0816"
+      "sourceBlob": "ea78c52407b5c22c754822d072aa4fde9c2e56b6",
+      "sourceSHA256": "30e52077b3067dea34ffa75527aba5667590b1e9ac53b8685071a8407f04e358",
+      "sha256": "30e52077b3067dea34ffa75527aba5667590b1e9ac53b8685071a8407f04e358",
+      "transformation": "path-only; exact bytes"
     },
     {
       "sourcePath": "tests/integration/fixtures/accepted-baseline/app.js",
@@ -1009,6 +1009,22 @@
       "sha256": "69afa74e3bc89fc6758c39585ae789345cfdce80efb591ba0829031ad0783a03",
       "transformation": "path-only; exact bytes",
       "sourceSHA256": "69afa74e3bc89fc6758c39585ae789345cfdce80efb591ba0829031ad0783a03"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/alpha3-solar-noop/manifest.json",
+      "publicPath": "apps/web/tests/integration/fixtures/alpha3-solar-noop/manifest.json",
+      "sourceBlob": "aceaf2321fbd5b35e8b70825327ac888b943416b",
+      "sourceSHA256": "e3d8354b4f6a966eb224851702df753d3c31270d9336b60e19bc011cf3a46d34",
+      "sha256": "e3d8354b4f6a966eb224851702df753d3c31270d9336b60e19bc011cf3a46d34",
+      "transformation": "path-only; exact bytes"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/alpha3-solar-noop/weather.js",
+      "publicPath": "apps/web/tests/integration/fixtures/alpha3-solar-noop/weather.js",
+      "sourceBlob": "858965305894de5825c1ceeca28c61972f4742d8",
+      "sourceSHA256": "2d8cc362266dee809a7c82e2e23adc224fee4ca5417f02274d05e034b20f332e",
+      "sha256": "2d8cc362266dee809a7c82e2e23adc224fee4ca5417f02274d05e034b20f332e",
+      "transformation": "path-only; exact bytes"
     },
     {
       "sourcePath": "tests/integration/fixtures/continuity-fixture.mjs",
@@ -1515,6 +1531,30 @@
       "sourceSHA256": "d2c18d64b24e6608ad4665393fdb2a890e2238015b3b3fa86c4e2fe4eaaadf53"
     },
     {
+      "sourcePath": "tests/integration/weather-solar-baseline.test.mjs",
+      "publicPath": "apps/web/tests/integration/weather-solar-baseline.test.mjs",
+      "sourceBlob": "e780381a46b86b028ae0ad2d9dd33ac0674d3224",
+      "sourceSHA256": "4a55999e2863b2660a1075a69190679b57c1910c0b00420b4a3353f64feb53e0",
+      "sha256": "4a55999e2863b2660a1075a69190679b57c1910c0b00420b4a3353f64feb53e0",
+      "transformation": "path-only; exact bytes"
+    },
+    {
+      "sourcePath": "tests/integration/weather-solar-fixture.mjs",
+      "publicPath": "apps/web/tests/integration/weather-solar-fixture.mjs",
+      "sourceBlob": "f6ccea198808a9b1c5b0366feacbcd559a8a0d72",
+      "sourceSHA256": "1ec695a7ee150c3cd0e81426a995e6cba7dc603dec8a8893339c90493e493622",
+      "sha256": "1ec695a7ee150c3cd0e81426a995e6cba7dc603dec8a8893339c90493e493622",
+      "transformation": "path-only; exact bytes"
+    },
+    {
+      "sourcePath": "tests/integration/weather-solar.test.mjs",
+      "publicPath": "apps/web/tests/integration/weather-solar.test.mjs",
+      "sourceBlob": "adbab124a302d2870d8ffe693ec7d891a1c8450b",
+      "sourceSHA256": "b93eb3c53d32cecec460b278be2dcb1c91c243a8bfcd8d0d21bae0542cc4adca",
+      "sha256": "b93eb3c53d32cecec460b278be2dcb1c91c243a8bfcd8d0d21bae0542cc4adca",
+      "transformation": "path-only; exact bytes"
+    },
+    {
       "sourcePath": "tests/integration/world-cpu-fixture.mjs",
       "publicPath": "apps/web/tests/integration/world-cpu-fixture.mjs",
       "sourceBlob": "ba64f3fbd9e99dcf945175dc9d5ebacea3e5f5c9",
@@ -1580,5 +1620,10 @@
       "transformation": "not Git-tracked; restored byte-for-byte from pinned official npm three@0.180.0 by digest-enforcing setup",
       "sourceSHA256": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a"
     }
-  ]
+  ],
+  "previousCandidate": {
+    "sourceCommit": "ab28fd1f02f84036ac05d5a1e9551bf26d6b7bf2",
+    "publicGitCommit": "b6c1a197dddc737b36858632f8617de5918ad613",
+    "runtimeSHA256": "f33404dc66779e042b9197c6f6459b3a139d662d22bacb0a19dc16d5fe01922f"
+  }
 }

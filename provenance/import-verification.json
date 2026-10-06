@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "status": "local-automated-checks-passed",
-  "sourceVersion": "v0.1.0-alpha.3",
-  "sourceCommit": "ab28fd1f02f84036ac05d5a1e9551bf26d6b7bf2",
-  "importedRuntimeSHA256": "f33404dc66779e042b9197c6f6459b3a139d662d22bacb0a19dc16d5fe01922f",
+  "sourceVersion": "v0.1.0-alpha.4",
+  "sourceCommit": "74cbbad5c83ad2297f1598138ddc72140d4492df",
+  "importedRuntimeSHA256": "7dc1d4eb903df03745d36b8424041978f6871b414a7b970d5caffed48fa8f41e",
   "runtimeFilesUnchanged": 69,
   "nodeVersion": "v24.19.0",
   "checks": {
-    "javascriptSyntaxFiles": 146,
+    "javascriptSyntaxFiles": 152,
     "publicHeuristicScan": "no credential/private-path/conversation-pattern matches",
     "webSourceTests": {
-      "passed": 213,
+      "passed": 227,
       "failed": 0,
       "skipped": 0
     },
@@ -28,11 +28,17 @@
       "passed": 3,
       "failed": 0,
       "skipped": 0
+    },
+    "vendorSetupTests": {
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0
     }
   },
   "testHarnessChanges": [
     "Fixed-delay history wait replaced by actual popstate with bounded2000ms timeout; original assertions unchanged",
-    "Four simultaneous test files; every original suite and60second runner ceiling retained"
+    "Four simultaneous test files; every original suite and60second runner ceiling retained",
+    "Source-owned alpha.4 content-history synchronization waits for actual popstate; no runtime transformation"
   ],
   "notEstablished": [
     "GitHub remote CI execution",
@@ -41,5 +47,8 @@
     "Measured performance",
     "Final unified product acceptance",
     "Real AI/content/auth/persistence capability"
-  ]
+  ],
+  "previousPublicCandidate": "b6c1a197dddc737b36858632f8617de5918ad613",
+  "verifiedAt": "2026-10-06T19:04:46.088125+00:00",
+  "note": "All 69 current imported runtime files exactly match the frozen alpha.4 source inventory; only two intentionally differ from the previous alpha.3 runtime."
 }

@@ -5,7 +5,7 @@
 - Product version: vX.Y.Z, with alpha/beta/rc suffixes for prereleases
 - API scaffold/package version: independently truthful; initially 0.0.1
 - A hosting snapshot ID is deployment provenance, not a semantic product version or acceptance grade
-- Current imported web: v0.1.0-alpha.3; full unified acceptance is pending
+- Current imported web: v0.1.0-alpha.4; full unified acceptance is pending
 
 ## Clean public import
 
@@ -23,7 +23,7 @@ Never create an old release tag on an unrelated clean import commit and describe
 6. Record deployed route, exact commit, source digests and observed environment without private paths/account metadata
 7. Never reuse historical browser success as fresh current-candidate observation
 
-The import provenance guard currently preserves the frozen alpha.3 bytes. Before intentional later web changes, introduce a new explicit candidate inventory/commit mapping in a reviewable change. Do not silently update an old import's recorded source hashes.
+The provenance guard now preserves the frozen alpha.4 bytes. The alpha.3 inventory and source mapping remain available at its exact public commit, recorded as previousCandidate in the current provenance files. The alpha.4 delta changes only weather.js and release-meta.json in the 69-file runtime; it also imports the portable solar consumer tests and the byte-pinned alpha.3 negative control. Before intentional later web changes, introduce a new explicit candidate inventory/commit mapping in a reviewable change. Do not silently update an old import's recorded source hashes.
 
 ## CI and publication
 

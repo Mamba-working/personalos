@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "originalSourceCommit": "ab28fd1f02f84036ac05d5a1e9551bf26d6b7bf2",
-  "originalRuntimeSHA256": "f33404dc66779e042b9197c6f6459b3a139d662d22bacb0a19dc16d5fe01922f",
+  "originalSourceCommit": "74cbbad5c83ad2297f1598138ddc72140d4492df",
+  "originalRuntimeSHA256": "7dc1d4eb903df03745d36b8424041978f6871b414a7b970d5caffed48fa8f41e",
   "algorithm": "sha256-canonical-path-inventory-v1",
   "pathMapping": {
     "from": "runtime/",
@@ -162,7 +162,7 @@
     },
     {
       "path": "runtime/modules/weather.js",
-      "sha256": "2d8cc362266dee809a7c82e2e23adc224fee4ca5417f02274d05e034b20f332e"
+      "sha256": "e4ac614e57005b4e46bd89cef9b2937fb3e5e4dd74e2820076823861ddd0b474"
     },
     {
       "path": "runtime/palette.css",
@@ -170,7 +170,7 @@
     },
     {
       "path": "runtime/release-meta.json",
-      "sha256": "9460b8f226fc196f976db71088f462c4b8f317f02c70768c8462069f2afa53ff"
+      "sha256": "9a1ed1670f9accb5b5391108bb1f9757ce720c850276e580bcc8fa08852845c9"
     },
     {
       "path": "runtime/scene-bridge.js",
@@ -289,5 +289,11 @@
     "apps/web/runtime/world/vendor/three/three.core.js",
     "apps/web/runtime/world/vendor/three/three.module.js"
   ],
-  "setupRequirement": "npm ci --ignore-scripts --no-audit --no-fund && npm run setup:vendor"
+  "setupRequirement": "npm ci --ignore-scripts --no-audit --no-fund && npm run setup:vendor",
+  "previousCandidate": {
+    "sourceCommit": "ab28fd1f02f84036ac05d5a1e9551bf26d6b7bf2",
+    "publicGitCommit": "b6c1a197dddc737b36858632f8617de5918ad613",
+    "runtimeSHA256": "f33404dc66779e042b9197c6f6459b3a139d662d22bacb0a19dc16d5fe01922f",
+    "inventoryAt": "https://github.com/Mamba-working/personalos/blob/b6c1a197dddc737b36858632f8617de5918ad613/provenance/runtime-files.json"
+  }
 }

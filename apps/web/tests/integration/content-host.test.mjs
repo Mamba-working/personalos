@@ -2,6 +2,14 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {bootContent,read} from './content-fixture.mjs';
 const turn = () => new Promise(resolve => setTimeout(resolve,30));
+// JSDOM history traversal uses multiple queued tasks. Await its actual event
+// instead of a wall-clock guess that races under the aggregate's parallel load.
+const traverse = (fixture,direction) => new Promise((resolve,reject) => {
+ const done = () => {clearTimeout(timeout);resolve();};
+ const timeout = setTimeout(() => {fixture.w.removeEventListener('popstate',done);reject(new Error(`No popstate for history.${direction}()`));},10000);
+ fixture.w.addEventListener('popstate',done,{once:true});
+ fixture.w.history[direction]();
+});
 
 test('candidate feed has 18 unique original articles and exact 6/6/6 category filters', () => {
  const f=bootContent(); try {
@@ -39,8 +47,8 @@ test('content back/forward restores the same detail and original reading positio
   const article=f.$('[data-content-id="thoughts-reading"]'),slot=article.parentElement;
   f.d.scrollingElement.scrollTop=1350; article.querySelector('.open-card').click(); f.settle();
   assert.equal(new URL(f.w.location).searchParams.get('item'),'thoughts-reading');
-  f.w.history.back(); await turn(); f.settle(); assert.equal(article.parentElement,slot); assert.equal(f.d.scrollingElement.scrollTop,1350);
-  f.w.history.forward(); await turn(); f.settle(); assert.equal(f.$('#canvas').firstElementChild,article); assert.equal(f.w.personalOSContent.getState().phase,'detail');
+  await traverse(f,'back'); f.settle(); assert.equal(article.parentElement,slot); assert.equal(f.d.scrollingElement.scrollTop,1350);
+  await traverse(f,'forward'); f.settle(); assert.equal(f.$('#canvas').firstElementChild,article); assert.equal(f.w.personalOSContent.getState().phase,'detail');
  } finally {f.close();}
 });
 

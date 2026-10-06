@@ -4,7 +4,7 @@ PersonalOS is managed as one product repository: web UI, a backend service bound
 
 ## Current implementation
 
-- Web: the frozen v0.1.0-alpha.3 interface, 18 authored demonstration records, native feed/reader/navigation, Ball scene, menu, simulated weather and local demonstration chat
+- Web: the frozen v0.1.0-alpha.4 interface, 18 authored demonstration records, native feed/reader/navigation, Ball scene, menu, simulated weather and local demonstration chat
 - API: a new runnable Node service with GET /healthz and GET /api/v1/status
 - Contracts: health payload and authored-demo-content shape
 - Product backend features: content storage/API, real AI, authentication and persistence are not implemented; the unchanged web demo does not call the new API
@@ -48,7 +48,7 @@ This public repository begins with a clean import. Original private QA captures,
 
 Two runtime Three.js build files and their two accepted-baseline fixture copies are deliberately absent from Git. Root npm ci installs exact three@0.180.0; npm run setup restores all four files from the official package after SHA-256 verification. Run this before opening, serving or testing the web app. Three.js licenses remain tracked.
 
-After setup, all 69 imported runtime files retain their exact source bytes. Their original canonical runtime digest remains f33404dc66779e042b9197c6f6459b3a139d662d22bacb0a19dc16d5fe01922f despite the outer directory relocation.
+After setup, all 69 imported runtime files retain their exact source bytes. Their current canonical runtime digest is 7dc1d4eb903df03745d36b8424041978f6871b414a7b970d5caffed48fa8f41e despite the outer directory relocation.
 
 Read LICENSE and THIRD_PARTY_NOTICES.md before reuse. This repository has no blanket MIT license. The retained Emotion Ball character visuals are restricted to non-commercial personal technical study/research; its engine/data have separate commercial licensing terms. A product commercialization plan must address those restrictions first.
 

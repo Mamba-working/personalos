@@ -25,7 +25,9 @@ html[data-mobile-chat-page=true],body.living-study[data-mobile-chat-page=true]{h
 .living-study[data-chat-interior=reading] #ai-canvas[data-chat-layout=contextual][data-mobile-flow][data-mobile-writing=true] .canvas-intro{padding:2px 0}
 .living-study[data-chat-interior=reading] #ai-canvas[data-chat-layout=contextual][data-mobile-flow][data-mobile-writing=true] .canvas-intro h2{font-size:16px;line-height:24px}
 .living-study[data-chat-interior=reading] #ai-canvas[data-chat-layout=contextual][data-mobile-flow][data-mobile-writing=true] .canvas-intro :is(p,.prompt-list){display:none}
-body[data-mobile-chat-page=true] #ball-world-root{overflow:clip}
+/* The fixed paint/UI layers, not their zero-height semantic owner, own the
+   mobile viewport clip. No transform/contain changes their fixed coordinates. */
+body[data-mobile-chat-page=true] #ball-world-root :is(#world-stage,#world-home){overflow:clip}
 
 /* Closing-only visual underlay. Original site nodes retain their identity and
    native sticky/detail layout in this clipped viewport; the active conversation

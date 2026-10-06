@@ -86,3 +86,26 @@ body[data-reading-assistant=true] #ball-world-root #world-ball-hit:focus-visible
 /* Caption clearance follows the displayed hit size, never the content phase.
    At 50.4px it is compact; above 104.54px the original hero spacing is unchanged. */
 #ball-world-root .ball-hint{top:clamp(calc(100% + 4px),calc(200% - 46.4px),calc(125% + 32px))}
+
+/* World ownership is semantic, not a single stacking context. Its existing
+   fixed children own canvas20, then grain21 and later-in-DOM interaction UI21.
+   This preserves ordinary paint order without moving or cloning any node. */
+#ball-world-root{position:static;height:0;z-index:auto}
+#ball-world-root #world-stage{z-index:20}
+#ball-world-root .grain{z-index:21}
+#ball-world-root #world-home{position:fixed;inset:0;z-index:21;pointer-events:none}
+#ball-world-root :is(#world-entry-note,#world-speech){z-index:21}
+#ball-world-root #world-fallback{z-index:21}
+/* The reading actor must not be occluded by the header's opaque paint. Grain
+   stays below header30; popovers38 and native top-layer menus retain priority. */
+body[data-reading-assistant=true] #ball-world-root #world-stage{z-index:31}
+body[data-reading-assistant=true] #ball-world-root :is(#world-home,#world-entry-note,#world-speech){z-index:32}
+/* Chat retains its original canvas < grain < UI order above the panel. These
+   rules deliberately win over reading; the semantic root never creates a layer. */
+body[data-chat-open=true] #ball-world-root{z-index:auto}
+body[data-chat-open=true] #ball-world-root #world-stage{z-index:60}
+body[data-chat-open=true] #ball-world-root .grain{z-index:61}
+body[data-chat-open=true] #ball-world-root :is(#world-home,#world-entry-note,#world-speech,#world-fallback){z-index:62}
+/* A semantic owner can be unavailable even when a child has an explicit
+   visibility value. Keep the existing inert lifecycle and retire all its paint. */
+body[data-world-availability=fallback] #ball-world-root{display:none}

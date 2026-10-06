@@ -48,3 +48,24 @@ The caption rule is position-continuous at both breakpoints; its slope is piecew
 The half-Ball page cut remains unresolved at the time of this source revision. Same-world-frame raw WebGL pixels show the complete silhouette through y=803; floor, platter, story and weather ancestors are hidden. Canvas, GL viewport and published compositor-layer bounds are 844 px high. A rail visibility A/B/A control did not affect the y=780 cut. The recorded 780 px transition-stage paint rectangle starts at y=64 and is a repaint area, not a proven clipping owner. No product renderer workaround is included, and no visual acceptance is claimed from these diagnostics.
 
 The revised native Range collector includes Close separately from footer containment. Source tests keep the actual old-alpha.5 overlap fixture, test synthetic Close collisions, and check header and caption continuity. Real page pixels and a full silhouette check remain required for acceptance; raw WebGL success alone does not substitute for what appears on the page.
+
+
+## World-layers r3 review
+
+A subsequent frozen-source A/B/A diagnostic established that the opaque header paint triggers the clipped lower Ball in the observed Chromium 141 software compositor. Hiding only the header paint restores the full silhouette with unchanged geometry and GL state; restoring it restores the cut. Raising the complete world root to 31 also restores the Ball but changes header pixels by raising the decorative grain. Neither temporary intervention is the product fix.
+
+The exact engine revision routes these frames through SoftwareRenderer. Its bottom-left texture path crops using the visible rectangle before flipping the destination; the header's top-edge occlusion mapping to a lower-edge cut is a source-supported mechanism inference. The final post-cull rectangle was not directly exposed by the trace. See [Chromium revision source](https://github.com/chromium/chromium/blob/9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e/components/viz/service/display/software_renderer.cc#L449).
+
+| Before | After | Why |
+| --- | --- | --- |
+| One stacking context bundled canvas, environmental grain and interaction UI | The same DOM root is a non-painting, zero-height semantic/lifecycle owner; its existing fixed children own their tiers | Separates paint ownership without moving, cloning or recreating the actor, canvas, buttons or grain |
+| Reading canvas stayed below the header's opaque paint | Reading canvas uses31, interaction UI32, grain remains21, header30, popovers38 | Removes the proven occlusion trigger while keeping environmental grain off the header |
+| A whole-root promotion also lifted grain above the header | Normal canvas20, grain21, later-in-DOM UI21 remain below story22/header30; chat retains canvas60/grain61/UI62 | Preserves normal and chat ordering instead of applying a blanket z-index change |
+| Mobile clip belonged to the old world viewport wrapper | Existing full-viewport fixed stage/UI layers own that clip | The zero-height semantic container is not misused as a clipping viewport; no transform or containment changes fixed coordinates |
+| Root-only inherited visibility could be overridden by an inline-visible child | Unavailable semantic world uses display:none alongside the existing inert lifecycle | All unavailable paint retires together; recovery retains the original nodes and renderer |
+
+Only host.css and chat/chat-mobile-flow.css change relative to the frozen controls revision. All other67 runtime files, including index.html and every JavaScript file, remain exact bytes. The semantic root's own non-painting box becomes zero-height; canvas, header, reader, hit and article geometry remain owned by their existing fixed/native layout rules. This revision adds no timing, frame callback, model, projection, camera or animation.
+
+Reading necessarily places the Ball above the environmental grain, so the faint grain no longer overlays the reading actor itself. This bounded material difference must be inspected rather than described as unchanged. Intro/home normal ordering and the previous chat ordering are retained. UI and grain's shared normal21 tier relies on the immutable markup placing UI after grain; source tests assert that order and keep both below the independent story22 tier.
+
+Fresh acceptance requires a full composited silhouette, pixel-identical header crop against the frozen baseline, native Range clearance for both Close and the assistant, and reading/chat/return node, focus and scroll continuity. Raw WebGL pixels alone do not satisfy the page-output gate. The latest controls/caption revision must be evaluated in this same fresh flow; previous b917 behavior and geometry results are not this revision's acceptance.

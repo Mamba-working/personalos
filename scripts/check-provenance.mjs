@@ -39,16 +39,20 @@ export function verifyProvenance(root){
  assert.match(active.sourcePayloadCommit,/^[a-f0-9]{40}$/);assert.notEqual(active.sourcePayloadCommit,'0'.repeat(40));
  assert.deepEqual(active.historicalProvenance,HISTORICAL_PROVENANCE,'Historical hash map differs');
  assert.equal(active.algorithm,original.algorithm);assert.deepEqual(active.files,current,'Active candidate inventory differs');assert.equal(active.runtimeSHA256,digest,'Active candidate digest differs');
- assert.equal(active.revision,'reading-controls-r2','Reading revision identity missing');
+ assert.equal(active.revision,'world-layers-r3','Reading revision identity missing');
  {
   assert.equal(active.initialCandidate.commit,'0fc929ff0b602ac3b2769804ef7a447c61d30afa');
   assert.equal(active.initialCandidate.runtimeSHA256,'27331c3bf03ad15b5225384f28d12acea1babd5e2bf2a72c989e7f5f9ae59e75');
   assert.equal(active.initialCandidate.inventory,'provenance/candidates/alpha5-0fc929f.json');
   assert.equal(hash(fs.readFileSync(path.join(root,active.initialCandidate.inventory))),'945d3617cd25ac364f1d51b20f9916b4de07479ea007785a10b0d4b80f4c6ff3','Initial alpha.5 inventory changed');
-  assert.equal(active.previousCandidate.commit,'b917dda0cb003824de6a5eb73b360fcffd72f4e3');
-  assert.equal(active.previousCandidate.runtimeSHA256,'4093f9e8e45bf53fe9150757e78cc59f280232152d7df4c1e86e370562d1aeea');
-  assert.equal(active.previousCandidate.inventory,'provenance/candidates/alpha5-reading-b917dda.json');
-  assert.equal(hash(fs.readFileSync(path.join(root,active.previousCandidate.inventory))),'77cd914657ebbbc111619205dd68c0281b805bb0979a2e8a809e731673d9b96e','Reading r1 inventory changed');
+  assert.equal(active.readingShelfCandidate.commit,'b917dda0cb003824de6a5eb73b360fcffd72f4e3');
+  assert.equal(active.readingShelfCandidate.runtimeSHA256,'4093f9e8e45bf53fe9150757e78cc59f280232152d7df4c1e86e370562d1aeea');
+  assert.equal(active.readingShelfCandidate.inventory,'provenance/candidates/alpha5-reading-b917dda.json');
+  assert.equal(hash(fs.readFileSync(path.join(root,active.readingShelfCandidate.inventory))),'77cd914657ebbbc111619205dd68c0281b805bb0979a2e8a809e731673d9b96e','Reading r1 inventory changed');
+  assert.equal(active.previousCandidate.commit,'984814b3c465d0400356d1e9ba6b0e1bd2a244b2');
+  assert.equal(active.previousCandidate.runtimeSHA256,'9ecf5860822a3a5dcf0d940c517588c649152091bac3c88002e4353da21b49bf');
+  assert.equal(active.previousCandidate.inventory,'provenance/candidates/alpha5-controls-984814b.json');
+  assert.equal(hash(fs.readFileSync(path.join(root,active.previousCandidate.inventory))),'f39847f261c7d86ad5a6b2bff476fea6c1240350fb96eefa54218cce1ccb5253','Reading r2 inventory changed');
  }
  const version=active.productVersion.slice(1),rootPackage=json(root,'package.json'),web=json(root,'apps/web/package.json'),lock=json(root,'package-lock.json'),meta=json(root,'apps/web/runtime/release-meta.json');
  for(const [label,value]of Object.entries({root:rootPackage.version,web:web.version,lock:lock.version,lockRoot:lock.packages[''].version,lockWeb:lock.packages['apps/web'].version}))assert.equal(value,version,`Version mismatch: ${label}`);

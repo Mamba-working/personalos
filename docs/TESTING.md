@@ -2,7 +2,7 @@
 
 ## Automated import checks
 
-npm run check verifies all imported runtime paths and SHA-256 digests, JavaScript syntax and public-file credential/private-path/conversation-reference heuristics. The pattern scan is not a complete secret/security audit.
+npm run check verifies the active candidate runtime paths and SHA-256 digests while retaining the original imported records, JavaScript syntax and public-file credential/private-path/conversation-reference heuristics. The pattern scan is not a complete secret/security audit.
 
 npm test runs:
 
@@ -44,3 +44,11 @@ provenance/vendor-dependencies.json records the four generated destinations, exa
 ## Alpha.4 incremental source gates
 
 The alpha.4 candidate imports the exact frozen weather projection and release metadata, the new solar consumer/transition/policy tests, and a byte-pinned alpha.3 negative control. The source content-history test now also waits for actual popstate; the existing public compact-feed popstate repair and concurrency-four runner are preserved. The public provenance guard and source/HTTP aggregates verify this portable snapshot without copying the private release validator, private evidence registry or operational source-checkpoint verifier. These gates remain source/model/DOM checks and do not establish new browser, GPU, device, performance or user acceptance.
+
+## Alpha.5 total assembly
+
+The normal web runner now also includes portable weather-v5 consumer tests, byte-pinned V2/V3 negative controls, 2,502 alpha.4 model parity snapshots and actual CPU scene integration tests for the weather-response/clock ownership seam. This port changes only module/resource paths plus the exact expected bounded effect call in the scene-order assertion. No original behavioral assertion is removed. It retains the existing concurrency-four and 60-second aggregate ceiling.
+
+The new test:provenance suite checks runtime mutation/missing/extra/symlink cases, inventory ordering/duplication/digest, all product-version surfaces, candidate disclosure, deferred acceptance gates, coordinated historical-hash mutation and source-payload Git mapping. On a shallow checkout without the mapped source object, only that Git-object cross-check is explicitly skipped; portable byte checks still run. Full local verification uses the available object.
+
+Earlier clock browser observations and V5 preview screenshots belong to their original sources, not this assembled alpha.5. Fresh combined browser, dynamic GPU appearance, real devices and measured performance remain deferred. No browser gate or threshold is weakened by this source integration.

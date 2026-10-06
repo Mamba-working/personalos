@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import { JSDOM, VirtualConsole } from 'jsdom';
 export const runtime = new URL('../../runtime/', import.meta.url);
 export const read = name => fs.readFileSync(new URL(name, runtime), 'utf8');
-export function bootContent({width = 1180, reduced = false, query = '', beforeBoot = null} = {}) {
+export function bootContent({width = 1180, reduced = false, query = '', beforeBoot = null, appSource = read('app.js')} = {}) {
  const errors = [], virtualConsole = new VirtualConsole();
  virtualConsole.on('jsdomError', e => { if (!/Not implemented/.test(e.message)) errors.push(e.message); });
  const dom = new JSDOM(read('index.html'), {url: `https://candidate.invalid/${query}`, runScripts: 'outside-only', pretendToBeVisual: true, virtualConsole});
@@ -35,7 +35,7 @@ export function bootContent({width = 1180, reduced = false, query = '', beforeBo
  w.eval(read('story/content-presentation.js').replace(/\bexport /g,'')+';window.__createPresentation=createContentPresentation;');
  w.eval('(()=>{'+read('feed-layout.js').replace(/\bexport /g,'')+';window.__feedLayout={feedProfile,previewHeight,balanceEntries};})();');
  w.eval('(()=>{'+read('feed-reflow.js').replace(/\bexport /g,'')+';window.__createSlotReflow=createSlotReflow;})();');
- w.eval('(()=>{const {feedProfile,previewHeight,balanceEntries}=window.__feedLayout,createSlotReflow=window.__createSlotReflow;const createContentPresentation=window.__createPresentation;const records=window.__records,graphic=window.__graphic,detail=window.__detail;'+read('app.js').replace(/^import[^\n]+\n/gm,'')+'})();');
+ w.eval('(()=>{const {feedProfile,previewHeight,balanceEntries}=window.__feedLayout,createSlotReflow=window.__createSlotReflow;const createContentPresentation=window.__createPresentation;const records=window.__records,graphic=window.__graphic,detail=window.__detail;'+appSource.replace(/^import[^\n]+\n/gm,'')+'})();');
  const click = selector => {const node=$(selector); if (!node) throw Error(`Missing candidate control ${selector}`); node.click(); return node;};
  return {dom,w,d,$,click,errors,frames,records:w.__records,settle:()=>w.contentStudy.settle(),close:()=>w.close()};
 }

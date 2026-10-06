@@ -11,7 +11,7 @@ test('health contract and schema agree on literal identifiers', async () => {
 });
 test('status only claims implemented health/status endpoints', () => {
   const status=serviceStatus();
-  assert.equal(status.productVersion,'0.1.0-alpha.4');
+  assert.equal(status.productVersion,'0.1.0-alpha.5');
   assert.deepEqual(status.capabilities,{health:true,status:true,contentApi:false,chatApi:false,authentication:false,persistence:false});
   assert.equal(status.frontendConnected,false);
 });

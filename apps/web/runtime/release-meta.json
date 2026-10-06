@@ -1,16 +1,18 @@
 {
   "product": "PersonalOS",
-  "productVersion": "v0.1.0-alpha.4",
+  "productVersion": "v0.1.0-alpha.5",
   "channel": "alpha",
-  "reviewLabel": "Alpha QA candidate · acceptance pending",
+  "reviewLabel": "Local alpha.5 candidate \u00b7 integration acceptance pending",
   "fullUnifiedAcceptance": false,
   "deferredGates": [
     "final-user-signoff",
     "measured-performance",
     "physical-device",
-    "rendered-visual-motion"
+    "rendered-visual-motion",
+    "assembled-weather-motion-review"
   ],
   "limitations": [
+    "Combined weather and motion candidate has not received fresh assembled browser/GPU acceptance",
     "Rendered Ball/GPU and complete motion acceptance pending",
     "Physical-device native keyboard/IME acceptance pending",
     "Validated measured-performance acceptance pending",

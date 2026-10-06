@@ -59,3 +59,30 @@ body[data-chat-open=true] #host-chat-fallback{opacity:0;filter:blur(6px);pointer
 /* One host overlay tier: feed1 < Ball20 < header30 < chat-entry35 < popover38
    < chat-backdrop40 < chat50. Native Menu remains in the browser top layer. */
 #host-overlays{position:fixed;inset:0;z-index:38;pointer-events:none}
+
+/* Darken the existing slate ink only. No panel, halo, blur, shadow, mask,
+   pseudo-element, layout change or animation. Hex fallback matches 60% ink. */
+.intro-note .example-note{color:#181F2B;color:color-mix(in srgb,var(--ink,#283348) 60%,#000)}
+
+/* Mobile reading owns a shorter native viewport from the initial target. The
+   same projected actor and button occupy this sibling shelf, never text padding.
+   Bounds are committed on selection/resize only, not on animation frames. */
+#reader-assistant-rail{position:fixed;pointer-events:none;background:var(--surface);border:1px solid var(--stroke);border-radius:20px}
+#reader-assistant-rail[hidden]{display:none}
+body[data-reading-assistant=true] #ball-world-root .ball-hint{left:50%;right:auto;transform:translateX(-50%);background:transparent;box-shadow:none;border-radius:0;font-size:11px;line-height:16px}
+body[data-reading-assistant=true] #host-chat-fallback:not([hidden]){left:var(--reading-assistant-x);top:var(--reading-assistant-y);right:auto;bottom:auto;width:var(--reading-assistant-w);height:var(--reading-assistant-h);max-width:none;display:flex;align-items:center;gap:12px;padding:10px 16px;background:var(--surface);border-radius:20px;box-shadow:none}
+body[data-reading-assistant=true] #host-chat-fallback p{flex:1;margin:0;font-size:12px;line-height:18px}
+body[data-reading-assistant=true] #host-open-chat{flex-shrink:0}
+body[data-reading-assistant=true] #ball-world-root #world-ball-hit:focus-visible{outline-offset:2px}
+
+/* Reader controls have their own real viewport area. During the existing outer
+   morph, only the content-plane transform bridges the source position. The
+   native scroll clip is active on reading, below the fixed Close control. */
+#reader-controls{position:absolute;inset:0 0 auto;height:var(--reader-controls-height);z-index:3;pointer-events:none;background:inherit;border-bottom:1px solid var(--stroke)}
+#reader-controls[hidden]{display:none}
+.travel-shell[data-reading-controls=true] .reader{position:absolute;left:0;top:var(--reader-controls-height);height:calc(100% - var(--reader-controls-height));overflow:visible}
+.travel-shell[data-reading-controls=true] .reader.reading{overflow-x:hidden;overflow-y:auto}
+
+/* Caption clearance follows the displayed hit size, never the content phase.
+   At 50.4px it is compact; above 104.54px the original hero spacing is unchanged. */
+#ball-world-root .ball-hint{top:clamp(calc(100% + 4px),calc(200% - 46.4px),calc(125% + 32px))}

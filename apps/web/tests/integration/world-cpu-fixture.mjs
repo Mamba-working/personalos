@@ -8,7 +8,8 @@ import {createStoryProps} from '../../runtime/story/props.js';
 import {THEME} from '../../runtime/world/theme.js';
 import {bootContent,read} from './content-fixture.mjs';
 export function bootWorld({enabled=true,manual=true,reduced=false,query='',width=1180}={}){
- const f=bootContent({reduced,width,query:query|| (manual?'?manual=1':'')}),w=f.w,d=f.d,renderers=[];
+ let stamp=0;
+ const f=bootContent({reduced,width,query:query|| (manual?'?manual=1':''),beforeBoot:({w})=>{w.performance.now=()=>stamp;}}),w=f.w,d=f.d,renderers=[];
  d.documentElement.dataset.storyEnabled=String(enabled);
  w.HTMLCanvasElement.prototype.getContext=function(type){if(type!=='2d')throw Error('CPU fixture never supplies WebGL');return{createRadialGradient:()=>({addColorStop(){}}),fillRect(){},fillStyle:''};};
  class Renderer{constructor(){this.domElement=d.createElement('canvas');this.shadowMap={};this.info={render:{triangles:0,calls:0}};this.disposed=false;renderers.push(this);}setPixelRatio(){}setSize(){}setClearColor(){}render(scene,camera){scene.updateMatrixWorld(true);camera.updateMatrixWorld(true);this.info.render.calls++;}dispose(){this.disposed=true;}}
@@ -24,6 +25,5 @@ export function bootWorld({enabled=true,manual=true,reduced=false,query='',width
  w.eval(read('world/vendor/aora/rings.js'));
  const source=read('world/scene.js').replace(/^import[^\n]+\n/gm,'');
  w.eval('(()=>{const THREE=window.__THREE,THEME=window.__THEME,createWorldAdapter=window.__createWorldAdapter,announceWorldAvailability=window.__announceWorldAvailability,createBookStory=window.__createBookStory,createStoryProps=window.__createStoryProps,createFrameClock=window.__createFrameClock,remapProjectionMatrix=window.__geometry.remapProjectionMatrix;'+source+';window.__cpuScene={scene,camera,actor,face,eyes,renderer};})();');
- let stamp=0;
  return {...f,world:w.personalOSWorld,study:w.ballStudy,cpu:w.__cpuScene,renderers,raf(dt=16.667){stamp+=dt;const pending=[...f.frames];f.frames.clear();for(const [,fn]of pending)fn(stamp);return pending.length;},destroy(){w.ballStudy.dispose();f.close();}};
 }

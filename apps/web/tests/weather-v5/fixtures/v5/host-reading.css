@@ -1,0 +1,4 @@
+
+/* Darken the existing slate ink only. No panel, halo, blur, shadow, mask,
+   pseudo-element, layout change or animation. Hex fallback matches 60% ink. */
+.intro-note .example-note{color:#181F2B;color:color-mix(in srgb,var(--ink,#283348) 60%,#000)}

@@ -1,0 +1,14 @@
+/* Preview composition only. The original article/identity stays intact in the
+   reader and paper lease; no duplicate title, scaled body text or clamp. */
+.feed[data-layout-owned=true]{position:relative}
+.feed[data-layout-owned=true] .slot{transition:none}
+.feed[data-layout-owned=true] .slot.excluded{display:none}
+.card[data-preview-density=compact] .identity{padding:14px 12px}
+.card[data-preview-density=compact] h2{font-size:1.125rem;line-height:1.25;margin:12px 0 8px;letter-spacing:-.025em;overflow-wrap:anywhere}
+.card[data-preview-density=compact] .summary{font-size:.75rem;line-height:1.5;margin:0;overflow-wrap:anywhere}
+.card[data-preview-density=compact] .card-meta{font-size:.5625rem;line-height:1.4;gap:4px;flex-wrap:wrap;letter-spacing:0}
+.card[data-preview-density=compact] .card-index{margin-left:auto}
+.card[data-preview-density=compact] .card-visual{height:68px;margin-top:12px;margin-bottom:0;border-radius:8px}
+.card[data-preview-density=compact] .card-foot{font-size:.5625rem;line-height:1.5;margin-top:12px;gap:4px;flex-wrap:wrap}
+.card[data-preview-density=compact] .visual-label{font-size:.5rem;left:8px;bottom:7px}
+@media(max-width:650px){.feed[data-compact=true]{gap:12px}.feed[data-compact=true] .slot{margin-bottom:12px}.filters{padding-bottom:14px}.filters button{font-size:.75rem;padding:10px 11px}.filters button span{font-size:.625rem;width:auto;margin-left:4px}.filter-indicator{height:38px}}

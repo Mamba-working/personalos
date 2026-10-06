@@ -1,0 +1,35 @@
+/* Weather owns only its supplied control container, never body/card geometry. */
+.weather-module{position:relative;color:var(--ink,#283348);font:inherit}
+.weather-module .weather-summary{display:flex;align-items:center;gap:8px;min-height:40px;list-style:none;cursor:pointer;border:1px solid color-mix(in srgb,var(--stroke,#A9B4C7) 65%,transparent);border-radius:24px;padding:6px 12px;background:color-mix(in srgb,var(--surface,#F5F1EA) 70%,transparent);font-size:12px;white-space:nowrap}
+.weather-module .weather-summary::-webkit-details-marker{display:none}
+.weather-module .weather-summary small{font-size:10px;color:var(--muted,#657086);letter-spacing:.08em}
+.weather-module .weather-mark{font-size:21px;line-height:1;color:var(--accent,#485C7F)}
+.weather-module .weather-panel{position:absolute;inset-block-start:calc(100% + 10px);inset-inline-end:0;z-index:40;width:min(338px,calc(100vw - 32px));max-height:min(620px,75dvh);overflow:auto;overscroll-behavior:contain;padding:23px;border:1px solid var(--stroke,#A9B4C7);border-radius:18px;background:var(--surface,#F5F1EA);box-shadow:0 14px 40px #28334816;text-align:start;box-sizing:border-box}
+.weather-module .weather-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;color:var(--muted,#657086);font-size:9px;letter-spacing:.12em}
+.weather-module button{font:inherit;color:inherit;cursor:pointer;touch-action:manipulation}
+.weather-module [data-weather-close]{display:grid;place-items:center;width:32px;height:32px;border:0;background:transparent;font-size:22px}
+.weather-module h2{margin:12px 0 8px;font-size:21px;font-weight:450;letter-spacing:-.04em;line-height:1.3}
+.weather-module .weather-note,.weather-module .weather-status{margin:8px 0 0;font-size:11px;color:var(--muted,#657086);line-height:1.7}
+.weather-module .weather-presets{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:20px 0}
+.weather-module [data-weather-preset]{min-height:42px;padding:8px;border:1px solid var(--stroke,#A9B4C7);border-radius:9px;background:transparent;font-size:12px}
+.weather-module [data-weather-preset][aria-pressed=true]{background:var(--accent,#485C7F);border-color:var(--accent,#485C7F);color:var(--surface,#F5F1EA)}
+.weather-module .weather-fields{display:grid;gap:15px;margin-bottom:20px}
+.weather-module .weather-fields label{display:grid;gap:8px;font-size:12px}
+.weather-module .weather-fields label>span{display:flex;justify-content:space-between;align-items:center}
+.weather-module output{color:var(--muted,#657086);font-variant-numeric:tabular-nums}
+.weather-module input[type=range]{width:100%;margin:0;accent-color:var(--accent,#485C7F)}
+.weather-module .weather-switches{display:flex;flex-wrap:wrap;gap:12px;font-size:11px}
+.weather-module .weather-switches label{display:flex;align-items:center;gap:5px;min-height:30px}
+.weather-module input[type=checkbox]{accent-color:var(--accent,#485C7F)}
+.weather-module .weather-status{border-top:1px solid var(--stroke,#A9B4C7);padding-top:14px;margin-top:16px}
+.weather-module :focus-visible{outline:2px solid var(--accent,#485C7F);outline-offset:4px}
+@media(max-width:540px){.weather-module .weather-summary{gap:5px;padding:5px 9px;font-size:11px}.weather-module .weather-summary small{font-size:9px}.weather-module .weather-panel{padding:18px}}
+@media(prefers-reduced-motion:reduce){.weather-module *{scroll-behavior:auto}}
+
+/* Host supplies the fixed background slot. This child paints only inside it. */
+.weather-atmosphere{position:absolute;inset:0;pointer-events:none;overflow:hidden;contain:strict}
+.weather-atmosphere[hidden]{display:none}
+
+/* The disclosure owns one finite WAAPI track, never inner width/height layout. */
+.weather-module .weather-panel{transform-origin:top right}
+.weather-module[data-disclosure=opening] .weather-panel,.weather-module[data-disclosure=closing] .weather-panel{will-change:transform,opacity}

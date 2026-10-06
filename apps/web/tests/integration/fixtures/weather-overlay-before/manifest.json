@@ -1,0 +1,21 @@
+{
+  "capturedAt": "2026-10-06T16:02:47.686Z",
+  "purpose": "Frozen pre-C3 negative-control sources and C2 browser geometry. Not candidate behavior and not a browser simulator.",
+  "files": {
+    "weather.js": "0ade2616e9cd34bd8a68453508a1f3a5c2c6f1b8238fe9511c8327cba73d50a5",
+    "weather.css": "b6087a0bbd0bfc7597ef9c8e60e9dfdd631997d1fa4438db83ea3141a69bd23a",
+    "host.css": "ff9c055f40a0979f62955b876aa14577af7dfe6fc28978b97e36104055ecd882",
+    "browser-overlap.json": "77111a0f632bc567d9fb47b184f2c4fdfb4f56a6b94258e6902e0c2abfac37b4"
+  },
+  "viewport": {
+    "width": 1167,
+    "height": 747,
+    "scrollTop": 0
+  },
+  "observedHit": {
+    "x": 984,
+    "y": 697.140625,
+    "target": "host-open-chat"
+  },
+  "boundary": "CSS stacking chain model and recorded C2 geometry; JSDOM cannot perform layout or real elementFromPoint. The repaired candidate still requires real-browser hit tests."
+}

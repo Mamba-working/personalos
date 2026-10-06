@@ -1,0 +1,23 @@
+**/node_modules/
+**/.npm-cache/
+**/__pycache__/
+**/*.pyc
+**/evidence/
+**/browser-report.json
+**/candidate-sha256.txt
+**/playwright-report/
+**/test-results/
+.artifacts/
+.env
+.env.*
+!.env.example
+*.log
+*.bundle
+*.patch
+private-recovery/
+
+# Exact official Three.js builds are reconstructed by npm run setup:vendor
+/apps/web/runtime/world/vendor/three/three.core.js
+/apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/three/three.core.js
+/apps/web/runtime/world/vendor/three/three.module.js
+/apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/three/three.module.js

@@ -1,0 +1,257 @@
+{
+  "controls": [
+    {
+      "ariaLabel": "关闭天气设置",
+      "field": "close",
+      "hidden": null,
+      "inert": null,
+      "rect": {
+        "bottom": 355.375,
+        "height": 32,
+        "left": 956,
+        "right": 988,
+        "top": 323.375,
+        "width": 32,
+        "x": 956,
+        "y": 323.375
+      },
+      "tag": "BUTTON",
+      "text": "×",
+      "value": ""
+    },
+    {
+      "ariaLabel": null,
+      "field": "clear",
+      "hidden": null,
+      "inert": null,
+      "rect": {
+        "bottom": 483.359375,
+        "height": 42,
+        "left": 698,
+        "right": 839.5,
+        "top": 441.359375,
+        "width": 141.5,
+        "x": 698,
+        "y": 441.359375
+      },
+      "tag": "BUTTON",
+      "text": "晴日微风",
+      "value": ""
+    },
+    {
+      "ariaLabel": null,
+      "field": "cloudy",
+      "hidden": null,
+      "inert": null,
+      "rect": {
+        "bottom": 483.359375,
+        "height": 42,
+        "left": 846.5,
+        "right": 988,
+        "top": 441.359375,
+        "width": 141.5,
+        "x": 846.5,
+        "y": 441.359375
+      },
+      "tag": "BUTTON",
+      "text": "云隙天光",
+      "value": ""
+    },
+    {
+      "ariaLabel": null,
+      "field": "rain",
+      "hidden": null,
+      "inert": null,
+      "rect": {
+        "bottom": 532.359375,
+        "height": 42,
+        "left": 698,
+        "right": 839.5,
+        "top": 490.359375,
+        "width": 141.5,
+        "x": 698,
+        "y": 490.359375
+      },
+      "tag": "BUTTON",
+      "text": "有风的雨夜",
+      "value": ""
+    },
+    {
+      "ariaLabel": null,
+      "field": "wind",
+      "hidden": null,
+      "inert": null,
+      "rect": {
+        "bottom": 532.359375,
+        "height": 42,
+        "left": 846.5,
+        "right": 988,
+        "top": 490.359375,
+        "width": 141.5,
+        "x": 846.5,
+        "y": 490.359375
+      },
+      "tag": "BUTTON",
+      "text": "风过此处",
+      "value": ""
+    },
+    {
+      "ariaLabel": null,
+      "field": "dawn",
+      "hidden": null,
+      "inert": null,
+      "rect": {
+        "bottom": 581.359375,
+        "height": 42,
+        "left": 698,
+        "right": 839.5,
+        "top": 539.359375,
+        "width": 141.5,
+        "x": 698,
+        "y": 539.359375
+      },
+      "tag": "BUTTON",
+      "text": "水边破晓",
+      "value": ""
+    },
+    {
+      "ariaLabel": "模拟太阳高度",
+      "field": "altitude",
+      "hidden": null,
+      "inert": null,
+      "rect": {
+        "bottom": 645.75,
+        "height": 16,
+        "left": 698,
+        "right": 988,
+        "top": 629.75,
+        "width": 290,
+        "x": 698,
+        "y": 629.75
+      },
+      "tag": "INPUT",
+      "text": "",
+      "value": "-20"
+    },
+    {
+      "ariaLabel": "模拟风速",
+      "field": "wind",
+      "hidden": null,
+      "inert": null,
+      "rect": {
+        "bottom": 705.140625,
+        "height": 16,
+        "left": 698,
+        "right": 988,
+        "top": 689.140625,
+        "width": 290,
+        "x": 698,
+        "y": 689.140625
+      },
+      "tag": "INPUT",
+      "text": "",
+      "value": "6.5"
+    },
+    {
+      "ariaLabel": null,
+      "field": "enabled",
+      "hidden": null,
+      "inert": null,
+      "rect": {
+        "bottom": 746.640625,
+        "height": 13,
+        "left": 702,
+        "right": 715,
+        "top": 733.640625,
+        "width": 13,
+        "x": 702,
+        "y": 733.640625
+      },
+      "tag": "INPUT",
+      "text": "",
+      "value": "on"
+    },
+    {
+      "ariaLabel": null,
+      "field": "paused",
+      "hidden": null,
+      "inert": null,
+      "rect": {
+        "bottom": 746.640625,
+        "height": 13,
+        "left": 783,
+        "right": 796,
+        "top": 733.640625,
+        "width": 13,
+        "x": 783,
+        "y": 733.640625
+      },
+      "tag": "INPUT",
+      "text": "",
+      "value": "on"
+    },
+    {
+      "ariaLabel": null,
+      "field": "autoSun",
+      "hidden": null,
+      "inert": null,
+      "rect": {
+        "bottom": 746.640625,
+        "height": 13,
+        "left": 864,
+        "right": 877,
+        "top": 733.640625,
+        "width": 13,
+        "x": 864,
+        "y": 733.640625
+      },
+      "tag": "INPUT",
+      "text": "",
+      "value": "on"
+    }
+  ],
+  "fallback": {
+    "bottom": 741,
+    "height": 97.5,
+    "left": 879.6875,
+    "right": 1151,
+    "top": 643.5,
+    "width": 271.3125,
+    "x": 879.6875,
+    "y": 643.5
+  },
+  "fallbackButton": {
+    "bottom": 728,
+    "height": 44,
+    "left": 894.6875,
+    "right": 1004.6875,
+    "top": 684,
+    "width": 110,
+    "x": 894.6875,
+    "y": 684
+  },
+  "offset": 0,
+  "panel": {
+    "bottom": 855.515625,
+    "height": 556.140625,
+    "left": 674,
+    "right": 1012,
+    "top": 299.375,
+    "width": 338,
+    "x": 674,
+    "y": 299.375
+  },
+  "panelScroll": {
+    "client": 554,
+    "top": 0,
+    "total": 554
+  },
+  "windRightHit": {
+    "targetClass": "",
+    "targetId": "host-open-chat",
+    "targetTag": "BUTTON",
+    "targetText": "打开聊天",
+    "x": 984,
+    "y": 697.140625
+  }
+}

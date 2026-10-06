@@ -1,0 +1,7 @@
+Repository-wide licensing notice
+
+No repository-wide open-source license has been selected for the first-party PersonalOS sources or newly added service scaffolding. Publishing this source does not assign a blanket MIT or other license to those materials. Contact the repository owner about first-party reuse permissions.
+
+Third-party components retain their own licenses, copyright notices and restrictions. These notices are included alongside their corresponding source copies, including regression fixtures. See THIRD_PARTY_NOTICES.md and the original component license/NOTICE files.
+
+In particular, Emotion Ball character visuals are restricted to non-commercial personal technical study and research by their retained LICENSE and NOTICE.md. Commercial engine/data licensing does not authorize commercial use of those visuals. This repository does not relicense those materials or assert commercial rights to them.

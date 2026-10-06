@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "include": [
+    "All 69 committed runtime files and retained vendor license/notice files",
+    "Committed integration .mjs/.js/.css/.json/.txt/LICENSE fixtures and package lock; no internal QA markdown",
+    "Two committed menu/weather .test.mjs suites",
+    "Fresh public product/API/contracts/CI/ownership docs and import provenance"
+  ],
+  "exclude": [
+    "Original .git directory, bundle, history/index/config and author metadata",
+    "Original release/evidence/**, release/user-feedback/** and raw operational release registries",
+    "Internal test status/checkpoint/visual-review markdown",
+    "Untracked browser harness with environment-specific imports",
+    "node_modules, caches, logs, screenshots/video, generated reports, deployments, credentials and private notes",
+    "Four generated Three.js build files listed in provenance/vendor-dependencies.json; package lock and exact byte reconstruction are tracked instead"
+  ],
+  "changes": [
+    "Source path-only relocation to apps/web; runtime bytes unchanged",
+    "New source-allowlist replaces old environment portability allowlist",
+    "Fresh generated docs replace private source documents",
+    "New health/status API scaffold; web demo remains disconnected",
+    "Two test-harness-only repairs keep all suites/assertions: actual popstate synchronization and concurrency4; original/public digests recorded",
+    "Four duplicate Three.js build files are not tracked; locked official three@0.180.0 and setup recreate exact expected SHA-256 bytes before checks/use"
+  ]
+}

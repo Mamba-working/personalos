@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "node": {
+    "version": "v24.19.0",
+    "basis": "Actual local node --version output during clean-import verification; pinned in .nvmrc, not inferred as latest"
+  },
+  "npm": {
+    "version": "11.9.0",
+    "basis": "Actual local npm --version output"
+  },
+  "githubActions": [
+    {
+      "name": "actions/checkout",
+      "refLabel": "v7.0.1",
+      "commit": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "verifiedSource": "https://github.com/actions/checkout/commit/3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "tagBranchSource": "https://github.com/actions/checkout/commits/v7"
+    },
+    {
+      "name": "actions/setup-node",
+      "refLabel": "v7",
+      "commit": "820762786026740c76f36085b0efc47a31fe5020",
+      "verifiedSource": "https://github.com/actions/setup-node/commit/820762786026740c76f36085b0efc47a31fe5020",
+      "tagBranchSource": "https://github.com/actions/setup-node/commits/v7"
+    }
+  ],
+  "note": "Official commit/tag pages were inspected read-only. Local checks do not establish successful execution on GitHub Actions; verify checks on the exact uploaded public commit."
+}

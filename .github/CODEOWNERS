@@ -1,0 +1,3 @@
+# Ownership roles are documented in docs/OWNERSHIP.md.
+# Add verified maintainer handles before requiring code-owner review.
+# No unverified or placeholder account is assigned here.

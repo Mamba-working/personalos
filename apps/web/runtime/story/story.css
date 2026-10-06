@@ -1,0 +1,11 @@
+/* Only the borrowed article is transformed. Its native slot reserves layout. */
+#story-content-layer{position:fixed;inset:0;z-index:22;pointer-events:none;overflow:visible;contain:layout style}
+#story-content-layer[hidden]{display:none}
+#story-content-layer>.card{pointer-events:none;will-change:transform;backface-visibility:hidden}
+#story-content-layer>.card[data-story-owner=world]{background:transparent!important;border-color:transparent;border-radius:0;box-shadow:none}
+#story-content-layer .identity{transform-origin:0 0}
+body[data-story-phase=handoff] #content-root{visibility:visible;clip-path:inset(0);pointer-events:none;opacity:var(--story-content-alpha,0)}
+body[data-story-phase=story] #world-intro{visibility:hidden!important}
+body[data-story-phase=handoff] #world-intro{visibility:hidden!important}
+
+body[data-story-phase=home] #content-root{opacity:1}

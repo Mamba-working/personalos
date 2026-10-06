@@ -1,0 +1,19 @@
+{
+  "product": "PersonalOS",
+  "productVersion": "v0.1.0-alpha.3",
+  "channel": "alpha",
+  "reviewLabel": "Alpha QA candidate · acceptance pending",
+  "fullUnifiedAcceptance": false,
+  "deferredGates": [
+    "final-user-signoff",
+    "measured-performance",
+    "physical-device",
+    "rendered-visual-motion"
+  ],
+  "limitations": [
+    "Rendered Ball/GPU and complete motion acceptance pending",
+    "Physical-device native keyboard/IME acceptance pending",
+    "Validated measured-performance acceptance pending",
+    "Final unified-product user signoff pending"
+  ]
+}

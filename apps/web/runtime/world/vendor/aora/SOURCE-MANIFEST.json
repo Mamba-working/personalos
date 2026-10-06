@@ -1,0 +1,63 @@
+{
+  "repository": "https://github.com/sam70361/aora-bot",
+  "commit": "e3b6148c818da4a8e1966f2bc89cdb3cee473b73",
+  "commit_url": "https://github.com/sam70361/aora-bot/commit/e3b6148c818da4a8e1966f2bc89cdb3cee473b73",
+  "commit_date": "2026-08-24T17:29:13Z",
+  "retrieved_at": "2026-10-02T20:09:00Z",
+  "files": [
+    {
+      "path": "LICENSE",
+      "bytes": 5027,
+      "sha256": "cd25a8e1b00d05b2bb29d3a626599526db960b5bf3ba94fd726565b9bec7f8ea",
+      "source": "https://github.com/sam70361/aora-bot/blob/e3b6148c818da4a8e1966f2bc89cdb3cee473b73/LICENSE"
+    },
+    {
+      "path": "NOTICE.md",
+      "bytes": 3234,
+      "sha256": "549d6607c9dd13c9add2fa5faeccca488bd78cf30cac2b0b4d3dbcd8b45b721d",
+      "source": "https://github.com/sam70361/aora-bot/blob/e3b6148c818da4a8e1966f2bc89cdb3cee473b73/NOTICE.md"
+    },
+    {
+      "path": "LICENSE-COMMERCIAL.md",
+      "bytes": 7090,
+      "sha256": "0c9ce7fd2349fcda788702a5867d85546874e406dd42aeef0c944e53834d1d67",
+      "source": "https://github.com/sam70361/aora-bot/blob/e3b6148c818da4a8e1966f2bc89cdb3cee473b73/LICENSE-COMMERCIAL.md"
+    },
+    {
+      "path": "README.md",
+      "bytes": 14710,
+      "sha256": "05596c6d00f03d2ccf08edec7a5196f45370b139c1f14b989ed421177848e115",
+      "source": "https://github.com/sam70361/aora-bot/blob/e3b6148c818da4a8e1966f2bc89cdb3cee473b73/README.md"
+    },
+    {
+      "path": "README.en.md",
+      "bytes": 16500,
+      "sha256": "9110de36b0b7184d35efd0f77d6af7dc5f10c41d7dd619d9e267359bb6d08b52",
+      "source": "https://github.com/sam70361/aora-bot/blob/e3b6148c818da4a8e1966f2bc89cdb3cee473b73/README.en.md"
+    },
+    {
+      "path": "emotion-ball/js/rings.js",
+      "bytes": 41780,
+      "sha256": "7fd196046650b8273d87c9b85a899554d90f35c62d676eea1c681630e721ec20",
+      "source": "https://github.com/sam70361/aora-bot/blob/e3b6148c818da4a8e1966f2bc89cdb3cee473b73/emotion-ball/js/rings.js"
+    },
+    {
+      "path": "emotion-ball/js/emotions.js",
+      "bytes": 21922,
+      "sha256": "c938eb9601ba4b37c67e78fa0e4c1294d1882b498111600b83a8ebfe2aeb8d77",
+      "source": "https://github.com/sam70361/aora-bot/blob/e3b6148c818da4a8e1966f2bc89cdb3cee473b73/emotion-ball/js/emotions.js"
+    },
+    {
+      "path": "emotion-ball/js/ball.js",
+      "bytes": 23826,
+      "sha256": "4d7928b66e19da61f0aceaa161d6b2e1c7a83bb49c83cd449e80844deb70a587",
+      "source": "https://github.com/sam70361/aora-bot/blob/e3b6148c818da4a8e1966f2bc89cdb3cee473b73/emotion-ball/js/ball.js"
+    },
+    {
+      "path": "emotion-ball/js/engine.js",
+      "bytes": 30644,
+      "sha256": "6c48deb09e097f50655b546c84b5bda066a741520d8e5e2c064c6a7e813b1756",
+      "source": "https://github.com/sam70361/aora-bot/blob/e3b6148c818da4a8e1966f2bc89cdb3cee473b73/emotion-ball/js/engine.js"
+    }
+  ]
+}

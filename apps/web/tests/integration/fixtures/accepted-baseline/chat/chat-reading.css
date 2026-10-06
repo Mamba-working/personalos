@@ -1,0 +1,83 @@
+/* Integration contract only; owner folds into contextual-chat.css.
+   Preserve compositor/optics ownership, existing IDs and external morph modules. */
+.living-study[data-chat-interior="reading"] :is(#ai-canvas[data-chat-layout="contextual"], .intent-material-canvas) {
+  --chat-paper:#f7f7f8; --chat-field:#fff; --chat-user:#eaeaec;
+  --chat-ink:#202123; --chat-secondary:#48484e; --chat-placeholder:#68686e;
+  --chat-outline:rgba(32,33,35,.12); --chat-accent:#202123; --chat-accent-ink:#fff;
+  --chat-edge:rgba(255,255,255,.58);
+}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] {color-scheme:light;font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:var(--chat-ink)}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .canvas-reader {background:transparent;grid-template-rows:48px minmax(0,1fr) auto}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .canvas-head {min-height:48px;padding:0 60px 0 20px;border:0}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .canvas-identity {display:block}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .canvas-identity strong {font-size:14px;font-weight:600;line-height:1.3}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] #ai-close {inset:2px 6px auto auto;width:44px;height:44px;min-height:44px;border:0;background:transparent;font-size:23px;border-radius:50%}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] #agent-status {position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .canvas-scroll {padding:12px 20px 20px;scroll-padding-top:12px;overscroll-behavior:contain;overflow-anchor:none;scrollbar-width:thin;scrollbar-color:#d1d1d5 transparent}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .canvas-intro {padding:10px 0 8px}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .canvas-intro h2 {font-size:22px;font-weight:500;line-height:1.4;letter-spacing:-.025em}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .canvas-intro p {font-size:14px;line-height:1.55;margin:8px 0 0;color:var(--chat-secondary)}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .prompt-list {display:flex;gap:14px;margin:16px 0 0;flex-wrap:wrap}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .prompt-list button {padding:4px 0;min-height:36px;border:0;border-radius:0;background:none;font-size:13px;font-weight:500;white-space:nowrap}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .chat-turn {display:flow-root;margin-bottom:32px}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .chat-turn:last-child {margin-bottom:0;min-block-size:var(--latest-turn-min,0px)}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .message {margin:0;font-size:16px;line-height:1.7;letter-spacing:0;overflow-wrap:anywhere}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .message.user {width:fit-content;max-width:84%;margin:0 0 24px auto;padding:10px 14px;border:0;border-radius:18px;background:var(--chat-user);white-space:pre-wrap}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .message.assistant {padding:0;border:0;background:none}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .stream-text {white-space:pre-wrap}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .message-status {font-size:12px;line-height:1.5;color:var(--chat-secondary);margin-top:12px}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .message-status:empty {display:none}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .answer-support {margin-top:18px;border:0;background:none;font-size:13px}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .answer-support summary {cursor:pointer;min-height:36px;display:flex;align-items:center;gap:6px;color:var(--chat-secondary)}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .canvas-composer {border:0;background:transparent;padding:8px 12px 8px;position:relative}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .composer-wrap {min-height:54px;padding:4px 5px 4px 12px;gap:3px;border:1px solid var(--chat-outline);border-radius:24px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.025)}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] #question {font-size:16px;line-height:24px;min-height:44px;max-height:120px;padding:10px 0;resize:none;outline:0}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] #send-button {width:44px;height:44px;min-width:44px;padding:4px;border-radius:50%;background:transparent;color:var(--chat-accent-ink)}
+/* Render an arrow/stop SVG in a 36px dark circle, preserving send-button node. */
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] #send-button .send-disc {display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--chat-accent)}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] #send-button:disabled .send-disc {background:#d8d8dc;color:#838389}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .composer-note {display:flex;justify-content:center;margin-top:5px;font-size:11px;line-height:16px;color:var(--chat-secondary)}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .jump-latest {position:absolute;right:calc(50% - 19px);bottom:calc(100% + 8px);width:38px;height:38px;border:1px solid var(--chat-outline);border-radius:50%;background:#fff;box-shadow:0 2px 8px #0000000c}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] :is(button,a,summary):focus-visible {outline:2px solid #53545c;outline-offset:3px}
+@media(max-width:340px){.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .canvas-scroll{padding-inline:16px}}
+
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] #send-button:disabled {opacity:1}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] ::selection {background:#dcdde3;color:#202123}
+/* Jump icon may look 36–38px; retain a 44px minimum tap target. */
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .jump-latest {width:44px;height:44px;right:calc(50% - 22px)}
+
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .canvas-identity span:not(#agent-status){display:none}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .contextual-contour-fill{stroke:var(--chat-edge)}
+.living-study[data-chat-interior="reading"] .intent-material-canvas .contextual-contour-fill{stroke:var(--chat-edge)}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .prompt-list button{min-height:44px}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .canvas-reader{overflow-anchor:none}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .task-steps{display:none}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .answer-support .generated-component{background:none;border:0;padding:12px 0;margin:0}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .answer-support :is(p,small,button,.mini-metric span,.evidence-card small,.evidence-card span){font-size:14px;color:var(--chat-secondary)}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .answer-support .mini-scheduler i{background:#101216}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .answer-support .mini-scheduler i.input{background:#566477}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .answer-support .evidence-card{border-color:var(--chat-outline)}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .jump-latest[hidden]{display:none!important}
+.chat-reading-debug-tools[hidden]{display:none!important}
+.chat-reading-debug-tools{position:fixed;left:12px;bottom:12px;z-index:90;padding:8px 12px;background:#f7f7f8;color:#202123;font:12px/1.5 system-ui;border-radius:8px}
+.chat-reading-debug-tools button{font:inherit;color:inherit;background:#fff;padding:8px;border:1px solid #777;border-radius:6px}
+
+/* Soft-keyboard layout keeps a native scroll viewport and a reachable composer.
+   Browser viewport updates own layout; Ball/glass intent animation stays separate. */
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-viewport="keyboard"] {overflow:hidden!important}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-viewport="keyboard"] .canvas-reader {display:grid!important;grid-template-rows:64px minmax(0,1fr) auto;overflow:hidden!important}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-viewport="keyboard"] .canvas-head {min-height:64px;padding-right:120px}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-viewport="keyboard"] .canvas-scroll {overflow-x:hidden!important;overflow-y:auto!important}
+
+/* Send-continuity study: native text field and Send remain separate live controls.
+   Only the writing well's paint is temporarily carried; focus/selection stay native. */
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .composer-wrap{padding:0;gap:8px;border:0;border-radius:0;background:none;box-shadow:none;align-items:flex-end}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .composer-wrap:focus-within{outline:none;border:0}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .composer-field{position:relative;isolation:isolate;display:flex;flex:1;min-width:0;padding:5px 13px;min-height:54px;box-sizing:border-box}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .composer-field::before{content:"";position:absolute;inset:0;z-index:-1;border:1px solid var(--chat-outline);border-radius:24px;background:var(--chat-field);box-shadow:0 2px 8px #00000006;opacity:var(--send-well-alpha,1);pointer-events:none}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .composer-field:focus-within::before{border-color:#767a82;box-shadow:0 0 0 1px #2021231a}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] .message.user{line-height:24px;padding:10px 14px}
+.living-study[data-chat-interior="reading"] #ai-canvas[data-chat-layout="contextual"] #send-button{margin-bottom:5px}
+
+/* Reserve reply layout immediately, but reveal its paint after the question lands. */
+.living-study[data-chat-interior="reading"] #ai-canvas .chat-turn[data-send-in-flight="true"] .message.assistant{opacity:0}

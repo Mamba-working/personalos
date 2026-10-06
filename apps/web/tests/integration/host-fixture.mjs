@@ -1,0 +1,12 @@
+import {bootContent,read} from './content-fixture.mjs';
+export async function bootHost({chatPhase='closed',mobileOwned=false,query='',fallback=false}={}){
+ const f=bootContent({query}),calls=[],chatListeners=new Set(),storyListeners=new Set();let phase=chatPhase,owned=mobileOwned,storyPhase='home',reduced=false,provider=null,screen={x:400,y:280,r:60};const showOptions=[],replayOffsets=[];
+ const chat={getState:()=>({open:phase!=='closed',phase,mobileFlow:{owned}}),close(){calls.push('chat-close');phase='closing';},show(options){calls.push('chat-show');showOptions.push(options);phase='open';},isPageLocked:()=>owned,clockChanged(){},preferencesChanged(){},subscribe(fn){chatListeners.add(fn);return()=>chatListeners.delete(fn);},placement:()=>null,feedOffset:()=>f.d.scrollingElement.scrollTop};
+ const story={getState:()=>({phase:storyPhase,reduced}),replay(){calls.push('replay');replayOffsets.push(f.d.scrollingElement.scrollTop);storyPhase='story';for(const fn of storyListeners)fn();return true;},skip(reason){calls.push('skip:'+reason);storyPhase='home';for(const fn of storyListeners)fn();return true;},setReduced(v){reduced=!!v;return reduced;},subscribe(fn){storyListeners.add(fn);return()=>storyListeners.delete(fn);}};
+ const world={story,getState:()=>({world:{homeScreen:screen,screen}}),connectContent:()=>()=>{},setPlacementProvider:fn=>{provider=fn;return()=>provider=null;},onActivate:()=>()=>{},select:id=>f.w.personalOSContent.select(id),cancel:()=>f.w.personalOSContent.cancel(),setCategory:c=>f.w.personalOSContent.setCategory(c)};
+ f.w.personalOSWorld=world;f.w.personalOSWorldAvailability={status:fallback?'failed':'ready'};f.w.ballStudy={snapshot:()=>({mode:'home'})};f.w.__mountChat=async()=>chat;
+ f.w.eval(read('world-availability.js').replace(/\bexport /g,'')+';window.__readiness=createWorldReadiness;window.__availabilityEvent=WORLD_AVAILABILITY_EVENT;');
+ f.w.eval('(()=>{const mountChat=window.__mountChat,createWorldReadiness=window.__readiness,WORLD_AVAILABILITY_EVENT=window.__availabilityEvent;'+read('host.js').replace(/^import[^\n]+\n/gm,'')+'})();');
+ await Promise.resolve();await Promise.resolve();
+ return {...f,calls,showOptions,replayOffsets,placement:home=>provider(home),setScreen:value=>screen=value,host:f.w.personalOSHost,chat,world,completeChatClose(){phase='closed';owned=false;for(const fn of [...chatListeners])fn({action:'closed',phase});},setChat(next,{mobile=false}={}){phase=next;owned=mobile;},get subscriptions(){return chatListeners.size;}};
+}

@@ -1,0 +1,6 @@
+Emotion Ball by sam70361
+Source: https://github.com/sam70361/aora-bot
+Pinned commit: e3b6148c818da4a8e1966f2bc89cdb3cee473b73
+Copyright (c) 2026 sam70361 (independently written source code, emotion configuration data and documentation).
+Used for private, non-commercial personal technical study.
+See accompanying LICENSE and NOTICE.md for complete terms and visual-design restrictions.

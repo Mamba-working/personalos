@@ -1,0 +1,9 @@
+{
+  "capturedAt": "2026-10-06T17:05:19.770Z",
+  "purpose": "Frozen source regression fixture before alpha.3 compact feed changes; source/DOM evidence only, not browser layout certification",
+  "sha256": {
+    "app.js": "3422c52b792c80a13cab1b31a7fc4346f93b3566ff17d78faab855586c72d289",
+    "style.css": "69afa74e3bc89fc6758c39585ae789345cfdce80efb591ba0829031ad0783a03",
+    "content.js": "009f5995501d4eaf88b69fa06d81c38c716baa90549dfa1c41e08e6619e787b9"
+  }
+}

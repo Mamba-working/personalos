@@ -1,0 +1,32 @@
+# Release policy
+
+## Version identifiers
+
+- Product version: vX.Y.Z, with alpha/beta/rc suffixes for prereleases
+- API scaffold/package version: independently truthful; initially 0.0.1
+- A hosting snapshot ID is deployment provenance, not a semantic product version or acceptance grade
+- Current imported web: v0.1.0-alpha.3; full unified acceptance is pending
+
+## Clean public import
+
+The original development history contained private QA captures and operational details. The public repository begins with a fresh sanitized import commit. Original branches/tags and their exact objects remain in private local recovery, while provenance/releases.json records historical source/runtime pointers.
+
+Never create an old release tag on an unrelated clean import commit and describe it as the old SHA. Original source hashes in provenance are references only. Any future sanitized historical reimport needs a new commit and an explicit import label/mapping.
+
+## Candidate identity and verification
+
+1. Install locked dependencies and reconstruct verified vendor artifacts; freeze source and record the real PUBLIC candidate commit plus current file inventory
+2. Run public-file review and automated source/contracts/HTTP checks on that exact commit
+3. Collect sanitized current-candidate browser/device/performance observations appropriate to the claim
+4. Label deferred gates explicitly in release notes and UI
+5. Require final user/product acceptance before a stable v0.1.0 claim
+6. Record deployed route, exact commit, source digests and observed environment without private paths/account metadata
+7. Never reuse historical browser success as fresh current-candidate observation
+
+The import provenance guard currently preserves the frozen alpha.3 bytes. Before intentional later web changes, introduce a new explicit candidate inventory/commit mapping in a reviewable change. Do not silently update an old import's recorded source hashes.
+
+## CI and publication
+
+CI checks source/import safety and backend smoke. It neither deploys nor publishes releases. Build/deploy/merge/tag publishing must be separately authorized. Use least-privilege CI and approved hosting/provider credentials stored in platform secrets, never committed.
+
+The initial workflow pins official actions to verified source commits. Reference: [actions/checkout](https://github.com/actions/checkout/commit/3d3c42e5aac5ba805825da76410c181273ba90b1), [actions/setup-node](https://github.com/actions/setup-node/commit/820762786026740c76f36085b0efc47a31fe5020)

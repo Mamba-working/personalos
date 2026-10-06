@@ -1,0 +1,31 @@
+name: CI
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  source-and-api:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version-file: .nvmrc
+          package-manager-cache: false
+      - name: Install repository workspace links
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Reconstruct exact pinned Three.js browser and fixture builds
+        run: npm run setup:vendor
+      - name: Install locked web regression dependencies
+        run: npm run setup:tests
+      - name: Check imported bytes, JavaScript syntax and public-file patterns
+        run: npm run check
+      - name: Run contracts, real API/static HTTP smoke and web source regressions
+        run: npm test

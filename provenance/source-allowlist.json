@@ -1,0 +1,1584 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "ab28fd1f02f84036ac05d5a1e9551bf26d6b7bf2",
+  "files": [
+    {
+      "sourcePath": "runtime/app.js",
+      "publicPath": "apps/web/runtime/app.js",
+      "sourceBlob": "40711fba6555c4f34f74aa31141e4bb9946e77c7",
+      "sha256": "31f1c02da981bf142f94fd29e4cc3b168f8971132ac918f032551c691f1313ff",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "31f1c02da981bf142f94fd29e4cc3b168f8971132ac918f032551c691f1313ff"
+    },
+    {
+      "sourcePath": "runtime/chat-contour.js",
+      "publicPath": "apps/web/runtime/chat-contour.js",
+      "sourceBlob": "30269939be774ab701e88924f25084fa0313d681",
+      "sha256": "55ee9896bd4453eace4aa39a40069b48ea91e13b3f479ce30a9ec57d41221d78",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "55ee9896bd4453eace4aa39a40069b48ea91e13b3f479ce30a9ec57d41221d78"
+    },
+    {
+      "sourcePath": "runtime/chat-host.css",
+      "publicPath": "apps/web/runtime/chat-host.css",
+      "sourceBlob": "e84158d4dcfe76e9d803ba27e79e717199e9a730",
+      "sha256": "8c21f0abce05c510a6f9c8055b230b1446f4164b5009492a03c51f9826c7c4bd",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "8c21f0abce05c510a6f9c8055b230b1446f4164b5009492a03c51f9826c7c4bd"
+    },
+    {
+      "sourcePath": "runtime/chat-host.js",
+      "publicPath": "apps/web/runtime/chat-host.js",
+      "sourceBlob": "6c62c73a7b46035f1d6e3822f4daf56a7757ad0b",
+      "sha256": "47b29b47c92e7642a3e4e36ead2d50b181788af0e59c086a2d180348d152bf90",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "47b29b47c92e7642a3e4e36ead2d50b181788af0e59c086a2d180348d152bf90"
+    },
+    {
+      "sourcePath": "runtime/chat-motion.js",
+      "publicPath": "apps/web/runtime/chat-motion.js",
+      "sourceBlob": "8c3c77ac9c78c865781fa060676acdf4887bb0df",
+      "sha256": "51f7e3ffa771ea947553c4cb8ef19c3611a59567c1e2121e7a9a4d4fc1f5ecf9",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "51f7e3ffa771ea947553c4cb8ef19c3611a59567c1e2121e7a9a4d4fc1f5ecf9"
+    },
+    {
+      "sourcePath": "runtime/chat/chat-fluid-send.js",
+      "publicPath": "apps/web/runtime/chat/chat-fluid-send.js",
+      "sourceBlob": "bc2c7709f6790b41e05b81026602dc0078bfd683",
+      "sha256": "146db578b5bf2bcc65f9c550d886afcf001dbcbf35725754d4d6e8770aac9070",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "146db578b5bf2bcc65f9c550d886afcf001dbcbf35725754d4d6e8770aac9070"
+    },
+    {
+      "sourcePath": "runtime/chat/chat-mobile-flow-page.js",
+      "publicPath": "apps/web/runtime/chat/chat-mobile-flow-page.js",
+      "sourceBlob": "feba5635d6942cac4538aa0bd053fe45de6f7eb1",
+      "sha256": "e517abaa0581952e70ba761b28a91f5dd1db7d91c2dad57931e1bf991c923b18",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "e517abaa0581952e70ba761b28a91f5dd1db7d91c2dad57931e1bf991c923b18"
+    },
+    {
+      "sourcePath": "runtime/chat/chat-mobile-flow.css",
+      "publicPath": "apps/web/runtime/chat/chat-mobile-flow.css",
+      "sourceBlob": "f95824eb9fc106b91f87d60e8d8a492ef7417fa1",
+      "sha256": "b632f738c2e4fc9dd059d1182f4552b569956b72b45dbd49a9a25f45a11b1b96",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "b632f738c2e4fc9dd059d1182f4552b569956b72b45dbd49a9a25f45a11b1b96"
+    },
+    {
+      "sourcePath": "runtime/chat/chat-page-lock.js",
+      "publicPath": "apps/web/runtime/chat/chat-page-lock.js",
+      "sourceBlob": "97a2fcc19824b96350f1b2d4b31cf6fe76e06b3b",
+      "sha256": "56fe545fedcb40eaf44a223c9adcac3c9a5d4568fc08b3c8986e93a8df3d161a",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "56fe545fedcb40eaf44a223c9adcac3c9a5d4568fc08b3c8986e93a8df3d161a"
+    },
+    {
+      "sourcePath": "runtime/chat/chat-reading-flow.js",
+      "publicPath": "apps/web/runtime/chat/chat-reading-flow.js",
+      "sourceBlob": "3afaf0640cf5a132214375cfbbbd4a58c3b6115e",
+      "sha256": "af10dfb858c18a9782c37429d25443e5275c20afe120693305491408b355a88c",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "af10dfb858c18a9782c37429d25443e5275c20afe120693305491408b355a88c"
+    },
+    {
+      "sourcePath": "runtime/chat/chat-reading-interior.js",
+      "publicPath": "apps/web/runtime/chat/chat-reading-interior.js",
+      "sourceBlob": "5c066ec24569814262a3da9f995915c8ed7e9160",
+      "sha256": "438af1cb681eaaa270958da1344cb835cda91f61348c92e9fc052aaf26b0c24d",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "438af1cb681eaaa270958da1344cb835cda91f61348c92e9fc052aaf26b0c24d"
+    },
+    {
+      "sourcePath": "runtime/chat/chat-reading.css",
+      "publicPath": "apps/web/runtime/chat/chat-reading.css",
+      "sourceBlob": "c871b13ea0aebac422f5f4154f6a542c74eb477a",
+      "sha256": "10c592e5fca5f010f46c5b56867e11fbdfd2afc7aa8bb9a5348640b3dc321c2b",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "10c592e5fca5f010f46c5b56867e11fbdfd2afc7aa8bb9a5348640b3dc321c2b"
+    },
+    {
+      "sourcePath": "runtime/chat/chat-turn-scroll.js",
+      "publicPath": "apps/web/runtime/chat/chat-turn-scroll.js",
+      "sourceBlob": "3ff44e95bb10d73e23f24dd922b50bb781e36cff",
+      "sha256": "21e45675fafc4a559e2973634759491ddad36c29d5fc396424f6e158861808b4",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "21e45675fafc4a559e2973634759491ddad36c29d5fc396424f6e158861808b4"
+    },
+    {
+      "sourcePath": "runtime/chat/chat-viewport.js",
+      "publicPath": "apps/web/runtime/chat/chat-viewport.js",
+      "sourceBlob": "851c0c303d0e9850b29be73ac344d8d36140c015",
+      "sha256": "cf83619e685cc53c9178426808302b129abef089481d9e865ca58651320ff676",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "cf83619e685cc53c9178426808302b129abef089481d9e865ca58651320ff676"
+    },
+    {
+      "sourcePath": "runtime/chat/contextual-chat-layout.js",
+      "publicPath": "apps/web/runtime/chat/contextual-chat-layout.js",
+      "sourceBlob": "35c2139e4a06ae9c11f12938927121d0fd033bc4",
+      "sha256": "1be4fdc14976c7413462e486a40228bb3e3cf4de1284499e0cbd240f6fc0924a",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "1be4fdc14976c7413462e486a40228bb3e3cf4de1284499e0cbd240f6fc0924a"
+    },
+    {
+      "sourcePath": "runtime/chat/contextual-chat.css",
+      "publicPath": "apps/web/runtime/chat/contextual-chat.css",
+      "sourceBlob": "cbd5fb642118b5884e8a1bca88d685bb14dd0349",
+      "sha256": "91290d400bac1e41b9c5f99d8615c81798fdaf27fe1fa9622928b13efa90df8c",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "91290d400bac1e41b9c5f99d8615c81798fdaf27fe1fa9622928b13efa90df8c"
+    },
+    {
+      "sourcePath": "runtime/chat/send-continuity-model.js",
+      "publicPath": "apps/web/runtime/chat/send-continuity-model.js",
+      "sourceBlob": "6c960fc6ad516b642bdd8ccedef06fae6bc8adbb",
+      "sha256": "9249936343a18205f059211f4482c9cea4ac71e5f45dff3d3eb8c12413a8314e",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "9249936343a18205f059211f4482c9cea4ac71e5f45dff3d3eb8c12413a8314e"
+    },
+    {
+      "sourcePath": "runtime/chat/send-continuity.js",
+      "publicPath": "apps/web/runtime/chat/send-continuity.js",
+      "sourceBlob": "ac721b33a4ad780454409b68e9c8d3d3097114b0",
+      "sha256": "5155da62da7f65dfe0640a7ac4a0816a9889e0563870242414992c558dbffcaf",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "5155da62da7f65dfe0640a7ac4a0816a9889e0563870242414992c558dbffcaf"
+    },
+    {
+      "sourcePath": "runtime/chat/send-path.js",
+      "publicPath": "apps/web/runtime/chat/send-path.js",
+      "sourceBlob": "62caab96e004b83bfa861a5a9fe8d0e3d505e36a",
+      "sha256": "f6921e691f7b6120a0a96104a15ade871f2b1b73fab40c80bd1919bf6be60661",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "f6921e691f7b6120a0a96104a15ade871f2b1b73fab40c80bd1919bf6be60661"
+    },
+    {
+      "sourcePath": "runtime/chat/send-text-layout.js",
+      "publicPath": "apps/web/runtime/chat/send-text-layout.js",
+      "sourceBlob": "fe3b1ca001d8a90328881f77d04ffcd6c9c852a3",
+      "sha256": "2052f072eb22f1a20a810d46fb51e336a77b79b2fd868779eed8193f5f79c54a",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "2052f072eb22f1a20a810d46fb51e336a77b79b2fd868779eed8193f5f79c54a"
+    },
+    {
+      "sourcePath": "runtime/chat/vendor/gsap/Flip.min.js",
+      "publicPath": "apps/web/runtime/chat/vendor/gsap/Flip.min.js",
+      "sourceBlob": "1aedff747fa317a234e1266f70798da5178ee998",
+      "sha256": "cbe3ca726350f8d230da38a14ce2384e7772e05a45cee6144dd7fe6dde868c2f",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "cbe3ca726350f8d230da38a14ce2384e7772e05a45cee6144dd7fe6dde868c2f"
+    },
+    {
+      "sourcePath": "runtime/chat/vendor/gsap/NOTICE.txt",
+      "publicPath": "apps/web/runtime/chat/vendor/gsap/NOTICE.txt",
+      "sourceBlob": "09840fbf7ee9f6b5740dff35bd3324e0374971f6",
+      "sha256": "37aa1b9e5c1686d3463aa43df13e79d6b2382ca913787ef5cc6e8bb26bc451a7",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "37aa1b9e5c1686d3463aa43df13e79d6b2382ca913787ef5cc6e8bb26bc451a7"
+    },
+    {
+      "sourcePath": "runtime/chat/vendor/gsap/gsap.min.js",
+      "publicPath": "apps/web/runtime/chat/vendor/gsap/gsap.min.js",
+      "sourceBlob": "3c73d761a9a7dbd166549451ba7afd62dc7121d0",
+      "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb"
+    },
+    {
+      "sourcePath": "runtime/comparison-status.js",
+      "publicPath": "apps/web/runtime/comparison-status.js",
+      "sourceBlob": "7396e3a43f38f9f91c0905139981958403dbc603",
+      "sha256": "a689f5c7efa42a45f24dfa2f80243a4d4e86f405c8591afddb7868379b07d6e8",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "a689f5c7efa42a45f24dfa2f80243a4d4e86f405c8591afddb7868379b07d6e8"
+    },
+    {
+      "sourcePath": "runtime/comparison-visibility.js",
+      "publicPath": "apps/web/runtime/comparison-visibility.js",
+      "sourceBlob": "56c03e6b78a8ad762031a2965b4be72acf69cefa",
+      "sha256": "43130f52fea59d2e81199f597e6698cf1cf026e02f7a689dad692d5ca01ab341",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "43130f52fea59d2e81199f597e6698cf1cf026e02f7a689dad692d5ca01ab341"
+    },
+    {
+      "sourcePath": "runtime/content.js",
+      "publicPath": "apps/web/runtime/content.js",
+      "sourceBlob": "c1638dd6fae097c0dfd8f3730acb1169e6727be7",
+      "sha256": "009f5995501d4eaf88b69fa06d81c38c716baa90549dfa1c41e08e6619e787b9",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "009f5995501d4eaf88b69fa06d81c38c716baa90549dfa1c41e08e6619e787b9"
+    },
+    {
+      "sourcePath": "runtime/diagnostics/keyboard-diagnostics.js",
+      "publicPath": "apps/web/runtime/diagnostics/keyboard-diagnostics.js",
+      "sourceBlob": "00d8d5f4fb771b5d0a96f43b72152f8635f427b4",
+      "sha256": "ebb1e4747975d41a5e74eabb89d36d93335f385d39d9bf93d3b9fc78955e8819",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "ebb1e4747975d41a5e74eabb89d36d93335f385d39d9bf93d3b9fc78955e8819"
+    },
+    {
+      "sourcePath": "runtime/feed-compact.css",
+      "publicPath": "apps/web/runtime/feed-compact.css",
+      "sourceBlob": "a9571f126a6f4738e5688c54c8dd1ed63c3b79e5",
+      "sha256": "b0efc719e044614daa7603067ff57b2305ed4bb30af223e04a9180f7144b4358",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "b0efc719e044614daa7603067ff57b2305ed4bb30af223e04a9180f7144b4358"
+    },
+    {
+      "sourcePath": "runtime/feed-layout.js",
+      "publicPath": "apps/web/runtime/feed-layout.js",
+      "sourceBlob": "7eff9cc3a0fa3c9819eb1f0f71268b3dbd605301",
+      "sha256": "7dec28dbd52bb640f0158060fed82a9f44d4731e3698066137854a55ff68a2e0",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "7dec28dbd52bb640f0158060fed82a9f44d4731e3698066137854a55ff68a2e0"
+    },
+    {
+      "sourcePath": "runtime/feed-reflow.js",
+      "publicPath": "apps/web/runtime/feed-reflow.js",
+      "sourceBlob": "4122ab38ac448a88d1c81625f8977ec42311189c",
+      "sha256": "85d30880b493f861a047390b10132ce631612b274cac0f1bf3a842253ae9584c",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "85d30880b493f861a047390b10132ce631612b274cac0f1bf3a842253ae9584c"
+    },
+    {
+      "sourcePath": "runtime/host.css",
+      "publicPath": "apps/web/runtime/host.css",
+      "sourceBlob": "d91021f0460d0563059077601a82ac0fd226411e",
+      "sha256": "67c0c1e9568da91da8ae23cd7c8e7d3eddb62171bddf405214accf49af2a0a29",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "67c0c1e9568da91da8ae23cd7c8e7d3eddb62171bddf405214accf49af2a0a29"
+    },
+    {
+      "sourcePath": "runtime/host.js",
+      "publicPath": "apps/web/runtime/host.js",
+      "sourceBlob": "759096bbe7d8f85847b803a27581dec12ed63079",
+      "sha256": "f59013dcae0b90dd6655778458e92fc22cb4589b0a9939063112899f5d05e7f8",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "f59013dcae0b90dd6655778458e92fc22cb4589b0a9939063112899f5d05e7f8"
+    },
+    {
+      "sourcePath": "runtime/index.html",
+      "publicPath": "apps/web/runtime/index.html",
+      "sourceBlob": "a601cec6573be5abe1653eaf9b8ea784945bda73",
+      "sha256": "67a7f0b908b16220b5a8584528a2fb9db2d0f970fff8fb1e7231f3bd4cafb6ce",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "67a7f0b908b16220b5a8584528a2fb9db2d0f970fff8fb1e7231f3bd4cafb6ce"
+    },
+    {
+      "sourcePath": "runtime/material.css",
+      "publicPath": "apps/web/runtime/material.css",
+      "sourceBlob": "cbf620283fc66cb2d32fe3b0fcbb29de9307c19d",
+      "sha256": "ce64cb786aa537751c52269488ad96a964908f1cc86c224ba991321054b2217c",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "ce64cb786aa537751c52269488ad96a964908f1cc86c224ba991321054b2217c"
+    },
+    {
+      "sourcePath": "runtime/modules/menu.css",
+      "publicPath": "apps/web/runtime/modules/menu.css",
+      "sourceBlob": "60a8b8a7fc2cccfdfd82b444451b74e84aba9af4",
+      "sha256": "155de5531b954490d0c19c7c25c88d3f9501225965c9eadc8abfae0aca21fc7f",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "155de5531b954490d0c19c7c25c88d3f9501225965c9eadc8abfae0aca21fc7f"
+    },
+    {
+      "sourcePath": "runtime/modules/menu.js",
+      "publicPath": "apps/web/runtime/modules/menu.js",
+      "sourceBlob": "d1ec13eb7cd6e3769bc544b106402ebb06d04672",
+      "sha256": "1ce918555505fe611318c55f100cbba879d1e6c8aaea7029cd80eb5f30d729d1",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "1ce918555505fe611318c55f100cbba879d1e6c8aaea7029cd80eb5f30d729d1"
+    },
+    {
+      "sourcePath": "runtime/modules/mount.js",
+      "publicPath": "apps/web/runtime/modules/mount.js",
+      "sourceBlob": "9edfbdddb55dd8abacf39ff6878b9c7ac554f843",
+      "sha256": "693f27d090a56f3a925b68ff3f2ace911ae0e77285a653bfabef1fe2f76b7e3a",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "693f27d090a56f3a925b68ff3f2ace911ae0e77285a653bfabef1fe2f76b7e3a"
+    },
+    {
+      "sourcePath": "runtime/modules/weather.css",
+      "publicPath": "apps/web/runtime/modules/weather.css",
+      "sourceBlob": "913beb6f28b3a9213cef922a3b355d7d41a19c9a",
+      "sha256": "030bf683d00d61346d8bd4d70e5346461866f8b6203128ca9d3c93a68a12bbb9",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "030bf683d00d61346d8bd4d70e5346461866f8b6203128ca9d3c93a68a12bbb9"
+    },
+    {
+      "sourcePath": "runtime/modules/weather.js",
+      "publicPath": "apps/web/runtime/modules/weather.js",
+      "sourceBlob": "858965305894de5825c1ceeca28c61972f4742d8",
+      "sha256": "2d8cc362266dee809a7c82e2e23adc224fee4ca5417f02274d05e034b20f332e",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "2d8cc362266dee809a7c82e2e23adc224fee4ca5417f02274d05e034b20f332e"
+    },
+    {
+      "sourcePath": "runtime/palette.css",
+      "publicPath": "apps/web/runtime/palette.css",
+      "sourceBlob": "c28f471293de60944bc3e31a9204bf18a8033dbe",
+      "sha256": "c4deab976ada8f17bdc9cd9ecc01d1346b0c21a878d3aa6366645fcd48778ef5",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "c4deab976ada8f17bdc9cd9ecc01d1346b0c21a878d3aa6366645fcd48778ef5"
+    },
+    {
+      "sourcePath": "runtime/release-meta.json",
+      "publicPath": "apps/web/runtime/release-meta.json",
+      "sourceBlob": "9b104a68f83570f447eb804c823afb8df3bcc86f",
+      "sha256": "9460b8f226fc196f976db71088f462c4b8f317f02c70768c8462069f2afa53ff",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "9460b8f226fc196f976db71088f462c4b8f317f02c70768c8462069f2afa53ff"
+    },
+    {
+      "sourcePath": "runtime/scene-bridge.js",
+      "publicPath": "apps/web/runtime/scene-bridge.js",
+      "sourceBlob": "0efc0a721ac1e75d60772adecb424c5288f62203",
+      "sha256": "275b8cb623fa45ea102f8fedfd8ee6f86ced3b8edb6cc7406f5116104eced6c6",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "275b8cb623fa45ea102f8fedfd8ee6f86ced3b8edb6cc7406f5116104eced6c6"
+    },
+    {
+      "sourcePath": "runtime/send-comparison.css",
+      "publicPath": "apps/web/runtime/send-comparison.css",
+      "sourceBlob": "9fc1ab04df486a37705e9fa200e937499989f86e",
+      "sha256": "837459bf03305288015c20aebbb9af5ab4549db4fe03989c11341d3190e4396a",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "837459bf03305288015c20aebbb9af5ab4549db4fe03989c11341d3190e4396a"
+    },
+    {
+      "sourcePath": "runtime/send-comparison.html",
+      "publicPath": "apps/web/runtime/send-comparison.html",
+      "sourceBlob": "2bf08d88943670d30a05018e5787d9d8e616e83f",
+      "sha256": "a3478819c44f3681fbcebd99cf2be394bfb840c6228ed42913fd5b1b7ad864b0",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "a3478819c44f3681fbcebd99cf2be394bfb840c6228ed42913fd5b1b7ad864b0"
+    },
+    {
+      "sourcePath": "runtime/send-comparison.js",
+      "publicPath": "apps/web/runtime/send-comparison.js",
+      "sourceBlob": "5946e299f4dd6dea4973745b0a7c6a4f8d646440",
+      "sha256": "74a355e517d30e2a7febf5e64a04a4fe74c60aca11027ce7f67b4237ffbfbf22",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "74a355e517d30e2a7febf5e64a04a4fe74c60aca11027ce7f67b4237ffbfbf22"
+    },
+    {
+      "sourcePath": "runtime/story/book-story.js",
+      "publicPath": "apps/web/runtime/story/book-story.js",
+      "sourceBlob": "2284ee480b6144a07afbc4d9d6e2b582ab5cd6f1",
+      "sha256": "a6e57153d8efaf3f3c10d1625cba49c9f29d9563ba45b34b7cf8d17c2dcc3007",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "a6e57153d8efaf3f3c10d1625cba49c9f29d9563ba45b34b7cf8d17c2dcc3007"
+    },
+    {
+      "sourcePath": "runtime/story/content-presentation.js",
+      "publicPath": "apps/web/runtime/story/content-presentation.js",
+      "sourceBlob": "188f44068b75f132228b33a8275224c622cb5318",
+      "sha256": "bfd411599ba98ceee92cfaba302a66abade14251d7c1be995438c8426083adc2",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "bfd411599ba98ceee92cfaba302a66abade14251d7c1be995438c8426083adc2"
+    },
+    {
+      "sourcePath": "runtime/story/frame-clock.js",
+      "publicPath": "apps/web/runtime/story/frame-clock.js",
+      "sourceBlob": "bd57869aad84ae054842fc26262f63228b59ef65",
+      "sha256": "598d87045d44611bf89dff6585a66b2cec59e747cd92181cd6aea24f37bc3f60",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "598d87045d44611bf89dff6585a66b2cec59e747cd92181cd6aea24f37bc3f60"
+    },
+    {
+      "sourcePath": "runtime/story/geometry.js",
+      "publicPath": "apps/web/runtime/story/geometry.js",
+      "sourceBlob": "4bc2c61af7fe0726bee017b0a0dc06aeaa9f1819",
+      "sha256": "b4983a87eece5b9e8e84773d39b7747e2782c11c43d987162051832348cd58fc",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "b4983a87eece5b9e8e84773d39b7747e2782c11c43d987162051832348cd58fc"
+    },
+    {
+      "sourcePath": "runtime/story/lifecycle.js",
+      "publicPath": "apps/web/runtime/story/lifecycle.js",
+      "sourceBlob": "86563494dda9b32c37869692f373955ef5f91a25",
+      "sha256": "558769f362c6bbef9977d3d264907eb4cfc24a805a537f40e706ba3e98df0b24",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "558769f362c6bbef9977d3d264907eb4cfc24a805a537f40e706ba3e98df0b24"
+    },
+    {
+      "sourcePath": "runtime/story/props.js",
+      "publicPath": "apps/web/runtime/story/props.js",
+      "sourceBlob": "2cc8d7cfc70c35c89d28482542860c84fa119e3e",
+      "sha256": "8616b030a66656a77e6236569f485d37fb659ed5e5996bad8a1039d8ca7cc0dd",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "8616b030a66656a77e6236569f485d37fb659ed5e5996bad8a1039d8ca7cc0dd"
+    },
+    {
+      "sourcePath": "runtime/story/story.css",
+      "publicPath": "apps/web/runtime/story/story.css",
+      "sourceBlob": "d73d835132f1c165d42f1c1956e253a40ebd2aeb",
+      "sha256": "0c3679abfe9b00343c490d63b7f4ecb4ee574c5bf766684911e56bf1c38117db",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "0c3679abfe9b00343c490d63b7f4ecb4ee574c5bf766684911e56bf1c38117db"
+    },
+    {
+      "sourcePath": "runtime/style.css",
+      "publicPath": "apps/web/runtime/style.css",
+      "sourceBlob": "cb14ef885133eff7ccaeccb5bd006c876e2c9e4a",
+      "sha256": "69afa74e3bc89fc6758c39585ae789345cfdce80efb591ba0829031ad0783a03",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "69afa74e3bc89fc6758c39585ae789345cfdce80efb591ba0829031ad0783a03"
+    },
+    {
+      "sourcePath": "runtime/world-availability.js",
+      "publicPath": "apps/web/runtime/world-availability.js",
+      "sourceBlob": "e065681cb8242b5b9221dc088451c6322c063538",
+      "sha256": "a802daffb2300ae96826e0d60d718ca95d767b816876aca951f4d7479fe99b0d",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "a802daffb2300ae96826e0d60d718ca95d767b816876aca951f4d7479fe99b0d"
+    },
+    {
+      "sourcePath": "runtime/world/scene.js",
+      "publicPath": "apps/web/runtime/world/scene.js",
+      "sourceBlob": "a69e55c7422acd0196357360f8b876c35491874d",
+      "sha256": "809c39ebf0a8f82acb3c319e7c4731ccdd732edd0a5dcd23c6e63b5115ae13c7",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "809c39ebf0a8f82acb3c319e7c4731ccdd732edd0a5dcd23c6e63b5115ae13c7"
+    },
+    {
+      "sourcePath": "runtime/world/scoped.css",
+      "publicPath": "apps/web/runtime/world/scoped.css",
+      "sourceBlob": "6bf347f197cc66ed0e882a4268d02eb64cc93bbe",
+      "sha256": "be8e379244be28eee5155b518b8ce8af8f40b1f9e574e1761cdf298c09fd1c01",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "be8e379244be28eee5155b518b8ce8af8f40b1f9e574e1761cdf298c09fd1c01"
+    },
+    {
+      "sourcePath": "runtime/world/style.css",
+      "publicPath": "apps/web/runtime/world/style.css",
+      "sourceBlob": "8d4fb6834b91d6db41098fc40eabbfb294dff2e9",
+      "sha256": "7262149614ee034bf52d7fdcadadba1b162b8e6841975c350e48ab84658b3186",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "7262149614ee034bf52d7fdcadadba1b162b8e6841975c350e48ab84658b3186"
+    },
+    {
+      "sourcePath": "runtime/world/theme.js",
+      "publicPath": "apps/web/runtime/world/theme.js",
+      "sourceBlob": "ed09a998345de62b5ddf1da6fe269ba8b6f95cd8",
+      "sha256": "d0dbf2ccb0ea7dab7ec6a4383eb24ce8d66b8d53aa71f1876cd30a9e8aeba489",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "d0dbf2ccb0ea7dab7ec6a4383eb24ce8d66b8d53aa71f1876cd30a9e8aeba489"
+    },
+    {
+      "sourcePath": "runtime/world/theme.json",
+      "publicPath": "apps/web/runtime/world/theme.json",
+      "sourceBlob": "581faeb96f80f00f6b39530c0b02e31307a2d7c1",
+      "sha256": "17b25dd7088e1866a849e2397a08ef23ebe0ed96c548a44d72f059902d655a0e",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "17b25dd7088e1866a849e2397a08ef23ebe0ed96c548a44d72f059902d655a0e"
+    },
+    {
+      "sourcePath": "runtime/world/vendor/aora/ATTRIBUTION.txt",
+      "publicPath": "apps/web/runtime/world/vendor/aora/ATTRIBUTION.txt",
+      "sourceBlob": "692bb7c199b86516e48b22820e1b174af3a8497e",
+      "sha256": "5df50aa8fcee9acb4e80f9baab7d154106120d36e3e9fbd2bed0146cb8db35be",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "5df50aa8fcee9acb4e80f9baab7d154106120d36e3e9fbd2bed0146cb8db35be"
+    },
+    {
+      "sourcePath": "runtime/world/vendor/aora/LICENSE",
+      "publicPath": "apps/web/runtime/world/vendor/aora/LICENSE",
+      "sourceBlob": "ecd0128d4c65a9a894e13a1cee00150f1054f395",
+      "sha256": "cd25a8e1b00d05b2bb29d3a626599526db960b5bf3ba94fd726565b9bec7f8ea",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "cd25a8e1b00d05b2bb29d3a626599526db960b5bf3ba94fd726565b9bec7f8ea"
+    },
+    {
+      "sourcePath": "runtime/world/vendor/aora/NOTICE.md",
+      "publicPath": "apps/web/runtime/world/vendor/aora/NOTICE.md",
+      "sourceBlob": "2761c6b69f9e50fd22a7b5a1acbc0fa1bac1af54",
+      "sha256": "549d6607c9dd13c9add2fa5faeccca488bd78cf30cac2b0b4d3dbcd8b45b721d",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "549d6607c9dd13c9add2fa5faeccca488bd78cf30cac2b0b4d3dbcd8b45b721d"
+    },
+    {
+      "sourcePath": "runtime/world/vendor/aora/SOURCE-MANIFEST.json",
+      "publicPath": "apps/web/runtime/world/vendor/aora/SOURCE-MANIFEST.json",
+      "sourceBlob": "83c9a4762b3460bd6ae9bf3237dc64f05fb913e6",
+      "sha256": "1def92868ff495d9098778a7a53532b85a288c1e19de27e8bb8780ecefde1d49",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "1def92868ff495d9098778a7a53532b85a288c1e19de27e8bb8780ecefde1d49"
+    },
+    {
+      "sourcePath": "runtime/world/vendor/aora/rings.js",
+      "publicPath": "apps/web/runtime/world/vendor/aora/rings.js",
+      "sourceBlob": "f7159a71a42fc93b4ebb37169cb0dc2679122800",
+      "sha256": "7fd196046650b8273d87c9b85a899554d90f35c62d676eea1c681630e721ec20",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "7fd196046650b8273d87c9b85a899554d90f35c62d676eea1c681630e721ec20"
+    },
+    {
+      "sourcePath": "runtime/world/vendor/three/LICENSE",
+      "publicPath": "apps/web/runtime/world/vendor/three/LICENSE",
+      "sourceBlob": "cf781430404b0ae0ba7d8dea3457a3515dd7c9b9",
+      "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+    },
+    {
+      "sourcePath": "runtime/world/vendor/three/RoomEnvironment.js",
+      "publicPath": "apps/web/runtime/world/vendor/three/RoomEnvironment.js",
+      "sourceBlob": "2f2bedd77a6417a8855fea7143903252a890637c",
+      "sha256": "c20f0b4677f6128a138d7152b85cbef9091f4f45cdfa05adca04d40c1697c7ae",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "c20f0b4677f6128a138d7152b85cbef9091f4f45cdfa05adca04d40c1697c7ae"
+    },
+    {
+      "sourcePath": "runtime/world/world-adapter.js",
+      "publicPath": "apps/web/runtime/world/world-adapter.js",
+      "sourceBlob": "7b7ca937001af4b501ccabf211c32fc69526fb0d",
+      "sha256": "57c1a391b0be7c237eba1711a1fae77fec4c32533e8e518434af6b7f5704730e",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "57c1a391b0be7c237eba1711a1fae77fec4c32533e8e518434af6b7f5704730e"
+    },
+    {
+      "sourcePath": "tests/integration/.gitignore",
+      "publicPath": "apps/web/tests/integration/.gitignore",
+      "sourceBlob": "0b537c7ebddd3c28c858a0185f0e4aa4977086e3",
+      "sha256": "a0221e0a43275ecb40869cf8684caa47c41038809636629bdeb6964862526b8e",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "a0221e0a43275ecb40869cf8684caa47c41038809636629bdeb6964862526b8e"
+    },
+    {
+      "sourcePath": "tests/integration/accepted-send.test.mjs",
+      "publicPath": "apps/web/tests/integration/accepted-send.test.mjs",
+      "sourceBlob": "e6ff1ef0b65bbc998d5b091a82ef1312e9ca420f",
+      "sha256": "3927d4e6b518e709cd11d1b2f9f53d6e57ff5ff13e53ce60353f3820381b7aba",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "3927d4e6b518e709cd11d1b2f9f53d6e57ff5ff13e53ce60353f3820381b7aba"
+    },
+    {
+      "sourcePath": "tests/integration/bfcache.test.mjs",
+      "publicPath": "apps/web/tests/integration/bfcache.test.mjs",
+      "sourceBlob": "c2c8b14ac8df6deda651c98498c8a7127d9643dc",
+      "sha256": "48531f9aad9e123d2472aaa6e7bf254f58a1e3a7aa019f4c6f76a67999471f62",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "48531f9aad9e123d2472aaa6e7bf254f58a1e3a7aa019f4c6f76a67999471f62"
+    },
+    {
+      "sourcePath": "tests/integration/chat-world-fixture.mjs",
+      "publicPath": "apps/web/tests/integration/chat-world-fixture.mjs",
+      "sourceBlob": "d2ba19ea36135310ac84c5c2c8944be87aed752c",
+      "sha256": "1c2ab90c1f04ad39a69c2765a7f3aa3b1154f31dba0714f711bec4c4862f361a",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "1c2ab90c1f04ad39a69c2765a7f3aa3b1154f31dba0714f711bec4c4862f361a"
+    },
+    {
+      "sourcePath": "tests/integration/chat-world.test.mjs",
+      "publicPath": "apps/web/tests/integration/chat-world.test.mjs",
+      "sourceBlob": "f83a35c5b321a1190df9af02607fd0da72d7c109",
+      "sha256": "0c969bf3e34a45d966c29f659d7890dd202b4803cc134985a736541aa6f6b4df",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "0c969bf3e34a45d966c29f659d7890dd202b4803cc134985a736541aa6f6b4df"
+    },
+    {
+      "sourcePath": "tests/integration/compact-feed-baseline.test.mjs",
+      "publicPath": "apps/web/tests/integration/compact-feed-baseline.test.mjs",
+      "sourceBlob": "6fffea47a43bc625f3ef74fc044c0f39d77e1a1c",
+      "sha256": "5f7ce24109449d77259e38864806eb95ee18ca37992ec493d3519fbae9cc89d9",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "5f7ce24109449d77259e38864806eb95ee18ca37992ec493d3519fbae9cc89d9"
+    },
+    {
+      "sourcePath": "tests/integration/compact-feed-fixture.mjs",
+      "publicPath": "apps/web/tests/integration/compact-feed-fixture.mjs",
+      "sourceBlob": "5bedfbe635879a6f05f3669cfa5360228429dd20",
+      "sha256": "a3b1b8a52343a5c26f8ea40da9cb5aca29f4fdbb82d717bd5b62898170b266e8",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "a3b1b8a52343a5c26f8ea40da9cb5aca29f4fdbb82d717bd5b62898170b266e8"
+    },
+    {
+      "sourcePath": "tests/integration/compact-feed.test.mjs",
+      "publicPath": "apps/web/tests/integration/compact-feed.test.mjs",
+      "sourceBlob": "bb60b06a861aab153936d3e2be1b4fb8506725c0",
+      "sha256": "edaeaf48416cf5e88e7e51634e038c3222c3c9593dc088b66dd31bac2f3ab9e7",
+      "transformation": "test-only deterministic history wait: await real popstate with 2000ms timeout instead of fixed35ms sleep; assertions unchanged",
+      "sourceSHA256": "ab4ea1e4fe38433b309b754e15d198a94f1b969699aa8d273b23905d7f67919a"
+    },
+    {
+      "sourcePath": "tests/integration/content-fixture.mjs",
+      "publicPath": "apps/web/tests/integration/content-fixture.mjs",
+      "sourceBlob": "474d9bc14279087b93eca58bb144cc4369f0d2da",
+      "sha256": "c55fe20a193641a0e36ef385b4a3f51fc573dbdc86d7b531a17cd006ce4b022a",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "c55fe20a193641a0e36ef385b4a3f51fc573dbdc86d7b531a17cd006ce4b022a"
+    },
+    {
+      "sourcePath": "tests/integration/content-host.test.mjs",
+      "publicPath": "apps/web/tests/integration/content-host.test.mjs",
+      "sourceBlob": "ca810dfca933c206b0d7c722e2a5fbf691f9a651",
+      "sha256": "092b2ade698531303e895379d339161a32b2f8be8dfef602c8178f5c448c0816",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "092b2ade698531303e895379d339161a32b2f8be8dfef602c8178f5c448c0816"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/app.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/app.js",
+      "sourceBlob": "d6067766738f67948cc57b2655032def6f9783c7",
+      "sha256": "f1add8e8eddd813c0dbaf7725228166fd26c6a2f7bfc0f7da47d5ebf389c1822",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "f1add8e8eddd813c0dbaf7725228166fd26c6a2f7bfc0f7da47d5ebf389c1822"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/chat-contour.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/chat-contour.js",
+      "sourceBlob": "30269939be774ab701e88924f25084fa0313d681",
+      "sha256": "55ee9896bd4453eace4aa39a40069b48ea91e13b3f479ce30a9ec57d41221d78",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "55ee9896bd4453eace4aa39a40069b48ea91e13b3f479ce30a9ec57d41221d78"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/chat-host.css",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/chat-host.css",
+      "sourceBlob": "e84158d4dcfe76e9d803ba27e79e717199e9a730",
+      "sha256": "8c21f0abce05c510a6f9c8055b230b1446f4164b5009492a03c51f9826c7c4bd",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "8c21f0abce05c510a6f9c8055b230b1446f4164b5009492a03c51f9826c7c4bd"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/chat-host.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/chat-host.js",
+      "sourceBlob": "4d23e5ff3810afb9fcdba869968530f7b8a9a039",
+      "sha256": "8ed8a5023748f7d6093dccecc38389e1e83e3d9e34a5237ad5a67acb254458ad",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "8ed8a5023748f7d6093dccecc38389e1e83e3d9e34a5237ad5a67acb254458ad"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/chat-motion.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/chat-motion.js",
+      "sourceBlob": "8c3c77ac9c78c865781fa060676acdf4887bb0df",
+      "sha256": "51f7e3ffa771ea947553c4cb8ef19c3611a59567c1e2121e7a9a4d4fc1f5ecf9",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "51f7e3ffa771ea947553c4cb8ef19c3611a59567c1e2121e7a9a4d4fc1f5ecf9"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/chat/chat-fluid-send.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/chat/chat-fluid-send.js",
+      "sourceBlob": "bc2c7709f6790b41e05b81026602dc0078bfd683",
+      "sha256": "146db578b5bf2bcc65f9c550d886afcf001dbcbf35725754d4d6e8770aac9070",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "146db578b5bf2bcc65f9c550d886afcf001dbcbf35725754d4d6e8770aac9070"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/chat/chat-page-lock.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/chat/chat-page-lock.js",
+      "sourceBlob": "1dfeb549c412059f98d9e469da942738888e7e9e",
+      "sha256": "0d108cf726ff73d118689f04a22776736266bc65d6803e8e439b8aa0baa4a240",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "0d108cf726ff73d118689f04a22776736266bc65d6803e8e439b8aa0baa4a240"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/chat/chat-reading-flow.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/chat/chat-reading-flow.js",
+      "sourceBlob": "3afaf0640cf5a132214375cfbbbd4a58c3b6115e",
+      "sha256": "af10dfb858c18a9782c37429d25443e5275c20afe120693305491408b355a88c",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "af10dfb858c18a9782c37429d25443e5275c20afe120693305491408b355a88c"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/chat/chat-reading-interior.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/chat/chat-reading-interior.js",
+      "sourceBlob": "5c066ec24569814262a3da9f995915c8ed7e9160",
+      "sha256": "438af1cb681eaaa270958da1344cb835cda91f61348c92e9fc052aaf26b0c24d",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "438af1cb681eaaa270958da1344cb835cda91f61348c92e9fc052aaf26b0c24d"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/chat/chat-reading.css",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/chat/chat-reading.css",
+      "sourceBlob": "c871b13ea0aebac422f5f4154f6a542c74eb477a",
+      "sha256": "10c592e5fca5f010f46c5b56867e11fbdfd2afc7aa8bb9a5348640b3dc321c2b",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "10c592e5fca5f010f46c5b56867e11fbdfd2afc7aa8bb9a5348640b3dc321c2b"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/chat/chat-turn-scroll.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/chat/chat-turn-scroll.js",
+      "sourceBlob": "3ff44e95bb10d73e23f24dd922b50bb781e36cff",
+      "sha256": "21e45675fafc4a559e2973634759491ddad36c29d5fc396424f6e158861808b4",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "21e45675fafc4a559e2973634759491ddad36c29d5fc396424f6e158861808b4"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/chat/chat-viewport.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/chat/chat-viewport.js",
+      "sourceBlob": "851c0c303d0e9850b29be73ac344d8d36140c015",
+      "sha256": "cf83619e685cc53c9178426808302b129abef089481d9e865ca58651320ff676",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "cf83619e685cc53c9178426808302b129abef089481d9e865ca58651320ff676"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/chat/contextual-chat-layout.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/chat/contextual-chat-layout.js",
+      "sourceBlob": "35c2139e4a06ae9c11f12938927121d0fd033bc4",
+      "sha256": "1be4fdc14976c7413462e486a40228bb3e3cf4de1284499e0cbd240f6fc0924a",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "1be4fdc14976c7413462e486a40228bb3e3cf4de1284499e0cbd240f6fc0924a"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/chat/contextual-chat.css",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/chat/contextual-chat.css",
+      "sourceBlob": "cbd5fb642118b5884e8a1bca88d685bb14dd0349",
+      "sha256": "91290d400bac1e41b9c5f99d8615c81798fdaf27fe1fa9622928b13efa90df8c",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "91290d400bac1e41b9c5f99d8615c81798fdaf27fe1fa9622928b13efa90df8c"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/chat/send-continuity-model.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/chat/send-continuity-model.js",
+      "sourceBlob": "6c960fc6ad516b642bdd8ccedef06fae6bc8adbb",
+      "sha256": "9249936343a18205f059211f4482c9cea4ac71e5f45dff3d3eb8c12413a8314e",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "9249936343a18205f059211f4482c9cea4ac71e5f45dff3d3eb8c12413a8314e"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/chat/send-continuity.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/chat/send-continuity.js",
+      "sourceBlob": "3a1e3be59fbfd59fbc35c56789eebccf2e367f46",
+      "sha256": "1a0cd6fc2b8e352b6dd13ad3a8208a8cf79b8a459fbb10b3c019e388c4d1f914",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "1a0cd6fc2b8e352b6dd13ad3a8208a8cf79b8a459fbb10b3c019e388c4d1f914"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/chat/send-path.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/chat/send-path.js",
+      "sourceBlob": "62caab96e004b83bfa861a5a9fe8d0e3d505e36a",
+      "sha256": "f6921e691f7b6120a0a96104a15ade871f2b1b73fab40c80bd1919bf6be60661",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "f6921e691f7b6120a0a96104a15ade871f2b1b73fab40c80bd1919bf6be60661"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/chat/send-text-layout.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/chat/send-text-layout.js",
+      "sourceBlob": "fe3b1ca001d8a90328881f77d04ffcd6c9c852a3",
+      "sha256": "2052f072eb22f1a20a810d46fb51e336a77b79b2fd868779eed8193f5f79c54a",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "2052f072eb22f1a20a810d46fb51e336a77b79b2fd868779eed8193f5f79c54a"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/chat/vendor/gsap/Flip.min.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/chat/vendor/gsap/Flip.min.js",
+      "sourceBlob": "1aedff747fa317a234e1266f70798da5178ee998",
+      "sha256": "cbe3ca726350f8d230da38a14ce2384e7772e05a45cee6144dd7fe6dde868c2f",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "cbe3ca726350f8d230da38a14ce2384e7772e05a45cee6144dd7fe6dde868c2f"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/chat/vendor/gsap/NOTICE.txt",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/chat/vendor/gsap/NOTICE.txt",
+      "sourceBlob": "09840fbf7ee9f6b5740dff35bd3324e0374971f6",
+      "sha256": "37aa1b9e5c1686d3463aa43df13e79d6b2382ca913787ef5cc6e8bb26bc451a7",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "37aa1b9e5c1686d3463aa43df13e79d6b2382ca913787ef5cc6e8bb26bc451a7"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/chat/vendor/gsap/gsap.min.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/chat/vendor/gsap/gsap.min.js",
+      "sourceBlob": "3c73d761a9a7dbd166549451ba7afd62dc7121d0",
+      "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/comparison-status.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/comparison-status.js",
+      "sourceBlob": "7396e3a43f38f9f91c0905139981958403dbc603",
+      "sha256": "a689f5c7efa42a45f24dfa2f80243a4d4e86f405c8591afddb7868379b07d6e8",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "a689f5c7efa42a45f24dfa2f80243a4d4e86f405c8591afddb7868379b07d6e8"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/comparison-visibility.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/comparison-visibility.js",
+      "sourceBlob": "56c03e6b78a8ad762031a2965b4be72acf69cefa",
+      "sha256": "43130f52fea59d2e81199f597e6698cf1cf026e02f7a689dad692d5ca01ab341",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "43130f52fea59d2e81199f597e6698cf1cf026e02f7a689dad692d5ca01ab341"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/content.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/content.js",
+      "sourceBlob": "c1638dd6fae097c0dfd8f3730acb1169e6727be7",
+      "sha256": "009f5995501d4eaf88b69fa06d81c38c716baa90549dfa1c41e08e6619e787b9",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "009f5995501d4eaf88b69fa06d81c38c716baa90549dfa1c41e08e6619e787b9"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/host.css",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/host.css",
+      "sourceBlob": "9e56d53ffcd25161922be2e68109a14622381ea7",
+      "sha256": "8d9ab38cc5b646ecdc6450983e2266c649cfe33ad086dfb93917d44354536ff1",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "8d9ab38cc5b646ecdc6450983e2266c649cfe33ad086dfb93917d44354536ff1"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/host.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/host.js",
+      "sourceBlob": "49d8739e288511cd1beaaff061449342cf8fcfee",
+      "sha256": "5982fe74a341780538459de68eeb800e0e7fc446184b6242f9c4af7d3af6c131",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "5982fe74a341780538459de68eeb800e0e7fc446184b6242f9c4af7d3af6c131"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/material.css",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/material.css",
+      "sourceBlob": "cbf620283fc66cb2d32fe3b0fcbb29de9307c19d",
+      "sha256": "ce64cb786aa537751c52269488ad96a964908f1cc86c224ba991321054b2217c",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "ce64cb786aa537751c52269488ad96a964908f1cc86c224ba991321054b2217c"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/palette.css",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/palette.css",
+      "sourceBlob": "c28f471293de60944bc3e31a9204bf18a8033dbe",
+      "sha256": "c4deab976ada8f17bdc9cd9ecc01d1346b0c21a878d3aa6366645fcd48778ef5",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "c4deab976ada8f17bdc9cd9ecc01d1346b0c21a878d3aa6366645fcd48778ef5"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/scene-bridge.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/scene-bridge.js",
+      "sourceBlob": "690d22e5642890698ed4a659ba4a71d7a90678de",
+      "sha256": "2ee3c607dbb60adfc1ab56061a67d8a9614db6105fb175ab1b8fd4fd45a0b5c0",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "2ee3c607dbb60adfc1ab56061a67d8a9614db6105fb175ab1b8fd4fd45a0b5c0"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/send-comparison.css",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/send-comparison.css",
+      "sourceBlob": "9fc1ab04df486a37705e9fa200e937499989f86e",
+      "sha256": "837459bf03305288015c20aebbb9af5ab4549db4fe03989c11341d3190e4396a",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "837459bf03305288015c20aebbb9af5ab4549db4fe03989c11341d3190e4396a"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/send-comparison.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/send-comparison.js",
+      "sourceBlob": "5946e299f4dd6dea4973745b0a7c6a4f8d646440",
+      "sha256": "74a355e517d30e2a7febf5e64a04a4fe74c60aca11027ce7f67b4237ffbfbf22",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "74a355e517d30e2a7febf5e64a04a4fe74c60aca11027ce7f67b4237ffbfbf22"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/style.css",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/style.css",
+      "sourceBlob": "cb14ef885133eff7ccaeccb5bd006c876e2c9e4a",
+      "sha256": "69afa74e3bc89fc6758c39585ae789345cfdce80efb591ba0829031ad0783a03",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "69afa74e3bc89fc6758c39585ae789345cfdce80efb591ba0829031ad0783a03"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/world-availability.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/world-availability.js",
+      "sourceBlob": "e065681cb8242b5b9221dc088451c6322c063538",
+      "sha256": "a802daffb2300ae96826e0d60d718ca95d767b816876aca951f4d7479fe99b0d",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "a802daffb2300ae96826e0d60d718ca95d767b816876aca951f4d7479fe99b0d"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/world/scene.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/world/scene.js",
+      "sourceBlob": "931036a7b054d347e76782de051088751afe18b8",
+      "sha256": "72a96937c596378814f8f1b9833cbf3d9700664d53f95640321c27636c1ac770",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "72a96937c596378814f8f1b9833cbf3d9700664d53f95640321c27636c1ac770"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/world/scoped.css",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/world/scoped.css",
+      "sourceBlob": "6bf347f197cc66ed0e882a4268d02eb64cc93bbe",
+      "sha256": "be8e379244be28eee5155b518b8ce8af8f40b1f9e574e1761cdf298c09fd1c01",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "be8e379244be28eee5155b518b8ce8af8f40b1f9e574e1761cdf298c09fd1c01"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/world/style.css",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/world/style.css",
+      "sourceBlob": "8d4fb6834b91d6db41098fc40eabbfb294dff2e9",
+      "sha256": "7262149614ee034bf52d7fdcadadba1b162b8e6841975c350e48ab84658b3186",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "7262149614ee034bf52d7fdcadadba1b162b8e6841975c350e48ab84658b3186"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/world/theme.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/world/theme.js",
+      "sourceBlob": "ed09a998345de62b5ddf1da6fe269ba8b6f95cd8",
+      "sha256": "d0dbf2ccb0ea7dab7ec6a4383eb24ce8d66b8d53aa71f1876cd30a9e8aeba489",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "d0dbf2ccb0ea7dab7ec6a4383eb24ce8d66b8d53aa71f1876cd30a9e8aeba489"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/world/theme.json",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/world/theme.json",
+      "sourceBlob": "581faeb96f80f00f6b39530c0b02e31307a2d7c1",
+      "sha256": "17b25dd7088e1866a849e2397a08ef23ebe0ed96c548a44d72f059902d655a0e",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "17b25dd7088e1866a849e2397a08ef23ebe0ed96c548a44d72f059902d655a0e"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/world/vendor/aora/ATTRIBUTION.txt",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/aora/ATTRIBUTION.txt",
+      "sourceBlob": "692bb7c199b86516e48b22820e1b174af3a8497e",
+      "sha256": "5df50aa8fcee9acb4e80f9baab7d154106120d36e3e9fbd2bed0146cb8db35be",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "5df50aa8fcee9acb4e80f9baab7d154106120d36e3e9fbd2bed0146cb8db35be"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/world/vendor/aora/LICENSE",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/aora/LICENSE",
+      "sourceBlob": "ecd0128d4c65a9a894e13a1cee00150f1054f395",
+      "sha256": "cd25a8e1b00d05b2bb29d3a626599526db960b5bf3ba94fd726565b9bec7f8ea",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "cd25a8e1b00d05b2bb29d3a626599526db960b5bf3ba94fd726565b9bec7f8ea"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/world/vendor/aora/SOURCE-MANIFEST.json",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/aora/SOURCE-MANIFEST.json",
+      "sourceBlob": "83c9a4762b3460bd6ae9bf3237dc64f05fb913e6",
+      "sha256": "1def92868ff495d9098778a7a53532b85a288c1e19de27e8bb8780ecefde1d49",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "1def92868ff495d9098778a7a53532b85a288c1e19de27e8bb8780ecefde1d49"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/world/vendor/aora/rings.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/aora/rings.js",
+      "sourceBlob": "f7159a71a42fc93b4ebb37169cb0dc2679122800",
+      "sha256": "7fd196046650b8273d87c9b85a899554d90f35c62d676eea1c681630e721ec20",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "7fd196046650b8273d87c9b85a899554d90f35c62d676eea1c681630e721ec20"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/world/vendor/three/LICENSE",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/three/LICENSE",
+      "sourceBlob": "cf781430404b0ae0ba7d8dea3457a3515dd7c9b9",
+      "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/world/vendor/three/RoomEnvironment.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/three/RoomEnvironment.js",
+      "sourceBlob": "2f2bedd77a6417a8855fea7143903252a890637c",
+      "sha256": "c20f0b4677f6128a138d7152b85cbef9091f4f45cdfa05adca04d40c1697c7ae",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "c20f0b4677f6128a138d7152b85cbef9091f4f45cdfa05adca04d40c1697c7ae"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/world/world-adapter.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/world/world-adapter.js",
+      "sourceBlob": "7b7ca937001af4b501ccabf211c32fc69526fb0d",
+      "sha256": "57c1a391b0be7c237eba1711a1fae77fec4c32533e8e518434af6b7f5704730e",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "57c1a391b0be7c237eba1711a1fae77fec4c32533e8e518434af6b7f5704730e"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/alpha2-compact-feed/app.js",
+      "publicPath": "apps/web/tests/integration/fixtures/alpha2-compact-feed/app.js",
+      "sourceBlob": "2d3332b591c49256d6a348c062abdd91fa9b1cd8",
+      "sha256": "3422c52b792c80a13cab1b31a7fc4346f93b3566ff17d78faab855586c72d289",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "3422c52b792c80a13cab1b31a7fc4346f93b3566ff17d78faab855586c72d289"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/alpha2-compact-feed/content.js",
+      "publicPath": "apps/web/tests/integration/fixtures/alpha2-compact-feed/content.js",
+      "sourceBlob": "c1638dd6fae097c0dfd8f3730acb1169e6727be7",
+      "sha256": "009f5995501d4eaf88b69fa06d81c38c716baa90549dfa1c41e08e6619e787b9",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "009f5995501d4eaf88b69fa06d81c38c716baa90549dfa1c41e08e6619e787b9"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/alpha2-compact-feed/manifest.json",
+      "publicPath": "apps/web/tests/integration/fixtures/alpha2-compact-feed/manifest.json",
+      "sourceBlob": "e98e4f4de6d667372601d13e1dd418310e9eb0d4",
+      "sha256": "825ab5bf413eef4f02c36b36faa74681459c1bd5161390a7eb8596d3bda6121c",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "825ab5bf413eef4f02c36b36faa74681459c1bd5161390a7eb8596d3bda6121c"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/alpha2-compact-feed/style.css",
+      "publicPath": "apps/web/tests/integration/fixtures/alpha2-compact-feed/style.css",
+      "sourceBlob": "cb14ef885133eff7ccaeccb5bd006c876e2c9e4a",
+      "sha256": "69afa74e3bc89fc6758c39585ae789345cfdce80efb591ba0829031ad0783a03",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "69afa74e3bc89fc6758c39585ae789345cfdce80efb591ba0829031ad0783a03"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/continuity-fixture.mjs",
+      "publicPath": "apps/web/tests/integration/fixtures/continuity-fixture.mjs",
+      "sourceBlob": "fce80b1e144ec20a440e17358613630487fda328",
+      "sha256": "9b74904f5bdfce187d16d83425eff38155e169c5bad953cdccb232db6e3c5c52",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "9b74904f5bdfce187d16d83425eff38155e169c5bad953cdccb232db6e3c5c52"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/app.js",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/app.js",
+      "sourceBlob": "23db6407698d57c3511bb69b173ff2e329ff4119",
+      "sha256": "629f19654c30aff2c6142b3c17851643aad5f588603379ab09ce9b389d83c301",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "629f19654c30aff2c6142b3c17851643aad5f588603379ab09ce9b389d83c301"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/chat-contour.js",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/chat-contour.js",
+      "sourceBlob": "30269939be774ab701e88924f25084fa0313d681",
+      "sha256": "55ee9896bd4453eace4aa39a40069b48ea91e13b3f479ce30a9ec57d41221d78",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "55ee9896bd4453eace4aa39a40069b48ea91e13b3f479ce30a9ec57d41221d78"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/chat-host.css",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/chat-host.css",
+      "sourceBlob": "e84158d4dcfe76e9d803ba27e79e717199e9a730",
+      "sha256": "8c21f0abce05c510a6f9c8055b230b1446f4164b5009492a03c51f9826c7c4bd",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "8c21f0abce05c510a6f9c8055b230b1446f4164b5009492a03c51f9826c7c4bd"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/chat-host.js",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/chat-host.js",
+      "sourceBlob": "61a58de19778078df09fb9ca8e161ce37d054432",
+      "sha256": "3ffb896905b3881a571be99c15f3a8652751d256d6c3cf10a0b5719c3d0b33c7",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "3ffb896905b3881a571be99c15f3a8652751d256d6c3cf10a0b5719c3d0b33c7"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/chat-motion.js",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/chat-motion.js",
+      "sourceBlob": "8c3c77ac9c78c865781fa060676acdf4887bb0df",
+      "sha256": "51f7e3ffa771ea947553c4cb8ef19c3611a59567c1e2121e7a9a4d4fc1f5ecf9",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "51f7e3ffa771ea947553c4cb8ef19c3611a59567c1e2121e7a9a4d4fc1f5ecf9"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/chat/chat-fluid-send.js",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/chat/chat-fluid-send.js",
+      "sourceBlob": "bc2c7709f6790b41e05b81026602dc0078bfd683",
+      "sha256": "146db578b5bf2bcc65f9c550d886afcf001dbcbf35725754d4d6e8770aac9070",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "146db578b5bf2bcc65f9c550d886afcf001dbcbf35725754d4d6e8770aac9070"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/chat/chat-mobile-flow-page.js",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/chat/chat-mobile-flow-page.js",
+      "sourceBlob": "7b0c1ddd7742369c0ad98a0ced741c974ca3e5e8",
+      "sha256": "4ad635e44048db50be4b56e3d5aeb9de24cb446ca1d6e16bbb42632c344d2ae8",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "4ad635e44048db50be4b56e3d5aeb9de24cb446ca1d6e16bbb42632c344d2ae8"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/chat/chat-mobile-flow.css",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/chat/chat-mobile-flow.css",
+      "sourceBlob": "3e84244ac02d33e7597fc4026d8e3f757212b2e6",
+      "sha256": "feea536345577af211e4c45ee75dbcf8d17cc558ea2b79e62bf72957ac3f52dc",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "feea536345577af211e4c45ee75dbcf8d17cc558ea2b79e62bf72957ac3f52dc"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/chat/chat-page-lock.js",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/chat/chat-page-lock.js",
+      "sourceBlob": "97a2fcc19824b96350f1b2d4b31cf6fe76e06b3b",
+      "sha256": "56fe545fedcb40eaf44a223c9adcac3c9a5d4568fc08b3c8986e93a8df3d161a",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "56fe545fedcb40eaf44a223c9adcac3c9a5d4568fc08b3c8986e93a8df3d161a"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/chat/chat-reading-flow.js",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/chat/chat-reading-flow.js",
+      "sourceBlob": "3afaf0640cf5a132214375cfbbbd4a58c3b6115e",
+      "sha256": "af10dfb858c18a9782c37429d25443e5275c20afe120693305491408b355a88c",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "af10dfb858c18a9782c37429d25443e5275c20afe120693305491408b355a88c"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/chat/chat-reading-interior.js",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/chat/chat-reading-interior.js",
+      "sourceBlob": "5c066ec24569814262a3da9f995915c8ed7e9160",
+      "sha256": "438af1cb681eaaa270958da1344cb835cda91f61348c92e9fc052aaf26b0c24d",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "438af1cb681eaaa270958da1344cb835cda91f61348c92e9fc052aaf26b0c24d"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/chat/chat-reading.css",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/chat/chat-reading.css",
+      "sourceBlob": "c871b13ea0aebac422f5f4154f6a542c74eb477a",
+      "sha256": "10c592e5fca5f010f46c5b56867e11fbdfd2afc7aa8bb9a5348640b3dc321c2b",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "10c592e5fca5f010f46c5b56867e11fbdfd2afc7aa8bb9a5348640b3dc321c2b"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/chat/chat-turn-scroll.js",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/chat/chat-turn-scroll.js",
+      "sourceBlob": "3ff44e95bb10d73e23f24dd922b50bb781e36cff",
+      "sha256": "21e45675fafc4a559e2973634759491ddad36c29d5fc396424f6e158861808b4",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "21e45675fafc4a559e2973634759491ddad36c29d5fc396424f6e158861808b4"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/chat/chat-viewport.js",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/chat/chat-viewport.js",
+      "sourceBlob": "851c0c303d0e9850b29be73ac344d8d36140c015",
+      "sha256": "cf83619e685cc53c9178426808302b129abef089481d9e865ca58651320ff676",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "cf83619e685cc53c9178426808302b129abef089481d9e865ca58651320ff676"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/chat/contextual-chat-layout.js",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/chat/contextual-chat-layout.js",
+      "sourceBlob": "35c2139e4a06ae9c11f12938927121d0fd033bc4",
+      "sha256": "1be4fdc14976c7413462e486a40228bb3e3cf4de1284499e0cbd240f6fc0924a",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "1be4fdc14976c7413462e486a40228bb3e3cf4de1284499e0cbd240f6fc0924a"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/chat/contextual-chat.css",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/chat/contextual-chat.css",
+      "sourceBlob": "cbd5fb642118b5884e8a1bca88d685bb14dd0349",
+      "sha256": "91290d400bac1e41b9c5f99d8615c81798fdaf27fe1fa9622928b13efa90df8c",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "91290d400bac1e41b9c5f99d8615c81798fdaf27fe1fa9622928b13efa90df8c"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/chat/send-continuity-model.js",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/chat/send-continuity-model.js",
+      "sourceBlob": "6c960fc6ad516b642bdd8ccedef06fae6bc8adbb",
+      "sha256": "9249936343a18205f059211f4482c9cea4ac71e5f45dff3d3eb8c12413a8314e",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "9249936343a18205f059211f4482c9cea4ac71e5f45dff3d3eb8c12413a8314e"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/chat/send-continuity.js",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/chat/send-continuity.js",
+      "sourceBlob": "3a1e3be59fbfd59fbc35c56789eebccf2e367f46",
+      "sha256": "1a0cd6fc2b8e352b6dd13ad3a8208a8cf79b8a459fbb10b3c019e388c4d1f914",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "1a0cd6fc2b8e352b6dd13ad3a8208a8cf79b8a459fbb10b3c019e388c4d1f914"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/chat/send-path.js",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/chat/send-path.js",
+      "sourceBlob": "62caab96e004b83bfa861a5a9fe8d0e3d505e36a",
+      "sha256": "f6921e691f7b6120a0a96104a15ade871f2b1b73fab40c80bd1919bf6be60661",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "f6921e691f7b6120a0a96104a15ade871f2b1b73fab40c80bd1919bf6be60661"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/chat/send-text-layout.js",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/chat/send-text-layout.js",
+      "sourceBlob": "fe3b1ca001d8a90328881f77d04ffcd6c9c852a3",
+      "sha256": "2052f072eb22f1a20a810d46fb51e336a77b79b2fd868779eed8193f5f79c54a",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "2052f072eb22f1a20a810d46fb51e336a77b79b2fd868779eed8193f5f79c54a"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/comparison-status.js",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/comparison-status.js",
+      "sourceBlob": "7396e3a43f38f9f91c0905139981958403dbc603",
+      "sha256": "a689f5c7efa42a45f24dfa2f80243a4d4e86f405c8591afddb7868379b07d6e8",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "a689f5c7efa42a45f24dfa2f80243a4d4e86f405c8591afddb7868379b07d6e8"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/comparison-visibility.js",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/comparison-visibility.js",
+      "sourceBlob": "56c03e6b78a8ad762031a2965b4be72acf69cefa",
+      "sha256": "43130f52fea59d2e81199f597e6698cf1cf026e02f7a689dad692d5ca01ab341",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "43130f52fea59d2e81199f597e6698cf1cf026e02f7a689dad692d5ca01ab341"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/content.js",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/content.js",
+      "sourceBlob": "c1638dd6fae097c0dfd8f3730acb1169e6727be7",
+      "sha256": "009f5995501d4eaf88b69fa06d81c38c716baa90549dfa1c41e08e6619e787b9",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "009f5995501d4eaf88b69fa06d81c38c716baa90549dfa1c41e08e6619e787b9"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/diagnostics/keyboard-diagnostics.js",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/diagnostics/keyboard-diagnostics.js",
+      "sourceBlob": "00d8d5f4fb771b5d0a96f43b72152f8635f427b4",
+      "sha256": "ebb1e4747975d41a5e74eabb89d36d93335f385d39d9bf93d3b9fc78955e8819",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "ebb1e4747975d41a5e74eabb89d36d93335f385d39d9bf93d3b9fc78955e8819"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/host.css",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/host.css",
+      "sourceBlob": "9e56d53ffcd25161922be2e68109a14622381ea7",
+      "sha256": "8d9ab38cc5b646ecdc6450983e2266c649cfe33ad086dfb93917d44354536ff1",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "8d9ab38cc5b646ecdc6450983e2266c649cfe33ad086dfb93917d44354536ff1"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/host.js",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/host.js",
+      "sourceBlob": "49d8739e288511cd1beaaff061449342cf8fcfee",
+      "sha256": "5982fe74a341780538459de68eeb800e0e7fc446184b6242f9c4af7d3af6c131",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "5982fe74a341780538459de68eeb800e0e7fc446184b6242f9c4af7d3af6c131"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/material.css",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/material.css",
+      "sourceBlob": "cbf620283fc66cb2d32fe3b0fcbb29de9307c19d",
+      "sha256": "ce64cb786aa537751c52269488ad96a964908f1cc86c224ba991321054b2217c",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "ce64cb786aa537751c52269488ad96a964908f1cc86c224ba991321054b2217c"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/palette.css",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/palette.css",
+      "sourceBlob": "c28f471293de60944bc3e31a9204bf18a8033dbe",
+      "sha256": "c4deab976ada8f17bdc9cd9ecc01d1346b0c21a878d3aa6366645fcd48778ef5",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "c4deab976ada8f17bdc9cd9ecc01d1346b0c21a878d3aa6366645fcd48778ef5"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/scene-bridge.js",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/scene-bridge.js",
+      "sourceBlob": "690d22e5642890698ed4a659ba4a71d7a90678de",
+      "sha256": "2ee3c607dbb60adfc1ab56061a67d8a9614db6105fb175ab1b8fd4fd45a0b5c0",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "2ee3c607dbb60adfc1ab56061a67d8a9614db6105fb175ab1b8fd4fd45a0b5c0"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/send-comparison.css",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/send-comparison.css",
+      "sourceBlob": "9fc1ab04df486a37705e9fa200e937499989f86e",
+      "sha256": "837459bf03305288015c20aebbb9af5ab4549db4fe03989c11341d3190e4396a",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "837459bf03305288015c20aebbb9af5ab4549db4fe03989c11341d3190e4396a"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/send-comparison.js",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/send-comparison.js",
+      "sourceBlob": "5946e299f4dd6dea4973745b0a7c6a4f8d646440",
+      "sha256": "74a355e517d30e2a7febf5e64a04a4fe74c60aca11027ce7f67b4237ffbfbf22",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "74a355e517d30e2a7febf5e64a04a4fe74c60aca11027ce7f67b4237ffbfbf22"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/style.css",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/style.css",
+      "sourceBlob": "cb14ef885133eff7ccaeccb5bd006c876e2c9e4a",
+      "sha256": "69afa74e3bc89fc6758c39585ae789345cfdce80efb591ba0829031ad0783a03",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "69afa74e3bc89fc6758c39585ae789345cfdce80efb591ba0829031ad0783a03"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/world-availability.js",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/world-availability.js",
+      "sourceBlob": "e065681cb8242b5b9221dc088451c6322c063538",
+      "sha256": "a802daffb2300ae96826e0d60d718ca95d767b816876aca951f4d7479fe99b0d",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "a802daffb2300ae96826e0d60d718ca95d767b816876aca951f4d7479fe99b0d"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/world/scene.js",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/world/scene.js",
+      "sourceBlob": "931036a7b054d347e76782de051088751afe18b8",
+      "sha256": "72a96937c596378814f8f1b9833cbf3d9700664d53f95640321c27636c1ac770",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "72a96937c596378814f8f1b9833cbf3d9700664d53f95640321c27636c1ac770"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/world/scoped.css",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/world/scoped.css",
+      "sourceBlob": "6bf347f197cc66ed0e882a4268d02eb64cc93bbe",
+      "sha256": "be8e379244be28eee5155b518b8ce8af8f40b1f9e574e1761cdf298c09fd1c01",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "be8e379244be28eee5155b518b8ce8af8f40b1f9e574e1761cdf298c09fd1c01"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/world/style.css",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/world/style.css",
+      "sourceBlob": "8d4fb6834b91d6db41098fc40eabbfb294dff2e9",
+      "sha256": "7262149614ee034bf52d7fdcadadba1b162b8e6841975c350e48ab84658b3186",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "7262149614ee034bf52d7fdcadadba1b162b8e6841975c350e48ab84658b3186"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/world/theme.js",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/world/theme.js",
+      "sourceBlob": "ed09a998345de62b5ddf1da6fe269ba8b6f95cd8",
+      "sha256": "d0dbf2ccb0ea7dab7ec6a4383eb24ce8d66b8d53aa71f1876cd30a9e8aeba489",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "d0dbf2ccb0ea7dab7ec6a4383eb24ce8d66b8d53aa71f1876cd30a9e8aeba489"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/v100/world/world-adapter.js",
+      "publicPath": "apps/web/tests/integration/fixtures/v100/world/world-adapter.js",
+      "sourceBlob": "7b7ca937001af4b501ccabf211c32fc69526fb0d",
+      "sha256": "57c1a391b0be7c237eba1711a1fae77fec4c32533e8e518434af6b7f5704730e",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "57c1a391b0be7c237eba1711a1fae77fec4c32533e8e518434af6b7f5704730e"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/weather-overlay-before/browser-overlap.json",
+      "publicPath": "apps/web/tests/integration/fixtures/weather-overlay-before/browser-overlap.json",
+      "sourceBlob": "50802442632b03690c2f282b175c9967923efbc3",
+      "sha256": "77111a0f632bc567d9fb47b184f2c4fdfb4f56a6b94258e6902e0c2abfac37b4",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "77111a0f632bc567d9fb47b184f2c4fdfb4f56a6b94258e6902e0c2abfac37b4"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/weather-overlay-before/host.css",
+      "publicPath": "apps/web/tests/integration/fixtures/weather-overlay-before/host.css",
+      "sourceBlob": "8b2d7b2bb8a5c3e9a1ee67ce94ea974fc6d3dced",
+      "sha256": "ff9c055f40a0979f62955b876aa14577af7dfe6fc28978b97e36104055ecd882",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "ff9c055f40a0979f62955b876aa14577af7dfe6fc28978b97e36104055ecd882"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/weather-overlay-before/manifest.json",
+      "publicPath": "apps/web/tests/integration/fixtures/weather-overlay-before/manifest.json",
+      "sourceBlob": "b86a21afe589b048dfe7b92cb3955f0585dc5226",
+      "sha256": "5d5365c896a4f73877080cea7bc3f238bd9ff57c75768e4d141c8d8c872466ca",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "5d5365c896a4f73877080cea7bc3f238bd9ff57c75768e4d141c8d8c872466ca"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/weather-overlay-before/weather.css",
+      "publicPath": "apps/web/tests/integration/fixtures/weather-overlay-before/weather.css",
+      "sourceBlob": "ca5a6faae3456dd3e1b8ef31344b49a6c5ea9b40",
+      "sha256": "b6087a0bbd0bfc7597ef9c8e60e9dfdd631997d1fa4438db83ea3141a69bd23a",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "b6087a0bbd0bfc7597ef9c8e60e9dfdd631997d1fa4438db83ea3141a69bd23a"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/weather-overlay-before/weather.js",
+      "publicPath": "apps/web/tests/integration/fixtures/weather-overlay-before/weather.js",
+      "sourceBlob": "e3a7a8074fdd8e69663d53ec5ad14d894104d198",
+      "sha256": "0ade2616e9cd34bd8a68453508a1f3a5c2c6f1b8238fe9511c8327cba73d50a5",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "0ade2616e9cd34bd8a68453508a1f3a5c2c6f1b8238fe9511c8327cba73d50a5"
+    },
+    {
+      "sourcePath": "tests/integration/flow-fixture.mjs",
+      "publicPath": "apps/web/tests/integration/flow-fixture.mjs",
+      "sourceBlob": "84d5b7b25457038e3a63c42f937d539e2286d449",
+      "sha256": "107c8389b338ae15014384b3e0fb7f2078206dc951f00ea9cc1f28b968a7d2bd",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "107c8389b338ae15014384b3e0fb7f2078206dc951f00ea9cc1f28b968a7d2bd"
+    },
+    {
+      "sourcePath": "tests/integration/flow-owner.test.mjs",
+      "publicPath": "apps/web/tests/integration/flow-owner.test.mjs",
+      "sourceBlob": "525ebc01145a8692da3f3280cc3c95f01a2c5f15",
+      "sha256": "84441b819b06ef2e034b0ed070264528d696fd27c4f43c8f45e12fc20bb550c4",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "84441b819b06ef2e034b0ed070264528d696fd27c4f43c8f45e12fc20bb550c4"
+    },
+    {
+      "sourcePath": "tests/integration/hidden-source.test.mjs",
+      "publicPath": "apps/web/tests/integration/hidden-source.test.mjs",
+      "sourceBlob": "6d44bfad5ac9f9ecaa6ee6be5c4812f31d8ffa5c",
+      "sha256": "b78ad0917c1738ea8afe9584998a595fb0f229af592c65ff09abfed0809dfa69",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "b78ad0917c1738ea8afe9584998a595fb0f229af592c65ff09abfed0809dfa69"
+    },
+    {
+      "sourcePath": "tests/integration/host-fixture.mjs",
+      "publicPath": "apps/web/tests/integration/host-fixture.mjs",
+      "sourceBlob": "f7860bbd654f98f4413a2cd736081fc91bfa4266",
+      "sha256": "2edaa0cbd05e67fdf5cdfe2839ff33f1cf8443098b164478d8e49897365fd5a9",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "2edaa0cbd05e67fdf5cdfe2839ff33f1cf8443098b164478d8e49897365fd5a9"
+    },
+    {
+      "sourcePath": "tests/integration/host-navigation.test.mjs",
+      "publicPath": "apps/web/tests/integration/host-navigation.test.mjs",
+      "sourceBlob": "b0265090938a869f67f4d0205254e9d34c31dc38",
+      "sha256": "3b0c5d8f2e99a96dbce25691e4136a4083fc4d17c382f52e2510f9fe64f4de35",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "3b0c5d8f2e99a96dbce25691e4136a4083fc4d17c382f52e2510f9fe64f4de35"
+    },
+    {
+      "sourcePath": "tests/integration/integration-contract.test.mjs",
+      "publicPath": "apps/web/tests/integration/integration-contract.test.mjs",
+      "sourceBlob": "ed56cd3809c73762fc5628e4bcb9d92c1ab94fd7",
+      "sha256": "9003c70090b7e80675809476c56816cb95204d32d33cbf50cdd98d80de7aa6aa",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "9003c70090b7e80675809476c56816cb95204d32d33cbf50cdd98d80de7aa6aa"
+    },
+    {
+      "sourcePath": "tests/integration/module-bootstrap.test.mjs",
+      "publicPath": "apps/web/tests/integration/module-bootstrap.test.mjs",
+      "sourceBlob": "531d5e621360e57b0e31870987d45cb3a69ca1a5",
+      "sha256": "8c1d5e06bcc24a8f46a4914bc0d77bbf0f021186f7a1ae08983dbe676ce483cf",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "8c1d5e06bcc24a8f46a4914bc0d77bbf0f021186f7a1ae08983dbe676ce483cf"
+    },
+    {
+      "sourcePath": "tests/integration/package-lock.json",
+      "publicPath": "apps/web/tests/integration/package-lock.json",
+      "sourceBlob": "77f76f2eeddf645ed5d737ade791ce21bee13b02",
+      "sha256": "c97ef5d45bef1a09f48786f9aaa40a663f924909f6f4561a7e15f37f670563c9",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "c97ef5d45bef1a09f48786f9aaa40a663f924909f6f4561a7e15f37f670563c9"
+    },
+    {
+      "sourcePath": "tests/integration/package.json",
+      "publicPath": "apps/web/tests/integration/package.json",
+      "sourceBlob": "ff8becddd27d7b8f54565c39ab60ed018bb0881c",
+      "sha256": "886eb5699c0dd7208de0d80bfca2203878eadf8914e03f22efd0cf3d043291ca",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "886eb5699c0dd7208de0d80bfca2203878eadf8914e03f22efd0cf3d043291ca"
+    },
+    {
+      "sourcePath": "tests/integration/recorder.test.mjs",
+      "publicPath": "apps/web/tests/integration/recorder.test.mjs",
+      "sourceBlob": "cdb182c33fe477a6ef2d185365adf59b1cde80ae",
+      "sha256": "d41dc705e119a0f0b9ebbfc5083160f38f0f5539614935cb931d6fa593be3bb8",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "d41dc705e119a0f0b9ebbfc5083160f38f0f5539614935cb931d6fa593be3bb8"
+    },
+    {
+      "sourcePath": "tests/integration/replay-scroll.test.mjs",
+      "publicPath": "apps/web/tests/integration/replay-scroll.test.mjs",
+      "sourceBlob": "b531310d291df81552bbf0a4c0948ded6e41c44f",
+      "sha256": "dbddbc0cbbdbbe4f6a8b5ad071648b28c793091fcf7d4324479023c39316d577",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "dbddbc0cbbdbbe4f6a8b5ad071648b28c793091fcf7d4324479023c39316d577"
+    },
+    {
+      "sourcePath": "tests/integration/run.mjs",
+      "publicPath": "apps/web/tests/integration/run.mjs",
+      "sourceBlob": "89ce704a863684252d7ab735fa6526cc157183f8",
+      "sha256": "5956d3600e8e40564b9df2f94851e987fd1327238864fd07286c580f75121c4c",
+      "transformation": "test-harness-only bounded file concurrency4 to avoid default fan-out resource kills; all suites and 60second ceiling retained",
+      "sourceSHA256": "36e7a20c4d16f0de10347b0d4a59a95f1920cae249b3b35467d895b1b88968f7"
+    },
+    {
+      "sourcePath": "tests/integration/scroll-source.test.mjs",
+      "publicPath": "apps/web/tests/integration/scroll-source.test.mjs",
+      "sourceBlob": "1783aa36b3ed1c0ff872bcc22971593d754724b2",
+      "sha256": "e244d4d7c17e67aa1eb10fe38f440180e61fad913fd8a4043691051b851d35b1",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "e244d4d7c17e67aa1eb10fe38f440180e61fad913fd8a4043691051b851d35b1"
+    },
+    {
+      "sourcePath": "tests/integration/story-contract.test.mjs",
+      "publicPath": "apps/web/tests/integration/story-contract.test.mjs",
+      "sourceBlob": "8d28594fd438a34d305ec4ef593e2781567c4840",
+      "sha256": "437372fa6f0c5ba5663054ce2baba40a4dd1953d9fdc1f31d944ff45a74344a3",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "437372fa6f0c5ba5663054ce2baba40a4dd1953d9fdc1f31d944ff45a74344a3"
+    },
+    {
+      "sourcePath": "tests/integration/story-geometry-props.test.mjs",
+      "publicPath": "apps/web/tests/integration/story-geometry-props.test.mjs",
+      "sourceBlob": "186217c05fd6b3cbba29b9de8fecd1e546c3fd14",
+      "sha256": "be440a23f3f4c79a492582b5151e16afe8f33068e5efe5673018b299b4a391b8",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "be440a23f3f4c79a492582b5151e16afe8f33068e5efe5673018b299b4a391b8"
+    },
+    {
+      "sourcePath": "tests/integration/story-geometry.test.mjs",
+      "publicPath": "apps/web/tests/integration/story-geometry.test.mjs",
+      "sourceBlob": "74c0d77986e4ce599e93f81789896b9319a325f4",
+      "sha256": "3cc3919ff763441f4cf85c6fcf95a1d83b7980d6b85d05074247c8b8864327a2",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "3cc3919ff763441f4cf85c6fcf95a1d83b7980d6b85d05074247c8b8864327a2"
+    },
+    {
+      "sourcePath": "tests/integration/temporal-close.test.mjs",
+      "publicPath": "apps/web/tests/integration/temporal-close.test.mjs",
+      "sourceBlob": "10936362235d640105eb6d8ebee6b846ba9ab955",
+      "sha256": "623ba0aad5b2d289db205af7b0db097ab97b35be03bf79edba2f591a69f5ec09",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "623ba0aad5b2d289db205af7b0db097ab97b35be03bf79edba2f591a69f5ec09"
+    },
+    {
+      "sourcePath": "tests/integration/weather-overlay-fixture.mjs",
+      "publicPath": "apps/web/tests/integration/weather-overlay-fixture.mjs",
+      "sourceBlob": "f253597d0d0fe54154268727b152d5138e335801",
+      "sha256": "0b17c4cfdc763dcdb6f955891c0f779cf8e5c86eff1a26d2381a493777aa8346",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "0b17c4cfdc763dcdb6f955891c0f779cf8e5c86eff1a26d2381a493777aa8346"
+    },
+    {
+      "sourcePath": "tests/integration/weather-overlay.test.mjs",
+      "publicPath": "apps/web/tests/integration/weather-overlay.test.mjs",
+      "sourceBlob": "4662348a582810fc4337e5e29010009da17e109a",
+      "sha256": "d2c18d64b24e6608ad4665393fdb2a890e2238015b3b3fa86c4e2fe4eaaadf53",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "d2c18d64b24e6608ad4665393fdb2a890e2238015b3b3fa86c4e2fe4eaaadf53"
+    },
+    {
+      "sourcePath": "tests/integration/world-cpu-fixture.mjs",
+      "publicPath": "apps/web/tests/integration/world-cpu-fixture.mjs",
+      "sourceBlob": "ba64f3fbd9e99dcf945175dc9d5ebacea3e5f5c9",
+      "sha256": "3a0a65942bf7578e39ced4cbe2b3a1abe54fea7f67cc87935634ee1ae0d39eec",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "3a0a65942bf7578e39ced4cbe2b3a1abe54fea7f67cc87935634ee1ae0d39eec"
+    },
+    {
+      "sourcePath": "tests/integration/world-cpu.test.mjs",
+      "publicPath": "apps/web/tests/integration/world-cpu.test.mjs",
+      "sourceBlob": "8de0d8a7c65097ed92155c757f7ab8afdf6e06c7",
+      "sha256": "a04063e659a9c10994712cf86d01aa10f7c446025ac8f7669c9694a6ce4357b8",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "a04063e659a9c10994712cf86d01aa10f7c446025ac8f7669c9694a6ce4357b8"
+    },
+    {
+      "sourcePath": "tests/menu-port/menu.test.mjs",
+      "publicPath": "apps/web/tests/menu-port/menu.test.mjs",
+      "sourceBlob": "9a8f222f92183d3fb766e8491d2b6d16541c1178",
+      "sha256": "f3b4715ea7620aa918db5e3afa9ca2e3d6d81b554f8a14260708aa53718fddab",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "f3b4715ea7620aa918db5e3afa9ca2e3d6d81b554f8a14260708aa53718fddab"
+    },
+    {
+      "sourcePath": "tests/weather-port/weather.test.mjs",
+      "publicPath": "apps/web/tests/weather-port/weather.test.mjs",
+      "sourceBlob": "443d64f4bdb2148e439a56cfbf0ffe130924cb7a",
+      "sha256": "ab4bf3e03b0c14bd25f51464ab2b297d3beaaa1aae3acb5dd80a2c52ad53c014",
+      "transformation": "path-only; exact bytes",
+      "sourceSHA256": "ab4bf3e03b0c14bd25f51464ab2b297d3beaaa1aae3acb5dd80a2c52ad53c014"
+    }
+  ],
+  "generatedFiles": [
+    {
+      "sourcePath": "runtime/world/vendor/three/three.core.js",
+      "publicPath": "apps/web/runtime/world/vendor/three/three.core.js",
+      "sourceBlob": "7dcd0fbcbc04b8d9a20ecb96c1ce344cb55150d5",
+      "sha256": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20",
+      "transformation": "not Git-tracked; restored byte-for-byte from pinned official npm three@0.180.0 by digest-enforcing setup",
+      "sourceSHA256": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20"
+    },
+    {
+      "sourcePath": "runtime/world/vendor/three/three.module.js",
+      "publicPath": "apps/web/runtime/world/vendor/three/three.module.js",
+      "sourceBlob": "477ca4dafa7af919a2b9818e01b5ae25198d4aa4",
+      "sha256": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a",
+      "transformation": "not Git-tracked; restored byte-for-byte from pinned official npm three@0.180.0 by digest-enforcing setup",
+      "sourceSHA256": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/world/vendor/three/three.core.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/three/three.core.js",
+      "sourceBlob": "7dcd0fbcbc04b8d9a20ecb96c1ce344cb55150d5",
+      "sha256": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20",
+      "transformation": "not Git-tracked; restored byte-for-byte from pinned official npm three@0.180.0 by digest-enforcing setup",
+      "sourceSHA256": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20"
+    },
+    {
+      "sourcePath": "tests/integration/fixtures/accepted-baseline/world/vendor/three/three.module.js",
+      "publicPath": "apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/three/three.module.js",
+      "sourceBlob": "477ca4dafa7af919a2b9818e01b5ae25198d4aa4",
+      "sha256": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a",
+      "transformation": "not Git-tracked; restored byte-for-byte from pinned official npm three@0.180.0 by digest-enforcing setup",
+      "sourceSHA256": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"HealthResponse","type":"object","additionalProperties":false,"required":["status","service","scaffoldVersion"],"properties":{"status":{"const":"ok"},"service":{"const":"personalos-api"},"scaffoldVersion":{"const":"0.0.1"}}}

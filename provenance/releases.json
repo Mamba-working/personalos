@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "historyMode": "clean-public-import",
+  "reason": "Private QA screenshots, raw feedback and environment details were excluded. Public history starts with a new import commit. Original hashes are provenance references, not public Git ancestry or public tags.",
+  "sourceRuntimeVersion": "v0.1.0-alpha.3",
+  "newApiScaffoldVersion": "0.0.1",
+  "releases": [
+    {
+      "productLabel": "baseline/v101",
+      "originalSourceCommit": "2eb037c8337785d320a362f15f0f4aa929e0ae3b",
+      "originalTagObject": "2eb037c8337785d320a362f15f0f4aa929e0ae3b",
+      "originalTagPeeledCommit": "2eb037c8337785d320a362f15f0f4aa929e0ae3b",
+      "originalRuntimeSHA256": "8a6c5fc68837cc38014b0a286ed771382055ce6e44d8cfd1ed6861bd7c9193a4",
+      "importedRuntime": false,
+      "publicGitCommit": null,
+      "publicGitTag": null
+    },
+    {
+      "productLabel": "v0.1.0-alpha.2",
+      "originalSourceCommit": "a01cea639f0fb4870f0a7ffed744d21e56451864",
+      "originalTagObject": "e188935c4ea77068a12ae1e1460ea944d22e3eeb",
+      "originalTagPeeledCommit": "2e36bcff13978e9ac9e5ff09dcdc85ec3a0912ed",
+      "originalRuntimeSHA256": "e3833900ed59bab828d96059e619554734ff3445455b57b1f9e2222d3346f2b3",
+      "importedRuntime": false,
+      "publicGitCommit": null,
+      "publicGitTag": null
+    },
+    {
+      "productLabel": "v0.1.0-alpha.3",
+      "originalSourceCommit": "ab28fd1f02f84036ac05d5a1e9551bf26d6b7bf2",
+      "originalTagObject": null,
+      "originalTagPeeledCommit": null,
+      "originalRuntimeSHA256": "f33404dc66779e042b9197c6f6459b3a139d662d22bacb0a19dc16d5fe01922f",
+      "importedRuntime": true,
+      "publicGitCommit": null,
+      "publicGitTag": null
+    }
+  ]
+}

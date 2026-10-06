@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "status": "local-automated-checks-passed",
+  "sourceVersion": "v0.1.0-alpha.3",
+  "sourceCommit": "ab28fd1f02f84036ac05d5a1e9551bf26d6b7bf2",
+  "importedRuntimeSHA256": "f33404dc66779e042b9197c6f6459b3a139d662d22bacb0a19dc16d5fe01922f",
+  "runtimeFilesUnchanged": 69,
+  "nodeVersion": "v24.19.0",
+  "checks": {
+    "javascriptSyntaxFiles": 146,
+    "publicHeuristicScan": "no credential/private-path/conversation-pattern matches",
+    "webSourceTests": {
+      "passed": 213,
+      "failed": 0,
+      "skipped": 0
+    },
+    "apiHttpTests": {
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0
+    },
+    "staticHttpTests": {
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0
+    },
+    "contractTests": {
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "testHarnessChanges": [
+    "Fixed-delay history wait replaced by actual popstate with bounded2000ms timeout; original assertions unchanged",
+    "Four simultaneous test files; every original suite and60second runner ceiling retained"
+  ],
+  "notEstablished": [
+    "GitHub remote CI execution",
+    "Real browser/visual/GPU acceptance",
+    "Physical device/native keyboard/IME acceptance",
+    "Measured performance",
+    "Final unified product acceptance",
+    "Real AI/content/auth/persistence capability"
+  ]
+}

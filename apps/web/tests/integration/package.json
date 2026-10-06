@@ -1,0 +1,7 @@
+{
+  "name": "personalos-candidate-integration",
+  "private": true,
+  "type": "module",
+  "scripts": {"test": "node run.mjs"},
+  "dependencies": {"jsdom": "27.0.1"}
+}

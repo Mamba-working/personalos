@@ -28,7 +28,12 @@
     "setup:vendor": "node scripts/setup-vendor.mjs",
     "setup": "npm run setup:vendor && npm run setup:tests",
     "test:vendor": "node --test scripts/setup-vendor.test.mjs",
-    "check:vendor": "node scripts/setup-vendor.mjs --check"
+    "check:vendor": "node scripts/setup-vendor.mjs --check",
+    "dev:next": "npm run dev --workspace apps/web",
+    "build:next": "npm run build --workspace apps/web",
+    "start:next": "npm run start --workspace apps/web",
+    "typecheck:next": "npm run typecheck --workspace apps/web",
+    "test:next": "npm run test:next --workspace apps/web"
   },
   "dependencies": {
     "three": "0.180.0"

@@ -29,3 +29,7 @@ jobs:
         run: npm run check
       - name: Run contracts, real API/static HTTP smoke and web source regressions
         run: npm test
+      - name: Build the bounded Next SSR candidate and type-check new boundaries
+        run: npm run build:next && npm run typecheck:next
+      - name: Verify SSR HTTP, React island adoption, lifecycle and navigation
+        run: npm run test:next

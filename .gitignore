@@ -21,3 +21,7 @@ private-recovery/
 /apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/three/three.core.js
 /apps/web/runtime/world/vendor/three/three.module.js
 /apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/three/three.module.js
+
+# Generated Next build output
+**/.next/
+**/*.tsbuildinfo

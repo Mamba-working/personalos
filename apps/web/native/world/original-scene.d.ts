@@ -1,0 +1,3 @@
+export type WorldSnapshot = { actorUUID: string; actorCount: number; canvasCount: number; triangles: number; calls: number; mode: string; clock: { running: boolean; frames: number; disposed: boolean } };
+export type WorldHandle = { snapshot(): WorldSnapshot; dispose(): void; world: { story: { skip(): void; replay(): void; setReduced(value: boolean): void; getState(): { reduced: boolean } }; setPlacementProvider(provider: () => { mode: string; bounds: { x: number; y: number; w: number; h: number } }): () => void; requestFrame(): void; onFrame(listener: () => void): () => void } };
+export function mountOriginalWorld(root: HTMLElement, rings: unknown): WorldHandle;

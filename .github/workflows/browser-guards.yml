@@ -1,0 +1,74 @@
+name: Browser process guards
+on:
+  pull_request:
+  push:
+permissions:
+  contents: read
+concurrency:
+  group: browser-guards-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  browser-dom:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        project: [mobile-390, desktop-1280]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version-file: .nvmrc
+          package-manager-cache: false
+      - name: Install pinned repository and browser test packages
+        run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          npm run setup
+          npm ci --prefix apps/web/tests/browser --ignore-scripts --no-audit --no-fund
+          apps/web/tests/browser/node_modules/.bin/playwright install --with-deps chromium
+      - name: Check guard criteria and blank-image negative cases
+        run: npm --prefix apps/web/tests/browser run test:unit
+      - name: Prove the one-column negative control is detected
+        run: npm --prefix apps/web/tests/browser run test:negative
+      - name: Run pointer/keyboard process guards
+        run: npm --prefix apps/web/tests/browser test -- --grep-invert '@negative|@render|@diagnostic' --project '${{ matrix.project }}'
+      - name: Preserve sanitized demo process evidence on failure
+        if: failure()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: browser-dom-failure-${{ matrix.project }}-${{ github.sha }}
+          path: evidence/browser-run/
+          if-no-files-found: warn
+          retention-days: 7
+  render-coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version-file: .nvmrc
+          package-manager-cache: false
+      - name: Install exact runtime/browser dependencies
+        run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          npm run setup:vendor
+          npm ci --prefix apps/web/tests/browser --ignore-scripts --no-audit --no-fund
+          apps/web/tests/browser/node_modules/.bin/playwright install --with-deps chromium
+      - name: Prove initialized blank canvas and colored CSS cannot pass
+        run: npm --prefix apps/web/tests/browser run test:render-negative
+      - name: Require nonblank Ball/book renderer observation
+        run: npm --prefix apps/web/tests/browser test -- --grep '@render'
+      - name: Preserve render scope, timeline and failure artifacts
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: render-coverage-${{ github.sha }}
+          path: evidence/browser-run/
+          if-no-files-found: warn
+          retention-days: 7

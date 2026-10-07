@@ -62,9 +62,20 @@ export async function mountChat({getBall,getReturnBall=getBall,getSourceBounds=n
   if(interactive&&focusPending){focusPending=false;layout.close.focus({preventScroll:true});}
  }
  function step(_time,delta=16.7){const settled=motion.advance(delta/1000,returnBounds(),reduced());paint();if(settled&&(!open||!flowPage.owned||flowPage.active)){stopTick();ticking=false;core.canvas.segment=null;core.chatPhase=open?'open':'closed';if(!open){panel.hidden=true;backdrop.hidden=true;document.body.dataset.chatOpen='false';document.querySelector('.app').inert=false;document.querySelector('.topbar').inert=false;document.querySelector('#stage').inert=false;keyboardObserver.stop();flowPage.finish();pageLock.unlock();const canFocus=node=>node?.isConnected&&!node.closest('[hidden],[inert]')&&node.getClientRects().length;const focusTarget=canFocus(originFocus)?originFocus:getRestoreFocus();if(canFocus(focusTarget))focusTarget.focus({preventScroll:true});if(pendingCategory){const category=pendingCategory;pendingCategory=null;window.personalOSContent.setCategory(category);}}else if(!flowPage.active){flow.layoutCommitted();}notify(open?'opened':'closed');}}
- function stopTick(){releaseTick?.();releaseTick=null;gsap.ticker.remove(step);}
- function startTick(){const clock=getClock();if(clock?.onFrame)releaseTick=clock.onFrame(dt=>step(0,dt*1000));else gsap.ticker.add(step);}
- function animate(){motion.setWanted(open);core.canvas.g=open?1:0;core.canvas.segment={active:true};core.chatPhase=open?'opening':'closing';if(!ticking&&!testPaused){ticking=true;startTick();}if(reduced())step(0,16.7);}
+ // GSAP may lag-smooth its delta; only the fallback delivery uses its ticker.
+ // Read elapsed wall time ourselves and exclude hidden intervals without changing
+ // global GSAP settings (Send keeps its existing independent behavior).
+ let fallbackStamp=null,intentStamp=null;
+ function markMotionIntent(){intentStamp=performance.now();fallbackStamp=intentStamp;}
+ // Target changes keep pose/velocity, and start their elapsed interval now.
+ const configureMotion=motion.configure;
+ motion.configure=(...args)=>{markMotionIntent();return configureMotion(...args);};
+ function worldStep(dt,stamp){if(Number.isFinite(stamp)&&intentStamp!==null){dt=Math.min(dt,Math.max(0,(stamp-intentStamp)/1000));if(stamp>=intentStamp)intentStamp=null;}step(0,dt*1000);}
+ function fallbackStep(){const stamp=performance.now();if(document.hidden){fallbackStamp=null;return;}const dt=fallbackStamp===null?0:Math.max(0,(stamp-fallbackStamp)/1000);fallbackStamp=stamp;step(0,dt*1000);}
+ document.addEventListener('visibilitychange',()=>{fallbackStamp=document.hidden?null:performance.now();});
+ function stopTick(){releaseTick?.();releaseTick=null;gsap.ticker.remove(fallbackStep);fallbackStamp=null;}
+ function startTick(){markMotionIntent();const clock=getClock();if(clock?.onFrame)releaseTick=clock.onFrame(worldStep);else{fallbackStamp=performance.now();gsap.ticker.add(fallbackStep);}}
+ function animate(){markMotionIntent();motion.setWanted(open);core.canvas.g=open?1:0;core.canvas.segment={active:true};core.chatPhase=open?'opening':'closing';if(!ticking&&!testPaused){ticking=true;startTick();}if(reduced())step(0,16.7);}
  function viewportKey(v){return JSON.stringify([v.x,v.y,v.w,v.h,innerWidth,innerHeight,layout.head.getBoundingClientRect().height,document.querySelector('.topbar').getBoundingClientRect().height,layout.composer.getBoundingClientRect().height]);}
  function mobileDescriptor(r,metrics){if(!usableBounds(actorFrom))throw new RangeError('Mobile chat requires its captured entry bounds');return describeChatLayout({mode:core.ctx.requestedMode,viewport:r,containerRect:r,sourceBody:actorFrom,mobile:true,keyboardViewport:true,edge:0,bodySize:28,guttersAt64:{left:26,right:26,top:0,bottom:24},maxWidth:r.w,metrics});}
  function mobileViewportKey(){const r=flowPage.active?rectangle(panel):flowPage.measure();return JSON.stringify([r.x,r.y,r.w,r.h,layout.composer.getBoundingClientRect().height]);}

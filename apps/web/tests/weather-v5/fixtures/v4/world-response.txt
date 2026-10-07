@@ -1,0 +1,30 @@
+--- a/runtime/world/scene.js
++++ b/runtime/world/scene.js
+@@ -20,7 +20,8 @@
+ const bookEnabled=document.documentElement.dataset.storyEnabled==='true'&&params.get('story')!=='off';
+ const DURATION=bookEnabled?12.7:10.2,R=.88;
+ let bookStory=null,bookFrame=null,clock=null,worldDisposed=false;
+-const effects=new Map(),storyListeners=new Set();
++const effects=new Map(),storyListeners=new Set();let nativeEyeOpen=1;
++function applyWeatherResponse(response){if(!response)return;face.rotateZ(response.lean||0);face.rotateY(response.lookX||0);face.rotateX(response.lookY||0);eyeVertices(nativeEyeOpen*(response.eyeOpen||1)*(1-(response.sunShade||0)),0);}
+ function requestWorldFrame(){clock?.wake();}
+ let systemReduced=motionQuery.matches,reduced=systemReduced,previewOnce=false,renderer;
+ announceWorldAvailability('starting');
+@@ -151,7 +152,7 @@
+ worldAPI.onActivate=fn=>{activationListeners.add(fn);return()=>activationListeners.delete(fn)};
+ worldAPI.registerEffect=(name,factory)=>{
+  if(effects.has(name))return()=>{};
+- const effect=factory({THREE,scene,actor,requestFrame:requestWorldFrame,setAtmosphere:paint=>window.personalOSSceneBridge?.paint(paint)||false,getState:()=>effectState()});
++ const effect=factory({THREE,scene,actor,applyWeatherResponse,requestFrame:requestWorldFrame,setAtmosphere:paint=>window.personalOSSceneBridge?.paint(paint)||false,getState:()=>effectState()});
+  if(!effect||typeof effect.update!=='function')throw new TypeError('An effect must implement update');
+  effects.set(name,effect);requestWorldFrame();return()=>{if(effects.get(name)!==effect)return;effects.delete(name);effect.dispose?.();requestWorldFrame();};
+ };
+@@ -221,7 +222,7 @@
+  face.quaternion.copy(camera.quaternion);face.rotateY(p.gx+(mode==='home'&&!reduced?gaze.x:0));face.rotateX(p.gy+(mode==='home'&&!reduced?gaze.y:0));face.rotateZ(p.tilt+(mode==='home'?dragX*.17:0));
+  const blinkT=(manual?manualTime:elapsed)%(mode==='home'?12.7:5.7);
+  const blink=!quietMotion&&!readingQuiet&&blinkT>3.56&&blinkT<3.78?1-Math.sin((blinkT-3.56)/.22*Math.PI)*.94:1;
+- eyeVertices(p.open*blink,0);
++ nativeEyeOpen=p.open*blink;eyeVertices(nativeEyeOpen,0);
+  const height=Math.max(0,actor.position.y-R);
+  ballShadow.position.x=actor.position.x;ballShadow.position.z=actor.position.z;ballShadow.scale.setScalar(2.6+height*.55);ballShadow.material.opacity=.44/(1+height*.65);
+  diskShadow.position.x=disk.position.x;diskShadow.position.z=disk.position.z;diskShadow.scale.set(5.6*p.ds,5.6*p.ds,1);diskShadow.material.opacity=.42;

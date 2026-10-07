@@ -73,6 +73,43 @@ export function createWeatherModel(initial = {}) {
     if (autoSun && target.altitude < 75) target.altitude = Math.min(75, target.altitude + dt * .012);
     return getState();
   }
+  /** Closed-form consumer of the world's active-visible interval. This is not
+   * an Euler/spring step: work stays constant even after a long visible frame.
+   * Legacy step() remains the bounded adapter for callers without clock metadata.
+   * Integrating the blend, not its endpoint, keeps rain/wind travel independent
+   * of frame cadence. Snap occurs at the same epsilon crossing for every cadence.
+   */
+  function advanceInterval(dt, {hidden = false, reduced = false, quiet = false} = {}) {
+    const interval = {duration: 0, rain: 0, wind: 0};
+    if (disposed || hidden || !enabled) return interval;
+    if (reduced || paused) { effective = {...target}; return interval; }
+    if (quiet) return interval;
+    dt = Number.isFinite(dt) ? Math.max(0, dt) : 0;
+    const rate = 1.7, epsilon = .0001;
+    function constant(key, duration) {
+      const delta = effective[key] - target[key];
+      const settling = Math.abs(delta) <= epsilon ? 0 : Math.log(Math.abs(delta) / epsilon) / rate;
+      const changing = Math.min(duration, settling), blend = -Math.expm1(-rate * changing);
+      const integral = target[key] * duration + delta * blend / rate;
+      effective[key] = duration >= settling ? target[key] : effective[key] + (target[key] - effective[key]) * blend;
+      return integral;
+    }
+    for (const key of Object.keys(fields)) {
+      if (key === 'altitude' && autoSun && target.altitude < 75) {
+        // Exact response to a slowly moving target, including the altitude cap.
+        const speed = .012, ramp = Math.min(dt, (75 - target.altitude) / speed);
+        const delta = effective.altitude - target.altitude, blend = -Math.expm1(-rate * ramp);
+        effective.altitude += speed * ramp - (delta + speed / rate) * blend;
+        target.altitude = Math.min(75, target.altitude + speed * ramp);
+        if (ramp < dt) constant('altitude', dt - ramp);
+      } else {
+        const integral = constant(key, dt);
+        if (key === 'rain' || key === 'wind') interval[key] = integral;
+      }
+    }
+    time += dt; interval.duration = dt;
+    return interval;
+  }
   function getState() {
     const s = effective, angle = s.direction * Math.PI / 180, altitude = s.altitude * Math.PI / 180, azimuth = s.azimuth * Math.PI / 180;
     const sun=[Math.cos(altitude)*Math.sin(azimuth),Math.sin(altitude),-Math.cos(altitude)*Math.cos(azimuth)],solarProjection=projectSolarAtmosphere(sun,s.cloud);
@@ -85,7 +122,15 @@ export function createWeatherModel(initial = {}) {
   effective = {...target};
   if (initial.effective) for (const [key, limits] of Object.entries(fields)) if (Number.isFinite(initial.effective[key])) effective[key] = clamp(initial.effective[key], ...limits);
   if (Number.isFinite(initial.time)) time = Math.max(0, initial.time);
-  return {setWeather, step, getState, dispose() { disposed = true; }};
+  return {setWeather, step, advanceInterval, getState, dispose() { disposed = true; }};
+}
+
+/** Small posture cue for the existing face writer, never a replacement face. */
+export function weatherCharacterResponse(s, time = 0, moving = true) {
+  const wind=smooth(3.1,7,s.wind), rain=clamp(s.rain), drift=Math.sin(time*.9)*.12; // Supplied phase already freezes on pause/reduced.
+  return {lean:clamp((s.windVector?.[0]||0)*.0045+drift*wind*.015,-.035,.035),
+    lookX:clamp(-(s.windVector?.[0]||0)*.004,-.035,.035),lookY:rain*.025,
+    eyeOpen:1-rain*.12,sunShade:s.solarEnergy*.035};
 }
 
 function activityPolicy(state = {}) {
@@ -100,9 +145,12 @@ function activityPolicy(state = {}) {
       (placement && (placement.quiet || placement.mode !== 'hero' || placement.progress > .02)))};
 }
 
-function makeEffect({THREE, scene, actor, requestFrame = () => {}, getState = () => ({})}, model, syncExternal, paintField = () => {}) {
+function makeEffect({THREE, scene, actor, applyWeatherResponse = () => {}, requestFrame = () => {}, getState = () => ({})}, model, syncExternal, paintField = () => {}) {
   if (!THREE || !scene?.add || !actor?.position || !actor?.scale) throw new TypeError('Weather requires the existing THREE scene and actor');
-  let disposed = false, wasHidden = false, lastExternal = '', phaseTime = 0, updates = 0;
+  let disposed = false, wasHidden = false, lastExternal = '', phaseTime = 0, rainPhase = 0, windPhase = 0, updates = 0;
+  let intentStamp = null, wasMoving = null;
+  // An input epoch is not a second clock. Only supplied world intervals advance us.
+  function markIntent(stamp) { if (Number.isFinite(stamp)) intentStamp = stamp; }
   const root = new THREE.Group(); root.name = 'PersonalOS / bounded simulated weather';
   const ownedGeometry = [], ownedMaterial = [];
   const material = m => { ownedMaterial.push(m); return m; };
@@ -111,23 +159,34 @@ function makeEffect({THREE, scene, actor, requestFrame = () => {}, getState = ()
   const rainGeometry = geometry(new THREE.BufferGeometry());
   rainGeometry.setAttribute('position', new THREE.BufferAttribute(rainArray, 3));
   rainGeometry.attributes.position.setUsage(THREE.DynamicDrawUsage);
-  const rainMaterial = material(new THREE.LineBasicMaterial({color: '#7D90AC', transparent: true, opacity: .38, depthWrite: false, depthTest: true}));
+  // Native r180 RGBA vertex colors fade each falling stroke before emitter
+  // reset. This adds one bounded 1 KiB attribute, not another draw/material.
+  const rainColorArray=new Float32Array(WEATHER_BUDGET.rainStrokes*8).fill(1);
+  rainGeometry.setAttribute('color',new THREE.BufferAttribute(rainColorArray,4));
+  rainGeometry.attributes.color.setUsage(THREE.DynamicDrawUsage);
+  const rainMaterial = material(new THREE.LineBasicMaterial({color: '#637D9E', vertexColors: true, transparent: true, opacity: .62, depthWrite: false, depthTest: true}));
   const rain = new THREE.LineSegments(rainGeometry, rainMaterial); rain.name = 'weather / 32 rain strokes'; rain.frustumCulled = false;
   const windArray = new Float32Array(WEATHER_BUDGET.windStrokes * 6);
   const windGeometry = geometry(new THREE.BufferGeometry());
   windGeometry.setAttribute('position', new THREE.BufferAttribute(windArray, 3));
   windGeometry.attributes.position.setUsage(THREE.DynamicDrawUsage);
-  const windMaterial = material(new THREE.LineBasicMaterial({color: '#F5F1EA', transparent: true, opacity: .42, depthWrite: false, depthTest: true}));
+  const windMaterial = material(new THREE.LineBasicMaterial({color: '#7186A3', transparent: true, opacity: .42, depthWrite: false, depthTest: true}));
   const wind = new THREE.LineSegments(windGeometry, windMaterial); wind.name = 'weather / 18 wind strokes'; wind.frustumCulled = false;
   // One fixed shader program. Selection only updates uniforms; no shader recompile.
   const poolMaterial = material(new THREE.ShaderMaterial({transparent: true, depthTest: true, depthWrite: false, side: THREE.DoubleSide,
-    uniforms: {uRain: {value: 0}, uCloud: {value: .5}, uDay: {value: 1}, uTime: {value: 0}, uMotion: {value: 0},
+    uniforms: {uRain: {value: 0}, uCloud: {value: .5}, uDay: {value: 1}, uTime: {value: 0}, uMotion: {value: 0}, uSun: {value: new THREE.Vector2(0, 0)}, uEnergy: {value: 0},
       uIvory: {value: new THREE.Color('#F5F1EA')}, uBlue: {value: new THREE.Color('#788BA8')}},
     vertexShader: 'varying vec2 vUv; void main(){vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}',
-    fragmentShader: `varying vec2 vUv; uniform float uRain,uCloud,uDay,uTime,uMotion; uniform vec3 uIvory,uBlue;
-      void main(){float r=length((vUv-.5)*2.0); float edge=(1.0-smoothstep(.72,1.0,r))*smoothstep(.28,.64,r);
-      float ripple=.5+.5*cos(r*24.0-uTime*2.4*uMotion); float a=edge*(.09+.09*uCloud+.09*uRain*ripple);
-      vec3 color=mix(uBlue,uIvory,uDay*(1.0-uCloud*.68));gl_FragColor=vec4(color,a);
+    fragmentShader: `varying vec2 vUv; uniform float uRain,uCloud,uDay,uTime,uMotion,uEnergy; uniform vec2 uSun; uniform vec3 uIvory,uBlue;
+      void main(){
+      vec2 p=(vUv-.5)*2.0; float r=length(p); float boundary=1.0-smoothstep(.68,1.0,r);
+      float inner=smoothstep(.19,.66,r); float rings=0.0;
+      for(int i=0;i<3;i++){float fi=float(i);vec2 at=vec2(sin(fi*2.4)*.43,cos(fi*3.1)*.34);
+        float age=fract(uTime*.62+fi*.317);float radius=.035+age*.22;
+        float ring=1.0-smoothstep(.004,.019,abs(length(p-at)-radius));rings+=ring*(1.0-age)*smoothstep(0.0,.15,age);}
+      float gleam=pow(max(0.0,1.0-length((p+uSun*.28)*vec2(.8,1.4))),3.0)*uEnergy;
+      float a=boundary*(.045+.11*uCloud)*inner+boundary*uRain*rings*.23+gleam*.2;
+      vec3 color=mix(uBlue,uIvory,clamp(uDay*(1.0-uCloud*.55)+gleam,0.0,1.0));gl_FragColor=vec4(color,a);
       #include <tonemapping_fragment>
       #include <colorspace_fragment>
       }` }));
@@ -135,9 +194,12 @@ function makeEffect({THREE, scene, actor, requestFrame = () => {}, getState = ()
   pool.name = 'weather / soft ground light'; pool.rotation.x = -Math.PI / 2; pool.position.y = -.872; // Just above the source actor's .88-radius contact plane.
   root.add(pool, rain, wind); root.visible = false; scene.add(root);
   // Existing light identity/intensity/color is restored exactly whenever weather is inactive.
-  const lights = scene.children.filter(o => o.isHemisphereLight || o.isDirectionalLight).map(light => ({light, intensity: light.intensity, color: light.color.clone()}));
+  const lights = scene.children.filter(o => o.isHemisphereLight || o.isDirectionalLight).map(light => ({light, intensity: light.intensity, color: light.color.clone(), position: light.position.clone()}));
+  const keyLight = lights.find(entry => entry.light.isDirectionalLight && entry.light.castShadow) || lights.find(entry => entry.light.isDirectionalLight);
+  // Material response belongs to the source ceramic, not a replacement character.
+  const ceramics=[]; actor.traverse?.(node => {const m=node.material;if(m?.isMeshPhysicalMaterial)ceramics.push({material:m,roughness:m.roughness,clearcoat:m.clearcoat,clearcoatRoughness:m.clearcoatRoughness});});
   const cool = new THREE.Color('#DDE6F7'); let lightApplied = false;
-  function restoreLight() { if (!lightApplied) return; for (const entry of lights) { entry.light.intensity = entry.intensity; entry.light.color.copy(entry.color); } lightApplied = false; }
+  function restoreLight() { if (!lightApplied) return; for (const entry of lights) { entry.light.intensity = entry.intensity; entry.light.color.copy(entry.color); entry.light.position.copy(entry.position); } for(const c of ceramics){c.material.roughness=c.roughness;c.material.clearcoat=c.clearcoat;c.material.clearcoatRoughness=c.clearcoatRoughness;} lightApplied = false; }
   function stateOf(override) {
     const state = {...getState(), ...override};
     if (syncExternal && state.weather) {
@@ -146,47 +208,94 @@ function makeEffect({THREE, scene, actor, requestFrame = () => {}, getState = ()
     }
     return state;
   }
-  function update(dt = 0, override) {
+  function update(dt = 0, override, frame = null) {
     if (disposed) return;
     const state = stateOf(override), policy = activityPolicy(state);
-    if (policy.hidden) { wasHidden = true; root.visible = false; restoreLight(); return; }
-    if (wasHidden || !Number.isFinite(dt) || dt < 0 || dt > .5) dt = 0;
-    wasHidden = false;
-    const weather = model.step(dt, policy), s = weather.effective;
+    if (policy.hidden) { wasHidden = true; wasMoving = false; root.visible = false; restoreLight(); return; }
+    const timed = Number.isFinite(frame?.elapsed) && frame.elapsed >= 0;
+    const before = model.getState();
+    const movingNow = before.enabled && !before.paused && !policy.quiet && !policy.reduced;
+    let interval = null;
+    if (timed) {
+      dt = frame.elapsed;
+      // A new target resumes from the displayed state at its input epoch. A stale
+      // RAF stamp cannot spend time that preceded that intent. Duplicate settings
+      // never move the epoch. Sleeping/hidden time was already excluded by world.
+      if (intentStamp !== null && Number.isFinite(frame.stamp)) {
+        dt = Math.min(dt, Math.max(0, (frame.stamp - intentStamp) / 1000));
+        if (frame.stamp >= intentStamp) intentStamp = null;
+      } else if (wasMoving === false && movingNow) dt = 0;
+      interval = model.advanceInterval(dt, policy);
+    } else {
+      if (wasHidden || !Number.isFinite(dt) || dt < 0 || dt > .5) dt = 0;
+      model.step(dt, policy);
+    }
+    wasHidden = false; wasMoving = movingNow;
+    const weather = model.getState(), s = weather.effective;
     paintField(weather, policy, dt);
     const active = weather.enabled && !policy.quiet;
     root.visible = active;
     if (!active) { restoreLight(); return; }
     const moving = !policy.reduced && !weather.paused;
-    if (moving) phaseTime += Math.min(dt, .1);
+    if (moving) {
+      const step=interval ? interval.duration : Math.min(dt,.1);phaseTime+=step;
+      // Integrate the velocity over this interval, never time * the latest speed.
+      // Analytic integrals include every visible second without replay/substeps.
+      rainPhase=(rainPhase+(interval ? step*.58+interval.rain*.48 : step*(.58+s.rain*.48)))%1;
+      windPhase=(windPhase+(interval ? interval.wind*.55 : step*s.wind*.55))%(Math.PI*2);
+    }
     root.position.copy(actor.position); root.scale.copy(actor.scale);
     for (const entry of lights) {
-      const dim = entry.light.isHemisphereLight ? mix(.86, 1.03, s.day) : mix(.77, 1.02, s.day);
-      entry.light.intensity = entry.intensity * dim * (1 - s.cloud * .075);
-      entry.light.color.copy(entry.color).lerp(cool, (1 - s.day) * .14 + s.cloud * .035);
+      const direct = entry === keyLight;
+      const dim = entry.light.isHemisphereLight ? mix(.74, .98, s.day) : direct ? .78 + s.solarEnergy * .52 : mix(.78,.94,s.day);
+      entry.light.intensity = entry.intensity * dim * (1 - s.cloud * .14);
+      entry.light.color.copy(entry.color).lerp(cool, (1 - s.day) * .27 + s.cloud * .11);
+      if (direct) {
+        const target=entry.light.target?.position;
+        entry.light.position.set((target?.x||0)+s.sun[0]*9,(target?.y||0)+Math.max(.12,s.sun[1])*10,(target?.z||0)-s.sun[2]*8);
+      }
     }
+    for (const c of ceramics) {
+      c.material.roughness=mix(c.roughness,.23,s.rain*.7);
+      c.material.clearcoat=mix(c.clearcoat,.48,s.rain);
+      c.material.clearcoatRoughness=mix(c.clearcoatRoughness,.18,s.rain);
+    }
+    // The source world applies this once after its own native face pose. Weather
+    // never owns actor placement, geometry, eye paths, scroll, or an extra clock.
+    applyWeatherResponse(weatherCharacterResponse(s, phaseTime, moving));
     lightApplied = true;
     rain.visible = s.rain > .005;
-    rainMaterial.opacity = .14 + s.rain * .44;
+    rainMaterial.opacity = .2 + s.rain * .62;
     const angle = s.direction * Math.PI / 180;
-    const leanX = Math.cos(angle) * s.wind * .005, leanZ = Math.sin(angle) * s.wind * .005;
+    const leanX = Math.cos(angle) * s.wind * .028, leanZ = Math.sin(angle) * s.wind * .028;
     for (let i = 0; i < WEATHER_BUDGET.rainStrokes; i++) {
-      const a = i * 2.399963229728653, r = 1.04 + (i % 7) / 7 * .38;
-      const fall = ((i * .61803398875 + phaseTime * (.75 + s.rain * .7)) % 1);
-      const x = Math.cos(a) * r, z = Math.sin(a) * r, y = -.13 - fall * .72;
-      rainArray.set([x, y, z, x + leanX, y - .11, z + leanZ], i * 6);
+      const a = i * 2.399963229728653, r = 1.12 + (i % 7) / 7 * .46;
+      const fall = ((i * .61803398875 + rainPhase) % 1);
+      const visibility=smooth(0,.12,fall)*(1-smooth(.84,1,fall));
+      rainColorArray[i*8+3]=visibility;rainColorArray[i*8+7]=visibility;
+      if(i<26){
+        // A real rain volume above and beside Ball, rather than a ring below it.
+        const x=Math.cos(a)*r+leanX*fall*3,z=Math.sin(a)*r+leanZ*fall*3,y=1.65-fall*2.48;
+        rainArray.set([x,y,z,x+leanX,y-.17-(i%3)*.022,z+leanZ],i*6);
+      }else{
+        // Six short contact drips, shared with the same line draw and rain phase.
+        const bounce=Math.sin(fall*Math.PI),x=Math.cos(a)*r,z=Math.sin(a)*r,y=-.86+bounce*.08;
+        rainArray.set([x,y,z,x+Math.cos(a)*.045*fall,y-.035,z+Math.sin(a)*.045*fall],i*6);
+      }
     }
-    rainGeometry.attributes.position.needsUpdate = true;
-    wind.visible = s.wind > 3.1 && s.rain < .1;
-    windMaterial.opacity = smooth(3.1, 7, s.wind) * .52;
+    rainGeometry.attributes.position.needsUpdate = true; rainGeometry.attributes.color.needsUpdate=true;
+    wind.visible = s.wind > 3.1 && s.rain < .18;
+    windMaterial.opacity = smooth(3.1, 7, s.wind) * .52 * (1-smooth(.02,.18,s.rain));
     for (let i = 0; i < WEATHER_BUDGET.windStrokes; i++) {
-      const a = (i / WEATHER_BUDGET.windStrokes) * Math.PI * 2 + phaseTime * s.wind * .08;
-      const r = 1.23 + (i % 3) * .065, y = -.63 + Math.sin(a * 2) * .07;
-      windArray.set([Math.cos(a) * r, y, Math.sin(a) * r, Math.cos(a + .1) * r, y + .012, Math.sin(a + .1) * r], i * 6);
+      // Three restrained six-segment streams, never a halo of orbiting particles.
+      const strand=Math.floor(i/6),segment=i%6,drift=Math.sin(windPhase+strand*.71)*.17;
+      const point=u=>{const along=(u-.5)*3.3+drift;return [along*Math.cos(angle),-.56+strand*.47+Math.sin(u*Math.PI*2+strand)*.09,along*Math.sin(angle)-.3+strand*.22];};
+      windArray.set([...point(segment/6),...point((segment+1)/6)],i*6);
     }
     windGeometry.attributes.position.needsUpdate = true;
     Object.assign(poolMaterial.uniforms.uRain, {value: s.rain});
     poolMaterial.uniforms.uCloud.value = s.cloud; poolMaterial.uniforms.uDay.value = s.day;
+    poolMaterial.uniforms.uSun.value.set(s.sun[0],-s.sun[2]); poolMaterial.uniforms.uEnergy.value=s.solarEnergy;
     poolMaterial.uniforms.uTime.value = phaseTime; poolMaterial.uniforms.uMotion.value = moving ? 1 : 0;
     updates++;
   }
@@ -197,7 +306,7 @@ function makeEffect({THREE, scene, actor, requestFrame = () => {}, getState = ()
       (s.transitioning || s.effective.rain > .005 || (s.effective.wind > 3.1 && s.effective.rain < .1) || (s.autoSun && s.target.altitude < 75));
   }
   update(0); requestFrame();
-  return {update, needsFrame, getState: () => ({...model.getState(), effect: {attached: !disposed, visible: root.visible, updates, phaseTime, budget: {...WEATHER_BUDGET}}}),
+  return {update, needsFrame, markIntent, getState: () => ({...model.getState(), effect: {attached: !disposed, visible: root.visible, updates, phaseTime, budget: {...WEATHER_BUDGET}}}),
     dispose() { if (disposed) return; disposed = true; root.visible = false; restoreLight(); root.removeFromParent(); for (const g of ownedGeometry) g.dispose(); for (const m of ownedMaterial) m.dispose(); if (syncExternal) model.dispose(); }};
 }
 
@@ -210,8 +319,28 @@ export function createWeatherEffect(context) {
 function createAmbientField(container) {
   if (!container?.ownerDocument) return {paint() {}, getState: () => ({available: false, mode: 'unavailable', writes: 0}), dispose() {}};
   const element = container.ownerDocument.createElement('div');
-  element.className = 'weather-atmosphere'; element.setAttribute('aria-hidden', 'true'); container.append(element);
-  let disposed = false, signature = '', elapsed = .1, writes = 0, mode = 'static', lastFlags = '';
+  element.className = 'weather-atmosphere'; element.setAttribute('aria-hidden', 'true');
+  // Four inexpensive scene-paint layers. No filters, textures, canvas, CSS
+  // animation or independent clock. Rain remains identifiable without WebGL.
+  element.innerHTML=`<div class="weather-light-plane"></div><div class="weather-cloud-plane"></div>
+    <svg class="weather-scene-lines" viewBox="0 0 1000 700" preserveAspectRatio="none" focusable="false">
+      <g class="weather-far-rain" fill="none" stroke="currentColor" stroke-linecap="round"></g>
+      <g class="weather-wind-lines" fill="none" stroke="currentColor" stroke-linecap="round">
+        <path d="M590 182 C677 149 728 211 831 177 S961 146 1050 171"/>
+        <path d="M662 223 C742 202 795 246 867 225 S967 209 1015 221"/>
+        <path d="M720 344 C790 325 826 365 908 338 S981 325 1040 332"/>
+      </g>
+      <g class="weather-rain-pools" fill="none" stroke="currentColor">
+        <ellipse cx="768" cy="393" rx="22" ry="3"/><ellipse cx="884" cy="441" rx="16" ry="2.5"/>
+        <ellipse cx="950" cy="371" rx="12" ry="2"/><path d="M672 446h19 M814 479h28 M940 457h23"/>
+      </g>
+    </svg><div class="weather-reading-veil"></div>`;
+  const rainNode=element.querySelector('.weather-far-rain'),windNode=element.querySelector('.weather-wind-lines'),pools=element.querySelector('.weather-rain-pools');
+  const light=element.querySelector('.weather-light-plane'),clouds=element.querySelector('.weather-cloud-plane');
+  const rainLines=[];
+  for(let i=0;i<24;i++){const node=container.ownerDocument.createElementNS('http://www.w3.org/2000/svg','path');rainNode.append(node);rainLines.push(node);}
+  container.append(element);
+  let disposed = false, signature = '', elapsed = .1, writes = 0, mode = 'static', lastFlags = '', detailSignature='';
   function paint(weather, policy = {}, dt = 0, fallback = false) {
     if (disposed || policy.hidden) return;
     const flags = [weather.enabled, policy.quiet, policy.reduced, weather.paused, fallback].join(':');
@@ -222,15 +351,13 @@ function createAmbientField(container) {
     element.hidden = !weather.enabled;
     if (!weather.enabled) return;
     const s = weather.effective, calm = policy.quiet ? .24 : 1;
-    const daylight = s.day, cloud = s.cloud, rain = s.rain;
-    // All stops stay within cool gray-blue/ivory. Quiet retains atmosphere while
-    // reducing contrast and removing decorative rain grain behind reading text.
-    const night = [191, 206, 225], day = [239, 240, 234], baseline = [217, 222, 231];
-    const shade = [10, 7, 2];
-    const rgb = day.map((v, i) => Math.round(mix(baseline[i], mix(night[i], v, daylight) - shade[i] * cloud - rain * 2, calm)));
+    const daylight = s.day, cover = s.cloud, rain = s.rain;
+    const night = [177, 191, 210], day = [235, 237, 233], baseline = [217, 222, 231];
+    const shade = [15, 12, 7];
+    const rgb = day.map((v, i) => Math.round(mix(baseline[i], mix(night[i], v, daylight) - shade[i] * cover - rain * 2, calm)));
     const base = `rgb(${rgb.join(',')})`;
     const alpha = n => (Math.round(clamp(n) * 100) / 100).toFixed(2);
-    const cloudAlpha = alpha((.12 + cloud * .35) * calm), sunAlpha = alpha((.14 + s.solarEnergy * .54) * calm);
+    const cloudAlpha = alpha((.16 + cover * .43) * calm), sunAlpha = alpha((.14 + s.solarEnergy * .54) * calm);
     const rainAlpha = alpha(rain * .055 * (policy.quiet ? 0 : 1));
     const windAlpha = alpha(smooth(3.1, 7, s.wind) * .16 * calm);
     const projection=s.solarProjection,percent=value=>Math.round(value*10)/10;
@@ -238,16 +365,37 @@ function createAmbientField(container) {
     const wash = [
       'linear-gradient(to bottom, #D9DEE7 0px, transparent 150px)',
       `radial-gradient(ellipse ${sunRadiusX}% ${sunRadiusY}% at ${sunX}% ${sunY}%, rgba(255,249,237,${sunAlpha}) 0%, transparent 100%)`,
-      `radial-gradient(ellipse at 86% 32%, rgba(127,151,185,${cloudAlpha}) 0%, transparent 67%)`,
-      `radial-gradient(ellipse at 8% 68%, rgba(241,244,247,${cloudAlpha}) 0%, transparent 64%)`,
+      `radial-gradient(ellipse at 89% 27%, rgba(96,119,151,${cloudAlpha}) 0%, transparent 69%)`,
+      `radial-gradient(ellipse at 12% 76%, rgba(241,244,247,${cloudAlpha}) 0%, transparent 64%)`,
       `linear-gradient(${rainAngle + 14}deg, transparent 23%, rgba(236,242,250,${windAlpha}) 48%, transparent 76%)`,
       `repeating-linear-gradient(${rainAngle}deg, transparent 0px, transparent 34px, rgba(98,123,159,${rainAlpha}) 35px, transparent 36px)`
     ].join(',');
     const next = `${base}|${wash}`;
     if (next !== signature) { signature = next; element.style.backgroundColor = base; element.style.backgroundImage = wash; writes++; }
+    const details=[...Object.keys(fields).map(key=>s[key].toFixed(3)),calm].join(':');
+    if(details!==detailSignature){
+      detailSignature=details;
+      // Directional spill: its origin, angle and highlight use the same sun.
+      const slope=percent(-s.sun[0]*38), energy=alpha(s.solarEnergy*.82*calm);
+      light.style.backgroundImage=`radial-gradient(ellipse ${sunRadiusX*.6}% ${sunRadiusY*.52}% at ${sunX}% ${Math.max(0,sunY)}%, rgba(255,250,239,${energy}) 0%, transparent 100%),linear-gradient(${114+slope}deg,transparent 39%,rgba(255,251,241,${alpha(s.solarEnergy*.43*calm)}) 51%,transparent 67%)`;
+      light.style.opacity=String(clamp(s.day));
+      clouds.style.opacity=alpha(cover*.72*calm);
+      clouds.style.transform=`translateX(${percent(s.windVector[0]*1.6)}px) rotate(${percent(s.direction*.018)}deg)`;
+      rainNode.style.opacity=alpha(rain*.76*(policy.quiet?0:1));
+      pools.style.opacity=alpha(rain*.64*(policy.quiet?0:1));
+      windNode.style.opacity=alpha(smooth(3.1,7,s.wind)*.42*(1-smooth(.02,.18,rain))*(policy.quiet?0:1));
+      const slant=s.windVector[0]*4.2;
+      for(let i=0;i<rainLines.length;i++){
+        const x=560+((i*137)%462),y=60+((i*83)%388),length=16+(i%4)*7;
+        rainLines[i].setAttribute('d',`M${x} ${y}l${percent(slant*length/34)} ${length}`);
+        rainLines[i].setAttribute('stroke-width',i%5===0?'1.2':'.7');
+      }
+      element.dataset.quiet=String(!!policy.quiet);
+      element.dataset.precipitation=rain>.08?'rain':'dry';
+    }
     element.dataset.mode = mode;
   }
-  return {paint, getState: () => ({available: !disposed, mode, writes, owner: 'shared-weather-model', maxPaintHz: 10, layers: 6}),
+  return {paint, getState: () => ({available: !disposed, mode, writes, owner: 'shared-weather-model', maxPaintHz: 10, layers: 10, staticRainStrokes:24}),
     dispose() { if (disposed) return; disposed = true; element.remove(); }};
 }
 
@@ -336,7 +484,7 @@ export function mountWeather({host, container, fieldContainer = null, overlayCon
   function syncDisclosurePreference(state) {
     if (!disposed && disclosureAnimation && disclosureReduced(state)) settleDisclosure(disclosureOpen);
   }
-  const preferenceChanged = () => syncDisclosurePreference(host.getState());
+  const preferenceChanged = () => { syncDisclosurePreference(host.getState()); effect?.markIntent(win.performance.now()); };
   motionQuery?.addEventListener?.('change', preferenceChanged);
   function setDisclosure(open,{restoreFocus=true}={}) {
     if (disposed) return;
@@ -377,12 +525,17 @@ export function mountWeather({host, container, fieldContainer = null, overlayCon
   }
   function setWeather(patch) {
     if (disposed || !model.setWeather(patch)) return false;
+    effect?.markIntent(win.performance.now());
     if (!attached) { model.step(0, {reduced: true}); ambient.paint(model.getState(), activityPolicy(host.getState()), 0, true); }
     renderUI(); world?.requestFrame?.(); host.moduleChanged?.('weather'); return true;
   }
   function detach() { unregister?.(); unregister = null; effect?.dispose(); effect = null; world = null; attached = false; }
+  let lastMotionPolicy = null;
   function reconcile(state) {
     if (disposed) return;
+    const policy = activityPolicy(state), motionPolicy = [policy.hidden, policy.quiet, policy.reduced].join(':');
+    if (lastMotionPolicy !== null && motionPolicy !== lastMotionPolicy) effect?.markIntent(win.performance.now());
+    lastMotionPolicy = motionPolicy;
     if(disclosureOpen&&((state.chat?.phase&&state.chat.phase!=='closed')||(state.content?.phase&&state.content.phase!=='preview')||(state.story?.phase&&state.story.phase!=='home')||state.pendingReplay||['navigate','content-category-select'].includes(state.action)))setDisclosure(false,{restoreFocus:false});
     const next = host.world?.() || null;
     if (next !== world) {
@@ -392,6 +545,7 @@ export function mountWeather({host, container, fieldContainer = null, overlayCon
         try {
           unregister = next.registerEffect('weather', context => {
             effect = makeEffect({...context, getState: () => ({...context.getState(), weather: model.getState()})}, model, false, (weather, policy, dt) => ambient.paint(weather, policy, dt));
+            effect.markIntent(win.performance.now());
             return effect;
           });
           attached = !!effect;

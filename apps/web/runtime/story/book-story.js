@@ -3,15 +3,19 @@ import {IDS,HANDOFF,END,makeWorldPose,nativeRoute,rectQuad,mixQuad,smooth,homogr
 const clamp=x=>Math.max(0,Math.min(1,x));
 // Narrative and presentation only. The caller owns the existing renderer/actor.
 export function createBookStory({content,enabled=false,reduced=false,bypass=false,wake=()=>{},onChange=()=>{}}){
- let lease=null,layout=null,lastCards=null,lastWorld=null,skipFrom=null,resizeState=null,returning=false,lastBlend=0;
+ let lease=null,layout=null,lastCards=null,lastWorld=null,skipFrom=null,resizeState=null,returning=false,lastBlend=0,intentStamp=null;
  const measure=()=>({width:innerWidth,height:innerHeight,targets:lease.targets()});
  function release(reason){returning=true;lease?.release(reason);lease=null;returning=false;lastCards=null;lastWorld=null;skipFrom=null;resizeState=null;document.body.dataset.storyPhase='home';document.documentElement.style.removeProperty('--story-content-alpha');}
  const lifecycle=createStoryLifecycle({enabled,reduced,bypass,duration:END,handoff:HANDOFF,wake,
-  onStart(why){lastBlend=why==='replay'?1:0;lease=content?.presentation?.acquire(IDS);if(!lease)return false;layout=measure();lastCards=null;skipFrom=null;resizeState=null;document.body.dataset.storyPhase='story';return true;},onReturn:release});
+  onStart(why){intentStamp=performance.now();lastBlend=why==='replay'?1:0;lease=content?.presentation?.acquire(IDS);if(!lease)return false;layout=measure();lastCards=null;skipFrom=null;resizeState=null;document.body.dataset.storyPhase='story';return true;},onReturn:release});
  const stop=lifecycle.subscribe(s=>{document.body.dataset.storyPhase=(s.phase==='bridge'||s.phase==='rewind')?'handoff':s.phase;onChange(s);});
  const invalidated=e=>{if(!returning&&lease&&e.detail.action==='presentation-returned')lifecycle.fail('content-action');};
  window.addEventListener('personalos:content-presentation',invalidated);
- function sample(dt=0){
+ function sample(dt=0,stamp){
+  // A new intent cannot inherit the portion of a world frame before it existed.
+  // Explicit deterministic steps omit stamp. Hidden time is already excluded by
+  // the world clock. Keep an epoch pending if input occurred inside this RAF.
+  if(Number.isFinite(stamp)&&intentStamp!==null){dt=Math.min(dt,Math.max(0,(stamp-intentStamp)/1000));if(stamp>=intentStamp)intentStamp=null;}
   const state=lifecycle.advance(dt);if(!state.active||!lease)return null;
   const next=measure();
   if(next.width!==layout.width||next.height!==layout.height){
@@ -42,6 +46,6 @@ export function createBookStory({content,enabled=false,reduced=false,bypass=fals
   return{world:lastWorld,blend,papersVisible:(!state.bridge||state.bridge.target==='story')&&state.time<HANDOFF,phase:state.phase,time:state.time,viewport:rebase?.viewport,layout};
  }
  const api={getState:()=>({...lifecycle.getState(),contentIds:lease?.items.map(i=>i.id)||[],borrowed:!!lease}),sample,
-  skip(reason,options){const accepted=lifecycle.skip(reason,options);if(accepted)skipFrom=null;return accepted;},replay(){return lifecycle.replay();},setReduced:value=>lifecycle.setReduced(value),fail:reason=>lifecycle.fail(reason),subscribe:fn=>lifecycle.subscribe(fn),dispose(){stop();window.removeEventListener('personalos:content-presentation',invalidated);lifecycle.dispose();}};
+  skip(reason,options){const accepted=lifecycle.skip(reason,options);if(accepted){skipFrom=null;intentStamp=performance.now();}return accepted;},replay(){return lifecycle.replay();},setReduced:value=>lifecycle.setReduced(value),fail:reason=>lifecycle.fail(reason),subscribe:fn=>lifecycle.subscribe(fn),dispose(){stop();window.removeEventListener('personalos:content-presentation',invalidated);lifecycle.dispose();}};
  return api;
 }

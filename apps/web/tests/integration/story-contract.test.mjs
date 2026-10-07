@@ -41,7 +41,7 @@ test('story clock advances through handoff then releases once at home; no extern
  const events=[],returns=[];let acquired=0;const s=createStoryLifecycle({onStart:()=>{acquired++;return true;},onReturn:r=>returns.push(r)});s.subscribe(e=>events.push(e));
  assert.equal(s.getState().phase,'story');assert.equal(acquired,1);
  for(let i=0;i<100;i++)s.advance(.1);assert.equal(s.getState().phase,'handoff');assert(events.some(e=>e.action==='handoff'));
- const before=s.getState().time;s.advance(1000);assert(Math.abs(s.getState().time-before-.1)<1e-9);
+ s.advance(1000);assert.equal(s.getState().time,s.getState().duration);
  for(let i=0;i<40;i++)s.advance(.1);assert.equal(s.getState().phase,'home');assert.deepEqual(returns,['completed']);s.advance(1);assert.deepEqual(returns,['completed']);
 });
 
@@ -57,9 +57,9 @@ test('deep-link, reduced, disabled and content-denied entry settle without borro
  const failed=createStoryLifecycle();failed.fail('context-lost');assert.equal(failed.getState().phase,'home');assert.equal(failed.getState().reason,'context-lost');
 });
 
-function clockFixture(){let id=0,visible=true,need=true,hook=()=>{};const pending=new Map(),samples=[];const clock=createFrameClock({request:fn=>{pending.set(++id,fn);return id;},cancel:id=>pending.delete(id),visible:()=>visible,needsFrame:()=>need,step:(dt,stamp)=>{samples.push({dt,stamp});hook();}});return{clock,pending,samples,setVisible:v=>visible=v,setNeed:v=>need=v,setHook:fn=>hook=fn,frame(stamp){assert.equal(pending.size,1);const [id,fn]=pending.entries().next().value;pending.delete(id);fn(stamp);}};}
-test('single world RAF owner sleeps idle, bounds delta, suspends hidden and resumes without elapsed-time jump',()=>{
- const f=clockFixture();f.clock.wake();f.clock.wake();assert.equal(f.pending.size,1);f.frame(100);assert.equal(f.samples[0].dt,1/60);f.frame(3100);assert.equal(f.samples[1].dt,.05);f.setNeed(false);f.frame(3120);assert.equal(f.pending.size,0);f.setVisible(false);f.clock.wake();assert.equal(f.pending.size,0);f.setVisible(true);f.clock.wake();f.frame(10000);assert.equal(f.samples.at(-1).dt,1/60);f.clock.wake();f.clock.suspend();assert.equal(f.pending.size,0);f.clock.dispose();f.clock.wake();assert.equal(f.pending.size,0);
+function clockFixture(){let id=0,stamp=0,visible=true,need=true,hook=()=>{};const pending=new Map(),samples=[];const clock=createFrameClock({now:()=>stamp,request:fn=>{pending.set(++id,fn);return id;},cancel:id=>pending.delete(id),visible:()=>visible,needsFrame:()=>need,step:(dt,stamp)=>{samples.push({dt,stamp});hook();}});return{clock,pending,samples,setVisible:v=>visible=v,setNow:v=>stamp=v,setNeed:v=>need=v,setHook:fn=>hook=fn,frame(next){stamp=next;assert.equal(pending.size,1);const [id,fn]=pending.entries().next().value;pending.delete(id);fn(stamp);}};}
+test('single world RAF owner sleeps idle and preserves full visible elapsed time',()=>{
+ const f=clockFixture();f.clock.wake();f.clock.wake();assert.equal(f.pending.size,1);f.frame(100);assert.equal(f.samples[0].dt,.1);f.frame(3100);assert.equal(f.samples[1].dt,3);f.setNeed(false);f.frame(3120);assert.equal(f.pending.size,0);f.setVisible(false);f.clock.wake();assert.equal(f.pending.size,0);f.setVisible(true);f.setNow(10000);f.clock.wake();f.frame(10020);assert.equal(f.samples.at(-1).dt,.02);f.clock.wake();f.clock.suspend();assert.equal(f.pending.size,0);f.clock.dispose();f.clock.wake();assert.equal(f.pending.size,0);
 });
 test('subscriber wake during the active frame never schedules duplicate world RAF ownership',()=>{
  const f=clockFixture();f.setHook(()=>f.clock.wake());f.clock.wake();f.frame(100);assert.equal(f.pending.size,1,'wake called by a subscriber must not add a second RAF when tick reschedules');f.clock.dispose();assert.equal(f.pending.size,0);
@@ -67,6 +67,6 @@ test('subscriber wake during the active frame never schedules duplicate world RA
 test('replay holds narrative time at zero throughout rewind before beginning story',()=>{
  const s=createStoryLifecycle({enabled:true,reduced:true});assert.equal(s.replay(),true);assert.equal(s.getState().phase,'rewind');assert.equal(s.getState().time,0);
  for(let i=0;i<8;i++){s.advance(.1);assert.equal(s.getState().phase,'rewind');assert.equal(s.getState().time,0);}
- s.advance(.1);s.advance(.001);assert.equal(s.getState().phase,'story');assert.equal(s.getState().time,0);
- s.advance(.05);assert.equal(s.getState().time,.05);
+ s.advance(.1);assert.equal(s.getState().phase,'story');assert(Math.abs(s.getState().time)<1e-12);
+ s.advance(.05);assert(Math.abs(s.getState().time-.05)<1e-12);
 });

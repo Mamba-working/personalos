@@ -1,19 +1,21 @@
 {
   "product": "PersonalOS",
-  "productVersion": "v0.1.0-alpha.4",
+  "productVersion": "v0.1.0-alpha.7",
   "channel": "alpha",
-  "reviewLabel": "Alpha QA candidate · acceptance pending",
+  "reviewLabel": "Local alpha.7 candidate · visible-weather elapsed correctness",
   "fullUnifiedAcceptance": false,
   "deferredGates": [
     "final-user-signoff",
     "measured-performance",
     "physical-device",
-    "rendered-visual-motion"
+    "rendered-visual-motion",
+    "assembled-weather-motion-review"
   ],
   "limitations": [
-    "Rendered Ball/GPU and complete motion acceptance pending",
-    "Physical-device native keyboard/IME acceptance pending",
-    "Validated measured-performance acceptance pending",
-    "Final unified-product user signoff pending"
+    "Temporal correctness only; alpha.6 weather art and shadow-cache ownership unchanged; no cinematic rain-v6 or Next.js integration",
+    "Source-identical implementation passed bounded native cloud-browser elapsed/phase checks; final versioned runtime smoke remains separate",
+    "SwiftShader observations do not establish physical-device smoothness, renderer FPS or general performance acceptance",
+    "Hidden/resume browser evidence is a diagnostic visibility override, not native OS or physical-device backgrounding",
+    "Physical-device native keyboard/IME and final unified-product user signoff pending"
   ]
 }

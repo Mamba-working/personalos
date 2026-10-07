@@ -1,0 +1,340 @@
+{
+  "schemaVersion": 1,
+  "kind": "local-composite-candidate",
+  "status": "unpublished-acceptance-pending",
+  "productVersion": "v0.1.0-alpha.6",
+  "revision": "static-shadow-cache-r1",
+  "sourcePayloadCommit": "4d625229daf76418bf03555d45173d114626db8d",
+  "publicGitCommit": null,
+  "publicGitTag": null,
+  "deployed": false,
+  "algorithm": "sha256-canonical-path-inventory-v1",
+  "runtimeSHA256": "788f43e664fa3d3ec97b4aaa51cf8a725e7ca8377ec963ddde313e1ae5bbf18e",
+  "runtimeFileCount": 70,
+  "previousCandidate": {
+    "commit": "652d79050449e907380d21ae940dadaf7bbad9f7",
+    "runtimeSHA256": "22e8d391372207d00c6887e523fd1f4e3485b0148410038b462cab6f824b26d8",
+    "inventory": "provenance/candidates/alpha5-world-layers-652d790.json"
+  },
+  "inputs": {
+    "publicAlpha4Commit": "64c36696dcc54ba2fa108437a3be49ac830100ef",
+    "publicReferenceRelationship": "historical source reference; not claimed as local Git ancestry",
+    "localSnapshotCommit": "5772029008e613d737ab40fad1667e1dafdb59d0",
+    "clockCommit": "fef46540fc31fb8bb85b8f987b28348fc6604f11",
+    "clockRuntimeSHA256": "8809e8e64180fc72146a6c89dd21702d818716b07e4e1bebf875300092b17cc3",
+    "weatherPatchSHA256": "a713d0fc83b01c8fe2353bfed22dc70adda00694fe511a765778f8be48d1e3fb",
+    "weatherOnlyPreparedRuntimeSHA256": "b4c08dd4e9363b09f779c055174e72980a5de9da199cc11374d5a79d7b53c7fb",
+    "sceneIntegration": "Three-way semantic merge of alpha.4 base, reviewed clock and V5 native-response hook; no whole-file replacement",
+    "readingRevision": "Intent-time mobile outer reader reservation and cached same-actor assistant shelf, three runtime files only",
+    "readingControlsRevision": "Intent-time 64px native controls viewport, source-plane progress bridge, zero-scroll return clip release and phase-independent caption spacing; app.js/host.css only relative to b917",
+    "worldLayersRevision": "CSS-only semantic-root/paint-layer separation, reading canvas above header with grain below, original normal/chat paint order, mobile clip ownership and fallback visibility; all 67 other runtime files unchanged from controls-r2",
+    "publishedAlpha5Commit": "652d79050449e907380d21ae940dadaf7bbad9f7",
+    "shadowCache": "Exact reviewed renderer-owned service and six owner-hook hunks; no cinematic rain-v6 or Next.js integration"
+  },
+  "historicalProvenance": {
+    "export-policy.json": "0f782049e914df98374f5d06d800e2af54e745002647fd0d90544a07e0e460f5",
+    "import-verification.json": "3699baac108d2feaa992e06db0b2e2c6f1d52869ccaacf9815cb92187d94012a",
+    "releases.json": "d815c0e81e1549e3f83eaaed8f0d54e5079f4fc280b9fc281c07b1639a1abcd7",
+    "runtime-files.json": "a74283e78182bff5fdb16fcb99b6894712c3d2c8840ece76b16429d10de8a7cc",
+    "source-allowlist.json": "c1b20944189a33f5368e254d3bce474118318605d442c52eccb82b546e7de408",
+    "tooling-verification.json": "c7c898a24a93f57094dd2d0f41c6b13dade9a97b88b53c8e9fb56afc5178d764",
+    "vendor-dependencies.json": "0fbe77a79547705a4b50de50505ae86ae305b8341fe2713d8d617a95e8502c83"
+  },
+  "runtimeOnlyAllowlist": [
+    "runtime/release-meta.json",
+    "runtime/world/scene.js",
+    "runtime/world/shadow-cache.js"
+  ],
+  "files": [
+    {
+      "path": "runtime/app.js",
+      "sha256": "fab0a0a0aa1aa60bed5f7411c5de2c05ac581d48f915255616b7a3df558377fa"
+    },
+    {
+      "path": "runtime/chat/chat-fluid-send.js",
+      "sha256": "146db578b5bf2bcc65f9c550d886afcf001dbcbf35725754d4d6e8770aac9070"
+    },
+    {
+      "path": "runtime/chat/chat-mobile-flow-page.js",
+      "sha256": "e517abaa0581952e70ba761b28a91f5dd1db7d91c2dad57931e1bf991c923b18"
+    },
+    {
+      "path": "runtime/chat/chat-mobile-flow.css",
+      "sha256": "017308a010b3d81e95f17e3d04edfc9be30f40129e7a7b9040415fa9b554382d"
+    },
+    {
+      "path": "runtime/chat/chat-page-lock.js",
+      "sha256": "56fe545fedcb40eaf44a223c9adcac3c9a5d4568fc08b3c8986e93a8df3d161a"
+    },
+    {
+      "path": "runtime/chat/chat-reading-flow.js",
+      "sha256": "af10dfb858c18a9782c37429d25443e5275c20afe120693305491408b355a88c"
+    },
+    {
+      "path": "runtime/chat/chat-reading-interior.js",
+      "sha256": "438af1cb681eaaa270958da1344cb835cda91f61348c92e9fc052aaf26b0c24d"
+    },
+    {
+      "path": "runtime/chat/chat-reading.css",
+      "sha256": "10c592e5fca5f010f46c5b56867e11fbdfd2afc7aa8bb9a5348640b3dc321c2b"
+    },
+    {
+      "path": "runtime/chat/chat-turn-scroll.js",
+      "sha256": "21e45675fafc4a559e2973634759491ddad36c29d5fc396424f6e158861808b4"
+    },
+    {
+      "path": "runtime/chat/chat-viewport.js",
+      "sha256": "cf83619e685cc53c9178426808302b129abef089481d9e865ca58651320ff676"
+    },
+    {
+      "path": "runtime/chat/contextual-chat-layout.js",
+      "sha256": "1be4fdc14976c7413462e486a40228bb3e3cf4de1284499e0cbd240f6fc0924a"
+    },
+    {
+      "path": "runtime/chat/contextual-chat.css",
+      "sha256": "91290d400bac1e41b9c5f99d8615c81798fdaf27fe1fa9622928b13efa90df8c"
+    },
+    {
+      "path": "runtime/chat/send-continuity-model.js",
+      "sha256": "9249936343a18205f059211f4482c9cea4ac71e5f45dff3d3eb8c12413a8314e"
+    },
+    {
+      "path": "runtime/chat/send-continuity.js",
+      "sha256": "5155da62da7f65dfe0640a7ac4a0816a9889e0563870242414992c558dbffcaf"
+    },
+    {
+      "path": "runtime/chat/send-path.js",
+      "sha256": "f6921e691f7b6120a0a96104a15ade871f2b1b73fab40c80bd1919bf6be60661"
+    },
+    {
+      "path": "runtime/chat/send-text-layout.js",
+      "sha256": "2052f072eb22f1a20a810d46fb51e336a77b79b2fd868779eed8193f5f79c54a"
+    },
+    {
+      "path": "runtime/chat/vendor/gsap/Flip.min.js",
+      "sha256": "cbe3ca726350f8d230da38a14ce2384e7772e05a45cee6144dd7fe6dde868c2f"
+    },
+    {
+      "path": "runtime/chat/vendor/gsap/NOTICE.txt",
+      "sha256": "37aa1b9e5c1686d3463aa43df13e79d6b2382ca913787ef5cc6e8bb26bc451a7"
+    },
+    {
+      "path": "runtime/chat/vendor/gsap/gsap.min.js",
+      "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb"
+    },
+    {
+      "path": "runtime/chat-contour.js",
+      "sha256": "55ee9896bd4453eace4aa39a40069b48ea91e13b3f479ce30a9ec57d41221d78"
+    },
+    {
+      "path": "runtime/chat-host.css",
+      "sha256": "8c21f0abce05c510a6f9c8055b230b1446f4164b5009492a03c51f9826c7c4bd"
+    },
+    {
+      "path": "runtime/chat-host.js",
+      "sha256": "77f3ddffea46040cf92f77ee00c7ab898f29c52ed86d63e9237909a6c78089e5"
+    },
+    {
+      "path": "runtime/chat-motion.js",
+      "sha256": "f169d72a5284cdbdadffdc1754a049e5226290ceae424aa28a71e0a326df88bc"
+    },
+    {
+      "path": "runtime/comparison-status.js",
+      "sha256": "a689f5c7efa42a45f24dfa2f80243a4d4e86f405c8591afddb7868379b07d6e8"
+    },
+    {
+      "path": "runtime/comparison-visibility.js",
+      "sha256": "43130f52fea59d2e81199f597e6698cf1cf026e02f7a689dad692d5ca01ab341"
+    },
+    {
+      "path": "runtime/content.js",
+      "sha256": "009f5995501d4eaf88b69fa06d81c38c716baa90549dfa1c41e08e6619e787b9"
+    },
+    {
+      "path": "runtime/diagnostics/keyboard-diagnostics.js",
+      "sha256": "ebb1e4747975d41a5e74eabb89d36d93335f385d39d9bf93d3b9fc78955e8819"
+    },
+    {
+      "path": "runtime/feed-compact.css",
+      "sha256": "b0efc719e044614daa7603067ff57b2305ed4bb30af223e04a9180f7144b4358"
+    },
+    {
+      "path": "runtime/feed-layout.js",
+      "sha256": "7dec28dbd52bb640f0158060fed82a9f44d4731e3698066137854a55ff68a2e0"
+    },
+    {
+      "path": "runtime/feed-reflow.js",
+      "sha256": "85d30880b493f861a047390b10132ce631612b274cac0f1bf3a842253ae9584c"
+    },
+    {
+      "path": "runtime/host.css",
+      "sha256": "415b5a285965dfd3046b57569d7aa7180cb63569ec1d258b8c4e8d31c626db03"
+    },
+    {
+      "path": "runtime/host.js",
+      "sha256": "e62a9d373b21a18005a908e91502e66034a8b29b22ae28cd2db5791a6e903a98"
+    },
+    {
+      "path": "runtime/index.html",
+      "sha256": "67a7f0b908b16220b5a8584528a2fb9db2d0f970fff8fb1e7231f3bd4cafb6ce"
+    },
+    {
+      "path": "runtime/material.css",
+      "sha256": "ce64cb786aa537751c52269488ad96a964908f1cc86c224ba991321054b2217c"
+    },
+    {
+      "path": "runtime/modules/menu.css",
+      "sha256": "155de5531b954490d0c19c7c25c88d3f9501225965c9eadc8abfae0aca21fc7f"
+    },
+    {
+      "path": "runtime/modules/menu.js",
+      "sha256": "1ce918555505fe611318c55f100cbba879d1e6c8aaea7029cd80eb5f30d729d1"
+    },
+    {
+      "path": "runtime/modules/mount.js",
+      "sha256": "693f27d090a56f3a925b68ff3f2ace911ae0e77285a653bfabef1fe2f76b7e3a"
+    },
+    {
+      "path": "runtime/modules/weather.css",
+      "sha256": "c0092338b2fb3953678b5f5ae1c5ab101604b986e409d496128091e8cdc33f2b"
+    },
+    {
+      "path": "runtime/modules/weather.js",
+      "sha256": "cad38afb17e2934e33133e805f2973dfed98779777a540aa2c467283492553f3"
+    },
+    {
+      "path": "runtime/palette.css",
+      "sha256": "c4deab976ada8f17bdc9cd9ecc01d1346b0c21a878d3aa6366645fcd48778ef5"
+    },
+    {
+      "path": "runtime/release-meta.json",
+      "sha256": "b299a9872645319c16d195a196645f9bf1d92769e7d183d6bd9baa8c3bf9bcaa"
+    },
+    {
+      "path": "runtime/scene-bridge.js",
+      "sha256": "275b8cb623fa45ea102f8fedfd8ee6f86ced3b8edb6cc7406f5116104eced6c6"
+    },
+    {
+      "path": "runtime/send-comparison.css",
+      "sha256": "837459bf03305288015c20aebbb9af5ab4549db4fe03989c11341d3190e4396a"
+    },
+    {
+      "path": "runtime/send-comparison.html",
+      "sha256": "a3478819c44f3681fbcebd99cf2be394bfb840c6228ed42913fd5b1b7ad864b0"
+    },
+    {
+      "path": "runtime/send-comparison.js",
+      "sha256": "74a355e517d30e2a7febf5e64a04a4fe74c60aca11027ce7f67b4237ffbfbf22"
+    },
+    {
+      "path": "runtime/story/book-story.js",
+      "sha256": "915abaef133d8c8cf974ec9e5ad1faca2f3de7ecc754f91db465841368fa15dd"
+    },
+    {
+      "path": "runtime/story/content-presentation.js",
+      "sha256": "bfd411599ba98ceee92cfaba302a66abade14251d7c1be995438c8426083adc2"
+    },
+    {
+      "path": "runtime/story/frame-clock.js",
+      "sha256": "522abb7185994d2f09a7702cef623bb9014e07c0b5bfabb0175885361768b825"
+    },
+    {
+      "path": "runtime/story/geometry.js",
+      "sha256": "b4983a87eece5b9e8e84773d39b7747e2782c11c43d987162051832348cd58fc"
+    },
+    {
+      "path": "runtime/story/lifecycle.js",
+      "sha256": "ee116e191aeb62391d59f2133cd986195d8a6e077cabd8c0c6e63e2e7d11281c"
+    },
+    {
+      "path": "runtime/story/props.js",
+      "sha256": "8616b030a66656a77e6236569f485d37fb659ed5e5996bad8a1039d8ca7cc0dd"
+    },
+    {
+      "path": "runtime/story/story.css",
+      "sha256": "0c3679abfe9b00343c490d63b7f4ecb4ee574c5bf766684911e56bf1c38117db"
+    },
+    {
+      "path": "runtime/style.css",
+      "sha256": "69afa74e3bc89fc6758c39585ae789345cfdce80efb591ba0829031ad0783a03"
+    },
+    {
+      "path": "runtime/world/scene.js",
+      "sha256": "823a25d68a0e52d0b20f44ef436a99fbaa202d4dfdb1daf6be941d067187de3a"
+    },
+    {
+      "path": "runtime/world/scoped.css",
+      "sha256": "be8e379244be28eee5155b518b8ce8af8f40b1f9e574e1761cdf298c09fd1c01"
+    },
+    {
+      "path": "runtime/world/shadow-cache.js",
+      "sha256": "6482c892a62b81322dc96ab8d47aa3d00084517209a61fa5a3c0579c44fdd99d"
+    },
+    {
+      "path": "runtime/world/style.css",
+      "sha256": "7262149614ee034bf52d7fdcadadba1b162b8e6841975c350e48ab84658b3186"
+    },
+    {
+      "path": "runtime/world/theme.js",
+      "sha256": "d0dbf2ccb0ea7dab7ec6a4383eb24ce8d66b8d53aa71f1876cd30a9e8aeba489"
+    },
+    {
+      "path": "runtime/world/theme.json",
+      "sha256": "17b25dd7088e1866a849e2397a08ef23ebe0ed96c548a44d72f059902d655a0e"
+    },
+    {
+      "path": "runtime/world/vendor/aora/ATTRIBUTION.txt",
+      "sha256": "5df50aa8fcee9acb4e80f9baab7d154106120d36e3e9fbd2bed0146cb8db35be"
+    },
+    {
+      "path": "runtime/world/vendor/aora/LICENSE",
+      "sha256": "cd25a8e1b00d05b2bb29d3a626599526db960b5bf3ba94fd726565b9bec7f8ea"
+    },
+    {
+      "path": "runtime/world/vendor/aora/NOTICE.md",
+      "sha256": "549d6607c9dd13c9add2fa5faeccca488bd78cf30cac2b0b4d3dbcd8b45b721d"
+    },
+    {
+      "path": "runtime/world/vendor/aora/SOURCE-MANIFEST.json",
+      "sha256": "1def92868ff495d9098778a7a53532b85a288c1e19de27e8bb8780ecefde1d49"
+    },
+    {
+      "path": "runtime/world/vendor/aora/rings.js",
+      "sha256": "7fd196046650b8273d87c9b85a899554d90f35c62d676eea1c681630e721ec20"
+    },
+    {
+      "path": "runtime/world/vendor/three/LICENSE",
+      "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+    },
+    {
+      "path": "runtime/world/vendor/three/RoomEnvironment.js",
+      "sha256": "c20f0b4677f6128a138d7152b85cbef9091f4f45cdfa05adca04d40c1697c7ae"
+    },
+    {
+      "path": "runtime/world/vendor/three/three.core.js",
+      "sha256": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20"
+    },
+    {
+      "path": "runtime/world/vendor/three/three.module.js",
+      "sha256": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a"
+    },
+    {
+      "path": "runtime/world/world-adapter.js",
+      "sha256": "57c1a391b0be7c237eba1711a1fae77fec4c32533e8e518434af6b7f5704730e"
+    },
+    {
+      "path": "runtime/world-availability.js",
+      "sha256": "a802daffb2300ae96826e0d60d718ca95d767b816876aca951f4d7479fe99b0d"
+    }
+  ],
+  "evidencePolicy": {
+    "priorSourceObservation": "provenance/observations/shadow-cache-source-observation.json",
+    "currentResults": "Exact-commit alpha.6 source verification is recorded separately; no fresh alpha.6 browser/device acceptance is implied",
+    "deferred": [
+      "assembled-alpha6-browser-smoke",
+      "physical-device-keyboard-IME",
+      "validated-device-performance",
+      "final-user-signoff"
+    ]
+  }
+}

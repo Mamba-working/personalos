@@ -2,7 +2,7 @@
 
 ## Automated import checks
 
-npm run check verifies all imported runtime paths and SHA-256 digests, JavaScript syntax and public-file credential/private-path/conversation-reference heuristics. The pattern scan is not a complete secret/security audit.
+npm run check verifies the active candidate runtime paths and SHA-256 digests while retaining the original imported records, JavaScript syntax and public-file credential/private-path/conversation-reference heuristics. The pattern scan is not a complete secret/security audit.
 
 npm test runs:
 
@@ -44,3 +44,25 @@ provenance/vendor-dependencies.json records the four generated destinations, exa
 ## Alpha.4 incremental source gates
 
 The alpha.4 candidate imports the exact frozen weather projection and release metadata, the new solar consumer/transition/policy tests, and a byte-pinned alpha.3 negative control. The source content-history test now also waits for actual popstate; the existing public compact-feed popstate repair and concurrency-four runner are preserved. The public provenance guard and source/HTTP aggregates verify this portable snapshot without copying the private release validator, private evidence registry or operational source-checkpoint verifier. These gates remain source/model/DOM checks and do not establish new browser, GPU, device, performance or user acceptance.
+
+## Alpha.5 total assembly
+
+The normal web runner now also includes portable weather-v5 consumer tests, byte-pinned V2/V3 negative controls, 2,502 alpha.4 model parity snapshots and actual CPU scene integration tests for the weather-response/clock ownership seam. This port changes only module/resource paths plus the exact expected bounded effect call in the scene-order assertion. No original behavioral assertion is removed. It retains the existing concurrency-four and 60-second aggregate ceiling.
+
+The new test:provenance suite checks runtime mutation/missing/extra/symlink cases, inventory ordering/duplication/digest, all product-version surfaces, candidate disclosure, deferred acceptance gates, coordinated historical-hash mutation and source-payload Git mapping. On a shallow checkout without the mapped source object, only that Git-object cross-check is explicitly skipped; portable byte checks still run. Full local verification uses the available object.
+
+Earlier clock browser observations and V5 preview screenshots belong to their original sources, not this assembled alpha.5. Fresh combined browser, dynamic GPU appearance, real devices and measured performance remain deferred. No browser gate or threshold is weakened by this source integration.
+
+## Alpha.6 static shadow cache
+
+The focused source suite exercises dirty input transitions, VSM receive-only participation, uploaded geometry, non-participant eyes, custom-path fallback, visibility resume, resize, context-service replacement, book motion, stable identities and disposal. The full web suite retains the historical world-layer SHA assertion through an explicit alpha.5 snapshot reader; a separate alpha.6 boundary check permits only the reviewed service, six exact scene hooks and release metadata. Root provenance negative controls reject source/snapshot/hunk/allowlist changes even after candidate-side inventory re-signing. No historical assertion or behavioral threshold is removed.
+
+The six prior native-canvas pixel pairs and one short ordered software-rendering timing pair are tied to the exact observed scene/service hashes in provenance/observations/shadow-cache-source-observation.json. They are not fresh alpha.6 browser or device acceptance. See ALPHA6_CANDIDATE.md for the remaining browser recheck scope.
+
+## Alpha.7 visible-weather elapsed correctness
+
+The normal web aggregate adds all 19 weather-elapsed tests. They retain an independently pinned alpha.6 negative, exact no-metadata fallback snapshots, equal-time trajectories at 16/100/800 ms and long frames, native input epochs, hidden/quiet/pause policies, auto-sun cap, actual CPU scene identity and shadow-owner order.
+
+The original alpha.6 provenance suite and four historical byte assertions retain their original expectations through independently pinned historical inputs. They do not run old byte expectations on new product source. The separate alpha.7 boundary enforces exact weather/scene hunks, metadata, unchanged shadow service and an exact public-source path list; mutation tests include candidate-side inventory re-signing. Local Git payload mapping is verified separately before publication.
+
+This repository serves static JavaScript directly: its build preparation is the existing exact-vendor reconstruction, syntax/provenance checks and real static HTTP tests. No new transpiler or build dependency is introduced. Source tests remain distinct from the source-identical bounded cloud-browser observation and later final-runtime/device acceptance.

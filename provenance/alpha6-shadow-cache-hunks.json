@@ -1,0 +1,30 @@
+{
+  "baselineSceneSHA256": "07239468840def699c9111bd9e6879df313a48dad5ef791dea4f01a9ac71aad3",
+  "candidateSceneSHA256": "823a25d68a0e52d0b20f44ef436a99fbaa202d4dfdb1daf6be941d067187de3a",
+  "operations": [
+    {
+      "before": "import {remapProjectionMatrix} from '../story/geometry.js';\n",
+      "after": "import {remapProjectionMatrix} from '../story/geometry.js';\nimport {createShadowCache} from './shadow-cache.js';\n"
+    },
+    {
+      "before": "const camera=new THREE.PerspectiveCamera(34,innerWidth/innerHeight,.1,80);\n",
+      "after": "const camera=new THREE.PerspectiveCamera(34,innerWidth/innerHeight,.1,80);\nconst shadowCache=createShadowCache({THREE,renderer,scene,camera});\n"
+    },
+    {
+      "before": "window.addEventListener('resize',()=>{portrait=innerWidth/innerHeight<.85;layoutTarget=portrait?1:0;renderer.setSize(innerWidth,innerHeight);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();resizePending=true;requestWorldFrame();});\ndocument.addEventListener('visibilitychange',()=>{last=performance.now();if(document.hidden)clock?.suspend();else requestWorldFrame();});\n",
+      "after": "window.addEventListener('resize',()=>{portrait=innerWidth/innerHeight<.85;layoutTarget=portrait?1:0;renderer.setSize(innerWidth,innerHeight);shadowCache.invalidate();camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();resizePending=true;requestWorldFrame();});\ndocument.addEventListener('visibilitychange',()=>{last=performance.now();if(document.hidden)clock?.suspend();else{shadowCache.invalidate();requestWorldFrame();}});\n"
+    },
+    {
+      "before": "renderer.domElement.addEventListener('webglcontextrestored',()=>{try{env.dispose();env=buildEnvironment();scene.environment=env.texture;render(0);paused=false;last=performance.now();requestWorldFrame();announceWorldAvailability('ready','webgl-context-restored');}catch(error){paused=true;announceWorldAvailability('failed','renderer-recovery');console.error(error);}});\n",
+      "after": "renderer.domElement.addEventListener('webglcontextrestored',()=>{try{env.dispose();env=buildEnvironment();scene.environment=env.texture;shadowCache.invalidate();render(0);paused=false;last=performance.now();requestWorldFrame();announceWorldAvailability('ready','webgl-context-restored');}catch(error){paused=true;announceWorldAvailability('failed','renderer-recovery');console.error(error);}});\n"
+    },
+    {
+      "before": " for(const effect of effects.values())effect.update(Math.min(.05,dt),effectState());\n",
+      "after": " for(const effect of effects.values())effect.update(Math.min(.05,dt),effectState());\n shadowCache.prepare();\n"
+    },
+    {
+      "before": " dispose(){worldDisposed=true;clock?.dispose();bookStory?.dispose();for(const effect of effects.values())effect.dispose?.();effects.clear();storyProps.dispose();worldAPI.dispose();paused=true;scene.traverse(o=>{o.geometry?.dispose();if(o.material){for(const m of Array.isArray(o.material)?o.material:[o.material])m.dispose()}});noise.dispose();shadowTex.dispose();env.dispose();renderer.dispose();}\n",
+      "after": " dispose(){worldDisposed=true;clock?.dispose();bookStory?.dispose();for(const effect of effects.values())effect.dispose?.();effects.clear();storyProps.dispose();worldAPI.dispose();shadowCache.dispose();paused=true;scene.traverse(o=>{o.geometry?.dispose();if(o.material){for(const m of Array.isArray(o.material)?o.material:[o.material])m.dispose()}});noise.dispose();shadowTex.dispose();env.dispose();renderer.dispose();}\n"
+    }
+  ]
+}

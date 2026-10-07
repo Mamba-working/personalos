@@ -13,9 +13,10 @@ try {
   assert.equal(process.platform, 'linux', 'Linux hosted runner required');
   assert.notEqual(process.getuid(), 0, 'Browser must run as the unprivileged runner');
   assert.equal(process.env.CHROME_DEVEL_SANDBOX, helper, 'Only the stock helper path is allowed');
-  for (const name of ['/', '/opt', '/opt/google', '/opt/google/chrome', helper]) {
-    const stat = lstatSync(name);
-    evidence.pathMetadata.push({path: name, uid: stat.uid, gid: stat.gid, mode: (stat.mode & 0o7777).toString(8)});
+  const paths = ['/', '/opt', '/opt/google', '/opt/google/chrome', helper].map(name => ({name, stat: lstatSync(name)}));
+  evidence.pathMetadata = paths.map(({name, stat}) => ({path: name, uid: stat.uid, gid: stat.gid, mode: (stat.mode & 0o7777).toString(8)}));
+  console.log('SANDBOX_PATH_METADATA: '+JSON.stringify(evidence.pathMetadata));
+  for (const {name, stat} of paths) {
     assert.equal(stat.uid, 0, name+': helper and parents must be root-owned');
     assert.equal(stat.gid, 0, name+': helper and parents must be root-group-owned');
     assert.equal(stat.mode & 0o022, 0, name+': helper and parents must not be group/world writable');

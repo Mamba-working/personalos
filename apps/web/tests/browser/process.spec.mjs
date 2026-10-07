@@ -103,7 +103,9 @@ test('local demo chat retains draft/send and restores close underlay and scroll'
   await page.keyboard.press('Enter');
   await interruptGeneration;
   await expect(page.locator('.message.user')).toHaveText(draft);
-  await expect(input).toHaveValue('');
+  // Close immediately makes the dialog inert and then hidden. Inspect the
+  // same retained textarea's state; all typing still uses the visible role.
+  await expect(page.locator('#question')).toHaveValue('');
   await expect(page.locator('.message.assistant .stream-text')).not.toBeEmpty();
   expect(await page.evaluate(() => window.__browserGuard.events.some(event => event.name==='real-click' && event.target==='ai-close' && event.generating))).toBe(true);
   await expect.poll(() => page.evaluate(() => window.personalOSChat.getState().phase)).toBe('closed');
@@ -118,6 +120,7 @@ test('local demo chat retains draft/send and restores close underlay and scroll'
   }
   await (await chatEntry(page)).click();
   await expect.poll(() => page.evaluate(() => window.personalOSChat.getState().phase)).toBe('open');
+  await expect(input).toHaveValue('');
   await expect(page.locator('.message.user')).toHaveText(draft);
   await page.goBack();
   await expect.poll(() => page.evaluate(() => window.personalOSChat.getState().phase)).toBe('closed');

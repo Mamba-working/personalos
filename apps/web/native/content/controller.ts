@@ -17,7 +17,7 @@ export function mountContent(root: HTMLElement, manifest: readonly ManifestRecor
   const cleanups: (() => void)[] = [];
   const originalArticles = [...root.querySelectorAll<HTMLElement>('article.card')];
   const entries = new Map<string, Entry>();
-  let active: Active | null = null, frame = 0, last = 0, disposed = false, category: Category = 'all', phase = 'preview';
+  let active: Active | null = null, frame = 0, last: number | null = null, motionEpoch = 0, disposed = false, category: Category = 'all', phase = 'preview';
   let pendingRoute: { route: RouteState; position?: Position } | null = null;
   const trace: { action: string; id: string | null; phase: string; feed: number; reader: number }[] = [];
   function listen(target: EventTarget, type: string, fn: EventListener) { target.addEventListener(type, fn); cleanups.push(() => target.removeEventListener(type, fn)); }
@@ -63,24 +63,43 @@ export function mountContent(root: HTMLElement, manifest: readonly ManifestRecor
   function home(a: Active): Pose { return {...a.target,...rect(a.slot),radius:20,ix:0,iy:0,scale:Math.max(1,rect(a.slot).w-2)/a.lockedWidth,progress:0}; }
   function configure(a: Active) { a.identity.style.width=`${a.lockedWidth}px`; a.article.style.setProperty('--identity-width',`${a.lockedWidth}px`); a.article.style.setProperty('--body-width',`${a.bodyWidth}px`); canvas.style.width=`${a.target.w}px`; canvas.style.height=`${Math.max(a.previewHeight,a.target.by+a.body.scrollHeight+64)}px`; }
   function paint() { const a=active;if(!a)return;const p=a.pose;Object.assign(shell.style,{transform:`translate3d(${p.x}px,${p.y}px,0)`,width:`${p.w}px`,height:`${p.h}px`,borderRadius:`${p.radius}px`});a.identity.style.transform=`translate3d(${p.ix}px,${p.iy}px,0) scale(${p.scale})`;a.body.style.transform=`translate3d(${p.bx}px,${p.by}px,0)`;get('.backdrop').style.opacity=String(Math.min(.58,Math.max(0,p.progress)*.58));emit('progress'); }
-  function schedule() { if(!disposed&&!frame&&active&&!active.completed) frame=env.requestAnimationFrame(tick); }
-  function tick(now: number) { frame=0;const dt=Math.min(.032,last?(now-last)/1000:1/60);last=now;advance(dt);schedule(); }
+  function schedule() {
+    if(!disposed&&!frame&&active&&!active.completed&&!doc.hidden) {
+      if(last===null)last=env.performance.now();
+      frame=env.requestAnimationFrame(tick);
+    }
+  }
+  function setTarget(a: Active, target: Pose) {
+    a.target=target;a.completed=false;phase=target.progress===1?'intermediate':'return';
+    motionEpoch++;last=env.performance.now();schedule();
+  }
+  function tick(now: number) {
+    frame=0;
+    if(disposed||doc.hidden||!active||active.completed){last=null;return;}
+    // Closed-form damping consumes all visible elapsed time. A callback whose
+    // timestamp predates a newer intent must not move that intent's clock back.
+    const dt=last!==null&&Number.isFinite(now)?Math.max(0,(now-last)/1000):0;
+    if(Number.isFinite(now))last=last===null?now:Math.max(last,now);
+    advance(dt);schedule();
+  }
   function advance(dt: number) {
-    const a=active;if(!a||a.completed||disposed)return;let settled=true;
+    const a=active;if(!a||a.completed||disposed||doc.hidden)return;const epoch=motionEpoch;let settled=true;
+    dt=Number.isFinite(dt)?Math.max(0,dt):0;
     if(a.target.progress===0) a.target=home(a);
-    for(const key of keys){const target=a.target[key];if(reduced.matches){a.pose[key]=target;a.velocity[key]=0;continue;}const omega=key==='progress'?17:19,v=a.velocity[key],x=a.pose[key]-target,c=v+omega*x,decay=Math.exp(-omega*dt);a.pose[key]=target+(x+c*dt)*decay;a.velocity[key]=(v-omega*c*dt)*decay;if(Math.abs(a.pose[key]-target)>.08||Math.abs(a.velocity[key])>.3)settled=false;}
-    paint();if(settled){env.cancelAnimationFrame(frame);frame=0;a.pose={...a.target};paint();if(a.target.progress===1){a.completed=true;phase='detail';a.body.inert=false;a.body.setAttribute('aria-hidden','false');reader.classList.add('reading');reader.scrollTop=a.restoreReader;emit('detail-ready');}else finishClose();}
+    for(const key of keys){const target=a.target[key];if(reduced.matches){a.pose[key]=target;a.velocity[key]=0;continue;}const omega=key==='progress'?17:19,v=a.velocity[key],x=a.pose[key]-target,c=v+omega*x,decay=Math.exp(-omega*dt);a.pose[key]=decay===0?target:target+(x+c*dt)*decay;a.velocity[key]=decay===0?0:(v-omega*c*dt)*decay;if(Math.abs(a.pose[key]-target)>.08||Math.abs(a.velocity[key])>.3)settled=false;}
+    paint();if(active!==a||motionEpoch!==epoch||disposed)return;
+    if(settled){env.cancelAnimationFrame(frame);frame=0;last=null;a.pose={...a.target};for(const key of keys)a.velocity[key]=0;paint();if(active!==a||motionEpoch!==epoch||disposed)return;if(a.target.progress===1){a.completed=true;phase='detail';a.body.inert=false;a.body.setAttribute('aria-hidden','false');reader.classList.add('reading');reader.scrollTop=a.restoreReader;emit('detail-ready');}else finishClose();}
   }
   function openNative(entry: Entry, position?: Position) {
-    if(active?.record.id===entry.record.id){active.target=destination(active);active.completed=false;phase='intermediate';active.restoreReader=position?.reader ?? active.restoreReader;schedule();return;}
+    if(active?.record.id===entry.record.id){active.restoreReader=position?.reader ?? active.restoreReader;if(active.target.progress===1){if(active.completed&&position)reader.scrollTop=position.reader;return;}setTarget(active,destination(active));return;}
     const source=rect(entry.slot), lockedWidth=entry.identity.offsetWidth||Math.max(1,source.w-2);
     const pose: Pose={...source,radius:20,ix:0,iy:0,bx:0,by:0,scale:1,progress:0};
     active={...entry,lockedWidth,bodyWidth:0,originFocus:doc.activeElement,sourceOffset:position?.feed??scroll.scrollTop,pose,target:{...pose},velocity:Object.fromEntries(keys.map(key=>[key,0])) as Pose,completed:false,restoreReader:position?.reader??0};
     const a=active;a.target=destination(a);a.pose.bx=a.target.bx;a.pose.by=a.target.by;
     canvas.append(a.article);stage.hidden=false;feed.inert=true;shell.setAttribute('aria-labelledby',`title-${a.record.id}`);shell.style.background=env.getComputedStyle(a.article).backgroundColor;
-    configure(a);reader.scrollTop=0;reader.classList.remove('reading');phase='intermediate';close.focus({preventScroll:true});paint();emit('select');last=0;schedule();
+    configure(a);reader.scrollTop=0;reader.classList.remove('reading');setTarget(a,a.target);close.focus({preventScroll:true});paint();emit('select');
   }
-  function beginClose() { const a=active;if(!a)return;if(reader.scrollTop){a.restoreReader=reader.scrollTop;a.pose.iy-=reader.scrollTop;a.pose.by-=reader.scrollTop;}reader.classList.remove('reading');reader.scrollTop=0;a.body.inert=true;a.body.setAttribute('aria-hidden','true');a.target=home(a);a.completed=false;phase='return';emit('cancel-return');last=0;schedule(); }
+  function beginClose() { const a=active;if(!a||a.target.progress===0)return;if(reader.scrollTop){a.restoreReader=reader.scrollTop;a.pose.iy-=reader.scrollTop;a.pose.by-=reader.scrollTop;}reader.classList.remove('reading');reader.scrollTop=0;a.body.inert=true;a.body.setAttribute('aria-hidden','true');setTarget(a,home(a));emit('cancel-return'); }
   function restore(a: Active) { a.slot.append(a.article);a.identity.style.width='';a.identity.style.transform='';a.body.style.transform='';a.article.style.removeProperty('--identity-width');a.article.style.removeProperty('--body-width');a.body.inert=true;a.body.setAttribute('aria-hidden','true'); }
   function finishClose() { const a=active;if(!a)return;restore(a);stage.hidden=true;feed.inert=false;canvas.style.height='';active=null;phase='preview';scroll.scrollTop=a.sourceOffset;a.button.focus({preventScroll:true});emit('returned');if(pendingRoute){const pending=pendingRoute;pendingRoute=null;apply(pending.route,pending.position);} }
   const navigation=createNavigationAuthority(env,manifest,()=>({feed:scroll.scrollTop,reader:reader.scrollTop}));
@@ -99,7 +118,10 @@ export function mountContent(root: HTMLElement, manifest: readonly ManifestRecor
   listen(close,'click',event=>{event.preventDefault();navigation.close();});listen(get('.backdrop'),'click',()=>navigation.close());
   listen(doc,'keydown',event=>{const key=event as KeyboardEvent;if(!active)return;if(key.key==='Escape'){key.preventDefault();navigation.close();}if(key.key==='Tab'){const focusables=[close,...active.body.querySelectorAll<HTMLElement>('button,a')].filter(node=>!node.closest('[inert]'));const i=focusables.indexOf(doc.activeElement as HTMLElement);if((key.shiftKey&&i<=0)||(!key.shiftKey&&i===focusables.length-1)){key.preventDefault();focusables[key.shiftKey?focusables.length-1:0].focus({preventScroll:true});}}});
   listen(root,'click',event=>{const button=(event.target as HTMLElement).closest<HTMLElement>('[data-damping]');if(button)button.closest('.spring-demo')!.querySelector('[data-readout]')!.textContent=`ζ = ${Number(button.dataset.damping).toFixed(2)}`;});
-  listen(env,'resize',()=>{arrange();if(active){const closing=active.target.progress===0;const goal=destination(active);active.target=goal;configure(active);if(closing)active.target=home(active);active.completed=false;schedule();}});
+  listen(env,'resize',()=>{arrange();if(active){const closing=active.target.progress===0;const goal=destination(active);active.target=goal;configure(active);setTarget(active,closing?home(active):goal);}});
+  // Pause at the last displayed state. Resuming starts a fresh visible epoch,
+  // rather than consuming the hidden gap as one giant animation frame.
+  listen(doc,'visibilitychange',()=>{env.cancelAnimationFrame(frame);frame=0;last=null;if(!doc.hidden)schedule();});
   listen(reduced,'change',()=>{if(active&&reduced.matches)advance(1);});
   const snapshot=()=>({phase,category,contentId:active?.record.id??null,articleCount:root.querySelectorAll('article.card').length,retained:originalArticles.every(node=>root.contains(node)),feedOffset:scroll.scrollTop,readerOffset:reader.scrollTop,framePending:!!frame,listeners:cleanups.length,navigation:navigation.diagnostics(),trace:[...trace]});
   const api={select:(id:string)=>{navigation.open(id);return Promise.resolve(entries.has(id));},cancel:()=>navigation.close(),setCategory:(value:Category)=>navigation.filter(value),getState:snapshot,subscribe:(callback:(detail:unknown)=>void)=>{const handler=(event:Event)=>callback((event as CustomEvent).detail);env.addEventListener('personalos:content-transition',handler);return()=>env.removeEventListener('personalos:content-transition',handler);},presentation:{release:()=>false,getState:()=>({leased:false}),ready:()=>Promise.resolve(false)}};

@@ -4,6 +4,8 @@
 
 This is an isolated, incomplete migration proof synchronized by a real Git rebase onto public main `64c36696dcc54ba2fa108437a3be49ac830100ef` (alpha.4). It is not a deployment, replacement release, visual acceptance, or permission to merge. The original alpha.3 proof `befed444b44d3c02c2d60affcc1740fa77468254` is preserved as local checkpoint `checkpoint/next-ssr-alpha3-befed444`. Alpha.4 solar weather, release metadata, contracts and provenance are preserved exactly from main.
 
+The subsequent production-browser review found native-history reload and sparse-frame elapsed-time failures. Their bounded correction and remaining acceptance limits are recorded in [Next native lifecycle correction](NEXT_NATIVE_LIFECYCLE_FIX.md). The original first-slice results below remain historical evidence at their stated scope.
+
 The original 69 runtime files, their accepted-baseline fixtures, all existing 227 web tests, API, contracts, and alpha.4 provenance remain unchanged. The existing runtime digest is still `7dc1d4eb903df03745d36b8424041978f6871b414a7b970d5caffed48fa8f41e`. The original app is still available with the root `npm run dev` command on port 4173. The Next candidate uses port 4183.
 
 ## Run

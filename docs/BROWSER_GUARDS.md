@@ -1,11 +1,45 @@
-# Browser process guards (stock Chrome candidate)
+# Browser process guards (alpha7 stock Chrome stack)
 
-This additive, test-only candidate starts at public main commit
-`64c36696dcc54ba2fa108437a3be49ac830100ef`. The existing CI workflow, original
-source/DOM suites, HTTP API/static tests, contracts, runtime and provenance are
+This separate test-only stack starts at confirmed alpha7 commit
+`15a5967b775dec5e1224c224a5e36f07ddbbb76b` on
+`feat/alpha5-weather-clock-reader`. The alpha7 runtime Git subtree remains
+exactly `8a6163d69c32606950daea961cc07081d6cd068c`. Existing source/API CI,
+source/DOM suites, contracts, runtime, dependency pins and provenance are
 unchanged. The Next migration is outside this candidate.
 
-## Current stock Chrome validation status: review-only draft
+## Current alpha7 validation status: exact-head CI pending, review-only draft
+
+This branch applies only the approved browser-guard deltas from commits
+`b7609ea`, `ea7d9b6`, `342e8e4` and `a7015a5` onto alpha7. It excludes PR2's
+sandbox-helper experiment. The alpha4 PR5 failures remain preserved and cannot
+be overwritten by results on this different product baseline.
+
+Alpha7 consumes actual active-visible elapsed time. A slow navigation can
+legitimately finish the 12.7-second autoplay intro before its Promise resolves.
+The separate fresh-entry smoke observes public enabled/active autoplay state
+and actual presented frame progress before any replay. Alpha7 starts autoplay
+inside the lifecycle constructor before its event subscriber is installed, so
+that initial state is labeled as an observation, never a fabricated started
+event. Home state alone cannot satisfy entry coverage. Actual renderer pixels,
+positive calls/triangles and persistent actor/canvas evidence remain required.
+
+The replay flow uses the existing visible public `#host-replay` control, the actual native
+click and actual replay started event, then waits for presented enabled/active
+progress on the same actor/canvas. It activates visible Skip before expensive
+screenshots can outlast the finite intro, and subsequently captures nonblank
+isolated canvas evidence, home UI and restored/scrolled dock UI. Recorded story
+phase distinguishes observed playback from the later image capture phase.
+The internal `#world-replay` transport is hidden by the unchanged host CSS; the test never acts on that hidden control. The host's own public Replay flow remains in charge of return/layout/playback.
+There are no seek/step hooks, manual render calls, reduced-motion forcing,
+paused clocks, hidden-control forcing, retries, conditional skips or weakened
+criteria. State waits remain 30 seconds and each flow remains 180 seconds.
+
+Keep the PR stacked against the alpha7 branch and in draft. Source/API checks,
+negative controls, both viewport DOM flows, fresh-entry smoke and replay render
+flow must all complete at the exact published head. No merge, deployment,
+hardware GPU, iPhone/IME, FPS or final visual acceptance follows from this run.
+
+## Historical stock Chrome and alpha4 evidence
 
 This is a separate branded-Chrome candidate. Historical Chromium 141 observations below remain historical and do not certify stock Chrome. Draft PR #2 preserves the pinned-Chromium/helper investigation: its hosted helper was actually root:root mode 0777, with no setuid bit. This branch changes the browser baseline explicitly to the runner's already-installed official Google Chrome through Playwright channel `chrome`, retains Playwright 1.56.1 and all original product/negative-control criteria, and does not modify OS security or permissions.
 
@@ -151,4 +185,5 @@ be merged or described as accepted solely because CI is green.
 `npm --prefix apps/web/tests/browser run test:timing` measures the same native first-card open/Escape-close flow. Repeat with `PERSONALOS_LIGHTWEIGHT_GUARD=1` to disable the frame collector, trace, video and screenshots while retaining minimal phase-event timestamps and environment/wall-time JSON. Hold the same cooperative heavy lock around each run. This is a diagnostic comparison, excluded from CI guard selection; host load is recorded and unrelated host work is uncontrolled. Semantic timeouts remain bounded, and no performance threshold or hardware/iPhone conclusion is evaluated. Preserve >8-second observations as environment/instrumentation timing signals even when later semantic completion is observed.
 
 Canvas proof isolation changes paint only: visibility, backgrounds, shadow paint and border/outline color. It preserves border widths, generated pseudo-element layout and all source DOM layout. A same-JavaScript-turn before/during/after comparison covers root/body, world stage/canvas, app/header/content/feed and Ball hit geometry; any BCR change over 0.01 CSS px fails capture before pixel evaluation. The geometry proof is retained beside isolated and normal UI images.
+
 

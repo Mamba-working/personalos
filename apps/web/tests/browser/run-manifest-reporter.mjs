@@ -24,7 +24,10 @@ export default class RunManifest {
     mkdirSync(output, {recursive: true});
     this.manifest = {
       schemaVersion: 1,
-      baselineCommit: '64c36696dcc54ba2fa108437a3be49ac830100ef',
+      baselineCommit: '15a5967b775dec5e1224c224a5e36f07ddbbb76b',
+      baselineRuntimeGitTree: '8a6163d69c32606950daea961cc07081d6cd068c',
+      baselineCanonicalRuntimeSHA256: '64922db578b6ab8fb8f40250c9156e957a02e386f56803625f5ebc19389072ad',
+      baselineRuntimeFileCount: 70,
       checkoutCommit: execFileSync('git', ['rev-parse', 'HEAD'], {cwd: root, encoding: 'utf8'}).trim(),
       checkoutDirty: !!execFileSync('git', ['status', '--porcelain'], {cwd: root, encoding: 'utf8'}).trim(),
       startedAt: new Date().toISOString(),
@@ -47,7 +50,7 @@ export default class RunManifest {
     const artifacts = [];
     for (const attachment of result.attachments) {
       if (!['application/json','image/png'].includes(attachment.contentType)) continue;
-      if (!['process-timeline','render-availability','0-intro-isolated-canvas','renderer-observation','1-home-ui','2-restored-scroll-dock-ui','final-dock-observation','blank-canvas-proof','blank-canvas-fixture','canvas-layout-proof','timing-comparison-observation'].includes(attachment.name)) continue;
+      if (!['process-timeline','render-availability','0-intro-isolated-canvas','0-replay-isolated-canvas','renderer-observation','1-home-ui','2-restored-scroll-dock-ui','final-dock-observation','blank-canvas-proof','blank-canvas-fixture','canvas-layout-proof','timing-comparison-observation','entry-render-availability','entry-isolated-canvas','entry-canvas-layout-proof','entry-renderer-proof','fresh-entry-intro-evidence','replay-intro-evidence'].includes(attachment.name)) continue;
       const suffix = attachment.contentType === 'image/png' ? '.png' : '.json';
       const destination = path.join(artifactDir,attachment.name+suffix);
       try {
@@ -76,3 +79,4 @@ export default class RunManifest {
     writeFileSync(path.join(output, 'run-manifest.json'), JSON.stringify(this.manifest, null, 2)+'\n');
   }
 }
+

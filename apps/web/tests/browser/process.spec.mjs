@@ -1,5 +1,6 @@
 import {test, expect, enterFeed, expectPreview, chatEntry} from './guards.fixture.mjs';
 import {requireFeedColumns, requireMenuContained} from './guard-model.mjs';
+import {captureSettledScroll, readDocumentScroll} from './scroll-baseline.mjs';
 
 const sample = page => page.evaluate(() => window.__browserGuard.sample());
 const waitMenu = (page, phase) => expect(page.locator('.pos-menu')).toHaveAttribute('data-state', phase);
@@ -78,8 +79,9 @@ test('card uses native reader scroll, keeps node identity and handles close/back
 test('local demo chat retains draft/send and restores close underlay and scroll', async ({page}) => {
   await enterFeed(page);
   await page.locator('#feed .open-card').first().scrollIntoViewIfNeeded();
-  const initial = await sample(page);
   let entry = await chatEntry(page);
+  await entry.scrollIntoViewIfNeeded();
+  const initial = await captureSettledScroll(page);
   await entry.click();
   await expect.poll(() => page.evaluate(() => window.personalOSChat.getState().phase)).toBe('open');
   const input = page.getByRole('textbox', {name: '聊天问题'});
@@ -90,7 +92,7 @@ test('local demo chat retains draft/send and restores close underlay and scroll'
   await page.keyboard.press('Escape');
   await expect.poll(() => page.evaluate(() => window.personalOSChat.getState().phase)).toBe('closed');
   await expect(page.locator('#ai-canvas')).toBeHidden();
-  expect(Math.abs((await sample(page)).document.scrollTop-initial.document.scrollTop)).toBeLessThanOrEqual(2);
+  expect(Math.abs((await readDocumentScroll(page))-initial.scrollTop)).toBeLessThanOrEqual(2);
   entry = await chatEntry(page);
   await entry.press('Enter');
   await expect.poll(() => page.evaluate(() => window.personalOSChat.getState().phase)).toBe('open');
@@ -107,10 +109,10 @@ test('local demo chat retains draft/send and restores close underlay and scroll'
   await expect.poll(() => page.evaluate(() => window.personalOSChat.getState().phase)).toBe('closed');
   await expect(page.locator('#ai-canvas')).toBeHidden();
   await expect(page.locator('.app')).not.toHaveAttribute('inert', '');
-  expect(Math.abs((await sample(page)).document.scrollTop-initial.document.scrollTop)).toBeLessThanOrEqual(2);
+  expect(Math.abs((await readDocumentScroll(page))-initial.scrollTop)).toBeLessThanOrEqual(2);
   const closing = await page.evaluate(t => window.__browserGuard.rows.filter(row => row.t >= t && row.chat?.phase === 'closing'), closeStart);
   expect(closing.length).toBeGreaterThan(0);
-  if (initial.viewport.w <= 650) {
+  if (initial.viewportWidth <= 650) {
     expect(closing.some(row => row.chat.backgroundShown && row.chat.background?.w > 0)).toBe(true);
     expect(closing.filter(row => row.chat.backgroundShown).every(row => row.header?.h > 20)).toBe(true);
   }
@@ -120,3 +122,4 @@ test('local demo chat retains draft/send and restores close underlay and scroll'
   await page.goBack();
   await expect.poll(() => page.evaluate(() => window.personalOSChat.getState().phase)).toBe('closed');
 });
+

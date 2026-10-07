@@ -15,6 +15,43 @@ The final six-case default-instrumented DOM aggregate has not been rerun/certifi
 
 Keep this PR in draft. Product runtime, API/contracts, provenance and the original CI workflow are unchanged. No merge or deployment acceptance follows from this candidate, even if an individual CI job becomes green.
 
+## Hosted Linux sandbox preflight
+
+The first public browser workflow at `b7609ea53013c110ca8871c9f23c0507d6339395`
+failed before any page launched: Ubuntu 24.04.5 reported "No usable sandbox".
+[The failed browser run](https://github.com/Mamba-working/personalos/actions/runs/37525549606)
+does not establish a product-test failure or negative-control detection.
+[The independent source/API workflow](https://github.com/Mamba-working/personalos/actions/runs/37525549581)
+passed for that same candidate.
+
+The browser workflow now sets `CHROME_DEVEL_SANDBOX` to the official Google
+Chrome helper already installed on the hosted image, following
+[Chromium's documented existing-helper route](https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md).
+Before any product or browser negative-control test, a separate preflight
+requires the fixed non-symlink path, root ownership of the helper and its parent
+directories, no group/world-write permissions, existing helper mode 4755,
+installed `google-chrome-stable` package ownership/checksum, and helper API 1.
+The API requirement follows
+[pinned Chromium 141's helper contract](https://github.com/chromium/chromium/blob/141.0.7390.37/sandbox/linux/suid/common/sandbox.h).
+The package checksum checks consistency with the runner's installed metadata,
+not independent authenticity or a complete security audit.
+
+It then launches the unchanged Playwright 1.56.1 Chromium 141.0.7390.37 with
+`chromiumSandbox: true`, no custom arguments and a fresh blank context.
+A command-line check rejects sandbox-disabling flags; the blank-page renderer
+must execute. `sandbox-preflight.json` records this bounded launch separately
+from product tests. Missing, changed or incompatible stock components fail the
+job, without fallback, retries or a relaxed browser/test criterion. The actual
+hosted launch must be verified from the exact candidate's Actions run; neither
+the source change nor local mock validation establishes helper compatibility.
+
+This change does not install/replace the helper, run permission-changing
+commands, change AppArmor/sysctl/OS security settings, add credentials or
+privileged containers, change browser dependencies, or weaken any test oracle
+or threshold. A launch preflight pass alone does not establish WebGL, process
+guards, negative controls, runtime performance or device behavior. Earlier
+observed failures above remain recorded.
+
 ## Reproduce
 
 Use the pinned Node version in `.nvmrc`, then:

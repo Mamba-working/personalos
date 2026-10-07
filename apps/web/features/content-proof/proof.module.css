@@ -1,0 +1,58 @@
+.proof { position: relative; color: #202c2a; padding: 52px 16px 100px; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; }
+.proof [hidden] { display: none !important; }
+.proof a { color: inherit; text-decoration: none; }
+.proof button, .proof input { font: inherit; }
+.proof button, .proof a { -webkit-tap-highlight-color: transparent; }
+.proof button { cursor: pointer; }
+.proof :focus-visible { outline: 2px solid #286a58; outline-offset: 4px; }
+.intro, .feed, .footer { max-width: 760px; margin: 0 auto; }
+.intro { margin-bottom: 36px; }
+.eyebrow { font: 11px/1.6 ui-monospace, monospace; letter-spacing: .14em; color: #55776a; }
+.intro h1 { font-size: clamp(26px, 4vw, 38px); font-weight: 550; letter-spacing: -.04em; margin: 14px 0; }
+.intro > p:not(.eyebrow) { font-size: 14px; line-height: 1.85; color: #5a6862; }
+.versionTools { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 22px; }
+.versionTools a, .versionTools button, .surfaceTools a, .counter button { border: 1px solid #c9d6cf; border-radius: 99px; background: #f9fcf7; padding: 8px 13px; font-size: 12px; line-height: 1.4; white-space: nowrap; }
+.versionTools button, .counter button { transition: transform 120ms ease-out; }
+.versionTools button:active, .counter button:active { transform: scale(.97); }
+.source { min-height: 24px; }
+.feed { display: grid; gap: 24px; }
+.slot { position: relative; min-width: 0; }
+.slot[data-ready=false][data-selected=true] { order: -1; }
+.slot[data-ready=true] { height: 280px; }
+.slot[data-kind=counter-lab][data-ready=true] { height: 460px; }
+.frame { display: flex; flex-direction: column; position: relative; border: 1px solid #d5dfd5; border-radius: 24px; background: #fcfdf8; box-shadow: 0 8px 30px #163e2310; }
+.slot[data-kind=counter-lab] .frame { background: #f1f7ee; }
+.slot[data-ready=true] .frame { height: 100%; overflow: hidden; }
+.slot[data-ready=true] .frame[data-presenting=true] { position: fixed; left: max(16px, calc((100vw - 760px) / 2)); top: 24px; width: min(760px, calc(100vw - 32px)); height: calc(100dvh - 48px); z-index: 101; will-change: transform, clip-path; }
+.frame[data-phase=closing] { z-index: 102; }
+/* One intrinsic control row in both states; it is never part of the scroller. */
+.surfaceTools { display: grid; grid-template-columns: minmax(0, 1fr); flex: none; align-items: center; justify-items: end; min-height: 62px; padding: 12px 18px; padding-top: max(12px, env(safe-area-inset-top, 0px)); padding-right: max(18px, env(safe-area-inset-right, 0px)); padding-left: max(18px, env(safe-area-inset-left, 0px)); }
+.surfaceTools > a, .surfaceTools > div { grid-area: 1 / 1; min-width: 0; max-width: 100%; }
+/* Hidden controls size the shared row, but remain invisible, inert and aria-hidden. */
+.surfaceTools > [hidden] { display: flex !important; visibility: hidden; pointer-events: none; }
+.surfaceTools > div { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+.surfaceTools a { min-width: 0; max-width: 100%; white-space: normal; overflow-wrap: anywhere; text-align: center; background: #fcfdf8ed; backdrop-filter: blur(8px); }
+.scrollHost { width: 100%; overflow-anchor: none; }
+.slot[data-ready=true] .scrollHost { flex: 1; min-height: 0; overflow: hidden; overscroll-behavior: contain; scrollbar-gutter: stable; }
+.slot[data-ready=true] .frame[data-presenting=true] .scrollHost { overflow-y: auto; }
+.article { width: 100%; padding: 0 40px 48px; margin: 0; box-sizing: border-box; }
+.articleHeader { margin-bottom: 26px; }
+.kicker { text-transform: uppercase; font: 11px/1.6 ui-monospace, monospace; letter-spacing: .08em; color: #597260; margin: 0 0 10px; }
+.kicker span { display: inline-block; margin-left: 12px; color: #798878; }
+.article h2 { margin: 0; font-size: clamp(26px, 4vw, 34px); line-height: 1.45; font-weight: 530; letter-spacing: -.035em; }
+.summary { max-width: 570px; margin: 12px 0 0; font-size: 14px; line-height: 1.9; color: #697466; }
+.prose { max-width: 620px; font-family: Georgia, "Noto Serif SC", "Songti SC", serif; font-size: 17px; line-height: 2.05; color: #354335; }
+.prose section { margin-top: 40px; overflow-anchor: none; }
+.prose h3 { margin: 0 0 16px; font-size: 20px; font-weight: 600; }
+.prose p { margin: 0 0 20px; }
+.lab { margin-top: 24px; }
+.counter { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+.counter output { min-width: 56px; font: 34px/1.2 ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+.draftLabel { display: flex; flex-direction: column; gap: 8px; font-size: 12px; color: #64715e; }
+.draftLabel input { width: 100%; min-height: 44px; padding: 10px 12px; border: 1px solid #bfcdb6; border-radius: 9px; color: #233020; background: #ffffffa6; }
+.instruction { margin-top: 12px; font-size: 12px; line-height: 1.8; color: #61715b; }
+.backdrop { position: fixed; inset: 0; background: #23332766; z-index: 100; }
+.footer { margin-top: 32px; font-size: 12px; line-height: 1.8; color: #73806e; }
+@media (max-width: 600px) { .proof { padding-top: 32px; } .article { padding-inline: 24px; } .surfaceTools { padding-inline: 12px; padding-left: max(12px, env(safe-area-inset-left, 0px)); padding-right: max(12px, env(safe-area-inset-right, 0px)); } .surfaceTools a { font-size: 11px; padding: 7px 10px; } .kicker span { display: block; margin-left: 0; } .slot[data-kind=counter-lab][data-ready=true] { height: 500px; } .prose { font-size: 16px; } }
+@media (prefers-reduced-motion: reduce) { .versionTools button, .counter button { transition: none; } }
+@media print { .surfaceTools, .versionTools, .backdrop { display: none; } .slot[data-ready=true], .slot[data-ready=true] .frame, .slot[data-ready=true] .frame[data-presenting=true] { position: static; height: auto; width: auto; overflow: visible; clip-path: none !important; transform: none !important; } .slot[data-ready=true] .scrollHost { height: auto; overflow: visible; } }

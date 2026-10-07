@@ -7,7 +7,7 @@ import {lstatSync, readFileSync, mkdirSync, writeFileSync} from 'node:fs';
 // This preflight never installs, replaces or changes permissions on a helper.
 const helper = '/opt/google/chrome/chrome-sandbox';
 const output = new URL('../../../../evidence/browser-run/sandbox-preflight.json', import.meta.url);
-const evidence = {schemaVersion: 1, helper, sandbox: true, customArguments: [], productTestsEvaluated: false};
+const evidence = {schemaVersion: 1, helper, sandbox: true, customArguments: [], pathMetadata: [], productTestsEvaluated: false};
 let browser;
 try {
   assert.equal(process.platform, 'linux', 'Linux hosted runner required');
@@ -15,12 +15,13 @@ try {
   assert.equal(process.env.CHROME_DEVEL_SANDBOX, helper, 'Only the stock helper path is allowed');
   for (const name of ['/', '/opt', '/opt/google', '/opt/google/chrome', helper]) {
     const stat = lstatSync(name);
-    assert.equal(stat.uid, 0, 'Helper and parents must be root-owned');
-    assert.equal(stat.gid, 0, 'Helper and parents must be root-group-owned');
-    assert.equal(stat.mode & 0o022, 0, 'Helper and parents must not be group/world writable');
-    assert.equal(stat.isSymbolicLink(), false, 'Helper path must not contain symlinks');
-    assert.equal(name === helper ? stat.isFile() : stat.isDirectory(), true, 'Unexpected helper path type');
-    if (name === helper) assert.equal(stat.mode & 0o7777, 0o4755, 'Stock helper must already be mode 4755');
+    evidence.pathMetadata.push({path: name, uid: stat.uid, gid: stat.gid, mode: (stat.mode & 0o7777).toString(8)});
+    assert.equal(stat.uid, 0, name+': helper and parents must be root-owned');
+    assert.equal(stat.gid, 0, name+': helper and parents must be root-group-owned');
+    assert.equal(stat.mode & 0o022, 0, name+': helper and parents must not be group/world writable');
+    assert.equal(stat.isSymbolicLink(), false, name+': helper path must not contain symlinks');
+    assert.equal(name === helper ? stat.isFile() : stat.isDirectory(), true, name+': unexpected helper path type');
+    if (name === helper) assert.equal(stat.mode & 0o7777, 0o4755, name+': stock helper must already be mode 4755');
   }
   const exec = (command, args) => execFileSync(command, args, {encoding: 'utf8', timeout: 5000}).trim();
   assert.equal(exec('dpkg-query', ['-S', helper]), 'google-chrome-stable: '+helper, 'Official installed Chrome package required');

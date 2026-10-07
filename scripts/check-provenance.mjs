@@ -4,6 +4,7 @@ import path from 'node:path';
 import assert from 'node:assert/strict';
 import {fileURLToPath} from 'node:url';
 import {spawnSync} from 'node:child_process';
+import {verifyShadowCacheBoundary, SHADOW_CACHE_BOUNDARY} from './check-shadow-cache-boundary.mjs';
 
 // Historical import records are immutable, even when an active composite changes.
 export const HISTORICAL_PROVENANCE = Object.freeze({
@@ -35,29 +36,40 @@ export function verifyProvenance(root){
  }
  const active=json(root,'provenance/active-candidate.json');
  assert.equal(active.schemaVersion,1);assert.equal(active.kind,'local-composite-candidate');assert.equal(active.status,'unpublished-acceptance-pending');
- assert.equal(active.productVersion,'v0.1.0-alpha.5');assert.equal(active.publicGitCommit,null);assert.equal(active.publicGitTag,null);assert.equal(active.deployed,false);
+ assert(['v0.1.0-alpha.5','v0.1.0-alpha.6'].includes(active.productVersion),'Unsupported active product version');
+ const alpha6=active.productVersion==='v0.1.0-alpha.6';assert.equal(active.publicGitCommit,null);assert.equal(active.publicGitTag,null);assert.equal(active.deployed,false);
  assert.match(active.sourcePayloadCommit,/^[a-f0-9]{40}$/);assert.notEqual(active.sourcePayloadCommit,'0'.repeat(40));
  assert.deepEqual(active.historicalProvenance,HISTORICAL_PROVENANCE,'Historical hash map differs');
  assert.equal(active.algorithm,original.algorithm);assert.deepEqual(active.files,current,'Active candidate inventory differs');assert.equal(active.runtimeSHA256,digest,'Active candidate digest differs');
- assert.equal(active.revision,'world-layers-r3','Reading revision identity missing');
+ assert.equal(active.runtimeFileCount,current.length,'Active file count differs');
+ let lineage=active;
+ if(alpha6){
+  assert.equal(active.revision,'static-shadow-cache-r1');
+  assert.equal(active.previousCandidate.commit,SHADOW_CACHE_BOUNDARY.baselineCommit);
+  assert.equal(active.previousCandidate.inventory,SHADOW_CACHE_BOUNDARY.baselineInventory);
+  const verified=verifyShadowCacheBoundary(root,current);lineage=verified.baseline;
+  assert.equal(active.previousCandidate.runtimeSHA256,lineage.runtimeSHA256);
+  assert.deepEqual(active.runtimeOnlyAllowlist,verified.changed);
+ }
+ assert.equal(lineage.revision,'world-layers-r3','Reading revision identity missing');
  {
-  assert.equal(active.initialCandidate.commit,'0fc929ff0b602ac3b2769804ef7a447c61d30afa');
-  assert.equal(active.initialCandidate.runtimeSHA256,'27331c3bf03ad15b5225384f28d12acea1babd5e2bf2a72c989e7f5f9ae59e75');
-  assert.equal(active.initialCandidate.inventory,'provenance/candidates/alpha5-0fc929f.json');
-  assert.equal(hash(fs.readFileSync(path.join(root,active.initialCandidate.inventory))),'945d3617cd25ac364f1d51b20f9916b4de07479ea007785a10b0d4b80f4c6ff3','Initial alpha.5 inventory changed');
-  assert.equal(active.readingShelfCandidate.commit,'b917dda0cb003824de6a5eb73b360fcffd72f4e3');
-  assert.equal(active.readingShelfCandidate.runtimeSHA256,'4093f9e8e45bf53fe9150757e78cc59f280232152d7df4c1e86e370562d1aeea');
-  assert.equal(active.readingShelfCandidate.inventory,'provenance/candidates/alpha5-reading-b917dda.json');
-  assert.equal(hash(fs.readFileSync(path.join(root,active.readingShelfCandidate.inventory))),'77cd914657ebbbc111619205dd68c0281b805bb0979a2e8a809e731673d9b96e','Reading r1 inventory changed');
-  assert.equal(active.previousCandidate.commit,'984814b3c465d0400356d1e9ba6b0e1bd2a244b2');
-  assert.equal(active.previousCandidate.runtimeSHA256,'9ecf5860822a3a5dcf0d940c517588c649152091bac3c88002e4353da21b49bf');
-  assert.equal(active.previousCandidate.inventory,'provenance/candidates/alpha5-controls-984814b.json');
-  assert.equal(hash(fs.readFileSync(path.join(root,active.previousCandidate.inventory))),'f39847f261c7d86ad5a6b2bff476fea6c1240350fb96eefa54218cce1ccb5253','Reading r2 inventory changed');
+  assert.equal(lineage.initialCandidate.commit,'0fc929ff0b602ac3b2769804ef7a447c61d30afa');
+  assert.equal(lineage.initialCandidate.runtimeSHA256,'27331c3bf03ad15b5225384f28d12acea1babd5e2bf2a72c989e7f5f9ae59e75');
+  assert.equal(lineage.initialCandidate.inventory,'provenance/candidates/alpha5-0fc929f.json');
+  assert.equal(hash(fs.readFileSync(path.join(root,lineage.initialCandidate.inventory))),'945d3617cd25ac364f1d51b20f9916b4de07479ea007785a10b0d4b80f4c6ff3','Initial alpha.5 inventory changed');
+  assert.equal(lineage.readingShelfCandidate.commit,'b917dda0cb003824de6a5eb73b360fcffd72f4e3');
+  assert.equal(lineage.readingShelfCandidate.runtimeSHA256,'4093f9e8e45bf53fe9150757e78cc59f280232152d7df4c1e86e370562d1aeea');
+  assert.equal(lineage.readingShelfCandidate.inventory,'provenance/candidates/alpha5-reading-b917dda.json');
+  assert.equal(hash(fs.readFileSync(path.join(root,lineage.readingShelfCandidate.inventory))),'77cd914657ebbbc111619205dd68c0281b805bb0979a2e8a809e731673d9b96e','Reading r1 inventory changed');
+  assert.equal(lineage.previousCandidate.commit,'984814b3c465d0400356d1e9ba6b0e1bd2a244b2');
+  assert.equal(lineage.previousCandidate.runtimeSHA256,'9ecf5860822a3a5dcf0d940c517588c649152091bac3c88002e4353da21b49bf');
+  assert.equal(lineage.previousCandidate.inventory,'provenance/candidates/alpha5-controls-984814b.json');
+  assert.equal(hash(fs.readFileSync(path.join(root,lineage.previousCandidate.inventory))),'f39847f261c7d86ad5a6b2bff476fea6c1240350fb96eefa54218cce1ccb5253','Reading r2 inventory changed');
  }
  const version=active.productVersion.slice(1),rootPackage=json(root,'package.json'),web=json(root,'apps/web/package.json'),lock=json(root,'package-lock.json'),meta=json(root,'apps/web/runtime/release-meta.json');
  for(const [label,value]of Object.entries({root:rootPackage.version,web:web.version,lock:lock.version,lockRoot:lock.packages[''].version,lockWeb:lock.packages['apps/web'].version}))assert.equal(value,version,`Version mismatch: ${label}`);
  const contract=fs.readFileSync(path.join(root,'packages/contracts/index.mjs'),'utf8').match(/export const PRODUCT_VERSION = '([^']+)'/);assert.equal(contract?.[1],version,'Contract product version differs');
- assert.equal(meta.productVersion,active.productVersion);assert.equal(meta.channel,'alpha');assert.equal(meta.fullUnifiedAcceptance,false);assert(meta.reviewLabel.includes('Local alpha.5 candidate'),'Candidate disclosure missing');
+ assert.equal(meta.productVersion,active.productVersion);assert.equal(meta.channel,'alpha');assert.equal(meta.fullUnifiedAcceptance,false);assert(meta.reviewLabel.includes(alpha6?'Local alpha.6 candidate':'Local alpha.5 candidate'),'Candidate disclosure missing');
  for(const gate of REQUIRED_DEFERRED)assert(meta.deferredGates.includes(gate),`Deferred gate removed: ${gate}`);
  for(const rel of ['apps/api/package.json','packages/contracts/package.json'])assert.equal(json(root,rel).version,'0.0.1',`Scaffold version changed: ${rel}`);
  assert.equal(active.inputs.publicAlpha4Commit,'64c36696dcc54ba2fa108437a3be49ac830100ef');assert.equal(active.inputs.localSnapshotCommit,'5772029008e613d737ab40fad1667e1dafdb59d0');assert.equal(active.inputs.clockCommit,'fef46540fc31fb8bb85b8f987b28348fc6604f11');assert.equal(active.inputs.weatherPatchSHA256,'a713d0fc83b01c8fe2353bfed22dc70adda00694fe511a765778f8be48d1e3fb');

@@ -6,7 +6,7 @@
 - API scaffold/package version: independently truthful; initially 0.0.1
 - A hosting snapshot ID is deployment provenance, not a semantic product version or acceptance grade
 - Historical imported web: v0.1.0-alpha.4
-- Active implementation: local v0.1.0-alpha.5 integration candidate; unpublished, full unified acceptance pending
+- Active implementation: local v0.1.0-alpha.6 static-shadow-cache candidate; unpublished, full unified acceptance pending
 
 ## Clean public import
 
@@ -35,3 +35,7 @@ The initial workflow pins official actions to verified source commits. Reference
 ## Local alpha.5 source mapping
 
 The source payload is committed before its active-candidate mapping to avoid a self-referential commit hash. sourcePayloadCommit identifies the implementation/version bytes; the following provenance-only commit records that mapping. Run node scripts/check-provenance.mjs --verify-source-commit locally to verify mapped Git blobs equal the current runtime/version payload. Normal CI remains portable to shallow clones and enforces the full SHA-256 inventory and historical-record pins. The public alpha.4 commit is a source reference; this local snapshot history is not represented as its ancestry. publicGitCommit/publicGitTag remain null and deployed remains false until separately authorized publication. No historical result grants assembled alpha.5 acceptance.
+
+## Local alpha.6 source mapping
+
+The alpha.6 payload adds only the exact reviewed cache service, six native renderer lifecycle hooks and release metadata to published 652d790. Its source-payload commit precedes the active mapping commit. The previous active alpha.5 manifest and historical scene/metadata bytes are copied without modification into pinned snapshots. The historical CSS-only oracle still checks those old bytes; a separate alpha.6 oracle enforces the exact allowed transformations and rejects unrelated runtime changes even when the active inventory is re-signed. Current candidate results cannot rewrite old observation times or source hashes. Public commit/tag remain null and deployed remains false in candidate metadata.

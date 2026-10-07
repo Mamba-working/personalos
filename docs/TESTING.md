@@ -52,3 +52,9 @@ The normal web runner now also includes portable weather-v5 consumer tests, byte
 The new test:provenance suite checks runtime mutation/missing/extra/symlink cases, inventory ordering/duplication/digest, all product-version surfaces, candidate disclosure, deferred acceptance gates, coordinated historical-hash mutation and source-payload Git mapping. On a shallow checkout without the mapped source object, only that Git-object cross-check is explicitly skipped; portable byte checks still run. Full local verification uses the available object.
 
 Earlier clock browser observations and V5 preview screenshots belong to their original sources, not this assembled alpha.5. Fresh combined browser, dynamic GPU appearance, real devices and measured performance remain deferred. No browser gate or threshold is weakened by this source integration.
+
+## Alpha.6 static shadow cache
+
+The focused source suite exercises dirty input transitions, VSM receive-only participation, uploaded geometry, non-participant eyes, custom-path fallback, visibility resume, resize, context-service replacement, book motion, stable identities and disposal. The full web suite retains the historical world-layer SHA assertion through an explicit alpha.5 snapshot reader; a separate alpha.6 boundary check permits only the reviewed service, six exact scene hooks and release metadata. Root provenance negative controls reject source/snapshot/hunk/allowlist changes even after candidate-side inventory re-signing. No historical assertion or behavioral threshold is removed.
+
+The six prior native-canvas pixel pairs and one short ordered software-rendering timing pair are tied to the exact observed scene/service hashes in provenance/observations/shadow-cache-source-observation.json. They are not fresh alpha.6 browser or device acceptance. See ALPHA6_CANDIDATE.md for the remaining browser recheck scope.

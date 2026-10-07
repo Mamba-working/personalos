@@ -1,8 +1,8 @@
 {
   "product": "PersonalOS",
-  "productVersion": "v0.1.0-alpha.5",
+  "productVersion": "v0.1.0-alpha.6",
   "channel": "alpha",
-  "reviewLabel": "Local alpha.5 candidate \u00b7 integration acceptance pending",
+  "reviewLabel": "Local alpha.6 candidate \u00b7 static-shadow cache review pending",
   "fullUnifiedAcceptance": false,
   "deferredGates": [
     "final-user-signoff",
@@ -12,10 +12,10 @@
     "assembled-weather-motion-review"
   ],
   "limitations": [
-    "Combined weather and motion candidate has not received fresh assembled browser/GPU acceptance",
-    "Rendered Ball/GPU and complete motion acceptance pending",
+    "Renderer-owned static-shadow cache only; no cinematic rain-v6 or Next.js integration",
+    "Source-identical graphics code has six matched cloud-canvas pixel observations; assembled alpha.6 browser review remains pending",
+    "Single ordered SwiftShader timing observation is not physical-device FPS or validated performance acceptance",
     "Physical-device native keyboard/IME acceptance pending",
-    "Validated measured-performance acceptance pending",
     "Final unified-product user signoff pending"
   ]
 }

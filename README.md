@@ -4,7 +4,7 @@ PersonalOS is managed as one product repository: web UI, a backend service bound
 
 ## Current implementation
 
-- Web: the local v0.1.0-alpha.5 integration candidate, 18 authored demonstration records, native feed/reader/navigation, Ball scene, menu, simulated weather and local demonstration chat
+- Web: the local v0.1.0-alpha.6 static-shadow-cache candidate, 18 authored demonstration records, native feed/reader/navigation, Ball scene, menu, simulated weather and local demonstration chat
 - API: a new runnable Node service with GET /healthz and GET /api/v1/status
 - Contracts: health payload and authored-demo-content shape
 - Product backend features: content storage/API, real AI, authentication and persistence are not implemented; the unchanged web demo does not call the new API
@@ -48,7 +48,7 @@ This public repository begins with a clean import. Original private QA captures,
 
 Two runtime Three.js build files and their two accepted-baseline fixture copies are deliberately absent from Git. Root npm ci installs exact three@0.180.0; npm run setup restores all four files from the official package after SHA-256 verification. Run this before opening, serving or testing the web app. Three.js licenses remain tracked.
 
-The historical alpha.4 import remains recorded without modification. The active alpha.5 candidate combines the reviewed motion clock and V5 simulated weather, with a new runtime inventory and source-payload commit mapping in provenance/active-candidate.json. It is local and unpublished; all integrated browser/GPU/device/performance and final acceptance gates remain pending. See docs/ALPHA5_CANDIDATE.md.
+The historical alpha.4 import remains recorded without modification. The active alpha.6 candidate adds only the reviewed renderer-owned static-shadow cache and version metadata to published alpha.5 source 652d790. The exact alpha.5 manifest and historical source assertions remain pinned. A new runtime inventory, exact hook allowlist and source-payload mapping are recorded in provenance/active-candidate.json. Cinematic rain-v6 and Next.js are not included. It is local and unpublished; fresh assembled alpha.6 browser/device and final acceptance remain pending. Prior matched-pixel observations are referenced by their actual graphics-source SHA, not relabeled as a new run. See docs/ALPHA6_CANDIDATE.md.
 
 Read LICENSE and THIRD_PARTY_NOTICES.md before reuse. This repository has no blanket MIT license. The retained Emotion Ball character visuals are restricted to non-commercial personal technical study/research; its engine/data have separate commercial licensing terms. A product commercialization plan must address those restrictions first.
 

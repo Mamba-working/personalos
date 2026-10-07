@@ -1,0 +1,103 @@
+{
+  "kind": "prior-source-matched-observation",
+  "observationLabel": "Isolated 652-based shadow-cache source experiment",
+  "observedProductVersion": "v0.1.0-alpha.5",
+  "observedRuntimeSHA256": "29bef022e6e6779653530c2eed5fd5554fa0247e4464500358ac518c84e3b937",
+  "observedSource": {
+    "baselineCommit": "652d79050449e907380d21ae940dadaf7bbad9f7",
+    "baselineSceneSHA256": "07239468840def699c9111bd9e6879df313a48dad5ef791dea4f01a9ac71aad3",
+    "sceneSHA256": "823a25d68a0e52d0b20f44ef436a99fbaa202d4dfdb1daf6be941d067187de3a",
+    "serviceSHA256": "6482c892a62b81322dc96ab8d47aa3d00084517209a61fa5a3c0579c44fdd99d"
+  },
+  "relationship": "The two graphics implementation files match alpha.6 exactly. Alpha.6 changes release metadata and product version separately. These observations are not relabeled as a fresh alpha.6 browser run.",
+  "browser": "Chromium 141.0.7390.37; sandboxed default launch; SwiftShader; 1280x840; DPR 1",
+  "pixelComparison": [
+    {
+      "state": "book-opening",
+      "changedPixels": 0,
+      "totalPixels": 1075200,
+      "maxChannelDifference": 0,
+      "meanChannelDifference": 0,
+      "matchedCamera": true,
+      "matchedProjection": true,
+      "matchedActor": true,
+      "matchedParticipants": true,
+      "matchedTime": true,
+      "matchedPhase": true
+    },
+    {
+      "state": "book-moving",
+      "changedPixels": 0,
+      "totalPixels": 1075200,
+      "maxChannelDifference": 0,
+      "meanChannelDifference": 0,
+      "matchedCamera": true,
+      "matchedProjection": true,
+      "matchedActor": true,
+      "matchedParticipants": true,
+      "matchedTime": true,
+      "matchedPhase": true
+    },
+    {
+      "state": "book-fade",
+      "changedPixels": 0,
+      "totalPixels": 1075200,
+      "maxChannelDifference": 0,
+      "meanChannelDifference": 0,
+      "matchedCamera": true,
+      "matchedProjection": true,
+      "matchedActor": true,
+      "matchedParticipants": true,
+      "matchedTime": true,
+      "matchedPhase": true
+    },
+    {
+      "state": "home-clear",
+      "changedPixels": 0,
+      "totalPixels": 1075200,
+      "maxChannelDifference": 0,
+      "meanChannelDifference": 0,
+      "matchedCamera": true,
+      "matchedProjection": true,
+      "matchedActor": true,
+      "matchedParticipants": true,
+      "matchedTime": true,
+      "matchedPhase": true
+    },
+    {
+      "state": "deformed-caster",
+      "changedPixels": 0,
+      "totalPixels": 1075200,
+      "maxChannelDifference": 0,
+      "meanChannelDifference": 0,
+      "matchedCamera": true,
+      "matchedProjection": true,
+      "matchedActor": true,
+      "matchedParticipants": true,
+      "matchedTime": true,
+      "matchedPhase": true
+    },
+    {
+      "state": "home-rain",
+      "changedPixels": 0,
+      "totalPixels": 1075200,
+      "maxChannelDifference": 0,
+      "meanChannelDifference": 0,
+      "matchedCamera": true,
+      "matchedProjection": true,
+      "matchedActor": true,
+      "matchedParticipants": true,
+      "matchedTime": true,
+      "matchedPhase": true
+    }
+  ],
+  "timingBoundary": "One short ordered baseline/cache cloud-software-rendering pair. Not per-pass GPU time, physical-device FPS, or validated general speedup.",
+  "rawEvidenceDigests": {
+    "pixel-comparison.json": "1bca74c9fc21c17e1c2d92817a90782322c971162c3106230dde9fdc0b06a0da",
+    "pixels-served-manifest.json": "b13e82b836f51edd7c5e2e1e4371d6d2d1b76e5be22d3608f526955ffe57bdcc",
+    "timing-summary.json": "fe151b7d878be4526c116589d9117be39f52c03f29f3775ba77ef8a9be343b58",
+    "timing-baseline.json": "13205f7c18688eda0be7999937fc81ed4572d115bb133d66806b50516cde2bad",
+    "timing-candidate.json": "8a161261a4f5639f8e9c0cdf0b3c7eaa3ef0969c25d324a50978c588d7ebe42c",
+    "timing-environment.json": "6dda0ed5a51ca4a76e6e8cc491f10b105ca4810415255c75f1bc64c970bf5ffe"
+  }
+}

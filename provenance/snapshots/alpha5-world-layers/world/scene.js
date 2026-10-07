@@ -6,7 +6,6 @@ import {createBookStory} from '../story/book-story.js';
 import {createStoryProps} from '../story/props.js';
 import {createFrameClock} from '../story/frame-clock.js';
 import {remapProjectionMatrix} from '../story/geometry.js';
-import {createShadowCache} from './shadow-cache.js';
 
 // One scene, one actor, one clock. The page never replaces Ball with a DOM image.
 const worldRoot=document.querySelector('#ball-world-root');
@@ -41,7 +40,6 @@ const scene=new THREE.Scene();
 scene.background=new THREE.Color(THEME.background);
 scene.fog=new THREE.Fog(THEME.background,20,48);
 const camera=new THREE.PerspectiveCamera(34,innerWidth/innerHeight,.1,80);
-const shadowCache=createShadowCache({THREE,renderer,scene,camera});
 function buildEnvironment(){
  const pmrem=new THREE.PMREMGenerator(renderer),room=new THREE.Scene();
  room.background=new THREE.Color(THEME.environment);
@@ -139,10 +137,10 @@ hit.addEventListener('click',()=>{if(suppressActivation){suppressActivation=fals
 hit.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&mode==='home'&&homeInteractive){e.preventDefault();activate()}});
 window.addEventListener('pointermove',e=>{requestWorldFrame();pointer.x=(e.clientX/innerWidth-.5)*2;pointer.y=(e.clientY/innerHeight-.5)*2});window.addEventListener('pointerout',e=>{if(!e.relatedTarget){pointer.x=pointer.y=0;requestWorldFrame();}});
 window.addEventListener('scroll',requestWorldFrame,{passive:true});
-window.addEventListener('resize',()=>{portrait=innerWidth/innerHeight<.85;layoutTarget=portrait?1:0;renderer.setSize(innerWidth,innerHeight);shadowCache.invalidate();camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();resizePending=true;requestWorldFrame();});
-document.addEventListener('visibilitychange',()=>{last=performance.now();if(document.hidden)clock?.suspend();else{shadowCache.invalidate();requestWorldFrame();}});
+window.addEventListener('resize',()=>{portrait=innerWidth/innerHeight<.85;layoutTarget=portrait?1:0;renderer.setSize(innerWidth,innerHeight);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();resizePending=true;requestWorldFrame();});
+document.addEventListener('visibilitychange',()=>{last=performance.now();if(document.hidden)clock?.suspend();else requestWorldFrame();});
 renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();paused=true;clock?.suspend();bookStory?.fail('context-lost');announceWorldAvailability('lost','webgl-context-lost');});
-renderer.domElement.addEventListener('webglcontextrestored',()=>{try{env.dispose();env=buildEnvironment();scene.environment=env.texture;shadowCache.invalidate();render(0);paused=false;last=performance.now();requestWorldFrame();announceWorldAvailability('ready','webgl-context-restored');}catch(error){paused=true;announceWorldAvailability('failed','renderer-recovery');console.error(error);}});
+renderer.domElement.addEventListener('webglcontextrestored',()=>{try{env.dispose();env=buildEnvironment();scene.environment=env.texture;render(0);paused=false;last=performance.now();requestWorldFrame();announceWorldAvailability('ready','webgl-context-restored');}catch(error){paused=true;announceWorldAvailability('failed','renderer-recovery');console.error(error);}});
 function eyeVertices(open,roll){for(let e=0;e<2;e++){const eye=eyes[e],p=eye.mesh.geometry.attributes.position;const openness=Math.max(.065,open*(e===1?1-pose.wink*.96:1));for(let i=0;i<eye.local.length;i++){const v=eye.local[i];let x=v.x+eye.cx,y=v.y*openness+.12;const xx=x*Math.cos(roll)-y*Math.sin(roll),yy=x*Math.sin(roll)+y*Math.cos(roll);const z=Math.sqrt(Math.max(.02,R*R-xx*xx-yy*yy))+.007;p.setXYZ(i,xx,yy,z);const normal=eye.mesh.geometry.attributes.normal;const len=Math.hypot(xx,yy,z);normal.setXYZ(i,xx/len,yy/len,z/len)}p.needsUpdate=true;eye.mesh.geometry.attributes.normal.needsUpdate=true;}}
 let homeInteractive=false,screenBall={x:0,y:0,r:100};
 let contentState={progress:0,phase:'preview',targetBounds:null,displayBounds:null},contentFocus=0,readingQuiet=false;
@@ -268,7 +266,6 @@ function render(dt=0,stamp){
  // Effects are procedural simulations with their own bounded-step policy. They
  // do not receive the uncapped presentation/timeline clock or replay missed frames.
  for(const effect of effects.values())effect.update(Math.min(.05,dt),effectState());
- shadowCache.prepare();
  renderer.setClearColor(THEME.background,foreground?0:1-retirement);renderer.render(scene,camera);
  // Anchor an accessible hit target to the projected existing actor; it contains no visual actor.
  const projected=actor.position.clone().project(camera);const edge=actor.position.clone().add(new THREE.Vector3(R*actor.scale.x,0,0).applyQuaternion(camera.quaternion)).project(camera);
@@ -308,7 +305,7 @@ window.ballStudy={version:'3.0.0',ready:true,duration:DURATION,
  snapshot:()=>({story:worldAPI.story.getState(),clock:clock?.getState(),effectCount:effects.size,time:t,mode,actorUUID:actor.uuid,actorCount:scene.children.filter(c=>c.name==='Ball / persistent actor').length,position:actor.position.toArray(),scale:actor.scale.toArray(),screen:{...screenBall},layout,home:pose.home,reduced,previewOnce,entryReason:motionQuery.matches?'system-reduced-motion':'autoplay',cameraPosition:camera.position.toArray(),palette:THEME,bridge:!!bridge,interactions:tapCount,triangles:renderer.info.render.triangles,calls:renderer.info.render.calls,canvasCount:worldRoot.querySelectorAll('#world-stage canvas').length,diskPosition:disk.position.toArray(),lift:pose.lift,platterTilt:pose.drz,roll:pose.roll,contactShadowOpacity:plateContact.material.opacity,contactShadowScale:plateContact.scale.x,eyeSurfaceClearance:.007,faceScale:face.scale.toArray(),contentFocus,readingQuiet,hostPlacement:hostPlacement&&JSON.parse(JSON.stringify(hostPlacement)),homeScreen:homeScreen&&{...homeScreen},worldOffset:worldOffset.toArray()}),
  // Test-only deterministic hooks; remain local and inert in ordinary playback.
  ...(manual?{geometryQA(){let min=Infinity;for(const eye of eyes){const a=eye.mesh.geometry.attributes.position;for(let i=0;i<a.count;i+=3){let x=0,y=0,z=0;for(let j=0;j<3;j++){x+=a.getX(i+j)/3;y+=a.getY(i+j)/3;z+=a.getZ(i+j)/3}min=Math.min(min,Math.hypot(x,y,z)-R)}}const n=new THREE.Vector3(0,1,0).applyEuler(disk.rotation);return{ballPlateSeparation:n.dot(actor.position.clone().sub(disk.position))-(.115*pose.ds+R),minEyeTriangleClearance:min,diskMinY:disk.position.y-2.2*pose.ds*Math.sqrt(Math.max(0,1-n.y*n.y))-.16*pose.ds*Math.abs(n.y),faceScale:face.scale.toArray()}},seek(seconds){t=clamp(seconds,0,DURATION);manualTime=t;elapsed=t;pose=sample(t);mode=t>=DURATION?'home':'intro';bridge=null;layout=layoutTarget;render(1/60);return this.snapshot()},step(seconds){advance(seconds);return this.snapshot()},skip,replay,setReduced}:{}),
- dispose(){worldDisposed=true;clock?.dispose();bookStory?.dispose();for(const effect of effects.values())effect.dispose?.();effects.clear();storyProps.dispose();worldAPI.dispose();shadowCache.dispose();paused=true;scene.traverse(o=>{o.geometry?.dispose();if(o.material){for(const m of Array.isArray(o.material)?o.material:[o.material])m.dispose()}});noise.dispose();shadowTex.dispose();env.dispose();renderer.dispose();}
+ dispose(){worldDisposed=true;clock?.dispose();bookStory?.dispose();for(const effect of effects.values())effect.dispose?.();effects.clear();storyProps.dispose();worldAPI.dispose();paused=true;scene.traverse(o=>{o.geometry?.dispose();if(o.material){for(const m of Array.isArray(o.material)?o.material:[o.material])m.dispose()}});noise.dispose();shadowTex.dispose();env.dispose();renderer.dispose();}
 };
 
 announceWorldAvailability('ready');

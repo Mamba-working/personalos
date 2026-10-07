@@ -29,6 +29,9 @@ jobs:
           npm run setup
           npm ci --prefix apps/web/tests/browser --ignore-scripts --no-audit --no-fund
           apps/web/tests/browser/node_modules/.bin/playwright install --with-deps chromium
+      - name: Verify stock Chrome sandboxed launch and graphics
+        timeout-minutes: 2
+        run: node apps/web/tests/browser/stock-chrome-preflight.mjs
       - name: Check guard criteria and blank-image negative cases
         run: npm --prefix apps/web/tests/browser run test:unit
       - name: Prove the one-column negative control is detected
@@ -60,6 +63,9 @@ jobs:
           npm run setup:vendor
           npm ci --prefix apps/web/tests/browser --ignore-scripts --no-audit --no-fund
           apps/web/tests/browser/node_modules/.bin/playwright install --with-deps chromium
+      - name: Verify stock Chrome sandboxed launch and graphics
+        timeout-minutes: 2
+        run: node apps/web/tests/browser/stock-chrome-preflight.mjs
       - name: Prove initialized blank canvas and colored CSS cannot pass
         run: npm --prefix apps/web/tests/browser run test:render-negative
       - name: Require nonblank Ball/book renderer observation

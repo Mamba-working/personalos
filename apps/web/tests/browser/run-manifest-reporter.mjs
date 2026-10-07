@@ -30,7 +30,7 @@ export default class RunManifest {
       startedAt: new Date().toISOString(),
       environment: {node: process.version, platform: process.platform, arch: process.arch, kernel: os.release(), playwright: JSON.parse(readFileSync(new URL('./node_modules/@playwright/test/package.json', import.meta.url))).version},
       instrumentation: {lightweight: process.env.PERSONALOS_LIGHTWEIGHT_GUARD === '1', frameCollector: process.env.PERSONALOS_LIGHTWEIGHT_GUARD !== '1', traceAndVideo: process.env.PERSONALOS_LIGHTWEIGHT_GUARD !== '1'},
-      launch: {browserName: 'chromium', sandbox: true, customArguments: [], headless: true, softwareRendererPossible: true},
+      launch: {browserName: 'chromium', channel: 'chrome', browserBaseline: 'hosted-stock-branded-version-recorded-per-run', sandbox: true, customArguments: [], headless: true, softwareRendererPossible: true},
       runtime: pin('apps/web/runtime'),
       candidate: pin('apps/web/tests/browser'),
       ciAndDocumentation: ['.github/workflows/browser-guards.yml', 'docs/BROWSER_GUARDS.md'].map(file => ({path: file, sha256: digest(readFileSync(path.join(root,file)))})),

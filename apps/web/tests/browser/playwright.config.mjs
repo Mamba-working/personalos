@@ -15,6 +15,7 @@ export default defineConfig({
   use: {
     baseURL: 'http://127.0.0.1:4381',
     browserName: 'chromium',
+    channel: 'chrome',
     headless: true,
     launchOptions: {chromiumSandbox: true},
     reducedMotion: 'no-preference',

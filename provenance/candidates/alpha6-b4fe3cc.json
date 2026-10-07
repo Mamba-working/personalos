@@ -2,19 +2,19 @@
   "schemaVersion": 1,
   "kind": "local-composite-candidate",
   "status": "unpublished-acceptance-pending",
-  "productVersion": "v0.1.0-alpha.7",
-  "revision": "visible-weather-elapsed-r1",
-  "sourcePayloadCommit": "3d824172597032d68511464f5b0035203f8e7367",
+  "productVersion": "v0.1.0-alpha.6",
+  "revision": "static-shadow-cache-r1",
+  "sourcePayloadCommit": "4d625229daf76418bf03555d45173d114626db8d",
   "publicGitCommit": null,
   "publicGitTag": null,
   "deployed": false,
   "algorithm": "sha256-canonical-path-inventory-v1",
-  "runtimeSHA256": "64922db578b6ab8fb8f40250c9156e957a02e386f56803625f5ebc19389072ad",
+  "runtimeSHA256": "788f43e664fa3d3ec97b4aaa51cf8a725e7ca8377ec963ddde313e1ae5bbf18e",
   "runtimeFileCount": 70,
   "previousCandidate": {
-    "commit": "b4fe3cc3b1e663bec4930a20bf7b7cdb5bc59326",
-    "runtimeSHA256": "788f43e664fa3d3ec97b4aaa51cf8a725e7ca8377ec963ddde313e1ae5bbf18e",
-    "inventory": "provenance/candidates/alpha6-b4fe3cc.json"
+    "commit": "652d79050449e907380d21ae940dadaf7bbad9f7",
+    "runtimeSHA256": "22e8d391372207d00c6887e523fd1f4e3485b0148410038b462cab6f824b26d8",
+    "inventory": "provenance/candidates/alpha5-world-layers-652d790.json"
   },
   "inputs": {
     "publicAlpha4Commit": "64c36696dcc54ba2fa108437a3be49ac830100ef",
@@ -29,8 +29,7 @@
     "readingControlsRevision": "Intent-time 64px native controls viewport, source-plane progress bridge, zero-scroll return clip release and phase-independent caption spacing; app.js/host.css only relative to b917",
     "worldLayersRevision": "CSS-only semantic-root/paint-layer separation, reading canvas above header with grain below, original normal/chat paint order, mobile clip ownership and fallback visibility; all 67 other runtime files unchanged from controls-r2",
     "publishedAlpha5Commit": "652d79050449e907380d21ae940dadaf7bbad9f7",
-    "shadowCache": "Exact reviewed renderer-owned service and six owner-hook hunks; no cinematic rain-v6 or Next.js integration",
-    "weatherElapsed": "Exact alpha.6-to-alpha.7 elapsed-only hunks; same art and renderer-owned shadow cache"
+    "shadowCache": "Exact reviewed renderer-owned service and six owner-hook hunks; no cinematic rain-v6 or Next.js integration"
   },
   "historicalProvenance": {
     "export-policy.json": "0f782049e914df98374f5d06d800e2af54e745002647fd0d90544a07e0e460f5",
@@ -42,9 +41,9 @@
     "vendor-dependencies.json": "0fbe77a79547705a4b50de50505ae86ae305b8341fe2713d8d617a95e8502c83"
   },
   "runtimeOnlyAllowlist": [
-    "runtime/modules/weather.js",
     "runtime/release-meta.json",
-    "runtime/world/scene.js"
+    "runtime/world/scene.js",
+    "runtime/world/shadow-cache.js"
   ],
   "files": [
     {
@@ -201,7 +200,7 @@
     },
     {
       "path": "runtime/modules/weather.js",
-      "sha256": "44a2de63f5e6fb1f64341005d433881837eb9fa3b10d005602df8c1bd2830c1b"
+      "sha256": "cad38afb17e2934e33133e805f2973dfed98779777a540aa2c467283492553f3"
     },
     {
       "path": "runtime/palette.css",
@@ -209,7 +208,7 @@
     },
     {
       "path": "runtime/release-meta.json",
-      "sha256": "14020223418e5f510fcbe697eaca77afd0020ea05eb83228b5b350fa03e6ff34"
+      "sha256": "b299a9872645319c16d195a196645f9bf1d92769e7d183d6bd9baa8c3bf9bcaa"
     },
     {
       "path": "runtime/scene-bridge.js",
@@ -261,7 +260,7 @@
     },
     {
       "path": "runtime/world/scene.js",
-      "sha256": "3337839ee4f75808c9b2e626be6809fd24a13261a89e0522db93423ae1e75fae"
+      "sha256": "823a25d68a0e52d0b20f44ef436a99fbaa202d4dfdb1daf6be941d067187de3a"
     },
     {
       "path": "runtime/world/scoped.css",

@@ -1,6 +1,6 @@
 {
   "name": "personalos",
-  "version": "0.1.0-alpha.7",
+  "version": "0.1.0-alpha.6",
   "private": true,
   "type": "module",
   "workspaces": [
@@ -29,7 +29,7 @@
     "setup": "npm run setup:vendor && npm run setup:tests",
     "test:vendor": "node --test scripts/setup-vendor.test.mjs",
     "check:vendor": "node scripts/setup-vendor.mjs --check",
-    "test:provenance": "node --test scripts/check-provenance.test.mjs scripts/check-weather-elapsed-boundary.test.mjs"
+    "test:provenance": "node --test scripts/check-provenance.test.mjs"
   },
   "dependencies": {
     "three": "0.180.0"

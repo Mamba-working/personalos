@@ -265,9 +265,9 @@ function render(dt=0,stamp){
  scene.background=bookEnabled?null:(foreground?null:new THREE.Color(THEME.background));
  floor.visible=!foreground;ballShadow.visible=!foreground;diskShadow.visible=!foreground;
  if(bookEnabled){floor.material.transparent=true;floor.material.opacity=1-retirement;disk.visible=!!bookFrame;disk.traverse(node=>{if(node.material){node.material.transparent=true;node.material.opacity=node===plateContact?0:1-retirement;}});ballShadow.material.opacity*=1-retirement;diskShadow.material.opacity*=1-retirement;}
- // Keep the bounded legacy simulation argument. Analytic consumers can opt into
- // the world's active-visible interval; they never create a clock or replay frames.
- for(const effect of effects.values())effect.update(Math.min(.05,dt),effectState(),{elapsed:dt,stamp});
+ // Effects are procedural simulations with their own bounded-step policy. They
+ // do not receive the uncapped presentation/timeline clock or replay missed frames.
+ for(const effect of effects.values())effect.update(Math.min(.05,dt),effectState());
  shadowCache.prepare();
  renderer.setClearColor(THEME.background,foreground?0:1-retirement);renderer.render(scene,camera);
  // Anchor an accessible hit target to the projected existing actor; it contains no visual actor.

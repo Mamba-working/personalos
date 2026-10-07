@@ -1,4 +1,5 @@
 import test from 'node:test';
+import {alpha6Source} from '../../../../scripts/historical-alpha6.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {createSolarFixture} from './weather-solar-fixture.mjs';
@@ -66,13 +67,13 @@ test('material rain response uses original source ceramic and restores source va
  }finally{f.effect.dispose();near(f.body.material.roughness,.34);near(f.body.material.clearcoat,.3);near(f.body.material.clearcoatRoughness,.27);}
 });
 test('the opt-in original world writer consumes same-frame response without introducing a second face or pose timer',()=>{
- const source=fs.readFileSync(new URL('../../runtime/world/scene.js',import.meta.url),'utf8');
+ const source=alpha6Source(new URL('../../../../',import.meta.url).pathname,'apps/web/runtime/world/scene.js');
  assert.match(source,/factory\(\{THREE,scene,actor,applyWeatherResponse,/);assert.match(source,/nativeEyeOpen=p\.open\*blink;eyeVertices\(nativeEyeOpen,0\)/);assert.match(source,/face\.rotateZ\(response\.lean\|\|0\)/);
  assert.match(source,/eyeVertices\(nativeEyeOpen\*\(response\.eyeOpen\|\|1\)/);
  const p=weatherCharacterResponse({rain:.7,wind:6.5,windVector:[9,0],solarEnergy:.8},0,false);assert.ok(p.lean<=.035);assert.ok(p.sunShade<=.035);
 });
 test('the exact optional face writer produces a bounded quaternion and original-eye opening, resetting with every source frame',()=>{
- const source=fs.readFileSync(new URL('../../runtime/world/scene.js',import.meta.url),'utf8');
+ const source=alpha6Source(new URL('../../../../',import.meta.url).pathname,'apps/web/runtime/world/scene.js');
  const fn=source.match(/function applyWeatherResponse\(response\)\{([^\n]+)\}/)?.[1];assert.ok(fn);
  const face=new THREE.Group(),nativeEyeOpen=.94,values=[];
  const apply=new Function('face','nativeEyeOpen','eyeVertices',`return function(response){${fn}}`)(face,nativeEyeOpen,(opening,roll)=>values.push([opening,roll]));

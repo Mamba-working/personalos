@@ -1,0 +1,40 @@
+{
+  "kind": "prior-source-matched-temporal-correctness-observation",
+  "implementation": {
+    "baseCommit": "b4fe3cc3b1e663bec4930a20bf7b7cdb5bc59326",
+    "weatherSHA256": "44a2de63f5e6fb1f64341005d433881837eb9fa3b10d005602df8c1bd2830c1b",
+    "sceneSHA256": "3337839ee4f75808c9b2e626be6809fd24a13261a89e0522db93423ae1e75fae"
+  },
+  "observedRuntimeSHA256": "55e3ba2b690af2f68488ad4838a16fdab7ff28f961453cbb0b2952950236c505",
+  "relationship": "Implementation files are byte-identical to this alpha.7 candidate. Version/provenance metadata is new; observations are not relabeled as a fresh final-alpha.7 browser run.",
+  "environment": {
+    "playwright": "1.56.1",
+    "chromium": "141.0.7390.37",
+    "headlessShellBuild": 1194,
+    "sandbox": true,
+    "renderer": "ANGLE Vulkan SwiftShader software",
+    "viewport": [
+      390,
+      844
+    ],
+    "dpr": 1
+  },
+  "boundedFindings": [
+    "Native clear-to-rain and interrupted rain-to-clear follow active-visible elapsed time and unchanged endpoints",
+    "Native pause/quiet and actor/canvas/scene identity checks pass",
+    "Settled dynamic rain preserves the renderer-owned shadow cache without extra shadow submissions",
+    "Hidden resume was a diagnostic visibility override, not native OS backgrounding"
+  ],
+  "notEstablished": [
+    "physical-device smoothness",
+    "renderer FPS",
+    "general performance acceptance",
+    "new cinematic rain acceptance",
+    "complete visual-motion or final product acceptance"
+  ],
+  "privateEvidenceSHA256": {
+    "report": "727b7b3b9ece24ba10f04c77e268a2f00692b9939505791e62102306379ce0dc",
+    "rawObservation": "06e400ec0be6005c579f24f27133061fb18c04d865c52d1336bbf7285189709d",
+    "analysis": "be7982aae4b038429c6b5fa0d16809b77c3ab57ad5c35d4cd1a12c04a8fbd9d5"
+  }
+}

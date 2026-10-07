@@ -58,3 +58,11 @@ Earlier clock browser observations and V5 preview screenshots belong to their or
 The focused source suite exercises dirty input transitions, VSM receive-only participation, uploaded geometry, non-participant eyes, custom-path fallback, visibility resume, resize, context-service replacement, book motion, stable identities and disposal. The full web suite retains the historical world-layer SHA assertion through an explicit alpha.5 snapshot reader; a separate alpha.6 boundary check permits only the reviewed service, six exact scene hooks and release metadata. Root provenance negative controls reject source/snapshot/hunk/allowlist changes even after candidate-side inventory re-signing. No historical assertion or behavioral threshold is removed.
 
 The six prior native-canvas pixel pairs and one short ordered software-rendering timing pair are tied to the exact observed scene/service hashes in provenance/observations/shadow-cache-source-observation.json. They are not fresh alpha.6 browser or device acceptance. See ALPHA6_CANDIDATE.md for the remaining browser recheck scope.
+
+## Alpha.7 visible-weather elapsed correctness
+
+The normal web aggregate adds all 19 weather-elapsed tests. They retain an independently pinned alpha.6 negative, exact no-metadata fallback snapshots, equal-time trajectories at 16/100/800 ms and long frames, native input epochs, hidden/quiet/pause policies, auto-sun cap, actual CPU scene identity and shadow-owner order.
+
+The original alpha.6 provenance suite and four historical byte assertions retain their original expectations through independently pinned historical inputs. They do not run old byte expectations on new product source. The separate alpha.7 boundary enforces exact weather/scene hunks, metadata, unchanged shadow service and an exact public-source path list; mutation tests include candidate-side inventory re-signing. Local Git payload mapping is verified separately before publication.
+
+This repository serves static JavaScript directly: its build preparation is the existing exact-vendor reconstruction, syntax/provenance checks and real static HTTP tests. No new transpiler or build dependency is introduced. Source tests remain distinct from the source-identical bounded cloud-browser observation and later final-runtime/device acceptance.

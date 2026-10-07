@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import assert from 'node:assert/strict';
+import {historicalAlpha6Root} from './historical-alpha6.mjs';
 
 // Independent reviewed-byte oracles. Updating an active inventory cannot widen
 // this alpha.6 scope or rewrite the prior CSS-only world's assertions.
@@ -25,6 +26,7 @@ export function historicalWorldLayers(root) {
 }
 export function historicalLayerSource(root,relative) {
   const active=JSON.parse(read(root,'provenance/active-candidate.json'));
+  if(active.productVersion==='v0.1.0-alpha.7')return historicalLayerSource(historicalAlpha6Root(root),relative);
   if(active.productVersion==='v0.1.0-alpha.5')return read(root,'apps/web/runtime/'+relative);
   assert.equal(active.productVersion,'v0.1.0-alpha.6','Historical layer check requires an explicit version mapping');
   const expected={'world/scene.js':SHADOW_CACHE_BOUNDARY.baselineSceneSHA256,'release-meta.json':SHADOW_CACHE_BOUNDARY.baselineMetadataSHA256};

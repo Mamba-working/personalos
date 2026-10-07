@@ -2,7 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {verifyShadowCacheBoundary,applyReviewedShadowHooks} from '../../../../scripts/check-shadow-cache-boundary.mjs';
 import {runtimeInventory} from '../../../../scripts/check-provenance.mjs';
-const root=new URL('../../../../',import.meta.url).pathname;
+import {historicalAlpha6Root} from '../../../../scripts/historical-alpha6.mjs';
+const root=historicalAlpha6Root(new URL('../../../../',import.meta.url).pathname);
 test('alpha.6 graphics boundary permits only the reviewed service, exact owner hooks and release metadata',()=>{
  assert.deepEqual(verifyShadowCacheBoundary(root,runtimeInventory(root)).changed,['runtime/release-meta.json','runtime/world/scene.js','runtime/world/shadow-cache.js']);
 });

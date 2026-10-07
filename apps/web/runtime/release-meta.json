@@ -1,8 +1,8 @@
 {
   "product": "PersonalOS",
-  "productVersion": "v0.1.0-alpha.6",
+  "productVersion": "v0.1.0-alpha.7",
   "channel": "alpha",
-  "reviewLabel": "Local alpha.6 candidate \u00b7 static-shadow cache review pending",
+  "reviewLabel": "Local alpha.7 candidate · visible-weather elapsed correctness",
   "fullUnifiedAcceptance": false,
   "deferredGates": [
     "final-user-signoff",
@@ -12,10 +12,10 @@
     "assembled-weather-motion-review"
   ],
   "limitations": [
-    "Renderer-owned static-shadow cache only; no cinematic rain-v6 or Next.js integration",
-    "Source-identical graphics code has six matched cloud-canvas pixel observations; assembled alpha.6 browser review remains pending",
-    "Single ordered SwiftShader timing observation is not physical-device FPS or validated performance acceptance",
-    "Physical-device native keyboard/IME acceptance pending",
-    "Final unified-product user signoff pending"
+    "Temporal correctness only; alpha.6 weather art and shadow-cache ownership unchanged; no cinematic rain-v6 or Next.js integration",
+    "Source-identical implementation passed bounded native cloud-browser elapsed/phase checks; final versioned runtime smoke remains separate",
+    "SwiftShader observations do not establish physical-device smoothness, renderer FPS or general performance acceptance",
+    "Hidden/resume browser evidence is a diagnostic visibility override, not native OS or physical-device backgrounding",
+    "Physical-device native keyboard/IME and final unified-product user signoff pending"
   ]
 }

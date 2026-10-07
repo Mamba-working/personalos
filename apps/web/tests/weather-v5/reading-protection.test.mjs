@@ -1,8 +1,9 @@
 import {withoutReadingShelfCSS} from '../integration/reading-shelf-fixture.mjs';
 import test from 'node:test';
+import {alpha6Source} from '../../../../scripts/historical-alpha6.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-const read=p=>fs.readFileSync(new URL(p,import.meta.url),'utf8');
+const read=p=>p==='../../runtime/modules/weather.js'?alpha6Source(new URL('../../../../',import.meta.url).pathname,'apps/web/runtime/modules/weather.js'):fs.readFileSync(new URL(p,import.meta.url),'utf8');
 const lum=rgb=>rgb.reduce((a,c,i)=>a+[.2126,.7152,.0722][i]*(c/255<=.04045?c/255/12.92:((c/255+.055)/1.055)**2.4),0);
 test('V5 changes only semantic secondary ink and contains no panel/halo/layout/animation',()=>{
  const css=read('./fixtures/v5/host-reading.css').replace(/\/\*[\s\S]*?\*\//g,'').trim();assert.equal(css,'.intro-note .example-note{color:#181F2B;color:color-mix(in srgb,var(--ink,#283348) 60%,#000)}');

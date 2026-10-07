@@ -5,9 +5,11 @@ import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import {spawnSync} from 'node:child_process';
+import {historicalAlpha6Root} from './historical-alpha6.mjs';
 import {verifyProvenance,verifySourcePayload,runtimeInventory,HISTORICAL_PROVENANCE} from './check-provenance.mjs';
 import {historicalWorldLayers,verifyShadowCacheBoundary,SHADOW_CACHE_BOUNDARY} from './check-shadow-cache-boundary.mjs';
-const root=path.resolve(new URL('../',import.meta.url).pathname),sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+// Historical assertions below stay unchanged and execute on pinned alpha.6 inputs.
+const root=historicalAlpha6Root(path.resolve(new URL('../',import.meta.url).pathname)),sha=b=>crypto.createHash('sha256').update(b).digest('hex');
 // Deliberate duplicate oracle: do not derive historical expectations from the active candidate.
 const pinned={
  'export-policy.json':'0f782049e914df98374f5d06d800e2af54e745002647fd0d90544a07e0e460f5',

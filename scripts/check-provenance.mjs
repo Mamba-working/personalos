@@ -5,6 +5,7 @@ import assert from 'node:assert/strict';
 import {fileURLToPath} from 'node:url';
 import {spawnSync} from 'node:child_process';
 import {verifyShadowCacheBoundary, SHADOW_CACHE_BOUNDARY} from './check-shadow-cache-boundary.mjs';
+import {verifyAlpha7Provenance} from './check-weather-elapsed-boundary.mjs';
 
 // Historical import records are immutable, even when an active composite changes.
 export const HISTORICAL_PROVENANCE = Object.freeze({
@@ -35,6 +36,7 @@ export function verifyProvenance(root){
   assert.deepEqual(current,original.files,'Frozen imported runtime inventory differs');assert.equal(digest,original.originalRuntimeSHA256,'Frozen runtime digest differs');return{kind:'historical-alpha4',runtimeFiles:current.length,runtimeSHA256:digest};
  }
  const active=json(root,'provenance/active-candidate.json');
+ if(active.productVersion==='v0.1.0-alpha.7')return verifyAlpha7Provenance(root,{current,verifyHistorical:verifyProvenance,historicalProvenance:HISTORICAL_PROVENANCE,requiredDeferred:REQUIRED_DEFERRED});
  assert.equal(active.schemaVersion,1);assert.equal(active.kind,'local-composite-candidate');assert.equal(active.status,'unpublished-acceptance-pending');
  assert(['v0.1.0-alpha.5','v0.1.0-alpha.6'].includes(active.productVersion),'Unsupported active product version');
  const alpha6=active.productVersion==='v0.1.0-alpha.6';assert.equal(active.publicGitCommit,null);assert.equal(active.publicGitTag,null);assert.equal(active.deployed,false);
@@ -78,7 +80,13 @@ export function verifyProvenance(root){
 export function verifySourcePayload(root){
  const active=json(root,'provenance/active-candidate.json'),commit=active.sourcePayloadCommit;
  const git=args=>{const r=spawnSync('git',args,{cwd:root,encoding:null});assert.equal(r.status,0,`Source payload object unavailable or invalid: ${r.stderr?.toString()}`);return r.stdout;};
+ assert.equal(git(['cat-file','-t',commit]).toString().trim(),'commit','Payload mapping must reference a commit object');
  const tracked=git(['ls-tree','-r','--name-only',commit,'--','apps/web/runtime']).toString().trim().split('\n');
+ if(active.productVersion==='v0.1.0-alpha.7'){
+  const generated=new Set(['runtime/world/vendor/three/three.core.js','runtime/world/vendor/three/three.module.js']);
+  const expected=runtimeInventory(root).filter(x=>!generated.has(x.path)).map(x=>'apps/web/'+x.path).sort();
+  assert.deepEqual([...tracked].sort(),expected,'Mapped payload runtime path set differs');
+ }
  const paths=[...new Set([...tracked,...VERSION_FILES])];for(const rel of paths)assert.deepEqual(git(['show',`${commit}:${rel}`]),fs.readFileSync(path.join(root,rel)),`Mapped payload differs: ${rel}`);
  return{sourcePayloadCommit:commit,verifiedTrackedFiles:paths.length};
 }

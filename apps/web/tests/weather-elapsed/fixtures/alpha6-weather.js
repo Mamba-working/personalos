@@ -73,43 +73,6 @@ export function createWeatherModel(initial = {}) {
     if (autoSun && target.altitude < 75) target.altitude = Math.min(75, target.altitude + dt * .012);
     return getState();
   }
-  /** Closed-form consumer of the world's active-visible interval. This is not
-   * an Euler/spring step: work stays constant even after a long visible frame.
-   * Legacy step() remains the bounded adapter for callers without clock metadata.
-   * Integrating the blend, not its endpoint, keeps rain/wind travel independent
-   * of frame cadence. Snap occurs at the same epsilon crossing for every cadence.
-   */
-  function advanceInterval(dt, {hidden = false, reduced = false, quiet = false} = {}) {
-    const interval = {duration: 0, rain: 0, wind: 0};
-    if (disposed || hidden || !enabled) return interval;
-    if (reduced || paused) { effective = {...target}; return interval; }
-    if (quiet) return interval;
-    dt = Number.isFinite(dt) ? Math.max(0, dt) : 0;
-    const rate = 1.7, epsilon = .0001;
-    function constant(key, duration) {
-      const delta = effective[key] - target[key];
-      const settling = Math.abs(delta) <= epsilon ? 0 : Math.log(Math.abs(delta) / epsilon) / rate;
-      const changing = Math.min(duration, settling), blend = -Math.expm1(-rate * changing);
-      const integral = target[key] * duration + delta * blend / rate;
-      effective[key] = duration >= settling ? target[key] : effective[key] + (target[key] - effective[key]) * blend;
-      return integral;
-    }
-    for (const key of Object.keys(fields)) {
-      if (key === 'altitude' && autoSun && target.altitude < 75) {
-        // Exact response to a slowly moving target, including the altitude cap.
-        const speed = .012, ramp = Math.min(dt, (75 - target.altitude) / speed);
-        const delta = effective.altitude - target.altitude, blend = -Math.expm1(-rate * ramp);
-        effective.altitude += speed * ramp - (delta + speed / rate) * blend;
-        target.altitude = Math.min(75, target.altitude + speed * ramp);
-        if (ramp < dt) constant('altitude', dt - ramp);
-      } else {
-        const integral = constant(key, dt);
-        if (key === 'rain' || key === 'wind') interval[key] = integral;
-      }
-    }
-    time += dt; interval.duration = dt;
-    return interval;
-  }
   function getState() {
     const s = effective, angle = s.direction * Math.PI / 180, altitude = s.altitude * Math.PI / 180, azimuth = s.azimuth * Math.PI / 180;
     const sun=[Math.cos(altitude)*Math.sin(azimuth),Math.sin(altitude),-Math.cos(altitude)*Math.cos(azimuth)],solarProjection=projectSolarAtmosphere(sun,s.cloud);
@@ -122,7 +85,7 @@ export function createWeatherModel(initial = {}) {
   effective = {...target};
   if (initial.effective) for (const [key, limits] of Object.entries(fields)) if (Number.isFinite(initial.effective[key])) effective[key] = clamp(initial.effective[key], ...limits);
   if (Number.isFinite(initial.time)) time = Math.max(0, initial.time);
-  return {setWeather, step, advanceInterval, getState, dispose() { disposed = true; }};
+  return {setWeather, step, getState, dispose() { disposed = true; }};
 }
 
 /** Small posture cue for the existing face writer, never a replacement face. */
@@ -148,9 +111,6 @@ function activityPolicy(state = {}) {
 function makeEffect({THREE, scene, actor, applyWeatherResponse = () => {}, requestFrame = () => {}, getState = () => ({})}, model, syncExternal, paintField = () => {}) {
   if (!THREE || !scene?.add || !actor?.position || !actor?.scale) throw new TypeError('Weather requires the existing THREE scene and actor');
   let disposed = false, wasHidden = false, lastExternal = '', phaseTime = 0, rainPhase = 0, windPhase = 0, updates = 0;
-  let intentStamp = null, wasMoving = null;
-  // An input epoch is not a second clock. Only supplied world intervals advance us.
-  function markIntent(stamp) { if (Number.isFinite(stamp)) intentStamp = stamp; }
   const root = new THREE.Group(); root.name = 'PersonalOS / bounded simulated weather';
   const ownedGeometry = [], ownedMaterial = [];
   const material = m => { ownedMaterial.push(m); return m; };
@@ -208,41 +168,24 @@ function makeEffect({THREE, scene, actor, applyWeatherResponse = () => {}, reque
     }
     return state;
   }
-  function update(dt = 0, override, frame = null) {
+  function update(dt = 0, override) {
     if (disposed) return;
     const state = stateOf(override), policy = activityPolicy(state);
-    if (policy.hidden) { wasHidden = true; wasMoving = false; root.visible = false; restoreLight(); return; }
-    const timed = Number.isFinite(frame?.elapsed) && frame.elapsed >= 0;
-    const before = model.getState();
-    const movingNow = before.enabled && !before.paused && !policy.quiet && !policy.reduced;
-    let interval = null;
-    if (timed) {
-      dt = frame.elapsed;
-      // A new target resumes from the displayed state at its input epoch. A stale
-      // RAF stamp cannot spend time that preceded that intent. Duplicate settings
-      // never move the epoch. Sleeping/hidden time was already excluded by world.
-      if (intentStamp !== null && Number.isFinite(frame.stamp)) {
-        dt = Math.min(dt, Math.max(0, (frame.stamp - intentStamp) / 1000));
-        if (frame.stamp >= intentStamp) intentStamp = null;
-      } else if (wasMoving === false && movingNow) dt = 0;
-      interval = model.advanceInterval(dt, policy);
-    } else {
-      if (wasHidden || !Number.isFinite(dt) || dt < 0 || dt > .5) dt = 0;
-      model.step(dt, policy);
-    }
-    wasHidden = false; wasMoving = movingNow;
-    const weather = model.getState(), s = weather.effective;
+    if (policy.hidden) { wasHidden = true; root.visible = false; restoreLight(); return; }
+    if (wasHidden || !Number.isFinite(dt) || dt < 0 || dt > .5) dt = 0;
+    wasHidden = false;
+    const weather = model.step(dt, policy), s = weather.effective;
     paintField(weather, policy, dt);
     const active = weather.enabled && !policy.quiet;
     root.visible = active;
     if (!active) { restoreLight(); return; }
     const moving = !policy.reduced && !weather.paused;
     if (moving) {
-      const step=interval ? interval.duration : Math.min(dt,.1);phaseTime+=step;
-      // Integrate the velocity over this interval, never time * the latest speed.
-      // Analytic integrals include every visible second without replay/substeps.
-      rainPhase=(rainPhase+(interval ? step*.58+interval.rain*.48 : step*(.58+s.rain*.48)))%1;
-      windPhase=(windPhase+(interval ? interval.wind*.55 : step*s.wind*.55))%(Math.PI*2);
+      const step=Math.min(dt,.1);phaseTime+=step;
+      // Integrate current velocity using the same supplied frame dt. Multiplying
+      // all elapsed time by a changed speed would teleport an old rain/wind field.
+      rainPhase=(rainPhase+step*(.58+s.rain*.48))%1;
+      windPhase=(windPhase+step*s.wind*.55)%(Math.PI*2);
     }
     root.position.copy(actor.position); root.scale.copy(actor.scale);
     for (const entry of lights) {
@@ -306,7 +249,7 @@ function makeEffect({THREE, scene, actor, applyWeatherResponse = () => {}, reque
       (s.transitioning || s.effective.rain > .005 || (s.effective.wind > 3.1 && s.effective.rain < .1) || (s.autoSun && s.target.altitude < 75));
   }
   update(0); requestFrame();
-  return {update, needsFrame, markIntent, getState: () => ({...model.getState(), effect: {attached: !disposed, visible: root.visible, updates, phaseTime, budget: {...WEATHER_BUDGET}}}),
+  return {update, needsFrame, getState: () => ({...model.getState(), effect: {attached: !disposed, visible: root.visible, updates, phaseTime, budget: {...WEATHER_BUDGET}}}),
     dispose() { if (disposed) return; disposed = true; root.visible = false; restoreLight(); root.removeFromParent(); for (const g of ownedGeometry) g.dispose(); for (const m of ownedMaterial) m.dispose(); if (syncExternal) model.dispose(); }};
 }
 
@@ -484,7 +427,7 @@ export function mountWeather({host, container, fieldContainer = null, overlayCon
   function syncDisclosurePreference(state) {
     if (!disposed && disclosureAnimation && disclosureReduced(state)) settleDisclosure(disclosureOpen);
   }
-  const preferenceChanged = () => { syncDisclosurePreference(host.getState()); effect?.markIntent(win.performance.now()); };
+  const preferenceChanged = () => syncDisclosurePreference(host.getState());
   motionQuery?.addEventListener?.('change', preferenceChanged);
   function setDisclosure(open,{restoreFocus=true}={}) {
     if (disposed) return;
@@ -525,17 +468,12 @@ export function mountWeather({host, container, fieldContainer = null, overlayCon
   }
   function setWeather(patch) {
     if (disposed || !model.setWeather(patch)) return false;
-    effect?.markIntent(win.performance.now());
     if (!attached) { model.step(0, {reduced: true}); ambient.paint(model.getState(), activityPolicy(host.getState()), 0, true); }
     renderUI(); world?.requestFrame?.(); host.moduleChanged?.('weather'); return true;
   }
   function detach() { unregister?.(); unregister = null; effect?.dispose(); effect = null; world = null; attached = false; }
-  let lastMotionPolicy = null;
   function reconcile(state) {
     if (disposed) return;
-    const policy = activityPolicy(state), motionPolicy = [policy.hidden, policy.quiet, policy.reduced].join(':');
-    if (lastMotionPolicy !== null && motionPolicy !== lastMotionPolicy) effect?.markIntent(win.performance.now());
-    lastMotionPolicy = motionPolicy;
     if(disclosureOpen&&((state.chat?.phase&&state.chat.phase!=='closed')||(state.content?.phase&&state.content.phase!=='preview')||(state.story?.phase&&state.story.phase!=='home')||state.pendingReplay||['navigate','content-category-select'].includes(state.action)))setDisclosure(false,{restoreFocus:false});
     const next = host.world?.() || null;
     if (next !== world) {
@@ -545,7 +483,6 @@ export function mountWeather({host, container, fieldContainer = null, overlayCon
         try {
           unregister = next.registerEffect('weather', context => {
             effect = makeEffect({...context, getState: () => ({...context.getState(), weather: model.getState()})}, model, false, (weather, policy, dt) => ambient.paint(weather, policy, dt));
-            effect.markIntent(win.performance.now());
             return effect;
           });
           attached = !!effect;

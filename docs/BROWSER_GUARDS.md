@@ -1,11 +1,11 @@
-# Browser process guards (candidate)
+# Browser process guards (stock Chrome candidate)
 
 This additive, test-only candidate starts at public main commit
 `64c36696dcc54ba2fa108437a3be49ac830100ef`. The existing CI workflow, original
 source/DOM suites, HTTP API/static tests, contracts, runtime and provenance are
 unchanged. The Next migration is outside this candidate.
 
-## Current validation status: review-only draft
+## Current validation status: review-only draft\n\nThis is a separate branded-Chrome candidate. Historical Chromium 141 observations below remain historical and do not certify stock Chrome. Draft PR #2 preserves the pinned-Chromium/helper investigation: its hosted helper was actually root:root mode 0777, with no setuid bit. This branch changes the browser baseline explicitly to the runner's already-installed official Google Chrome through Playwright channel `chrome`, retains Playwright 1.56.1 and all original product/negative-control criteria, and does not modify OS security or permissions.\n\nThe exact branded Chrome version and installed-package consistency are recorded per run. A two-minute CI preflight requires sandboxed launch, blank-page renderer execution and a nonblank synthetic WebGL triangle using the unchanged render-pixel criterion before any browser product/negative-control test. Chrome/old-driver compatibility, default graphics availability and product behavior must be established by actual exact-head CI; none is assumed. This smoke is not the production Ball/book render gate, and has no hardware/FPS/device conclusion.\n\n[Playwright documents the branded Chrome channel](https://playwright.dev/docs/browsers#google-chrome--microsoft-edge) and notes its headless behavior differs from the bundled Chromium headless shell. This candidate neither installs/upgrades Chrome nor substitutes a sandbox helper. Package metadata/checksum checks are consistency checks, not a full security audit. Hosted executable permissions are recorded, and the runner's trusted setup/isolation are part of this limited test threat model.
 
 The default-instrumented browser/render gate has a recorded failure. Native Skip-to-home completion in the observed software-rendered environment took 34,183.9 ms and exceeded the unchanged 30-second state wait. The failed run remains a failed observation; later home settlement is not relabeled a pass.
 
@@ -23,15 +23,18 @@ Use the pinned Node version in `.nvmrc`, then:
     npm run setup
     npm ci --prefix apps/web/tests/browser --ignore-scripts --no-audit --no-fund
     apps/web/tests/browser/node_modules/.bin/playwright install --with-deps chromium
+    node apps/web/tests/browser/stock-chrome-preflight.mjs
     npm --prefix apps/web/tests/browser run test:unit
     npm --prefix apps/web/tests/browser run test:negative
     npm --prefix apps/web/tests/browser test -- --grep-invert '@negative|@render'
     npm --prefix apps/web/tests/browser run test:render-negative
     npm --prefix apps/web/tests/browser test -- --grep '@render'
 
-Playwright Test is exactly pinned to 1.56.1, with lockfile integrity. Its own
-installer selects Chromium 141.0.7390.37 (build 1194) and FFmpeg build 1011.
-The CI uses the official installer, sandbox enabled, zero custom launch flags,
+Playwright Test remains exactly pinned to 1.56.1, with lockfile integrity. The
+unchanged installer still downloads bundled Chromium 141 and FFmpeg, but this
+candidate selects the already-installed branded Chrome via channel `chrome`.
+Its actual version is not repository-pinned and must be recorded for each run.
+The CI retains the official installer, sandbox enabled, zero custom launch flags,
 one worker, a bounded 180-second per-flow / 30-second state budget (instrumented software rendering is not a performance gate), no retries, no secrets, and `contents: read`. It uses a new isolated
 browser context and a repository-owned static server on port 4381, with no reuse
 of an existing server. Test requests outside that demo origin are aborted.
@@ -39,7 +42,7 @@ of an existing server. Test requests outside that demo origin are aborted.
 This suite is reproducible project test code. It is not computer-use automation
 against the user's browser or a workaround for denied browser access. Never add
 unsafe WebGL/SwiftShader flags, disable the sandbox, bypass security warnings or
-switch browsers to turn an access/security failure into a pass.
+treat a browser-baseline change as proof that the earlier engine passed. This separately authorized branded-Chrome candidate records its own outcomes.
 
 ## Small first scope
 

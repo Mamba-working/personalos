@@ -25,6 +25,7 @@ test('real React surface hydrates the same SSR article/input/scroll nodes; new r
   try {
     await act(async () => { root = hydrateRoot(container, element(), { onRecoverableError: error => errors.push(error) }); });
     ready = true; await act(async () => { root!.render(element()); });
+    for (const hidden of container.querySelectorAll('[data-proof-toolbar] > [hidden]')) { assert.equal(hidden.hasAttribute('inert'), true); assert.equal(hidden.getAttribute('aria-hidden'), 'true'); }
     const add = [...container.querySelectorAll('button')].find(button => button.textContent === '加 1')!;
     await act(async () => { add.click(); add.click(); });
     input.focus();
@@ -32,6 +33,7 @@ test('real React surface hydrates the same SSR article/input/scroll nodes; new r
     input.setSelectionRange(1, 5);
     selected = true; await act(async () => { root!.render(element()); });
     assert.equal(container.querySelector('[data-proof-frame]')?.getAttribute('data-phase'), 'detail');
+    for (const hidden of container.querySelectorAll('[data-proof-toolbar] > [hidden]')) { assert.equal(hidden.hasAttribute('inert'), true); assert.equal(hidden.getAttribute('aria-hidden'), 'true'); }
     host.scrollTop = 210;
     revision = 2; await act(async () => { root!.render(element()); });
     assert.equal(container.querySelector('article'), article); assert.equal(article.parentNode, parent); assert.equal(container.querySelector('input'), input); assert.equal(container.querySelector('[data-proof-scroll]'), host);

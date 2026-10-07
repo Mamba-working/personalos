@@ -15,7 +15,7 @@ export default function ContentSurface(props: Props) {
   const [phase, setPhase] = useState<Phase>(selected ? 'detail' : 'preview'), [readerWidth, setReaderWidth] = useState<number | undefined>(undefined);
   const phaseRef = useRef(phase), selectedRef = useRef(selected), motion = useRef<ReturnType<typeof createContentFrame> | null>(null), savedAnchor = useRef<ReadingAnchor | null>(null), previousFocus = useRef<HTMLElement | null>(null), returnFocus = useRef(false);
   phaseRef.current = phase; selectedRef.current = selected;
-  const presenting = ready && phase !== 'preview';
+  const presenting = ready && phase !== 'preview', showingReaderControls = presenting || (!ready && selected);
   useLayoutEffect(() => {
     const host = scroll.current!, surface = frame.current!;
     register(record.id, { scroll: host, frame: surface });
@@ -75,9 +75,9 @@ export default function ContentSurface(props: Props) {
   }, [phase, ready, instant, record.id, onPhase]);
   return <div ref={slot} className={styles.slot} data-proof-slot={record.id} data-kind={record.kind} data-ready={ready} data-selected={selected} inert={ready && otherSelected}>
     <div ref={frame} className={styles.frame} style={presenting ? { width: readerWidth } : undefined} data-proof-frame={record.id} data-presenting={presenting} data-phase={phase} role={presenting ? 'dialog' : undefined} aria-modal={presenting ? true : undefined} aria-labelledby={`proof-title-${record.id}`}>
-      <div className={styles.surfaceTools}>
-        <a ref={openLink} href={props.itemHref} data-open={record.id} hidden={presenting || (!ready && selected)} onPointerDown={event => { if (event.pointerType === 'mouse') event.preventDefault(); }} onClick={props.onOpen}>打开 ↗</a>
-        <div hidden={!(presenting || (!ready && selected))}>{props.revisionLink}<a href={props.closeHref} data-close={record.id} onPointerDown={event => { if (event.pointerType === 'mouse') event.preventDefault(); }} onClick={props.onClose}>返回 ↙</a></div>
+      <div className={styles.surfaceTools} data-proof-toolbar={record.id}>
+        <a ref={openLink} href={props.itemHref} data-open={record.id} hidden={showingReaderControls} inert={showingReaderControls} aria-hidden={showingReaderControls || undefined} onPointerDown={event => { if (event.pointerType === 'mouse') event.preventDefault(); }} onClick={props.onOpen}>打开 ↗</a>
+        <div hidden={!showingReaderControls} inert={!showingReaderControls} aria-hidden={!showingReaderControls || undefined}>{props.revisionLink}<a href={props.closeHref} data-close={record.id} onPointerDown={event => { if (event.pointerType === 'mouse') event.preventDefault(); }} onClick={props.onClose}>返回 ↙</a></div>
       </div>
       <div ref={scroll} className={styles.scrollHost} data-proof-scroll={record.id} tabIndex={presenting ? 0 : -1}>
         <RevisionBoundary revision={record.revision} reading={ready && phase === 'detail'} scrollHost={scroll}>

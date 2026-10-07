@@ -14,17 +14,26 @@ export function createNavigationAuthority(env: Window, records: Manifest, readPo
   env.history.scrollRestoration = 'manual';
   const entry = (): HistoryEntry | undefined => env.history.state?.personalosNext;
   let currentEntryId: string | undefined = entry()?.id;
+  let retainedEntry: HistoryEntry | undefined = entry();
+  let retainedURL = env.location.href;
+  function currentOwnedEntry(): HistoryEntry | undefined {
+    const visible = entry();
+    if (visible) return visible;
+    return !awaitingBack && retainedURL === env.location.href && retainedEntry?.id === currentEntryId && retainedEntry?.token === token ? retainedEntry : undefined;
+  }
   function rememberPosition() {
     const position = readPosition();
     if (currentEntryId) positions.set(currentEntryId, { ...position });
     return position;
   }
-  function write(state: RouteState, method: 'pushState' | 'replaceState', openedHere: boolean, position = readPosition()) {
+  function write(state: RouteState, method: 'pushState' | 'replaceState', openedHere: boolean, position = readPosition(), url = routeURL(state, env.location.href)) {
     const id = method === 'replaceState' && currentEntryId ? currentEntryId : `${token}:${++sequence}`;
     // Do not copy Next's __NA marker. Its documented native-history wrapper must run.
     // Resolve the method at user-intent time, after Next installs that wrapper.
-    env.history[method]({ personalosNext: { source: 'personalos-next', token, id, openedHere, position } satisfies HistoryEntry }, '', routeURL(state, env.location.href));
+    env.history[method]({ personalosNext: { source: 'personalos-next', token, id, openedHere, position } satisfies HistoryEntry }, '', url);
     currentEntryId = id;
+    retainedEntry = { source: 'personalos-next', token, id, openedHere, position: { ...position } };
+    retainedURL = env.location.href;
     positions.set(id, { ...position });
   }
   function publish(state: RouteState, position?: Position) {
@@ -33,7 +42,7 @@ export function createNavigationAuthority(env: Window, records: Manifest, readPo
   }
   function checkpoint() {
     if (disposed || awaitingBack || env.location.pathname !== ownedPath) return;
-    const old = entry();
+    const old = currentOwnedEntry();
     write(current, 'replaceState', !!old?.openedHere && old.token === token, rememberPosition());
   }
   function navigate(state: RouteState) {
@@ -49,6 +58,8 @@ export function createNavigationAuthority(env: Window, records: Manifest, readPo
     if (!awaitingBack) rememberPosition();
     const incoming = entry();
     currentEntryId = incoming?.id;
+    retainedEntry = incoming;
+    retainedURL = env.location.href;
     awaitingBack = false;
     const arrived = parseRoute(new URL(env.location.href).searchParams, records);
     if (queued) {
@@ -76,9 +87,28 @@ export function createNavigationAuthority(env: Window, records: Manifest, readPo
       // only the latest intent rather than traversing another history entry.
       if (awaitingBack) { queued = state; publish(state); return; }
       checkpoint();
-      const own = entry();
+      const own = currentOwnedEntry();
       if (own?.openedHere && own.token === token) { awaitingBack = true; publish(state); env.history.back(); }
       else { write(state, 'replaceState', false); publish(state); }
+    },
+    reconcileServerRefresh() {
+      if (disposed || awaitingBack || env.location.pathname !== ownedPath || entry()) return;
+      const own = currentOwnedEntry();
+      if (own?.token === token) write(current, 'replaceState', own.openedHere, rememberPosition());
+    },
+    // Same-entry server query updates are owned here too. Next's documented
+    // native history wrapper updates router state; the caller then refetches RSC.
+    // Keep application entry ownership, without copying opaque framework fields.
+    replaceServerQuery(parameters: Readonly<Record<string, string>>) {
+      if (disposed || awaitingBack || env.location.pathname !== ownedPath) return false;
+      const url = routeURL(current, env.location.href);
+      for (const [key, value] of Object.entries(parameters)) {
+        if (['item', 'space', 'chat'].includes(key)) throw new Error('Semantic route parameters require a navigation intent');
+        url.searchParams.set(key, value);
+      }
+      const own = currentOwnedEntry();
+      write(current, 'replaceState', !!own?.openedHere && own.token === token, rememberPosition(), url);
+      return true;
     },
     checkpoint,
     dispose() { if (disposed) return; disposed = true; listeners.clear(); positions.clear(); env.removeEventListener('popstate', onPop); env.history.scrollRestoration = previousRestoration; },

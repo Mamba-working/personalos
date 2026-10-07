@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import assert from 'node:assert/strict';
-export const SOURCE_SCOPE_SHA256='4a0cc7d2a23f9407013847b773cfb62ea893d6a33395b5959866c7e01f4e7366';
+export const SOURCE_SCOPE_SHA256='7d92bee3f6f4fdc1065d812a2f0ba5741ffa5eeb1b5e641ec4087ab515261344';
 const ignored=new Set(['.git','node_modules','.npm-cache','evidence','playwright-report','test-results']);
 const generated=new Set(['apps/web/runtime/world/vendor/three/three.core.js','apps/web/runtime/world/vendor/three/three.module.js','apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/three/three.core.js','apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/three/three.module.js']);
 export function publicSourcePaths(root){

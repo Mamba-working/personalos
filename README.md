@@ -11,6 +11,10 @@ PersonalOS is managed as one product repository: web UI, a backend service bound
 
 This is an alpha source import and backend scaffold. Test success does not establish browser/GPU/device/performance or final visual acceptance.
 
+## Isolated Next.js migration candidate
+
+An additive Next.js + TypeScript SSR proof is available on port 4183. It server-renders all 18 demo articles and adopts their real DOM nodes for a native reader journey. It is incomplete and has not passed real-browser/GPU or full-feature parity gates. The frozen interface below remains the oracle. See [scope, run instructions, ownership, evidence and blockers](docs/NEXT_FIRST_SLICE.md).
+
 ## Quick start
 
 Use Node 24.19.0, as recorded in .nvmrc. From the repository root:

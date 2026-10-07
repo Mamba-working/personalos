@@ -1,0 +1,27 @@
+/* Candidate-only progressive enhancement. The alpha.3 cascade above is unchanged. */
+.migration-notice{padding:10px 24px;margin:0;background:#e8edf4;color:#334056;font:12px/1.5 system-ui}
+.migration-notice a,.migration-notice button{margin-left:14px;color:inherit}
+.route-check{padding-top:48px}
+.filters a{border:0;background:none;border-radius:24px;padding:11px 19px;position:relative;font-size:15px;white-space:nowrap;text-decoration:none}
+.filters a span{display:inline-block;width:22px;margin-left:9px;font:12px ui-monospace,monospace;color:var(--muted)}
+.filters a[aria-pressed=true]{color:#101622}.filters a[aria-pressed=true] span{color:#3e506a}
+#native-content-island:not([data-native-ready]) .feed{display:block}
+#native-content-island:not([data-native-ready]) .slot{height:auto;overflow:visible;clip-path:none}
+#native-content-island:not([data-native-ready]) .card{height:auto;overflow:visible;padding-bottom:24px;margin-bottom:24px}
+#native-content-island:not([data-native-ready]) .identity{position:relative}
+#native-content-island:not([data-native-ready]) .detail-body{display:block;position:static;transform:none!important;width:auto;padding:24px}
+#native-content-island:not([data-native-ready]) .open-card{position:static;display:block;color:var(--tone);padding:12px 24px}
+#native-content-island:not([data-native-ready]) .transition-stage:not([hidden]){position:relative;pointer-events:auto;padding:24px}
+#native-content-island:not([data-native-ready]) .travel-shell{position:relative;width:auto;height:auto;transform:none;overflow:visible}
+#native-content-island:not([data-native-ready]) .reader{overflow:visible}
+#native-content-island:not([data-native-ready]) .backdrop{display:none}
+#native-content-island:not([data-native-ready]) .close{display:grid;place-items:center;text-decoration:none}
+#native-content-island[data-native-ready] .close{text-align:center;line-height:38px;text-decoration:none}
+#world-owner[data-world-status=starting] #ball-world-root,#world-owner[data-world-status=fallback] #ball-world-root{visibility:hidden}
+#world-owner[data-world-status=ready] #ball-world-root{visibility:visible}
+#world-status{margin:0;padding:8px 24px;font:12px/1.5 system-ui;color:var(--muted)}
+/* Intro remains in the original renderer; readable SSR never becomes inert behind it. */
+#world-owner[data-world-phase=intro] #ball-world-root{z-index:0}
+
+#native-content-island:not([data-native-ready]){display:flex;flex-direction:column}
+#native-content-island:not([data-native-ready]) [data-ssr-reader]{order:-1}

@@ -1,7 +1,7 @@
 // Test-only observation. Never changes the app clock, story, renderer, DOM,
 // visibility or motion preferences. Install before navigation so a slow goto
 // cannot erase the finite intro's real, earlier active frames.
-export function installIntroObserver() {
+export function installIntroObserver({progressBinding = null} = {}) {
   const events = [], controlClicks = [], visibility = [], availability = [], errors = [], runs = [];
   const canvasIDs = new WeakMap();
   let nextCanvasID = 0, sequence = 0, current = null, scheduled = false;
@@ -86,7 +86,23 @@ export function installIntroObserver() {
           else if (run.observations.length >= 3 &&
               row.story.time > run.before.story.time + .2 &&
               row.frameStamp > run.before.frameStamp + 200 &&
-              row.clockFrames > run.before.clockFrames) run.status = 'progress';
+              row.clockFrames > run.before.clockFrames) {
+            run.status = 'progress';
+            // Transport the same completed evidence, without another framed
+            // read. Only Node may perform the actual native Skip action.
+            if (run.reason === 'replay' && typeof progressBinding === 'string') {
+              const signal = {kind: 'intro-progress', name: progressBinding, t: performance.now(), stage: 'observed'};
+              window.__nativeGuardSignals ??= [];
+              boundedPush(window.__nativeGuardSignals, signal, 32);
+              try {
+                Promise.resolve(window[progressBinding](window.__introEvidence.read('replay'))).catch(error => {
+                  boundedPush(window.__nativeGuardSignals, {...signal, t: performance.now(), stage: 'delivery-error', message: String(error?.message ?? error)}, 32);
+                });
+              } catch (error) {
+                boundedPush(window.__nativeGuardSignals, {...signal, t: performance.now(), stage: 'delivery-error', message: String(error?.message ?? error)}, 32);
+              }
+            }
+          }
         }
       }
     } catch (error) {fail(error);}
@@ -143,8 +159,8 @@ export function installIntroObserver() {
   };
 }
 
-export async function installIntroEvidence(page) {
-  await page.addInitScript(installIntroObserver);
+export async function installIntroEvidence(page, {progressBinding = null} = {}) {
+  await page.addInitScript(installIntroObserver, {progressBinding});
 }
 
 export async function readIntroEvidence(page, reason) {
@@ -213,6 +229,122 @@ export function requireStartedProgress(evidence, reason) {
   const after = observations.at(-1);
   if (!(after.story.time > before.story.time + .2 && after.frameStamp > before.frameStamp + 200 && after.clockFrames > before.clockFrames)) reject('intro did not make >.2 s of real presented progress');
   return evidence;
+}
+
+// Node owns both the deadline and the one-shot action. The exposed page binding
+// only transports an observed packet; it never clicks, presses or changes state.
+const nativeNotificationCounters = new WeakMap();
+export async function armNativeNotification(page, {name, onSignal, timeout = 30000} = {}) {
+  if (typeof onSignal !== 'function') throw new TypeError('NATIVE_NOTIFICATION: onSignal is required');
+  if (!Number.isFinite(timeout) || timeout <= 0 || timeout > 30000) throw new RangeError('NATIVE_NOTIFICATION: timeout must be within 30000 ms');
+  const serial = (nativeNotificationCounters.get(page) ?? 0) + 1;
+  nativeNotificationCounters.set(page, serial);
+  name ??= `__nativeGuardSignal_${serial}`;
+  if (typeof name !== 'string' || !/^[A-Za-z_$][\w$]*$/.test(name)) throw new TypeError('NATIVE_NOTIFICATION: invalid binding name');
+  let active = true, signalled = false, settled = false, terminalError = null, timer;
+  let resolveCompleted, rejectCompleted;
+  const completed = new Promise((resolve, reject) => {resolveCompleted = resolve; rejectCompleted = reject;});
+  // A caller may still be awaiting its Enter/Replay command when the deadline
+  // or callback fails. Keep the rejection available without an unhandled race.
+  completed.catch(() => {});
+  const finish = (error, value) => {
+    if (settled) return;
+    settled = true;
+    terminalError = error ?? null;
+    active = false;
+    clearTimeout(timer);
+    if (error) rejectCompleted(error); else resolveCompleted(value);
+  };
+  try {
+    await page.exposeBinding(name, async (source, packet) => {
+      if (!active || signalled || source.page !== page || source.frame !== page.mainFrame()) return {accepted: false};
+      signalled = true;
+      try {
+        // Invoke directly at binding delivery, without a poll or page read.
+        const result = await onSignal(packet);
+        if (terminalError) throw terminalError;
+        finish(null, {packet, result});
+        return {accepted: true};
+      } catch (error) {
+        finish(error);
+        throw error;
+      }
+    });
+  } catch (error) {
+    finish(error);
+    throw error;
+  }
+  if (!settled) timer = setTimeout(() => finish(new Error(`NATIVE_NOTIFICATION: ${name} timed out after ${timeout} ms`)), timeout);
+  return {
+    name, completed,
+    dispose() {
+      active = false;
+      clearTimeout(timer);
+      if (!settled) finish(new Error(`NATIVE_NOTIFICATION: ${name} disposed before completion`));
+    },
+  };
+}
+
+// Read-only public-event observation. The listener checks the event and the
+// actual public state before sending one primitive packet to the Node binding.
+export function installContentInterruptionObserver({name, contentId}) {
+  const signal = (stage, extra = {}) => {
+    const rows = window.__nativeGuardSignals ??= [];
+    rows.push({kind: 'content-interruption', name, contentId, t: performance.now(), stage, ...extra});
+    if (rows.length > 32) rows.shift();
+  };
+  const cleanups = window.__nativeGuardSignalCleanups ??= Object.create(null);
+  let active = true;
+  const cleanup = () => {
+    if (!active) return;
+    active = false;
+    window.removeEventListener('personalos:content-transition', listener);
+    delete cleanups[name];
+    signal('removed');
+  };
+  const listener = event => {
+    if (!active) return;
+    try {
+      const detail = event.detail, state = window.personalOSContent?.getState();
+      if (detail?.action !== 'select' || detail.phase !== 'intermediate' || detail.contentId !== contentId ||
+          state?.phase !== 'intermediate' || state.contentId !== contentId) return;
+      const packet = {kind: 'content-interruption', name, t: performance.now(), action: 'select',
+        phase: 'intermediate', contentId, publicPhase: state.phase, publicContentId: state.contentId};
+      cleanup();
+      signal('observed', {action: packet.action, phase: packet.phase, publicPhase: packet.publicPhase});
+      try {
+        Promise.resolve(window[name](packet)).catch(error => signal('delivery-error', {message: String(error?.message ?? error)}));
+      } catch (error) {signal('delivery-error', {message: String(error?.message ?? error)});}
+    } catch (error) {signal('observer-error', {message: String(error?.message ?? error)});}
+  };
+  cleanups[name] = cleanup;
+  window.addEventListener('personalos:content-transition', listener);
+  signal('armed');
+}
+
+export async function armContentInterruption(page, {contentId, onSignal, timeout = 30000} = {}) {
+  if (typeof contentId !== 'string' || !contentId) throw new TypeError('CONTENT_INTERRUPTION: contentId is required');
+  if (typeof onSignal !== 'function') throw new TypeError('CONTENT_INTERRUPTION: onSignal is required');
+  const arm = await armNativeNotification(page, {timeout, onSignal: packet => {
+    if (packet?.kind !== 'content-interruption' || packet.name !== arm.name || packet.action !== 'select' ||
+        packet.phase !== 'intermediate' || packet.contentId !== contentId || packet.publicPhase !== 'intermediate' ||
+        packet.publicContentId !== contentId || !Number.isFinite(packet.t)) {
+      throw new Error('CONTENT_INTERRUPTION: missing matching observed intermediate phase');
+    }
+    return onSignal(packet);
+  }});
+  const cleanup = () => page.evaluate(name => window.__nativeGuardSignalCleanups?.[name]?.(), arm.name);
+  try {
+    await page.evaluate(installContentInterruptionObserver, {name: arm.name, contentId});
+  } catch (error) {
+    arm.dispose();
+    await cleanup().catch(() => {});
+    throw error;
+  }
+  // Timeout/failure must remove an unmatched listener too. Caller disposal
+  // awaits cleanup; observed delivery errors remain in the primitive log.
+  arm.completed.catch(() => cleanup().catch(() => {}));
+  return {...arm, async dispose() {arm.dispose(); await cleanup();}};
 }
 
 export async function observeStartedProgress(page, reason) {

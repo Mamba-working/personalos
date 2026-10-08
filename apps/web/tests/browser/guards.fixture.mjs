@@ -42,7 +42,7 @@ export const test = base.extend({
       }
       window.addEventListener('keydown', event => {
         if (!['Escape', 'Enter', 'Tab'].includes(event.key)) return;
-        events.push({t:performance.now(), name:'real-keydown', key:event.key, menuPhase:document.querySelector('.pos-menu')?.dataset.state, contentPhase:window.personalOSContent?.getState().phase, chatPhase:window.personalOSChat?.getState().phase});
+        events.push({t:performance.now(), name:'real-keydown', key:event.key, trusted:event.isTrusted, menuPhase:document.querySelector('.pos-menu')?.dataset.state, contentPhase:window.personalOSContent?.getState().phase, chatPhase:window.personalOSChat?.getState().phase});
       }, true);
       document.addEventListener('click', event => {
         const target=event.target.closest('button,a');
@@ -54,7 +54,7 @@ export const test = base.extend({
     });
     try {await use(page);} finally {
       if (!page.isClosed()) {
-        const evidence = await page.evaluate(() => ({timeline: window.__browserGuard?.rows || [], events: window.__browserGuard?.events || [], availability: window.personalOSWorldAvailability || null, timingDiagnostic: window.__timingDiagnostic || null, userAgent: navigator.userAgent})).catch(error => ({captureError: error.message}));
+        const evidence = await page.evaluate(() => ({timeline: window.__browserGuard?.rows || [], events: window.__browserGuard?.events || [], availability: window.personalOSWorldAvailability || null, timingDiagnostic: window.__timingDiagnostic || null, introEvidence:window.__introEvidence && {autoplay:window.__introEvidence.read('autoplay'),replay:window.__introEvidence.read('replay')}, nativeSignals:window.__nativeGuardSignals || [], userAgent:navigator.userAgent})).catch(error => ({captureError: error.message}));
         await testInfo.attach('process-timeline', {body: JSON.stringify({...evidence, pageErrors: failures, browserVersion: browser.version()}, null, 2), contentType: 'application/json'});
         // The test context is discarded next. Clear test input before final screenshots.
         await page.locator('#question').evaluate(node => {node.value='';}).catch(() => {});
@@ -81,3 +81,4 @@ export async function chatEntry(page) {
   if (await fallback.isVisible()) return fallback;
   return page.locator('#world-ball-hit');
 }
+

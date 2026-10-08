@@ -1,10 +1,12 @@
 import {test, expect} from './guards.fixture.mjs';
 import {captureCanvasProof, requireRenderedPixels} from './canvas-proof.mjs';
-import {installIntroEvidence, observeStartedProgress, readIntroEvidence, readCurrentRendererSnapshot, requireNativeControlClick} from './intro-evidence.mjs';
+import {installIntroEvidence, readIntroEvidence, readCurrentRendererSnapshot, requireStartedProgress, requireNativeControlClick, armNativeNotification} from './intro-evidence.mjs';
 
 test('Ball/book replay render coverage @render requires actual native playback and nonblank canvas', async ({page}, testInfo) => {
   test.setTimeout(180000);
-  await installIntroEvidence(page);
+  const progressBinding = '__browserGuardReplayProgress';
+  let replayArm = null;
+  await installIntroEvidence(page, {progressBinding});
   try {
     await page.goto('/');
     await expect.poll(() => page.evaluate(() => window.personalOSWorldAvailability?.status || 'starting'), {timeout:10000}).not.toBe('starting');
@@ -23,16 +25,25 @@ test('Ball/book replay render coverage @render requires actual native playback a
 
     // Fresh autoplay has its own independent @entry gate. Native Replay
     // prepares the finite intro without altering elapsed time or app state.
-    await page.locator('#host-replay').click();
-    const intro = await observeStartedProgress(page, 'replay');
+    // The binding only carries observed proof to Node. Its one-shot callback
+    // validates that proof and performs the same normal native Skip action
+    // immediately, before proof-return/handle-disposal round trips can miss it.
+    replayArm = await armNativeNotification(page, {name:progressBinding, timeout:30000, onSignal:async packet => {
+      const intro = requireStartedProgress(packet, 'replay');
+      expect(intro.before.actorUUID).toBe(initial.actorUUID);
+      expect(intro.before.canvasIdentity).toBe(initial.canvasIdentity);
+      await page.locator('#host-skip').click({timeout:30000});
+      return intro;
+    }});
+    await page.locator('#host-replay').click({timeout:30000});
+    const {result:intro} = await replayArm.completed;
     const before = intro.before, observations = intro.observations;
     expect(before.story.active).toBe(true);
     expect(before.actorUUID).toBe(initial.actorUUID);
     expect(before.canvasIdentity).toBe(initial.canvasIdentity);
     expect(observations.every(row => row.actorUUID === before.actorUUID)).toBe(true);
-    // Screenshot/GL probes come later. They can naturally outlast a 12.7s
-    // intro, so they must not hide the real visible Skip control being tested.
-    await page.locator('#host-skip').click();
+    // Screenshot/GL probes come after the real visible Skip, never during its
+    // finite input window. A late/hidden action still fails its normal gate.
     await expect.poll(() => page.evaluate(() => window.ballStudy.snapshot().story.phase), {timeout:30000}).toBe('home');
     const skipEvidence = await readIntroEvidence(page, 'replay');
     const skipClick = requireNativeControlClick(skipEvidence, '#host-skip', {afterSequence:intro.started.sequence, storySerial:intro.started.serial});
@@ -74,6 +85,7 @@ test('Ball/book replay render coverage @render requires actual native playback a
     await testInfo.attach('2-restored-scroll-dock-ui', {body:await page.screenshot(),contentType:'image/png'});
     await testInfo.attach('final-dock-observation', {body:JSON.stringify(dock),contentType:'application/json'});
   } finally {
+    replayArm?.dispose();
     if (!page.isClosed()) {
       const evidence = await readIntroEvidence(page, 'replay').catch(error => ({captureError:error.message}));
       await testInfo.attach('replay-intro-evidence', {body:JSON.stringify(evidence),contentType:'application/json'});

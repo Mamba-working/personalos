@@ -39,6 +39,43 @@ negative controls, both viewport DOM flows, fresh-entry smoke and replay render
 flow must all complete at the exact published head. No merge, deployment,
 hardware GPU, iPhone/IME, FPS or final visual acceptance follows from this run.
 
+## Exact inventory and native-notification correction
+
+The first alpha7 head `28fa9ad91c4f7335d71b5ac8c6b4a957aaecc7af` remains
+preserved as failed. Its source check rejected the 22 newly approved guard
+paths because the original complete source inventory contained only 310 paths.
+The separate bookkeeping commit adds exactly those 22 paths and updates only
+the inventory hash. All 310 prior paths, exact unexpected-path/symlink rejection,
+protected runtime/vendor hashes, dependency pins and historical provenance
+checks remain intact. No wildcard or blanket test exclusion is introduced.
+
+Both fresh autoplay smokes passed on that head. Desktop DOM passed in both
+events. The mobile reader's real restored-focus Enter did open the card, with
+approximately 805 ms in intermediate before detail, but a phase poll missed the
+window and sent no interruption Escape. Replay's trusted public click and
+unchanged four-frame progress proof also passed; the driver then returned/read/
+disposed proof slowly enough that Skip became naturally hidden before its click.
+These failures remain failures; a later naturally completed phase is not a pass.
+
+The narrow correction awaits installation of a one-shot public content event
+listener before Enter and transports actual select/intermediate evidence to a
+Node binding. Node immediately issues the real Playwright Escape. Its captured
+trusted keydown must still occur in actual intermediate; a late input fails.
+Replay's read-only observer similarly notifies Node once its unchanged
+before+three 500 ms presented samples and >.2 s oracle pass. Node validates the
+same proof and clicks normal actionable public Skip immediately. Trusted,
+visible/enabled control evidence and the accepted skip bridge event remain
+mandatory. Bindings never issue page-side UI input or change the product clock,
+state, visibility, motion preferences or renderer. Notification/input windows
+stay bounded at 30 seconds and the complete flow stays bounded at 180 seconds.
+
+Timeout teardown separately retains intro evidence and primitive delivery
+records. Missing/missed phases, duplicate/late signals, wrong frames, callback
+errors and hidden/late Skip proof are explicit synthetic rejection cases. This
+is a test-only scheduling repair; it cannot turn a missed required input phase
+into a pass. One corrected exact-head full CI run is required before any new
+verification claim. No merge or deployment is authorized.
+
 ## Historical stock Chrome and alpha4 evidence
 
 This is a separate branded-Chrome candidate. Historical Chromium 141 observations below remain historical and do not certify stock Chrome. Draft PR #2 preserves the pinned-Chromium/helper investigation: its hosted helper was actually root:root mode 0777, with no setuid bit. This branch changes the browser baseline explicitly to the runner's already-installed official Google Chrome through Playwright channel `chrome`, retains Playwright 1.56.1 and all original product/negative-control criteria, and does not modify OS security or permissions.

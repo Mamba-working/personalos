@@ -1,6 +1,7 @@
 import {test, expect, enterFeed, expectPreview, chatEntry} from './guards.fixture.mjs';
 import {requireFeedColumns, requireMenuContained} from './guard-model.mjs';
 import {captureSettledScroll, readDocumentScroll} from './scroll-baseline.mjs';
+import {armContentInterruption} from './intro-evidence.mjs';
 
 const sample = page => page.evaluate(() => window.__browserGuard.sample());
 const waitMenu = (page, phase) => expect(page.locator('.pos-menu')).toHaveAttribute('data-state', phase);
@@ -61,10 +62,14 @@ test('card uses native reader scroll, keeps node identity and handles close/back
   expect(await page.evaluate(() => window.__originalCard === document.querySelector(`[data-content-id="${window.__originalCard.dataset.contentId}"]`))).toBe(true);
   expect(Math.abs((await sample(page)).document.scrollTop-original.offset)).toBeLessThanOrEqual(2);
   await expect(page.locator(`[data-content-id="${original.id}"] .open-card`)).toBeFocused();
-  const cancelOpening = page.waitForFunction(() => window.personalOSContent.getState().phase === 'intermediate').then(() => page.keyboard.press('Escape'));
-  await page.keyboard.press('Enter');
-  await cancelOpening;
-  expect(await page.evaluate(() => window.__browserGuard.events.some(event => event.name==='real-keydown' && event.key==='Escape' && event.contentPhase==='intermediate'))).toBe(true);
+  const interruption = await armContentInterruption(page, {contentId:original.id, timeout:30000, onSignal:() => page.keyboard.press('Escape')});
+  try {
+    await page.keyboard.press('Enter');
+    await interruption.completed;
+  } finally {
+    await interruption.dispose();
+  }
+  expect(await page.evaluate(() => window.__browserGuard.events.some(event => event.name==='real-keydown' && event.key==='Escape' && event.trusted && event.contentPhase==='intermediate'))).toBe(true);
   await expectPreview(page);
   await page.keyboard.press('Enter');
   await expect.poll(() => page.evaluate(() => window.personalOSContent.getState().phase)).toBe('detail');
@@ -125,4 +130,5 @@ test('local demo chat retains draft/send and restores close underlay and scroll'
   await page.goBack();
   await expect.poll(() => page.evaluate(() => window.personalOSChat.getState().phase)).toBe('closed');
 });
+
 

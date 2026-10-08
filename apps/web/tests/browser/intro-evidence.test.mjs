@@ -1,7 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {runInNewContext} from 'node:vm';
-import {installIntroObserver, requireStartedProgress, requireNativeControlClick, observeStartedProgress} from './intro-evidence.mjs';
+import {installIntroObserver, requireStartedProgress, requireNativeControlClick, observeStartedProgress, installIntroEvidence, armNativeNotification, armContentInterruption} from './intro-evidence.mjs';
 
 function evidence(reason = 'replay') {
   const seed = {t: 0, sequence: 2, source: reason === 'replay' ? 'story-event' : 'initial-public-state',
@@ -77,7 +77,7 @@ for (const [name, mutate, reason = 'replay'] of rejectCases) test(`oracle reject
   assert.throws(() => requireStartedProgress(data, reason), /INTRO_EVIDENCE:/);
 });
 
-function observerWorld(reason = 'autoplay') {
+function observerWorld(reason = 'autoplay', options = {}, bindings = {}) {
   const windowListeners = new Map(), documentListeners = new Map(), frames = [];
   let stamp = 0, canvas = {isConnected: true, width: 390, height: 844};
   const story = {phase: reason === 'replay' ? 'rewind' : 'story', reason,
@@ -91,6 +91,7 @@ function observerWorld(reason = 'autoplay') {
       addEventListener: (name, listener) => documentListeners.set(name, listener),
       querySelectorAll: selector => {assert.equal(selector, '#world-stage canvas'); return [canvas];}},
     window: {
+      ...bindings,
       addEventListener: (name, listener) => windowListeners.set(name, listener),
       personalOSWorldAvailability: Object.freeze({status: 'ready', reason: null}),
       personalOSWorld: Object.freeze({story: Object.freeze({getState: () => ({...story})})}),
@@ -101,7 +102,8 @@ function observerWorld(reason = 'autoplay') {
     },
     getComputedStyle: () => ({display: 'block', visibility: 'visible', opacity: '1'}),
   };
-  runInNewContext(`(${installIntroObserver.toString()})()`, context);
+  context.options = options;
+  runInNewContext(`(${installIntroObserver.toString()})(options)`, context);
   const emit = (name, detail = {}) => windowListeners.get(name)?.({detail});
   return {context, emit, story, queuedFrames: () => frames.length, reads: () => snapshotReads,
     click(target = '#host-replay', overrides = {}) {
@@ -248,4 +250,258 @@ test('a handle-read failure still disposes the completed wait handle', async () 
   const mock = handlePage(evidence(), new Error('synthetic handle read failure'));
   await assert.rejects(observeStartedProgress(mock.page, 'replay'), /synthetic handle read failure/);
   assert.deepEqual(mock.calls, ['wait', 'jsonValue', 'dispose']);
+});
+
+
+test('intro options install the transport before navigation without any additional observation', async () => {
+  const calls = [];
+  await installIntroEvidence({async addInitScript(fn, options) {calls.push({fn, options});}}, {progressBinding: '__progress'});
+  assert.equal(calls[0].fn, installIntroObserver);
+  assert.deepEqual(calls[0].options, {progressBinding: '__progress'});
+});
+
+test('replay notifies once at the unchanged fourth presented frame and keeps its evidence intact', () => {
+  const packets = [];
+  const world = observerWorld('replay', {progressBinding: '__progress'}, {__progress: packet => {packets.push(packet);}});
+  world.story.serial = 1; world.click(); world.story.serial = 2;
+  world.emit('personalos:story-state', {...world.story, action: 'started'});
+  for (const [stamp, time, frames] of [[0, 0, 0], [500, 0, 1], [1000, .1, 2]]) world.frame(stamp, time, frames);
+  assert.equal(packets.length, 0);
+  world.frame(1500, .6, 3);
+  assert.equal(packets.length, 1);
+  assert.equal(world.reads(), 4, 'notification performs no extra renderer read');
+  assert.equal(world.queuedFrames(), 0);
+  assert.deepEqual(packets[0], world.context.window.__introEvidence.read('replay'));
+  assert.doesNotThrow(() => requireStartedProgress(packets[0], 'replay'));
+  world.frame(2000, .8, 4); world.laterHome();
+  assert.equal(packets.length, 1, 'later frames or completion never retry notification');
+});
+
+test('autoplay never emits the replay progress notification', () => {
+  let notified = 0;
+  const world = observerWorld('autoplay', {progressBinding: '__progress'}, {__progress: () => {notified++;}});
+  world.emit('personalos:world-ready');
+  for (const [stamp, time, frames] of [[0, 0, 0], [500, .1, 1], [1000, .25, 2], [1500, .4, 3]]) world.frame(stamp, time, frames);
+  assert.equal(notified, 0);
+  assert.doesNotThrow(() => requireStartedProgress(world.context.window.__introEvidence.read('autoplay'), 'autoplay'));
+});
+
+test('notification delivery failure is diagnostic and never replaces the original observation', async () => {
+  const world = observerWorld('replay', {progressBinding: '__progress'}, {__progress: async () => {throw new Error('native action failed');}});
+  world.story.serial = 1; world.click(); world.story.serial = 2;
+  world.emit('personalos:story-state', {...world.story, action: 'started'});
+  for (const [stamp, time, frames] of [[0, 0, 0], [500, 0, 1], [1000, .1, 2], [1500, .6, 3]]) world.frame(stamp, time, frames);
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(world.context.window.__nativeGuardSignals.at(-1).stage, 'delivery-error');
+  assert.match(world.context.window.__nativeGuardSignals.at(-1).message, /native action failed/);
+  assert.doesNotThrow(() => requireStartedProgress(world.context.window.__introEvidence.read('replay'), 'replay'));
+});
+
+function notificationPage({deferDelivery = false} = {}) {
+  const listeners = new Map(), bindings = new Map(), deliveries = [], calls = [];
+  const state = {phase: 'preview', contentId: 'card-a'};
+  const context = {performance: {now: () => 123}, window: {
+    personalOSContent: {getState: () => ({...state})},
+    addEventListener(name, listener) {if (!listeners.has(name)) listeners.set(name, new Set()); listeners.get(name).add(listener);},
+    removeEventListener(name, listener) {listeners.get(name)?.delete(listener);},
+  }};
+  const frame = {};
+  const page = {
+    mainFrame: () => frame,
+    async exposeBinding(name, callback) {
+      calls.push(`binding:${name}`); bindings.set(name, callback);
+      context.window[name] = packet => deferDelivery ? new Promise((resolve, reject) => {
+        deliveries.push(() => Promise.resolve(callback({page, frame}, packet)).then(resolve, reject));
+      }) : callback({page, frame}, packet);
+    },
+    async evaluate(fn, args) {calls.push('evaluate'); context.args = args; return runInNewContext(`(${fn.toString()})(args)`, context);},
+    keyboard: {async press(key) {calls.push({key, contentPhase: state.phase});}},
+  };
+  return {page, state, context, calls, bindings, frame,
+    emit(detail) {for (const listener of [...(listeners.get('personalos:content-transition') ?? [])]) listener({detail});},
+    listenerCount: () => listeners.get('personalos:content-transition')?.size ?? 0,
+    async deliver() {await Promise.all(deliveries.splice(0).map(delivery => delivery()));},
+  };
+}
+
+test('native arm accepts only this page current main frame and invokes its Node action once', async () => {
+  const mock = notificationPage(); let actions = 0, release;
+  const pendingAction = new Promise(resolve => {release = resolve;});
+  const arm = await armNativeNotification(mock.page, {onSignal: async packet => {actions++; assert.equal(packet, 'observed'); await pendingAction; return 'native-result';}});
+  const callback = mock.bindings.get(arm.name);
+  assert.deepEqual(await callback({page: {}, frame: mock.frame}, 'wrong-page'), {accepted: false});
+  assert.deepEqual(await callback({page: mock.page, frame: {}}, 'subframe'), {accepted: false});
+  assert.equal(actions, 0);
+  const first = callback({page: mock.page, frame: mock.frame}, 'observed');
+  assert.equal(actions, 1, 'action begins at binding delivery');
+  assert.deepEqual(await callback({page: mock.page, frame: mock.frame}, 'duplicate'), {accepted: false});
+  release(); await first;
+  assert.deepEqual(await arm.completed, {packet: 'observed', result: 'native-result'});
+  await arm.dispose();
+  assert.deepEqual(await callback({page: mock.page, frame: mock.frame}, 'late'), {accepted: false});
+  assert.equal(actions, 1);
+});
+
+test('native arm waits for binding installation and generates unique per-page names', async () => {
+  const mock = notificationPage(); const expose = mock.page.exposeBinding; let release, ready = false;
+  mock.page.exposeBinding = async (...args) => {await new Promise(resolve => {release = resolve;}); await expose(...args);};
+  const pending = armNativeNotification(mock.page, {onSignal: () => {}}).then(arm => {ready = true; return arm;});
+  await Promise.resolve(); assert.equal(ready, false);
+  release(); const first = await pending;
+  mock.page.exposeBinding = expose;
+  const second = await armNativeNotification(mock.page, {onSignal: () => {}});
+  assert.notEqual(first.name, second.name);
+  first.dispose(); second.dispose();
+  await assert.rejects(first.completed, /disposed before completion/);
+  await assert.rejects(second.completed, /disposed before completion/);
+});
+
+test('native action failure rejects completion and cannot trigger a retry', async () => {
+  const mock = notificationPage(); let actions = 0;
+  const arm = await armNativeNotification(mock.page, {onSignal: () => {actions++; throw new Error('native input missed phase');}});
+  const callback = mock.bindings.get(arm.name), source = {page: mock.page, frame: mock.frame};
+  await assert.rejects(callback(source, {}), /native input missed phase/);
+  await assert.rejects(arm.completed, /native input missed phase/);
+  assert.deepEqual(await callback(source, {}), {accepted: false});
+  assert.equal(actions, 1); arm.dispose();
+});
+
+test('missing native notification times out and ignores a later signal without acting', async () => {
+  const mock = notificationPage(); let actions = 0;
+  const arm = await armNativeNotification(mock.page, {timeout: 5, onSignal: () => {actions++;}});
+  await assert.rejects(arm.completed, /timed out/);
+  assert.deepEqual(await mock.bindings.get(arm.name)({page: mock.page, frame: mock.frame}, {}), {accepted: false});
+  assert.equal(actions, 0); arm.dispose();
+});
+
+test('disposal before notification cancels completion and ignores late delivery', async () => {
+  const mock = notificationPage(); let actions = 0;
+  const arm = await armNativeNotification(mock.page, {onSignal: () => {actions++;}});
+  arm.dispose();
+  await assert.rejects(arm.completed, /disposed before completion/);
+  assert.deepEqual(await mock.bindings.get(arm.name)({page: mock.page, frame: mock.frame}, {}), {accepted: false});
+  assert.equal(actions, 0);
+});
+
+test('an action still pending at the bounded deadline remains a failure after its eventual return', async () => {
+  const mock = notificationPage(); let release;
+  const arm = await armNativeNotification(mock.page, {timeout: 5, onSignal: () => new Promise(resolve => {release = resolve;})});
+  const delivery = mock.bindings.get(arm.name)({page: mock.page, frame: mock.frame}, {});
+  await assert.rejects(arm.completed, /timed out/);
+  release('too-late'); await assert.rejects(delivery, /timed out/);
+  await assert.rejects(arm.completed, /timed out/); arm.dispose();
+});
+
+test('native arm rejects an expanded deadline or failed binding installation', async () => {
+  const mock = notificationPage();
+  await assert.rejects(armNativeNotification(mock.page, {timeout: 30001, onSignal: () => {}}), /within 30000/);
+  assert.equal(mock.bindings.size, 0);
+  mock.page.exposeBinding = async () => {throw new Error('registration failed');};
+  await assert.rejects(armNativeNotification(mock.page, {onSignal: () => {}}), /registration failed/);
+});
+
+test('content interruption installs before Enter and notifies only matching event plus public intermediate state', async () => {
+  const mock = notificationPage(); let actions = 0;
+  const arm = await armContentInterruption(mock.page, {contentId: 'card-a', onSignal: async packet => {
+    actions++; assert.equal(packet.publicPhase, 'intermediate'); await mock.page.keyboard.press('Escape');
+  }});
+  assert.equal(mock.listenerCount(), 1);
+  assert.deepEqual(mock.calls, [`binding:${arm.name}`, 'evaluate']);
+  mock.state.phase = 'intermediate';
+  mock.emit({action: 'select', phase: 'intermediate', contentId: 'other-card'});
+  mock.emit({action: 'detail-ready', phase: 'intermediate', contentId: 'card-a'});
+  mock.emit({action: 'select', phase: 'detail', contentId: 'card-a'});
+  assert.equal(actions, 0);
+  mock.emit({action: 'select', phase: 'intermediate', contentId: 'card-a'});
+  await arm.completed;
+  assert.equal(mock.listenerCount(), 0, 'one-shot listener removes itself before delivery');
+  assert.equal(actions, 1);
+  assert.deepEqual(mock.calls.find(call => typeof call === 'object'), {key: 'Escape', contentPhase: 'intermediate'});
+  mock.emit({action: 'select', phase: 'intermediate', contentId: 'card-a'});
+  assert.equal(actions, 1);
+  await arm.dispose();
+  assert.equal(Object.keys(mock.context.window.__nativeGuardSignalCleanups).length, 0);
+});
+
+test('content notification cannot invent an intermediate phase after actual public state has moved on', async () => {
+  const mock = notificationPage(); let actions = 0;
+  const arm = await armContentInterruption(mock.page, {contentId: 'card-a', timeout: 5, onSignal: () => {actions++;}});
+  mock.state.phase = 'detail';
+  mock.emit({action: 'select', phase: 'intermediate', contentId: 'card-a'});
+  await assert.rejects(arm.completed, /timed out/); await arm.dispose();
+  assert.equal(actions, 0); assert.equal(mock.listenerCount(), 0);
+});
+
+test('a late delivered intermediate packet cannot substitute for actual Escape during intermediate', async () => {
+  const mock = notificationPage({deferDelivery: true});
+  const arm = await armContentInterruption(mock.page, {contentId: 'card-a', onSignal: packet => {
+    assert.equal(packet.publicPhase, 'intermediate'); return mock.page.keyboard.press('Escape');
+  }});
+  mock.state.phase = 'intermediate'; mock.emit({action: 'select', phase: 'intermediate', contentId: 'card-a'});
+  mock.state.phase = 'detail'; await mock.deliver(); await arm.completed;
+  const actualKey = mock.calls.find(call => typeof call === 'object');
+  assert.throws(() => assert.equal(actualKey.contentPhase, 'intermediate'), /detail/,
+    'the mandatory captured actual-key phase assertion still fails when the native input misses');
+  await arm.dispose();
+});
+
+test('a malformed or wrong-phase exposed packet fails without issuing actual input', async () => {
+  for (const packet of [{}, {kind: 'content-interruption', action: 'select', phase: 'detail', contentId: 'card-a', publicPhase: 'detail', publicContentId: 'card-a', t: 123}]) {
+    const mock = notificationPage(); let actions = 0;
+    const arm = await armContentInterruption(mock.page, {contentId: 'card-a', onSignal: () => {actions++;}});
+    await assert.rejects(mock.bindings.get(arm.name)({page: mock.page, frame: mock.frame}, {...packet, name: arm.name}), /matching observed intermediate/);
+    await assert.rejects(arm.completed, /matching observed intermediate/);
+    await arm.dispose(); assert.equal(actions, 0); assert.equal(mock.listenerCount(), 0);
+  }
+});
+
+test('disposing a content arm removes its listener and late content events never invoke input', async () => {
+  const mock = notificationPage(); let actions = 0;
+  const arm = await armContentInterruption(mock.page, {contentId: 'card-a', onSignal: () => {actions++;}});
+  await arm.dispose(); await assert.rejects(arm.completed, /disposed before completion/);
+  mock.state.phase = 'intermediate'; mock.emit({action: 'select', phase: 'intermediate', contentId: 'card-a'});
+  assert.equal(actions, 0); assert.equal(mock.listenerCount(), 0);
+  assert.equal(mock.context.window.__nativeGuardSignals.at(-1).stage, 'removed');
+});
+
+test('content listener diagnostics remain bounded primitive records after action failure', async () => {
+  const mock = notificationPage();
+  const arm = await armContentInterruption(mock.page, {contentId: 'card-a', onSignal: () => {throw new Error('Escape unavailable');}});
+  mock.state.phase = 'intermediate'; mock.emit({action: 'select', phase: 'intermediate', contentId: 'card-a'});
+  await assert.rejects(arm.completed, /Escape unavailable/); await Promise.resolve();
+  await arm.dispose();
+  const signals = mock.context.window.__nativeGuardSignals;
+  assert.ok(signals.length <= 32);
+  assert.ok(signals.some(row => row.stage === 'delivery-error' && row.message === 'Escape unavailable'));
+  assert.ok(signals.every(row => Object.values(row).every(value => ['string', 'number', 'boolean'].includes(typeof value))));
+  assert.equal(mock.listenerCount(), 0);
+});
+
+
+test('replay progress notification cannot turn a missed visible Skip phase into native-control proof', () => {
+  const packets = [];
+  const world = observerWorld('replay', {progressBinding: '__progress'}, {__progress: packet => {packets.push(packet);}});
+  world.story.serial = 1; world.click(); world.story.serial = 2;
+  world.emit('personalos:story-state', {...world.story, action: 'started'});
+  for (const [stamp, time, frames] of [[0, 0, 0], [500, 0, 1], [1000, .1, 2], [1500, .6, 3]]) world.frame(stamp, time, frames);
+  assert.doesNotThrow(() => requireStartedProgress(packets[0], 'replay'));
+  world.laterHome(); world.click('#host-skip', {hidden: true});
+  const result = world.context.window.__introEvidence.read('replay');
+  assert.throws(() => requireNativeControlClick(result, '#host-skip', {afterSequence: result.started.sequence, storySerial: result.started.serial}), /trusted, visible/);
+});
+
+test('failed content listener installation cleans up a partially installed listener and native arm', async () => {
+  const mock = notificationPage(), evaluate = mock.page.evaluate;
+  let first = true, actions = 0;
+  mock.page.evaluate = async (...args) => {
+    const value = await evaluate(...args);
+    if (first) {first = false; throw new Error('installation failed after registration');}
+    return value;
+  };
+  await assert.rejects(armContentInterruption(mock.page, {contentId: 'card-a', onSignal: () => {actions++;}}), /installation failed/);
+  assert.equal(mock.listenerCount(), 0);
+  const [name, callback] = [...mock.bindings][0];
+  assert.ok(name);
+  assert.deepEqual(await callback({page: mock.page, frame: mock.frame}, {}), {accepted: false});
+  assert.equal(actions, 0);
 });

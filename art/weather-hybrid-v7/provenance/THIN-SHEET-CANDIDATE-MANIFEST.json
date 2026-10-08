@@ -1,0 +1,79 @@
+{
+  "model": "Smooth thin dielectric parallel-interface pair",
+  "material": "Hybrid thin sheet / effective parallel dielectric pair",
+  "IOR": 1.38,
+  "reflection": "2R/(1+R)",
+  "transmission": "(1-R)/(1+R)",
+  "R": "Exact unpolarized dielectric Fresnel using abs(dot(N,wi))",
+  "opacity_texture": false,
+  "ray_selectors": false,
+  "emission": false,
+  "membrane_base_geometry_unchanged": true,
+  "solidify_before": {
+    "thickness": 0.0006500000017695129,
+    "offset": 0.0,
+    "show_render": true,
+    "show_viewport": true
+  },
+  "solidify_now_rendered": false,
+  "resolved_water_Glass_retained": true,
+  "frame_and_hem_retained": true,
+  "assumptions": [
+    "Local interfaces are parallel with negligible lateral ray displacement",
+    "Non-absorbing incoherent pair, no interference",
+    "Bump-normal wet microdetail perturbs pair orientation; it is not independently resolved droplet refraction",
+    "Existing resolved water caps retain full Glass refraction"
+  ],
+  "sources": [
+    "https://pbr-book.org/4ed/Reflection_Models/Dielectric_BSDF",
+    "https://mitsuba.readthedocs.io/en/latest/src/generated/plugins_bsdfs.html#thin-dielectric-material-thindielectric"
+  ],
+  "source_sha256": "6271bd8348d2bafa74009ff96dac469bbfdb7baf84862faf6dcf63add30467ec",
+  "source_unchanged": true,
+  "output_sha256": "204dacf2711681eedb2c76f1f24353af5cb2d9b85b1e676ec1622c0634ec0572",
+  "shader_sha256": "63edc70bf727a9c568a707e5261034a2f49792c3219fed65bbb17d9900d82ca9",
+  "energy_checks": [
+    {
+      "angle": 0,
+      "interface_R": 0.02549254996116092,
+      "sheet_R": 0.04971766974245969,
+      "sheet_T": 0.9502823302575404,
+      "sum": 1.0
+    },
+    {
+      "angle": 30,
+      "interface_R": 0.026706296816942487,
+      "sheet_R": 0.052023245400829775,
+      "sheet_T": 0.9479767545991702,
+      "sum": 1.0
+    },
+    {
+      "angle": 60,
+      "interface_R": 0.0683763589360265,
+      "sheet_R": 0.1280005091166957,
+      "sheet_T": 0.8719994908833044,
+      "sum": 1.0
+    },
+    {
+      "angle": 80,
+      "interface_R": 0.3619880841923671,
+      "sheet_R": 0.5315583717562685,
+      "sheet_T": 0.46844162824373153,
+      "sum": 1.0
+    },
+    {
+      "angle": 89,
+      "interface_R": 0.8993668834901936,
+      "sheet_R": 0.947017547065532,
+      "sheet_T": 0.05298245293446805,
+      "sum": 1.0
+    },
+    {
+      "angle": 89.99,
+      "interface_R": 0.9989345584954012,
+      "sheet_R": 0.9994669953050386,
+      "sheet_T": 0.0005330046949614549,
+      "sum": 1.0
+    }
+  ]
+}

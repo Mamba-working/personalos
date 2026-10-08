@@ -1,0 +1,16 @@
+{
+  "name": "personalos-browser-guards",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "playwright test --grep-invert \"@negative|@diagnostic\"",
+    "test:negative": "node prove-negative-control.mjs",
+    "test:unit": "node --test guard-model.test.mjs intro-evidence.test.mjs",
+    "test:render-negative": "node prove-negative-control.mjs --render",
+    "test:timing": "playwright test --project mobile-390 --grep @diagnostic"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1"
+  }
+}
+

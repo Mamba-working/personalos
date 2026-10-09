@@ -1,0 +1,19 @@
+import bpy,numpy as np,json,hashlib,importlib.util,math
+from pathlib import Path
+D=Path(__file__).resolve().parent;SRC=D/'hybrid-rain-hero-v4-thin-sheet-candidate.blend';sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest();expected='204dacf2711681eedb2c76f1f24353af5cb2d9b85b1e676ec1622c0634ec0572';assert sha(SRC)==expected;bpy.ops.wm.open_mainfile(filepath=str(SRC));s=bpy.context.scene
+p=D/'materials/patch_ceramic.py';assert sha(p)=='7e92c628a8821d649e8a4abbe4d0a11e9fee808bde5b289ca72edaba4dd668a6';sp=importlib.util.spec_from_file_location('ceramic',p);c=importlib.util.module_from_spec(sp);sp.loader.exec_module(c);assert c.original_material_signature(bpy.data.materials[c.MATERIAL])=='8f9191919b4aaaebf41509799c146d8bee6656245e8e9313c62ffb4dff3210fc';before=c.protected_snapshot(bpy);ball=c.patch(bpy);bpy.context.view_layer.update();assert before==c.protected_snapshot(bpy)
+field=np.load(D/'structured-storm-radiance.npy');h,w=field.shape[:2];a=np.ones((h,w,4),np.float32);a[:,:,:3]=field;im=bpy.data.images.new('SDR-derived structured storm radiance / calibrated not recoveredHDR',w,h,alpha=True,float_buffer=True);im.colorspace_settings.name='Linear Rec.709';im.pixels.foreach_set(a.ravel());im.update()
+s.render.image_settings.file_format='OPEN_EXR';s.render.image_settings.color_mode='RGBA';s.render.image_settings.color_depth='32';im.save_render(str(D/'structured-storm-radiance.exr'),scene=s);bpy.data.images.remove(im);im=bpy.data.images.load(str(D/'structured-storm-radiance.exr'));im.colorspace_settings.name='Linear Rec.709';chk=np.empty(w*h*4,np.float32);im.pixels.foreach_get(chk);assert np.array_equal(chk.reshape(h,w,4)[:,:,:3],field);im.pack()
+world=bpy.data.worlds.new('Shared structured storm / SDR-derived calibrated radiance');world.use_nodes=True;s.world=world;n=world.node_tree.nodes;n.clear();l=world.node_tree.links
+coord=n.new('ShaderNodeTexCoord');norm=n.new('ShaderNodeVectorMath');norm.operation='NORMALIZE';l.new(coord.outputs['Generated'],norm.inputs[0]);sep=n.new('ShaderNodeSeparateXYZ');l.new(norm.outputs[0],sep.inputs[0])
+def mathnode(op,a,b=None):
+ q=n.new('ShaderNodeMath');q.operation=op
+ for i,v in enumerate([a,b]):
+  if v is None:continue
+  if isinstance(v,(int,float)):q.inputs[i].default_value=v
+  else:l.new(v,q.inputs[i])
+ return q.outputs[0]
+phi=mathnode('ARCTAN2',sep.outputs['X'],sep.outputs['Y']);U=mathnode('ADD',mathnode('MULTIPLY',phi,1/(2*math.pi)),.5);e=mathnode('ARCSINE',mathnode('MINIMUM',mathnode('MAXIMUM',sep.outputs['Z'],-1),1));V=mathnode('ADD',mathnode('MULTIPLY',e,1/math.pi),.5);uv=n.new('ShaderNodeCombineXYZ');l.new(U,uv.inputs['X']);l.new(V,uv.inputs['Y']);tex=n.new('ShaderNodeTexImage');tex.image=im;tex.extension='EXTEND';tex.interpolation='Linear';l.new(uv.outputs[0],tex.inputs['Vector']);back=n.new('ShaderNodeBackground');back.inputs['Strength'].default_value=1;l.new(tex.outputs['Color'],back.inputs['Color']);out=n.new('ShaderNodeOutputWorld');l.new(back.outputs[0],out.inputs['Surface'])
+assert not any(o.type=='LIGHT' for o in s.objects);assert not any(q.type=='LIGHT_PATH' for q in n)
+OUT=D/'hybrid-hero-structured-v7.blend';assert not OUT.exists();bpy.ops.wm.save_as_mainfile(filepath=str(OUT),compress=True)
+r={'source_sha256':expected,'source_unchanged':sha(SRC)==expected,'output_sha256':sha(OUT),'output_bytes':OUT.stat().st_size,'body_material_patch':ball,'thin_sheet_optics':'Unchanged from separately reviewed effective dielectric pair','structured_radiance':json.loads((D/'STRUCTURED-RADIANCE-CONTRACT.json').read_text()),'packed_radiance_bitwise_verified':True,'body_patch_outside_state_unchanged':True,'all_objects_all_rays_shared_radiance':True,'not_rendered':True};(D/'INTEGRATED-STRUCTURED-MANIFEST.json').write_text(json.dumps(r,indent=2));print('INTEGRATED_SOURCE_READY',r['output_sha256'],flush=True)

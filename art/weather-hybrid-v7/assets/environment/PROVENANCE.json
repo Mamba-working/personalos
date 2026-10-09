@@ -1,0 +1,26 @@
+{
+  "title": "PersonalOS approved-scene clean environment v1",
+  "asset_filename": "approved-scene-clean-environment-v1.png",
+  "sha256": "63eea1f374031f247981845c3e8051170a03c8f7a8928ca4ec961c9fde48fca1",
+  "dimensions_px": [
+    1536,
+    1024
+  ],
+  "generation_method": "OpenAI imagegen edit of the approved reference image",
+  "source_reference": "01-wind-rain-shelter-concept.png (original approved reference)",
+  "created_utc_date": "2026-10-08",
+  "description": "AI-generated static landscape asset with storm sky, mist, wet ground, and a warm opening on the left. Ball, umbrella, UI, and rain streaks removed from the approved reference.",
+  "intended_use": "Supporting environment layer for PersonalOS hybrid weather-hero composition",
+  "limitations": [
+    "Static AI-generated raster image",
+    "Not an HDRI",
+    "Not a 3D scene",
+    "Not a Blender render",
+    "Not a new visual target"
+  ],
+  "verification": {
+    "sha256_matches_expected": true,
+    "dimensions_match_expected": true
+  },
+  "rights": "User-authorized generated project resource; no independent CC0/MIT grant asserted; original reference image is not included"
+}

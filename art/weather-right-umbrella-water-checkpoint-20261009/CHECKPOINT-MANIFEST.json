@@ -1,0 +1,106 @@
+{
+  "schema": "weather-right-umbrella-water-source-checkpoint-v1",
+  "date_utc": "2026-10-09",
+  "scope": "Additive public source-only offline art checkpoint; no product/frontend/backend/version/CI changes, merge or Site deployment.",
+  "status": {
+    "partial_art_correction": true,
+    "whole_art_accepted": false,
+    "reference_parity": false,
+    "original_final_proof": "Final native 900x600 / 512-sample frame actually rendered and reviewed. Raw/color-only/guided outputs share one original radiance buffer.",
+    "original_portable_postprocess": "Export/OIDN/display replay reused the original raw passes; all three display pixel outputs matched exactly. No second full render.",
+    "public_source_validation": "AST, exact-original/function identity, hashes, allowlist/privacy heuristics, small source-helper/PFM/composite/contract checks and dry-run stages only. Public wrapper/plate adapter and historical construction recipes have not been executed."
+  },
+  "external_master": {
+    "suggested_input": "assets/master.blend",
+    "original_filename": "right-umbrella-wet-correction-milestone.blend",
+    "bytes": 153559476,
+    "sha256": "4a4b2c998e7334b053fedd39a964cc9c629e6467060a56e7241952a13e4911e8",
+    "distribution": "Owner-held packed input; omitted from Git, no public download URL",
+    "rebuild": "Supported replay starts from this exact final master. Historical construction sources are not a clean single-command or from-scratch reconstruction."
+  },
+  "retained_changes": {
+    "composition": "One selected right-side straight-shaft/eight-gore umbrella pose with modest uniform macro scale; actual 0.20mm closed-PVC thickness and shaft diameter preserved. Ball identity/ivory material/size retained, actor moved laterally with original real receiver gap preserved.",
+    "water": "Clustered fine meshes, localized wet-normal field, restrained resolved crest/rim accents, short connected forms, six unequal authored pendant accumulation states and one sparse successor at the lowest selected attachment. Pendant stages are instantaneous authored geometry, not continuous dripping or fluid simulation.",
+    "shared_light": "75 percent of the old lateral warm opening redistributed into a 6.5-degree core plus 25 percent retained halo at preserved integrated warm luminance energy; shared across all objects/ray types, no water emission, visible backdrop/photo plate retained.",
+    "final_only_delta": "Final saved stage changes pendant/successor geometry only; materials, World, fine field and pose remain those of the reviewed crop. Radius-aware rain contacts recomputed against final evaluated geometry."
+  },
+  "rain": {
+    "authored_selection_before_culling": {
+      "near": 14,
+      "mid": 200,
+      "far": 278
+    },
+    "final_rendered_spheres": 491,
+    "final_status_counts": {
+      "clear_full_shutter": 486,
+      "first_contact": 5,
+      "initial_sheltered_upstream": 1
+    },
+    "exposure_seconds": 0.003125,
+    "scene_fps": 24,
+    "shutter_frames": 0.075,
+    "density_calibrated_rainfall_rate": false,
+    "inherited_precontact_radius_collapse": "Existing bounded final shutter-segment radius collapse remains disclosed. No stronger airborne-density proposal applied.",
+    "motion": "Prescribed terminal velocities; no added gravity, screen-space overlay or emission/radiance boost."
+  },
+  "physical_contract": {
+    "metres_per_authoring_unit": 0.17045454545454544,
+    "Ball_diameter_m": 0.3,
+    "scene_UI_scale_length": 1,
+    "PVC_thickness_mm": 0.2,
+    "DOF": false
+  },
+  "render_recipe": {
+    "frame": 49,
+    "native_buffer": [
+      900,
+      600
+    ],
+    "samples": 512,
+    "seed": 0,
+    "adaptive_sampling": false,
+    "in_render_denoising": false,
+    "border": false,
+    "raw_passes": [
+      "hero RGBA",
+      "catcher RGBA",
+      "actual denoising albedo",
+      "actual denoising normal"
+    ],
+    "denoise": "OIDN2.5.1 CPU HDR/high; color-only and true albedo/normal-guided hero outputs, color-only catcher. Original hero alpha retained.",
+    "linear_formula": "hero_premultiplied_rgb + (1 - hero_alpha) * plate_rgb * shadow_catcher_rgb",
+    "display": "One AgX / AgX - Medium High Contrast transform, exposure0/gamma1"
+  },
+  "open_visual_issues": [
+    "Reference remains brighter, wetter and more interconnected across panels",
+    "Different diagonal canopy envelope and Ball farther left than reference",
+    "Some tiny marks weaker at native framing",
+    "Shaft foot still reads partly behind Ball",
+    "Separated dark ground reflection/contact impression unresolved"
+  ],
+  "construction_history": "The first right-pose builder saved its scene before reopen validation exposed hidden retired-water cache differences. finalize_saved_candidate.py separately verified the saved candidate using the corrected invariant_tools that excludes only those hidden evaluated cache fields; serialized basis/parent/visibility remain protected. These exact historical sources are preserved, not portrayed as a pristine one-shot rebuild.",
+  "approximation_limits": [
+    "Protected snapshot equality covers only its serializer representation; mesh_hash covers vertex coordinates and loop indices, not every UV/custom-normal/attribute field",
+    "Hidden retired-water evaluated cache fields are excluded as documented",
+    "Wet microrelief remains bounded bump; clear UV texel fraction is not area-weighted surface coverage",
+    "Tiny authored bodies are not boolean-unioned; dimensions are art-direction hypotheses, not recovered reference measurements",
+    "Finite seating uses a 10-micrometre offset; hem visibility is a lookdev proxy",
+    "Process-group guard polls /proc and terminates tasks; it is not an OS/cgroup hard-memory-limit change"
+  ],
+  "publication_exclusions": [
+    "All scene masters/donors and intermediate scenes",
+    "Plate/World arrays, texture/reference images, raw passes and rendered proof media",
+    "Private QA JSON, logs, process metadata and artifact identifiers",
+    "Private storage/download/sign-in links",
+    "Tools/binaries and complete public asset release"
+  ],
+  "boundaries": [
+    "No whole-art/reference-parity acceptance",
+    "No complete fluid/continuous animation",
+    "No runtime/mobile/Web performance acceptance",
+    "No arbitrary camera or fully reactive visible-terrain claim",
+    "No second full render or new heavy rendering during public sync",
+    "No local full-product tests",
+    "No merge/deployment"
+  ]
+}

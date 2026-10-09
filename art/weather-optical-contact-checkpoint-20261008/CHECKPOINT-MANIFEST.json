@@ -1,0 +1,299 @@
+{
+  "schema": "weather-optical-contact-pre-revision-checkpoint-v1",
+  "date_utc": "2026-10-08",
+  "scope": "Source-only checkpoint and adapted four-stage command plan; no current full-frame render, runtime change, merge or Site deployment",
+  "checkpoint": {
+    "status": "Immutable pre-revision controlled baseline; not final user-approved art",
+    "master": {
+      "suggested_input": "assets/master.blend",
+      "original_filename": "navy-dielectric-eye-finish-only-candidate.blend",
+      "sha256": "f887b703ac88d7b6728ac36b3a5f4e4f81a75c2e5d7604ef147260e62521287b",
+      "bytes": 112486837,
+      "delivery": "Owner-held external input; excluded from Git; no public URL"
+    },
+    "last_full_rendered_predecessor": {
+      "original_filename": "integrated-closed-pvc-contact-eyes-v21.blend",
+      "sha256": "43adc46cb066b4cb62c8601216200eabea37d60ed77e2a07a485b642b593f240",
+      "bytes": 112487637,
+      "role": "Last full-frame-rendered source; not current checkpoint master"
+    },
+    "current_master_render_status": "Native padded Ball/eye crop only; no current-master full-frame render",
+    "eye_delta": {
+      "material": "Original charcoal eyes / 252B38",
+      "Base Color linear RGB": {
+        "before": [
+          0.008,
+          0.012,
+          0.019
+        ],
+        "after": [
+          0.026,
+          0.038,
+          0.058
+        ]
+      },
+      "Roughness": {
+        "before": 0.31,
+        "after": 0.38
+      },
+      "Specular IOR Level": {
+        "before": 0.22,
+        "after": 0.5
+      },
+      "unchanged": "IOR 1.5; all geometry including 2.2 mm convex eye relief; other materials, camera, light/world, plate, compositor and saved settings"
+    },
+    "revision_boundary": {
+      "rejected": "Too-round canopy and bent lower shaft; clearer accumulated/coalesced/dripping water requested",
+      "pending": "Separate eight tensioned/scalloped gores and straight coaxial shaft, followed by wetness/drip phases after clay review",
+      "retained": "Original Ball identity/body, navy eye finish, closed-PVC optics and calibrated contact/receiver",
+      "revised_geometry_included": false
+    }
+  },
+  "external_plate": {
+    "suggested_input": "assets/plate-scene-linear.npy",
+    "sha256": "1039d1f48c5ac373e1da1c4ba199ddeb333c83afba64f4aecce3c59a7f1aa1c7",
+    "bytes": 18874496,
+    "layout": "1536x1024x3 float32, top-down scene-linear Rec.709",
+    "delivery": "External owner-held input; omitted from Git"
+  },
+  "pipeline": {
+    "environment_and_near_ground": "Fixed OpenAI imagegen SDR plate; source and reference media omitted",
+    "live_CG": "Ball, conventional rounded eight-panel umbrella, closed 0.20 mm PVC, attached surface water and calibrated receiver/contact at the pre-revision checkpoint",
+    "lighting": "One shared authored SDR-derived radiance approximation, packed in master; not recovered HDR or measured photometry",
+    "canonical_scale": "1 AU = 15/88 m; semantic authored calibration. Saved Blender unit scale is 1.0, not an applied conversion. Do not infer physical metres from that UI value or rescale the master blindly.",
+    "clean_proof_excludes": [
+      "airborne rain",
+      "UI"
+    ],
+    "excluded_claims": [
+      "runtime implementation",
+      "arbitrary-camera parallax",
+      "fully reactive visible terrain",
+      "from-scratch rebuild",
+      "current-master full-frame verification",
+      "final complete-art approval"
+    ],
+    "recipe": {
+      "frame": 49,
+      "resolution": [
+        1536,
+        1024
+      ],
+      "samples": 128,
+      "seed": 0,
+      "adaptive_sampling": false,
+      "in_render_denoising": false,
+      "DOF": false,
+      "border": false,
+      "raw_passes": [
+        "hero RGBA",
+        "shadow-catcher RGBA",
+        "denoising albedo",
+        "denoising normal"
+      ]
+    },
+    "saved_master_defaults": "450x300 and 48 samples remain saved; full-proof overrides are necessary and should not be written back to the checkpoint master",
+    "denoise": "OIDN 2.5.1 HDR/high on CPU, hero with actual albedo+normal guides; catcher color-only. Preserve original rendered alpha and leave plate untouched.",
+    "linear_formula": "hero_premultiplied_rgb + (1 - hero_alpha) * plate_rgb * shadow_catcher_rgb",
+    "display": "AgX / AgX - Medium High Contrast, exposure 0, gamma 1, applied once",
+    "plate_inverse_limit": {
+      "purpose": "Display calibration only, not HDR recovery or a lossless inverse",
+      "recorded_roundtrip_mean_RGB_error": 0.0009564312640577555,
+      "recorded_roundtrip_max_RGB_error": 0.0869932472705841
+    },
+    "adapted_pipeline_status": "Source-only AST/hash/plan validation; Blender/OIDN pipeline not executed",
+    "reproducibility": "Requires exact external packed master plus calibrated plate; no from-scratch scene builder or complete public reproduction",
+    "determinism": "No cross-machine bit-identical render guarantee; pinned input hashes identify inputs, not a completed output validation."
+  },
+  "toolchain": {
+    "blender": {
+      "version": "4.3.2",
+      "recorded_executable_sha256": "0dfe9af0f3e67643ecf15327fa5e14e7315f61d1a81afdcafe76a71b1918e2b4",
+      "origin": "https://www.blender.org/",
+      "license": "GPL-2.0-or-later per recorded installed distribution notice; external tool, not bundled"
+    },
+    "ocio": {
+      "recorded_config_sha256": "6a072a5e34fb520a35ee858b3b46271504ddd325fc112d2a78a8be75ea333f56",
+      "scope": "Matching Blender color config and referenced LUT assets required; config hash alone is incomplete"
+    },
+    "oidn": {
+      "version": "2.5.1 Linux x86-64",
+      "executable_sha256": "1cb3a28ebc99b90d7548b0b8b16f70c163cb59abe8582458a254aa303338269c",
+      "origin": "https://github.com/RenderKit/oidn/releases/tag/v2.5.1",
+      "license": "Apache-2.0; package, dependent libraries and notices external"
+    },
+    "guard": {
+      "process_group_RSS_MiB": 4096,
+      "host_headroom_MiB": 2048,
+      "worker_threads": 2,
+      "max_stage_deadline_seconds": 600,
+      "system_settings_changed": false
+    }
+  },
+  "packed_resources": [
+    {
+      "name": "ground_0020_color_2k.jpg",
+      "sha256": "c1c4ce6c5a0741364a3d74d7522d3cbdb8ec400fe8f093fa666264b9fa74782f",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "colorspace": "sRGB",
+      "provenance": "TextureCan",
+      "asset_page": "https://www.texturecan.com/details/194/",
+      "license": "CC0-1.0",
+      "delivery": "Packed in owner-held external master; omitted from Git"
+    },
+    {
+      "name": "ground_0020_normal_opengl_2k.png",
+      "sha256": "5f02ccf0970b6f90921a494e40497e4bd852f869a7519704a86593fd03eebbbf",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "colorspace": "Non-Color",
+      "provenance": "TextureCan",
+      "asset_page": "https://www.texturecan.com/details/194/",
+      "license": "CC0-1.0",
+      "delivery": "Packed in owner-held external master; omitted from Git"
+    },
+    {
+      "name": "ground_0020_roughness_2k.jpg",
+      "sha256": "967ee03cc28980e29b6b8c808091f1b415c2c2cb09c0438cc4b2c44a6fc41301",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "colorspace": "Non-Color",
+      "provenance": "TextureCan",
+      "asset_page": "https://www.texturecan.com/details/194/",
+      "license": "CC0-1.0",
+      "delivery": "Packed in owner-held external master; omitted from Git"
+    },
+    {
+      "name": "lateral-neutral-shared-field.exr",
+      "sha256": "3587bb5700844c21519e8007a49c005f28336b96b23808c83fbfe30fbab69f27",
+      "dimensions": [
+        1024,
+        512
+      ],
+      "colorspace": "Linear Rec.709",
+      "provenance": "Project-authored derivative",
+      "asset_page": null,
+      "license": "No separate public asset license established",
+      "delivery": "Packed in owner-held external master; omitted from Git"
+    },
+    {
+      "name": "Original uint16 height / packed reconstruction input",
+      "sha256": "56e4e9c85a4967a03ec470894412f3eeb5e30c95eabe0f63c4cfac4f696c0c40",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "colorspace": "Non-Color",
+      "provenance": "TextureCan",
+      "asset_page": "https://www.texturecan.com/details/194/",
+      "license": "CC0-1.0",
+      "delivery": "Packed in owner-held external master; omitted from Git"
+    },
+    {
+      "name": "others_0004_height_1k.png",
+      "sha256": "fa15476dd88a313fc3c38f0f61cb072aa123b7d67e55eccd6cdb5365dbe867b5",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "colorspace": "Non-Color",
+      "provenance": "TextureCan",
+      "asset_page": "https://www.texturecan.com/details/155/",
+      "license": "CC0-1.0",
+      "delivery": "Packed in owner-held external master; omitted from Git"
+    },
+    {
+      "name": "others_0004_opacity_1k.jpg",
+      "sha256": "ae9cb4d2b451db4efce10fa542bf97d68806a41ef27669af4ce0c113a2558c3a",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "colorspace": "Non-Color",
+      "provenance": "TextureCan",
+      "asset_page": "https://www.texturecan.com/details/155/",
+      "license": "CC0-1.0",
+      "delivery": "Packed in owner-held external master; omitted from Git"
+    },
+    {
+      "name": "others_0004_roughness_1k.jpg",
+      "sha256": "f548f6dcac7e7ed2e7ed028870c472f68cd5692f4455d57a100dec2c856a32f0",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "colorspace": "Non-Color",
+      "provenance": "TextureCan",
+      "asset_page": "https://www.texturecan.com/details/155/",
+      "license": "CC0-1.0",
+      "delivery": "Packed in owner-held external master; omitted from Git"
+    },
+    {
+      "name": "plate-scene-linear-verified.exr",
+      "sha256": "77fabb14e984eaaacb2f652d2005e4238b2aae27ec3125c18bd372fe77c920dd",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "colorspace": "Linear Rec.709",
+      "provenance": "Project-authored derivative",
+      "asset_page": null,
+      "license": "No separate public asset license established",
+      "delivery": "Packed in owner-held external master; omitted from Git"
+    }
+  ],
+  "licenses_and_provenance": {
+    "existing_source_notice": "../weather-hybrid-v7/LICENSE",
+    "component_notices": "../weather-hybrid-v7/THIRD_PARTY_NOTICES.md and ../weather-hybrid-v7/notices/",
+    "Emotion_Ball_aora_bot": {
+      "upstream": "https://github.com/sam70361/aora-bot",
+      "pinned_commit": "e3b6148c818da4a8e1966f2bc89cdb3cee473b73",
+      "visual_rights": "Non-commercial personal technical study/research only; engine/expression terms do not expand visual rights"
+    },
+    "TextureCan": {
+      "license": "CC0-1.0",
+      "source": "https://www.texturecan.com/terms/",
+      "verified_utc_date": "2026-10-08",
+      "scope": "Ground0020 and Others0004 texture families only; does not license the whole scene"
+    },
+    "OIDN": {
+      "license": "Apache-2.0",
+      "source": "https://raw.githubusercontent.com/RenderKit/oidn/v2.5.1/LICENSE.txt",
+      "verified_utc_date": "2026-10-08",
+      "scope": "External tool; no binary or source copied"
+    },
+    "generated_plate": {
+      "sha256": "63eea1f374031f247981845c3e8051170a03c8f7a8928ca4ec961c9fde48fca1",
+      "provenance": "OpenAI imagegen edit of owner-approved reference, 2026-10-08",
+      "rights": "No separate public redistribution license established; generated plate and restricted reference omitted"
+    },
+    "project": "No blanket first-party code/art license granted by source sync; existing repository notices remain in force"
+  },
+  "publication_exclusions": [
+    "All master/predecessor blends",
+    "Plate/texture/NPY/EXR/PFM binaries",
+    "Rendered proofs",
+    "Private QA or diagnostic reports",
+    "Private artifact identifiers, upload metadata, logs or signed URLs",
+    "Restricted reference media",
+    "Rejected body-pore variants",
+    "Pending canopy/shaft/wetness revisions",
+    "Historical G4 rain sources",
+    "Ancestor scene builders",
+    "Frontend/backend/version/CI/deployment changes"
+  ],
+  "validation": {
+    "audited_external_file_identities_recomputed": true,
+    "new_Blender_launch": false,
+    "new_render": false,
+    "full_product_tests_run_locally": false,
+    "source_only_checks": "AST, SHA-256/inventory, privacy heuristic and dry-run commands"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "source_sha256": "3f585ba68ed972b3013eb23fcec7da99ab26671fa68502c10c0ac702432b2555",
+  "saved_source_reopened": true,
+  "all_original_base_mesh_geometry_unchanged": true,
+  "base_mesh_count": 14,
+  "all_original_object_transform_visibility_unchanged": true,
+  "camera_unchanged": true,
+  "body_and_eye_materials_exactly_selected_v2": {
+    "Ball / ivory ceramic F2E9DD": "fff87d49c2ab6a8d1df092d382a59c9b39c364332b3dfc929b027c0b73c74678",
+    "Original charcoal eyes / 252B38": "9ba538867580ca02be0cc71d3fd7f84b2ebf7008c49b0a04623f3e14550f0f2e"
+  },
+  "packed_structured_radiance_bitwise_equal": true,
+  "packed_environment_plate_bitwise_equal": true,
+  "explicit_optical_geometry_change": "Only canopy Solidify disabled for single effective thin-sheet surface; original curved base mesh and both spatial wall crossings retained",
+  "all_objects_rays_share_one_world": true,
+  "no_LIGHT_objects": true,
+  "scope": "Fixed-view hybrid source only; no renderer/runtime/fidelity claim"
+}

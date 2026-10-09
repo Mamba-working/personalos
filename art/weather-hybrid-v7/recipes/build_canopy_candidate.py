@@ -1,0 +1,5 @@
+import bpy,json,hashlib,importlib.util
+from pathlib import Path
+D=Path(__file__).resolve().parent;SRC=D/'hybrid-rain-hero-v4.blend';sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest();expected='c8353c35af9ec4eb9d8b93ba268a5d5290f01cfee877890995cbb0874c0b7f28';assert sha(SRC)==expected;bpy.ops.wm.open_mainfile(filepath=str(SRC))
+p=D/'materials/clear_wet_canopy.py';assert sha(p)=='e41960160b77f62050c13e2e2903f379d4e17a22eae2ff19f672ee8037b1c2f6';spec=importlib.util.spec_from_file_location('clear_wet_canopy',p);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);report=m.apply_clear_wet_canopy(bpy.context.scene)
+OUT=D/'hybrid-rain-hero-v4-canopy-candidate.blend';assert not OUT.exists();bpy.ops.wm.save_as_mainfile(filepath=str(OUT),compress=True);report.update(source_sha256=expected,source_unchanged=sha(SRC)==expected,output=str(OUT),output_sha256=sha(OUT));(D/'CANOPY-CANDIDATE-MANIFEST.json').write_text(json.dumps(report,indent=2));print('CANOPY_SOURCE_READY',report['output_sha256'],flush=True)

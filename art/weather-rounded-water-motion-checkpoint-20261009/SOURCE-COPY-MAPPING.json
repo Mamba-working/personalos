@@ -1,0 +1,134 @@
+{
+  "scope": "Originals were rendered/audited in their retained local workspace. This publication adapts input/output plumbing only; adapted Blender/OIDN/encoding paths were not executed. Exact-source hashes distinguish original proof from public copies.",
+  "files": [
+    {
+      "public_path": "src/mesh_helpers.py",
+      "original_source": "rim_refinement.py",
+      "original_sha256": "ba47292dc49923d8f87ba821cc5282c862b70d17718c3a80205353708be32ac9",
+      "retained_definitions": [
+        "closed",
+        "stats",
+        "clean",
+        "bisect"
+      ],
+      "status": "Exact function extraction; no new Blender execution",
+      "changes": "Only the four mesh helpers used by Water are retained. Ancestor source builder/apply and its generator are not included; exact retained master remains required.",
+      "public_sha256": "df727d48453b82d7c0038194571daa9663b0dee5c0c9c28143de33652f58a1f0"
+    },
+    {
+      "public_path": "src/state_values.py",
+      "original_source": "patch_ceramic.py",
+      "original_sha256": "7e92c628a8821d649e8a4abbe4d0a11e9fee808bde5b289ca72edaba4dd668a6",
+      "retained_definitions": [
+        "val",
+        "rna_values",
+        "graph_state"
+      ],
+      "status": "Exact function extraction; no new Blender execution",
+      "changes": "Three read-only serializer functions copied verbatim; material-patch/build functions excluded.",
+      "public_sha256": "a098c2c550d4b7332bd1b8473d9ca34ec8d1bac20904bdde369d1e9759d0bb46"
+    },
+    {
+      "public_path": "src/state_guard.py",
+      "original_source": "patch_wet_mineral_coat.py",
+      "original_sha256": "2fce577333a2b22f250ad5e78059ce9ec9f0ba491dd898ec56b5ead589f19012",
+      "retained_definitions": [
+        "snapshot",
+        "differences"
+      ],
+      "status": "Exact function extraction; no new Blender execution",
+      "changes": "snapshot and differences copied verbatim; helper import redirected to the three local unchanged serializers.",
+      "public_sha256": "375ed8b657b38ba506a22c05880b6b57ae478cfbdc116d9fc6a029e646291c0f"
+    },
+    {
+      "public_path": "src/continuous_water.py",
+      "original_source": "continuous_water.py",
+      "original_sha256": "9ce34d1ac96416a874186f0deeb7414d48bfa53825945257c797b2bd87a76c29",
+      "status": "Path/output adaptation, not rerendered",
+      "changes": "Retained Water class and every deformation/volume/gravity/topology function unchanged. Select exact external master and isolated output through contract; import local exact helper extracts.",
+      "public_sha256": "d0d659a4e357756f660060a580ae897896abc0c482ea126ac951039a522024f5"
+    },
+    {
+      "public_path": "src/render_frames.py",
+      "original_source": "render_frames.py",
+      "original_sha256": "0be0f8a1f12d6cb103889be9dfe0e30d8861df19879132ad7d98c135a5c82327",
+      "status": "Path/output adaptation, not rerendered",
+      "changes": "Only source import path, output tree and external padded-plate/OIDN selectors changed. Retains crop, samples, seed, per-frame export/denoise/composite/display and source read-only check.",
+      "public_sha256": "b033f8ae265c24ef82dc8a04d47049a560c40d5d2cbbe4062643e09e6b5acd4b"
+    },
+    {
+      "public_path": "src/package_preview.py",
+      "original_source": "package_preview.py",
+      "original_sha256": "430e1b16ba5088cccd74dea8fc6b114bb703bc5f2bd868f7877c4d5b09b5a2ec",
+      "status": "Path/output adaptation, not rerendered",
+      "changes": "Only output directory changed. Exact original encode/decoded-frame/compression-check and inspection/contact-sheet logic retained; depends on external ffmpeg/ffprobe and DejaVu font.",
+      "public_sha256": "36eabb709776e6b74aa6ba6c5752cd18c9e76f2ec0776f9df6d7604c12c81865"
+    },
+    {
+      "public_path": "src/audit_animation.py",
+      "original_source": "audit_animation.py",
+      "original_sha256": "cae3aeabe80b891e0ea676b7a6d6bb560e81cdcc1c1bdef848b2437f4efc768f",
+      "status": "Byte-identical tested original",
+      "changes": "No edits; output routing inherited from adapted Water module.",
+      "public_sha256": "cae3aeabe80b891e0ea676b7a6d6bb560e81cdcc1c1bdef848b2437f4efc768f"
+    },
+    {
+      "public_path": "src/audit_continuity_detail.py",
+      "original_source": "audit_continuity_detail.py",
+      "original_sha256": "3abbec072b7c7b7c1f02a21ea8737aed4d9afdf6876e0c3be040b3d5cc43f072",
+      "status": "Path/output adaptation, not rerendered",
+      "changes": "Only source import and output directory changed; audit math unchanged.",
+      "public_sha256": "e0d6e8cb4c22e80b9675ab639e5d727eeb7e0245ab81647fe01e5ecf43176011"
+    },
+    {
+      "public_path": "src/render_full900.py",
+      "original_source": "render_full900.py",
+      "original_sha256": "267278dac077a4e78f589794218278d3f8db37b5194b2c8975293fa1d0bad6ff",
+      "status": "Path/output adaptation, not rerendered",
+      "changes": "Resolve exact retained master through contract instead of private build manifest; output tree isolated. Native900/512 render recipe unchanged. No scene builder distributed. Explicit source-directory import bootstrap added for Blender --python.",
+      "public_sha256": "c3cd19ca1c2bb0db3e18ff58c52434187b1cb4af942cdbe410d3e6221841c7b1"
+    },
+    {
+      "public_path": "src/process_frame.py",
+      "original_source": "process_frame.py",
+      "original_sha256": "9da38d4fce9eae1202e64022eba9be690dab26ae10e6b9a1ff651ad50011a06d",
+      "status": "Path/output adaptation, not rerendered",
+      "changes": "Only output/external-plate selectors changed. Export of frame49 raw guides, exact Blender plate resampling, original alpha, linear formula and one AgX transform unchanged. Explicit source-directory import bootstrap added for Blender --python.",
+      "public_sha256": "1205f08f4b0d9753ad6d960c1a70a5d04806d7915f8debd2169dbc93a83a6b45"
+    },
+    {
+      "public_path": "src/denoise_frame.py",
+      "original_source": "denoise_frame.py",
+      "original_sha256": "16beb1b8bf5c405a1c82b88021c980ffccc04a351d6b673c0b46ff7d4e1a38b1",
+      "status": "Path/output adaptation, not rerendered",
+      "changes": "Only output/OIDN selectors changed. Original CPU HDR/high guided-hero and color-only-catcher commands retained.",
+      "public_sha256": "67ff986cc4dbbe5462cc4545cf6a63f72685111362ff8154ccef46323f533ea4"
+    },
+    {
+      "public_path": "src/run_guarded.py",
+      "original_source": "run_guarded.py",
+      "original_sha256": "a17ca6664a8eb99d6dea37052f3c356398e4f595e37b63ab9d8149866694d388",
+      "status": "Byte-identical tested original",
+      "changes": "No edits. Invoke with tools/guard.py to keep reports outside source.",
+      "public_sha256": "a17ca6664a8eb99d6dea37052f3c356398e4f595e37b63ab9d8149866694d388"
+    },
+    {
+      "public_path": "src/prepare_plate.py",
+      "original_source": "process_frame.py",
+      "original_sha256": "9da38d4fce9eae1202e64022eba9be690dab26ae10e6b9a1ff651ad50011a06d",
+      "status": "Exact resampling statement extraction plus input/output/hash wrapper; not executed",
+      "changes": "No image transform math changed. Prepare motion plate without rerendering full scene. Explicit source-directory import bootstrap added for Blender --python.",
+      "public_sha256": "007fc9f86d2973984fa12d2bf4716e0fcdd4224fa040365b88f50656e6211a20"
+    }
+  ],
+  "new_files": [
+    "src/contract.py",
+    "tools/reproduce.py",
+    "tools/check_sources.py"
+  ],
+  "reused_wrapper": {
+    "public_path": "tools/guard.py",
+    "source": "../weather-optical-contact-checkpoint-20261008/tools/guard.py",
+    "status": "Byte-identical output-isolation wrapper"
+  }
+}

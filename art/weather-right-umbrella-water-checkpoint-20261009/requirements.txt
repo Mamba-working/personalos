@@ -1,0 +1,3 @@
+# Host-side source checks and OIDN orchestration; recorded proof environment
+numpy==2.3.5
+# bpy/bmesh/mathutils and render-stage NumPy come from official Blender 4.3.2

@@ -1,0 +1,18 @@
+PersonalOS art source licensing notice
+
+No blanket open-source license is granted to first-party PersonalOS source,
+scene authorship or the generated environment by this source-only handoff.
+Publishing source and hashes does not relicense them. Contact the repository
+owner regarding first-party reuse permission.
+
+Third-party assets, software, character visuals and expression data retain
+their own licenses, copyrights and restrictions. Read THIRD_PARTY_NOTICES.md
+and each retained original notice/license before reuse.
+
+Emotion Ball character visuals are restricted to non-commercial personal
+technical study/research. They are not commercially licensed. A license to
+engine/expression data does not expand rights to the character visuals.
+
+CC0 applies to the separately identified TextureCan and Poly Haven resources,
+not to the assembled scene, generated plate or whole project. MIT applies to
+Three.js only; this offline handoff does not include Three.js runtime builds.

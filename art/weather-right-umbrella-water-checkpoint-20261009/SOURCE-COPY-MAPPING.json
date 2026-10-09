@@ -1,0 +1,201 @@
+{
+  "scope": "Exact historical construction source plus supported final-master replay. Historical source was used in the original workspace. Only source/hash/helper/planning checks are performed for this public copy; no public construction/replay or new render is claimed.",
+  "files": [
+    {
+      "public_path": "src/recipes/weather-canonical-sphere-rain-20261009-0119/preflight.py",
+      "original_source": "weather-canonical-sphere-rain-20261009-0119/preflight.py",
+      "original_sha256": "221b7f559fe661683f442d433a9e3c986f23bbf66ac7946d7fa6b0eeb7cc3aba",
+      "status": "Byte-identical original source",
+      "changes": "None. Historical construction recipes retain their original relative dependency layout; required owner-held inputs are omitted.",
+      "public_sha256": "221b7f559fe661683f442d433a9e3c986f23bbf66ac7946d7fa6b0eeb7cc3aba"
+    },
+    {
+      "public_path": "src/recipes/weather-canonical-sphere-rain-20261009-0119/build_candidate.py",
+      "original_source": "weather-canonical-sphere-rain-20261009-0119/build_candidate.py",
+      "original_sha256": "bd550a7e3398bc488dc2e4cfc709225f6247b3b0611725b7bf82ada8b5d9cc5c",
+      "status": "Byte-identical original source",
+      "changes": "None. Historical construction recipes retain their original relative dependency layout; required owner-held inputs are omitted.",
+      "public_sha256": "bd550a7e3398bc488dc2e4cfc709225f6247b3b0611725b7bf82ada8b5d9cc5c"
+    },
+    {
+      "public_path": "src/recipes/weather-canonical-sphere-rain-20261009-0119/verify_saved_motion.py",
+      "original_source": "weather-canonical-sphere-rain-20261009-0119/verify_saved_motion.py",
+      "original_sha256": "7672ce9353baf7d137cadbc26503466f2e9cf2f7638d03cb8c945acdd30881d9",
+      "status": "Byte-identical original source",
+      "changes": "None. Historical construction recipes retain their original relative dependency layout; required owner-held inputs are omitted.",
+      "public_sha256": "7672ce9353baf7d137cadbc26503466f2e9cf2f7638d03cb8c945acdd30881d9"
+    },
+    {
+      "public_path": "src/recipes/weather-canonical-sphere-rain-20261009-0119/invariant_tools.py",
+      "original_source": "weather-canonical-sphere-rain-20261009-0119/invariant_tools.py",
+      "original_sha256": "f4e90a7035615b422e152493fb68e8fea9bf000c41f538a1079ed8485947e205",
+      "status": "Byte-identical original source",
+      "changes": "None. Historical construction recipes retain their original relative dependency layout; required owner-held inputs are omitted.",
+      "public_sha256": "f4e90a7035615b422e152493fb68e8fea9bf000c41f538a1079ed8485947e205"
+    },
+    {
+      "public_path": "src/recipes/weather-right-umbrella-correction-20261009-0153/project_right_pose.py",
+      "original_source": "weather-right-umbrella-correction-20261009-0153/project_right_pose.py",
+      "original_sha256": "53d05996658057b103b9618ecd0c5d8501a8586f71914e432a42269e2ccaeda5",
+      "status": "Byte-identical original source",
+      "changes": "None. Historical construction recipes retain their original relative dependency layout; required owner-held inputs are omitted.",
+      "public_sha256": "53d05996658057b103b9618ecd0c5d8501a8586f71914e432a42269e2ccaeda5"
+    },
+    {
+      "public_path": "src/recipes/weather-right-umbrella-correction-20261009-0153/build_selected_lookdev.py",
+      "original_source": "weather-right-umbrella-correction-20261009-0153/build_selected_lookdev.py",
+      "original_sha256": "36898d01e20b640bfcddcdfdd8dbfc33e376f4e7ef9d15fd723b5fff1d543b90",
+      "status": "Byte-identical original source",
+      "changes": "None. Historical construction recipes retain their original relative dependency layout; required owner-held inputs are omitted.",
+      "public_sha256": "36898d01e20b640bfcddcdfdd8dbfc33e376f4e7ef9d15fd723b5fff1d543b90"
+    },
+    {
+      "public_path": "src/recipes/weather-right-umbrella-correction-20261009-0153/water_patch.py",
+      "original_source": "weather-right-umbrella-correction-20261009-0153/water_patch.py",
+      "original_sha256": "019d2610384d5fceebc435429363086f7ed4fd5617c62626313c1249e57c2627",
+      "status": "Byte-identical original source",
+      "changes": "None. Historical construction recipes retain their original relative dependency layout; required owner-held inputs are omitted.",
+      "public_sha256": "019d2610384d5fceebc435429363086f7ed4fd5617c62626313c1249e57c2627"
+    },
+    {
+      "public_path": "src/recipes/weather-right-umbrella-correction-20261009-0153/wet_readability_patch.py",
+      "original_source": "weather-right-umbrella-correction-20261009-0153/wet_readability_patch.py",
+      "original_sha256": "169a7682fdf620d63451ab02836e710de92dff7c5be6388c26c95d64b5f703c2",
+      "status": "Byte-identical original source",
+      "changes": "None. Historical construction recipes retain their original relative dependency layout; required owner-held inputs are omitted.",
+      "public_sha256": "169a7682fdf620d63451ab02836e710de92dff7c5be6388c26c95d64b5f703c2"
+    },
+    {
+      "public_path": "src/recipes/weather-right-umbrella-correction-20261009-0153/finalize_saved_candidate.py",
+      "original_source": "weather-right-umbrella-correction-20261009-0153/finalize_saved_candidate.py",
+      "original_sha256": "a25ab284ffe55ea803456a23d907b26105e4e3cce4119ff0d3a1780775c128b2",
+      "status": "Byte-identical original source",
+      "changes": "None. Historical construction recipes retain their original relative dependency layout; required owner-held inputs are omitted.",
+      "public_sha256": "a25ab284ffe55ea803456a23d907b26105e4e3cce4119ff0d3a1780775c128b2"
+    },
+    {
+      "public_path": "src/recipes/weather-right-umbrella-correction-20261009-0153/invariant_tools.py",
+      "original_source": "weather-right-umbrella-correction-20261009-0153/invariant_tools.py",
+      "original_sha256": "711ebaedf2ff9e6ca68750060aa0d46048fd52b122b7edf1f7bfb5160b3ddf55",
+      "status": "Byte-identical original source",
+      "changes": "None. Historical construction recipes retain their original relative dependency layout; required owner-held inputs are omitted.",
+      "public_sha256": "711ebaedf2ff9e6ca68750060aa0d46048fd52b122b7edf1f7bfb5160b3ddf55"
+    },
+    {
+      "public_path": "src/recipes/weather-right-umbrella-correction-20261009-0153/SELECTED-POSE.json",
+      "original_source": "weather-right-umbrella-correction-20261009-0153/SELECTED-POSE.json",
+      "original_sha256": "1cd76f3f489e89e7864cebc4c69a0fa23ee8fdc7cb8161768d73ba46ef067490",
+      "status": "Byte-identical original source",
+      "changes": "None. Historical construction recipes retain their original relative dependency layout; required owner-held inputs are omitted.",
+      "public_sha256": "1cd76f3f489e89e7864cebc4c69a0fa23ee8fdc7cb8161768d73ba46ef067490"
+    },
+    {
+      "public_path": "src/recipes/weather-right-wet-readability-crop-20261009-0238/author_shared_opening.py",
+      "original_source": "weather-right-wet-readability-crop-20261009-0238/author_shared_opening.py",
+      "original_sha256": "1404480fd96c1700f45bbc6be3855fb79808c9de15aac5fe561c4c2c02072bcd",
+      "status": "Byte-identical original source",
+      "changes": "None. Historical construction recipes retain their original relative dependency layout; required owner-held inputs are omitted.",
+      "public_sha256": "1404480fd96c1700f45bbc6be3855fb79808c9de15aac5fe561c4c2c02072bcd"
+    },
+    {
+      "public_path": "src/recipes/weather-right-wet-readability-crop-20261009-0238/build_crop_candidate.py",
+      "original_source": "weather-right-wet-readability-crop-20261009-0238/build_crop_candidate.py",
+      "original_sha256": "7cbe7877657afd480f010079ec6bb512d8bdbf7c054cc8246972a6f1069ef532",
+      "status": "Byte-identical original source",
+      "changes": "None. Historical construction recipes retain their original relative dependency layout; required owner-held inputs are omitted.",
+      "public_sha256": "7cbe7877657afd480f010079ec6bb512d8bdbf7c054cc8246972a6f1069ef532"
+    },
+    {
+      "public_path": "src/recipes/weather-right-wet-readability-crop-20261009-0238/probe_current_reflection.py",
+      "original_source": "weather-right-wet-readability-crop-20261009-0238/probe_current_reflection.py",
+      "original_sha256": "58324507267966515f5675dc7ff9e1fa22c5a66c4cece2ae84747e785f4fe927",
+      "status": "Byte-identical original source",
+      "changes": "None. Historical construction recipes retain their original relative dependency layout; required owner-held inputs are omitted.",
+      "public_sha256": "58324507267966515f5675dc7ff9e1fa22c5a66c4cece2ae84747e785f4fe927"
+    },
+    {
+      "public_path": "src/recipes/weather-right-wet-readability-crop-20261009-0238/invariant_tools.py",
+      "original_source": "weather-right-wet-readability-crop-20261009-0238/invariant_tools.py",
+      "original_sha256": "711ebaedf2ff9e6ca68750060aa0d46048fd52b122b7edf1f7bfb5160b3ddf55",
+      "status": "Byte-identical original source",
+      "changes": "None. Historical construction recipes retain their original relative dependency layout; required owner-held inputs are omitted.",
+      "public_sha256": "711ebaedf2ff9e6ca68750060aa0d46048fd52b122b7edf1f7bfb5160b3ddf55"
+    },
+    {
+      "public_path": "src/recipes/weather-right-wet-correction-milestone-20261009-0259/finish_pendant_variation.py",
+      "original_source": "weather-right-wet-correction-milestone-20261009-0259/finish_pendant_variation.py",
+      "original_sha256": "3a3914228d6adf51deb4fe8d76f00f4307549b31da52c0412b09d5198119687c",
+      "status": "Byte-identical original source",
+      "changes": "None. Historical construction recipes retain their original relative dependency layout; required owner-held inputs are omitted.",
+      "public_sha256": "3a3914228d6adf51deb4fe8d76f00f4307549b31da52c0412b09d5198119687c"
+    },
+    {
+      "public_path": "src/recipes/weather-right-wet-correction-milestone-20261009-0259/invariant_tools.py",
+      "original_source": "weather-right-wet-correction-milestone-20261009-0259/invariant_tools.py",
+      "original_sha256": "711ebaedf2ff9e6ca68750060aa0d46048fd52b122b7edf1f7bfb5160b3ddf55",
+      "status": "Byte-identical original source",
+      "changes": "None. Historical construction recipes retain their original relative dependency layout; required owner-held inputs are omitted.",
+      "public_sha256": "711ebaedf2ff9e6ca68750060aa0d46048fd52b122b7edf1f7bfb5160b3ddf55"
+    },
+    {
+      "public_path": "src/recipes/weather-ball-ceramic-candidate-20261008-0546/patch_ceramic.py",
+      "original_source": "weather-ball-ceramic-candidate-20261008-0546/patch_ceramic.py",
+      "original_sha256": "7e92c628a8821d649e8a4abbe4d0a11e9fee808bde5b289ca72edaba4dd668a6",
+      "status": "Exact function extraction",
+      "retained_definitions": [
+        "val",
+        "mesh_hash",
+        "rna_values",
+        "graph_state",
+        "frozen_scene_snapshot"
+      ],
+      "changes": "Retain only the five unchanged serializers/hash/snapshot functions and their two required constants. Ancestor patch/main code is omitted.",
+      "public_sha256": "94af5c2ce72288deb7121b0570ecc01ff9159c4fd91a16c321a6f45e9bf76284"
+    },
+    {
+      "public_path": "src/reproduce_render.py",
+      "original_source": "weather-right-wet-correction-milestone-20261009-0259/repro/reproduce_render.py",
+      "original_sha256": "4c3fb73faa6dc46952cbbe64dc1bec557cfbee6b7c8382bb05f988bc40a1cda3",
+      "status": "Byte-identical original source",
+      "changes": "None. Historical construction recipes retain their original relative dependency layout; required owner-held inputs are omitted.",
+      "public_sha256": "4c3fb73faa6dc46952cbbe64dc1bec557cfbee6b7c8382bb05f988bc40a1cda3"
+    },
+    {
+      "public_path": "src/reproduce_denoise.py",
+      "original_source": "weather-right-wet-correction-milestone-20261009-0259/repro/reproduce_denoise.py",
+      "original_sha256": "f762737bc8e0dd54f07208e3efdea3d4eec55fdc2ffc30f02e45d05991e2091a",
+      "status": "Byte-identical original source",
+      "changes": "None. Historical construction recipes retain their original relative dependency layout; required owner-held inputs are omitted.",
+      "public_sha256": "f762737bc8e0dd54f07208e3efdea3d4eec55fdc2ffc30f02e45d05991e2091a"
+    },
+    {
+      "public_path": "src/run_guarded.py",
+      "original_source": "weather-right-wet-correction-milestone-20261009-0259/repro/run_guarded.py",
+      "original_sha256": "a17ca6664a8eb99d6dea37052f3c356398e4f595e37b63ab9d8149866694d388",
+      "status": "Byte-identical original source",
+      "changes": "None. Historical construction recipes retain their original relative dependency layout; required owner-held inputs are omitted.",
+      "public_sha256": "a17ca6664a8eb99d6dea37052f3c356398e4f595e37b63ab9d8149866694d388"
+    },
+    {
+      "public_path": "src/reproduce_postprocess.py",
+      "original_source": "weather-right-wet-correction-milestone-20261009-0259/repro/reproduce_postprocess.py",
+      "original_sha256": "b077d472e36177c135e951b03a8be8ba04e5909b358a3bb1211f0a6d3c0d2b27",
+      "status": "External-input path adaptation",
+      "changes": "Replace only the fixed adjacent plate lookup with the hash-checked external contract. Export, resampling, PFM decoding, premultiplied-alpha compositing and single AgX display math remain unchanged. New public adapter has not been executed with Blender.",
+      "public_sha256": "c9243e8654e45e58df596a2bae97fd99cbc61d1cc5e5dc207b5c853be90d6367"
+    },
+    {
+      "public_path": "tools/guard.py",
+      "original_source": "../weather-rounded-water-motion-checkpoint-20261009/tools/guard.py",
+      "original_sha256": "4164fa574efb933a8168f3440b68cabfed35258039e6f90374d7c1642f9a183b",
+      "status": "Byte-identical existing public wrapper",
+      "changes": "None. Keeps exact guard reports in isolated output.",
+      "public_sha256": "4164fa574efb933a8168f3440b68cabfed35258039e6f90374d7c1642f9a183b"
+    }
+  ],
+  "new_files": [
+    "src/contract.py",
+    "tools/reproduce.py",
+    "tools/check_sources.py"
+  ]
+}

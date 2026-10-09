@@ -1,0 +1,235 @@
+{
+  "schema": "weather-macro-source-copy-mapping-v1",
+  "files": [
+    {
+      "original_relative_path": "weather-macro-art-correction-20261009-0448/build_macro_geometry.py",
+      "original_sha256": "dc8efca9fe679e22e8292e49f9f2d140fddd5be037b569ad98790ebce05d3bda",
+      "public_path": "src/recipes/weather-macro-art-correction-20261009-0448/build_macro_geometry.py",
+      "public_sha256": "dc8efca9fe679e22e8292e49f9f2d140fddd5be037b569ad98790ebce05d3bda",
+      "status": "Byte-identical retained source",
+      "changes": []
+    },
+    {
+      "original_relative_path": "weather-macro-art-correction-20261009-0448/author_macro_light.py",
+      "original_sha256": "2a0e10ce9c736386ea3e4977588d572235e1a41987a624022826bef919775f11",
+      "public_path": "src/recipes/weather-macro-art-correction-20261009-0448/author_macro_light.py",
+      "public_sha256": "2a0e10ce9c736386ea3e4977588d572235e1a41987a624022826bef919775f11",
+      "status": "Byte-identical retained source",
+      "changes": []
+    },
+    {
+      "original_relative_path": "weather-macro-art-correction-20261009-0448/build_curvature_crop_candidate.py",
+      "original_sha256": "1403c5527e37150355b5fbf4d6fa2790061b3fb71a020fca59fbf360f5dca943",
+      "public_path": "src/recipes/weather-macro-art-correction-20261009-0448/build_curvature_crop_candidate.py",
+      "public_sha256": "1403c5527e37150355b5fbf4d6fa2790061b3fb71a020fca59fbf360f5dca943",
+      "status": "Byte-identical retained source",
+      "changes": []
+    },
+    {
+      "original_relative_path": "weather-macro-art-correction-20261009-0448/membrane_curvature_field.py",
+      "original_sha256": "b775e3f5cb148702ce5ca696169e7b94848e409397b41f317183125718a20bf0",
+      "public_path": "src/recipes/weather-macro-art-correction-20261009-0448/membrane_curvature_field.py",
+      "public_sha256": "b775e3f5cb148702ce5ca696169e7b94848e409397b41f317183125718a20bf0",
+      "status": "Byte-identical retained source",
+      "changes": []
+    },
+    {
+      "original_relative_path": "weather-macro-art-correction-20261009-0448/build_continuous_relief_candidate.py",
+      "original_sha256": "db2c65124e6888bd1fabb3b6f7cd632e31569a8f8c522de1aa8d84d42cb5e1c9",
+      "public_path": "src/recipes/weather-macro-art-correction-20261009-0448/build_continuous_relief_candidate.py",
+      "public_sha256": "db2c65124e6888bd1fabb3b6f7cd632e31569a8f8c522de1aa8d84d42cb5e1c9",
+      "status": "Byte-identical retained source",
+      "changes": []
+    },
+    {
+      "original_relative_path": "weather-macro-art-correction-20261009-0448/continuous_roof_relief_field.py",
+      "original_sha256": "1d577ec84eeb2572380d50356e102c7e7ac2a71b935a07240db1cdf59f80e2a4",
+      "public_path": "src/recipes/weather-macro-art-correction-20261009-0448/continuous_roof_relief_field.py",
+      "public_sha256": "1d577ec84eeb2572380d50356e102c7e7ac2a71b935a07240db1cdf59f80e2a4",
+      "status": "Byte-identical retained source",
+      "changes": []
+    },
+    {
+      "original_relative_path": "weather-macro-art-correction-20261009-0448/finish_continuous_water_seating.py",
+      "original_sha256": "4336c3e71b46c1cb55367c39943d909944895ab995c0c388632cf26f8ecb17c3",
+      "public_path": "src/recipes/weather-macro-art-correction-20261009-0448/finish_continuous_water_seating.py",
+      "public_sha256": "4336c3e71b46c1cb55367c39943d909944895ab995c0c388632cf26f8ecb17c3",
+      "status": "Byte-identical retained source",
+      "changes": []
+    },
+    {
+      "original_relative_path": "weather-macro-art-correction-20261009-0448/audit_continuous_scene.py",
+      "original_sha256": "ab6891e7f7c8fea9971faec78c0cdf591460a740b0e419c68ea91d6232c977a2",
+      "public_path": "src/recipes/weather-macro-art-correction-20261009-0448/audit_continuous_scene.py",
+      "public_sha256": "ab6891e7f7c8fea9971faec78c0cdf591460a740b0e419c68ea91d6232c977a2",
+      "status": "Byte-identical retained source",
+      "changes": []
+    },
+    {
+      "original_relative_path": "weather-macro-art-correction-20261009-0448/build_visible_straight_shaft.py",
+      "original_sha256": "6ac80d9041238fa6d402c947b8ac48bff809f6706d6ae4e9b2dd698f4bf3c4b7",
+      "public_path": "src/recipes/weather-macro-art-correction-20261009-0448/build_visible_straight_shaft.py",
+      "public_sha256": "6ac80d9041238fa6d402c947b8ac48bff809f6706d6ae4e9b2dd698f4bf3c4b7",
+      "status": "Byte-identical retained source",
+      "changes": []
+    },
+    {
+      "original_relative_path": "weather-macro-art-correction-20261009-0448/add_selected_lower_bounce_card.py",
+      "original_sha256": "69b24736f497b6a99d265c75df785f23c5940225811e1ab0c27b735038018312",
+      "public_path": "src/recipes/weather-macro-art-correction-20261009-0448/add_selected_lower_bounce_card.py",
+      "public_sha256": "69b24736f497b6a99d265c75df785f23c5940225811e1ab0c27b735038018312",
+      "status": "Byte-identical retained source",
+      "changes": []
+    },
+    {
+      "original_relative_path": "weather-macro-art-correction-20261009-0448/build_half_scale_roof_stage.py",
+      "original_sha256": "9ae58e53d594059c91405049155ee06f14c75170dabfedb808a858a85773f962",
+      "public_path": "src/recipes/weather-macro-art-correction-20261009-0448/build_half_scale_roof_stage.py",
+      "public_sha256": "9ae58e53d594059c91405049155ee06f14c75170dabfedb808a858a85773f962",
+      "status": "Byte-identical retained source",
+      "changes": []
+    },
+    {
+      "original_relative_path": "weather-macro-art-correction-20261009-0448/half_scale_roof_relief_field.py",
+      "original_sha256": "c340557267f2ca7a890446aa79463d84bf46e04da6025d4dd1d3df3cfcca9740",
+      "public_path": "src/recipes/weather-macro-art-correction-20261009-0448/half_scale_roof_relief_field.py",
+      "public_sha256": "c340557267f2ca7a890446aa79463d84bf46e04da6025d4dd1d3df3cfcca9740",
+      "status": "Byte-identical retained source",
+      "changes": []
+    },
+    {
+      "original_relative_path": "weather-macro-art-correction-20261009-0448/finish_half_scale_water_seating.py",
+      "original_sha256": "9d442807e99ded2d17c2576c1aefe833cb51f5f8fd96df414bc22e6822583fd4",
+      "public_path": "src/recipes/weather-macro-art-correction-20261009-0448/finish_half_scale_water_seating.py",
+      "public_sha256": "9d442807e99ded2d17c2576c1aefe833cb51f5f8fd96df414bc22e6822583fd4",
+      "status": "Byte-identical retained source",
+      "changes": []
+    },
+    {
+      "original_relative_path": "weather-macro-art-correction-20261009-0448/audit_half_scale_scene.py",
+      "original_sha256": "a84d9eaa25ef860a72dc6b6bf4e6c4c45202c889d33856e8744790250c857117",
+      "public_path": "src/recipes/weather-macro-art-correction-20261009-0448/audit_half_scale_scene.py",
+      "public_sha256": "a84d9eaa25ef860a72dc6b6bf4e6c4c45202c889d33856e8744790250c857117",
+      "status": "Byte-identical retained source",
+      "changes": []
+    },
+    {
+      "original_relative_path": "weather-macro-art-correction-20261009-0448/merge_half_scale_roof_into_selected_shot.py",
+      "original_sha256": "3187cd08ca1f72a1b5bbc45ae4910ec1b8caa33d02d34f5ea2d845ade62f57d2",
+      "public_path": "src/recipes/weather-macro-art-correction-20261009-0448/merge_half_scale_roof_into_selected_shot.py",
+      "public_sha256": "3187cd08ca1f72a1b5bbc45ae4910ec1b8caa33d02d34f5ea2d845ade62f57d2",
+      "status": "Byte-identical retained source",
+      "changes": []
+    },
+    {
+      "original_relative_path": "weather-macro-art-correction-20261009-0448/build_satin_shaft_components.py",
+      "original_sha256": "f06ec1d79229bfee0dcfad3f5d293b5e7ed3f5f49c03a3bdc15ea954183a8ea5",
+      "public_path": "src/recipes/weather-macro-art-correction-20261009-0448/build_satin_shaft_components.py",
+      "public_sha256": "f06ec1d79229bfee0dcfad3f5d293b5e7ed3f5f49c03a3bdc15ea954183a8ea5",
+      "status": "Byte-identical retained source",
+      "changes": []
+    },
+    {
+      "original_relative_path": "weather-macro-art-correction-20261009-0448/calculate_shared_metal_flag_wide.py",
+      "original_sha256": "36e71b9337c6ab17155a7c84bf5499f54964bc581df92e5afa07c07dff469705",
+      "public_path": "src/recipes/weather-macro-art-correction-20261009-0448/calculate_shared_metal_flag_wide.py",
+      "public_sha256": "36e71b9337c6ab17155a7c84bf5499f54964bc581df92e5afa07c07dff469705",
+      "status": "Byte-identical retained source",
+      "changes": []
+    },
+    {
+      "original_relative_path": "weather-macro-art-correction-20261009-0448/build_soft_reflection_scrim.py",
+      "original_sha256": "761526a69f92bf6462b0d5c55496ab86e52ae02e85aae8c23e5d674b9e823354",
+      "public_path": "src/recipes/weather-macro-art-correction-20261009-0448/build_soft_reflection_scrim.py",
+      "public_sha256": "761526a69f92bf6462b0d5c55496ab86e52ae02e85aae8c23e5d674b9e823354",
+      "status": "Byte-identical retained source",
+      "changes": []
+    },
+    {
+      "original_relative_path": "weather-macro-art-correction-20261009-0448/render_shaft_card_crop.py",
+      "original_sha256": "14abfccba8df184026901e7efb41f60e47aa643ea775da07bc2a7010e2dba29d",
+      "public_path": "src/reproduce_render.py",
+      "public_sha256": "6cbf3f043e53bfac5f4ff9c71dd91fc6186af4016f4b6b06163a9cd495ac9661",
+      "status": "Public-copy adaptation",
+      "changes": [
+        "Replace self-derived input identity with the exact selected master SHA-256; crop, samples, passes and render choices unchanged"
+      ]
+    },
+    {
+      "original_relative_path": "weather-macro-art-correction-20261009-0448/process_soft_scrim_crop.py",
+      "original_sha256": "6db4318ee2bc7d937b5cb9895acedced23a586311f874f02e8a9f1803f0f7af8",
+      "public_path": "src/reproduce_postprocess.py",
+      "public_sha256": "b39c16cc8ba1f99c6c23ce0de63125e954687be53ea11917d5144c14ca52dd64",
+      "status": "Public-copy adaptation",
+      "changes": [
+        "Add explicit isolated output selector",
+        "Use hash-checked external exact already-resampled 355x300 linear plate crop instead of the private prior-output path; PFM/composite/AgX/display math unchanged"
+      ]
+    },
+    {
+      "original_relative_path": "weather-macro-art-correction-20261009-0448/reproduce_denoise.py",
+      "original_sha256": "f762737bc8e0dd54f07208e3efdea3d4eec55fdc2ffc30f02e45d05991e2091a",
+      "public_path": "src/reproduce_denoise.py",
+      "public_sha256": "f762737bc8e0dd54f07208e3efdea3d4eec55fdc2ffc30f02e45d05991e2091a",
+      "status": "Byte-identical retained source",
+      "changes": []
+    },
+    {
+      "original_relative_path": "weather-macro-art-correction-20261009-0448/run_guarded_geometry.py",
+      "original_sha256": "a17ca6664a8eb99d6dea37052f3c356398e4f595e37b63ab9d8149866694d388",
+      "public_path": "src/run_guarded.py",
+      "public_sha256": "a17ca6664a8eb99d6dea37052f3c356398e4f595e37b63ab9d8149866694d388",
+      "status": "Byte-identical retained source",
+      "changes": []
+    },
+    {
+      "original_relative_path": "art/weather-right-umbrella-water-checkpoint-20261009/tools/guard.py",
+      "original_sha256": "4164fa574efb933a8168f3440b68cabfed35258039e6f90374d7c1642f9a183b",
+      "public_path": "tools/guard.py",
+      "public_sha256": "4164fa574efb933a8168f3440b68cabfed35258039e6f90374d7c1642f9a183b",
+      "status": "Byte-identical retained source",
+      "changes": []
+    },
+    {
+      "original_relative_path": "art/weather-right-umbrella-water-checkpoint-20261009/LICENSE",
+      "original_sha256": "7ea82cde9bde21524ffb5e93208b0ce706665160abe4339182badb59a045e351",
+      "public_path": "LICENSE",
+      "public_sha256": "7ea82cde9bde21524ffb5e93208b0ce706665160abe4339182badb59a045e351",
+      "status": "Byte-identical retained source",
+      "changes": []
+    },
+    {
+      "original_relative_path": "art/weather-right-umbrella-water-checkpoint-20261009/THIRD_PARTY_NOTICES.md",
+      "original_sha256": "cb2b34ae0bc2b9ac3c38b48cbbf292c63d879119eaea7d02a2b35933c158a521",
+      "public_path": "THIRD_PARTY_NOTICES.md",
+      "public_sha256": "cb2b34ae0bc2b9ac3c38b48cbbf292c63d879119eaea7d02a2b35933c158a521",
+      "status": "Byte-identical retained source",
+      "changes": []
+    },
+    {
+      "original_relative_path": "art/weather-right-umbrella-water-checkpoint-20261009/src/contract.py",
+      "original_sha256": "63c87e7dc7567a338aed3fe8bac496b3b13fb52128a1cc4acb4c8d67db4e0008",
+      "public_path": "src/contract.py",
+      "public_sha256": "67f8fdd1fdd12abbae5d80d6315bd3f99a3014bd094569ef5fe1c878a4aaf6ac",
+      "status": "Public-copy adaptation",
+      "changes": [
+        "Select exact macro master and exact scene-linear crop plate identities; inherited asset/output safety checks unchanged"
+      ]
+    },
+    {
+      "original_relative_path": "art/weather-right-umbrella-water-checkpoint-20261009/tools/reproduce.py",
+      "original_sha256": "d586bba45d3729ab2026b3a2b09ed44b0313b235881e539ed02f875942393be0",
+      "public_path": "tools/reproduce.py",
+      "public_sha256": "147e3ed5481475abdbbae8b7d4ea29b61611f67fd3f970abcdff9e05fbe2b7c7",
+      "status": "Public-copy adaptation",
+      "changes": [
+        "Preserve plan-by-default explicit execution and tool/input/output gates",
+        "Use selected 355x300 crop labels and original 900-second crop render deadline; inherited 180-second export/denoise/display deadlines unchanged"
+      ]
+    }
+  ],
+  "new_wrappers": [
+    "tools/check_sources.py"
+  ],
+  "notes": "No original/public hash is a public download link. All paths are relative. Private report contents and binary inputs are omitted."
+}

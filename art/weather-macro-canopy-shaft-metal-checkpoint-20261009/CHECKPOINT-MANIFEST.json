@@ -1,0 +1,36 @@
+{
+  "schema": "weather-macro-canopy-shaft-metal-checkpoint-v1",
+  "status": "Static partial art correction; whole-artwork/reference parity unaccepted",
+  "selected_master_sha256": "92916e52cb240c30a239327462b067053cce1d6bc2a3c43b9ad5a151fbbb67ab",
+  "selected_crop": {
+    "full_frame": [
+      900,
+      600
+    ],
+    "top_left_box": [
+      470,
+      105,
+      825,
+      405
+    ],
+    "size": [
+      355,
+      300
+    ],
+    "samples": 512,
+    "frame": 49
+  },
+  "retained_source_count": 18,
+  "source_execution_at_sync": false,
+  "new_render_at_sync": false,
+  "runtime_or_web_performance_acceptance": false,
+  "physical_lighting_completeness_claimed": false,
+  "approximation": "One world-fixed curved 80 percent negative-fill scrim is glossy-visible only, camera/transmission/diffuse/shadow/volume invisible; positive bounce card camera invisibility also explicit",
+  "remaining_art_issues": [
+    "Wet roof remains pebbly rather than connected film contours",
+    "Lit-side metal rolloff remains brighter/sharper than reference",
+    "Whole artwork not reference-parity accepted"
+  ],
+  "public_copy_verification": "AST, hashes, deterministic pure helper probes, synthetic PFM/composite, exact-input/output gates, dry-run plan and public-source heuristic; not Blender/OIDN execution",
+  "preservation": "Additive checkpoint only; all prior blobs/licenses/notices/frontend/backend/versions/CI retained unchanged"
+}

@@ -48,12 +48,7 @@ test('chat multi-entry Back reconciles through the existing content owner after 
  const f=await bootChatWorld({width:390});try{f.w.contentStudy.open('work-context');f.settle();const article=f.$('[data-content-id="work-context"]');f.chat.show();f.settleChat();f.w.history.go(-2);await turn();f.settleChat();f.settle();assertRoute(f,null);assert.equal(article.parentElement.dataset.id,'work-context');assert.equal(f.chat.getState().phase,'closed');f.w.history.go(2);await turn();f.settleChat();assert.equal(f.w.personalOSContent.getState().contentId,'work-context');assert.equal(f.chat.getState().open,true);}finally{f.destroy();}
 });
 test('split projection introduces no wheel/touch interception, body scale, library or extra frame loop',()=>{
- const module=read('card-projection.js');assert.doesNotMatch(module,/requestAnimationFrame|setInterval|addEventListener\(['"](?:wheel|touchmove)/);assert.doesNotMatch(read('card-projection.css'),/overflow-y:\s*hidden/);// Assert the behavior, rather than the old per-child scale implementation.
- const f=bootContent();try{
-  const article=f.$('[data-content-id="work-context"]'),label=article.querySelector('.visual-label'),svg=article.querySelector('svg'),aspect=svg.getAttribute('preserveAspectRatio');
-  f.w.contentStudy.open('work-context',{push:false});
-  for(const progress of [0,.2,.7,1,.4,0]){f.w.contentStudy.seek(progress);assert.doesNotMatch(label.style.transform,/scale/);assert.equal(svg.getAttribute('preserveAspectRatio'),aspect);assert.doesNotMatch(article.querySelector('.detail-body').style.transform,/scale/);}
- }finally{f.close();}
+ const module=read('card-projection.js');assert.doesNotMatch(module,/requestAnimationFrame|setInterval|addEventListener\(['"](?:wheel|touchmove)/);assert.doesNotMatch(read('card-projection.css'),/overflow-y:\s*hidden/);assert.match(module,/scale = child.classList.contains\('visual-label'\) \? 1/);
 });
 
 

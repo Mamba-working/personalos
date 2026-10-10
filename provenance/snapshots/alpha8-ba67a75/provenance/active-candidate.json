@@ -2,13 +2,13 @@
   "schemaVersion": 2,
   "kind": "versioned-reader-candidate",
   "status": "unpublished-acceptance-pending",
-  "productVersion": "v0.1.0-alpha.9",
-  "revision": "split-card-reader-r4",
+  "productVersion": "v0.1.0-alpha.8",
+  "revision": "split-card-reader-r3",
   "sourcePayloadBinding": "current-git-commit",
   "inputSource": {
-    "commit": "fc1e7d9b00540fcd8a77fed66b645578a580c767",
-    "tree": "ac393f61dfb6fb53b0d35e8361ee7461b6daef4d",
-    "relationship": "reviewed local implementation delta; not public Git ancestry"
+    "commit": "649023a02beefc1d94ca43e191602da64a75abd4",
+    "tree": "b309f593050f9136a42a530b2b2db4def2a277d4",
+    "relationship": "public r3 input; new candidate metadata is separate"
   },
   "publicGitCommit": null,
   "publicGitTag": null,
@@ -17,31 +17,33 @@
   "fullUnifiedAcceptance": false,
   "algorithm": "sha256-canonical-path-inventory-v1",
   "previousCandidate": {
-    "commit": "ba67a75a2d7bc8b29041bec06ce38cef41a25939",
-    "inventory": "provenance/candidates/alpha8-source-ba67a75.json",
-    "runtimeSHA256": "b11366d758eab93517c0d74c07038167b7fedf45ccb71034b577e6c8af0a2d32"
+    "commit": "15a5967b775dec5e1224c224a5e36f07ddbbb76b",
+    "inventory": "provenance/candidates/alpha7-source-15a5967.json",
+    "runtimeSHA256": "64922db578b6ab8fb8f40250c9156e957a02e386f56803625f5ebc19389072ad"
   },
   "runtimeFileCount": 73,
-  "runtimeSHA256": "b03d2a5931fc8ab7162395e695a873287e69d8bd52c7b92c1c6ab52ba37181c4",
+  "runtimeSHA256": "b11366d758eab93517c0d74c07038167b7fedf45ccb71034b577e6c8af0a2d32",
   "runtimeOnlyAllowlist": [
     "runtime/app.js",
     "runtime/card-projection.css",
     "runtime/card-projection.js",
+    "runtime/chat-host.js",
     "runtime/index.html",
-    "runtime/release-meta.json"
+    "runtime/release-meta.json",
+    "runtime/vendor/motion/NOTICE.md"
   ],
   "files": [
     {
       "path": "runtime/app.js",
-      "sha256": "9b7e2c615e6907d4758aa701c0217301f8972bece3cf1bb110ce079ea7efed75"
+      "sha256": "0959d47111587c4b25c39e9b742528102c2528c51a5db083b7ef0ac0919372d8"
     },
     {
       "path": "runtime/card-projection.css",
-      "sha256": "6e0062ee35ef1fd062d912ee3f2ddaa8d15172fa6d562e4d17a2a4a9ff50723e"
+      "sha256": "ded0c76329307efc51821fa17d50bea410672fa6a239fa707420073342cd9ad6"
     },
     {
       "path": "runtime/card-projection.js",
-      "sha256": "ecaf12a5032fb63a0c704d038af65a10745a3a1a410505a58776198a360fb196"
+      "sha256": "753332a61181fdbae54ff5fc35802d703714ac73a537df7c7342154f20e68ade"
     },
     {
       "path": "runtime/chat/chat-fluid-send.js",
@@ -169,7 +171,7 @@
     },
     {
       "path": "runtime/index.html",
-      "sha256": "a0bebdfc475c4f9ea92bdf6584391c7f4c761c5a5ccdc60d1110f5e2f001ef37"
+      "sha256": "03ff252b3b26761cbc04472092eb3aeb0643db19c382115ca18a5d670422cb7d"
     },
     {
       "path": "runtime/material.css",
@@ -201,7 +203,7 @@
     },
     {
       "path": "runtime/release-meta.json",
-      "sha256": "ecb7f37c4f5761886ee0aa5c24f72feccf0ede7be19ffccbd09f9bbcf44bc117"
+      "sha256": "12ba346c054f0c96c34ab11ce158cd3f8e33f83c55ecd0cf1e2671161a559e44"
     },
     {
       "path": "runtime/scene-bridge.js",
@@ -325,11 +327,11 @@
     }
   ],
   "versionFiles": {
-    "package.json": "dc8e3f7089980a54f4bdcfaa9e18516a48214b153cb0aef4e4d13e5b2a734180",
-    "package-lock.json": "3baec8ad99bd6b162d64eef4084dc7a4ac0d626e96dc3970bc6926f670ddd6a7",
-    "apps/web/package.json": "9210d3d09485be69b747cca40c0f5d428e177808e0c5b37307a5818f22487c27",
-    "packages/contracts/index.mjs": "85a45f57c6dbf879200fdec3d6c76b674f674a03d9c8d2ecde70895b603523f4",
-    "apps/web/runtime/release-meta.json": "ecb7f37c4f5761886ee0aa5c24f72feccf0ede7be19ffccbd09f9bbcf44bc117"
+    "package.json": "d86a309f1f69333ab23e196065e16fefdf490f597d16a3055e8755740809824e",
+    "package-lock.json": "f1768f8d14888de39d1c0d2e2fd2fcd863ffb75fc5f5588b1c5092639947615e",
+    "apps/web/package.json": "b46676246c2ba6dd807423943291e795a47967f1d06fb74ecd071b6a30c35037",
+    "packages/contracts/index.mjs": "658366b442774490f1fefe6ae8fd0497adabfa5b2f315d32152032ed6eb8ecdc",
+    "apps/web/runtime/release-meta.json": "12ba346c054f0c96c34ab11ce158cd3f8e33f83c55ecd0cf1e2671161a559e44"
   },
   "supportingFiles": {
     ".github/CODEOWNERS": "04a765532782c886417e80f16dd21f11a8cc4f1e81a06c3ceb280a3a69d1a776",
@@ -337,19 +339,19 @@
     ".gitignore": "77b7b7a2ea66f025054315fd37a9f6c16775850577a6daa909afe11d99fbfbc0",
     ".nvmrc": "7e8a2fa94951112b894a3dbe3d05efef5e9263741fa49125f0a70f40fedab4cc",
     "LICENSE": "91bd4026ef6dff1e41c7f0d803deb7ddca9c0026783be97a066ac59e7eddfc07",
-    "README.md": "14e996aa93aaa8732005bfcdd9c71aba463c81dfb1b99f4718c893da6847c29f",
+    "README.md": "ea062fa046c41e72fffc61f214375a31dca005effcc3447cafcd9474d5d6971d",
     "SECURITY.md": "b54bbc2ed0dda0caad4b6a790c440695ac12a408b2226873245bfc9c4e7f60bf",
     "THIRD_PARTY_NOTICES.md": "8f51ac5afd1fb9bb1d8377fd07d29d8ec2e366c9e4432c2a932297b8b6dadb10",
     "apps/api/package.json": "509cfd69d7856b5ac12c15d3cc28c5d7427f38f757ac4cd002d6c03de9a9b8ae",
     "apps/api/src/server.mjs": "d3a226f39963d1545ad9cfa77a2abe2eb20a38ae319ddad3af8992f62e41228d",
     "apps/api/test/health.test.mjs": "af70a6963673bda53eaa5cc8b0e5ef2773443380142b2e21cbb1a5359551206c",
     "apps/web/dev-server.mjs": "c2f6220960d12a919dffe3fbe48c5a1186b5544b19bb898283282dc9eb64c233",
-    "apps/web/package.json": "9210d3d09485be69b747cca40c0f5d428e177808e0c5b37307a5818f22487c27",
-    "apps/web/static-server.test.mjs": "947b33f03ea75ef73f646efc2c8151b54021f3790dd189e583e2bcfbe76c027f",
+    "apps/web/package.json": "b46676246c2ba6dd807423943291e795a47967f1d06fb74ecd071b6a30c35037",
+    "apps/web/static-server.test.mjs": "618c981d54711be99612d11b7ddb42780b47b139a183c0ffaada39d004f06d6e",
     "apps/web/tests/integration/.gitignore": "a0221e0a43275ecb40869cf8684caa47c41038809636629bdeb6964862526b8e",
     "apps/web/tests/integration/accepted-send.test.mjs": "ed0ea3b8a52154d66151c40a1b8a7e8e6a656465a2c6c95fdf9235cfed5b7076",
     "apps/web/tests/integration/bfcache.test.mjs": "48531f9aad9e123d2472aaa6e7bf254f58a1e3a7aa019f4c6f76a67999471f62",
-    "apps/web/tests/integration/card-projection.test.mjs": "47a0a38c5699b8ab9d2019b2e3186512bd85968879e5cd7b2e5495d5518385c1",
+    "apps/web/tests/integration/card-projection.test.mjs": "f11eeec6bc229978cf643de2dd20f8f6b35db1950d96514ec2b3eb226d3ce6d9",
     "apps/web/tests/integration/chat-world-fixture.mjs": "1c2ab90c1f04ad39a69c2765a7f3aa3b1154f31dba0714f711bec4c4862f361a",
     "apps/web/tests/integration/chat-world.test.mjs": "0c969bf3e34a45d966c29f659d7890dd202b4803cc134985a736541aa6f6b4df",
     "apps/web/tests/integration/compact-feed-baseline.test.mjs": "5f7ce24109449d77259e38864806eb95ee18ca37992ec493d3519fbae9cc89d9",
@@ -473,7 +475,6 @@
     "apps/web/tests/integration/motion-clock.test.mjs": "c9306746aa7cc6ae8f44df218a2ddedb1d7e21f09148551241363ebbaade2bb3",
     "apps/web/tests/integration/package-lock.json": "c97ef5d45bef1a09f48786f9aaa40a663f924909f6f4561a7e15f37f670563c9",
     "apps/web/tests/integration/package.json": "886eb5699c0dd7208de0d80bfca2203878eadf8914e03f22efd0cf3d043291ca",
-    "apps/web/tests/integration/reader-endpoint-continuity.test.mjs": "1390e0941c73ce971068ed70a6868b20977b815401b284e9498a57032e3e338b",
     "apps/web/tests/integration/reader-scroll-ownership.test.mjs": "0fec4ba36e3bb93df17a1179f7cefdeb5dfb552964e1c252e2719a2fcdbd9946",
     "apps/web/tests/integration/reader-visible-text.test.mjs": "f7238d7c307c57e9d20fa305dab5f5cdba6d0fe15eedc2f6a0ef21ec59fe5d4e",
     "apps/web/tests/integration/reading-assistant.test.mjs": "ff6d6b627f1b4d93e1de9e80c986d8390efe2f88b910529d73c8df94aeb9a6d2",
@@ -525,7 +526,6 @@
     "docs/ALPHA6_CANDIDATE.md": "d9f4616e446854651c2a0eb5a21e19de0c486e27d22bdf24d010100a849688a3",
     "docs/ALPHA7_CANDIDATE.md": "4ab3d2e94ad233f47c1d019819e5f67e88ffff2fb2e1699b12a69f6aed34978b",
     "docs/ALPHA8_CANDIDATE.md": "618cbabccb375f513f5b9d28e761fdd2dd6a4efd5bd543936483e980f9b3abc6",
-    "docs/ALPHA9_CANDIDATE.md": "c34ca2fcc13f5a2479689305e1b5bfd9e510a3fa9f642bd55e9fb205fda92c59",
     "docs/ARCHITECTURE.md": "ffadf6078fce863de3bfcb61526990de1d5c3aa668e9619821d640f1fbfcabfb",
     "docs/BACKEND_SCOPE.md": "4a1dff7d317718e6f54d44b3ed438204d2a8a3d0a330108835e16a18214b745c",
     "docs/CARD_READER_CANDIDATE.md": "79c318853915f590abe47ab70486862eb4fc6d7bbcf666e4d9622f95c04e5113",
@@ -535,26 +535,23 @@
     "docs/READING_ASSISTANT_REVISION.md": "536b0d1bcf562cc97b266551afec0f6185588bc288ad17750b4ec5ffce7b18a3",
     "docs/RELEASE_POLICY.md": "6259ca65eab432557139332b309f8afcc1a84c21133378dfc8d4c37a64406888",
     "docs/TESTING.md": "556f1fc7be9cf59fddc211d60e2a631d6031eace704953f86a035ad32fdef57d",
-    "package-lock.json": "3baec8ad99bd6b162d64eef4084dc7a4ac0d626e96dc3970bc6926f670ddd6a7",
-    "package.json": "dc8e3f7089980a54f4bdcfaa9e18516a48214b153cb0aef4e4d13e5b2a734180",
-    "packages/contracts/index.mjs": "85a45f57c6dbf879200fdec3d6c76b674f674a03d9c8d2ecde70895b603523f4",
+    "package-lock.json": "f1768f8d14888de39d1c0d2e2fd2fcd863ffb75fc5f5588b1c5092639947615e",
+    "package.json": "d86a309f1f69333ab23e196065e16fefdf490f597d16a3055e8755740809824e",
+    "packages/contracts/index.mjs": "658366b442774490f1fefe6ae8fd0497adabfa5b2f315d32152032ed6eb8ecdc",
     "packages/contracts/package.json": "22364ead7df2be2432274bf620303793b8cd8507a89fb6f41d771bc82825c5c2",
     "packages/contracts/schemas/content-record.schema.json": "f6454833f021ebeba05f1562535a7e5227e95b42b3b6800fbf8718a7aaa38725",
     "packages/contracts/schemas/health.schema.json": "a3f82d02ffb620cbfa23e63e0163b89a53be74bd7dd7fc4257d91f5b9799678c",
-    "packages/contracts/test/contracts.test.mjs": "fa4a6d01a650f72efe367e458ea7dea53d156be75c386f9d12f7ff932b9e4b2e",
+    "packages/contracts/test/contracts.test.mjs": "5da2113677aae5a6f99376f58811801b09e58c441f8bd2833599216a9d63c20b",
     "provenance/alpha6-shadow-cache-hunks.json": "2d02e63071090f58edadad179022ef091d909ac0e01c476f4dbc18ca67751fd4",
     "provenance/alpha7-source-files.json": "4a0cc7d2a23f9407013847b773cfb62ea893d6a33395b5959866c7e01f4e7366",
     "provenance/alpha7-weather-elapsed-hunks.json": "3f3903e0faecf6af9b64034669b182dcc97fe5d90075e561ba81d24b6bda6196",
     "provenance/alpha8-source-files.json": "05ad5eda152de7e332a2c969722392253370a4f30749ce3c2719760be8c7cf44",
-    "provenance/alpha9-source-files.json": "1c7822ed927ff3e88b37d6a220dd2472d8101d57e31ed611c6cbc593b131f43d",
     "provenance/candidates/alpha5-0fc929f.json": "945d3617cd25ac364f1d51b20f9916b4de07479ea007785a10b0d4b80f4c6ff3",
     "provenance/candidates/alpha5-controls-984814b.json": "f39847f261c7d86ad5a6b2bff476fea6c1240350fb96eefa54218cce1ccb5253",
     "provenance/candidates/alpha5-reading-b917dda.json": "77cd914657ebbbc111619205dd68c0281b805bb0979a2e8a809e731673d9b96e",
     "provenance/candidates/alpha5-world-layers-652d790.json": "557d11ae0cb2cd268a969887468e629258e6c465736080163a13cc1ced16e3ae",
     "provenance/candidates/alpha6-b4fe3cc.json": "ccfe9580a6a9d375f79ea8bf0d628ef05f5a29a16a696ab5702d3bcb0a828549",
     "provenance/candidates/alpha7-source-15a5967.json": "fdc3867354324c20562fb05e9b5f76997b6b9b0516b8810d8c5bbf94fe649a3d",
-    "provenance/candidates/alpha8-source-ba67a75.json": "15d13fe3721431828782b4a27a7d53d2d57dc61ab8459eeca10e6473b30e40c4",
-    "provenance/candidates/reader-r4-fc1e7d9.json": "1ce50cd988dd88875145b03ff820f89c8ce0fe673740c3a887967e8474b27bcd",
     "provenance/card-reader-candidate.json": "7a0f21c2730189d4b906bda90f1bcd76647d58597c023e5bf5e0f015a4ffdcef",
     "provenance/export-policy.json": "0f782049e914df98374f5d06d800e2af54e745002647fd0d90544a07e0e460f5",
     "provenance/import-verification.json": "3699baac108d2feaa992e06db0b2e2c6f1d52869ccaacf9815cb92187d94012a",
@@ -592,47 +589,25 @@
     "provenance/snapshots/alpha7-15a5967/scripts/check-shadow-cache-boundary.mjs": "5acacd049cb317cc4bd96f9198b56b7683b5a3bf40aadc265fd877c6f7638de2",
     "provenance/snapshots/alpha7-15a5967/scripts/check-source-scope.mjs": "b2f506c2d117d53136fd0caca955edce8f16c9de57b43301072cc746a1eee1c1",
     "provenance/snapshots/alpha7-15a5967/scripts/historical-alpha6.mjs": "aa5ec2ec46be5af2761d8897f584688634d6b03475659b8ea30362658b7fa3ad",
-    "provenance/snapshots/alpha8-ba67a75/README.md": "ea062fa046c41e72fffc61f214375a31dca005effcc3447cafcd9474d5d6971d",
-    "provenance/snapshots/alpha8-ba67a75/apps/web/package.json": "b46676246c2ba6dd807423943291e795a47967f1d06fb74ecd071b6a30c35037",
-    "provenance/snapshots/alpha8-ba67a75/apps/web/runtime/app.js": "0959d47111587c4b25c39e9b742528102c2528c51a5db083b7ef0ac0919372d8",
-    "provenance/snapshots/alpha8-ba67a75/apps/web/runtime/card-projection.css": "ded0c76329307efc51821fa17d50bea410672fa6a239fa707420073342cd9ad6",
-    "provenance/snapshots/alpha8-ba67a75/apps/web/runtime/card-projection.js": "753332a61181fdbae54ff5fc35802d703714ac73a537df7c7342154f20e68ade",
-    "provenance/snapshots/alpha8-ba67a75/apps/web/runtime/index.html": "03ff252b3b26761cbc04472092eb3aeb0643db19c382115ca18a5d670422cb7d",
-    "provenance/snapshots/alpha8-ba67a75/apps/web/runtime/release-meta.json": "12ba346c054f0c96c34ab11ce158cd3f8e33f83c55ecd0cf1e2671161a559e44",
-    "provenance/snapshots/alpha8-ba67a75/apps/web/static-server.test.mjs": "618c981d54711be99612d11b7ddb42780b47b139a183c0ffaada39d004f06d6e",
-    "provenance/snapshots/alpha8-ba67a75/apps/web/tests/integration/card-projection.test.mjs": "f11eeec6bc229978cf643de2dd20f8f6b35db1950d96514ec2b3eb226d3ce6d9",
-    "provenance/snapshots/alpha8-ba67a75/package-lock.json": "f1768f8d14888de39d1c0d2e2fd2fcd863ffb75fc5f5588b1c5092639947615e",
-    "provenance/snapshots/alpha8-ba67a75/package.json": "d86a309f1f69333ab23e196065e16fefdf490f597d16a3055e8755740809824e",
-    "provenance/snapshots/alpha8-ba67a75/packages/contracts/index.mjs": "658366b442774490f1fefe6ae8fd0497adabfa5b2f315d32152032ed6eb8ecdc",
-    "provenance/snapshots/alpha8-ba67a75/packages/contracts/test/contracts.test.mjs": "5da2113677aae5a6f99376f58811801b09e58c441f8bd2833599216a9d63c20b",
-    "provenance/snapshots/alpha8-ba67a75/provenance/active-candidate.json": "56726616febe205e57847e92218dbe0bc937ac83287331b8f86f874904b591a6",
-    "provenance/snapshots/alpha8-ba67a75/scripts/check-provenance.mjs": "717dea44a1980fdf2e6f1bfc390ff40b3115478e5145bba70487f63ea1fe7dba",
-    "provenance/snapshots/alpha8-ba67a75/scripts/check-shadow-cache-boundary.mjs": "9eb354129b3c5b771b2f19422793716f20f3d32bdf0b9f22b16c7b94ac1e2c61",
-    "provenance/snapshots/alpha8-ba67a75/scripts/historical-alpha6.mjs": "7e1b9db64608e3c93bcc7cb89e97462b29ea7b4fefe986907d72e46567124487",
-    "provenance/snapshots/alpha8-ba67a75/scripts/historical-alpha7.mjs": "9ffd5be537cd3b0578148fb88d796fa2ca470d37a2c92a6b35addb776e44e0da",
-    "provenance/snapshots/alpha8-ba67a75/scripts/test-release-provenance.mjs": "c06fee860f3f7bd4c486d10bc056359b2d11a16072b05cc151008975e85357bf",
     "provenance/source-allowlist.json": "c1b20944189a33f5368e254d3bce474118318605d442c52eccb82b546e7de408",
     "provenance/tooling-verification.json": "c7c898a24a93f57094dd2d0f41c6b13dade9a97b88b53c8e9fb56afc5178d764",
     "provenance/vendor-dependencies.json": "0fbe77a79547705a4b50de50505ae86ae305b8341fe2713d8d617a95e8502c83",
     "scripts/check-card-reader-candidate.mjs": "ebaf5e7ad8e7b743a2bc0f3f8ba1a690e9e21e66292421f5e76cb4abc82dc0eb",
-    "scripts/check-provenance.mjs": "669ae41207163e1fdaa2bdd72b1e1ecf5f7f14d45a70a71353cc326bae2866d6",
+    "scripts/check-provenance.mjs": "717dea44a1980fdf2e6f1bfc390ff40b3115478e5145bba70487f63ea1fe7dba",
     "scripts/check-provenance.test.mjs": "ed02cb3f869c229484f89c104a9a231ccf919907a134954e5247a562cd44db23",
     "scripts/check-public-export.mjs": "d5ab1b91e9c267f1c8f8138f19b8a34711e6236d0e8b78fe5688195f3d522c46",
-    "scripts/check-reader-r4-release-boundary.test.mjs": "8914a37c66a3aec314af05010d5f74a1cddd5983f7dbeffde7bd7a8b94f34137",
-    "scripts/check-reader-release-boundary.mjs": "3dc6926aa17255f8ce747c77ff6a72c738ff3b29a24462e3581fc7e5344c96e7",
     "scripts/check-reader-release-boundary.test.mjs": "fa41a9c3cc0b611b5f1cac78d5a6545067f930d6b66f8c960d49b85a583cc00e",
-    "scripts/check-shadow-cache-boundary.mjs": "d6cac8cd195b291b527decb204163f6bb3b607b263539b9e06e58c30bd0eac65",
+    "scripts/check-shadow-cache-boundary.mjs": "9eb354129b3c5b771b2f19422793716f20f3d32bdf0b9f22b16c7b94ac1e2c61",
     "scripts/check-source-scope.mjs": "445f7a170a30a449d9832ad7b49dc1ab55fb39b7ba539a4300bfa06e435a93cf",
     "scripts/check-syntax.mjs": "c7ad084b0ed315a69ff1b28f0722cda3da70d52a3d4c3c66cd2b33e4bd4f2542",
     "scripts/check-weather-elapsed-boundary.mjs": "5970c0a4b718140efeaac657e77ca69a5026c8a8283abd60cfcb409a3a8eae2e",
     "scripts/check-weather-elapsed-boundary.test.mjs": "a9a5bd1acd84b6718285c6a515ba3843eabf2b39dcf122963b570d76144c0f97",
     "scripts/dev.mjs": "19573fcb07e3961a7ab9ace8001881b854cb61e93fe16cb5e0b35f16a66c5c67",
-    "scripts/historical-alpha6.mjs": "2ff5435ead3c4c7e343afdd40cfb21ca0059272cb4ff0ad0d71e7a7a02afc9fb",
-    "scripts/historical-alpha7.mjs": "7c5968934993087a0e0ff3bafea9cac78003c65d84eb126a810cf1f2c72beb8e",
-    "scripts/historical-alpha8.mjs": "ac14ac79b9ab6cb5b27a27da1b5ca9033c66e814dd38d7610268904f00f86297",
+    "scripts/historical-alpha6.mjs": "7e1b9db64608e3c93bcc7cb89e97462b29ea7b4fefe986907d72e46567124487",
+    "scripts/historical-alpha7.mjs": "9ffd5be537cd3b0578148fb88d796fa2ca470d37a2c92a6b35addb776e44e0da",
     "scripts/setup-vendor.mjs": "e882c47dbd5730b432558a74e47224231837e17f2b2dc240b7f35dbfc844c80c",
     "scripts/setup-vendor.test.mjs": "8aadb4a7c8f8e1834fdc0c094e86fa27709003893acdcfc951b6e916a5c5caef",
     "scripts/test-card-reader-candidate.mjs": "e0dffab08ef7917f9f7b15658f10d57625627808855feed6a2c0d5892267d436",
-    "scripts/test-release-provenance.mjs": "36556278196db59af0950db335e2dd396b8145f6692ab9deedc4ff0b49f5c9ee"
+    "scripts/test-release-provenance.mjs": "c06fee860f3f7bd4c486d10bc056359b2d11a16072b05cc151008975e85357bf"
   }
 }

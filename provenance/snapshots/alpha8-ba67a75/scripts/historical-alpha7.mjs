@@ -4,7 +4,6 @@ import os from 'node:os';
 import crypto from 'node:crypto';
 import assert from 'node:assert/strict';
 import {spawnSync} from 'node:child_process';
-import {historicalAlpha8Root} from './historical-alpha8.mjs';
 
 // The oracle is independent of the mutable active candidate and its inventory.
 export const ALPHA7_HISTORY = Object.freeze({
@@ -44,14 +43,12 @@ function pinnedSource(root, manifest, relative) {
   return bytes;
 }
 export function historicalAlpha7Source(root, relative) {
-  if (JSON.parse(regularSource(root, 'provenance/active-candidate.json')).productVersion === 'v0.1.0-alpha.9') return historicalAlpha7Source(historicalAlpha8Root(root), relative);
   const active = JSON.parse(regularSource(root, 'provenance/active-candidate.json'));
   if (active.productVersion === 'v0.1.0-alpha.7') return regularSource(root, relative);
   assert.equal(active.productVersion, 'v0.1.0-alpha.8', 'Historical alpha.7 requires an explicit successor');
   return pinnedSource(root, alpha7SourceManifest(root), relative);
 }
 export function historicalAlpha7Root(root) {
-  if (JSON.parse(regularSource(root, 'provenance/active-candidate.json')).productVersion === 'v0.1.0-alpha.9') return historicalAlpha7Root(historicalAlpha8Root(root));
   root = path.resolve(root);
   const active = JSON.parse(regularSource(root, 'provenance/active-candidate.json'));
   if (active.productVersion === 'v0.1.0-alpha.7') return root;

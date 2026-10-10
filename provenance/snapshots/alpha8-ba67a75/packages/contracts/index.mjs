@@ -1,4 +1,4 @@
-export const PRODUCT_VERSION = '0.1.0-alpha.9';
+export const PRODUCT_VERSION = '0.1.0-alpha.8';
 export const API_SCAFFOLD_VERSION = '0.0.1';
 export const CATEGORIES = Object.freeze(['work', 'thoughts', 'labs']);
 export function healthResponse() {

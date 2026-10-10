@@ -108,9 +108,6 @@ function observeReaderSize(a){
   paint();
  });
  readerResizeObserver.observe(a.identity);readerResizeObserver.observe(a.body);
- // Header text keeps intrinsic block heights; observe font/content reflow without
- // feeding the independently animated cover dimensions back into layout.
- for(const node of a.identity.children)if(!node.classList.contains('card-visual'))readerResizeObserver.observe(node);
 }
 function finishOpen(){if(!active||active.completed)return;cancelAnimationFrame(frame);frame=0;active.completed=true;active.body.inert=false;active.body.setAttribute('aria-hidden','false');state.phase='detail';reader.classList.add('reading');
  // A fresh session resets only after overflow:auto owns a native scrolling box.

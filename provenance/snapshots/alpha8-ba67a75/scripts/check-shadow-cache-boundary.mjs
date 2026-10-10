@@ -26,7 +26,7 @@ export function historicalWorldLayers(root) {
 }
 export function historicalLayerSource(root,relative) {
   const active=JSON.parse(read(root,'provenance/active-candidate.json'));
-  if(['v0.1.0-alpha.7','v0.1.0-alpha.8','v0.1.0-alpha.9'].includes(active.productVersion))return historicalLayerSource(historicalAlpha6Root(root),relative);
+  if(['v0.1.0-alpha.7','v0.1.0-alpha.8'].includes(active.productVersion))return historicalLayerSource(historicalAlpha6Root(root),relative);
   if(active.productVersion==='v0.1.0-alpha.5')return read(root,'apps/web/runtime/'+relative);
   assert.equal(active.productVersion,'v0.1.0-alpha.6','Historical layer check requires an explicit version mapping');
   const expected={'world/scene.js':SHADOW_CACHE_BOUNDARY.baselineSceneSHA256,'release-meta.json':SHADOW_CACHE_BOUNDARY.baselineMetadataSHA256};

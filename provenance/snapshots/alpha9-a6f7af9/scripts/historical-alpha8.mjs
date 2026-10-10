@@ -4,15 +4,14 @@ import os from 'node:os';
 import crypto from 'node:crypto';
 import assert from 'node:assert/strict';
 import {spawnSync} from 'node:child_process';
-import {historicalAlpha8Root} from './historical-alpha8.mjs';
 
 // The oracle is independent of the mutable active candidate and its inventory.
-export const ALPHA7_HISTORY = Object.freeze({
-  commit: '15a5967b775dec5e1224c224a5e36f07ddbbb76b',
-  manifest: 'provenance/candidates/alpha7-source-15a5967.json',
-  manifestSHA256: 'fdc3867354324c20562fb05e9b5f76997b6b9b0516b8810d8c5bbf94fe649a3d',
-  snapshot: 'provenance/snapshots/alpha7-15a5967',
-  runtimeSHA256: '64922db578b6ab8fb8f40250c9156e957a02e386f56803625f5ebc19389072ad'
+export const ALPHA8_HISTORY = Object.freeze({
+  commit: 'ba67a75a2d7bc8b29041bec06ce38cef41a25939',
+  manifest: 'provenance/candidates/alpha8-source-ba67a75.json',
+  manifestSHA256: '15d13fe3721431828782b4a27a7d53d2d57dc61ab8459eeca10e6473b30e40c4',
+  snapshot: 'provenance/snapshots/alpha8-ba67a75',
+  runtimeSHA256: 'b11366d758eab93517c0d74c07038167b7fedf45ccb71034b577e6c8af0a2d32'
 });
 const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const roots = new Map();
@@ -30,33 +29,31 @@ export function regularSource(root, relative) {
   }
   return fs.readFileSync(file);
 }
-export function alpha7SourceManifest(root) {
-  const bytes = regularSource(root, ALPHA7_HISTORY.manifest);
-  assert.equal(sha(bytes), ALPHA7_HISTORY.manifestSHA256, 'Frozen alpha.7 source manifest changed');
+export function alpha8SourceManifest(root) {
+  const bytes = regularSource(root, ALPHA8_HISTORY.manifest);
+  assert.equal(sha(bytes), ALPHA8_HISTORY.manifestSHA256, 'Frozen alpha.8 source manifest changed');
   return JSON.parse(bytes);
 }
 function pinnedSource(root, manifest, relative) {
   const entry = [...manifest.files, ...manifest.generatedFiles].find(file => file.path === relative);
-  assert(entry, 'Unmapped historical alpha.7 source: ' + relative);
-  const location = manifest.snapshots.includes(relative) ? ALPHA7_HISTORY.snapshot + '/' + relative : relative;
+  assert(entry, 'Unmapped historical alpha.8 source: ' + relative);
+  const location = manifest.snapshots.includes(relative) ? ALPHA8_HISTORY.snapshot + '/' + relative : relative;
   const bytes = regularSource(root, location);
-  assert.equal(sha(bytes), entry.sha256, 'Frozen alpha.7 source changed: ' + relative);
+  assert.equal(sha(bytes), entry.sha256, 'Frozen alpha.8 source changed: ' + relative);
   return bytes;
 }
-export function historicalAlpha7Source(root, relative) {
-  if (['v0.1.0-alpha.9','v0.1.0-alpha.10'].includes(JSON.parse(regularSource(root, 'provenance/active-candidate.json')).productVersion)) return historicalAlpha7Source(historicalAlpha8Root(root), relative);
+export function historicalAlpha8Source(root, relative) {
   const active = JSON.parse(regularSource(root, 'provenance/active-candidate.json'));
-  if (active.productVersion === 'v0.1.0-alpha.7') return regularSource(root, relative);
-  assert.equal(active.productVersion, 'v0.1.0-alpha.8', 'Historical alpha.7 requires an explicit successor');
-  return pinnedSource(root, alpha7SourceManifest(root), relative);
+  if (active.productVersion === 'v0.1.0-alpha.8') return regularSource(root, relative);
+  assert.equal(active.productVersion, 'v0.1.0-alpha.9', 'Historical alpha.8 requires an explicit successor');
+  return pinnedSource(root, alpha8SourceManifest(root), relative);
 }
-export function historicalAlpha7Root(root) {
-  if (['v0.1.0-alpha.9','v0.1.0-alpha.10'].includes(JSON.parse(regularSource(root, 'provenance/active-candidate.json')).productVersion)) return historicalAlpha7Root(historicalAlpha8Root(root));
+export function historicalAlpha8Root(root) {
   root = path.resolve(root);
   const active = JSON.parse(regularSource(root, 'provenance/active-candidate.json'));
-  if (active.productVersion === 'v0.1.0-alpha.7') return root;
-  assert.equal(active.productVersion, 'v0.1.0-alpha.8', 'Historical alpha.7 requires an explicit successor');
-  const manifest = alpha7SourceManifest(root);
+  if (active.productVersion === 'v0.1.0-alpha.8') return root;
+  assert.equal(active.productVersion, 'v0.1.0-alpha.9', 'Historical alpha.8 requires an explicit successor');
+  const manifest = alpha8SourceManifest(root);
   // Revalidate all original inputs on EVERY call, including after a cached read.
   const originals = manifest.files.map(entry => [entry.path, pinnedSource(root, manifest, entry.path)]);
   const generated = manifest.generatedFiles.map(entry => {
@@ -73,7 +70,7 @@ export function historicalAlpha7Root(root) {
     assert.deepEqual(actual.sort(), [...originals, ...generated].map(([relative]) => relative).sort(), 'Reconstructed historical path set changed');
     return directory;
   }
-  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'personalos-pinned-alpha7-'));
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'personalos-pinned-alpha8-'));
   try {
     for (const [relative, bytes] of [...originals, ...generated]) {
       const target = path.join(directory, relative);

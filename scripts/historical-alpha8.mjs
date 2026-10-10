@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import {historicalAlpha9Root} from './historical-alpha9.mjs';
 import path from 'node:path';
 import os from 'node:os';
 import crypto from 'node:crypto';
@@ -30,6 +31,7 @@ export function regularSource(root, relative) {
   return fs.readFileSync(file);
 }
 export function alpha8SourceManifest(root) {
+  if (JSON.parse(regularSource(root, 'provenance/active-candidate.json')).productVersion === 'v0.1.0-alpha.10') root = historicalAlpha9Root(root);
   const bytes = regularSource(root, ALPHA8_HISTORY.manifest);
   assert.equal(sha(bytes), ALPHA8_HISTORY.manifestSHA256, 'Frozen alpha.8 source manifest changed');
   return JSON.parse(bytes);
@@ -43,12 +45,14 @@ function pinnedSource(root, manifest, relative) {
   return bytes;
 }
 export function historicalAlpha8Source(root, relative) {
+  if (JSON.parse(regularSource(root, 'provenance/active-candidate.json')).productVersion === 'v0.1.0-alpha.10') root = historicalAlpha9Root(root);
   const active = JSON.parse(regularSource(root, 'provenance/active-candidate.json'));
   if (active.productVersion === 'v0.1.0-alpha.8') return regularSource(root, relative);
   assert.equal(active.productVersion, 'v0.1.0-alpha.9', 'Historical alpha.8 requires an explicit successor');
   return pinnedSource(root, alpha8SourceManifest(root), relative);
 }
 export function historicalAlpha8Root(root) {
+  if (JSON.parse(regularSource(root, 'provenance/active-candidate.json')).productVersion === 'v0.1.0-alpha.10') root = historicalAlpha9Root(root);
   root = path.resolve(root);
   const active = JSON.parse(regularSource(root, 'provenance/active-candidate.json'));
   if (active.productVersion === 'v0.1.0-alpha.8') return root;

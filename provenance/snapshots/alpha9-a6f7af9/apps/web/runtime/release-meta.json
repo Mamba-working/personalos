@@ -1,8 +1,8 @@
 {
   "product": "PersonalOS",
-  "productVersion": "v0.1.0-alpha.10",
+  "productVersion": "v0.1.0-alpha.9",
   "channel": "alpha",
-  "reviewLabel": "Local alpha.10 candidate · Motion-inspired reader r5 surface continuity · browser acceptance pending",
+  "reviewLabel": "Local alpha.9 candidate · Motion-inspired reader r4 endpoints · browser acceptance pending",
   "fullUnifiedAcceptance": false,
   "deferredGates": [
     "final-user-signoff",
@@ -19,7 +19,7 @@
     "Physical-device native keyboard/IME and final unified-product user signoff pending"
   ],
   "readerCandidate": {
-    "id": "split-card-reader-r5",
+    "id": "split-card-reader-r4",
     "baselineGitHubCommit": "15a5967b775dec5e1224c224a5e36f07ddbbb76b",
     "deployedByteParity": "unverified",
     "browserAcceptance": false,
@@ -30,10 +30,6 @@
     "changesSinceR3": [
       "measured preview typography and line width retained through return",
       "original cover geometry and labels preserved through endpoint handoff"
-    ],
-    "changesSinceR4": [
-      "shared progress-driven surface shadow",
-      "exterior clipping converges to native preview boundary"
     ]
   }
 }

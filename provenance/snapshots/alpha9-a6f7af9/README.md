@@ -4,7 +4,7 @@ PersonalOS is managed as one product repository: web UI, a backend service bound
 
 ## Current implementation
 
-- Web: the local v0.1.0-alpha.10 Motion-inspired reader r5 candidate, 18 authored demonstration records, native feed/reader/navigation, Ball scene, menu, simulated weather and local demonstration chat
+- Web: the local v0.1.0-alpha.9 Motion-inspired reader r4 candidate, 18 authored demonstration records, native feed/reader/navigation, Ball scene, menu, simulated weather and local demonstration chat
 - API: a new runnable Node service with GET /healthz and GET /api/v1/status
 - Contracts: health payload and authored-demo-content shape
 - Product backend features: content storage/API, real AI, authentication and persistence are not implemented; the unchanged web demo does not call the new API
@@ -48,7 +48,7 @@ This public repository begins with a clean import. Original private QA captures,
 
 Two runtime Three.js build files and their two accepted-baseline fixture copies are deliberately absent from Git. Root npm ci installs exact three@0.180.0; npm run setup restores all four files from the official package after SHA-256 verification. Run this before opening, serving or testing the web app. Three.js licenses remain tracked.
 
-The historical alpha.4–alpha.9 source records remain pinned. The active alpha.10 candidate binds the frozen reader r5 surface correction to its own exact envelope. Only app.js, material.css, release-meta.json and the index.html revision title change within the alpha.9 runtime. Original historical source assertions still run unchanged. All other runtime and license bytes remain fixed. This is an unpublished candidate, not stable promotion or browser/device/performance acceptance. See docs/ALPHA10_CANDIDATE.md. Prior candidate documents remain immutable historical reports.
+The historical alpha.4–alpha.8 source records remain pinned. The active alpha.9 candidate binds the frozen reader r4 endpoint correction to its own exact source/runtime envelope. Only app.js, card-projection.js, card-projection.css and version metadata change within the alpha.8 runtime; original alpha.8 and alpha.7 sources and assertions are reconstructed and executed unchanged. All other runtime and license bytes remain fixed. This is an unpublished candidate, not stable promotion or browser/device/performance acceptance. See docs/ALPHA9_CANDIDATE.md. Prior candidate documents remain immutable historical reports.
 
 Read LICENSE and THIRD_PARTY_NOTICES.md before reuse. This repository has no blanket MIT license. The retained Emotion Ball character visuals are restricted to non-commercial personal technical study/research; its engine/data have separate commercial licensing terms. A product commercialization plan must address those restrictions first.
 

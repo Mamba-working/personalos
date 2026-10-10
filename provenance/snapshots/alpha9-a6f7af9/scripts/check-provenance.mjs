@@ -7,7 +7,6 @@ import {spawnSync} from 'node:child_process';
 import {verifyShadowCacheBoundary, SHADOW_CACHE_BOUNDARY} from './check-shadow-cache-boundary.mjs';
 import {verifyAlpha7Provenance} from './check-weather-elapsed-boundary.mjs';
 import {verifyAlpha8Provenance} from './check-reader-release-boundary.mjs';
-import {verifyAlpha10Provenance} from './check-reader-r5-release-boundary.mjs';
 import {verifyAlpha9Provenance} from './check-reader-r4-release-boundary.mjs';
 
 // Historical import records are immutable, even when an active composite changes.
@@ -39,7 +38,6 @@ export function verifyProvenance(root){
   assert.deepEqual(current,original.files,'Frozen imported runtime inventory differs');assert.equal(digest,original.originalRuntimeSHA256,'Frozen runtime digest differs');return{kind:'historical-alpha4',runtimeFiles:current.length,runtimeSHA256:digest};
  }
  const active=json(root,'provenance/active-candidate.json');
- if(active.productVersion==='v0.1.0-alpha.10')return verifyAlpha10Provenance(root,{current,verifyHistorical:verifyProvenance,requiredDeferred:REQUIRED_DEFERRED});
  if(active.productVersion==='v0.1.0-alpha.9')return verifyAlpha9Provenance(root,{current,verifyHistorical:verifyProvenance,requiredDeferred:REQUIRED_DEFERRED});
  if(active.productVersion==='v0.1.0-alpha.8')return verifyAlpha8Provenance(root,{current,verifyHistorical:verifyProvenance,requiredDeferred:REQUIRED_DEFERRED});
  if(active.productVersion==='v0.1.0-alpha.7')return verifyAlpha7Provenance(root,{current,verifyHistorical:verifyProvenance,historicalProvenance:HISTORICAL_PROVENANCE,requiredDeferred:REQUIRED_DEFERRED});
@@ -84,19 +82,19 @@ export function verifyProvenance(root){
  return{kind:active.kind,productVersion:active.productVersion,sourcePayloadCommit:active.sourcePayloadCommit,runtimeFiles:current.length,runtimeSHA256:digest};
 }
 export function verifySourcePayload(root){
- const active=json(root,'provenance/active-candidate.json'),commit=['v0.1.0-alpha.8','v0.1.0-alpha.9','v0.1.0-alpha.10'].includes(active.productVersion)?'HEAD':active.sourcePayloadCommit;
+ const active=json(root,'provenance/active-candidate.json'),commit=['v0.1.0-alpha.8','v0.1.0-alpha.9'].includes(active.productVersion)?'HEAD':active.sourcePayloadCommit;
  const git=args=>{const r=spawnSync('git',args,{cwd:root,encoding:null});assert.equal(r.status,0,`Source payload object unavailable or invalid: ${r.stderr?.toString()}`);return r.stdout;};
  assert.equal(git(['cat-file','-t',commit]).toString().trim(),'commit','Payload mapping must reference a commit object');
  const tracked=git(['ls-tree','-r','--name-only',commit,'--','apps/web/runtime']).toString().trim().split('\n');
- if(['v0.1.0-alpha.7','v0.1.0-alpha.8','v0.1.0-alpha.9','v0.1.0-alpha.10'].includes(active.productVersion)){
+ if(['v0.1.0-alpha.7','v0.1.0-alpha.8','v0.1.0-alpha.9'].includes(active.productVersion)){
   const generated=new Set(['runtime/world/vendor/three/three.core.js','runtime/world/vendor/three/three.module.js']);
   const expected=runtimeInventory(root).filter(x=>!generated.has(x.path)).map(x=>'apps/web/'+x.path).sort();
   assert.deepEqual([...tracked].sort(),expected,'Mapped payload runtime path set differs');
  }
- if(['v0.1.0-alpha.8','v0.1.0-alpha.9','v0.1.0-alpha.10'].includes(active.productVersion)){
+ if(['v0.1.0-alpha.8','v0.1.0-alpha.9'].includes(active.productVersion)){
   assert.equal(active.sourcePayloadBinding,'current-git-commit','Unsupported versioned payload binding');
   const publicPaths=git(['ls-tree','-r','--name-only',commit]).toString().trim().split('\n').sort();
-  assert.deepEqual(publicPaths,json(root,active.productVersion==='v0.1.0-alpha.10'?'provenance/alpha10-source-files.json':active.productVersion==='v0.1.0-alpha.9'?'provenance/alpha9-source-files.json':'provenance/alpha8-source-files.json'),'Mapped public source path set differs');
+  assert.deepEqual(publicPaths,json(root,active.productVersion==='v0.1.0-alpha.9'?'provenance/alpha9-source-files.json':'provenance/alpha8-source-files.json'),'Mapped public source path set differs');
   const entries=git(['ls-tree','-r','-z',commit]).toString().split('\0').filter(Boolean);
   for(const entry of entries){
    const [metadata,relative]=entry.split('\t'),[mode,type,digest]=metadata.split(' ');

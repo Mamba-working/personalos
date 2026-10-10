@@ -1,0 +1,39 @@
+name: Three weather r1 CPU
+on:
+  push:
+    paths:
+      - 'experiments/three-weather-r1/**'
+      - 'scripts/check-public-export.mjs'
+      - 'scripts/check-public-export.test.mjs'
+      - '.github/workflows/three-weather-r1-cpu.yml'
+  pull_request:
+    paths:
+      - 'experiments/three-weather-r1/**'
+      - 'scripts/check-public-export.mjs'
+      - 'scripts/check-public-export.test.mjs'
+      - '.github/workflows/three-weather-r1-cpu.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: three-weather-r1-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  frozen-source-and-cpu:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1; existing repository pin
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7; existing repository pin
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Prove the exact PNG exception remains narrow
+        run: node --test scripts/check-public-export.test.mjs
+      - name: Scan public source and preserve the existing privacy guard
+        run: node scripts/check-public-export.mjs
+      - name: Verify frozen runtime, original identity anchors and all CPU contracts
+        working-directory: experiments/three-weather-r1
+        run: sh qa/run-all.sh

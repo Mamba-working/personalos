@@ -1,0 +1,7 @@
+{
+  "name": "three-weather-r1",
+  "private": true,
+  "type": "module",
+  "engines": {"node": ">=24 <25"},
+  "scripts": {"test": "sh qa/run-all.sh"}
+}

@@ -1,0 +1,291 @@
+{
+  "schema": "sanitized-three-weather-public-source-v1",
+  "scope": "Every committed file in this experiment except this inventory itself. Generated qa/results are excluded and ignored. This unsigned inventory complements independently pinned runtime and original identity digests.",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 12,
+      "sha256": "9390551a7120478d1474b24d65c71e325864a2449c4fe7e67eca467a4177fc34"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5257,
+      "sha256": "de6b851d0fca6b4c52e28949b8af193643fc314e9e42708516296b6080dbb5e0"
+    },
+    {
+      "path": "RUNTIME-ALLOWLIST.json",
+      "bytes": 4306,
+      "sha256": "4d4601b1303bffa695fd2a72ff89c54b406b76601cd1b38d8560c32d0d2cb024"
+    },
+    {
+      "path": "SOURCE-FROZEN-SHA256.json",
+      "bytes": 5514,
+      "sha256": "369d9ad608bd8674740946287848ee0428ab3d28805c1553202005c293b5ae1f"
+    },
+    {
+      "path": "docs/PORTABILITY.md",
+      "bytes": 6053,
+      "sha256": "b6a23189ee853ad979d41dd83602a999cf080e01c07e40cfc9f414b9ac112b0d"
+    },
+    {
+      "path": "docs/original-candidate/README.md",
+      "bytes": 7596,
+      "sha256": "7c0994b24934715140d770c3ad91a759191ff1fb031239f6f6d97d5f89faf4a1"
+    },
+    {
+      "path": "docs/original-candidate/SOURCE-REPORT.md",
+      "bytes": 5996,
+      "sha256": "e6a31242844cf654b3fe48e566b4e1df761a36d9e24956ad94def788a18e3534"
+    },
+    {
+      "path": "package.json",
+      "bytes": 150,
+      "sha256": "3b4af9d377f0653dfd02b177aed78cc98d28a2052a4bc7d2c6bc44c9bc2ff2aa"
+    },
+    {
+      "path": "public/app.js",
+      "bytes": 15659,
+      "sha256": "3b6793817b9af61db5672ea8d481c67928e27cfa63fcf756b88ad606ac6ffa39"
+    },
+    {
+      "path": "public/assets/canopy-wet-stock-rgba8.png",
+      "bytes": 227080,
+      "sha256": "0a24cc230df5a22bfd5cf0ff36c4c0ff39eadf688539dee8f384ca2760f5e5fa"
+    },
+    {
+      "path": "public/assets/export-manifest.json",
+      "bytes": 13680,
+      "sha256": "e3753132f9479d3d8c3f18178d68e8ffbd18e0f0f69de10e6b87a2fee3c61870"
+    },
+    {
+      "path": "public/assets/foreground.glb",
+      "bytes": 2221336,
+      "sha256": "11d01c348cae82681e11e63393e953e535ceaad52e14ab7fea435505e94a6c89"
+    },
+    {
+      "path": "public/canopy-drainage.js",
+      "bytes": 6826,
+      "sha256": "4896be316c694916e430a7ea44fabd1867c4994174f497cb863dba264287d051"
+    },
+    {
+      "path": "public/index.html",
+      "bytes": 3437,
+      "sha256": "c10c4ba17bcc0eb2c4887d45911a6d60db921b110e27be3478170862662125c2"
+    },
+    {
+      "path": "public/licenses/ATTRIBUTION.txt",
+      "bytes": 386,
+      "sha256": "5df50aa8fcee9acb4e80f9baab7d154106120d36e3e9fbd2bed0146cb8db35be"
+    },
+    {
+      "path": "public/licenses/LICENSE",
+      "bytes": 5027,
+      "sha256": "cd25a8e1b00d05b2bb29d3a626599526db960b5bf3ba94fd726565b9bec7f8ea"
+    },
+    {
+      "path": "public/licenses/NOTICE.md",
+      "bytes": 3234,
+      "sha256": "549d6607c9dd13c9add2fa5faeccca488bd78cf30cac2b0b4d3dbcd8b45b721d"
+    },
+    {
+      "path": "public/licenses/three-mesh-bvh-LICENSE",
+      "bytes": 1072,
+      "sha256": "b106ef6198a9862ed2b5b873e944ecf3583c631a84a7462d400ecc1910ce7fee"
+    },
+    {
+      "path": "public/lighting.js",
+      "bytes": 2089,
+      "sha256": "1a1953ed18ba9c9decf2f6b65f11ee4443d2679cd8d3b12e86a16a73a7147834"
+    },
+    {
+      "path": "public/rain-collision-adapter.mjs",
+      "bytes": 6639,
+      "sha256": "c364ced4652d88f536cc631e0882698f33a88f0d22df180810dfabf3e6dc9e6e"
+    },
+    {
+      "path": "public/style.css",
+      "bytes": 3062,
+      "sha256": "9bf468eb17ccd869b5dc84474bc008868c2cd01ed061003262550d99ff3d6984"
+    },
+    {
+      "path": "public/vendor/three-mesh-bvh/index.module.js",
+      "bytes": 192703,
+      "sha256": "c6aa52f4ffca26aa83ed6337bc875dc051a1e6e635fa134bbeafe01cd039523c"
+    },
+    {
+      "path": "public/vendor/three-mesh-bvh/index.module.js.map",
+      "bytes": 445351,
+      "sha256": "8943bdb38ce7092bc21c562573a816b21b07161cd5c741998a1cba95e2d99904"
+    },
+    {
+      "path": "public/vendor/three/LICENSE",
+      "bytes": 1081,
+      "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+    },
+    {
+      "path": "public/vendor/three/NOTICE.txt",
+      "bytes": 131,
+      "sha256": "4b031da41b279edd153193086e97ac7fc4605bebabed56cf9a5142098d987c1a"
+    },
+    {
+      "path": "public/vendor/three/addons/loaders/GLTFLoader.js",
+      "bytes": 114739,
+      "sha256": "67ac5551fdafa6e349bd80c8f8e5e39c136d6b2fb1ad647db9abb21dc86f9e4a"
+    },
+    {
+      "path": "public/vendor/three/addons/objects/Sky.js",
+      "bytes": 7257,
+      "sha256": "a19982b69e496e52d4cd7072029f0a8e5277203cbebf2277a23267e90b705640"
+    },
+    {
+      "path": "public/vendor/three/addons/utils/BufferGeometryUtils.js",
+      "bytes": 35539,
+      "sha256": "fda7e946b8e0b5ab39b779206589e7a1079a22eb24efb89d7223e03fdfb1f751"
+    },
+    {
+      "path": "public/vendor/three/three.core.min.js",
+      "bytes": 381124,
+      "sha256": "61ba0df005b05991361d040d8ff670e1aadfd0ce7aeebd1fdb0725957a8957de"
+    },
+    {
+      "path": "public/vendor/three/three.module.min.js",
+      "bytes": 338908,
+      "sha256": "e2b5ee6bccd38fd6d8a2428546b83c5f2426d84b152ef82be8055556e3b40eb6"
+    },
+    {
+      "path": "public/water-renderer.js",
+      "bytes": 10621,
+      "sha256": "08fddad0f03c0fb35e29fc177fb0e40fbaef8cc43ab5217cfd114bf07e49ef1e"
+    },
+    {
+      "path": "public/weather-clock.js",
+      "bytes": 1976,
+      "sha256": "f1d1928b2919d9f04a0cdf8d947b6f5af2f8f9062687c62f3505f2876aaa0c4a"
+    },
+    {
+      "path": "public/weather-model.js",
+      "bytes": 11745,
+      "sha256": "6881d533ffb8dac52fe9111f27531ddcc4dedb4d3e885b2459d21f40f2ab2eeb"
+    },
+    {
+      "path": "public/wet-material.js",
+      "bytes": 1754,
+      "sha256": "c06ec6c20f6d50daf053a1957129cdc3457a0dd2b7a6f4f055b4e7984ec57f78"
+    },
+    {
+      "path": "qa/fixtures/original-public/app.js",
+      "bytes": 13219,
+      "sha256": "a9f947005624ad8affd03b59ee7bef0b02b9355e531d9636c98a92cd632eb5f6"
+    },
+    {
+      "path": "qa/fixtures/original-public/foreground-rain.js",
+      "bytes": 5871,
+      "sha256": "8940cba282306f60dc06cc862cfaff79c97ee95d29aab8526e5863ecd89b7b90"
+    },
+    {
+      "path": "qa/fixtures/original-public/index.html",
+      "bytes": 3022,
+      "sha256": "57c88f4ae9419cbf5b038004fd9db039cc1d5c95fc3c99aaf5586d6ad2c35937"
+    },
+    {
+      "path": "qa/fixtures/original-public/style.css",
+      "bytes": 2941,
+      "sha256": "b468b7c0ba5177a2bee72461f68bf3f20f96d8c9b121157d298f5f80a75b6c65"
+    },
+    {
+      "path": "qa/fixtures/original-public/sun-playback.js",
+      "bytes": 2119,
+      "sha256": "764f9b31a7e6b09178ab17858222012de8eba1ac110ec53b93ce1a470a560098"
+    },
+    {
+      "path": "qa/geometry-static.mjs",
+      "bytes": 3457,
+      "sha256": "a8c976142a618caf98790685514b58962e697fd70841cef8d333a92996fec113"
+    },
+    {
+      "path": "qa/independent/README.md",
+      "bytes": 440,
+      "sha256": "505c81589136ad3ce1bd0d3f8c2aa99b01ffa17569aab53859682804a3b50c25"
+    },
+    {
+      "path": "qa/independent/identity-protection.mjs",
+      "bytes": 3155,
+      "sha256": "d3bf0d1f9c7516944b7dfb6331df2f84a2b3deca8fc9b3dab8f72e52ad26c7a5"
+    },
+    {
+      "path": "qa/independent/independent-contracts.mjs",
+      "bytes": 11476,
+      "sha256": "2c6af33c62bff7fa566f75b471a48200fdb0a8c255d0555fceb4854826df88ea"
+    },
+    {
+      "path": "qa/independent/lifecycle-contracts.mjs",
+      "bytes": 5931,
+      "sha256": "7419b5cd70c3cd5bba8ac6d459a87e2537658e945f089c08da482748442cf337"
+    },
+    {
+      "path": "qa/independent/lighting-wiring-contracts.mjs",
+      "bytes": 5148,
+      "sha256": "8bec6736f39701fac8feee1c4c446dfff2e6ace43382cc0b3fa836068f02a2cc"
+    },
+    {
+      "path": "qa/independent/pool-stress.mjs",
+      "bytes": 2125,
+      "sha256": "1e6f940a52396fc40df6983a575a68f1fc446f9e079f6018ff5c65b21f32c9fe"
+    },
+    {
+      "path": "qa/run-all.sh",
+      "bytes": 550,
+      "sha256": "6c035e41b66a26e3b8588b6fca99973a68d8a560acd50bfc632c712c2f4359d5"
+    },
+    {
+      "path": "qa/three-resolver.mjs",
+      "bytes": 313,
+      "sha256": "a9b8f2d74506698d4b07add1c6d08d0eba6be6db34e9210b6ac7dcf2ab00a2a6"
+    },
+    {
+      "path": "qa/validate-candidate.mjs",
+      "bytes": 8280,
+      "sha256": "5c679726c9c427520aedd5a37deed82d19e1cb4e616c77ade65481afc331157c"
+    },
+    {
+      "path": "qa/verify-public-source.py",
+      "bytes": 8621,
+      "sha256": "08982eeb64a10bcce00ac9693d25d5625f6fb00a9ad8451d3935da089e46616e"
+    },
+    {
+      "path": "source/wet-map-provenance/README.md",
+      "bytes": 5522,
+      "sha256": "d6e91bd975fa1d77b102a168bae4ddbb9a940eabf0cc65db9718d5717635b17e"
+    },
+    {
+      "path": "source/wet-map-provenance/extraction-manifest.json",
+      "bytes": 24859,
+      "sha256": "268eeb56d4028d0eb235e105d20e30c2c7e43195a0c01c6944d678e36e97c46b"
+    },
+    {
+      "path": "source/wet-map-provenance/file-hashes.json",
+      "bytes": 4289,
+      "sha256": "08b14e5518dc72212a0d0d0eae6e580749920aa8aeeba691a0d71b58779b9bbd"
+    },
+    {
+      "path": "source/wet-map-provenance/load-canopy-wet-stock.js",
+      "bytes": 1800,
+      "sha256": "b95957b73ce2c84248b46492d1413aa8d15d6582b177993d6a74202273a760c4"
+    },
+    {
+      "path": "source/wet-map-provenance/loader-validation.json",
+      "bytes": 321,
+      "sha256": "9feabf3854508adaad444192720f0dff3c89f12c44cc92fcb7a60d36861b1427"
+    },
+    {
+      "path": "source/wet-map-provenance/numeric-validation.json",
+      "bytes": 962,
+      "sha256": "bb60b19bc8515a9610ce5473f8d72474cd03026ffb46d36078eb9005f20589b4"
+    },
+    {
+      "path": "source/wet-map-provenance/stock-material-manifest.json",
+      "bytes": 5262,
+      "sha256": "b04fad804ffdaa3b75a06fb0126acc31ba9171d006695e476175e6b558f08b28"
+    }
+  ]
+}

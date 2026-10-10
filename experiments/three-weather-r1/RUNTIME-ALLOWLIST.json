@@ -1,0 +1,137 @@
+{
+  "schema": "strict-three-weather-runtime-v1",
+  "root": "public",
+  "defaultPMREM": "max2Hz, exact pause/end refresh, lag instrumented",
+  "files": [
+    {
+      "path": "app.js",
+      "bytes": 15659,
+      "sha256": "3b6793817b9af61db5672ea8d481c67928e27cfa63fcf756b88ad606ac6ffa39"
+    },
+    {
+      "path": "assets/canopy-wet-stock-rgba8.png",
+      "bytes": 227080,
+      "sha256": "0a24cc230df5a22bfd5cf0ff36c4c0ff39eadf688539dee8f384ca2760f5e5fa"
+    },
+    {
+      "path": "assets/export-manifest.json",
+      "bytes": 13680,
+      "sha256": "e3753132f9479d3d8c3f18178d68e8ffbd18e0f0f69de10e6b87a2fee3c61870"
+    },
+    {
+      "path": "assets/foreground.glb",
+      "bytes": 2221336,
+      "sha256": "11d01c348cae82681e11e63393e953e535ceaad52e14ab7fea435505e94a6c89"
+    },
+    {
+      "path": "canopy-drainage.js",
+      "bytes": 6826,
+      "sha256": "4896be316c694916e430a7ea44fabd1867c4994174f497cb863dba264287d051"
+    },
+    {
+      "path": "index.html",
+      "bytes": 3437,
+      "sha256": "c10c4ba17bcc0eb2c4887d45911a6d60db921b110e27be3478170862662125c2"
+    },
+    {
+      "path": "licenses/ATTRIBUTION.txt",
+      "bytes": 386,
+      "sha256": "5df50aa8fcee9acb4e80f9baab7d154106120d36e3e9fbd2bed0146cb8db35be"
+    },
+    {
+      "path": "licenses/LICENSE",
+      "bytes": 5027,
+      "sha256": "cd25a8e1b00d05b2bb29d3a626599526db960b5bf3ba94fd726565b9bec7f8ea"
+    },
+    {
+      "path": "licenses/NOTICE.md",
+      "bytes": 3234,
+      "sha256": "549d6607c9dd13c9add2fa5faeccca488bd78cf30cac2b0b4d3dbcd8b45b721d"
+    },
+    {
+      "path": "licenses/three-mesh-bvh-LICENSE",
+      "bytes": 1072,
+      "sha256": "b106ef6198a9862ed2b5b873e944ecf3583c631a84a7462d400ecc1910ce7fee"
+    },
+    {
+      "path": "lighting.js",
+      "bytes": 2089,
+      "sha256": "1a1953ed18ba9c9decf2f6b65f11ee4443d2679cd8d3b12e86a16a73a7147834"
+    },
+    {
+      "path": "rain-collision-adapter.mjs",
+      "bytes": 6639,
+      "sha256": "c364ced4652d88f536cc631e0882698f33a88f0d22df180810dfabf3e6dc9e6e"
+    },
+    {
+      "path": "style.css",
+      "bytes": 3062,
+      "sha256": "9bf468eb17ccd869b5dc84474bc008868c2cd01ed061003262550d99ff3d6984"
+    },
+    {
+      "path": "vendor/three-mesh-bvh/index.module.js",
+      "bytes": 192703,
+      "sha256": "c6aa52f4ffca26aa83ed6337bc875dc051a1e6e635fa134bbeafe01cd039523c"
+    },
+    {
+      "path": "vendor/three-mesh-bvh/index.module.js.map",
+      "bytes": 445351,
+      "sha256": "8943bdb38ce7092bc21c562573a816b21b07161cd5c741998a1cba95e2d99904"
+    },
+    {
+      "path": "vendor/three/LICENSE",
+      "bytes": 1081,
+      "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+    },
+    {
+      "path": "vendor/three/NOTICE.txt",
+      "bytes": 131,
+      "sha256": "4b031da41b279edd153193086e97ac7fc4605bebabed56cf9a5142098d987c1a"
+    },
+    {
+      "path": "vendor/three/addons/loaders/GLTFLoader.js",
+      "bytes": 114739,
+      "sha256": "67ac5551fdafa6e349bd80c8f8e5e39c136d6b2fb1ad647db9abb21dc86f9e4a"
+    },
+    {
+      "path": "vendor/three/addons/objects/Sky.js",
+      "bytes": 7257,
+      "sha256": "a19982b69e496e52d4cd7072029f0a8e5277203cbebf2277a23267e90b705640"
+    },
+    {
+      "path": "vendor/three/addons/utils/BufferGeometryUtils.js",
+      "bytes": 35539,
+      "sha256": "fda7e946b8e0b5ab39b779206589e7a1079a22eb24efb89d7223e03fdfb1f751"
+    },
+    {
+      "path": "vendor/three/three.core.min.js",
+      "bytes": 381124,
+      "sha256": "61ba0df005b05991361d040d8ff670e1aadfd0ce7aeebd1fdb0725957a8957de"
+    },
+    {
+      "path": "vendor/three/three.module.min.js",
+      "bytes": 338908,
+      "sha256": "e2b5ee6bccd38fd6d8a2428546b83c5f2426d84b152ef82be8055556e3b40eb6"
+    },
+    {
+      "path": "water-renderer.js",
+      "bytes": 10621,
+      "sha256": "08fddad0f03c0fb35e29fc177fb0e40fbaef8cc43ab5217cfd114bf07e49ef1e"
+    },
+    {
+      "path": "weather-clock.js",
+      "bytes": 1976,
+      "sha256": "f1d1928b2919d9f04a0cdf8d947b6f5af2f8f9062687c62f3505f2876aaa0c4a"
+    },
+    {
+      "path": "weather-model.js",
+      "bytes": 11745,
+      "sha256": "6881d533ffb8dac52fe9111f27531ddcc4dedb4d3e885b2459d21f40f2ab2eeb"
+    },
+    {
+      "path": "wet-material.js",
+      "bytes": 1754,
+      "sha256": "c06ec6c20f6d50daf053a1957129cdc3457a0dd2b7a6f4f055b4e7984ec57f78"
+    }
+  ]
+}

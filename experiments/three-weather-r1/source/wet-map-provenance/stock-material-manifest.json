@@ -1,0 +1,144 @@
+{
+  "schema": "three-r180-calibrated-canopy-wet-map-v1",
+  "extractionManifest": "extraction-manifest.json",
+  "extractionManifestSHA256": "d538fa1e3f8fb142613c2b42ce47411ce6a2b6a5a97f6b6c7b1c0a947a536d2f",
+  "sourceSHA256": "a440dc770b88e8f692efb328856856498af8ace84d5457672f635b30c0a16cb2",
+  "glbSHA256": "11d01c348cae82681e11e63393e953e535ceaad52e14ab7fea435505e94a6c89",
+  "size": [
+    1024,
+    512
+  ],
+  "UVAttribute": "uv",
+  "UVMap": "ConnectedWetField_SurfaceMetric_v1",
+  "UVSidecarRequired": false,
+  "colorSpace": "THREE.NoColorSpace",
+  "rowOrientation": "Reversed from Blender pixel array, directly matches existing glTF UV with texture.flipY=false",
+  "textureFlipY": false,
+  "wrapS": "RepeatWrapping",
+  "wrapT": "RepeatWrapping",
+  "runtimePack": {
+    "file": "canopy-wet-stock-rgba16f.bin",
+    "bytes": 4194304,
+    "sha256": "071ac7ec357d57e6c16ba55c15fd50c337d886700279b2121f4ffc69549974d4",
+    "shape": [
+      512,
+      1024,
+      4
+    ],
+    "dtype": "<f2"
+  },
+  "runtimePackChannels": {
+    "R": "Combined calibrated bump height normalized by (metres - heightOffsetMetres) / bumpScaleMetres",
+    "G": "Absolute source roughness / materialRoughness",
+    "B": "Remapped source localized water support, not opacity",
+    "A": "1"
+  },
+  "heightOffsetMetres": -0.00019495494780130684,
+  "bumpScaleMetres": 0.0006577785534318537,
+  "materialRoughness": 0.06,
+  "recommendedThree": {
+    "class": "DataTexture",
+    "format": "RGBAFormat",
+    "type": "HalfFloatType",
+    "array": "Uint16Array of little-endian half-float bits",
+    "flipY": false,
+    "colorSpace": "NoColorSpace",
+    "magFilter": "LinearFilter",
+    "minFilter": "LinearMipmapLinearFilter",
+    "generateMipmaps": true,
+    "sameTextureTo": [
+      "material.bumpMap",
+      "material.roughnessMap"
+    ],
+    "bumpScale": 0.0006577785534318537,
+    "roughness": 0.06,
+    "normalMap": null,
+    "newShaderRequired": false
+  },
+  "calibratedFloatReference": {
+    "file": "canopy-combined-height-metres-gltf.f32",
+    "bytes": 2097152,
+    "sha256": "1e471a75006b297786d0244e9a39bf3a2c97bffa9ebc99e4dddd8d3738c16f08",
+    "shape": [
+      512,
+      1024
+    ],
+    "dtype": "<f4"
+  },
+  "roughnessFloatReference": {
+    "file": "canopy-roughness-gltf.f32",
+    "bytes": 2097152,
+    "sha256": "a82e3981b1e039dae96513656e7cee537a5e3897c65dae1d4b387510667b5c7b",
+    "shape": [
+      512,
+      1024
+    ],
+    "dtype": "<f4"
+  },
+  "portableRGBA8Fallback": {
+    "file": "canopy-wet-stock-rgba8.png",
+    "bytes": 227080,
+    "sha256": "0a24cc230df5a22bfd5cf0ff36c4c0ff39eadf688539dee8f384ca2760f5e5fa",
+    "shape": [
+      512,
+      1024,
+      4
+    ],
+    "dtype": "uint8 PNG, no gamma/color profile"
+  },
+  "combinedHeightStatisticsMetres": {
+    "minimum": -0.00019495494780130684,
+    "maximum": 0.0004628236056305468,
+    "mean": 4.498906072736001e-06
+  },
+  "effectiveFoldStatisticsMetres": {
+    "minimum": -0.00019495494487593653,
+    "maximum": 0.00033416436134463257,
+    "mean": 7.363037844116043e-07
+  },
+  "effectiveWaterStatisticsMetres": {
+    "minimum": 0.0,
+    "maximum": 0.0002907295792004407,
+    "mean": 3.7626022900901953e-06
+  },
+  "roughnessStatistics": {
+    "minimum": 0.008999999612569809,
+    "maximum": 0.04737590625882149,
+    "mean": 0.010523448106901867
+  },
+  "curvatureSupportStatistics": {
+    "minimum": 0.0,
+    "maximum": 1.0,
+    "mean": 0.721296769320332
+  },
+  "halfFloatMaxHeightErrorMetres": 1.6059493646025658e-07,
+  "halfFloatMaxRoughnessError": 1.4649704098701477e-05,
+  "equations": {
+    "heightUnit": "clamp((clusteredHeight - 0.45000380277633667) / (0.5499961972236633 - 0.45000380277633667), 0, 1)",
+    "supportUnit": "smootherstep(clamp((clusteredSupport - 0.07999999821186066) / (0.2199999988079071 - 0.07999999821186066), 0, 1))",
+    "waterMetres": "heightUnit * supportUnit * waterDistanceMetres * wetness",
+    "foldMetres": "sourceSignedFoldHeightMetres * foldDistanceConversion * foldStrength * (1 - sampledCurvatureSupport)",
+    "combinedMetres": "waterMetres + foldMetres",
+    "smootherstep": "t^3 * (t * (t * 6 - 15) + 10)"
+  },
+  "parameters": {
+    "waterDistanceMetres": 0.0012000000093724916,
+    "wetness": 0.949999988079071,
+    "foldDistanceConversion": 1.0000000216744163,
+    "foldStrength": 0.6499999761581421
+  },
+  "limitations": [
+    "Stock single bump is a calibrated height-field approximation to two chained Blender bump-normal operations, not exact optical equivalence.",
+    "Fold attenuation uses bilinear interpolation of the sampled source per-vertex curvature attribute; multiplying height by attenuation adds a support-gradient term absent from Blender bump-strength blending.",
+    "Source texture fields are reduced 2x2 before their nonlinear water support remap; subpixel bead features are area-filtered rather than retained at full source resolution.",
+    "Physical height and sign are retained. This is not silhouette displacement; the existing canopy GLB remains unchanged.",
+    "No Blender glass refraction, layered inner shell, external ground texture, or color-management look has been baked."
+  ],
+  "validation": {
+    "exactGLBUVMatch": true,
+    "allFinite": true,
+    "noRender": true,
+    "sourceSHAUnchanged": true,
+    "glbSHAUnchanged": true
+  }
+}

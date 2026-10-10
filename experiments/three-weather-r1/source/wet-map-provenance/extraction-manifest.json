@@ -1,0 +1,1020 @@
+{
+  "schema": "canopy-packed-linear-data-extraction-v1",
+  "source": "private-source:a440-readonly-copy.blend",
+  "sourceSHA256": "a440dc770b88e8f692efb328856856498af8ace84d5457672f635b30c0a16cb2",
+  "inputGLB": "public/assets/foreground.glb",
+  "inputGLBSHA256": "11d01c348cae82681e11e63393e953e535ceaad52e14ab7fea435505e94a6c89",
+  "blenderVersion": "4.3.2",
+  "metresPerBlenderUnit": 0.17045454545454544,
+  "rendered": false,
+  "savedBlend": false,
+  "downloaded": false,
+  "sourceFrameForShaderValues": 49,
+  "maps": {
+    "clustered-height": {
+      "sourceImage": "Native900 wet readability / clustered height.001",
+      "sourceSize": [
+        2048,
+        1024
+      ],
+      "sourcePackedSHA256": "af26473d24dceebcbcb8f5ed74e8971953126a96097041af47363ec00ff4731a",
+      "sourceScalarFloat32SHA256": "0199f08a95b2804e04827e2e553d1a0a3f81c6c073d4f0b4fb91f8310da849b6",
+      "sourceScalarStatistics": {
+        "minimum": 0.45000380277633667,
+        "maximum": 0.47598981857299805,
+        "mean": 0.45035681905915226,
+        "nonfinite": 0
+      },
+      "sourceAlphaStatistics": {
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "mean": 1.0,
+        "nonfinite": 0
+      },
+      "rgbChannelMaximumDifference": 0.0,
+      "UVMap": "ConnectedWetField_SurfaceMetric_v1",
+      "colorSpace": "NoColorSpace; linear scalar, no gamma or display transform",
+      "rowOrder": "Blender bottom-to-top; row zero samples source v near 0",
+      "reduction": "Non-overlapping 2x2 arithmetic mean in float64, then float32; no normalization or clipping",
+      "runtime": {
+        "file": "clustered-height-1024x512.f32",
+        "sha256": "ef731e7e65c5067a1db360fb4ea9eeaa2c9d2a508f9d260ab80f1799d993fa4b",
+        "bytes": 2097152,
+        "shape": [
+          512,
+          1024
+        ],
+        "dataType": "float32 little-endian",
+        "minimum": 0.45000380277633667,
+        "maximum": 0.47550445795059204,
+        "mean": 0.45035681906347236,
+        "nonfinite": 0
+      }
+    },
+    "clustered-support": {
+      "sourceImage": "Native900 wet readability / clustered support.001",
+      "sourceSize": [
+        2048,
+        1024
+      ],
+      "sourcePackedSHA256": "bf03fba50892abddfad456997ff7c6c328f3e9a57b8944f563ff567995a2952b",
+      "sourceScalarFloat32SHA256": "e1337c911eb5648012dd64bd52787d675c5820e06f148dbfdb67ffac092daab7",
+      "sourceScalarStatistics": {
+        "minimum": 0.07999999821186066,
+        "maximum": 0.2199999988079071,
+        "mean": 0.08494965707910396,
+        "nonfinite": 0
+      },
+      "sourceAlphaStatistics": {
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "mean": 1.0,
+        "nonfinite": 0
+      },
+      "rgbChannelMaximumDifference": 0.0,
+      "UVMap": "ConnectedWetField_SurfaceMetric_v1",
+      "colorSpace": "NoColorSpace; linear scalar, no gamma or display transform",
+      "rowOrder": "Blender bottom-to-top; row zero samples source v near 0",
+      "reduction": "Non-overlapping 2x2 arithmetic mean in float64, then float32; no normalization or clipping",
+      "runtime": {
+        "file": "clustered-support-1024x512.f32",
+        "sha256": "5bb3062806c0817e1015f3ac433366272fae2d6a2b14ccd3e46880e698dfc739",
+        "bytes": 2097152,
+        "shape": [
+          512,
+          1024
+        ],
+        "dataType": "float32 little-endian",
+        "minimum": 0.07999999821186066,
+        "maximum": 0.2199999988079071,
+        "mean": 0.08494965709661528,
+        "nonfinite": 0
+      }
+    },
+    "fold-height-metres": {
+      "sourceImage": "Paired irregular panel fold height metres.001",
+      "sourceSize": [
+        2048,
+        1024
+      ],
+      "sourcePackedSHA256": "521c02c0a0c9a2f63e1bf8811a1de8671624b915a1c9181daf9f1100d38e1836",
+      "sourceScalarFloat32SHA256": "a06eed72429ee19da79159b105c1e8537dcb736f87813c9ee00be095dbbd9952",
+      "sourceScalarStatistics": {
+        "minimum": -0.00039269073749892414,
+        "maximum": 0.0005887615843676031,
+        "mean": 4.857033559016668e-06,
+        "nonfinite": 0
+      },
+      "sourceAlphaStatistics": {
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "mean": 1.0,
+        "nonfinite": 0
+      },
+      "rgbChannelMaximumDifference": 0.0,
+      "UVMap": "ConnectedWetField_SurfaceMetric_v1",
+      "colorSpace": "NoColorSpace; linear scalar, no gamma or display transform",
+      "rowOrder": "Blender bottom-to-top; row zero samples source v near 0",
+      "reduction": "Non-overlapping 2x2 arithmetic mean in float64, then float32; no normalization or clipping",
+      "runtime": {
+        "file": "fold-height-metres-1024x512.f32",
+        "sha256": "a6c9f4a0b7d8f08235cd7edff50f07e4cfdb50a1bd5c251d8f3e78d344996271",
+        "bytes": 2097152,
+        "shape": [
+          512,
+          1024
+        ],
+        "dataType": "float32 little-endian",
+        "minimum": -0.0003906971251126379,
+        "maximum": 0.0005836855852976441,
+        "mean": 4.857033559895116e-06,
+        "nonfinite": 0
+      }
+    },
+    "roughness": {
+      "sourceImage": "Wet PVC quiet variable roughness.001",
+      "sourceSize": [
+        2048,
+        1024
+      ],
+      "sourcePackedSHA256": "7ad89fcdcec3bd6c198b3bac5fd0f7c77dec757112a744dd64b8e3714eaad83d",
+      "sourceScalarFloat32SHA256": "8df95880bf0086dfc7ddc654e8b9dcb53c0107179debf51bf13e71d5b2b96b9c",
+      "sourceScalarStatistics": {
+        "minimum": 0.008999999612569809,
+        "maximum": 0.048223696649074554,
+        "mean": 0.010523448109169387,
+        "nonfinite": 0
+      },
+      "sourceAlphaStatistics": {
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "mean": 1.0,
+        "nonfinite": 0
+      },
+      "rgbChannelMaximumDifference": 0.0,
+      "UVMap": "ConnectedWetField_SurfaceMetric_v1",
+      "colorSpace": "NoColorSpace; linear scalar, no gamma or display transform",
+      "rowOrder": "Blender bottom-to-top; row zero samples source v near 0",
+      "reduction": "Non-overlapping 2x2 arithmetic mean in float64, then float32; no normalization or clipping",
+      "runtime": {
+        "file": "roughness-1024x512.f32",
+        "sha256": "4854b7fc536da347394cff4ccaee420e43e153121906740184500b172157b509",
+        "bytes": 2097152,
+        "shape": [
+          512,
+          1024
+        ],
+        "dataType": "float32 little-endian",
+        "minimum": 0.008999999612569809,
+        "maximum": 0.04737590625882149,
+        "mean": 0.010523448106901867,
+        "nonfinite": 0
+      }
+    }
+  },
+  "scope": "Only four explicitly approved self-authored packed canopy maps. No external ground/water textures extracted.",
+  "sourceShaderNodes": [
+    {
+      "name": "CanopyWetness / runtime recreatable",
+      "type": "VALUE",
+      "inputs": {},
+      "outputs": {
+        "Value": 0.949999988079071
+      }
+    },
+    {
+      "name": "Verified water-drop height",
+      "type": "TEX_IMAGE",
+      "inputs": {
+        "Vector": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "outputs": {
+        "Color": [
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          1.0
+        ],
+        "Alpha": 0.0
+      },
+      "interpolation": "Linear",
+      "extension": "REPEAT",
+      "image": "Native900 wet readability / clustered height.001"
+    },
+    {
+      "name": "Verified water-drop opacity",
+      "type": "TEX_IMAGE",
+      "inputs": {
+        "Vector": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "outputs": {
+        "Color": [
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          1.0
+        ],
+        "Alpha": 0.0
+      },
+      "interpolation": "Linear",
+      "extension": "REPEAT",
+      "image": "Native900 wet readability / clustered support.001"
+    },
+    {
+      "name": "Map Range",
+      "type": "MAP_RANGE",
+      "inputs": {
+        "Value": 1.0,
+        "From Min": 0.45000380277633667,
+        "From Max": 0.5499961972236633,
+        "To Min": 0.0,
+        "To Max": 1.0,
+        "Steps": 4.0,
+        "Vector": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "From_Min_FLOAT3": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "From_Max_FLOAT3": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "To_Min_FLOAT3": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "To_Max_FLOAT3": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "Steps_FLOAT3": [
+          4.0,
+          4.0,
+          4.0
+        ]
+      },
+      "outputs": {
+        "Result": 0.0,
+        "Vector": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "interpolation_type": "LINEAR",
+      "clamp": true
+    },
+    {
+      "name": "Audit / stable registered wetness UV",
+      "type": "UVMAP",
+      "inputs": {},
+      "outputs": {
+        "UV": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "uv_map": "ConnectedWetField_SurfaceMetric_v1"
+    },
+    {
+      "name": "Hybrid clear wet canopy / localized water support, not opacity",
+      "type": "MAP_RANGE",
+      "inputs": {
+        "Value": 1.0,
+        "From Min": 0.07999999821186066,
+        "From Max": 0.2199999988079071,
+        "To Min": 0.0,
+        "To Max": 1.0,
+        "Steps": 4.0,
+        "Vector": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "From_Min_FLOAT3": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "From_Max_FLOAT3": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "To_Min_FLOAT3": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "To_Max_FLOAT3": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "Steps_FLOAT3": [
+          4.0,
+          4.0,
+          4.0
+        ]
+      },
+      "outputs": {
+        "Result": 0.0,
+        "Vector": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "interpolation_type": "SMOOTHERSTEP",
+      "clamp": true
+    },
+    {
+      "name": "Hybrid clear wet canopy / supported physical bead height",
+      "type": "MATH",
+      "inputs": {
+        "Value": 0.5,
+        "Value_001": 0.5,
+        "Value_002": 0.5
+      },
+      "outputs": {
+        "Value": 0.0
+      },
+      "operation": "MULTIPLY"
+    },
+    {
+      "name": "Hybrid clear wet canopy / localized water surface relief",
+      "type": "BUMP",
+      "inputs": {
+        "Strength": 0.44999998807907104,
+        "Distance": 0.007040000054985285,
+        "Height": 1.0,
+        "Normal": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "outputs": {
+        "Normal": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "invert": false
+    },
+    {
+      "name": "Closed PVC 020mm / PVC Fresnel reflection and refraction",
+      "type": "BSDF_GLASS",
+      "inputs": {
+        "Color": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "Roughness": 0.006000000052154064,
+        "IOR": 1.5399999618530273,
+        "Normal": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "Weight": 0.0
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Closed PVC 020mm / physical surface only",
+      "type": "OUTPUT_MATERIAL",
+      "inputs": {
+        "Displacement": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "Thickness": 0.0
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Closed PVC 020mm / registered tension UV",
+      "type": "UVMAP",
+      "inputs": {},
+      "outputs": {
+        "UV": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "uv_map": "CanopyWetness_ProjectedXY_v1"
+    },
+    {
+      "name": "Closed PVC 020mm / tension coordinate axes",
+      "type": "SEPXYZ",
+      "inputs": {
+        "Vector": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "outputs": {
+        "X": 0.0,
+        "Y": 0.0,
+        "Z": 0.0
+      }
+    },
+    {
+      "name": "Closed PVC 020mm / 90mm phase wavelength",
+      "type": "MATH",
+      "inputs": {
+        "Value": 0.5,
+        "Value_001": 27.845935821533203,
+        "Value_002": 0.5
+      },
+      "outputs": {
+        "Value": 0.0
+      },
+      "operation": "MULTIPLY"
+    },
+    {
+      "name": "Closed PVC 020mm / SINE",
+      "type": "MATH",
+      "inputs": {
+        "Value": 0.5,
+        "Value_001": 0.5,
+        "Value_002": 0.5
+      },
+      "outputs": {
+        "Value": 0.0
+      },
+      "operation": "SINE"
+    },
+    {
+      "name": "Closed PVC 020mm / weak along-ridge phase",
+      "type": "MATH",
+      "inputs": {
+        "Value": 0.5,
+        "Value_001": 0.6000000238418579,
+        "Value_002": 0.5
+      },
+      "outputs": {
+        "Value": 0.0
+      },
+      "operation": "MULTIPLY"
+    },
+    {
+      "name": "Closed PVC 020mm / 12mm cross-ridge wavelength",
+      "type": "MATH",
+      "inputs": {
+        "Value": 0.5,
+        "Value_001": 208.84451293945312,
+        "Value_002": 0.5
+      },
+      "outputs": {
+        "Value": 0.0
+      },
+      "operation": "MULTIPLY"
+    },
+    {
+      "name": "Closed PVC 020mm / correlated wrinkle phase",
+      "type": "MATH",
+      "inputs": {
+        "Value": 0.5,
+        "Value_001": 0.5,
+        "Value_002": 0.5
+      },
+      "outputs": {
+        "Value": 0.0
+      },
+      "operation": "ADD"
+    },
+    {
+      "name": "Closed PVC 020mm / SINE.001",
+      "type": "MATH",
+      "inputs": {
+        "Value": 0.5,
+        "Value_001": 0.5,
+        "Value_002": 0.5
+      },
+      "outputs": {
+        "Value": 0.0
+      },
+      "operation": "SINE"
+    },
+    {
+      "name": "Closed PVC 020mm / MULTIPLY",
+      "type": "MATH",
+      "inputs": {
+        "Value": 0.5,
+        "Value_001": 0.5,
+        "Value_002": 0.5
+      },
+      "outputs": {
+        "Value": 0.0
+      },
+      "operation": "MULTIPLY"
+    },
+    {
+      "name": "Closed PVC 020mm / unit peak-to-peak wrinkle height",
+      "type": "MATH",
+      "inputs": {
+        "Value": 0.5,
+        "Value_001": 0.5,
+        "Value_002": 0.5
+      },
+      "outputs": {
+        "Value": 0.0
+      },
+      "operation": "ADD"
+    },
+    {
+      "name": "Closed PVC 020mm / 80mm localized tension support",
+      "type": "TEX_NOISE",
+      "inputs": {
+        "Vector": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "W": 0.0,
+        "Scale": 5.0,
+        "Detail": 1.5,
+        "Roughness": 0.5,
+        "Lacunarity": 2.0,
+        "Offset": 0.0,
+        "Gain": 1.0,
+        "Distortion": 0.0
+      },
+      "outputs": {
+        "Fac": 0.0,
+        "Color": [
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          1.0
+        ]
+      }
+    },
+    {
+      "name": "Closed PVC 020mm / localized smooth support",
+      "type": "MAP_RANGE",
+      "inputs": {
+        "Value": 1.0,
+        "From Min": 0.5199999809265137,
+        "From Max": 0.7200000286102295,
+        "To Min": 0.0,
+        "To Max": 1.0,
+        "Steps": 4.0,
+        "Vector": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "From_Min_FLOAT3": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "From_Max_FLOAT3": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "To_Min_FLOAT3": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "To_Max_FLOAT3": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "Steps_FLOAT3": [
+          4.0,
+          4.0,
+          4.0
+        ]
+      },
+      "outputs": {
+        "Result": 0.0,
+        "Vector": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "interpolation_type": "SMOOTHERSTEP",
+      "clamp": true
+    },
+    {
+      "name": "Closed PVC 020mm / supported tension height",
+      "type": "MATH",
+      "inputs": {
+        "Value": 0.5,
+        "Value_001": 0.5,
+        "Value_002": 0.5
+      },
+      "outputs": {
+        "Value": 0.0
+      },
+      "operation": "MULTIPLY"
+    },
+    {
+      "name": "Closed PVC 020mm / 15um paired tension normal",
+      "type": "BUMP",
+      "inputs": {
+        "Strength": 0.6499999761581421,
+        "Distance": 5.866666793823242,
+        "Height": 1.0,
+        "Normal": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "outputs": {
+        "Normal": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "invert": false
+    },
+    {
+      "name": "Lookdev / panel surface chart",
+      "type": "UVMAP",
+      "inputs": {},
+      "outputs": {
+        "UV": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "uv_map": "ConnectedWetField_SurfaceMetric_v1"
+    },
+    {
+      "name": "Lookdev / irregular paired sheet folds",
+      "type": "TEX_IMAGE",
+      "inputs": {
+        "Vector": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "outputs": {
+        "Color": [
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          1.0
+        ],
+        "Alpha": 0.0
+      },
+      "interpolation": "Linear",
+      "extension": "REPEAT",
+      "image": "Paired irregular panel fold height metres.001"
+    },
+    {
+      "name": "Lookdev / mixed clear and wet roughness",
+      "type": "TEX_IMAGE",
+      "inputs": {
+        "Vector": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "outputs": {
+        "Color": [
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          1.0
+        ],
+        "Alpha": 0.0
+      },
+      "interpolation": "Linear",
+      "extension": "REPEAT",
+      "image": "Wet PVC quiet variable roughness.001"
+    },
+    {
+      "name": "Physical membrane curvature support",
+      "type": "ATTRIBUTE",
+      "inputs": {},
+      "outputs": {
+        "Color": [
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          1.0
+        ],
+        "Vector": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "Fac": 0.0,
+        "Alpha": 0.0
+      },
+      "attribute_name": "ActualCurvatureSupport"
+    },
+    {
+      "name": "Math",
+      "type": "MATH",
+      "inputs": {
+        "Value": 1.0,
+        "Value_001": 0.5,
+        "Value_002": 0.5
+      },
+      "outputs": {
+        "Value": 0.0
+      },
+      "operation": "SUBTRACT"
+    },
+    {
+      "name": "Math.001",
+      "type": "MATH",
+      "inputs": {
+        "Value": 0.5,
+        "Value_001": 0.6499999761581421,
+        "Value_002": 0.5
+      },
+      "outputs": {
+        "Value": 0.0
+      },
+      "operation": "MULTIPLY"
+    }
+  ],
+  "sourceShaderLinks": [
+    [
+      "Verified water-drop height",
+      "Color",
+      "Map Range",
+      "Value"
+    ],
+    [
+      "Audit / stable registered wetness UV",
+      "UV",
+      "Verified water-drop height",
+      "Vector"
+    ],
+    [
+      "Audit / stable registered wetness UV",
+      "UV",
+      "Verified water-drop opacity",
+      "Vector"
+    ],
+    [
+      "Verified water-drop opacity",
+      "Color",
+      "Hybrid clear wet canopy / localized water support, not opacity",
+      "Value"
+    ],
+    [
+      "Map Range",
+      "Result",
+      "Hybrid clear wet canopy / supported physical bead height",
+      "Value"
+    ],
+    [
+      "Hybrid clear wet canopy / localized water support, not opacity",
+      "Result",
+      "Hybrid clear wet canopy / supported physical bead height",
+      "Value_001"
+    ],
+    [
+      "Hybrid clear wet canopy / supported physical bead height",
+      "Value",
+      "Hybrid clear wet canopy / localized water surface relief",
+      "Height"
+    ],
+    [
+      "CanopyWetness / runtime recreatable",
+      "Value",
+      "Hybrid clear wet canopy / localized water surface relief",
+      "Strength"
+    ],
+    [
+      "Closed PVC 020mm / PVC Fresnel reflection and refraction",
+      "BSDF",
+      "Closed PVC 020mm / physical surface only",
+      "Surface"
+    ],
+    [
+      "Closed PVC 020mm / registered tension UV",
+      "UV",
+      "Closed PVC 020mm / tension coordinate axes",
+      "Vector"
+    ],
+    [
+      "Closed PVC 020mm / tension coordinate axes",
+      "Y",
+      "Closed PVC 020mm / 90mm phase wavelength",
+      "Value"
+    ],
+    [
+      "Closed PVC 020mm / 90mm phase wavelength",
+      "Value",
+      "Closed PVC 020mm / SINE",
+      "Value"
+    ],
+    [
+      "Closed PVC 020mm / SINE",
+      "Value",
+      "Closed PVC 020mm / weak along-ridge phase",
+      "Value"
+    ],
+    [
+      "Closed PVC 020mm / tension coordinate axes",
+      "X",
+      "Closed PVC 020mm / 12mm cross-ridge wavelength",
+      "Value"
+    ],
+    [
+      "Closed PVC 020mm / 12mm cross-ridge wavelength",
+      "Value",
+      "Closed PVC 020mm / correlated wrinkle phase",
+      "Value"
+    ],
+    [
+      "Closed PVC 020mm / weak along-ridge phase",
+      "Value",
+      "Closed PVC 020mm / correlated wrinkle phase",
+      "Value_001"
+    ],
+    [
+      "Closed PVC 020mm / correlated wrinkle phase",
+      "Value",
+      "Closed PVC 020mm / SINE.001",
+      "Value"
+    ],
+    [
+      "Closed PVC 020mm / SINE.001",
+      "Value",
+      "Closed PVC 020mm / MULTIPLY",
+      "Value"
+    ],
+    [
+      "Closed PVC 020mm / MULTIPLY",
+      "Value",
+      "Closed PVC 020mm / unit peak-to-peak wrinkle height",
+      "Value"
+    ],
+    [
+      "Closed PVC 020mm / registered tension UV",
+      "UV",
+      "Closed PVC 020mm / 80mm localized tension support",
+      "Vector"
+    ],
+    [
+      "Closed PVC 020mm / 80mm localized tension support",
+      "Fac",
+      "Closed PVC 020mm / localized smooth support",
+      "Value"
+    ],
+    [
+      "Closed PVC 020mm / unit peak-to-peak wrinkle height",
+      "Value",
+      "Closed PVC 020mm / supported tension height",
+      "Value"
+    ],
+    [
+      "Closed PVC 020mm / localized smooth support",
+      "Result",
+      "Closed PVC 020mm / supported tension height",
+      "Value_001"
+    ],
+    [
+      "Closed PVC 020mm / 15um paired tension normal",
+      "Normal",
+      "Hybrid clear wet canopy / localized water surface relief",
+      "Normal"
+    ],
+    [
+      "Hybrid clear wet canopy / localized water surface relief",
+      "Normal",
+      "Closed PVC 020mm / PVC Fresnel reflection and refraction",
+      "Normal"
+    ],
+    [
+      "Lookdev / panel surface chart",
+      "UV",
+      "Lookdev / irregular paired sheet folds",
+      "Vector"
+    ],
+    [
+      "Lookdev / irregular paired sheet folds",
+      "Color",
+      "Closed PVC 020mm / 15um paired tension normal",
+      "Height"
+    ],
+    [
+      "Lookdev / panel surface chart",
+      "UV",
+      "Lookdev / mixed clear and wet roughness",
+      "Vector"
+    ],
+    [
+      "Lookdev / mixed clear and wet roughness",
+      "Color",
+      "Closed PVC 020mm / PVC Fresnel reflection and refraction",
+      "Roughness"
+    ],
+    [
+      "Physical membrane curvature support",
+      "Fac",
+      "Math",
+      "Value_001"
+    ],
+    [
+      "Math",
+      "Value",
+      "Math.001",
+      "Value"
+    ],
+    [
+      "Math.001",
+      "Value",
+      "Closed PVC 020mm / 15um paired tension normal",
+      "Strength"
+    ]
+  ],
+  "uvCompatibility": {
+    "sourceUVMap": "ConnectedWetField_SurfaceMetric_v1",
+    "glbNodeIndex": 33,
+    "glbNodeName": "Canopy / sampled original outer surface",
+    "glbMeshIndex": 33,
+    "glbPrimitiveIndex": 0,
+    "glbPositionAccessor": 114,
+    "glbUVAccessor": 116,
+    "glbVertexCount": 25024,
+    "sampledSourceVertexCount": 24577,
+    "positionMatch": "Exact float32 equality for every GLB vertex after source world/metre/glTF-axis conversion",
+    "positionMaximumErrorMetres": 0,
+    "maxUVDifferenceByComponent": [
+      0.0,
+      0.0
+    ],
+    "meanUVDifferenceByComponent": [
+      0.0,
+      0.0
+    ],
+    "poleHandling": "Retain glTF wedge-centre U; source pole V retained",
+    "glTFTexcoordConvention": "U unchanged, V = 1 - Blender V",
+    "allFourMapsUseThisChart": true,
+    "projectedXYRequired": false,
+    "sidecarRequired": false
+  },
+  "physicalMembraneSupportAttribute": {
+    "name": "ActualCurvatureSupport",
+    "domain": "POINT",
+    "type": "FLOAT",
+    "sampledData": {
+      "file": "canopy-membrane-support.f32",
+      "sha256": "31e8daba201370bf54ccb1e1e7617fcda5b01c9477198c8385fe5e1cb664a2b3",
+      "bytes": 100096,
+      "shape": [
+        25024
+      ],
+      "dataType": "float32 little-endian",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "mean": 0.708251239234341,
+      "nonfinite": 0
+    }
+  },
+  "sourceSHAUnchangedAfter": true,
+  "glbSHAUnchangedAfter": true,
+  "sanitization": {
+    "originalManifestSHA256": "d538fa1e3f8fb142613c2b42ce47411ce6a2b6a5a97f6b6c7b1c0a947a536d2f",
+    "changedFields": [
+      "source",
+      "inputGLB"
+    ],
+    "scope": "Private absolute locations replaced with an opaque source identifier and a bundle-relative GLB path. All material values, hashes and original extraction observations are retained. These historical observations are not rerun by public CI."
+  }
+}

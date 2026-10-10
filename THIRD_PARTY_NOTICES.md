@@ -28,3 +28,33 @@ This is a summary of the retained component notices, not a new license or a lega
 ## Other design references
 
 The interface contains links to motion/design research. Those links are references, not a grant to reuse third-party designs or an assertion of third-party acceptance. Author attribution and reference links should remain accurate.
+
+## Motion public App Store mechanism reference
+
+The split-card reader is an original native-DOM adaptation of the separate shell, cover and title projection pattern in Motion's public development fixture. No Motion+ source, paid asset, demo image, branding, or Motion runtime is included. The existing PersonalOS spring clock and content/history owner are retained.
+
+- Public source: https://github.com/motiondivision/motion/blob/e6bf03ead39cae7a2c5f8fe902ce8a9c1a9a22e8/dev/html/public/animate-layout/app-store-layout.html
+- Fixed commit: e6bf03ead39cae7a2c5f8fe902ce8a9c1a9a22e8
+- Upstream copyright and MIT license retained below as a precaution for this adaptation
+
+The MIT License (MIT)
+
+Copyright (c) 2024 [Motion](https://motion.dev) B.V.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

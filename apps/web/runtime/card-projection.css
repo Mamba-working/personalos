@@ -1,0 +1,23 @@
+/* Final reading layout is committed once. Only the shell, cover crop and
+   translation-only text projections travel; paragraphs never scale/reflow. */
+.travel-shell .card[data-card-projection] > .identity:not(.projection-preview){padding:24px 0 0;transform-origin:0 0}
+.travel-shell .card[data-card-projection] > .identity:not(.projection-preview) .card-meta{font-size:.6875rem;line-height:1.5;gap:10px}
+.travel-shell .card[data-card-projection] > .identity:not(.projection-preview) h2{font-size:clamp(1.5rem,3.2vw,2.375rem);line-height:1.22;margin:16px 0;letter-spacing:-.035em;overflow-wrap:anywhere}
+.travel-shell .card[data-card-projection] > .identity:not(.projection-preview) .summary{font-size:1rem;line-height:1.75;margin:0;overflow-wrap:anywhere}
+.travel-shell .card[data-card-projection] > .identity:not(.projection-preview) .card-visual{height:clamp(132px,24vw,260px);margin:24px 0 0;border-radius:12px;transform-origin:0 0;will-change:transform}
+.travel-shell .card[data-card-projection] > .identity:not(.projection-preview) .card-foot{font-size:.75rem;line-height:1.5;margin-top:18px}
+.travel-shell .card[data-card-projection] > .identity:not(.projection-preview) .open-label{visibility:hidden}
+.travel-shell .card[data-card-projection] > .identity:not(.projection-preview) .visual-label{font-size:.6875rem;left:14px;bottom:12px}
+.travel-shell .projection-preview{position:absolute;top:0;left:0;pointer-events:none;transform-origin:0 0;visibility:hidden}
+.travel-shell .card[data-card-projection] .detail-body{overflow-wrap:anywhere;font-size:1rem}
+.travel-shell .card[data-card-projection] .detail-body h3{font-size:1.75rem}
+.travel-shell .card[data-card-projection] .detail-body pre{max-width:100%;overflow:auto}
+#reader{scrollbar-gutter:stable}
+#reader-controls::before{content:'READING';position:absolute;inset:24px auto auto 24px;font:10px/1.2 ui-monospace,monospace;letter-spacing:1.6px;color:var(--muted)}
+.close:active{transform:scale(.96)}
+@media(max-width:650px){.travel-shell .card[data-card-projection] > .identity:not(.projection-preview){padding-top:12px}.travel-shell .card[data-card-projection] > .identity:not(.projection-preview) .card-visual{height:160px}}
+@media(prefers-reduced-motion:reduce){.travel-shell .projection-preview,.travel-shell .card[data-card-projection] .card-visual{will-change:auto}}
+
+.travel-shell .card[data-card-projection] .card-visual > img{width:100%;height:100%;object-fit:cover}
+
+.travel-shell .projection-preview-surface{position:absolute;left:0;top:0;width:100%;height:0;min-height:0;overflow:visible;pointer-events:none;background:transparent!important}

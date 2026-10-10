@@ -1,0 +1,327 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-reader-overlay",
+  "candidate": "split-card-reader-r3",
+  "baselineGitHubCommit": "15a5967b775dec5e1224c224a5e36f07ddbbb76b",
+  "baselineRuntimeSHA256": "64922db578b6ab8fb8f40250c9156e957a02e386f56803625f5ebc19389072ad",
+  "deployed": false,
+  "browserAcceptance": false,
+  "deployedByteParity": "unverified",
+  "runtimeFileCount": 73,
+  "runtimeSHA256": "2dfc6d081f4badbceca094482fedefa50efd005c05211b4832920c8c057bf1cb",
+  "runtimeAllowlist": [
+    "runtime/app.js",
+    "runtime/card-projection.css",
+    "runtime/card-projection.js",
+    "runtime/chat-host.js",
+    "runtime/index.html",
+    "runtime/release-meta.json",
+    "runtime/vendor/motion/NOTICE.md"
+  ],
+  "files": [
+    {
+      "path": "runtime/app.js",
+      "sha256": "0959d47111587c4b25c39e9b742528102c2528c51a5db083b7ef0ac0919372d8"
+    },
+    {
+      "path": "runtime/card-projection.css",
+      "sha256": "ded0c76329307efc51821fa17d50bea410672fa6a239fa707420073342cd9ad6"
+    },
+    {
+      "path": "runtime/card-projection.js",
+      "sha256": "753332a61181fdbae54ff5fc35802d703714ac73a537df7c7342154f20e68ade"
+    },
+    {
+      "path": "runtime/chat/chat-fluid-send.js",
+      "sha256": "146db578b5bf2bcc65f9c550d886afcf001dbcbf35725754d4d6e8770aac9070"
+    },
+    {
+      "path": "runtime/chat/chat-mobile-flow-page.js",
+      "sha256": "e517abaa0581952e70ba761b28a91f5dd1db7d91c2dad57931e1bf991c923b18"
+    },
+    {
+      "path": "runtime/chat/chat-mobile-flow.css",
+      "sha256": "017308a010b3d81e95f17e3d04edfc9be30f40129e7a7b9040415fa9b554382d"
+    },
+    {
+      "path": "runtime/chat/chat-page-lock.js",
+      "sha256": "56fe545fedcb40eaf44a223c9adcac3c9a5d4568fc08b3c8986e93a8df3d161a"
+    },
+    {
+      "path": "runtime/chat/chat-reading-flow.js",
+      "sha256": "af10dfb858c18a9782c37429d25443e5275c20afe120693305491408b355a88c"
+    },
+    {
+      "path": "runtime/chat/chat-reading-interior.js",
+      "sha256": "438af1cb681eaaa270958da1344cb835cda91f61348c92e9fc052aaf26b0c24d"
+    },
+    {
+      "path": "runtime/chat/chat-reading.css",
+      "sha256": "10c592e5fca5f010f46c5b56867e11fbdfd2afc7aa8bb9a5348640b3dc321c2b"
+    },
+    {
+      "path": "runtime/chat/chat-turn-scroll.js",
+      "sha256": "21e45675fafc4a559e2973634759491ddad36c29d5fc396424f6e158861808b4"
+    },
+    {
+      "path": "runtime/chat/chat-viewport.js",
+      "sha256": "cf83619e685cc53c9178426808302b129abef089481d9e865ca58651320ff676"
+    },
+    {
+      "path": "runtime/chat/contextual-chat-layout.js",
+      "sha256": "1be4fdc14976c7413462e486a40228bb3e3cf4de1284499e0cbd240f6fc0924a"
+    },
+    {
+      "path": "runtime/chat/contextual-chat.css",
+      "sha256": "91290d400bac1e41b9c5f99d8615c81798fdaf27fe1fa9622928b13efa90df8c"
+    },
+    {
+      "path": "runtime/chat/send-continuity-model.js",
+      "sha256": "9249936343a18205f059211f4482c9cea4ac71e5f45dff3d3eb8c12413a8314e"
+    },
+    {
+      "path": "runtime/chat/send-continuity.js",
+      "sha256": "5155da62da7f65dfe0640a7ac4a0816a9889e0563870242414992c558dbffcaf"
+    },
+    {
+      "path": "runtime/chat/send-path.js",
+      "sha256": "f6921e691f7b6120a0a96104a15ade871f2b1b73fab40c80bd1919bf6be60661"
+    },
+    {
+      "path": "runtime/chat/send-text-layout.js",
+      "sha256": "2052f072eb22f1a20a810d46fb51e336a77b79b2fd868779eed8193f5f79c54a"
+    },
+    {
+      "path": "runtime/chat/vendor/gsap/Flip.min.js",
+      "sha256": "cbe3ca726350f8d230da38a14ce2384e7772e05a45cee6144dd7fe6dde868c2f"
+    },
+    {
+      "path": "runtime/chat/vendor/gsap/NOTICE.txt",
+      "sha256": "37aa1b9e5c1686d3463aa43df13e79d6b2382ca913787ef5cc6e8bb26bc451a7"
+    },
+    {
+      "path": "runtime/chat/vendor/gsap/gsap.min.js",
+      "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb"
+    },
+    {
+      "path": "runtime/chat-contour.js",
+      "sha256": "55ee9896bd4453eace4aa39a40069b48ea91e13b3f479ce30a9ec57d41221d78"
+    },
+    {
+      "path": "runtime/chat-host.css",
+      "sha256": "8c21f0abce05c510a6f9c8055b230b1446f4164b5009492a03c51f9826c7c4bd"
+    },
+    {
+      "path": "runtime/chat-host.js",
+      "sha256": "ba33e9e3184fa70676aebd7b99eac3dbbe224ce479ed3159c5bdde387efc5bd5"
+    },
+    {
+      "path": "runtime/chat-motion.js",
+      "sha256": "f169d72a5284cdbdadffdc1754a049e5226290ceae424aa28a71e0a326df88bc"
+    },
+    {
+      "path": "runtime/comparison-status.js",
+      "sha256": "a689f5c7efa42a45f24dfa2f80243a4d4e86f405c8591afddb7868379b07d6e8"
+    },
+    {
+      "path": "runtime/comparison-visibility.js",
+      "sha256": "43130f52fea59d2e81199f597e6698cf1cf026e02f7a689dad692d5ca01ab341"
+    },
+    {
+      "path": "runtime/content.js",
+      "sha256": "009f5995501d4eaf88b69fa06d81c38c716baa90549dfa1c41e08e6619e787b9"
+    },
+    {
+      "path": "runtime/diagnostics/keyboard-diagnostics.js",
+      "sha256": "ebb1e4747975d41a5e74eabb89d36d93335f385d39d9bf93d3b9fc78955e8819"
+    },
+    {
+      "path": "runtime/feed-compact.css",
+      "sha256": "b0efc719e044614daa7603067ff57b2305ed4bb30af223e04a9180f7144b4358"
+    },
+    {
+      "path": "runtime/feed-layout.js",
+      "sha256": "7dec28dbd52bb640f0158060fed82a9f44d4731e3698066137854a55ff68a2e0"
+    },
+    {
+      "path": "runtime/feed-reflow.js",
+      "sha256": "85d30880b493f861a047390b10132ce631612b274cac0f1bf3a842253ae9584c"
+    },
+    {
+      "path": "runtime/host.css",
+      "sha256": "415b5a285965dfd3046b57569d7aa7180cb63569ec1d258b8c4e8d31c626db03"
+    },
+    {
+      "path": "runtime/host.js",
+      "sha256": "e62a9d373b21a18005a908e91502e66034a8b29b22ae28cd2db5791a6e903a98"
+    },
+    {
+      "path": "runtime/index.html",
+      "sha256": "03ff252b3b26761cbc04472092eb3aeb0643db19c382115ca18a5d670422cb7d"
+    },
+    {
+      "path": "runtime/material.css",
+      "sha256": "ce64cb786aa537751c52269488ad96a964908f1cc86c224ba991321054b2217c"
+    },
+    {
+      "path": "runtime/modules/menu.css",
+      "sha256": "155de5531b954490d0c19c7c25c88d3f9501225965c9eadc8abfae0aca21fc7f"
+    },
+    {
+      "path": "runtime/modules/menu.js",
+      "sha256": "1ce918555505fe611318c55f100cbba879d1e6c8aaea7029cd80eb5f30d729d1"
+    },
+    {
+      "path": "runtime/modules/mount.js",
+      "sha256": "693f27d090a56f3a925b68ff3f2ace911ae0e77285a653bfabef1fe2f76b7e3a"
+    },
+    {
+      "path": "runtime/modules/weather.css",
+      "sha256": "c0092338b2fb3953678b5f5ae1c5ab101604b986e409d496128091e8cdc33f2b"
+    },
+    {
+      "path": "runtime/modules/weather.js",
+      "sha256": "44a2de63f5e6fb1f64341005d433881837eb9fa3b10d005602df8c1bd2830c1b"
+    },
+    {
+      "path": "runtime/palette.css",
+      "sha256": "c4deab976ada8f17bdc9cd9ecc01d1346b0c21a878d3aa6366645fcd48778ef5"
+    },
+    {
+      "path": "runtime/release-meta.json",
+      "sha256": "340d7bc58dfd788a0b3042cf172e4fe44176a73f9c9511df80f42655458c6e76"
+    },
+    {
+      "path": "runtime/scene-bridge.js",
+      "sha256": "275b8cb623fa45ea102f8fedfd8ee6f86ced3b8edb6cc7406f5116104eced6c6"
+    },
+    {
+      "path": "runtime/send-comparison.css",
+      "sha256": "837459bf03305288015c20aebbb9af5ab4549db4fe03989c11341d3190e4396a"
+    },
+    {
+      "path": "runtime/send-comparison.html",
+      "sha256": "a3478819c44f3681fbcebd99cf2be394bfb840c6228ed42913fd5b1b7ad864b0"
+    },
+    {
+      "path": "runtime/send-comparison.js",
+      "sha256": "74a355e517d30e2a7febf5e64a04a4fe74c60aca11027ce7f67b4237ffbfbf22"
+    },
+    {
+      "path": "runtime/story/book-story.js",
+      "sha256": "915abaef133d8c8cf974ec9e5ad1faca2f3de7ecc754f91db465841368fa15dd"
+    },
+    {
+      "path": "runtime/story/content-presentation.js",
+      "sha256": "bfd411599ba98ceee92cfaba302a66abade14251d7c1be995438c8426083adc2"
+    },
+    {
+      "path": "runtime/story/frame-clock.js",
+      "sha256": "522abb7185994d2f09a7702cef623bb9014e07c0b5bfabb0175885361768b825"
+    },
+    {
+      "path": "runtime/story/geometry.js",
+      "sha256": "b4983a87eece5b9e8e84773d39b7747e2782c11c43d987162051832348cd58fc"
+    },
+    {
+      "path": "runtime/story/lifecycle.js",
+      "sha256": "ee116e191aeb62391d59f2133cd986195d8a6e077cabd8c0c6e63e2e7d11281c"
+    },
+    {
+      "path": "runtime/story/props.js",
+      "sha256": "8616b030a66656a77e6236569f485d37fb659ed5e5996bad8a1039d8ca7cc0dd"
+    },
+    {
+      "path": "runtime/story/story.css",
+      "sha256": "0c3679abfe9b00343c490d63b7f4ecb4ee574c5bf766684911e56bf1c38117db"
+    },
+    {
+      "path": "runtime/style.css",
+      "sha256": "69afa74e3bc89fc6758c39585ae789345cfdce80efb591ba0829031ad0783a03"
+    },
+    {
+      "path": "runtime/vendor/motion/NOTICE.md",
+      "sha256": "66b5c9807d07996c6f8ad928ac76a01de61cd6216f3356bae5ba1bf23003a3d2"
+    },
+    {
+      "path": "runtime/world/scene.js",
+      "sha256": "3337839ee4f75808c9b2e626be6809fd24a13261a89e0522db93423ae1e75fae"
+    },
+    {
+      "path": "runtime/world/scoped.css",
+      "sha256": "be8e379244be28eee5155b518b8ce8af8f40b1f9e574e1761cdf298c09fd1c01"
+    },
+    {
+      "path": "runtime/world/shadow-cache.js",
+      "sha256": "6482c892a62b81322dc96ab8d47aa3d00084517209a61fa5a3c0579c44fdd99d"
+    },
+    {
+      "path": "runtime/world/style.css",
+      "sha256": "7262149614ee034bf52d7fdcadadba1b162b8e6841975c350e48ab84658b3186"
+    },
+    {
+      "path": "runtime/world/theme.js",
+      "sha256": "d0dbf2ccb0ea7dab7ec6a4383eb24ce8d66b8d53aa71f1876cd30a9e8aeba489"
+    },
+    {
+      "path": "runtime/world/theme.json",
+      "sha256": "17b25dd7088e1866a849e2397a08ef23ebe0ed96c548a44d72f059902d655a0e"
+    },
+    {
+      "path": "runtime/world/vendor/aora/ATTRIBUTION.txt",
+      "sha256": "5df50aa8fcee9acb4e80f9baab7d154106120d36e3e9fbd2bed0146cb8db35be"
+    },
+    {
+      "path": "runtime/world/vendor/aora/LICENSE",
+      "sha256": "cd25a8e1b00d05b2bb29d3a626599526db960b5bf3ba94fd726565b9bec7f8ea"
+    },
+    {
+      "path": "runtime/world/vendor/aora/NOTICE.md",
+      "sha256": "549d6607c9dd13c9add2fa5faeccca488bd78cf30cac2b0b4d3dbcd8b45b721d"
+    },
+    {
+      "path": "runtime/world/vendor/aora/SOURCE-MANIFEST.json",
+      "sha256": "1def92868ff495d9098778a7a53532b85a288c1e19de27e8bb8780ecefde1d49"
+    },
+    {
+      "path": "runtime/world/vendor/aora/rings.js",
+      "sha256": "7fd196046650b8273d87c9b85a899554d90f35c62d676eea1c681630e721ec20"
+    },
+    {
+      "path": "runtime/world/vendor/three/LICENSE",
+      "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+    },
+    {
+      "path": "runtime/world/vendor/three/RoomEnvironment.js",
+      "sha256": "c20f0b4677f6128a138d7152b85cbef9091f4f45cdfa05adca04d40c1697c7ae"
+    },
+    {
+      "path": "runtime/world/vendor/three/three.core.js",
+      "sha256": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20"
+    },
+    {
+      "path": "runtime/world/vendor/three/three.module.js",
+      "sha256": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a"
+    },
+    {
+      "path": "runtime/world/world-adapter.js",
+      "sha256": "57c1a391b0be7c237eba1711a1fae77fec4c32533e8e518434af6b7f5704730e"
+    },
+    {
+      "path": "runtime/world-availability.js",
+      "sha256": "a802daffb2300ae96826e0d60d718ca95d767b816876aca951f4d7479fe99b0d"
+    }
+  ],
+  "supportingFiles": {
+    "THIRD_PARTY_NOTICES.md": "8f51ac5afd1fb9bb1d8377fd07d29d8ec2e366c9e4432c2a932297b8b6dadb10",
+    "apps/web/tests/integration/card-projection.test.mjs": "f11eeec6bc229978cf643de2dd20f8f6b35db1950d96514ec2b3eb226d3ce6d9",
+    "apps/web/tests/integration/content-fixture.mjs": "8f75011eafe25b0f54fe1ab2112d52931e3c60e23e3a452be2a5dd1892ce9aaf",
+    "apps/web/tests/integration/reading-assistant.test.mjs": "ff6d6b627f1b4d93e1de9e80c986d8390efe2f88b910529d73c8df94aeb9a6d2",
+    "docs/CARD_READER_CANDIDATE.md": "79c318853915f590abe47ab70486862eb4fc6d7bbcf666e4d9622f95c04e5113",
+    "scripts/check-card-reader-candidate.mjs": "9ec5e08c8fe06c74c2096ef32448b33f785a433d0092c22bd9a751174e64055d",
+    "scripts/test-card-reader-candidate.mjs": "2448ef302587a09880068ee29a47896777ac1820c1fe25b12093363184a81983",
+    "apps/web/tests/integration/reader-scroll-ownership.test.mjs": "0fec4ba36e3bb93df17a1179f7cefdeb5dfb552964e1c252e2719a2fcdbd9946",
+    "apps/web/tests/integration/reader-visible-text.test.mjs": "f7238d7c307c57e9d20fa305dab5f5cdba6d0fe15eedc2f6a0ef21ec59fe5d4e"
+  },
+  "chatHistoryGate": "if(push&&document.defaultView?.personalOSContent?.deferChatOpen?.(()=>show({history:true})))return true;"
+}

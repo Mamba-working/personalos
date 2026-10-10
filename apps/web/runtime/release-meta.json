@@ -2,7 +2,7 @@
   "product": "PersonalOS",
   "productVersion": "v0.1.0-alpha.7",
   "channel": "alpha",
-  "reviewLabel": "Local alpha.7 candidate · visible-weather elapsed correctness",
+  "reviewLabel": "Motion-inspired reader r3 · browser acceptance pending",
   "fullUnifiedAcceptance": false,
   "deferredGates": [
     "final-user-signoff",
@@ -17,5 +17,15 @@
     "SwiftShader observations do not establish physical-device smoothness, renderer FPS or general performance acceptance",
     "Hidden/resume browser evidence is a diagnostic visibility override, not native OS or physical-device backgrounding",
     "Physical-device native keyboard/IME and final unified-product user signoff pending"
-  ]
+  ],
+  "readerCandidate": {
+    "id": "split-card-reader-r3",
+    "baselineGitHubCommit": "15a5967b775dec5e1224c224a5e36f07ddbbb76b",
+    "deployedByteParity": "unverified",
+    "browserAcceptance": false,
+    "changesSinceR1": [
+      "native scrolling-box lifetime reset",
+      "one visible translation-only text identity"
+    ]
+  }
 }

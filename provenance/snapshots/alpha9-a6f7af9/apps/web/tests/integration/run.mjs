@@ -1,0 +1,21 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import {spawnSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
+const here=path.dirname(fileURLToPath(import.meta.url)),runtime=path.resolve(here,'../../runtime'),evidence=path.join(here,'evidence');
+fs.mkdirSync(evidence,{recursive:true});
+function files(dir){return fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()?files(path.join(dir,e.name)):[path.join(dir,e.name)]);}
+const hash=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+const sources=Object.fromEntries(files(runtime).sort().map(p=>[path.relative(runtime,p),hash(p)]));
+const testDirectories=[here,path.resolve(here,'../menu-port'),path.resolve(here,'../weather-port'),path.resolve(here,'../weather-v5'),path.resolve(here,'../weather-elapsed')];
+const tests=testDirectories.flatMap(directory=>fs.readdirSync(directory).filter(p=>p.endsWith('.test.mjs')).map(p=>path.relative(here,path.join(directory,p)))).sort();
+const startedAt=new Date().toISOString();
+const result=spawnSync(process.execPath,['--test','--test-concurrency=4','--test-reporter=tap',...tests.map(p=>path.join(here,p))],{cwd:here,encoding:'utf8',timeout:60000,maxBuffer:16*1024*1024});
+const output=(result.stdout||'')+(result.stderr||'');fs.writeFileSync(path.join(evidence,'candidate-integration.tap'),output);
+const changed=Object.keys(sources).filter(p=>!fs.existsSync(path.join(runtime,p))||sources[p]!==hash(path.join(runtime,p)));
+const metadata={startedAt,finishedAt:new Date().toISOString(),runtime,tests,sources,sourceChangedDuringRun:changed,exitCode:result.status,signal:result.signal,error:result.error?.message||null,boundary:'Node/JSDOM + deterministic DOM/geometry/GSAP doubles, not GPU, real browser, native keyboard, or device acceptance'};
+fs.writeFileSync(path.join(evidence,'candidate-manifest.json'),JSON.stringify(metadata,null,2)+'\n');
+process.stdout.write(output);
+if(changed.length)console.error('Candidate changed during this test run; rerun against settled sources:',changed);
+process.exit(result.error||changed.length?1:result.status??1);

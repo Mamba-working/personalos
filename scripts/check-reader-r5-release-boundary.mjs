@@ -12,9 +12,9 @@ export const READER_R5_RELEASE = Object.freeze({
   baselineTree: '20427c18a9df8a4c80b230e23d20bf1289dbaab2',
   inputManifest: 'provenance/candidates/reader-r5-0acb367.json',
   inputManifestSHA256: 'c7eaee7247cf2c98f051a73cea823f993b673c42d4c249562319fc57764ac681',
-  activeManifestSHA256: 'b418de4ffc9d4b5b42543bfd2c5e346d101e39b2a8151d39b7fc724429b6f329',
+  activeManifestSHA256: '5b43a6a6248efd960ad7f9e0ac6fcfcf5f1383e2ae07d57241cca2c58fa55640',
   sourceList: 'provenance/alpha10-source-files.json',
-  sourceListSHA256: 'ae43b0530da09207d7320d1f0c57a4e55d1d71a9e042970fadd2b020cb02cf65',
+  sourceListSHA256: '6750e310b99d4fdbedf841d7ec5ef28727441f8b5a7577f47d37a392bca03631',
   changed: Object.freeze(['runtime/app.js', 'runtime/index.html', 'runtime/material.css', 'runtime/release-meta.json'])
 });
 const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');

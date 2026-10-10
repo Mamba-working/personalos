@@ -1,0 +1,487 @@
+{
+  "schemaVersion": 1,
+  "currentWebFiles": [
+    "apps/web/tests/integration/accepted-send.test.mjs",
+    "apps/web/tests/integration/bfcache.test.mjs",
+    "apps/web/tests/integration/card-projection.test.mjs",
+    "apps/web/tests/integration/chat-world.test.mjs",
+    "apps/web/tests/integration/compact-feed-baseline.test.mjs",
+    "apps/web/tests/integration/compact-feed.test.mjs",
+    "apps/web/tests/integration/content-host.test.mjs",
+    "apps/web/tests/integration/flow-owner.test.mjs",
+    "apps/web/tests/integration/hidden-source.test.mjs",
+    "apps/web/tests/integration/host-navigation.test.mjs",
+    "apps/web/tests/integration/integration-contract.test.mjs",
+    "apps/web/tests/integration/module-bootstrap.test.mjs",
+    "apps/web/tests/integration/motion-clock.test.mjs",
+    "apps/web/tests/integration/reader-endpoint-continuity.test.mjs",
+    "apps/web/tests/integration/reader-scroll-ownership.test.mjs",
+    "apps/web/tests/integration/reader-surface-continuity.test.mjs",
+    "apps/web/tests/integration/reader-visible-text.test.mjs",
+    "apps/web/tests/integration/reading-assistant.test.mjs",
+    "apps/web/tests/integration/recorder.test.mjs",
+    "apps/web/tests/integration/replay-scroll.test.mjs",
+    "apps/web/tests/integration/scroll-source.test.mjs",
+    "apps/web/tests/integration/shadow-cache-boundary.test.mjs",
+    "apps/web/tests/integration/shadow-cache.test.mjs",
+    "apps/web/tests/integration/story-contract.test.mjs",
+    "apps/web/tests/integration/story-geometry-props.test.mjs",
+    "apps/web/tests/integration/story-geometry.test.mjs",
+    "apps/web/tests/integration/temporal-close.test.mjs",
+    "apps/web/tests/integration/weather-overlay.test.mjs",
+    "apps/web/tests/integration/weather-solar-baseline.test.mjs",
+    "apps/web/tests/integration/weather-solar.test.mjs",
+    "apps/web/tests/integration/world-cpu.test.mjs",
+    "apps/web/tests/integration/world-layers.test.mjs",
+    "apps/web/tests/menu-port/menu.test.mjs",
+    "apps/web/tests/weather-elapsed/elapsed.test.mjs",
+    "apps/web/tests/weather-port/weather.test.mjs",
+    "apps/web/tests/weather-v5/assembly.test.mjs",
+    "apps/web/tests/weather-v5/model-parity.test.mjs",
+    "apps/web/tests/weather-v5/phase-continuity.test.mjs",
+    "apps/web/tests/weather-v5/readable-weather.test.mjs",
+    "apps/web/tests/weather-v5/reading-protection.test.mjs",
+    "apps/web/tests/weather-v5/retarget-continuity.test.mjs",
+    "apps/web/tests/weather-v5/weather-solar.test.mjs",
+    "apps/web/tests/weather-v5/weather.test.mjs"
+  ],
+  "deduplication": {
+    "policy": "Only named input-identical pure module/fixed-fixture tests run once on current source. All historical reader/host/world/assembly tests remain explicit shards. HTML body equality is checked separately from its exact per-version title.",
+    "commonInputFiles": [
+      "apps/web/runtime/chat-contour.js",
+      "apps/web/runtime/chat-host.css",
+      "apps/web/runtime/chat-host.js",
+      "apps/web/runtime/chat-motion.js",
+      "apps/web/runtime/chat/chat-fluid-send.js",
+      "apps/web/runtime/chat/chat-mobile-flow-page.js",
+      "apps/web/runtime/chat/chat-mobile-flow.css",
+      "apps/web/runtime/chat/chat-page-lock.js",
+      "apps/web/runtime/chat/chat-reading-flow.js",
+      "apps/web/runtime/chat/chat-reading-interior.js",
+      "apps/web/runtime/chat/chat-reading.css",
+      "apps/web/runtime/chat/chat-turn-scroll.js",
+      "apps/web/runtime/chat/chat-viewport.js",
+      "apps/web/runtime/chat/contextual-chat-layout.js",
+      "apps/web/runtime/chat/contextual-chat.css",
+      "apps/web/runtime/chat/send-continuity-model.js",
+      "apps/web/runtime/chat/send-continuity.js",
+      "apps/web/runtime/chat/send-path.js",
+      "apps/web/runtime/chat/send-text-layout.js",
+      "apps/web/runtime/chat/vendor/gsap/Flip.min.js",
+      "apps/web/runtime/chat/vendor/gsap/NOTICE.txt",
+      "apps/web/runtime/chat/vendor/gsap/gsap.min.js",
+      "apps/web/runtime/comparison-status.js",
+      "apps/web/runtime/comparison-visibility.js",
+      "apps/web/runtime/content.js",
+      "apps/web/runtime/diagnostics/keyboard-diagnostics.js",
+      "apps/web/runtime/feed-compact.css",
+      "apps/web/runtime/feed-layout.js",
+      "apps/web/runtime/feed-reflow.js",
+      "apps/web/runtime/host.css",
+      "apps/web/runtime/host.js",
+      "apps/web/runtime/modules/menu.css",
+      "apps/web/runtime/modules/menu.js",
+      "apps/web/runtime/modules/mount.js",
+      "apps/web/runtime/modules/weather.css",
+      "apps/web/runtime/modules/weather.js",
+      "apps/web/runtime/palette.css",
+      "apps/web/runtime/scene-bridge.js",
+      "apps/web/runtime/send-comparison.css",
+      "apps/web/runtime/send-comparison.html",
+      "apps/web/runtime/send-comparison.js",
+      "apps/web/runtime/story/book-story.js",
+      "apps/web/runtime/story/content-presentation.js",
+      "apps/web/runtime/story/frame-clock.js",
+      "apps/web/runtime/story/geometry.js",
+      "apps/web/runtime/story/lifecycle.js",
+      "apps/web/runtime/story/props.js",
+      "apps/web/runtime/story/story.css",
+      "apps/web/runtime/style.css",
+      "apps/web/runtime/vendor/motion/NOTICE.md",
+      "apps/web/runtime/world-availability.js",
+      "apps/web/runtime/world/scene.js",
+      "apps/web/runtime/world/scoped.css",
+      "apps/web/runtime/world/shadow-cache.js",
+      "apps/web/runtime/world/style.css",
+      "apps/web/runtime/world/theme.js",
+      "apps/web/runtime/world/theme.json",
+      "apps/web/runtime/world/vendor/aora/ATTRIBUTION.txt",
+      "apps/web/runtime/world/vendor/aora/LICENSE",
+      "apps/web/runtime/world/vendor/aora/NOTICE.md",
+      "apps/web/runtime/world/vendor/aora/SOURCE-MANIFEST.json",
+      "apps/web/runtime/world/vendor/aora/rings.js",
+      "apps/web/runtime/world/vendor/three/LICENSE",
+      "apps/web/runtime/world/vendor/three/RoomEnvironment.js",
+      "apps/web/runtime/world/vendor/three/three.core.js",
+      "apps/web/runtime/world/vendor/three/three.module.js",
+      "apps/web/runtime/world/world-adapter.js",
+      "apps/web/tests/integration/.gitignore",
+      "apps/web/tests/integration/chat-world-fixture.mjs",
+      "apps/web/tests/integration/compact-feed-fixture.mjs",
+      "apps/web/tests/integration/content-fixture.mjs",
+      "apps/web/tests/integration/fixtures/accepted-baseline/app.js",
+      "apps/web/tests/integration/fixtures/accepted-baseline/chat-contour.js",
+      "apps/web/tests/integration/fixtures/accepted-baseline/chat-host.css",
+      "apps/web/tests/integration/fixtures/accepted-baseline/chat-host.js",
+      "apps/web/tests/integration/fixtures/accepted-baseline/chat-motion.js",
+      "apps/web/tests/integration/fixtures/accepted-baseline/chat/chat-fluid-send.js",
+      "apps/web/tests/integration/fixtures/accepted-baseline/chat/chat-page-lock.js",
+      "apps/web/tests/integration/fixtures/accepted-baseline/chat/chat-reading-flow.js",
+      "apps/web/tests/integration/fixtures/accepted-baseline/chat/chat-reading-interior.js",
+      "apps/web/tests/integration/fixtures/accepted-baseline/chat/chat-reading.css",
+      "apps/web/tests/integration/fixtures/accepted-baseline/chat/chat-turn-scroll.js",
+      "apps/web/tests/integration/fixtures/accepted-baseline/chat/chat-viewport.js",
+      "apps/web/tests/integration/fixtures/accepted-baseline/chat/contextual-chat-layout.js",
+      "apps/web/tests/integration/fixtures/accepted-baseline/chat/contextual-chat.css",
+      "apps/web/tests/integration/fixtures/accepted-baseline/chat/send-continuity-model.js",
+      "apps/web/tests/integration/fixtures/accepted-baseline/chat/send-continuity.js",
+      "apps/web/tests/integration/fixtures/accepted-baseline/chat/send-path.js",
+      "apps/web/tests/integration/fixtures/accepted-baseline/chat/send-text-layout.js",
+      "apps/web/tests/integration/fixtures/accepted-baseline/chat/vendor/gsap/Flip.min.js",
+      "apps/web/tests/integration/fixtures/accepted-baseline/chat/vendor/gsap/NOTICE.txt",
+      "apps/web/tests/integration/fixtures/accepted-baseline/chat/vendor/gsap/gsap.min.js",
+      "apps/web/tests/integration/fixtures/accepted-baseline/comparison-status.js",
+      "apps/web/tests/integration/fixtures/accepted-baseline/comparison-visibility.js",
+      "apps/web/tests/integration/fixtures/accepted-baseline/content.js",
+      "apps/web/tests/integration/fixtures/accepted-baseline/host.css",
+      "apps/web/tests/integration/fixtures/accepted-baseline/host.js",
+      "apps/web/tests/integration/fixtures/accepted-baseline/material.css",
+      "apps/web/tests/integration/fixtures/accepted-baseline/palette.css",
+      "apps/web/tests/integration/fixtures/accepted-baseline/scene-bridge.js",
+      "apps/web/tests/integration/fixtures/accepted-baseline/send-comparison.css",
+      "apps/web/tests/integration/fixtures/accepted-baseline/send-comparison.js",
+      "apps/web/tests/integration/fixtures/accepted-baseline/style.css",
+      "apps/web/tests/integration/fixtures/accepted-baseline/world-availability.js",
+      "apps/web/tests/integration/fixtures/accepted-baseline/world/scene.js",
+      "apps/web/tests/integration/fixtures/accepted-baseline/world/scoped.css",
+      "apps/web/tests/integration/fixtures/accepted-baseline/world/style.css",
+      "apps/web/tests/integration/fixtures/accepted-baseline/world/theme.js",
+      "apps/web/tests/integration/fixtures/accepted-baseline/world/theme.json",
+      "apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/aora/ATTRIBUTION.txt",
+      "apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/aora/LICENSE",
+      "apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/aora/SOURCE-MANIFEST.json",
+      "apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/aora/rings.js",
+      "apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/three/LICENSE",
+      "apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/three/RoomEnvironment.js",
+      "apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/three/three.core.js",
+      "apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/three/three.module.js",
+      "apps/web/tests/integration/fixtures/accepted-baseline/world/world-adapter.js",
+      "apps/web/tests/integration/fixtures/alpha2-compact-feed/app.js",
+      "apps/web/tests/integration/fixtures/alpha2-compact-feed/content.js",
+      "apps/web/tests/integration/fixtures/alpha2-compact-feed/manifest.json",
+      "apps/web/tests/integration/fixtures/alpha2-compact-feed/style.css",
+      "apps/web/tests/integration/fixtures/alpha3-solar-noop/manifest.json",
+      "apps/web/tests/integration/fixtures/alpha3-solar-noop/weather.js",
+      "apps/web/tests/integration/fixtures/continuity-fixture.mjs",
+      "apps/web/tests/integration/fixtures/motion-clock-before/app.js",
+      "apps/web/tests/integration/fixtures/motion-clock-before/chat-host.js",
+      "apps/web/tests/integration/fixtures/motion-clock-before/chat-motion.js",
+      "apps/web/tests/integration/fixtures/motion-clock-before/sha256.json",
+      "apps/web/tests/integration/fixtures/motion-clock-before/story/frame-clock.js",
+      "apps/web/tests/integration/fixtures/motion-clock-before/story/lifecycle.js",
+      "apps/web/tests/integration/fixtures/reading-before/app.js",
+      "apps/web/tests/integration/fixtures/reading-before/host.css",
+      "apps/web/tests/integration/fixtures/reading-before/host.js",
+      "apps/web/tests/integration/fixtures/reading-before/sha256.json",
+      "apps/web/tests/integration/fixtures/v100/app.js",
+      "apps/web/tests/integration/fixtures/v100/chat-contour.js",
+      "apps/web/tests/integration/fixtures/v100/chat-host.css",
+      "apps/web/tests/integration/fixtures/v100/chat-host.js",
+      "apps/web/tests/integration/fixtures/v100/chat-motion.js",
+      "apps/web/tests/integration/fixtures/v100/chat/chat-fluid-send.js",
+      "apps/web/tests/integration/fixtures/v100/chat/chat-mobile-flow-page.js",
+      "apps/web/tests/integration/fixtures/v100/chat/chat-mobile-flow.css",
+      "apps/web/tests/integration/fixtures/v100/chat/chat-page-lock.js",
+      "apps/web/tests/integration/fixtures/v100/chat/chat-reading-flow.js",
+      "apps/web/tests/integration/fixtures/v100/chat/chat-reading-interior.js",
+      "apps/web/tests/integration/fixtures/v100/chat/chat-reading.css",
+      "apps/web/tests/integration/fixtures/v100/chat/chat-turn-scroll.js",
+      "apps/web/tests/integration/fixtures/v100/chat/chat-viewport.js",
+      "apps/web/tests/integration/fixtures/v100/chat/contextual-chat-layout.js",
+      "apps/web/tests/integration/fixtures/v100/chat/contextual-chat.css",
+      "apps/web/tests/integration/fixtures/v100/chat/send-continuity-model.js",
+      "apps/web/tests/integration/fixtures/v100/chat/send-continuity.js",
+      "apps/web/tests/integration/fixtures/v100/chat/send-path.js",
+      "apps/web/tests/integration/fixtures/v100/chat/send-text-layout.js",
+      "apps/web/tests/integration/fixtures/v100/comparison-status.js",
+      "apps/web/tests/integration/fixtures/v100/comparison-visibility.js",
+      "apps/web/tests/integration/fixtures/v100/content.js",
+      "apps/web/tests/integration/fixtures/v100/diagnostics/keyboard-diagnostics.js",
+      "apps/web/tests/integration/fixtures/v100/host.css",
+      "apps/web/tests/integration/fixtures/v100/host.js",
+      "apps/web/tests/integration/fixtures/v100/material.css",
+      "apps/web/tests/integration/fixtures/v100/palette.css",
+      "apps/web/tests/integration/fixtures/v100/scene-bridge.js",
+      "apps/web/tests/integration/fixtures/v100/send-comparison.css",
+      "apps/web/tests/integration/fixtures/v100/send-comparison.js",
+      "apps/web/tests/integration/fixtures/v100/style.css",
+      "apps/web/tests/integration/fixtures/v100/world-availability.js",
+      "apps/web/tests/integration/fixtures/v100/world/scene.js",
+      "apps/web/tests/integration/fixtures/v100/world/scoped.css",
+      "apps/web/tests/integration/fixtures/v100/world/style.css",
+      "apps/web/tests/integration/fixtures/v100/world/theme.js",
+      "apps/web/tests/integration/fixtures/v100/world/world-adapter.js",
+      "apps/web/tests/integration/fixtures/weather-overlay-before/browser-overlap.json",
+      "apps/web/tests/integration/fixtures/weather-overlay-before/host.css",
+      "apps/web/tests/integration/fixtures/weather-overlay-before/manifest.json",
+      "apps/web/tests/integration/fixtures/weather-overlay-before/weather.css",
+      "apps/web/tests/integration/fixtures/weather-overlay-before/weather.js",
+      "apps/web/tests/integration/flow-fixture.mjs",
+      "apps/web/tests/integration/host-fixture.mjs",
+      "apps/web/tests/integration/motion-clock-fixture.mjs",
+      "apps/web/tests/integration/package-lock.json",
+      "apps/web/tests/integration/package.json",
+      "apps/web/tests/integration/reading-clearance.mjs",
+      "apps/web/tests/integration/reading-shelf-fixture.mjs",
+      "apps/web/tests/integration/weather-overlay-fixture.mjs",
+      "apps/web/tests/integration/weather-solar-fixture.mjs",
+      "apps/web/tests/integration/world-cpu-fixture.mjs",
+      "apps/web/tests/integration/world-layers-fixture.mjs",
+      "apps/web/tests/weather-elapsed/fixtures/alpha6-weather.js",
+      "apps/web/tests/weather-v5/fixtures/alpha4-host.css",
+      "apps/web/tests/weather-v5/fixtures/alpha4-weather.mjs",
+      "apps/web/tests/weather-v5/fixtures/clock-reviewed-protected.json",
+      "apps/web/tests/weather-v5/fixtures/v2/weather.js",
+      "apps/web/tests/weather-v5/fixtures/v3/weather.js",
+      "apps/web/tests/weather-v5/fixtures/v4/weather.css",
+      "apps/web/tests/weather-v5/fixtures/v4/weather.js",
+      "apps/web/tests/weather-v5/fixtures/v4/world-response.txt",
+      "apps/web/tests/weather-v5/fixtures/v5/host-reading.css",
+      "apps/web/tests/weather-v5/fixtures/v5/world-response.txt",
+      "apps/web/tests/weather-v5/weather-solar-fixture.mjs"
+    ],
+    "documentStructureFile": "apps/web/runtime/index.html",
+    "vendorTest": "scripts/setup-vendor.test.mjs",
+    "vendorInputs": [
+      "scripts/setup-vendor.mjs",
+      "provenance/vendor-dependencies.json"
+    ]
+  },
+  "historical": {
+    "alpha8": {
+      "sourceCommit": "ba67a75a2d7bc8b29041bec06ce38cef41a25939",
+      "unitFiles": [
+        "scripts/check-reader-release-boundary.test.mjs",
+        "packages/contracts/test/contracts.test.mjs",
+        "apps/api/test/health.test.mjs",
+        "apps/web/static-server.test.mjs"
+      ],
+      "webFiles": [
+        "apps/web/tests/integration/card-projection.test.mjs",
+        "apps/web/tests/integration/chat-world.test.mjs",
+        "apps/web/tests/integration/compact-feed.test.mjs",
+        "apps/web/tests/integration/content-host.test.mjs",
+        "apps/web/tests/integration/host-navigation.test.mjs",
+        "apps/web/tests/integration/integration-contract.test.mjs",
+        "apps/web/tests/integration/module-bootstrap.test.mjs",
+        "apps/web/tests/integration/motion-clock.test.mjs",
+        "apps/web/tests/integration/reader-scroll-ownership.test.mjs",
+        "apps/web/tests/integration/reader-visible-text.test.mjs",
+        "apps/web/tests/integration/reading-assistant.test.mjs",
+        "apps/web/tests/integration/replay-scroll.test.mjs",
+        "apps/web/tests/integration/scroll-source.test.mjs",
+        "apps/web/tests/integration/shadow-cache-boundary.test.mjs",
+        "apps/web/tests/integration/shadow-cache.test.mjs",
+        "apps/web/tests/integration/story-contract.test.mjs",
+        "apps/web/tests/integration/temporal-close.test.mjs",
+        "apps/web/tests/integration/world-cpu.test.mjs",
+        "apps/web/tests/integration/world-layers.test.mjs",
+        "apps/web/tests/weather-elapsed/elapsed.test.mjs",
+        "apps/web/tests/weather-v5/assembly.test.mjs",
+        "apps/web/tests/weather-v5/readable-weather.test.mjs",
+        "apps/web/tests/weather-v5/reading-protection.test.mjs"
+      ],
+      "deduplicatedWebFiles": [
+        {
+          "file": "apps/web/tests/integration/accepted-send.test.mjs",
+          "reason": "unchanged accepted chat send modules and fixed continuity fixtures"
+        },
+        {
+          "file": "apps/web/tests/integration/bfcache.test.mjs",
+          "reason": "unchanged chat pageshow and turn-scroll code"
+        },
+        {
+          "file": "apps/web/tests/integration/compact-feed-baseline.test.mjs",
+          "reason": "fixed alpha.2 fixture only, not active reader"
+        },
+        {
+          "file": "apps/web/tests/integration/flow-owner.test.mjs",
+          "reason": "unchanged chat flow/page-lock modules and synthetic fixture"
+        },
+        {
+          "file": "apps/web/tests/integration/hidden-source.test.mjs",
+          "reason": "unchanged chat layout/page-lock and hidden-owner code"
+        },
+        {
+          "file": "apps/web/tests/integration/recorder.test.mjs",
+          "reason": "unchanged diagnostics module; HTML differs only in separately checked title"
+        },
+        {
+          "file": "apps/web/tests/integration/story-geometry-props.test.mjs",
+          "reason": "unchanged Three.js/story geometry and prop modules"
+        },
+        {
+          "file": "apps/web/tests/integration/story-geometry.test.mjs",
+          "reason": "unchanged Three.js/story geometry module"
+        },
+        {
+          "file": "apps/web/tests/integration/weather-overlay.test.mjs",
+          "reason": "unchanged weather module and fixed overlay fixtures"
+        },
+        {
+          "file": "apps/web/tests/integration/weather-solar-baseline.test.mjs",
+          "reason": "fixed alpha.3 weather fixtures only"
+        },
+        {
+          "file": "apps/web/tests/integration/weather-solar.test.mjs",
+          "reason": "unchanged weather module and solar fixture"
+        },
+        {
+          "file": "apps/web/tests/menu-port/menu.test.mjs",
+          "reason": "unchanged menu module and synthetic DOM fixture"
+        },
+        {
+          "file": "apps/web/tests/weather-port/weather.test.mjs",
+          "reason": "unchanged weather/clock modules and synthetic Three.js scene"
+        },
+        {
+          "file": "apps/web/tests/weather-v5/model-parity.test.mjs",
+          "reason": "unchanged weather model and fixed alpha.4 control"
+        },
+        {
+          "file": "apps/web/tests/weather-v5/phase-continuity.test.mjs",
+          "reason": "unchanged weather effect and fixed v2 control"
+        },
+        {
+          "file": "apps/web/tests/weather-v5/retarget-continuity.test.mjs",
+          "reason": "unchanged weather effect and fixed v3 control"
+        },
+        {
+          "file": "apps/web/tests/weather-v5/weather-solar.test.mjs",
+          "reason": "unchanged weather module and solar fixture"
+        },
+        {
+          "file": "apps/web/tests/weather-v5/weather.test.mjs",
+          "reason": "unchanged weather/clock modules and synthetic Three.js scene"
+        }
+      ]
+    },
+    "alpha9": {
+      "sourceCommit": "a6f7af9ea8bf8ec52e71e424c2d503ee2d8affbd",
+      "unitFiles": [
+        "scripts/check-reader-r4-release-boundary.test.mjs",
+        "packages/contracts/test/contracts.test.mjs",
+        "apps/api/test/health.test.mjs",
+        "apps/web/static-server.test.mjs"
+      ],
+      "webFiles": [
+        "apps/web/tests/integration/card-projection.test.mjs",
+        "apps/web/tests/integration/chat-world.test.mjs",
+        "apps/web/tests/integration/compact-feed.test.mjs",
+        "apps/web/tests/integration/content-host.test.mjs",
+        "apps/web/tests/integration/host-navigation.test.mjs",
+        "apps/web/tests/integration/integration-contract.test.mjs",
+        "apps/web/tests/integration/module-bootstrap.test.mjs",
+        "apps/web/tests/integration/motion-clock.test.mjs",
+        "apps/web/tests/integration/reader-endpoint-continuity.test.mjs",
+        "apps/web/tests/integration/reader-scroll-ownership.test.mjs",
+        "apps/web/tests/integration/reader-visible-text.test.mjs",
+        "apps/web/tests/integration/reading-assistant.test.mjs",
+        "apps/web/tests/integration/replay-scroll.test.mjs",
+        "apps/web/tests/integration/scroll-source.test.mjs",
+        "apps/web/tests/integration/shadow-cache-boundary.test.mjs",
+        "apps/web/tests/integration/shadow-cache.test.mjs",
+        "apps/web/tests/integration/story-contract.test.mjs",
+        "apps/web/tests/integration/temporal-close.test.mjs",
+        "apps/web/tests/integration/world-cpu.test.mjs",
+        "apps/web/tests/integration/world-layers.test.mjs",
+        "apps/web/tests/weather-elapsed/elapsed.test.mjs",
+        "apps/web/tests/weather-v5/assembly.test.mjs",
+        "apps/web/tests/weather-v5/readable-weather.test.mjs",
+        "apps/web/tests/weather-v5/reading-protection.test.mjs"
+      ],
+      "deduplicatedWebFiles": [
+        {
+          "file": "apps/web/tests/integration/accepted-send.test.mjs",
+          "reason": "unchanged accepted chat send modules and fixed continuity fixtures"
+        },
+        {
+          "file": "apps/web/tests/integration/bfcache.test.mjs",
+          "reason": "unchanged chat pageshow and turn-scroll code"
+        },
+        {
+          "file": "apps/web/tests/integration/compact-feed-baseline.test.mjs",
+          "reason": "fixed alpha.2 fixture only, not active reader"
+        },
+        {
+          "file": "apps/web/tests/integration/flow-owner.test.mjs",
+          "reason": "unchanged chat flow/page-lock modules and synthetic fixture"
+        },
+        {
+          "file": "apps/web/tests/integration/hidden-source.test.mjs",
+          "reason": "unchanged chat layout/page-lock and hidden-owner code"
+        },
+        {
+          "file": "apps/web/tests/integration/recorder.test.mjs",
+          "reason": "unchanged diagnostics module; HTML differs only in separately checked title"
+        },
+        {
+          "file": "apps/web/tests/integration/story-geometry-props.test.mjs",
+          "reason": "unchanged Three.js/story geometry and prop modules"
+        },
+        {
+          "file": "apps/web/tests/integration/story-geometry.test.mjs",
+          "reason": "unchanged Three.js/story geometry module"
+        },
+        {
+          "file": "apps/web/tests/integration/weather-overlay.test.mjs",
+          "reason": "unchanged weather module and fixed overlay fixtures"
+        },
+        {
+          "file": "apps/web/tests/integration/weather-solar-baseline.test.mjs",
+          "reason": "fixed alpha.3 weather fixtures only"
+        },
+        {
+          "file": "apps/web/tests/integration/weather-solar.test.mjs",
+          "reason": "unchanged weather module and solar fixture"
+        },
+        {
+          "file": "apps/web/tests/menu-port/menu.test.mjs",
+          "reason": "unchanged menu module and synthetic DOM fixture"
+        },
+        {
+          "file": "apps/web/tests/weather-port/weather.test.mjs",
+          "reason": "unchanged weather/clock modules and synthetic Three.js scene"
+        },
+        {
+          "file": "apps/web/tests/weather-v5/model-parity.test.mjs",
+          "reason": "unchanged weather model and fixed alpha.4 control"
+        },
+        {
+          "file": "apps/web/tests/weather-v5/phase-continuity.test.mjs",
+          "reason": "unchanged weather effect and fixed v2 control"
+        },
+        {
+          "file": "apps/web/tests/weather-v5/retarget-continuity.test.mjs",
+          "reason": "unchanged weather effect and fixed v3 control"
+        },
+        {
+          "file": "apps/web/tests/weather-v5/weather-solar.test.mjs",
+          "reason": "unchanged weather module and solar fixture"
+        },
+        {
+          "file": "apps/web/tests/weather-v5/weather.test.mjs",
+          "reason": "unchanged weather/clock modules and synthetic Three.js scene"
+        }
+      ]
+    },
+    "alpha7": {
+      "unitFiles": [
+        "scripts/check-provenance.test.mjs",
+        "scripts/check-weather-elapsed-boundary.test.mjs",
+        "packages/contracts/test/contracts.test.mjs",
+        "apps/web/static-server.test.mjs"
+      ]
+    }
+  }
+}

@@ -269,6 +269,7 @@
   "docs/ARCHITECTURE.md",
   "docs/BACKEND_SCOPE.md",
   "docs/CARD_READER_CANDIDATE.md",
+  "docs/FLAT_VERIFICATION.md",
   "docs/MOTION_CLOCK_CANDIDATE.md",
   "docs/MOTION_CLOCK_REVIEW.md",
   "docs/OWNERSHIP.md",
@@ -355,6 +356,7 @@
   "provenance/snapshots/alpha8-ba67a75/scripts/historical-alpha6.mjs",
   "provenance/snapshots/alpha8-ba67a75/scripts/historical-alpha7.mjs",
   "provenance/snapshots/alpha8-ba67a75/scripts/test-release-provenance.mjs",
+  "provenance/snapshots/alpha9-a6f7af9/.github/workflows/ci.yml",
   "provenance/snapshots/alpha9-a6f7af9/README.md",
   "provenance/snapshots/alpha9-a6f7af9/apps/web/package.json",
   "provenance/snapshots/alpha9-a6f7af9/apps/web/runtime/app.js",
@@ -362,6 +364,7 @@
   "provenance/snapshots/alpha9-a6f7af9/apps/web/runtime/material.css",
   "provenance/snapshots/alpha9-a6f7af9/apps/web/runtime/release-meta.json",
   "provenance/snapshots/alpha9-a6f7af9/apps/web/static-server.test.mjs",
+  "provenance/snapshots/alpha9-a6f7af9/apps/web/tests/integration/run.mjs",
   "provenance/snapshots/alpha9-a6f7af9/package-lock.json",
   "provenance/snapshots/alpha9-a6f7af9/package.json",
   "provenance/snapshots/alpha9-a6f7af9/packages/contracts/index.mjs",
@@ -376,6 +379,7 @@
   "provenance/source-allowlist.json",
   "provenance/tooling-verification.json",
   "provenance/vendor-dependencies.json",
+  "provenance/verification-coverage.json",
   "scripts/check-card-reader-candidate.mjs",
   "scripts/check-provenance.mjs",
   "scripts/check-provenance.test.mjs",
@@ -398,6 +402,10 @@
   "scripts/historical-alpha9.mjs",
   "scripts/setup-vendor.mjs",
   "scripts/setup-vendor.test.mjs",
+  "scripts/test-all.mjs",
   "scripts/test-card-reader-candidate.mjs",
-  "scripts/test-release-provenance.mjs"
+  "scripts/test-release-provenance.mjs",
+  "scripts/test-shards.mjs",
+  "scripts/test-shards.test.mjs",
+  "scripts/verification-coverage.mjs"
 ]

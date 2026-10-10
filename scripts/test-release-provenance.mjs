@@ -1,21 +1,23 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
-import {spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
+import {historicalAlpha7Root} from './historical-alpha7.mjs';
+import {historicalAlpha8Root} from './historical-alpha8.mjs';
 import {historicalAlpha9Root} from './historical-alpha9.mjs';
-const root=fileURLToPath(new URL('../',import.meta.url));
-// Authenticate the complete predecessor first. Tests get a disposable copy so
-// installing their unchanged locked dependencies never changes the cached oracle.
-const historical=historicalAlpha9Root(root);
-const testRoot=fs.mkdtempSync(path.join(os.tmpdir(),'personalos-alpha9-tests-'));
-try{
- fs.cpSync(historical,testRoot,{recursive:true});
- for(const dependencies of ['node_modules','apps/web/tests/integration/node_modules']) fs.symlinkSync(fs.realpathSync(path.join(root,dependencies)),path.join(testRoot,dependencies),'dir');
- // The original runner executes all original alpha.6/alpha.7/alpha.8/alpha.9 assertions.
- for(const [cwd,command,args] of [[testRoot,'npm',['test']],[root,process.execPath,['--test','scripts/check-reader-r5-release-boundary.test.mjs']]]){
-  const result=spawnSync(command,args,{cwd,stdio:'inherit'});
-  if(result.status!==0)process.exitCode=result.status??1;
-  if(result.status!==0)break;
- }
-}finally{fs.rmSync(testRoot,{recursive:true,force:true});}
+import {readCoverage,verifyHistoricalCoverage} from './verification-coverage.mjs';
+import {runTestShards} from './test-shards.mjs';
+const root=fileURLToPath(new URL('../',import.meta.url)),coverage=readCoverage(root),evidenceRoot=path.join(root,'evidence/verification');let passed=true;
+// Authenticate each original source and invoke exact assertion files directly.
+// Never invoke an archived npm pipeline or archived whole-web runner.
+for(const [version,resolve] of [['alpha7',historicalAlpha7Root],['alpha8',historicalAlpha8Root],['alpha9',historicalAlpha9Root]]){
+ const historical=resolve(root),plan=version==='alpha7'?coverage.historical.alpha7:verifyHistoricalCoverage(root,historical,version,coverage);
+ const testRoot=fs.mkdtempSync(path.join(os.tmpdir(),`personalos-flat-${version}-`));
+ try{
+  fs.cpSync(historical,testRoot,{recursive:true});
+  for(const dependencies of ['node_modules','apps/web/tests/integration/node_modules'])fs.symlinkSync(fs.realpathSync(path.join(root,dependencies)),path.join(testRoot,dependencies),'dir');
+  for(const [kind,files] of [['assertions',plan.unitFiles],['web',plan.webFiles||[]]])if(files.length){const result=runTestShards({root:testRoot,files,label:version+'-'+kind,evidenceRoot});passed=result.passed&&passed;}
+ }finally{fs.rmSync(testRoot,{recursive:true,force:true});}
+}
+const current=runTestShards({root,files:['scripts/check-reader-r5-release-boundary.test.mjs'],label:'current-provenance',evidenceRoot});
+process.exitCode=passed&&current.passed?0:1;

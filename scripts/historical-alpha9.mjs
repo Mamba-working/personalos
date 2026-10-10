@@ -9,7 +9,7 @@ import {spawnSync} from 'node:child_process';
 export const ALPHA9_HISTORY = Object.freeze({
   commit: 'a6f7af9ea8bf8ec52e71e424c2d503ee2d8affbd',
   manifest: 'provenance/candidates/alpha9-source-a6f7af9.json',
-  manifestSHA256: '22054b8f62b8292801d57a0448b740b72776c6308dd1e86ea61612d19443df7f',
+  manifestSHA256: 'e55bfa1d1e00e6df00981de5a6ce9d607dcc34a3eb2526a6349c6a8a0b2de4a1',
   snapshot: 'provenance/snapshots/alpha9-a6f7af9',
   runtimeSHA256: 'b03d2a5931fc8ab7162395e695a873287e69d8bd52c7b92c1c6ab52ba37181c4'
 });

@@ -1,0 +1,142 @@
+{
+  "createdUTC": "2026-10-10T07:15:34.309453+00:00",
+  "phase": "before copying or candidate edits",
+  "files": [
+    {
+      "source": "qa/fixtures/original-public/app.js",
+      "relative": "app.js",
+      "bytes": 13219,
+      "sha256": "a9f947005624ad8affd03b59ee7bef0b02b9355e531d9636c98a92cd632eb5f6"
+    },
+    {
+      "source": "public/assets/export-manifest.json",
+      "relative": "assets/export-manifest.json",
+      "bytes": 13680,
+      "sha256": "e3753132f9479d3d8c3f18178d68e8ffbd18e0f0f69de10e6b87a2fee3c61870"
+    },
+    {
+      "source": "public/assets/foreground.glb",
+      "relative": "assets/foreground.glb",
+      "bytes": 2221336,
+      "sha256": "11d01c348cae82681e11e63393e953e535ceaad52e14ab7fea435505e94a6c89"
+    },
+    {
+      "source": "qa/fixtures/original-public/foreground-rain.js",
+      "relative": "foreground-rain.js",
+      "bytes": 5871,
+      "sha256": "8940cba282306f60dc06cc862cfaff79c97ee95d29aab8526e5863ecd89b7b90"
+    },
+    {
+      "source": "qa/fixtures/original-public/index.html",
+      "relative": "index.html",
+      "bytes": 3022,
+      "sha256": "57c88f4ae9419cbf5b038004fd9db039cc1d5c95fc3c99aaf5586d6ad2c35937"
+    },
+    {
+      "source": "public/licenses/ATTRIBUTION.txt",
+      "relative": "licenses/ATTRIBUTION.txt",
+      "bytes": 386,
+      "sha256": "5df50aa8fcee9acb4e80f9baab7d154106120d36e3e9fbd2bed0146cb8db35be"
+    },
+    {
+      "source": "public/licenses/LICENSE",
+      "relative": "licenses/LICENSE",
+      "bytes": 5027,
+      "sha256": "cd25a8e1b00d05b2bb29d3a626599526db960b5bf3ba94fd726565b9bec7f8ea"
+    },
+    {
+      "source": "public/licenses/NOTICE.md",
+      "relative": "licenses/NOTICE.md",
+      "bytes": 3234,
+      "sha256": "549d6607c9dd13c9add2fa5faeccca488bd78cf30cac2b0b4d3dbcd8b45b721d"
+    },
+    {
+      "source": "public/licenses/three-mesh-bvh-LICENSE",
+      "relative": "licenses/three-mesh-bvh-LICENSE",
+      "bytes": 1072,
+      "sha256": "b106ef6198a9862ed2b5b873e944ecf3583c631a84a7462d400ecc1910ce7fee"
+    },
+    {
+      "source": "public/rain-collision-adapter.mjs",
+      "relative": "rain-collision-adapter.mjs",
+      "bytes": 6639,
+      "sha256": "c364ced4652d88f536cc631e0882698f33a88f0d22df180810dfabf3e6dc9e6e"
+    },
+    {
+      "source": "qa/fixtures/original-public/style.css",
+      "relative": "style.css",
+      "bytes": 2941,
+      "sha256": "b468b7c0ba5177a2bee72461f68bf3f20f96d8c9b121157d298f5f80a75b6c65"
+    },
+    {
+      "source": "qa/fixtures/original-public/sun-playback.js",
+      "relative": "sun-playback.js",
+      "bytes": 2119,
+      "sha256": "764f9b31a7e6b09178ab17858222012de8eba1ac110ec53b93ce1a470a560098"
+    },
+    {
+      "source": "public/vendor/three/LICENSE",
+      "relative": "vendor/three/LICENSE",
+      "bytes": 1081,
+      "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+    },
+    {
+      "source": "public/vendor/three/NOTICE.txt",
+      "relative": "vendor/three/NOTICE.txt",
+      "bytes": 131,
+      "sha256": "4b031da41b279edd153193086e97ac7fc4605bebabed56cf9a5142098d987c1a"
+    },
+    {
+      "source": "public/vendor/three/addons/loaders/GLTFLoader.js",
+      "relative": "vendor/three/addons/loaders/GLTFLoader.js",
+      "bytes": 114739,
+      "sha256": "67ac5551fdafa6e349bd80c8f8e5e39c136d6b2fb1ad647db9abb21dc86f9e4a"
+    },
+    {
+      "source": "public/vendor/three/addons/objects/Sky.js",
+      "relative": "vendor/three/addons/objects/Sky.js",
+      "bytes": 7257,
+      "sha256": "a19982b69e496e52d4cd7072029f0a8e5277203cbebf2277a23267e90b705640"
+    },
+    {
+      "source": "public/vendor/three/addons/utils/BufferGeometryUtils.js",
+      "relative": "vendor/three/addons/utils/BufferGeometryUtils.js",
+      "bytes": 35539,
+      "sha256": "fda7e946b8e0b5ab39b779206589e7a1079a22eb24efb89d7223e03fdfb1f751"
+    },
+    {
+      "source": "public/vendor/three/three.core.min.js",
+      "relative": "vendor/three/three.core.min.js",
+      "bytes": 381124,
+      "sha256": "61ba0df005b05991361d040d8ff670e1aadfd0ce7aeebd1fdb0725957a8957de"
+    },
+    {
+      "source": "public/vendor/three/three.module.min.js",
+      "relative": "vendor/three/three.module.min.js",
+      "bytes": 338908,
+      "sha256": "e2b5ee6bccd38fd6d8a2428546b83c5f2426d84b152ef82be8055556e3b40eb6"
+    },
+    {
+      "source": "public/vendor/three-mesh-bvh/index.module.js",
+      "relative": "vendor/three-mesh-bvh/index.module.js",
+      "bytes": 192703,
+      "sha256": "c6aa52f4ffca26aa83ed6337bc875dc051a1e6e635fa134bbeafe01cd039523c"
+    },
+    {
+      "source": "public/vendor/three-mesh-bvh/index.module.js.map",
+      "relative": "vendor/three-mesh-bvh/index.module.js.map",
+      "bytes": 445351,
+      "sha256": "8943bdb38ce7092bc21c562573a816b21b07161cd5c741998a1cba95e2d99904"
+    },
+    {
+      "source": "public/rain-collision-adapter.mjs",
+      "relative": "adapter-source/rain-collision-adapter.mjs",
+      "bytes": 6639,
+      "sha256": "c364ced4652d88f536cc631e0882698f33a88f0d22df180810dfabf3e6dc9e6e"
+    }
+  ],
+  "schema": "portable-original-source-snapshot-v1",
+  "originalManifestSHA256": "1c9f8e10a2ae46df01a5008a727a33f9d8750d52b82712dfa4ad867c783e287b",
+  "originalIdentityProjectionSHA256": "8f464693b2621726f7cd7fce59fe869367ccd1e7e428d5e0ae7e572dd0833ad9",
+  "scope": "All 22 original relative names, byte lengths and hashes are unchanged. Source paths now identify included immutable snapshots. Public CI verifies snapshot byte identity; it cannot recheck inaccessible original private file locations."
+}

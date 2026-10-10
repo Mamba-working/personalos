@@ -1,0 +1,491 @@
+{
+  "schema": "personalos-independent-lighting-slice-v1",
+  "research_only": true,
+  "not_production_preview": true,
+  "source_sha256": "a440dc770b88e8f692efb328856856498af8ace84d5457672f635b30c0a16cb2",
+  "metresPerAU": 0.17045454545454544,
+  "sourceAxes": "Blender Z up",
+  "exportAxes": "glTF Y up; exporter conversion performed once",
+  "nativeSize": [
+    900,
+    600
+  ],
+  "focalPixels": 1325,
+  "objects": [
+    {
+      "name": "BallBody / one original spherical actor",
+      "source": "BallBody / one original spherical actor",
+      "role": "ball",
+      "vertices": 6050,
+      "triangles": 12096,
+      "material": "Slice_Ball_ConstantIvory",
+      "has_custom_normals": false
+    },
+    {
+      "name": "LeftEye / original 48-point contour",
+      "source": "LeftEye / original 48-point contour",
+      "role": "eye",
+      "vertices": 1698,
+      "triangles": 3392,
+      "material": "Slice_Eyes_Charcoal",
+      "has_custom_normals": false
+    },
+    {
+      "name": "RightEye / original 48-point contour",
+      "source": "RightEye / original 48-point contour",
+      "role": "eye",
+      "vertices": 1698,
+      "triangles": 3392,
+      "material": "Slice_Eyes_Charcoal",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Shaft / stepped satin lower sleeve",
+      "source": "Shaft / stepped satin lower sleeve",
+      "role": "structure",
+      "vertices": 576,
+      "triangles": 1148,
+      "material": "Slice_Shaft_SatinSteel",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Shaft / short rounded matte ferrule",
+      "source": "Shaft / short rounded matte ferrule",
+      "role": "structure",
+      "vertices": 384,
+      "triangles": 764,
+      "material": "Slice_Ferrule_Matte",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Dry clay / chord-scalloped continuous hem",
+      "source": "Dry clay / chord-scalloped continuous hem",
+      "role": "clear-edge",
+      "vertices": 2590,
+      "triangles": 5136,
+      "material": "Slice_ClearHem_ThinPVC",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Dry clay / rounded main rib 00",
+      "source": "Dry clay / rounded main rib 00",
+      "role": "structure",
+      "vertices": 1176,
+      "triangles": 2348,
+      "material": "Slice_Frame_Silver",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Dry clay / connected strut 00",
+      "source": "Dry clay / connected strut 00",
+      "role": "structure",
+      "vertices": 40,
+      "triangles": 36,
+      "material": "Slice_Frame_Silver",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Dry clay / exterior welded seam 00",
+      "source": "Dry clay / exterior welded seam 00",
+      "role": "clear-edge",
+      "vertices": 510,
+      "triangles": 976,
+      "material": "Slice_ClearHem_ThinPVC",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Dry clay / rounded main rib 01",
+      "source": "Dry clay / rounded main rib 01",
+      "role": "structure",
+      "vertices": 1176,
+      "triangles": 2348,
+      "material": "Slice_Frame_Silver",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Dry clay / connected strut 01",
+      "source": "Dry clay / connected strut 01",
+      "role": "structure",
+      "vertices": 40,
+      "triangles": 36,
+      "material": "Slice_Frame_Silver",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Dry clay / exterior welded seam 01",
+      "source": "Dry clay / exterior welded seam 01",
+      "role": "clear-edge",
+      "vertices": 510,
+      "triangles": 976,
+      "material": "Slice_ClearHem_ThinPVC",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Dry clay / rounded main rib 02",
+      "source": "Dry clay / rounded main rib 02",
+      "role": "structure",
+      "vertices": 1176,
+      "triangles": 2348,
+      "material": "Slice_Frame_Silver",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Dry clay / connected strut 02",
+      "source": "Dry clay / connected strut 02",
+      "role": "structure",
+      "vertices": 40,
+      "triangles": 36,
+      "material": "Slice_Frame_Silver",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Dry clay / exterior welded seam 02",
+      "source": "Dry clay / exterior welded seam 02",
+      "role": "clear-edge",
+      "vertices": 510,
+      "triangles": 976,
+      "material": "Slice_ClearHem_ThinPVC",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Dry clay / rounded main rib 03",
+      "source": "Dry clay / rounded main rib 03",
+      "role": "structure",
+      "vertices": 1176,
+      "triangles": 2348,
+      "material": "Slice_Frame_Silver",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Dry clay / connected strut 03",
+      "source": "Dry clay / connected strut 03",
+      "role": "structure",
+      "vertices": 40,
+      "triangles": 36,
+      "material": "Slice_Frame_Silver",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Dry clay / exterior welded seam 03",
+      "source": "Dry clay / exterior welded seam 03",
+      "role": "clear-edge",
+      "vertices": 510,
+      "triangles": 976,
+      "material": "Slice_ClearHem_ThinPVC",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Dry clay / rounded main rib 04",
+      "source": "Dry clay / rounded main rib 04",
+      "role": "structure",
+      "vertices": 1176,
+      "triangles": 2348,
+      "material": "Slice_Frame_Silver",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Dry clay / connected strut 04",
+      "source": "Dry clay / connected strut 04",
+      "role": "structure",
+      "vertices": 40,
+      "triangles": 36,
+      "material": "Slice_Frame_Silver",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Dry clay / exterior welded seam 04",
+      "source": "Dry clay / exterior welded seam 04",
+      "role": "clear-edge",
+      "vertices": 510,
+      "triangles": 976,
+      "material": "Slice_ClearHem_ThinPVC",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Dry clay / rounded main rib 05",
+      "source": "Dry clay / rounded main rib 05",
+      "role": "structure",
+      "vertices": 1176,
+      "triangles": 2348,
+      "material": "Slice_Frame_Silver",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Dry clay / connected strut 05",
+      "source": "Dry clay / connected strut 05",
+      "role": "structure",
+      "vertices": 40,
+      "triangles": 36,
+      "material": "Slice_Frame_Silver",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Dry clay / exterior welded seam 05",
+      "source": "Dry clay / exterior welded seam 05",
+      "role": "clear-edge",
+      "vertices": 510,
+      "triangles": 976,
+      "material": "Slice_ClearHem_ThinPVC",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Dry clay / rounded main rib 06",
+      "source": "Dry clay / rounded main rib 06",
+      "role": "structure",
+      "vertices": 1176,
+      "triangles": 2348,
+      "material": "Slice_Frame_Silver",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Dry clay / connected strut 06",
+      "source": "Dry clay / connected strut 06",
+      "role": "structure",
+      "vertices": 40,
+      "triangles": 36,
+      "material": "Slice_Frame_Silver",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Dry clay / exterior welded seam 06",
+      "source": "Dry clay / exterior welded seam 06",
+      "role": "clear-edge",
+      "vertices": 510,
+      "triangles": 976,
+      "material": "Slice_ClearHem_ThinPVC",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Dry clay / rounded main rib 07",
+      "source": "Dry clay / rounded main rib 07",
+      "role": "structure",
+      "vertices": 1176,
+      "triangles": 2348,
+      "material": "Slice_Frame_Silver",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Dry clay / connected strut 07",
+      "source": "Dry clay / connected strut 07",
+      "role": "structure",
+      "vertices": 40,
+      "triangles": 36,
+      "material": "Slice_Frame_Silver",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Dry clay / exterior welded seam 07",
+      "source": "Dry clay / exterior welded seam 07",
+      "role": "clear-edge",
+      "vertices": 510,
+      "triangles": 976,
+      "material": "Slice_ClearHem_ThinPVC",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Dry clay / straight coaxial crown runner shaft",
+      "source": "Dry clay / straight coaxial crown runner shaft",
+      "role": "structure",
+      "vertices": 60,
+      "triangles": 76,
+      "material": "Slice_Shaft_SatinSteel",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Dry clay / runner collar",
+      "source": "Dry clay / runner collar",
+      "role": "structure",
+      "vertices": 40,
+      "triangles": 36,
+      "material": "Slice_Shaft_SatinSteel",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Dry clay / crown collar",
+      "source": "Dry clay / crown collar",
+      "role": "structure",
+      "vertices": 40,
+      "triangles": 36,
+      "material": "Slice_Shaft_SatinSteel",
+      "has_custom_normals": false
+    },
+    {
+      "name": "Canopy / sampled original outer surface",
+      "source": "Dry clay / eight tensioned gores",
+      "role": "canopy",
+      "vertices": 24577,
+      "triangles": 48768,
+      "material": "Slice_Canopy_ThinPVC",
+      "has_custom_normals": true
+    },
+    {
+      "name": "Ground / simple wet receiving plane",
+      "source": "new test geometry",
+      "role": "ground",
+      "vertices": 4,
+      "triangles": 2,
+      "material": "Slice_Ground_WetSlate",
+      "has_custom_normals": false
+    }
+  ],
+  "triangleCount": 101726,
+  "materials": {
+    "Slice_Ball_ConstantIvory": {
+      "colorLinear": [
+        0.94,
+        0.91,
+        0.85
+      ],
+      "roughness": 0.255,
+      "metalness": 0,
+      "transmission": 0,
+      "ior": 1.5,
+      "clearcoat": 0.31,
+      "clearcoatRoughness": 0.2,
+      "constantPBR": true
+    },
+    "Slice_Eyes_Charcoal": {
+      "colorLinear": [
+        0.026,
+        0.038,
+        0.058
+      ],
+      "roughness": 0.38,
+      "metalness": 0,
+      "transmission": 0,
+      "ior": 1.5,
+      "clearcoat": 0,
+      "clearcoatRoughness": 0.2,
+      "constantPBR": true
+    },
+    "Slice_Canopy_ThinPVC": {
+      "colorLinear": [
+        1,
+        1,
+        1
+      ],
+      "roughness": 0.06,
+      "metalness": 0,
+      "transmission": 1,
+      "ior": 1.54,
+      "clearcoat": 0,
+      "clearcoatRoughness": 0.2,
+      "constantPBR": true
+    },
+    "Slice_ClearHem_ThinPVC": {
+      "colorLinear": [
+        1,
+        1,
+        1
+      ],
+      "roughness": 0.06,
+      "metalness": 0,
+      "transmission": 1,
+      "ior": 1.38,
+      "clearcoat": 0,
+      "clearcoatRoughness": 0.2,
+      "constantPBR": true
+    },
+    "Slice_Frame_Silver": {
+      "colorLinear": [
+        0.56,
+        0.58,
+        0.61
+      ],
+      "roughness": 0.14,
+      "metalness": 1,
+      "transmission": 0,
+      "ior": 1.5,
+      "clearcoat": 0,
+      "clearcoatRoughness": 0.2,
+      "constantPBR": true
+    },
+    "Slice_Shaft_SatinSteel": {
+      "colorLinear": [
+        0.42,
+        0.44,
+        0.46
+      ],
+      "roughness": 0.22,
+      "metalness": 1,
+      "transmission": 0,
+      "ior": 1.5,
+      "clearcoat": 0,
+      "clearcoatRoughness": 0.2,
+      "constantPBR": true
+    },
+    "Slice_Ferrule_Matte": {
+      "colorLinear": [
+        0.032,
+        0.034,
+        0.037
+      ],
+      "roughness": 0.5,
+      "metalness": 0.04,
+      "transmission": 0,
+      "ior": 1.5,
+      "clearcoat": 0,
+      "clearcoatRoughness": 0.2,
+      "constantPBR": true
+    },
+    "Slice_Ground_WetSlate": {
+      "colorLinear": [
+        0.07,
+        0.095,
+        0.12
+      ],
+      "roughness": 0.2,
+      "metalness": 0,
+      "transmission": 0,
+      "ior": 1.5,
+      "clearcoat": 0.35,
+      "clearcoatRoughness": 0.12,
+      "constantPBR": true
+    }
+  },
+  "canopyReduction": {
+    "sourceTriangles": 1966080,
+    "exportTriangles": 48768,
+    "sourceOuterGrid": [
+      320,
+      1536
+    ],
+    "exportOuterGrid": [
+      64,
+      384
+    ],
+    "method": "Sample existing outer grid; thin-sheet material approximation; no inner shell or wet beads",
+    "originalRimMaxProjectionErrorPixels": 0.00950928436105121,
+    "originalRimP95ProjectionErrorPixels": 0.0038772544783105285,
+    "canonicalSampledVertexPositionError": 0
+  },
+  "groundHeightMetres": -7.733702659606934e-05,
+  "scope": "Constant PBR; no source photographs or external textures; no Cycles renders; no exact wet optics/DOF",
+  "license": "Private noncommercial research; preserve aora LICENSE/NOTICE/ATTRIBUTION alongside self-authored geometry",
+  "sourceUnchangedBeforeExport": true,
+  "sourceUnchangedAfterExport": true,
+  "glbSHA256": "11d01c348cae82681e11e63393e953e535ceaad52e14ab7fea435505e94a6c89",
+  "glbBytes": 2221336,
+  "cameraTranslationCorrection": {
+    "reason": "Blender cached matrix retained AU camera translation while geometry was converted to metres",
+    "before": [
+      0.699999988079071,
+      0.550000011920929,
+      16.799999237060547
+    ],
+    "after": [
+      0.11931817978620528,
+      0.09375000203197652,
+      2.8636362335898657
+    ],
+    "method": "glTF JSON camera translation only, unchanged binary geometry chunk, no second export",
+    "preCorrectionSHA256": "688d799cc6342ef6b76ff2da26a67448115098144a3765cf68903ee8acb16197",
+    "geometryChunkSHA256": "35f9c6426d0140ab9dba039cec1e6aa4a2ad16442c979a12b887045d1818f7fa"
+  },
+  "sourceProjectionAnchors": {
+    "ballCenterPixel": [
+      609.9999759070272,
+      322.103491303957
+    ]
+  }
+}

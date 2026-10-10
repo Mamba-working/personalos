@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "checks": {
+    "source_blend_unchanged": true,
+    "source_glb_unchanged": true,
+    "exact_uv_compatibility": true,
+    "all_recorded_asset_hashes": true,
+    "all_recorded_asset_lengths": true,
+    "extraction_manifest_hash": true,
+    "height_precision_better_than_one_micrometre": true,
+    "roughness_precision_better_than_0p00002": true,
+    "finite_values_and_opaque_alpha": true,
+    "gltf_vertical_orientation_exact": true,
+    "png_lossless_format_and_no_gamma": true,
+    "png_height_precision_better_than_2_micrometres": true,
+    "png_roughness_precision_better_than_0p00012": true
+  },
+  "halfMaxHeightErrorMetres": 1.6059493646025658e-07,
+  "halfMaxRoughnessError": 1.4649704098701477e-05,
+  "pngMaxHeightErrorMetres": 1.2897273791168118e-06,
+  "pngMaxRoughnessError": 0.00011764653027057648,
+  "rendered": false,
+  "browserVisualQA": "Not performed in extraction task; delegated integration should verify visible result."
+}

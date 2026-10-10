@@ -1,0 +1,135 @@
+{
+  "scope": "All finalized extraction scripts, manifests, audits and assets. Hash inventory excludes itself.",
+  "files": [
+    {
+      "file": "README.md",
+      "bytes": 4778,
+      "sha256": "d58ec303f408dc27053443ad2032044284e09d3ed7a8597222b331d9c44f8529"
+    },
+    {
+      "file": "canopy-combined-height-metres-gltf.f32",
+      "bytes": 2097152,
+      "sha256": "1e471a75006b297786d0244e9a39bf3a2c97bffa9ebc99e4dddd8d3738c16f08"
+    },
+    {
+      "file": "canopy-membrane-support.f32",
+      "bytes": 100096,
+      "sha256": "31e8daba201370bf54ccb1e1e7617fcda5b01c9477198c8385fe5e1cb664a2b3"
+    },
+    {
+      "file": "canopy-roughness-gltf.f32",
+      "bytes": 2097152,
+      "sha256": "a82e3981b1e039dae96513656e7cee537a5e3897c65dae1d4b387510667b5c7b"
+    },
+    {
+      "file": "canopy-wet-stock-rgba16f.bin",
+      "bytes": 4194304,
+      "sha256": "071ac7ec357d57e6c16ba55c15fd50c337d886700279b2121f4ffc69549974d4"
+    },
+    {
+      "file": "canopy-wet-stock-rgba8.png",
+      "bytes": 227080,
+      "sha256": "0a24cc230df5a22bfd5cf0ff36c4c0ff39eadf688539dee8f384ca2760f5e5fa"
+    },
+    {
+      "file": "clustered-height-1024x512.f32",
+      "bytes": 2097152,
+      "sha256": "ef731e7e65c5067a1db360fb4ea9eeaa2c9d2a508f9d260ab80f1799d993fa4b"
+    },
+    {
+      "file": "clustered-support-1024x512.f32",
+      "bytes": 2097152,
+      "sha256": "5bb3062806c0817e1015f3ac433366272fae2d6a2b14ccd3e46880e698dfc739"
+    },
+    {
+      "file": "extract-once-live.json",
+      "bytes": 597,
+      "sha256": "d5a045985557257dea13bb439252da5662982d1c44c72fd638e15a944f4d034c"
+    },
+    {
+      "file": "extract-once-process.json",
+      "bytes": 577,
+      "sha256": "a4a066aaf4a694a8a83e1b3b2d2ef20c37d552015501690e9655ea1be8a225b1"
+    },
+    {
+      "file": "extract-once.log",
+      "bytes": 3184,
+      "sha256": "9ad597b1e1d452001986e2e3dd6d4068c5b42b2e5516135b257ec0c347a93c3b"
+    },
+    {
+      "file": "extract_wet_maps_once.py",
+      "bytes": 10065,
+      "sha256": "8f978c8f0b0b8947cded89505d731fb4100056aeeec36457ad8d7c9c9a81455d"
+    },
+    {
+      "file": "extraction-manifest.json",
+      "bytes": 24535,
+      "sha256": "d538fa1e3f8fb142613c2b42ce47411ce6a2b6a5a97f6b6c7b1c0a947a536d2f"
+    },
+    {
+      "file": "fold-height-metres-1024x512.f32",
+      "bytes": 2097152,
+      "sha256": "a6c9f4a0b7d8f08235cd7edff50f07e4cfdb50a1bd5c251d8f3e78d344996271"
+    },
+    {
+      "file": "load-canopy-wet-stock.js",
+      "bytes": 1800,
+      "sha256": "b95957b73ce2c84248b46492d1413aa8d15d6582b177993d6a74202273a760c4"
+    },
+    {
+      "file": "loader-validation.json",
+      "bytes": 321,
+      "sha256": "9feabf3854508adaad444192720f0dff3c89f12c44cc92fcb7a60d36861b1427"
+    },
+    {
+      "file": "numeric-validation.json",
+      "bytes": 962,
+      "sha256": "bb60b19bc8515a9610ce5473f8d72474cd03026ffb46d36078eb9005f20589b4"
+    },
+    {
+      "file": "prepare-stock-live.json",
+      "bytes": 495,
+      "sha256": "1c5b7046b2dfe2ee81bc9ae7052e27097e5d68538140b9fe343ccfecb32e2b29"
+    },
+    {
+      "file": "prepare-stock-process.json",
+      "bytes": 475,
+      "sha256": "8bc1b044c16d5f81b50bb5f18e49e2fdab0d6c740d9a5f7972e54fe228ab7342"
+    },
+    {
+      "file": "prepare-stock.log",
+      "bytes": 5263,
+      "sha256": "8fb747c36646992d70400d38f64218801f7adb883a1770bd453214ab9189f2d7"
+    },
+    {
+      "file": "prepare_stock_material_maps.py",
+      "bytes": 10322,
+      "sha256": "26a4705a2d640028b564eba8748ccf38b98f9a2a398cb97a018b1a2ff76701a7"
+    },
+    {
+      "file": "roughness-1024x512.f32",
+      "bytes": 2097152,
+      "sha256": "4854b7fc536da347394cff4ccaee420e43e153121906740184500b172157b509"
+    },
+    {
+      "file": "run_guarded_audit.py",
+      "bytes": 2644,
+      "sha256": "a17ca6664a8eb99d6dea37052f3c356398e4f595e37b63ab9d8149866694d388"
+    },
+    {
+      "file": "stock-material-manifest.json",
+      "bytes": 5262,
+      "sha256": "b04fad804ffdaa3b75a06fb0126acc31ba9171d006695e476175e6b558f08b28"
+    },
+    {
+      "file": "test-loader.mjs",
+      "bytes": 2027,
+      "sha256": "ab450e47dd71f1b0b1a8376ef9a059135a336e0217c2086a2330323f5faea2b2"
+    },
+    {
+      "file": "validate_stock_assets.py",
+      "bytes": 4227,
+      "sha256": "a97f5083eecfbd4f84741a44f1ae971161c0891cb63560dc52e453fbb9040ebe"
+    }
+  ]
+}

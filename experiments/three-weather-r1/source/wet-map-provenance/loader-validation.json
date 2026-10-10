@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "threeRevision": "180",
+  "stockMaterial": "MeshPhysicalMaterial",
+  "textureType": "RGBA16F",
+  "dimensions": [
+    1024,
+    512
+  ],
+  "noShaderPatch": true,
+  "noRendering": true,
+  "note": "CPU construction/binding/disposal passed; GPU visual validation belongs to the integration candidate."
+}

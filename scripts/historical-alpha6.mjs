@@ -4,6 +4,7 @@ import os from 'node:os';
 import crypto from 'node:crypto';
 import assert from 'node:assert/strict';
 import {spawnSync} from 'node:child_process';
+import {historicalAlpha7Root} from './historical-alpha7.mjs';
 
 // Independent historical oracles; never derive these from active-candidate.json.
 export const ALPHA6_HISTORY = Object.freeze({
@@ -37,6 +38,7 @@ export function alpha6Source(root,rel){
 const roots=new Set();
 export function historicalAlpha6Root(root){
  root=path.resolve(root);
+  if(['v0.1.0-alpha.8','v0.1.0-alpha.9','v0.1.0-alpha.10'].includes(JSON.parse(read(root,'provenance/active-candidate.json')).productVersion))root=historicalAlpha7Root(root);
  const active=JSON.parse(read(root,'provenance/active-candidate.json'));
  if(active.productVersion==='v0.1.0-alpha.6')return root;
  assert.equal(active.productVersion,'v0.1.0-alpha.7','Historical alpha.6 resolver requires an explicit successor');

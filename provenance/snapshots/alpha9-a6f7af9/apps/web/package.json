@@ -1,0 +1,10 @@
+{
+  "name": "@personalos/web",
+  "version": "0.1.0-alpha.9",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node dev-server.mjs",
+    "test": "node tests/integration/run.mjs"
+  }
+}

@@ -35,7 +35,8 @@ export function bootContent({width = 1180, reduced = false, query = '', beforeBo
  w.eval(read('story/content-presentation.js').replace(/\bexport /g,'')+';window.__createPresentation=createContentPresentation;');
  w.eval('(()=>{'+read('feed-layout.js').replace(/\bexport /g,'')+';window.__feedLayout={feedProfile,previewHeight,balanceEntries};})();');
  w.eval('(()=>{'+read('feed-reflow.js').replace(/\bexport /g,'')+';window.__createSlotReflow=createSlotReflow;})();');
- w.eval('(()=>{const {feedProfile,previewHeight,balanceEntries}=window.__feedLayout,createSlotReflow=window.__createSlotReflow;const createContentPresentation=window.__createPresentation;const records=window.__records,graphic=window.__graphic,detail=window.__detail;'+appSource.replace(/^import[^\n]+\n/gm,'')+'})();');
+ w.eval('(()=>{'+read('card-projection.js').replace(/\bexport /g,'')+';window.__createCardProjection=createCardProjection;})();');
+ w.eval('(()=>{const createCardProjection=window.__createCardProjection;const {feedProfile,previewHeight,balanceEntries}=window.__feedLayout,createSlotReflow=window.__createSlotReflow;const createContentPresentation=window.__createPresentation;const records=window.__records,graphic=window.__graphic,detail=window.__detail;'+appSource.replace(/^import[^\n]+\n/gm,'')+'})();');
  const click = selector => {const node=$(selector); if (!node) throw Error(`Missing candidate control ${selector}`); node.click(); return node;};
  return {dom,w,d,$,click,errors,frames,records:w.__records,settle:()=>w.contentStudy.settle(),close:()=>w.close()};
 }

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed-reader-r4-delta",
+  "baseline": {
+    "commit": "ba67a75a2d7bc8b29041bec06ce38cef41a25939",
+    "tree": "cdfa952c2283b22028e85142cbe169d28bf5ee7b"
+  },
+  "source": {
+    "commit": "fc1e7d9b00540fcd8a77fed66b645578a580c767",
+    "tree": "ac393f61dfb6fb53b0d35e8361ee7461b6daef4d",
+    "relationship": "reviewed local implementation delta; not public Git ancestry"
+  },
+  "runtimeFiles": [
+    {
+      "path": "runtime/app.js",
+      "sha256": "9b7e2c615e6907d4758aa701c0217301f8972bece3cf1bb110ce079ea7efed75"
+    },
+    {
+      "path": "runtime/card-projection.css",
+      "sha256": "6e0062ee35ef1fd062d912ee3f2ddaa8d15172fa6d562e4d17a2a4a9ff50723e"
+    },
+    {
+      "path": "runtime/card-projection.js",
+      "sha256": "ecaf12a5032fb63a0c704d038af65a10745a3a1a410505a58776198a360fb196"
+    }
+  ],
+  "supportingFiles": {
+    "apps/web/tests/integration/card-projection.test.mjs": "47a0a38c5699b8ab9d2019b2e3186512bd85968879e5cd7b2e5495d5518385c1",
+    "apps/web/tests/integration/reader-endpoint-continuity.test.mjs": "1390e0941c73ce971068ed70a6868b20977b815401b284e9498a57032e3e338b"
+  },
+  "browserAcceptance": false,
+  "deployedByteParity": "unverified"
+}

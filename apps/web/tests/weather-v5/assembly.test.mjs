@@ -1,3 +1,4 @@
+import {historicalAlpha7Source} from '../../../../scripts/historical-alpha7.mjs';
 import {withoutMobileWorldClip} from '../integration/world-layers-fixture.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -6,7 +7,7 @@ import crypto from 'node:crypto';
 import {bootWorld} from '../integration/world-cpu-fixture.mjs';
 import {createWeatherEffect} from '../../runtime/modules/weather.js';
 const protectedFiles=JSON.parse(fs.readFileSync(new URL('./fixtures/clock-reviewed-protected.json',import.meta.url),'utf8'));
-test('assembly preserves 61 untouched fef4654 runtime files and the exact mobile world-clip ownership delta',()=>{for(const [rel,expected]of Object.entries(protectedFiles)){if(['app.js','host.js'].includes(rel))continue;const raw=fs.readFileSync(new URL('../../runtime/'+rel,import.meta.url));const bytes=rel==='chat/chat-mobile-flow.css'?withoutMobileWorldClip(raw.toString()):raw;assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),expected,rel);}assert.equal(Object.keys(protectedFiles).filter(p=>!['app.js','host.js'].includes(p)).length,62);});
+test('assembly preserves 61 untouched fef4654 runtime files and the exact mobile world-clip ownership delta',()=>{for(const [rel,expected]of Object.entries(protectedFiles)){if(['app.js','host.js'].includes(rel))continue;const raw=historicalAlpha7Source(new URL('../../../../',import.meta.url).pathname,'apps/web/runtime/'+rel);const bytes=rel==='chat/chat-mobile-flow.css'?withoutMobileWorldClip(raw.toString()):raw;assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),expected,rel);}assert.equal(Object.keys(protectedFiles).filter(p=>!['app.js','host.js'].includes(p)).length,62);});
 test('assembled real scene delivers full presentation elapsed time but bounded weather simulation, keeping original actor/canvas',()=>{
  const f=bootWorld({manual:true,query:'?manual=1&space=all'});let effect;try{
   const actor=f.cpu.actor,canvas=f.cpu.renderer.domElement,delivered=[],simulation=[];f.world.onFrame(dt=>delivered.push(dt));

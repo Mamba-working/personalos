@@ -1,0 +1,31 @@
+{
+  "product": "PersonalOS",
+  "productVersion": "v0.1.0-alpha.8",
+  "channel": "alpha",
+  "reviewLabel": "Local alpha.8 candidate · Motion-inspired reader r3 · browser acceptance pending",
+  "fullUnifiedAcceptance": false,
+  "deferredGates": [
+    "final-user-signoff",
+    "measured-performance",
+    "physical-device",
+    "rendered-visual-motion",
+    "assembled-weather-motion-review"
+  ],
+  "limitations": [
+    "Temporal correctness only; alpha.6 weather art and shadow-cache ownership unchanged; no cinematic rain-v6 or Next.js integration",
+    "Source-identical implementation passed bounded native cloud-browser elapsed/phase checks; final versioned runtime smoke remains separate",
+    "SwiftShader observations do not establish physical-device smoothness, renderer FPS or general performance acceptance",
+    "Hidden/resume browser evidence is a diagnostic visibility override, not native OS or physical-device backgrounding",
+    "Physical-device native keyboard/IME and final unified-product user signoff pending"
+  ],
+  "readerCandidate": {
+    "id": "split-card-reader-r3",
+    "baselineGitHubCommit": "15a5967b775dec5e1224c224a5e36f07ddbbb76b",
+    "deployedByteParity": "unverified",
+    "browserAcceptance": false,
+    "changesSinceR1": [
+      "native scrolling-box lifetime reset",
+      "one visible translation-only text identity"
+    ]
+  }
+}

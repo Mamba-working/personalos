@@ -1,0 +1,37 @@
+{
+  "name": "personalos",
+  "version": "0.1.0-alpha.7",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/web",
+    "apps/api",
+    "packages/contracts"
+  ],
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "setup:tests": "npm ci --prefix apps/web/tests/integration --ignore-scripts --no-audit --no-fund",
+    "dev": "node scripts/dev.mjs",
+    "dev:web": "node apps/web/dev-server.mjs",
+    "dev:api": "node apps/api/src/server.mjs",
+    "test:web": "node apps/web/tests/integration/run.mjs",
+    "test:api": "node --test apps/api/test/*.test.mjs",
+    "test:contracts": "node --test packages/contracts/test/*.test.mjs",
+    "test:static": "node --test apps/web/static-server.test.mjs",
+    "test": "npm run test:vendor && npm run test:provenance && npm run test:contracts && npm run test:api && npm run test:static && npm run test:web",
+    "check:provenance": "node scripts/check-provenance.mjs",
+    "check:syntax": "node scripts/check-syntax.mjs",
+    "check:public": "node scripts/check-public-export.mjs",
+    "check": "npm run check:vendor && npm run check:provenance && npm run check:syntax && npm run check:public",
+    "setup:vendor": "node scripts/setup-vendor.mjs",
+    "setup": "npm run setup:vendor && npm run setup:tests",
+    "test:vendor": "node --test scripts/setup-vendor.test.mjs",
+    "check:vendor": "node scripts/setup-vendor.mjs --check",
+    "test:provenance": "node --test scripts/check-provenance.test.mjs scripts/check-weather-elapsed-boundary.test.mjs"
+  },
+  "dependencies": {
+    "three": "0.180.0"
+  }
+}

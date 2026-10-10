@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed-reader-r5-delta",
+  "baseline": {
+    "commit": "a6f7af9ea8bf8ec52e71e424c2d503ee2d8affbd",
+    "tree": "20427c18a9df8a4c80b230e23d20bf1289dbaab2"
+  },
+  "source": {
+    "commit": "0acb3673c33c9b19f4292fbbcb89e2b1501ee67a",
+    "tree": "2a79bc12fe0817a0b78006cddebb3026b1f43c8f",
+    "relationship": "reviewed local implementation delta; not public Git ancestry"
+  },
+  "runtimeFiles": [
+    {
+      "path": "runtime/app.js",
+      "sha256": "bf39cbd70bbbb6ac4fcb92bdaa0fecb1f8f6128b955dfbd234c46b0cd5b7aac3"
+    },
+    {
+      "path": "runtime/material.css",
+      "sha256": "5a2e42cf1b88f60cf46658a42e373e0c2b16187a81042ca236e6b85286044355"
+    }
+  ],
+  "supportingFiles": {
+    "apps/web/tests/integration/reader-surface-continuity.test.mjs": "8bc515cbb2457498efdb729ff2c53281eaf60dc68c3b567a44eb2a0658a2543b"
+  },
+  "browserAcceptance": false,
+  "deployedByteParity": "unverified"
+}

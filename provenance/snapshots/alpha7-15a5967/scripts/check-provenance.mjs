@@ -6,7 +6,6 @@ import {fileURLToPath} from 'node:url';
 import {spawnSync} from 'node:child_process';
 import {verifyShadowCacheBoundary, SHADOW_CACHE_BOUNDARY} from './check-shadow-cache-boundary.mjs';
 import {verifyAlpha7Provenance} from './check-weather-elapsed-boundary.mjs';
-import {verifyAlpha8Provenance} from './check-reader-release-boundary.mjs';
 
 // Historical import records are immutable, even when an active composite changes.
 export const HISTORICAL_PROVENANCE = Object.freeze({
@@ -25,7 +24,7 @@ const json=(root,rel)=>JSON.parse(fs.readFileSync(path.join(root,rel),'utf8'));
 const order=(a,b)=>{const aa=a.path.split('/'),bb=b.path.split('/');for(let i=0;i<Math.min(aa.length,bb.length);i++)if(aa[i]!==bb[i])return aa[i]<bb[i]?-1:1;return aa.length-bb.length;};
 export function runtimeInventory(root){
  const current=[],runtime=path.join(root,'apps/web/runtime');
- function visit(directory){for(const entry of fs.readdirSync(directory,{withFileTypes:true})){const file=path.join(directory,entry.name);assert(!entry.isSymbolicLink(),'Runtime symlinks are not allowed');assert(entry.isFile()||entry.isDirectory(),'Runtime special files are not allowed');if(entry.isDirectory())visit(file);else if(entry.isFile())current.push({path:'runtime/'+path.relative(runtime,file).split(path.sep).join('/'),sha256:hash(fs.readFileSync(file))});}}
+ function visit(directory){for(const entry of fs.readdirSync(directory,{withFileTypes:true})){const file=path.join(directory,entry.name);assert(!entry.isSymbolicLink(),'Runtime symlinks are not allowed');if(entry.isDirectory())visit(file);else if(entry.isFile())current.push({path:'runtime/'+path.relative(runtime,file).split(path.sep).join('/'),sha256:hash(fs.readFileSync(file))});}}
  visit(runtime);return current.sort(order);
 }
 export function verifyProvenance(root){
@@ -37,7 +36,6 @@ export function verifyProvenance(root){
   assert.deepEqual(current,original.files,'Frozen imported runtime inventory differs');assert.equal(digest,original.originalRuntimeSHA256,'Frozen runtime digest differs');return{kind:'historical-alpha4',runtimeFiles:current.length,runtimeSHA256:digest};
  }
  const active=json(root,'provenance/active-candidate.json');
- if(active.productVersion==='v0.1.0-alpha.8')return verifyAlpha8Provenance(root,{current,verifyHistorical:verifyProvenance,requiredDeferred:REQUIRED_DEFERRED});
  if(active.productVersion==='v0.1.0-alpha.7')return verifyAlpha7Provenance(root,{current,verifyHistorical:verifyProvenance,historicalProvenance:HISTORICAL_PROVENANCE,requiredDeferred:REQUIRED_DEFERRED});
  assert.equal(active.schemaVersion,1);assert.equal(active.kind,'local-composite-candidate');assert.equal(active.status,'unpublished-acceptance-pending');
  assert(['v0.1.0-alpha.5','v0.1.0-alpha.6'].includes(active.productVersion),'Unsupported active product version');
@@ -80,30 +78,17 @@ export function verifyProvenance(root){
  return{kind:active.kind,productVersion:active.productVersion,sourcePayloadCommit:active.sourcePayloadCommit,runtimeFiles:current.length,runtimeSHA256:digest};
 }
 export function verifySourcePayload(root){
- const active=json(root,'provenance/active-candidate.json'),commit=active.productVersion==='v0.1.0-alpha.8'?'HEAD':active.sourcePayloadCommit;
+ const active=json(root,'provenance/active-candidate.json'),commit=active.sourcePayloadCommit;
  const git=args=>{const r=spawnSync('git',args,{cwd:root,encoding:null});assert.equal(r.status,0,`Source payload object unavailable or invalid: ${r.stderr?.toString()}`);return r.stdout;};
  assert.equal(git(['cat-file','-t',commit]).toString().trim(),'commit','Payload mapping must reference a commit object');
  const tracked=git(['ls-tree','-r','--name-only',commit,'--','apps/web/runtime']).toString().trim().split('\n');
- if(['v0.1.0-alpha.7','v0.1.0-alpha.8'].includes(active.productVersion)){
+ if(active.productVersion==='v0.1.0-alpha.7'){
   const generated=new Set(['runtime/world/vendor/three/three.core.js','runtime/world/vendor/three/three.module.js']);
   const expected=runtimeInventory(root).filter(x=>!generated.has(x.path)).map(x=>'apps/web/'+x.path).sort();
   assert.deepEqual([...tracked].sort(),expected,'Mapped payload runtime path set differs');
  }
- if(active.productVersion==='v0.1.0-alpha.8'){
-  assert.equal(active.sourcePayloadBinding,'current-git-commit','Unsupported alpha.8 payload binding');
-  const publicPaths=git(['ls-tree','-r','--name-only',commit]).toString().trim().split('\n').sort();
-  assert.deepEqual(publicPaths,json(root,'provenance/alpha8-source-files.json'),'Mapped public source path set differs');
-  const entries=git(['ls-tree','-r','-z',commit]).toString().split('\0').filter(Boolean);
-  for(const entry of entries){
-   const [metadata,relative]=entry.split('\t'),[mode,type,digest]=metadata.split(' ');
-   assert(type==='blob'&&['100644','100755'].includes(mode),'Mapped source must be a regular blob: '+relative);
-   const bytes=fs.readFileSync(path.join(root,relative));
-   const actual=crypto.createHash('sha1').update(Buffer.from('blob '+bytes.length+'\0')).update(bytes).digest('hex');
-   assert.equal(actual,digest,'Mapped public source blob differs: '+relative);
-  }
- }
  const paths=[...new Set([...tracked,...VERSION_FILES])];for(const rel of paths)assert.deepEqual(git(['show',`${commit}:${rel}`]),fs.readFileSync(path.join(root,rel)),`Mapped payload differs: ${rel}`);
- return{sourcePayloadCommit:git(['rev-parse',commit]).toString().trim(),verifiedTrackedFiles:paths.length};
+ return{sourcePayloadCommit:commit,verifiedTrackedFiles:paths.length};
 }
 if(process.argv[1]&&fileURLToPath(import.meta.url)===path.resolve(process.argv[1])){
  const root=path.resolve(new URL('../',import.meta.url).pathname);console.log(JSON.stringify(verifyProvenance(root),null,2));

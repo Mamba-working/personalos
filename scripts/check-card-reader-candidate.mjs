@@ -1,25 +1,4 @@
-import fs from 'node:fs';
-import path from 'node:path';
-import crypto from 'node:crypto';
-import assert from 'node:assert/strict';
-import {runtimeInventory} from './check-provenance.mjs';
-const root=path.resolve(new URL('../',import.meta.url).pathname);
-const hash=value=>crypto.createHash('sha256').update(value).digest('hex');
-const baseline=JSON.parse(fs.readFileSync(path.join(root,'provenance/active-candidate.json'),'utf8'));
-const overlay=JSON.parse(fs.readFileSync(path.join(root,'provenance/card-reader-candidate.json'),'utf8'));
-assert.equal(overlay.baselineGitHubCommit,'15a5967b775dec5e1224c224a5e36f07ddbbb76b');
-assert.equal(overlay.baselineRuntimeSHA256,baseline.runtimeSHA256);
-const chat=fs.readFileSync(path.join(root,'apps/web/runtime/chat-host.js'),'utf8');
-assert(chat.includes(overlay.chatHistoryGate),'Missing reviewed chat history boundary');
-assert.equal(hash(chat.replace(overlay.chatHistoryGate,'')),oldChatHash(),'Chat changes exceed the exact history handoff hook');
-function oldChatHash(){return baseline.files.find(file=>file.path==='runtime/chat-host.js').sha256;}
-assert.equal(overlay.deployed,false);assert.equal(overlay.browserAcceptance,false);
-const current=runtimeInventory(root),old=new Map(baseline.files.map(file=>[file.path,file.sha256]));
-const changed=current.filter(file=>old.get(file.path)!==file.sha256).map(file=>file.path).sort();
-assert.deepEqual(changed,overlay.runtimeAllowlist);
-assert.deepEqual(current,overlay.files,'Candidate runtime bytes differ');
-assert.equal(hash(JSON.stringify(current)),overlay.runtimeSHA256);
-assert.equal(current.length,overlay.runtimeFileCount);
-for(const oldFile of baseline.files)assert(current.some(file=>file.path===oldFile.path),'Baseline file removed');
-for(const [file,digest]of Object.entries(overlay.supportingFiles))assert.equal(hash(fs.readFileSync(path.join(root,file))),digest,file);
-console.log(JSON.stringify({status:'isolated-overlay-verified',runtimeFiles:current.length,changed,sourceStateOnly:true,browserAcceptance:false},null,2));
+// Compatibility entry point: the versioned release gate now owns this candidate.
+import {verifyProvenance} from './check-provenance.mjs';
+import {fileURLToPath} from 'node:url';
+console.log(JSON.stringify(verifyProvenance(fileURLToPath(new URL('../',import.meta.url))),null,2));

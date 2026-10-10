@@ -1,0 +1,1288 @@
+{
+  "schemaVersion": 1,
+  "commit": "15a5967b775dec5e1224c224a5e36f07ddbbb76b",
+  "tree": "05ba443831ba1726850ce864ce79b3f812662966",
+  "files": [
+    {
+      "path": ".github/CODEOWNERS",
+      "sha256": "04a765532782c886417e80f16dd21f11a8cc4f1e81a06c3ceb280a3a69d1a776"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "e121514148f29128bb3fc1a5c0e7597b929a82c2703f34900f751e23380ef36a"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "77b7b7a2ea66f025054315fd37a9f6c16775850577a6daa909afe11d99fbfbc0"
+    },
+    {
+      "path": ".nvmrc",
+      "sha256": "7e8a2fa94951112b894a3dbe3d05efef5e9263741fa49125f0a70f40fedab4cc"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "91bd4026ef6dff1e41c7f0d803deb7ddca9c0026783be97a066ac59e7eddfc07"
+    },
+    {
+      "path": "README.md",
+      "sha256": "00140928928bae75041ad5522e9e72db9d35143c20cd6719ca8c2417a8211bdc"
+    },
+    {
+      "path": "SECURITY.md",
+      "sha256": "b54bbc2ed0dda0caad4b6a790c440695ac12a408b2226873245bfc9c4e7f60bf"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "sha256": "4b91fe844d7af39e12d674eec7d02a64e3f61c6b0737683a52993feb3c153b2c"
+    },
+    {
+      "path": "apps/api/package.json",
+      "sha256": "509cfd69d7856b5ac12c15d3cc28c5d7427f38f757ac4cd002d6c03de9a9b8ae"
+    },
+    {
+      "path": "apps/api/src/server.mjs",
+      "sha256": "d3a226f39963d1545ad9cfa77a2abe2eb20a38ae319ddad3af8992f62e41228d"
+    },
+    {
+      "path": "apps/api/test/health.test.mjs",
+      "sha256": "af70a6963673bda53eaa5cc8b0e5ef2773443380142b2e21cbb1a5359551206c"
+    },
+    {
+      "path": "apps/web/dev-server.mjs",
+      "sha256": "c2f6220960d12a919dffe3fbe48c5a1186b5544b19bb898283282dc9eb64c233"
+    },
+    {
+      "path": "apps/web/package.json",
+      "sha256": "a25cfce00f0f00faa5d6fa028fc91e3bb93599346516557ead0ba67e1e7943f1"
+    },
+    {
+      "path": "apps/web/runtime/app.js",
+      "sha256": "fab0a0a0aa1aa60bed5f7411c5de2c05ac581d48f915255616b7a3df558377fa"
+    },
+    {
+      "path": "apps/web/runtime/chat-contour.js",
+      "sha256": "55ee9896bd4453eace4aa39a40069b48ea91e13b3f479ce30a9ec57d41221d78"
+    },
+    {
+      "path": "apps/web/runtime/chat-host.css",
+      "sha256": "8c21f0abce05c510a6f9c8055b230b1446f4164b5009492a03c51f9826c7c4bd"
+    },
+    {
+      "path": "apps/web/runtime/chat-host.js",
+      "sha256": "77f3ddffea46040cf92f77ee00c7ab898f29c52ed86d63e9237909a6c78089e5"
+    },
+    {
+      "path": "apps/web/runtime/chat-motion.js",
+      "sha256": "f169d72a5284cdbdadffdc1754a049e5226290ceae424aa28a71e0a326df88bc"
+    },
+    {
+      "path": "apps/web/runtime/chat/chat-fluid-send.js",
+      "sha256": "146db578b5bf2bcc65f9c550d886afcf001dbcbf35725754d4d6e8770aac9070"
+    },
+    {
+      "path": "apps/web/runtime/chat/chat-mobile-flow-page.js",
+      "sha256": "e517abaa0581952e70ba761b28a91f5dd1db7d91c2dad57931e1bf991c923b18"
+    },
+    {
+      "path": "apps/web/runtime/chat/chat-mobile-flow.css",
+      "sha256": "017308a010b3d81e95f17e3d04edfc9be30f40129e7a7b9040415fa9b554382d"
+    },
+    {
+      "path": "apps/web/runtime/chat/chat-page-lock.js",
+      "sha256": "56fe545fedcb40eaf44a223c9adcac3c9a5d4568fc08b3c8986e93a8df3d161a"
+    },
+    {
+      "path": "apps/web/runtime/chat/chat-reading-flow.js",
+      "sha256": "af10dfb858c18a9782c37429d25443e5275c20afe120693305491408b355a88c"
+    },
+    {
+      "path": "apps/web/runtime/chat/chat-reading-interior.js",
+      "sha256": "438af1cb681eaaa270958da1344cb835cda91f61348c92e9fc052aaf26b0c24d"
+    },
+    {
+      "path": "apps/web/runtime/chat/chat-reading.css",
+      "sha256": "10c592e5fca5f010f46c5b56867e11fbdfd2afc7aa8bb9a5348640b3dc321c2b"
+    },
+    {
+      "path": "apps/web/runtime/chat/chat-turn-scroll.js",
+      "sha256": "21e45675fafc4a559e2973634759491ddad36c29d5fc396424f6e158861808b4"
+    },
+    {
+      "path": "apps/web/runtime/chat/chat-viewport.js",
+      "sha256": "cf83619e685cc53c9178426808302b129abef089481d9e865ca58651320ff676"
+    },
+    {
+      "path": "apps/web/runtime/chat/contextual-chat-layout.js",
+      "sha256": "1be4fdc14976c7413462e486a40228bb3e3cf4de1284499e0cbd240f6fc0924a"
+    },
+    {
+      "path": "apps/web/runtime/chat/contextual-chat.css",
+      "sha256": "91290d400bac1e41b9c5f99d8615c81798fdaf27fe1fa9622928b13efa90df8c"
+    },
+    {
+      "path": "apps/web/runtime/chat/send-continuity-model.js",
+      "sha256": "9249936343a18205f059211f4482c9cea4ac71e5f45dff3d3eb8c12413a8314e"
+    },
+    {
+      "path": "apps/web/runtime/chat/send-continuity.js",
+      "sha256": "5155da62da7f65dfe0640a7ac4a0816a9889e0563870242414992c558dbffcaf"
+    },
+    {
+      "path": "apps/web/runtime/chat/send-path.js",
+      "sha256": "f6921e691f7b6120a0a96104a15ade871f2b1b73fab40c80bd1919bf6be60661"
+    },
+    {
+      "path": "apps/web/runtime/chat/send-text-layout.js",
+      "sha256": "2052f072eb22f1a20a810d46fb51e336a77b79b2fd868779eed8193f5f79c54a"
+    },
+    {
+      "path": "apps/web/runtime/chat/vendor/gsap/Flip.min.js",
+      "sha256": "cbe3ca726350f8d230da38a14ce2384e7772e05a45cee6144dd7fe6dde868c2f"
+    },
+    {
+      "path": "apps/web/runtime/chat/vendor/gsap/NOTICE.txt",
+      "sha256": "37aa1b9e5c1686d3463aa43df13e79d6b2382ca913787ef5cc6e8bb26bc451a7"
+    },
+    {
+      "path": "apps/web/runtime/chat/vendor/gsap/gsap.min.js",
+      "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb"
+    },
+    {
+      "path": "apps/web/runtime/comparison-status.js",
+      "sha256": "a689f5c7efa42a45f24dfa2f80243a4d4e86f405c8591afddb7868379b07d6e8"
+    },
+    {
+      "path": "apps/web/runtime/comparison-visibility.js",
+      "sha256": "43130f52fea59d2e81199f597e6698cf1cf026e02f7a689dad692d5ca01ab341"
+    },
+    {
+      "path": "apps/web/runtime/content.js",
+      "sha256": "009f5995501d4eaf88b69fa06d81c38c716baa90549dfa1c41e08e6619e787b9"
+    },
+    {
+      "path": "apps/web/runtime/diagnostics/keyboard-diagnostics.js",
+      "sha256": "ebb1e4747975d41a5e74eabb89d36d93335f385d39d9bf93d3b9fc78955e8819"
+    },
+    {
+      "path": "apps/web/runtime/feed-compact.css",
+      "sha256": "b0efc719e044614daa7603067ff57b2305ed4bb30af223e04a9180f7144b4358"
+    },
+    {
+      "path": "apps/web/runtime/feed-layout.js",
+      "sha256": "7dec28dbd52bb640f0158060fed82a9f44d4731e3698066137854a55ff68a2e0"
+    },
+    {
+      "path": "apps/web/runtime/feed-reflow.js",
+      "sha256": "85d30880b493f861a047390b10132ce631612b274cac0f1bf3a842253ae9584c"
+    },
+    {
+      "path": "apps/web/runtime/host.css",
+      "sha256": "415b5a285965dfd3046b57569d7aa7180cb63569ec1d258b8c4e8d31c626db03"
+    },
+    {
+      "path": "apps/web/runtime/host.js",
+      "sha256": "e62a9d373b21a18005a908e91502e66034a8b29b22ae28cd2db5791a6e903a98"
+    },
+    {
+      "path": "apps/web/runtime/index.html",
+      "sha256": "67a7f0b908b16220b5a8584528a2fb9db2d0f970fff8fb1e7231f3bd4cafb6ce"
+    },
+    {
+      "path": "apps/web/runtime/material.css",
+      "sha256": "ce64cb786aa537751c52269488ad96a964908f1cc86c224ba991321054b2217c"
+    },
+    {
+      "path": "apps/web/runtime/modules/menu.css",
+      "sha256": "155de5531b954490d0c19c7c25c88d3f9501225965c9eadc8abfae0aca21fc7f"
+    },
+    {
+      "path": "apps/web/runtime/modules/menu.js",
+      "sha256": "1ce918555505fe611318c55f100cbba879d1e6c8aaea7029cd80eb5f30d729d1"
+    },
+    {
+      "path": "apps/web/runtime/modules/mount.js",
+      "sha256": "693f27d090a56f3a925b68ff3f2ace911ae0e77285a653bfabef1fe2f76b7e3a"
+    },
+    {
+      "path": "apps/web/runtime/modules/weather.css",
+      "sha256": "c0092338b2fb3953678b5f5ae1c5ab101604b986e409d496128091e8cdc33f2b"
+    },
+    {
+      "path": "apps/web/runtime/modules/weather.js",
+      "sha256": "44a2de63f5e6fb1f64341005d433881837eb9fa3b10d005602df8c1bd2830c1b"
+    },
+    {
+      "path": "apps/web/runtime/palette.css",
+      "sha256": "c4deab976ada8f17bdc9cd9ecc01d1346b0c21a878d3aa6366645fcd48778ef5"
+    },
+    {
+      "path": "apps/web/runtime/release-meta.json",
+      "sha256": "14020223418e5f510fcbe697eaca77afd0020ea05eb83228b5b350fa03e6ff34"
+    },
+    {
+      "path": "apps/web/runtime/scene-bridge.js",
+      "sha256": "275b8cb623fa45ea102f8fedfd8ee6f86ced3b8edb6cc7406f5116104eced6c6"
+    },
+    {
+      "path": "apps/web/runtime/send-comparison.css",
+      "sha256": "837459bf03305288015c20aebbb9af5ab4549db4fe03989c11341d3190e4396a"
+    },
+    {
+      "path": "apps/web/runtime/send-comparison.html",
+      "sha256": "a3478819c44f3681fbcebd99cf2be394bfb840c6228ed42913fd5b1b7ad864b0"
+    },
+    {
+      "path": "apps/web/runtime/send-comparison.js",
+      "sha256": "74a355e517d30e2a7febf5e64a04a4fe74c60aca11027ce7f67b4237ffbfbf22"
+    },
+    {
+      "path": "apps/web/runtime/story/book-story.js",
+      "sha256": "915abaef133d8c8cf974ec9e5ad1faca2f3de7ecc754f91db465841368fa15dd"
+    },
+    {
+      "path": "apps/web/runtime/story/content-presentation.js",
+      "sha256": "bfd411599ba98ceee92cfaba302a66abade14251d7c1be995438c8426083adc2"
+    },
+    {
+      "path": "apps/web/runtime/story/frame-clock.js",
+      "sha256": "522abb7185994d2f09a7702cef623bb9014e07c0b5bfabb0175885361768b825"
+    },
+    {
+      "path": "apps/web/runtime/story/geometry.js",
+      "sha256": "b4983a87eece5b9e8e84773d39b7747e2782c11c43d987162051832348cd58fc"
+    },
+    {
+      "path": "apps/web/runtime/story/lifecycle.js",
+      "sha256": "ee116e191aeb62391d59f2133cd986195d8a6e077cabd8c0c6e63e2e7d11281c"
+    },
+    {
+      "path": "apps/web/runtime/story/props.js",
+      "sha256": "8616b030a66656a77e6236569f485d37fb659ed5e5996bad8a1039d8ca7cc0dd"
+    },
+    {
+      "path": "apps/web/runtime/story/story.css",
+      "sha256": "0c3679abfe9b00343c490d63b7f4ecb4ee574c5bf766684911e56bf1c38117db"
+    },
+    {
+      "path": "apps/web/runtime/style.css",
+      "sha256": "69afa74e3bc89fc6758c39585ae789345cfdce80efb591ba0829031ad0783a03"
+    },
+    {
+      "path": "apps/web/runtime/world-availability.js",
+      "sha256": "a802daffb2300ae96826e0d60d718ca95d767b816876aca951f4d7479fe99b0d"
+    },
+    {
+      "path": "apps/web/runtime/world/scene.js",
+      "sha256": "3337839ee4f75808c9b2e626be6809fd24a13261a89e0522db93423ae1e75fae"
+    },
+    {
+      "path": "apps/web/runtime/world/scoped.css",
+      "sha256": "be8e379244be28eee5155b518b8ce8af8f40b1f9e574e1761cdf298c09fd1c01"
+    },
+    {
+      "path": "apps/web/runtime/world/shadow-cache.js",
+      "sha256": "6482c892a62b81322dc96ab8d47aa3d00084517209a61fa5a3c0579c44fdd99d"
+    },
+    {
+      "path": "apps/web/runtime/world/style.css",
+      "sha256": "7262149614ee034bf52d7fdcadadba1b162b8e6841975c350e48ab84658b3186"
+    },
+    {
+      "path": "apps/web/runtime/world/theme.js",
+      "sha256": "d0dbf2ccb0ea7dab7ec6a4383eb24ce8d66b8d53aa71f1876cd30a9e8aeba489"
+    },
+    {
+      "path": "apps/web/runtime/world/theme.json",
+      "sha256": "17b25dd7088e1866a849e2397a08ef23ebe0ed96c548a44d72f059902d655a0e"
+    },
+    {
+      "path": "apps/web/runtime/world/vendor/aora/ATTRIBUTION.txt",
+      "sha256": "5df50aa8fcee9acb4e80f9baab7d154106120d36e3e9fbd2bed0146cb8db35be"
+    },
+    {
+      "path": "apps/web/runtime/world/vendor/aora/LICENSE",
+      "sha256": "cd25a8e1b00d05b2bb29d3a626599526db960b5bf3ba94fd726565b9bec7f8ea"
+    },
+    {
+      "path": "apps/web/runtime/world/vendor/aora/NOTICE.md",
+      "sha256": "549d6607c9dd13c9add2fa5faeccca488bd78cf30cac2b0b4d3dbcd8b45b721d"
+    },
+    {
+      "path": "apps/web/runtime/world/vendor/aora/SOURCE-MANIFEST.json",
+      "sha256": "1def92868ff495d9098778a7a53532b85a288c1e19de27e8bb8780ecefde1d49"
+    },
+    {
+      "path": "apps/web/runtime/world/vendor/aora/rings.js",
+      "sha256": "7fd196046650b8273d87c9b85a899554d90f35c62d676eea1c681630e721ec20"
+    },
+    {
+      "path": "apps/web/runtime/world/vendor/three/LICENSE",
+      "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+    },
+    {
+      "path": "apps/web/runtime/world/vendor/three/RoomEnvironment.js",
+      "sha256": "c20f0b4677f6128a138d7152b85cbef9091f4f45cdfa05adca04d40c1697c7ae"
+    },
+    {
+      "path": "apps/web/runtime/world/world-adapter.js",
+      "sha256": "57c1a391b0be7c237eba1711a1fae77fec4c32533e8e518434af6b7f5704730e"
+    },
+    {
+      "path": "apps/web/static-server.test.mjs",
+      "sha256": "84ca5cc33c301c0e3070815e607cea46f4b5e9a5d3e41e4cf161778aaeae4218"
+    },
+    {
+      "path": "apps/web/tests/integration/.gitignore",
+      "sha256": "a0221e0a43275ecb40869cf8684caa47c41038809636629bdeb6964862526b8e"
+    },
+    {
+      "path": "apps/web/tests/integration/accepted-send.test.mjs",
+      "sha256": "ed0ea3b8a52154d66151c40a1b8a7e8e6a656465a2c6c95fdf9235cfed5b7076"
+    },
+    {
+      "path": "apps/web/tests/integration/bfcache.test.mjs",
+      "sha256": "48531f9aad9e123d2472aaa6e7bf254f58a1e3a7aa019f4c6f76a67999471f62"
+    },
+    {
+      "path": "apps/web/tests/integration/chat-world-fixture.mjs",
+      "sha256": "1c2ab90c1f04ad39a69c2765a7f3aa3b1154f31dba0714f711bec4c4862f361a"
+    },
+    {
+      "path": "apps/web/tests/integration/chat-world.test.mjs",
+      "sha256": "0c969bf3e34a45d966c29f659d7890dd202b4803cc134985a736541aa6f6b4df"
+    },
+    {
+      "path": "apps/web/tests/integration/compact-feed-baseline.test.mjs",
+      "sha256": "5f7ce24109449d77259e38864806eb95ee18ca37992ec493d3519fbae9cc89d9"
+    },
+    {
+      "path": "apps/web/tests/integration/compact-feed-fixture.mjs",
+      "sha256": "a3b1b8a52343a5c26f8ea40da9cb5aca29f4fdbb82d717bd5b62898170b266e8"
+    },
+    {
+      "path": "apps/web/tests/integration/compact-feed.test.mjs",
+      "sha256": "edaeaf48416cf5e88e7e51634e038c3222c3c9593dc088b66dd31bac2f3ab9e7"
+    },
+    {
+      "path": "apps/web/tests/integration/content-fixture.mjs",
+      "sha256": "195acb0716640c54a8c66cf5cd08d3f6c2ac26a49912be3278aff74b2c85e3a2"
+    },
+    {
+      "path": "apps/web/tests/integration/content-host.test.mjs",
+      "sha256": "30e52077b3067dea34ffa75527aba5667590b1e9ac53b8685071a8407f04e358"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/app.js",
+      "sha256": "f1add8e8eddd813c0dbaf7725228166fd26c6a2f7bfc0f7da47d5ebf389c1822"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/chat-contour.js",
+      "sha256": "55ee9896bd4453eace4aa39a40069b48ea91e13b3f479ce30a9ec57d41221d78"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/chat-host.css",
+      "sha256": "8c21f0abce05c510a6f9c8055b230b1446f4164b5009492a03c51f9826c7c4bd"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/chat-host.js",
+      "sha256": "8ed8a5023748f7d6093dccecc38389e1e83e3d9e34a5237ad5a67acb254458ad"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/chat-motion.js",
+      "sha256": "51f7e3ffa771ea947553c4cb8ef19c3611a59567c1e2121e7a9a4d4fc1f5ecf9"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/chat/chat-fluid-send.js",
+      "sha256": "146db578b5bf2bcc65f9c550d886afcf001dbcbf35725754d4d6e8770aac9070"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/chat/chat-page-lock.js",
+      "sha256": "0d108cf726ff73d118689f04a22776736266bc65d6803e8e439b8aa0baa4a240"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/chat/chat-reading-flow.js",
+      "sha256": "af10dfb858c18a9782c37429d25443e5275c20afe120693305491408b355a88c"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/chat/chat-reading-interior.js",
+      "sha256": "438af1cb681eaaa270958da1344cb835cda91f61348c92e9fc052aaf26b0c24d"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/chat/chat-reading.css",
+      "sha256": "10c592e5fca5f010f46c5b56867e11fbdfd2afc7aa8bb9a5348640b3dc321c2b"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/chat/chat-turn-scroll.js",
+      "sha256": "21e45675fafc4a559e2973634759491ddad36c29d5fc396424f6e158861808b4"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/chat/chat-viewport.js",
+      "sha256": "cf83619e685cc53c9178426808302b129abef089481d9e865ca58651320ff676"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/chat/contextual-chat-layout.js",
+      "sha256": "1be4fdc14976c7413462e486a40228bb3e3cf4de1284499e0cbd240f6fc0924a"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/chat/contextual-chat.css",
+      "sha256": "91290d400bac1e41b9c5f99d8615c81798fdaf27fe1fa9622928b13efa90df8c"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/chat/send-continuity-model.js",
+      "sha256": "9249936343a18205f059211f4482c9cea4ac71e5f45dff3d3eb8c12413a8314e"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/chat/send-continuity.js",
+      "sha256": "1a0cd6fc2b8e352b6dd13ad3a8208a8cf79b8a459fbb10b3c019e388c4d1f914"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/chat/send-path.js",
+      "sha256": "f6921e691f7b6120a0a96104a15ade871f2b1b73fab40c80bd1919bf6be60661"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/chat/send-text-layout.js",
+      "sha256": "2052f072eb22f1a20a810d46fb51e336a77b79b2fd868779eed8193f5f79c54a"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/chat/vendor/gsap/Flip.min.js",
+      "sha256": "cbe3ca726350f8d230da38a14ce2384e7772e05a45cee6144dd7fe6dde868c2f"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/chat/vendor/gsap/NOTICE.txt",
+      "sha256": "37aa1b9e5c1686d3463aa43df13e79d6b2382ca913787ef5cc6e8bb26bc451a7"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/chat/vendor/gsap/gsap.min.js",
+      "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/comparison-status.js",
+      "sha256": "a689f5c7efa42a45f24dfa2f80243a4d4e86f405c8591afddb7868379b07d6e8"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/comparison-visibility.js",
+      "sha256": "43130f52fea59d2e81199f597e6698cf1cf026e02f7a689dad692d5ca01ab341"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/content.js",
+      "sha256": "009f5995501d4eaf88b69fa06d81c38c716baa90549dfa1c41e08e6619e787b9"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/host.css",
+      "sha256": "8d9ab38cc5b646ecdc6450983e2266c649cfe33ad086dfb93917d44354536ff1"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/host.js",
+      "sha256": "5982fe74a341780538459de68eeb800e0e7fc446184b6242f9c4af7d3af6c131"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/material.css",
+      "sha256": "ce64cb786aa537751c52269488ad96a964908f1cc86c224ba991321054b2217c"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/palette.css",
+      "sha256": "c4deab976ada8f17bdc9cd9ecc01d1346b0c21a878d3aa6366645fcd48778ef5"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/scene-bridge.js",
+      "sha256": "2ee3c607dbb60adfc1ab56061a67d8a9614db6105fb175ab1b8fd4fd45a0b5c0"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/send-comparison.css",
+      "sha256": "837459bf03305288015c20aebbb9af5ab4549db4fe03989c11341d3190e4396a"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/send-comparison.js",
+      "sha256": "74a355e517d30e2a7febf5e64a04a4fe74c60aca11027ce7f67b4237ffbfbf22"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/style.css",
+      "sha256": "69afa74e3bc89fc6758c39585ae789345cfdce80efb591ba0829031ad0783a03"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/world-availability.js",
+      "sha256": "a802daffb2300ae96826e0d60d718ca95d767b816876aca951f4d7479fe99b0d"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/world/scene.js",
+      "sha256": "72a96937c596378814f8f1b9833cbf3d9700664d53f95640321c27636c1ac770"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/world/scoped.css",
+      "sha256": "be8e379244be28eee5155b518b8ce8af8f40b1f9e574e1761cdf298c09fd1c01"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/world/style.css",
+      "sha256": "7262149614ee034bf52d7fdcadadba1b162b8e6841975c350e48ab84658b3186"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/world/theme.js",
+      "sha256": "d0dbf2ccb0ea7dab7ec6a4383eb24ce8d66b8d53aa71f1876cd30a9e8aeba489"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/world/theme.json",
+      "sha256": "17b25dd7088e1866a849e2397a08ef23ebe0ed96c548a44d72f059902d655a0e"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/aora/ATTRIBUTION.txt",
+      "sha256": "5df50aa8fcee9acb4e80f9baab7d154106120d36e3e9fbd2bed0146cb8db35be"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/aora/LICENSE",
+      "sha256": "cd25a8e1b00d05b2bb29d3a626599526db960b5bf3ba94fd726565b9bec7f8ea"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/aora/SOURCE-MANIFEST.json",
+      "sha256": "1def92868ff495d9098778a7a53532b85a288c1e19de27e8bb8780ecefde1d49"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/aora/rings.js",
+      "sha256": "7fd196046650b8273d87c9b85a899554d90f35c62d676eea1c681630e721ec20"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/three/LICENSE",
+      "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/three/RoomEnvironment.js",
+      "sha256": "c20f0b4677f6128a138d7152b85cbef9091f4f45cdfa05adca04d40c1697c7ae"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/world/world-adapter.js",
+      "sha256": "57c1a391b0be7c237eba1711a1fae77fec4c32533e8e518434af6b7f5704730e"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/alpha2-compact-feed/app.js",
+      "sha256": "3422c52b792c80a13cab1b31a7fc4346f93b3566ff17d78faab855586c72d289"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/alpha2-compact-feed/content.js",
+      "sha256": "009f5995501d4eaf88b69fa06d81c38c716baa90549dfa1c41e08e6619e787b9"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/alpha2-compact-feed/manifest.json",
+      "sha256": "825ab5bf413eef4f02c36b36faa74681459c1bd5161390a7eb8596d3bda6121c"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/alpha2-compact-feed/style.css",
+      "sha256": "69afa74e3bc89fc6758c39585ae789345cfdce80efb591ba0829031ad0783a03"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/alpha3-solar-noop/manifest.json",
+      "sha256": "e3d8354b4f6a966eb224851702df753d3c31270d9336b60e19bc011cf3a46d34"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/alpha3-solar-noop/weather.js",
+      "sha256": "2d8cc362266dee809a7c82e2e23adc224fee4ca5417f02274d05e034b20f332e"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/continuity-fixture.mjs",
+      "sha256": "9b74904f5bdfce187d16d83425eff38155e169c5bad953cdccb232db6e3c5c52"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/motion-clock-before/app.js",
+      "sha256": "31f1c02da981bf142f94fd29e4cc3b168f8971132ac918f032551c691f1313ff"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/motion-clock-before/chat-host.js",
+      "sha256": "47b29b47c92e7642a3e4e36ead2d50b181788af0e59c086a2d180348d152bf90"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/motion-clock-before/chat-motion.js",
+      "sha256": "51f7e3ffa771ea947553c4cb8ef19c3611a59567c1e2121e7a9a4d4fc1f5ecf9"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/motion-clock-before/sha256.json",
+      "sha256": "79bbc178e7ff1606b0f494336bd920d65e011bc03c94a511e70332f75814ff24"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/motion-clock-before/story/frame-clock.js",
+      "sha256": "598d87045d44611bf89dff6585a66b2cec59e747cd92181cd6aea24f37bc3f60"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/motion-clock-before/story/lifecycle.js",
+      "sha256": "558769f362c6bbef9977d3d264907eb4cfc24a805a537f40e706ba3e98df0b24"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/reading-before/app.js",
+      "sha256": "bcbe340a14434c2e34d4c3038f559f1d34c1faafbf8ea7f8e846be5233b84f85"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/reading-before/host.css",
+      "sha256": "3bf4892240ebf5b84eb8aeb21ee2b75d697b8e6ec8e948367835c7c276fc38e5"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/reading-before/host.js",
+      "sha256": "f59013dcae0b90dd6655778458e92fc22cb4589b0a9939063112899f5d05e7f8"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/reading-before/sha256.json",
+      "sha256": "b9c96840d964aee09eb055cba48c8ef0f6dd98cc17402b52f2fcc6dce8217324"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/app.js",
+      "sha256": "629f19654c30aff2c6142b3c17851643aad5f588603379ab09ce9b389d83c301"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/chat-contour.js",
+      "sha256": "55ee9896bd4453eace4aa39a40069b48ea91e13b3f479ce30a9ec57d41221d78"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/chat-host.css",
+      "sha256": "8c21f0abce05c510a6f9c8055b230b1446f4164b5009492a03c51f9826c7c4bd"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/chat-host.js",
+      "sha256": "3ffb896905b3881a571be99c15f3a8652751d256d6c3cf10a0b5719c3d0b33c7"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/chat-motion.js",
+      "sha256": "51f7e3ffa771ea947553c4cb8ef19c3611a59567c1e2121e7a9a4d4fc1f5ecf9"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/chat/chat-fluid-send.js",
+      "sha256": "146db578b5bf2bcc65f9c550d886afcf001dbcbf35725754d4d6e8770aac9070"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/chat/chat-mobile-flow-page.js",
+      "sha256": "4ad635e44048db50be4b56e3d5aeb9de24cb446ca1d6e16bbb42632c344d2ae8"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/chat/chat-mobile-flow.css",
+      "sha256": "feea536345577af211e4c45ee75dbcf8d17cc558ea2b79e62bf72957ac3f52dc"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/chat/chat-page-lock.js",
+      "sha256": "56fe545fedcb40eaf44a223c9adcac3c9a5d4568fc08b3c8986e93a8df3d161a"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/chat/chat-reading-flow.js",
+      "sha256": "af10dfb858c18a9782c37429d25443e5275c20afe120693305491408b355a88c"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/chat/chat-reading-interior.js",
+      "sha256": "438af1cb681eaaa270958da1344cb835cda91f61348c92e9fc052aaf26b0c24d"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/chat/chat-reading.css",
+      "sha256": "10c592e5fca5f010f46c5b56867e11fbdfd2afc7aa8bb9a5348640b3dc321c2b"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/chat/chat-turn-scroll.js",
+      "sha256": "21e45675fafc4a559e2973634759491ddad36c29d5fc396424f6e158861808b4"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/chat/chat-viewport.js",
+      "sha256": "cf83619e685cc53c9178426808302b129abef089481d9e865ca58651320ff676"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/chat/contextual-chat-layout.js",
+      "sha256": "1be4fdc14976c7413462e486a40228bb3e3cf4de1284499e0cbd240f6fc0924a"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/chat/contextual-chat.css",
+      "sha256": "91290d400bac1e41b9c5f99d8615c81798fdaf27fe1fa9622928b13efa90df8c"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/chat/send-continuity-model.js",
+      "sha256": "9249936343a18205f059211f4482c9cea4ac71e5f45dff3d3eb8c12413a8314e"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/chat/send-continuity.js",
+      "sha256": "1a0cd6fc2b8e352b6dd13ad3a8208a8cf79b8a459fbb10b3c019e388c4d1f914"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/chat/send-path.js",
+      "sha256": "f6921e691f7b6120a0a96104a15ade871f2b1b73fab40c80bd1919bf6be60661"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/chat/send-text-layout.js",
+      "sha256": "2052f072eb22f1a20a810d46fb51e336a77b79b2fd868779eed8193f5f79c54a"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/comparison-status.js",
+      "sha256": "a689f5c7efa42a45f24dfa2f80243a4d4e86f405c8591afddb7868379b07d6e8"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/comparison-visibility.js",
+      "sha256": "43130f52fea59d2e81199f597e6698cf1cf026e02f7a689dad692d5ca01ab341"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/content.js",
+      "sha256": "009f5995501d4eaf88b69fa06d81c38c716baa90549dfa1c41e08e6619e787b9"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/diagnostics/keyboard-diagnostics.js",
+      "sha256": "ebb1e4747975d41a5e74eabb89d36d93335f385d39d9bf93d3b9fc78955e8819"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/host.css",
+      "sha256": "8d9ab38cc5b646ecdc6450983e2266c649cfe33ad086dfb93917d44354536ff1"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/host.js",
+      "sha256": "5982fe74a341780538459de68eeb800e0e7fc446184b6242f9c4af7d3af6c131"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/material.css",
+      "sha256": "ce64cb786aa537751c52269488ad96a964908f1cc86c224ba991321054b2217c"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/palette.css",
+      "sha256": "c4deab976ada8f17bdc9cd9ecc01d1346b0c21a878d3aa6366645fcd48778ef5"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/scene-bridge.js",
+      "sha256": "2ee3c607dbb60adfc1ab56061a67d8a9614db6105fb175ab1b8fd4fd45a0b5c0"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/send-comparison.css",
+      "sha256": "837459bf03305288015c20aebbb9af5ab4549db4fe03989c11341d3190e4396a"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/send-comparison.js",
+      "sha256": "74a355e517d30e2a7febf5e64a04a4fe74c60aca11027ce7f67b4237ffbfbf22"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/style.css",
+      "sha256": "69afa74e3bc89fc6758c39585ae789345cfdce80efb591ba0829031ad0783a03"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/world-availability.js",
+      "sha256": "a802daffb2300ae96826e0d60d718ca95d767b816876aca951f4d7479fe99b0d"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/world/scene.js",
+      "sha256": "72a96937c596378814f8f1b9833cbf3d9700664d53f95640321c27636c1ac770"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/world/scoped.css",
+      "sha256": "be8e379244be28eee5155b518b8ce8af8f40b1f9e574e1761cdf298c09fd1c01"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/world/style.css",
+      "sha256": "7262149614ee034bf52d7fdcadadba1b162b8e6841975c350e48ab84658b3186"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/world/theme.js",
+      "sha256": "d0dbf2ccb0ea7dab7ec6a4383eb24ce8d66b8d53aa71f1876cd30a9e8aeba489"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/v100/world/world-adapter.js",
+      "sha256": "57c1a391b0be7c237eba1711a1fae77fec4c32533e8e518434af6b7f5704730e"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/weather-overlay-before/browser-overlap.json",
+      "sha256": "77111a0f632bc567d9fb47b184f2c4fdfb4f56a6b94258e6902e0c2abfac37b4"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/weather-overlay-before/host.css",
+      "sha256": "ff9c055f40a0979f62955b876aa14577af7dfe6fc28978b97e36104055ecd882"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/weather-overlay-before/manifest.json",
+      "sha256": "5d5365c896a4f73877080cea7bc3f238bd9ff57c75768e4d141c8d8c872466ca"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/weather-overlay-before/weather.css",
+      "sha256": "b6087a0bbd0bfc7597ef9c8e60e9dfdd631997d1fa4438db83ea3141a69bd23a"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/weather-overlay-before/weather.js",
+      "sha256": "0ade2616e9cd34bd8a68453508a1f3a5c2c6f1b8238fe9511c8327cba73d50a5"
+    },
+    {
+      "path": "apps/web/tests/integration/flow-fixture.mjs",
+      "sha256": "107c8389b338ae15014384b3e0fb7f2078206dc951f00ea9cc1f28b968a7d2bd"
+    },
+    {
+      "path": "apps/web/tests/integration/flow-owner.test.mjs",
+      "sha256": "84441b819b06ef2e034b0ed070264528d696fd27c4f43c8f45e12fc20bb550c4"
+    },
+    {
+      "path": "apps/web/tests/integration/hidden-source.test.mjs",
+      "sha256": "b78ad0917c1738ea8afe9584998a595fb0f229af592c65ff09abfed0809dfa69"
+    },
+    {
+      "path": "apps/web/tests/integration/host-fixture.mjs",
+      "sha256": "ae81b658020047dcaeb40e6d152a37f8172b5d76e3e310feedfa59e85ec9e2cf"
+    },
+    {
+      "path": "apps/web/tests/integration/host-navigation.test.mjs",
+      "sha256": "3b0c5d8f2e99a96dbce25691e4136a4083fc4d17c382f52e2510f9fe64f4de35"
+    },
+    {
+      "path": "apps/web/tests/integration/integration-contract.test.mjs",
+      "sha256": "4b46ccc6051090538033bfd2e487e6c645f5a2b4dc14dac6a8bdb6650c67f97b"
+    },
+    {
+      "path": "apps/web/tests/integration/module-bootstrap.test.mjs",
+      "sha256": "8c1d5e06bcc24a8f46a4914bc0d77bbf0f021186f7a1ae08983dbe676ce483cf"
+    },
+    {
+      "path": "apps/web/tests/integration/motion-clock-fixture.mjs",
+      "sha256": "d8b27ac4c339f1d59cee90875924ac1a6dabf7eeaec2049116c1104584f56256"
+    },
+    {
+      "path": "apps/web/tests/integration/motion-clock.test.mjs",
+      "sha256": "c9306746aa7cc6ae8f44df218a2ddedb1d7e21f09148551241363ebbaade2bb3"
+    },
+    {
+      "path": "apps/web/tests/integration/package-lock.json",
+      "sha256": "c97ef5d45bef1a09f48786f9aaa40a663f924909f6f4561a7e15f37f670563c9"
+    },
+    {
+      "path": "apps/web/tests/integration/package.json",
+      "sha256": "886eb5699c0dd7208de0d80bfca2203878eadf8914e03f22efd0cf3d043291ca"
+    },
+    {
+      "path": "apps/web/tests/integration/reading-assistant.test.mjs",
+      "sha256": "50260c4f57111bc0175aacdf4fe529a4e43f12ff9b16b90fdd320f2a0122dfa0"
+    },
+    {
+      "path": "apps/web/tests/integration/reading-clearance.mjs",
+      "sha256": "d1222266301f8717f1d4c2b7080dea0a94bc599d65342dadb98463a493b091aa"
+    },
+    {
+      "path": "apps/web/tests/integration/reading-shelf-fixture.mjs",
+      "sha256": "57eba2162bf750eb795727d8a5420d64cb09066ea2e1db7b5e30b9504f2e1083"
+    },
+    {
+      "path": "apps/web/tests/integration/recorder.test.mjs",
+      "sha256": "d41dc705e119a0f0b9ebbfc5083160f38f0f5539614935cb931d6fa593be3bb8"
+    },
+    {
+      "path": "apps/web/tests/integration/replay-scroll.test.mjs",
+      "sha256": "dbddbc0cbbdbbe4f6a8b5ad071648b28c793091fcf7d4324479023c39316d577"
+    },
+    {
+      "path": "apps/web/tests/integration/run.mjs",
+      "sha256": "69fff9b7256cd23186e19273e11ae9aab5806fecdf72daa7d1e115be68c494d5"
+    },
+    {
+      "path": "apps/web/tests/integration/scroll-source.test.mjs",
+      "sha256": "e244d4d7c17e67aa1eb10fe38f440180e61fad913fd8a4043691051b851d35b1"
+    },
+    {
+      "path": "apps/web/tests/integration/shadow-cache-boundary.test.mjs",
+      "sha256": "ff6727746ffeefdf00c7f05f3ced6b365a2656f1cdf7e37c05bbfe8ee58f63cb"
+    },
+    {
+      "path": "apps/web/tests/integration/shadow-cache.test.mjs",
+      "sha256": "e99eda75aba79bc7a5f0744a3f62bd62a9ac4aef2672d6c614709581426ed8a0"
+    },
+    {
+      "path": "apps/web/tests/integration/story-contract.test.mjs",
+      "sha256": "6fbfb3228b09ba3d62bdf658c55b9cc8abb35eb06f56562652d052306d94f7eb"
+    },
+    {
+      "path": "apps/web/tests/integration/story-geometry-props.test.mjs",
+      "sha256": "be440a23f3f4c79a492582b5151e16afe8f33068e5efe5673018b299b4a391b8"
+    },
+    {
+      "path": "apps/web/tests/integration/story-geometry.test.mjs",
+      "sha256": "3cc3919ff763441f4cf85c6fcf95a1d83b7980d6b85d05074247c8b8864327a2"
+    },
+    {
+      "path": "apps/web/tests/integration/temporal-close.test.mjs",
+      "sha256": "037ee0b2529b65e28d55511772466d6618fd69bbac90f789ec430d02dab8206d"
+    },
+    {
+      "path": "apps/web/tests/integration/weather-overlay-fixture.mjs",
+      "sha256": "0b17c4cfdc763dcdb6f955891c0f779cf8e5c86eff1a26d2381a493777aa8346"
+    },
+    {
+      "path": "apps/web/tests/integration/weather-overlay.test.mjs",
+      "sha256": "d2c18d64b24e6608ad4665393fdb2a890e2238015b3b3fa86c4e2fe4eaaadf53"
+    },
+    {
+      "path": "apps/web/tests/integration/weather-solar-baseline.test.mjs",
+      "sha256": "4a55999e2863b2660a1075a69190679b57c1910c0b00420b4a3353f64feb53e0"
+    },
+    {
+      "path": "apps/web/tests/integration/weather-solar-fixture.mjs",
+      "sha256": "1ec695a7ee150c3cd0e81426a995e6cba7dc603dec8a8893339c90493e493622"
+    },
+    {
+      "path": "apps/web/tests/integration/weather-solar.test.mjs",
+      "sha256": "b93eb3c53d32cecec460b278be2dcb1c91c243a8bfcd8d0d21bae0542cc4adca"
+    },
+    {
+      "path": "apps/web/tests/integration/world-cpu-fixture.mjs",
+      "sha256": "325e0c00e08e833a6dc52d03f7c8355a3999f1bc78ff5c1b76d2616c99767eb2"
+    },
+    {
+      "path": "apps/web/tests/integration/world-cpu.test.mjs",
+      "sha256": "a04063e659a9c10994712cf86d01aa10f7c446025ac8f7669c9694a6ce4357b8"
+    },
+    {
+      "path": "apps/web/tests/integration/world-layers-fixture.mjs",
+      "sha256": "944c0590fcb404654573798dbcf067d37e360807fa036ce8bfd981e1d0510925"
+    },
+    {
+      "path": "apps/web/tests/integration/world-layers.test.mjs",
+      "sha256": "ee6c89afd239743bd85224369c8c8eeeca4818e419a6275124061e7a59ee6308"
+    },
+    {
+      "path": "apps/web/tests/menu-port/menu.test.mjs",
+      "sha256": "f3b4715ea7620aa918db5e3afa9ca2e3d6d81b554f8a14260708aa53718fddab"
+    },
+    {
+      "path": "apps/web/tests/weather-elapsed/elapsed.test.mjs",
+      "sha256": "00cf0e2b33241913039e87c853ffd249ef324b791239e35410727fa72f8996af"
+    },
+    {
+      "path": "apps/web/tests/weather-elapsed/fixtures/alpha6-weather.js",
+      "sha256": "cad38afb17e2934e33133e805f2973dfed98779777a540aa2c467283492553f3"
+    },
+    {
+      "path": "apps/web/tests/weather-port/weather.test.mjs",
+      "sha256": "ab4bf3e03b0c14bd25f51464ab2b297d3beaaa1aae3acb5dd80a2c52ad53c014"
+    },
+    {
+      "path": "apps/web/tests/weather-v5/assembly.test.mjs",
+      "sha256": "96f9bcd9a5a3cf757e652c1b28beb503ae5c8307e205460f5153215be5391140"
+    },
+    {
+      "path": "apps/web/tests/weather-v5/fixtures/alpha4-host.css",
+      "sha256": "67c0c1e9568da91da8ae23cd7c8e7d3eddb62171bddf405214accf49af2a0a29"
+    },
+    {
+      "path": "apps/web/tests/weather-v5/fixtures/alpha4-weather.mjs",
+      "sha256": "e4ac614e57005b4e46bd89cef9b2937fb3e5e4dd74e2820076823861ddd0b474"
+    },
+    {
+      "path": "apps/web/tests/weather-v5/fixtures/clock-reviewed-protected.json",
+      "sha256": "1724362862201c14971c051e121e7015ff86b5afe65511f974a1cfcf5e7e7bea"
+    },
+    {
+      "path": "apps/web/tests/weather-v5/fixtures/v2/weather.js",
+      "sha256": "1fd1917357a0ccff95de8b4261690e7929af47c114127a57c458012c5cdee97e"
+    },
+    {
+      "path": "apps/web/tests/weather-v5/fixtures/v3/weather.js",
+      "sha256": "bbd8ff62c1f044488120c8cb64814e22445f2d4f6c7c3fd9246836604291953a"
+    },
+    {
+      "path": "apps/web/tests/weather-v5/fixtures/v4/weather.css",
+      "sha256": "c0092338b2fb3953678b5f5ae1c5ab101604b986e409d496128091e8cdc33f2b"
+    },
+    {
+      "path": "apps/web/tests/weather-v5/fixtures/v4/weather.js",
+      "sha256": "cad38afb17e2934e33133e805f2973dfed98779777a540aa2c467283492553f3"
+    },
+    {
+      "path": "apps/web/tests/weather-v5/fixtures/v4/world-response.txt",
+      "sha256": "a8bad9c5b525a84a7f05d5ce0e78b3da8b9e19e1513dc49c575d27a226b219c6"
+    },
+    {
+      "path": "apps/web/tests/weather-v5/fixtures/v5/host-reading.css",
+      "sha256": "db898642340f7841305f765dbb95941b8b1eebfa13d850e25a4a7053d36e0357"
+    },
+    {
+      "path": "apps/web/tests/weather-v5/fixtures/v5/world-response.txt",
+      "sha256": "a8bad9c5b525a84a7f05d5ce0e78b3da8b9e19e1513dc49c575d27a226b219c6"
+    },
+    {
+      "path": "apps/web/tests/weather-v5/model-parity.test.mjs",
+      "sha256": "3ae7b2392833966275c7c242eaf346e450a8b3a11e8ed4e7b055c69a0723eac5"
+    },
+    {
+      "path": "apps/web/tests/weather-v5/phase-continuity.test.mjs",
+      "sha256": "864209fbb947c12d77510a0b352e86dbd0745dcfa14f92278b3de2c7094f3624"
+    },
+    {
+      "path": "apps/web/tests/weather-v5/readable-weather.test.mjs",
+      "sha256": "d7e1435e855d6bc901b0e4bf95cf373483128515f2bd42bdb9c87fea417de974"
+    },
+    {
+      "path": "apps/web/tests/weather-v5/reading-protection.test.mjs",
+      "sha256": "73f2b74ba833544de290d1f2422758a42712f505061d0bd5b7b54c11cb77d981"
+    },
+    {
+      "path": "apps/web/tests/weather-v5/retarget-continuity.test.mjs",
+      "sha256": "3afd3a074113007079090c7f40c3134d68ad6b482bd0885281f9959cd9d7e2a2"
+    },
+    {
+      "path": "apps/web/tests/weather-v5/weather-solar-fixture.mjs",
+      "sha256": "c74f0ea5a4e4d2a306f3eb97ff97c5bceb941d2aa6c5a46654edc8595f35bb56"
+    },
+    {
+      "path": "apps/web/tests/weather-v5/weather-solar.test.mjs",
+      "sha256": "b93eb3c53d32cecec460b278be2dcb1c91c243a8bfcd8d0d21bae0542cc4adca"
+    },
+    {
+      "path": "apps/web/tests/weather-v5/weather.test.mjs",
+      "sha256": "ab4bf3e03b0c14bd25f51464ab2b297d3beaaa1aae3acb5dd80a2c52ad53c014"
+    },
+    {
+      "path": "docs/ALPHA5_CANDIDATE.md",
+      "sha256": "fb058d42eb46a2aa8f36058c9e36cc3978e7cbc24e04a0e28aed79c930d9cd0d"
+    },
+    {
+      "path": "docs/ALPHA6_CANDIDATE.md",
+      "sha256": "d9f4616e446854651c2a0eb5a21e19de0c486e27d22bdf24d010100a849688a3"
+    },
+    {
+      "path": "docs/ALPHA7_CANDIDATE.md",
+      "sha256": "4ab3d2e94ad233f47c1d019819e5f67e88ffff2fb2e1699b12a69f6aed34978b"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "sha256": "ffadf6078fce863de3bfcb61526990de1d5c3aa668e9619821d640f1fbfcabfb"
+    },
+    {
+      "path": "docs/BACKEND_SCOPE.md",
+      "sha256": "4a1dff7d317718e6f54d44b3ed438204d2a8a3d0a330108835e16a18214b745c"
+    },
+    {
+      "path": "docs/MOTION_CLOCK_CANDIDATE.md",
+      "sha256": "aa5fd5dd497af890797992fbe0d513872b05fa80ed7a0221e010a93879e67f8d"
+    },
+    {
+      "path": "docs/MOTION_CLOCK_REVIEW.md",
+      "sha256": "c42e2a9595279e85fdf8dde26e5bbafa1b88523dc5e33030e8d9eb2fd6f128db"
+    },
+    {
+      "path": "docs/OWNERSHIP.md",
+      "sha256": "cf65636fe4010e8ad5ceb870f95fe7e9f762b246678347409e6440025cb55994"
+    },
+    {
+      "path": "docs/READING_ASSISTANT_REVISION.md",
+      "sha256": "536b0d1bcf562cc97b266551afec0f6185588bc288ad17750b4ec5ffce7b18a3"
+    },
+    {
+      "path": "docs/RELEASE_POLICY.md",
+      "sha256": "6259ca65eab432557139332b309f8afcc1a84c21133378dfc8d4c37a64406888"
+    },
+    {
+      "path": "docs/TESTING.md",
+      "sha256": "556f1fc7be9cf59fddc211d60e2a631d6031eace704953f86a035ad32fdef57d"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "1157bdc6090a1b4a33cd1ca1ab5bd38066451ca984c3f4cb54d1c383e6f85938"
+    },
+    {
+      "path": "package.json",
+      "sha256": "7dc4c770adfa95f739c0a145b011b8093dc3d10bf3a7e5fc4183b5ac439b2521"
+    },
+    {
+      "path": "packages/contracts/index.mjs",
+      "sha256": "95a57492795d21b37fa7ea667b56f45557c9f8a062041c5dd1f845e8af212c27"
+    },
+    {
+      "path": "packages/contracts/package.json",
+      "sha256": "22364ead7df2be2432274bf620303793b8cd8507a89fb6f41d771bc82825c5c2"
+    },
+    {
+      "path": "packages/contracts/schemas/content-record.schema.json",
+      "sha256": "f6454833f021ebeba05f1562535a7e5227e95b42b3b6800fbf8718a7aaa38725"
+    },
+    {
+      "path": "packages/contracts/schemas/health.schema.json",
+      "sha256": "a3f82d02ffb620cbfa23e63e0163b89a53be74bd7dd7fc4257d91f5b9799678c"
+    },
+    {
+      "path": "packages/contracts/test/contracts.test.mjs",
+      "sha256": "a3578101cf5ef465dfc9e9a1e86c77c203901ac0d36968cf22a889f3de2b7002"
+    },
+    {
+      "path": "provenance/active-candidate.json",
+      "sha256": "ae2276ff07771d7b03270cd4f0d4205c091dc704d2d8c9dbb3c4cc276f80339a"
+    },
+    {
+      "path": "provenance/alpha6-shadow-cache-hunks.json",
+      "sha256": "2d02e63071090f58edadad179022ef091d909ac0e01c476f4dbc18ca67751fd4"
+    },
+    {
+      "path": "provenance/alpha7-source-files.json",
+      "sha256": "4a0cc7d2a23f9407013847b773cfb62ea893d6a33395b5959866c7e01f4e7366"
+    },
+    {
+      "path": "provenance/alpha7-weather-elapsed-hunks.json",
+      "sha256": "3f3903e0faecf6af9b64034669b182dcc97fe5d90075e561ba81d24b6bda6196"
+    },
+    {
+      "path": "provenance/candidates/alpha5-0fc929f.json",
+      "sha256": "945d3617cd25ac364f1d51b20f9916b4de07479ea007785a10b0d4b80f4c6ff3"
+    },
+    {
+      "path": "provenance/candidates/alpha5-controls-984814b.json",
+      "sha256": "f39847f261c7d86ad5a6b2bff476fea6c1240350fb96eefa54218cce1ccb5253"
+    },
+    {
+      "path": "provenance/candidates/alpha5-reading-b917dda.json",
+      "sha256": "77cd914657ebbbc111619205dd68c0281b805bb0979a2e8a809e731673d9b96e"
+    },
+    {
+      "path": "provenance/candidates/alpha5-world-layers-652d790.json",
+      "sha256": "557d11ae0cb2cd268a969887468e629258e6c465736080163a13cc1ced16e3ae"
+    },
+    {
+      "path": "provenance/candidates/alpha6-b4fe3cc.json",
+      "sha256": "ccfe9580a6a9d375f79ea8bf0d628ef05f5a29a16a696ab5702d3bcb0a828549"
+    },
+    {
+      "path": "provenance/export-policy.json",
+      "sha256": "0f782049e914df98374f5d06d800e2af54e745002647fd0d90544a07e0e460f5"
+    },
+    {
+      "path": "provenance/import-verification.json",
+      "sha256": "3699baac108d2feaa992e06db0b2e2c6f1d52869ccaacf9815cb92187d94012a"
+    },
+    {
+      "path": "provenance/observations/shadow-cache-source-observation.json",
+      "sha256": "054676b470ada76a21c814ed96aee97ecbbddaab7050f88f0a0c5c9eeeeff6ba"
+    },
+    {
+      "path": "provenance/observations/weather-elapsed-source-observation.json",
+      "sha256": "cce92be885257091dd5ede4a56e3a47aa449593f517d078adb30ad2da71b3afd"
+    },
+    {
+      "path": "provenance/releases.json",
+      "sha256": "d815c0e81e1549e3f83eaaed8f0d54e5079f4fc280b9fc281c07b1639a1abcd7"
+    },
+    {
+      "path": "provenance/runtime-files.json",
+      "sha256": "a74283e78182bff5fdb16fcb99b6894712c3d2c8840ece76b16429d10de8a7cc"
+    },
+    {
+      "path": "provenance/snapshots/alpha5-world-layers/release-meta.json",
+      "sha256": "7ae100d1d310899b0e69a30f643dc89bcc2444b0b74a8a79d2ae97511bdb6c08"
+    },
+    {
+      "path": "provenance/snapshots/alpha5-world-layers/world/scene.js",
+      "sha256": "07239468840def699c9111bd9e6879df313a48dad5ef791dea4f01a9ac71aad3"
+    },
+    {
+      "path": "provenance/snapshots/alpha6-b4fe3cc/apps/web/package.json",
+      "sha256": "0eba139bfd7374c31c1625e9d0194cec1d41ce6f891cefb68216c71e89a1bf78"
+    },
+    {
+      "path": "provenance/snapshots/alpha6-b4fe3cc/apps/web/runtime/modules/weather.js",
+      "sha256": "cad38afb17e2934e33133e805f2973dfed98779777a540aa2c467283492553f3"
+    },
+    {
+      "path": "provenance/snapshots/alpha6-b4fe3cc/apps/web/runtime/release-meta.json",
+      "sha256": "b299a9872645319c16d195a196645f9bf1d92769e7d183d6bd9baa8c3bf9bcaa"
+    },
+    {
+      "path": "provenance/snapshots/alpha6-b4fe3cc/apps/web/runtime/world/scene.js",
+      "sha256": "823a25d68a0e52d0b20f44ef436a99fbaa202d4dfdb1daf6be941d067187de3a"
+    },
+    {
+      "path": "provenance/snapshots/alpha6-b4fe3cc/package-lock.json",
+      "sha256": "cd2ec2719a1191838137ff7cbe2720ece71f32faca234cabbec508889e918ead"
+    },
+    {
+      "path": "provenance/snapshots/alpha6-b4fe3cc/package.json",
+      "sha256": "b367764ced80cc1afb23fcebb5bb057f40e53de679b85d0975517bb9a44e0869"
+    },
+    {
+      "path": "provenance/snapshots/alpha6-b4fe3cc/packages/contracts/index.mjs",
+      "sha256": "5b095260feae7858234956d6b24872837ecbb77afa4a6648c8c78943af2b0759"
+    },
+    {
+      "path": "provenance/source-allowlist.json",
+      "sha256": "c1b20944189a33f5368e254d3bce474118318605d442c52eccb82b546e7de408"
+    },
+    {
+      "path": "provenance/tooling-verification.json",
+      "sha256": "c7c898a24a93f57094dd2d0f41c6b13dade9a97b88b53c8e9fb56afc5178d764"
+    },
+    {
+      "path": "provenance/vendor-dependencies.json",
+      "sha256": "0fbe77a79547705a4b50de50505ae86ae305b8341fe2713d8d617a95e8502c83"
+    },
+    {
+      "path": "scripts/check-provenance.mjs",
+      "sha256": "a1806fdffb963f6e768604e926dcc0f7f51d5641f6815a40d59e53e82b19e27d"
+    },
+    {
+      "path": "scripts/check-provenance.test.mjs",
+      "sha256": "ed02cb3f869c229484f89c104a9a231ccf919907a134954e5247a562cd44db23"
+    },
+    {
+      "path": "scripts/check-public-export.mjs",
+      "sha256": "d5ab1b91e9c267f1c8f8138f19b8a34711e6236d0e8b78fe5688195f3d522c46"
+    },
+    {
+      "path": "scripts/check-shadow-cache-boundary.mjs",
+      "sha256": "5acacd049cb317cc4bd96f9198b56b7683b5a3bf40aadc265fd877c6f7638de2"
+    },
+    {
+      "path": "scripts/check-source-scope.mjs",
+      "sha256": "b2f506c2d117d53136fd0caca955edce8f16c9de57b43301072cc746a1eee1c1"
+    },
+    {
+      "path": "scripts/check-syntax.mjs",
+      "sha256": "c7ad084b0ed315a69ff1b28f0722cda3da70d52a3d4c3c66cd2b33e4bd4f2542"
+    },
+    {
+      "path": "scripts/check-weather-elapsed-boundary.mjs",
+      "sha256": "5970c0a4b718140efeaac657e77ca69a5026c8a8283abd60cfcb409a3a8eae2e"
+    },
+    {
+      "path": "scripts/check-weather-elapsed-boundary.test.mjs",
+      "sha256": "a9a5bd1acd84b6718285c6a515ba3843eabf2b39dcf122963b570d76144c0f97"
+    },
+    {
+      "path": "scripts/dev.mjs",
+      "sha256": "19573fcb07e3961a7ab9ace8001881b854cb61e93fe16cb5e0b35f16a66c5c67"
+    },
+    {
+      "path": "scripts/historical-alpha6.mjs",
+      "sha256": "aa5ec2ec46be5af2761d8897f584688634d6b03475659b8ea30362658b7fa3ad"
+    },
+    {
+      "path": "scripts/setup-vendor.mjs",
+      "sha256": "e882c47dbd5730b432558a74e47224231837e17f2b2dc240b7f35dbfc844c80c"
+    },
+    {
+      "path": "scripts/setup-vendor.test.mjs",
+      "sha256": "8aadb4a7c8f8e1834fdc0c094e86fa27709003893acdcfc951b6e916a5c5caef"
+    }
+  ],
+  "snapshots": [
+    "README.md",
+    "THIRD_PARTY_NOTICES.md",
+    "apps/web/package.json",
+    "apps/web/runtime/app.js",
+    "apps/web/runtime/chat-host.js",
+    "apps/web/runtime/index.html",
+    "apps/web/runtime/release-meta.json",
+    "apps/web/static-server.test.mjs",
+    "apps/web/tests/integration/content-fixture.mjs",
+    "apps/web/tests/integration/reading-assistant.test.mjs",
+    "apps/web/tests/integration/temporal-close.test.mjs",
+    "apps/web/tests/weather-v5/assembly.test.mjs",
+    "package-lock.json",
+    "package.json",
+    "packages/contracts/index.mjs",
+    "packages/contracts/test/contracts.test.mjs",
+    "provenance/active-candidate.json",
+    "scripts/check-provenance.mjs",
+    "scripts/check-shadow-cache-boundary.mjs",
+    "scripts/check-source-scope.mjs",
+    "scripts/historical-alpha6.mjs"
+  ],
+  "generatedFiles": [
+    {
+      "path": "apps/web/runtime/world/vendor/three/three.core.js",
+      "sha256": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20"
+    },
+    {
+      "path": "apps/web/runtime/world/vendor/three/three.module.js",
+      "sha256": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/three/three.core.js",
+      "sha256": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20"
+    },
+    {
+      "path": "apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/three/three.module.js",
+      "sha256": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a"
+    }
+  ]
+}

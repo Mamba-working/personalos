@@ -4,7 +4,7 @@ PersonalOS is managed as one product repository: web UI, a backend service bound
 
 ## Current implementation
 
-- Web: the local v0.1.0-alpha.8 Motion-inspired reader r3 candidate, 18 authored demonstration records, native feed/reader/navigation, Ball scene, menu, simulated weather and local demonstration chat
+- Web: the local v0.1.0-alpha.7 visible-weather elapsed-time candidate, 18 authored demonstration records, native feed/reader/navigation, Ball scene, menu, simulated weather and local demonstration chat
 - API: a new runnable Node service with GET /healthz and GET /api/v1/status
 - Contracts: health payload and authored-demo-content shape
 - Product backend features: content storage/API, real AI, authentication and persistence are not implemented; the unchanged web demo does not call the new API
@@ -48,7 +48,7 @@ This public repository begins with a clean import. Original private QA captures,
 
 Two runtime Three.js build files and their two accepted-baseline fixture copies are deliberately absent from Git. Root npm ci installs exact three@0.180.0; npm run setup restores all four files from the official package after SHA-256 verification. Run this before opening, serving or testing the web app. Three.js licenses remain tracked.
 
-The historical alpha.4–alpha.7 source records remain pinned. The active alpha.8 source candidate gives the reviewed Motion-inspired reader r3 its own explicit version and exact runtime envelope. Original historical provenance suites run unchanged against authenticated historical source, while every active behavioral regression and the new mutation-tested successor gate run in the normal aggregate. JavaScript, CSS, HTML, assets and licenses remain byte-identical to the r3 input; only runtime release metadata changes. This is an unpublished candidate, not stable promotion or browser/device/performance acceptance. See docs/ALPHA8_CANDIDATE.md; docs/CARD_READER_CANDIDATE.md remains the historical r3 input report.
+The historical alpha.4–alpha.6 source records remain pinned. The active alpha.7 candidate adds only visible-weather elapsed correctness and version metadata to accepted alpha.6 source b4fe3cc. Historical exact assertions run against explicit pinned historical inputs; a separate successor boundary checks the reviewed weather/scene hunks, unchanged shadow owner and exact runtime/source scope. The two implementation files match a bounded native cloud-browser observation, with its limits preserved. A final versioned-runtime smoke, device/performance acceptance and user signoff remain separate. It is local and unpublished; cinematic rain-v6 and Next.js are not included. See docs/ALPHA7_CANDIDATE.md.
 
 Read LICENSE and THIRD_PARTY_NOTICES.md before reuse. This repository has no blanket MIT license. The retained Emotion Ball character visuals are restricted to non-commercial personal technical study/research; its engine/data have separate commercial licensing terms. A product commercialization plan must address those restrictions first.
 

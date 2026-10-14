@@ -6,7 +6,7 @@ const host = window.personalOSHost;
 const menu = mountMenu({ host, container: document.querySelector('#host-menu') });
 const scene = mountMotionScene({ host, container: document.querySelector('#motion-scene'), speech: document.querySelector('#motion-speech'), status: document.querySelector('#motion-status') });
 host.registerModule('scene', scene);
-const weather = mountWeather({ host, container: document.querySelector('#host-weather') });
+const weather = mountWeather({ host });
 host.registerModule('menu', menu); host.registerModule('weather', weather);
 // Keep the retained native menu byte-unchanged. Its modal/phase attributes are
 // the host notification boundary; canvas input pauses before the next frame.

@@ -320,7 +320,8 @@ async function makeHarness({ delayImport = false, holdCaptures = false, initial 
           if (key === 'isDisposed') return record.disposed;
           if (key === 'weather') return record.weather;
           if (key === 'timeMode') return record.time;
-          if (['isNight', 'sound', 'autoCycle'].includes(key)) return false;
+          if (key === 'isNight') return record.night ?? record.time === 'night';
+          if (['sound', 'autoCycle'].includes(key)) return false;
           if (key === 'nightAmount') return record.time === 'night' ? 1 : 0;
           if (Object.hasOwn(methods, key)) return methods[key];
           forbidden.push(String(key));
@@ -762,4 +763,17 @@ test('pending static capture completion cannot repaint a lost or cached context'
   h.event(h.win, 'pageshow', { persisted: true }); assert.equal(h.count('capture'), 3);
   await h.finishCapture(2);
   assert.equal(h.scene.paused, true); assert.equal(h.instances.length, 1);
+});
+
+
+test('header tone observes only public isNight state and daynight notifications', async t => {
+  const h = await mounted(t);
+  assert.equal(h.api.getState().night, null);
+  await h.ready(); assert.equal(h.api.getState().night, false);
+  h.api.setTime('night'); assert.equal(h.api.getState().night, true);
+  h.api.setTime('auto'); assert.equal(h.api.getState().night, false);
+  const notifications = h.notifications.length;
+  h.scene.night = true; h.scene.emit('daynight', { night: true });
+  assert.equal(h.api.getState().night, true); assert.equal(h.notifications.length, notifications + 1);
+  h.checkPublicOnly();
 });

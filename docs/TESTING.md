@@ -23,11 +23,11 @@ npm test runs:
 - Shared health/demo-content contracts
 - Real local HTTP health/status API, missing capabilities/routes, rejected methods and headers
 - Real local HTTP static serving, current assets/MIME types and repo-file/traversal/method boundaries
-- npm run test:web: 59 current host, weather-bridge and native-card tests
+- npm run test:web: 72 current host, asynchronous-weather, native-card and navigation-A tests
 
 The API and contracts use Node built-ins and add no server framework dependency. Their source/tests are unchanged, including status metadata productVersion 0.1.0-alpha.4 and apiScaffoldVersion 0.0.1; the current web is alpha.8.
 
-The 59 web tests replace WeatherScene at its documented public-API boundary and use bounded host/DOM/layout models. They exercise input ownership, pause/resume/lifecycle, weather/time control and card layout/projection continuity. They do not run a real WebGL renderer or prove real CSS pixels and physical-device behavior.
+The 72 web tests replace WeatherScene at its documented public-API boundary and use bounded host/DOM/layout models. They exercise input ownership, pause/resume/lifecycle, headless weather-provider state, card layout/projection continuity and navigation-A DOM/style semantics. They do not run a real WebGL renderer or prove real CSS pixels and physical-device behavior.
 
 Generated local evidence stays ignored. Do not upload screenshots/logs containing personal UI, raw messages or absolute environment paths to public Actions artifacts or releases by default.
 
@@ -50,10 +50,12 @@ Actual GPU/mobile acceptance remains incomplete. Synthetic frame.dt and module d
 
 Earlier public alpha.3/alpha.4 imports retained portable integration/menu/weather suites, byte-pinned negative controls and documented popstate/concurrency harness repairs. Their inventories, tests and vendor reconstruction remain scoped to those historical commits.
 
-The current source retires the old renderer. Historical mixed full-page and old-renderer suites are not part of the 59 current web tests and are not represented as current-page passes. Preserve historical provenance and relevant negative controls when deliberately adapting a future suite; do not remove controls to obtain a pass.
+The current source retires the old renderer. Historical mixed full-page and old-renderer suites are not part of the 72 current web tests and are not represented as current-page passes. Preserve historical provenance and relevant negative controls when deliberately adapting a future suite; do not remove controls to obtain a pass.
 
 The original private release validator/evidence registry is not included. Public acceptance requires newly collected sanitized evidence for the exact current candidate; excluded private records cannot serve as public proof.
 
 ## Tool version basis
 
 .nvmrc retains Node 24.19.0. It identifies the pinned test environment, not a claim that it is the latest available Node release. CI retains official actions pinned to verified source commits and has no browser-install or deployment step.
+
+Navigation DOM/style checks use pinned official jsdom30.1.1. They do not prove rendered browser layout, physical hit testing or actual sky/glyph contrast.

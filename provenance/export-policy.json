@@ -4,7 +4,7 @@
     "Exact 87-file alpha.8 runtime and its retained vendor licenses",
     "Unmodified public 84-file pinned motion-ball source and original documentation",
     "Canonical native shell/card sources and public-API-only host adapters",
-    "Current 59 deterministic host/weather/native-layout tests",
+    "Current 72 deterministic host/asynchronous-weather/native-layout/navigation tests",
     "Existing public API/contracts scaffold and new public integration/build documentation"
   ],
   "exclude": [

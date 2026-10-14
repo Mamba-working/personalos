@@ -31,6 +31,17 @@ for (const [name, pkg] of Object.entries(upstreamLock.packages)) {
 for (const p of walk('integrations/native-shell')) assert.deepEqual(read(p), read(runtime + p.slice('integrations/native-shell/'.length)), p);
 assert.deepEqual(read('integrations/native-card/app.js'), read(runtime + 'app.js'));
 for (const name of ['layout.js', 'reader.css']) assert.deepEqual(read('integrations/native-card/' + name), read(runtime + 'native-card/' + name));
+for (const [sourceFile, runtimeFile] of [['host.css','host.css'],['host.js','host.js'],['motion-scene.js','modules/motion-scene.js'],['weather.js','modules/weather.js'],['mount.js','modules/mount.js']]) {
+  assert.deepEqual(read('integrations/motion-ball/' + sourceFile), read(runtime + runtimeFile), sourceFile);
+}
+const html = read(runtime + 'index.html').toString(), hostCSS = read(runtime + 'host.css').toString();
+assert(!/intro-note|host-weather|weather-panel|weather-toggle/.test(html));
+assert(/\.intro h1,\.intro \.eyebrow\{pointer-events:none;user-select:none;-webkit-user-select:none\}/.test(hostCSS));
+assert(!/\.intro h1[^{}]*\{[^{}]*pointer-events:auto/.test(hostCSS));
+const header = html.match(/<header class="topbar">[\s\S]*?<\/header>/)[0]
+  .replace(' aria-label="Ball 聊天"', '')
+  .replace('<span class="chat-label">Ball 聊天</span><span class="chat-label-compact" aria-hidden="true">Ball</span>', 'Ball 聊天');
+assert.equal(hash(header), '55eadf6498b4d2d3b90921e99a6c669e35098d8be2b41e48dcdf4147d9334fe3', 'Retain original native header actions');
 for (const p of walk('.build/motion-ball/dist-lib').filter(p => p.endsWith('.js'))) assert.deepEqual(read(p), read(runtime + 'motion/' + path.basename(p)), p);
 assert.equal(JSON.parse(read('.build/motion-ball/node_modules/three/package.json')).version, '0.186.1');
 assert(!existsSync(path.join(root, 'integrations/motion-ball/overrides')));

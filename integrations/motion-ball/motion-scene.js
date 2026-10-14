@@ -47,7 +47,8 @@ export function mountMotionScene({ host, container, speech, status }) {
         // Ball clicks retain upstream play/gesture behavior. Chat activation is
         // the native DOM button, so pointercancel/lease release cannot open it.
         pending.on('weatherchange', ({ weather }) => { if (ready) { selected = weather; notify(); } }),
-        pending.on('timechange', ({ mode }) => { if (ready) { time = mode; notify(); } }));
+        pending.on('timechange', ({ mode }) => { if (ready) { time = mode; notify(); } }),
+        pending.on('daynight', () => { if (ready) notify(); }));
       await pending.ready;
       if (disposed) { pending.dispose(); return; }
       scene = pending; ready = true; scene.canvas.style.touchAction = 'pan-y';
@@ -71,7 +72,7 @@ export function mountMotionScene({ host, container, speech, status }) {
   container.addEventListener('webglcontextlost', lost, true); container.addEventListener('webglcontextrestored', restored, true);
   const ro = new ResizeObserver(resize); ro.observe(container);
   const api = {
-    getState: () => ({ ready, failed, weather: selected, time, paused: !scene || scene.paused, reduced: !!state.reduced,
+    getState: () => ({ ready, failed, weather: selected, time, night: scene ? scene.isNight : null, paused: !scene || scene.paused, reduced: !!state.reduced,
       canvasCount: container.querySelectorAll('canvas').length, source: 'motion-ball@957cec0', publicApiOnly: true }),
     setWeather(name) { selected = name; if (scene && ready) { scene.setWeather(name, { instant: staticMode() }); if (staticMode()) paintOnce(); } notify(); return true; },
     setTime(mode) { time = mode; if (scene && ready) { scene.setTime(mode, { instant: staticMode(), quiet: true }); if (staticMode()) paintOnce(); } notify(); return true; },

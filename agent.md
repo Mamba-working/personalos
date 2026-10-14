@@ -6,13 +6,13 @@ Current web candidate: v0.1.0-alpha.8. Canonical native UI uses the original mot
 
 - integrations/native-shell/: native page, feed, menu and local demonstration chat
 - integrations/native-card/: card/reader controller, measured layout and CSS; [layout notes](docs/NATIVE_CARD_LAYOUT.md)
-- integrations/motion-ball/: scene host, asset base, weather/time controls, input and lifecycle; [integration notes](docs/MOTION_BALL_INTEGRATION.md)
+- integrations/motion-ball/: scene host, asset base, headless weather provider, input and lifecycle; [integration notes](docs/MOTION_BALL_INTEGRATION.md)
 - modules/motion-ball/: the original 84-file 3D source, assets and documentation
 - apps/web/runtime/: generated 87-file runtime; edit canonical sources instead
 - apps/api/ and packages/contracts/: unchanged health/status scaffold and schemas; [backend scope](docs/BACKEND_SCOPE.md)
 - scripts/, docs/ and provenance/: reproducible build, checks, public guidance and source/runtime mapping
 
-Run cloud setup/build with npm run setup && npm run build:web, then npm run check and npm test. The current web command npm run test:web covers 59 source/state/layout-model tests. [Test boundaries](docs/TESTING.md) and [release policy](docs/RELEASE_POLICY.md) define what remains unverified.
+Run cloud setup/build with npm run setup && npm run build:web, then npm run check and npm test. The current web command npm run test:web covers 72 source/state/layout-model tests. [Test boundaries](docs/TESTING.md) and [release policy](docs/RELEASE_POLICY.md) define what remains unverified.
 
 ## 3D responsibility and original docs
 

@@ -12,7 +12,7 @@ PersonalOS is managed as one product repository: web UI, a backend service bound
 
 The old 3D renderer, character and weather/story orchestration are removed from the current source and serving tree. Native UI ownership remains separate from motion-ball. The module's internal model, materials, shaders, weather, behavior, input and engine clock are unchanged.
 
-This is an alpha source candidate and backend scaffold. Current web checks cover 59 host/weather/native-card tests; they do not establish actual GPU, mobile-device, performance or final visual acceptance. Those gates remain incomplete. A candidate branch does not change GitHub main or the default deployment.
+This is an alpha source candidate and backend scaffold. Current web checks cover 72 host/weather/native-card tests; they do not establish actual GPU, mobile-device, performance or final visual acceptance. Those gates remain incomplete. A candidate branch does not change GitHub main or the default deployment.
 
 ## Quick start
 
@@ -45,7 +45,7 @@ The API status response intentionally retains productVersion 0.1.0-alpha.4 and a
     apps/web/dev-server.mjs     runtime-only static development server
     apps/api/                  unchanged health/status HTTP scaffold and tests
     packages/contracts/        unchanged payload builders and content schema
-    scripts/                   reproducible build, checks and 59 web tests
+    scripts/                   reproducible build, checks and 72 web tests
     docs/                      architecture, integration and release guidance
     provenance/                public source/runtime mapping and export policy
     .github/workflows/ci.yml    build/source/contracts/HTTP checks, no deployment

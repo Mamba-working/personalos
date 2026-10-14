@@ -29,7 +29,7 @@ The earlier alpha.3/alpha.4 inventories, vendor reconstruction and portable sour
 7. For an authorized deployment, record route, exact commit, source/runtime digests and observed environment without private paths or account metadata
 8. Never reuse historical browser success as current-candidate observation
 
-The 59 current web tests are host/weather/native-card source/state/layout-model checks. They are not real WebGL pixels, native browser layout, physical-device behavior or GPU performance. No old-renderer fallback is included in the current candidate.
+The 72 current web tests are host/weather/native-card source/state/layout-model checks. They are not real WebGL pixels, native browser layout, physical-device behavior or GPU performance. No old-renderer fallback is included in the current candidate.
 
 ## CI and publication
 

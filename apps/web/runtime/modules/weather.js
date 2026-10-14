@@ -1,25 +1,65 @@
-const names = { sunny: '晴', cloudy: '多云', windy: '大风', rain: '雨', snow: '雪', fog: '雾' };
-export function mountWeather({ host, container }) {
-  let selected = 'sunny', time = 'auto', disposed = false;
+/**
+ * Host-only weather input. WeatherProvider is { kind: 'mock' | 'live',
+ * load({ signal }): Promise<{ weather, time }> }. It does not own scene rendering.
+ * The default provider is deterministic mock data: no network or location access.
+ */
+const weathers = new Set(['sunny', 'cloudy', 'windy', 'rain', 'snow', 'fog']);
+const times = new Set(['auto', 'day', 'night']);
+export const mockWeatherProvider = Object.freeze({
+  kind: 'mock',
+  async load({ signal }) {
+    signal.throwIfAborted();
+    await Promise.resolve();
+    signal.throwIfAborted();
+    return { weather: 'sunny', time: 'auto' };
+  },
+});
+
+export function mountWeather({ host, provider = mockWeatherProvider }) {
+  let selected = 'sunny', time = 'auto', phase = 'loading', source = 'fallback', error = null, disposed = false, intent = 0;
   const abort = new AbortController();
-  container.innerHTML = `<button class="weather-toggle" type="button" aria-expanded="false" aria-controls="motion-weather-panel">天气 · <span data-weather-label>晴</span> ↗</button><div id="motion-weather-panel" class="weather-panel" hidden><p>模拟天气 · 无定位或天气 API</p><div class="weather-presets">${Object.entries(names).map(([key, text]) => `<button type="button" data-weather="${key}" aria-pressed="${key === selected}">${text}</button>`).join('')}</div><div class="weather-presets" aria-label="场景时间"><button type="button" data-time="auto" aria-pressed="true">随时间</button><button type="button" data-time="day" aria-pressed="false">白天</button><button type="button" data-time="night" aria-pressed="false">夜晚</button></div></div>`;
-  const toggle = container.querySelector('.weather-toggle'), panel = container.querySelector('.weather-panel');
-  function paint() { container.querySelector('[data-weather-label]').textContent = names[selected]; for (const b of panel.querySelectorAll('[data-weather]')) b.setAttribute('aria-pressed', String(b.dataset.weather === selected)); for (const b of panel.querySelectorAll('[data-time]')) b.setAttribute('aria-pressed', String(b.dataset.time === time)); }
-  function close() { panel.hidden = true; toggle.setAttribute('aria-expanded', 'false'); }
-  function setWeather(patch = {}) { const next = patch.preset || patch.selected || patch.weather; if (disposed || !Object.hasOwn(names, next)) return false; selected = next; host.scene()?.setWeather(selected); paint(); host.moduleChanged('weather'); return true; }
   function sync(snapshot) {
     if (disposed || !snapshot?.scene) return;
-    const scene = snapshot.scene;
-    const nextWeather = Object.hasOwn(names, scene.weather) ? scene.weather : selected;
-    const nextTime = ['auto', 'day', 'night'].includes(scene.time) ? scene.time : time;
-    if (selected === nextWeather && time === nextTime) return;
-    selected = nextWeather; time = nextTime; paint();
+    if (weathers.has(snapshot.scene.weather)) selected = snapshot.scene.weather;
+    if (times.has(snapshot.scene.time)) time = snapshot.scene.time;
   }
-  const unsubscribe = host.subscribe(sync);
   sync(host.getState());
-  toggle.addEventListener('click', () => { panel.hidden = !panel.hidden; toggle.setAttribute('aria-expanded', String(!panel.hidden)); }, { signal: abort.signal });
-  panel.addEventListener('click', e => { const b = e.target.closest('button'); if (b?.dataset.weather) setWeather({ weather: b.dataset.weather }); if (b?.dataset.time) { time = b.dataset.time; host.scene()?.setTime(time); paint(); host.moduleChanged('weather'); } }, { signal: abort.signal });
-  document.addEventListener('pointerdown', e => { if (!container.contains(e.target)) close(); }, { signal: abort.signal });
-  container.addEventListener('keydown', e => { if (e.key === 'Escape') { close(); toggle.focus(); } }, { signal: abort.signal });
-  return { setWeather, getState: () => ({ simulated: true, preset: selected, selected, time, disposed }), dispose() { if (disposed) return; disposed = true; unsubscribe(); abort.abort(); container.replaceChildren(); } };
+  const unsubscribe = host.subscribe(sync);
+  function apply(weather, mode) {
+    // The adapter queues desired public values even when WeatherScene is not ready.
+    const scene = host.scene();
+    selected = weather; time = mode;
+    scene?.setWeather(weather); scene?.setTime(mode);
+    host.moduleChanged('weather');
+  }
+  const request = intent;
+  const ready = Promise.resolve().then(() => {
+    if (disposed || request !== intent) return;
+    return provider.load({ signal: abort.signal });
+  }).then(result => {
+    if (disposed || request !== intent) return false;
+    if (!weathers.has(result?.weather) || !times.has(result?.time)) throw new TypeError('Unsupported weather provider result');
+    phase = 'ready'; source = provider.kind === 'live' ? 'live' : 'mock';
+    apply(result.weather, result.time);
+    return true;
+  }).catch(() => {
+    if (disposed || request !== intent) return false;
+    // Retain the scene's current valid/default selection; content never waits on weather.
+    phase = 'fallback'; source = 'fallback'; error = 'weather-unavailable';
+    host.moduleChanged('weather');
+    return false;
+  });
+  return {
+    ready,
+    setWeather(patch = {}) {
+      const next = patch.preset || patch.selected || patch.weather;
+      const mode = patch.time ?? time;
+      if (disposed || !weathers.has(next) || !times.has(mode)) return false;
+      // A newer explicit host choice takes ownership over a pending provider result.
+      intent++; abort.abort(); phase = 'overridden'; source = 'manual'; error = null;
+      apply(next, mode); return true;
+    },
+    getState: () => ({ phase, source, simulated: source !== 'live', preset: selected, selected, time, error, disposed }),
+    dispose() { if (disposed) return; disposed = true; intent++; abort.abort(); unsubscribe(); },
+  };
 }

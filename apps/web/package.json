@@ -5,6 +5,6 @@
   "type": "module",
   "scripts": {
     "dev": "node dev-server.mjs",
-    "test": "node --experimental-vm-modules --test ../../scripts/test-motion-host.mjs ../../scripts/test-motion-weather.mjs ../../scripts/test-native-card-layout.mjs"
+    "test": "node --experimental-vm-modules --test ../../scripts/test-motion-host.mjs ../../scripts/test-motion-weather.mjs ../../scripts/test-native-card-layout.mjs ../../scripts/test-navigation-host.mjs"
   }
 }

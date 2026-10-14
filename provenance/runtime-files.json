@@ -4,7 +4,9 @@
   "source": {
     "motionBallRepository": "Mamba-working/motion-ball",
     "motionBallCommit": "957cec0acf327ef5a79f754c94b70142792b0133",
-    "hostSourceCommit": "b66155188b87cb05ba8251590240d7ac0ee506e3"
+    "hostSourceCommit": "b66155188b87cb05ba8251590240d7ac0ee506e3",
+    "hostDeltaSourceCommit": "8f1fdf448b59b7a216ec2bcc70739fc43044abad",
+    "publicBaselineCommit": "3338cc07b9bec19527a499f013b1e45d5c226b6f"
   },
   "files": [
     {
@@ -129,15 +131,15 @@
     },
     {
       "path": "runtime/host.css",
-      "sha256": "410f186d615c7be61a7065bc423d02b966fce231d0c45262efc93e86680550a1"
+      "sha256": "863c9b21edbfb250ecd75ecefb26b3f983efc2d9b635ad2164f81eb0f19fe57e"
     },
     {
       "path": "runtime/host.js",
-      "sha256": "b3ab5f7e05e177e950155794aa6f40676e831cc35fa5e4dbaaf3a5d76986f763"
+      "sha256": "1b2c97819d1eeb2d139e79d706bbac786876abc618d767126e435c8c27aeb32d"
     },
     {
       "path": "runtime/index.html",
-      "sha256": "6b23281ea1259318583ca53d8fbe51a767b8d584eb377b859e2e42661203bc1e"
+      "sha256": "196ec47670fb43978035d9c0e3f7936dff6d111cc4af04a7a2fee6bd2401523e"
     },
     {
       "path": "runtime/material.css",
@@ -153,15 +155,15 @@
     },
     {
       "path": "runtime/modules/motion-scene.js",
-      "sha256": "9c8a1c552ca6cba56aee37f8396727b75acdbba5ea3ad361a838e99824506787"
+      "sha256": "ad5ec49740f7a9acef93bbf36100211091efbc793b8c375f1cc2739abc39730d"
     },
     {
       "path": "runtime/modules/mount.js",
-      "sha256": "0feea82ff35fe374faed596980ccb046338f30e2381c4f671145fe3b287b89c6"
+      "sha256": "32b2fa7d49fa8d76dccabfd20b74b5b83d438cf9a0be98fe1acf524e3a145d4c"
     },
     {
       "path": "runtime/modules/weather.js",
-      "sha256": "85967bca60769f1d5c4434f4c2ae320ea8297ded33a8e667c3324190429c0308"
+      "sha256": "d1b4d47351406acca6afef4be8f8591d67a5b18913c38976c74c0b67e4218336"
     },
     {
       "path": "runtime/motion/assets/hdri/kloofendal_48d_partly_cloudy_puresky.hdr",
@@ -333,7 +335,7 @@
     },
     {
       "path": "runtime/release-meta.json",
-      "sha256": "9c5146052bb65449ee765b509c853d7fcd671335ffbf1c1e03eb23c7d533f142"
+      "sha256": "e1c4e28d818ad9f5d13f40914eaaf5bee6c8ef5ab102373b70369405f42b4650"
     },
     {
       "path": "runtime/send-comparison.css",
@@ -356,6 +358,6 @@
       "sha256": "69afa74e3bc89fc6758c39585ae789345cfdce80efb591ba0829031ad0783a03"
     }
   ],
-  "originalRuntimeSHA256": "c6e2cabc518cea90cf8b273ddc9d3809ac9a1fd8d52b77156c673e4acd9c8a9c",
+  "originalRuntimeSHA256": "96f28cdd3e00564311fbd55d59a24d1fabc5e2f3fe9ad0cd00b3c045b2c4d90b",
   "acceptance": "Exact source/runtime snapshot; full GPU/mobile/performance acceptance incomplete"
 }

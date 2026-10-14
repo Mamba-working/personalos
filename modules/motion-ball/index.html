@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>PersonalOS · Work, Thoughts &amp; Labs</title>
+  <meta name="description" content="A small personal space — WebGL motion ball with a live weather system.">
+</head>
+<body data-weather="sunny">
+  <div id="scene" aria-label="一个会对鼠标与天气作出反应的 3D 小球" role="img"></div>
+
+  <div class="ui">
+    <header class="top">
+      <div class="brand">
+        <span class="logo">PersonalOS</span>
+        <span class="ring" aria-hidden="true"></span>
+        <span class="tag mono">A SMALL PERSONAL SPACE</span>
+      </div>
+
+      <nav class="actions" aria-label="场景控制">
+        <span class="weather-label mono" id="weatherLabel">SUNNY · 晴</span>
+        <button class="icon-btn" id="btnWeather" type="button" aria-label="选择天气" aria-haspopup="true" aria-expanded="false" aria-controls="weatherPop">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 8.2c1.6-1.4 3.2-1.4 4.8 0s3.2 1.4 4.8 0M4 12c1.6-1.4 3.2-1.4 4.8 0s3.2 1.4 4.8 0"/></svg>
+        </button>
+        <button class="icon-btn" id="btnCycle" type="button" aria-label="切换到下一个天气">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M14.6 7.4A5.2 5.2 0 1 0 15 12"/><path d="M15 4.6v3.2h-3.2"/></svg>
+        </button>
+        <button class="menu-btn" id="btnMenu" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="menuPop">
+          Menu <span class="burger" aria-hidden="true"><i></i><i></i></span>
+        </button>
+      </nav>
+
+      <div class="pop weather-pop" id="weatherPop" role="menu" aria-label="天气" hidden>
+        <p class="pop-title mono">WEATHER / 天气</p>
+        <div class="weather-grid">
+          <button type="button" role="menuitemradio" data-weather="sunny"><span class="wi">☀</span><span class="mono">SUNNY</span><span class="cn">晴</span><kbd>1</kbd></button>
+          <button type="button" role="menuitemradio" data-weather="cloudy"><span class="wi">☁</span><span class="mono">CLOUDY</span><span class="cn">多云</span><kbd>2</kbd></button>
+          <button type="button" role="menuitemradio" data-weather="windy"><span class="wi">≋</span><span class="mono">WINDY</span><span class="cn">大风</span><kbd>3</kbd></button>
+          <button type="button" role="menuitemradio" data-weather="rain"><span class="wi">☂</span><span class="mono">RAIN</span><span class="cn">雨</span><kbd>4</kbd></button>
+          <button type="button" role="menuitemradio" data-weather="snow"><span class="wi">❄</span><span class="mono">SNOW</span><span class="cn">雪</span><kbd>5</kbd></button>
+          <button type="button" role="menuitemradio" data-weather="fog"><span class="wi">≡</span><span class="mono">FOG</span><span class="cn">雾</span><kbd>6</kbd></button>
+        </div>
+        <label class="auto-row mono"><input type="checkbox" id="autoCycle"> AUTO CYCLE · 自动轮播</label>
+        <div class="time-row" role="group" aria-label="时间">
+          <span class="lbl mono">TIME · 时间</span>
+          <button type="button" role="menuitemradio" data-time-mode="auto" aria-checked="true">自动</button>
+          <button type="button" role="menuitemradio" data-time-mode="day" aria-checked="false">☀ 白天</button>
+          <button type="button" role="menuitemradio" data-time-mode="night" aria-checked="false">☾ 夜晚</button>
+        </div>
+      </div>
+
+      <div class="pop menu-pop" id="menuPop" role="menu" aria-label="菜单" hidden>
+        <a role="menuitem" href="#work"><span class="mono">WORK</span><span class="cn">工作相关</span></a>
+        <a role="menuitem" href="#thoughts"><span class="mono">THOUGHTS</span><span class="cn">一些想法</span></a>
+        <a role="menuitem" href="#labs"><span class="mono">LABS</span><span class="cn">实验与探索</span></a>
+        <hr>
+        <label class="auto-row mono"><input type="checkbox" id="soundToggle"> AMBIENT SOUND · 环境声</label>
+        <p class="keys mono">1–6 天气 · N 日/夜 · SPACE 跳 · ←→ 滚动 · 拖动天空移太阳/月亮</p>
+      </div>
+    </header>
+
+    <main class="hero">
+      <p class="kicker mono">A PLACE FOR THINGS IN PROGRESS</p>
+      <h1>Work,<br>Thoughts &amp; Labs.</h1>
+      <div class="sub">
+        <p class="sub-a">做的事，想的事，<br>正在试的事。</p>
+        <p class="sub-b">以下为公开知识与演示内容，<br>不代表个人项目或经历。</p>
+      </div>
+    </main>
+
+    <footer class="cards">
+      <a class="card" href="#work" data-card="work"><span class="mono">WORK</span><span class="cn">工作相关</span><span class="arrow" aria-hidden="true">↗</span></a>
+      <a class="card" href="#thoughts" data-card="thoughts"><span class="mono">THOUGHTS</span><span class="cn">一些想法</span><span class="arrow" aria-hidden="true">↗</span></a>
+      <a class="card" href="#labs" data-card="labs"><span class="mono">LABS</span><span class="cn">实验与探索</span><span class="arrow" aria-hidden="true">↗</span></a>
+    </footer>
+
+    <div class="bubble" id="bubble" aria-live="polite"></div>
+    <div class="hint mono" id="hint">HOVER · CLICK · DRAG ME</div>
+  </div>
+
+  <div class="fallback" id="fallback" hidden>
+    <p>当前浏览器不支持 WebGL2，无法渲染 3D 场景。</p>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

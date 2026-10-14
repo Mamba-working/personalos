@@ -2,34 +2,104 @@
   "schemaVersion": 1,
   "package": {
     "name": "three",
-    "version": "0.180.0",
-    "npmTarball": "https://registry.npmjs.org/three/-/three-0.180.0.tgz",
-    "npmIntegrity": "sha512-o+qycAMZrh+TsE01GqWUxUIKR1AL0S8pq7zDkYOQw8GqfX8b8VoCKYUoHbhiX5j+7hr8XsuHDVU6+gkQJQKg9w=="
+    "version": "0.186.1"
   },
-  "purpose": "Reconstruct byte-identical frozen Three.js builds without tracking duplicate vendor builds in public Git",
-  "sources": [
+  "tracking": "Exact local module/addons and LICENSE are included; no old r180 vendor reconstruction",
+  "files": [
     {
-      "packagePath": "build/three.core.js",
-      "sha256": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20",
-      "bytes": 1403455,
-      "destinations": [
-        "apps/web/runtime/world/vendor/three/three.core.js",
-        "apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/three/three.core.js"
-      ]
+      "path": "motion/vendor/three/LICENSE",
+      "bytes": 1081,
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
     },
     {
-      "packagePath": "build/three.module.js",
-      "sha256": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a",
-      "bytes": 603113,
-      "destinations": [
-        "apps/web/runtime/world/vendor/three/three.module.js",
-        "apps/web/tests/integration/fixtures/accepted-baseline/world/vendor/three/three.module.js"
-      ]
+      "path": "motion/vendor/three/addons/exporters/GLTFExporter.js",
+      "bytes": 93570,
+      "sha256": "d766b04f233fa8bc72bfaebacaac5ecb832c30ca3695ce8d84bbb7dccccdc842"
+    },
+    {
+      "path": "motion/vendor/three/addons/libs/meshopt_decoder.module.js",
+      "bytes": 29256,
+      "sha256": "d428e73a000057c6c94bfcedc3412d0c2dc14ca8800e88553aab05113ad2bf19"
+    },
+    {
+      "path": "motion/vendor/three/addons/loaders/GLTFLoader.js",
+      "bytes": 117570,
+      "sha256": "131c0f78c01d19368ae495caa65b3adaa10487810a36a05bb5901b769a35ac16"
+    },
+    {
+      "path": "motion/vendor/three/addons/loaders/HDRLoader.js",
+      "bytes": 12079,
+      "sha256": "0986b578f9acd14cec74e5ee85e07f45e681b40bcd229a601a0391201f9b5ff1"
+    },
+    {
+      "path": "motion/vendor/three/addons/postprocessing/EffectComposer.js",
+      "bytes": 8501,
+      "sha256": "4e079a5886152d7e529a59aef644e968ab4d32c6a33ce016b36bf29b2eac26f7"
+    },
+    {
+      "path": "motion/vendor/three/addons/postprocessing/MaskPass.js",
+      "bytes": 4694,
+      "sha256": "7cd08eee9d5d6f5578beaddbdcbe9c384f6873810af27f22ab7db3ceeb127aa3"
+    },
+    {
+      "path": "motion/vendor/three/addons/postprocessing/OutputPass.js",
+      "bytes": 4184,
+      "sha256": "02e4a261af34de71338185e9e87f0cbe5cba9115608d984363e1269dec1d2272"
+    },
+    {
+      "path": "motion/vendor/three/addons/postprocessing/Pass.js",
+      "bytes": 4218,
+      "sha256": "444b409c235ead986893c472e720da1b779a56985c7d10b279c7944b52bd61c5"
+    },
+    {
+      "path": "motion/vendor/three/addons/postprocessing/RenderPass.js",
+      "bytes": 4280,
+      "sha256": "817f6c3cdcd0fd41515d112359ea0532568eefb5aabd3b33903957ebca1b8a6a"
+    },
+    {
+      "path": "motion/vendor/three/addons/postprocessing/ShaderPass.js",
+      "bytes": 3228,
+      "sha256": "e2500a5913b26bbf5148ceaae644c6edcff06a18b01494ee37bf856353d2ab9d"
+    },
+    {
+      "path": "motion/vendor/three/addons/postprocessing/UnrealBloomPass.js",
+      "bytes": 15397,
+      "sha256": "ba8f2fcadfa6588384c9473498f974d81d120f02f0e63a0e59c265202a006b5a"
+    },
+    {
+      "path": "motion/vendor/three/addons/shaders/CopyShader.js",
+      "bytes": 729,
+      "sha256": "a33057d5ac91c43304c186ac0e8816e62bb2ed471d3a00ff3018dfd5c0389718"
+    },
+    {
+      "path": "motion/vendor/three/addons/shaders/LuminosityHighPassShader.js",
+      "bytes": 1291,
+      "sha256": "5044f780b6e6cf863947f64c36fe1587132f7fbe395ada863cd1e5f0388dcf1e"
+    },
+    {
+      "path": "motion/vendor/three/addons/shaders/OutputShader.js",
+      "bytes": 1876,
+      "sha256": "353479f77a8d7e2629d49ccac9fc2f5dbfdda5442e0adf867b00377a2fcb0cb2"
+    },
+    {
+      "path": "motion/vendor/three/addons/utils/BufferGeometryUtils.js",
+      "bytes": 37712,
+      "sha256": "9fb63427ce6641fa14fd0baff9cc4d1b5f9c3d85fd084bf2e90e803c44ec1797"
+    },
+    {
+      "path": "motion/vendor/three/addons/utils/SkeletonUtils.js",
+      "bytes": 11535,
+      "sha256": "b1632a703206c3d830de9fcbe515696770d04b71a15ee6b50afa6d2c3298c86f"
+    },
+    {
+      "path": "motion/vendor/three/three.core.js",
+      "bytes": 1458113,
+      "sha256": "9edde002b066a9a05676a6127f67735b62baf399bdea529f2f7e31657da769e6"
+    },
+    {
+      "path": "motion/vendor/three/three.module.js",
+      "bytes": 662772,
+      "sha256": "9052042d676cb0fdc1ddfefe193053f34b7ac0513a616fdac4535d49987812ea"
     }
-  ],
-  "retainedLicense": {
-    "publicPath": "apps/web/runtime/world/vendor/three/LICENSE",
-    "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601",
-    "matchesOfficialNpmLicense": true
-  }
+  ]
 }

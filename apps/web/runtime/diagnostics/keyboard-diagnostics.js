@@ -1,6 +1,6 @@
 // Opt-in local geometry recorder. This module never edits product layout,
 // calls focus/blur/scroll, intercepts input, or sends a trace over the network.
-export const DIAGNOSTIC_VERSION = 'mobile-flow-route-1';
+export const DIAGNOSTIC_VERSION = 'motion-ball-route-1';
 export const BASELINE_COMMIT = 'e0c92f6e45317b962a6c382fb7bb58a00c92043f';
 export const LIMITS = Object.freeze({ durationMs: 12000, sampleIntervalMs: 50, maxSamples: 300 });
 const number = value => Number.isFinite(value) ? Math.round(value * 100) / 100 : null;
@@ -39,7 +39,7 @@ export function readKeyboardGeometry(win, doc) {
   const vv = win.visualViewport, panel = doc.querySelector('#ai-canvas');
   const nodes = {
     root: doc.documentElement, chatRoot: doc.querySelector('.mobile-chat-page'), chatFrame: doc.querySelector('.mobile-chat-frame'), siteRoot: doc.querySelector('.app'), detailRoot: doc.querySelector('#stage'), body: doc.body,
-    worldRoot: doc.querySelector('#ball-world-root'), worldCanvas: doc.querySelector('#world-stage canvas'), header: doc.querySelector('.topbar'),
+    sceneRoot: doc.querySelector('#motion-scene'), sceneCanvas: doc.querySelector('#motion-scene canvas'), header: doc.querySelector('.topbar'),
     filters: doc.querySelector('.filters'), dialog: panel,
     chatHeader: panel?.querySelector('.canvas-head'), close: panel?.querySelector('#ai-close'),
     reader: panel?.querySelector('.canvas-reader'), transcript: panel?.querySelector('.canvas-scroll'),

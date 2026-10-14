@@ -4,19 +4,23 @@ PersonalOS is managed as one product repository: web UI, a backend service bound
 
 ## Current implementation
 
-- Web: the frozen v0.1.0-alpha.4 interface, 18 authored demonstration records, native feed/reader/navigation, Ball scene, menu, simulated weather and local demonstration chat
-- API: a new runnable Node service with GET /healthz and GET /api/v1/status
-- Contracts: health payload and authored-demo-content shape
-- Product backend features: content storage/API, real AI, authentication and persistence are not implemented; the unchanged web demo does not call the new API
+- Web: v0.1.0-alpha.8 candidate, 18 authored demonstration records, native feed/reader/navigation, menu and local demonstration chat
+- 3D: the original motion-ball WeatherScene, a white ball on wet terrain with six simulated weather modes; all 84 upstream source, asset and documentation files are preserved
+- API: the unchanged Node scaffold with GET /healthz and GET /api/v1/status
+- Contracts: the unchanged health payload and authored-demo-content shape
+- Product backend features: content storage/API, real AI, authentication and persistence are not implemented; the web demo does not call the API
 
-This is an alpha source import and backend scaffold. Test success does not establish browser/GPU/device/performance or final visual acceptance.
+The old 3D renderer, character and weather/story orchestration are removed from the current source and serving tree. Native UI ownership remains separate from motion-ball. The module's internal model, materials, shaders, weather, behavior, input and engine clock are unchanged.
+
+This is an alpha source candidate and backend scaffold. Current web checks cover 59 host/weather/native-card tests; they do not establish actual GPU, mobile-device, performance or final visual acceptance. Those gates remain incomplete. A candidate branch does not change GitHub main or the default deployment.
 
 ## Quick start
 
-Use Node 24.19.0, as recorded in .nvmrc. From the repository root:
+Use Node 24.19.0, as recorded in .nvmrc. Run the reproducible setup and build in a cloud development environment, from the repository root:
 
     npm ci --ignore-scripts --no-audit --no-fund
     npm run setup
+    npm run build:web
     npm run check
     npm test
     npm run dev
@@ -27,29 +31,33 @@ API health: http://127.0.0.1:3001/healthz
 
 API status: http://127.0.0.1:3001/api/v1/status
 
-The web and API can also run independently with npm run dev:web and npm run dev:api. These local development servers are not a production deployment configuration.
+The web and API can also run independently with npm run dev:web and npm run dev:api. Build the web runtime before serving it. These development servers are not a production deployment configuration.
+
+The API status response intentionally retains productVersion 0.1.0-alpha.4 and apiScaffoldVersion 0.0.1 because API/contracts were preserved byte-for-byte. This metadata describes that existing scaffold; it is not the current web candidate's release identifier. Backend integration capabilities remain false.
 
 ## Repository
 
-    apps/web/runtime/           frozen browser sources and vendor notices
-    apps/web/tests/             portable source/DOM regression suites
-    apps/web/dev-server.mjs     runtime-only local static server
-    apps/api/src/               real health/status HTTP service
-    apps/api/test/              API HTTP regressions
-    packages/contracts/        payload builders and content schema
-    scripts/                   development and import checks
-    docs/                      architecture, ownership, testing and release policy
-    provenance/                exact source-file hashes and clean-import mapping
-    .github/workflows/ci.yml    source/contracts/HTTP checks
+    integrations/native-shell/  canonical native page, feed, menu and demo chat
+    integrations/native-card/   canonical reader/card layout and projection
+    integrations/motion-ball/   bounded public-API host adapter
+    modules/motion-ball/        original 84-file upstream module and docs
+    apps/web/runtime/           generated alpha.8 serving output, 87 files
+    apps/web/dev-server.mjs     runtime-only static development server
+    apps/api/                  unchanged health/status HTTP scaffold and tests
+    packages/contracts/        unchanged payload builders and content schema
+    scripts/                   reproducible build, checks and 59 web tests
+    docs/                      architecture, integration and release guidance
+    provenance/                public source/runtime mapping and export policy
+    .github/workflows/ci.yml    build/source/contracts/HTTP checks, no deployment
+
+Edit canonical sources rather than generated runtime files. No legacy dist tree is exported.
 
 ## Public history and licenses
 
-This public repository begins with a clean import. Original private QA captures, raw conversation feedback and operational environment details were excluded. The public import therefore has a new Git commit; historical source commits are recorded only as provenance in provenance/releases.json. They are not public ancestry or recreated original release tags.
+This public repository began with a clean import. Private QA captures, raw conversation feedback and operational environment details were excluded. Historical source pointers are provenance references, not recreated original ancestry or old release tags. Earlier public candidates remain available in Git history; their checks and visual observations do not establish current-candidate acceptance.
 
-Two runtime Three.js build files and their two accepted-baseline fixture copies are deliberately absent from Git. Root npm ci installs exact three@0.180.0; npm run setup restores all four files from the official package after SHA-256 verification. Run this before opening, serving or testing the web app. Three.js licenses remain tracked.
+The alpha.8 build compiles the original motion-ball library and copies its original assets. npm run setup prepares an ignored build copy and installs pinned dependencies from official npm. Only registry URLs in that copy's lockfile are adapted; the upstream lockfile, versions and integrity values remain unchanged. Three.js 0.186.1 and its license are included in the generated runtime. The old Three.js 0.180.0 reconstruction and old renderer fixtures are historical, not current setup steps.
 
-After setup, all 69 imported runtime files retain their exact source bytes. Their current canonical runtime digest is 7dc1d4eb903df03745d36b8424041978f6871b414a7b970d5caffed48fa8f41e despite the outer directory relocation.
+Read [LICENSE](LICENSE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) before reuse. There is no blanket MIT license. The retained root licensing notice includes restrictions on historical Emotion Ball materials; their removal from the current runtime does not relicense historical copies or grant commercial rights to motion-ball or other first-party material.
 
-Read LICENSE and THIRD_PARTY_NOTICES.md before reuse. This repository has no blanket MIT license. The retained Emotion Ball character visuals are restricted to non-commercial personal technical study/research; its engine/data have separate commercial licensing terms. A product commercialization plan must address those restrictions first.
-
-More: [architecture](docs/ARCHITECTURE.md), [backend scope](docs/BACKEND_SCOPE.md), [testing](docs/TESTING.md), [release policy](docs/RELEASE_POLICY.md), [ownership](docs/OWNERSHIP.md)
+Start at [agent.md](agent.md), then [architecture](docs/ARCHITECTURE.md), [motion-ball integration](docs/MOTION_BALL_INTEGRATION.md), [native-card layout](docs/NATIVE_CARD_LAYOUT.md), [backend scope](docs/BACKEND_SCOPE.md), [testing](docs/TESTING.md), [release policy](docs/RELEASE_POLICY.md) or [ownership](docs/OWNERSHIP.md).

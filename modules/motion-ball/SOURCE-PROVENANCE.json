@@ -1,0 +1,763 @@
+{
+  "repository": "Mamba-working/motion-ball",
+  "commit": "957cec0acf327ef5a79f754c94b70142792b0133",
+  "tree": "df98a01cdca68e46bb5ffdece6733d4b6497925e",
+  "files": [
+    {
+      "path": ".gitignore",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d0303beda7502ea13bf2eb1c646c847d5d304df7",
+      "size": 62,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/d0303beda7502ea13bf2eb1c646c847d5d304df7",
+      "sha256": "c25ad828f5f182cecd8dad29d10eca79aa107fe5a2b1e26679eb4e052aa28f60"
+    },
+    {
+      "path": "agent.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "83ea60a2b5b3af02ed5da042202495e5a001dd36",
+      "size": 2701,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/83ea60a2b5b3af02ed5da042202495e5a001dd36",
+      "sha256": "bf1b250764f1508b960bc74499ebacffc7bdcbfae8a00a327dd084c893d014de"
+    },
+    {
+      "path": "asset-candidates.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c0d65b776099c780322c940d9942b5d6c5dcee38",
+      "size": 4747,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/c0d65b776099c780322c940d9942b5d6c5dcee38",
+      "sha256": "0908ba20fa5ad5ff4926048bb695f48a9cac8051d93ff82413f7eac3d2460fbf"
+    },
+    {
+      "path": "docs/architecture.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ec8062c4d0ab7f1bfef1575cbb02640e03a14355",
+      "size": 6495,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/ec8062c4d0ab7f1bfef1575cbb02640e03a14355",
+      "sha256": "e0078c5f405238676418e66bf7b38bb6919a101540e0513a800b7fee02c79165"
+    },
+    {
+      "path": "docs/configuration.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3d04f358b92ec305e5d31f24cbb225bd16ed7f3f",
+      "size": 9938,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/3d04f358b92ec305e5d31f24cbb225bd16ed7f3f",
+      "sha256": "a2aa37c4e044bf2d38c714746a058800115936ba0c4d189b0535cb3c8feee61a"
+    },
+    {
+      "path": "docs/development.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8ac5df3cd72fb22597d9ee17bc505fd8f6d90dc9",
+      "size": 10586,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/8ac5df3cd72fb22597d9ee17bc505fd8f6d90dc9",
+      "sha256": "6eaad6fa4e1df0d4e3740480856b6859a532c70cb7f9a0d73d3d5f74e819e45b"
+    },
+    {
+      "path": "docs/interaction.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c8721e71aa161efcc5bbf3a24a858be73e8ee487",
+      "size": 3206,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/c8721e71aa161efcc5bbf3a24a858be73e8ee487",
+      "sha256": "4e8bf2ffff355110e0bec8a2c11e01dcad51efcd7172b2d2c12b242dc9f6d352"
+    },
+    {
+      "path": "docs/library.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "55758016ab49c94ddb7b858503b4e1d9a8ab2718",
+      "size": 7591,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/55758016ab49c94ddb7b858503b4e1d9a8ab2718",
+      "sha256": "9df4fa859a888546933f5e267c999d32bf936e6eb0616c4f89e1c24398b9eebd"
+    },
+    {
+      "path": "docs/models.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0710de6abdc16dd080ece0652d74bcbe412eed7d",
+      "size": 8271,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/0710de6abdc16dd080ece0652d74bcbe412eed7d",
+      "sha256": "283bb4a0ee2792750b7f60e69dd01ebf07b0e9eabda5830e87f88c3c23de157d"
+    },
+    {
+      "path": "index.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3463a9ff8f8d2d2e7376bdf94c1e9b119bf4ba30",
+      "size": 5525,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/3463a9ff8f8d2d2e7376bdf94c1e9b119bf4ba30",
+      "sha256": "f65e1c26b436c6614eff0bd97c8365cf17454d577d9c2563c5bfa15b44f6fdab"
+    },
+    {
+      "path": "package-lock.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2489bbdc206b8383951b453d240c9809fd38b9ce",
+      "size": 31108,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/2489bbdc206b8383951b453d240c9809fd38b9ce",
+      "sha256": "2327e3d01e9da9810a58d6f64ef08e0b0c20de2af3d189afa053da547e90db52"
+    },
+    {
+      "path": "package.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a70e7245905e53476a51a1d7f75e5b188ed2d2a8",
+      "size": 823,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/a70e7245905e53476a51a1d7f75e5b188ed2d2a8",
+      "sha256": "7aef75251c7e3f79a3f6eb8baed8e7e8750cf56272fcc9e6025003f42b1014c3"
+    },
+    {
+      "path": "public/hdri/kloofendal_48d_partly_cloudy_puresky.hdr",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e43967806cac3c24294434f9cb6ca7c89570b305",
+      "size": 366933,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/e43967806cac3c24294434f9cb6ca7c89570b305",
+      "sha256": "7c6b47006ca735814b0730ffcef55435120c2856f8f37a7c4556b876643810b6"
+    },
+    {
+      "path": "public/hdri/kloofendal_misty_morning_puresky.hdr",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4606a88300bcd53e23f37e58a006c0a3a741abe4",
+      "size": 129072,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/4606a88300bcd53e23f37e58a006c0a3a741abe4",
+      "sha256": "44174e7bfe108e350465d5c1c5d767eab36d7ffcb616015fffda8095bbffb800"
+    },
+    {
+      "path": "public/hdri/kloofendal_overcast_puresky.hdr",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e2687e061f0bb1e5e25d57af63a552c86f753522",
+      "size": 224618,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/e2687e061f0bb1e5e25d57af63a552c86f753522",
+      "sha256": "87e5a0696d4e40d123606074ac7d89905ab56aaae13137f093a8bc4d7bf82c1e"
+    },
+    {
+      "path": "public/hdri/snow_field.hdr",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b901aa1edf942a1c452c440d07f496abb1aee625",
+      "size": 332154,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/b901aa1edf942a1c452c440d07f496abb1aee625",
+      "sha256": "7c18c31559e217976f5fd3384cb92a2de86c97e6becc545d2f7308b7d108acaa"
+    },
+    {
+      "path": "public/models/.gitkeep",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "size": 0,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "public/moon/albedo.webp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9da85fcdd6d1be95d65b51954c39fbdc8cec08e6",
+      "size": 65232,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/9da85fcdd6d1be95d65b51954c39fbdc8cec08e6",
+      "sha256": "b4c1a4e08713f7fe5c4de480865cdeea8b7f029520fc9d36069a6daf70092e99"
+    },
+    {
+      "path": "public/moon/height.webp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c15a5f61e111ab6c1dca587c425e30f8760f7c57",
+      "size": 138170,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/c15a5f61e111ab6c1dca587c425e30f8760f7c57",
+      "sha256": "c14cbca6e20e88331ca571d8e2fc291a371b1dbb94660c6c3a99f08194c74961"
+    },
+    {
+      "path": "public/terrain/kawaguchi_detail.webp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "783bbc9354770329377d8c32570cb21ae2c8a6ba",
+      "size": 2237408,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/783bbc9354770329377d8c32570cb21ae2c8a6ba",
+      "sha256": "265dd3c1f1914c4eda04d0a1141e1a69f2f0bc75f204bd178263f7c01d6668eb"
+    },
+    {
+      "path": "public/terrain/kawaguchi_polar.u16",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "853dee0054c08b751dc67000938144b65c592529",
+      "size": 706842,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/853dee0054c08b751dc67000938144b65c592529",
+      "sha256": "acf358ed6645817dde811d8633884f9f51227e09ccb49edf38e0cf5261da62cb"
+    },
+    {
+      "path": "public/textures/aerial_beach_01/diff.webp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "900e84a11aedb42e55ca0935491a6a2849bc3524",
+      "size": 250604,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/900e84a11aedb42e55ca0935491a6a2849bc3524",
+      "sha256": "492b8f6c1b010795a7f67249639ce6634d7fc277b28b4f6cb936224eb245f9a9"
+    },
+    {
+      "path": "public/textures/aerial_beach_01/nor.webp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f3bd82baac46275bcb95d0f88a11c7510e70fb5e",
+      "size": 808948,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/f3bd82baac46275bcb95d0f88a11c7510e70fb5e",
+      "sha256": "b45e31ecfde2a203ca7e3ca01f0859d2097acf187b5f1e27dd66284c108d0d2e"
+    },
+    {
+      "path": "public/textures/brown_mud_03/diff.webp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ff85b2d82e705916c82bda338b27cb882a247117",
+      "size": 286428,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/ff85b2d82e705916c82bda338b27cb882a247117",
+      "sha256": "54ad47c7db80f8cb19283bdfdd26dd599cdfc3b2837c79eb3cfb1d399ef5c0c0"
+    },
+    {
+      "path": "public/textures/brown_mud_03/nor.webp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cc3c1587d04e338627cb8af24b9f83f23fa1bf5a",
+      "size": 531512,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/cc3c1587d04e338627cb8af24b9f83f23fa1bf5a",
+      "sha256": "c6a76002dc4d53c8c3346251d5737b26f1e5c6c7a8c678a6aef5b8b96e778340"
+    },
+    {
+      "path": "public/textures/brown_mud_03/rough.webp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d31a9077af3349b19c5a1091fb50dfe15db5878a",
+      "size": 274142,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/d31a9077af3349b19c5a1091fb50dfe15db5878a",
+      "sha256": "142f08eb5a1b030203eb00f061fe3f75911c0fc8ec52bcbb4d6685f5336f599a"
+    },
+    {
+      "path": "public/textures/rock_face_03/diff.webp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5eb05d967dd5591ddf2ae7abc599b1e8c64c5db3",
+      "size": 286090,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/5eb05d967dd5591ddf2ae7abc599b1e8c64c5db3",
+      "sha256": "3d35bad085e281f6141e3145d50b922dca446a9e9ea6dc5cfc0d9e1279f7d491"
+    },
+    {
+      "path": "public/textures/rock_face_03/nor.webp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "47f0f6e0b892f90505a0da9df1cfe16608d24264",
+      "size": 498564,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/47f0f6e0b892f90505a0da9df1cfe16608d24264",
+      "sha256": "a6108c55363345d7ad2f728f60c2c64d8235ef1e60e5641ea18db8e0d9c6bb6d"
+    },
+    {
+      "path": "public/textures/snow_02/diff.webp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8eaf8c1f4fdb10a595e12bd6d99efa902e1de206",
+      "size": 105862,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/8eaf8c1f4fdb10a595e12bd6d99efa902e1de206",
+      "sha256": "43c0209460823be30b2befe2b067747bd03ef1b88d2389b209fadb9459c131f5"
+    },
+    {
+      "path": "public/textures/snow_02/nor.webp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b6cfd68eac036a7e5188472155d28393c360ae2f",
+      "size": 467782,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/b6cfd68eac036a7e5188472155d28393c360ae2f",
+      "sha256": "5233eb64c38abca381f50c875a2216404491476d84727c7574feacac2b5c71d9"
+    },
+    {
+      "path": "scripts/copy-lib-assets.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "76f12cdf3e1262cc07a522e201df18f986e7e470",
+      "size": 597,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/76f12cdf3e1262cc07a522e201df18f986e7e470",
+      "sha256": "707d47cf57576c2e1649cb5a314d2efa0fca7cbdcaa2bfe03fd8c9b8906e1e77"
+    },
+    {
+      "path": "src/app/App.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "665fd2c6a6eaf7f9b78bbd18ca385e80495c6252",
+      "size": 34564,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/665fd2c6a6eaf7f9b78bbd18ca385e80495c6252",
+      "sha256": "ff64b39f40bc89b8f4c2c68cbeac31eafd2d56b935301c7255f1d53a0bcffb25"
+    },
+    {
+      "path": "src/app/CameraRig.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d2b5032263f065bfa88ad858edb01598043e1245",
+      "size": 3616,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/d2b5032263f065bfa88ad858edb01598043e1245",
+      "sha256": "1bf4566e3cd5ae2369219dde4c06330e3ffab708aba9ea6adeaa3adf23373573"
+    },
+    {
+      "path": "src/app/Input.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2752456b0908f9352606e7ee94c574415542b32a",
+      "size": 5168,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/2752456b0908f9352606e7ee94c574415542b32a",
+      "sha256": "18969256556ec97f8e55e4d431d4d13925aaa8fe81b09e1548ddf8514e752ff2"
+    },
+    {
+      "path": "src/app/debug.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "baa6da5ed09b2869350f7ccf83ec19f64ea2a89e",
+      "size": 12404,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/baa6da5ed09b2869350f7ccf83ec19f64ea2a89e",
+      "sha256": "bf90400ff55010e122ce7835a82494ad4bc95170b0480f04f51383539cad87ab"
+    },
+    {
+      "path": "src/audio/Ambience.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "aa1e1a51c58585c82ab07620dc649db7eb29cf62",
+      "size": 4391,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/aa1e1a51c58585c82ab07620dc649db7eb29cf62",
+      "sha256": "a25d1e58afc6719560e45a1277c15a674b30d47eb4f0798c2d05219b886e9977"
+    },
+    {
+      "path": "src/characters/ball/BallBrain.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a4e2c7c165b9eb963e1e5752d3df538bb822e4ac",
+      "size": 19913,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/a4e2c7c165b9eb963e1e5752d3df538bb822e4ac",
+      "sha256": "fd9fc45731828a594defeedceae01b89037f3dc53e04e3c9b3611f6b5836eed0"
+    },
+    {
+      "path": "src/characters/ball/GltfBall.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cfc23fd7aef5a72b814783c727ae634bcb2fd5ca",
+      "size": 6204,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/cfc23fd7aef5a72b814783c727ae634bcb2fd5ca",
+      "sha256": "ccede98237447fcf54bb0086f3407ff3f8064ba2c9a7c61f639bf50784883b56"
+    },
+    {
+      "path": "src/characters/ball/ProceduralBall.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f1915c120f1182f77ef6e21ffc3b27934b4d1636",
+      "size": 3057,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/f1915c120f1182f77ef6e21ffc3b27934b4d1636",
+      "sha256": "cae7bdd7e924af75df1739702784d0c26949e0556a34fafb51d59d20adaa97fe"
+    },
+    {
+      "path": "src/characters/ball/faceGlsl.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "01dde54cde1035bd19e8e20df1b387e0a4a1e7cf",
+      "size": 2927,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/01dde54cde1035bd19e8e20df1b387e0a4a1e7cf",
+      "sha256": "1df98685f17a241fe4e8b0f1787c3920a97ef785189fd13cf33a688ec77fa242"
+    },
+    {
+      "path": "src/characters/ball/surfacePatch.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "447f64fdbd2a9a46539df02f8db39aff18a02811",
+      "size": 14735,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/447f64fdbd2a9a46539df02f8db39aff18a02811",
+      "sha256": "001eff9c16ad864b6dce9ea3d778f3da911b8a31e5cbb4124126345ef380b9f9"
+    },
+    {
+      "path": "src/characters/factory.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9ba8e6d46114b2d261a88d45de64a3a4bb16cf8f",
+      "size": 1917,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/9ba8e6d46114b2d261a88d45de64a3a4bb16cf8f",
+      "sha256": "02b81139ca4b214bbe9d33bf8efa412b6875094c788d9dba267ad0f3d14db596"
+    },
+    {
+      "path": "src/characters/types.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e1c6d97fddcd670bbcb72d8a621171c3f449e351",
+      "size": 2742,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/e1c6d97fddcd670bbcb72d8a621171c3f449e351",
+      "sha256": "fbe84fb2675e7ce1ba3efe1e91331f7a9481d9fcc28e2ddeedb4eb7b8e2e02aa"
+    },
+    {
+      "path": "src/characters/umbrella/GltfUmbrella.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ed2043d7c1b88b7f7fe805f1811fc4ed81594daa",
+      "size": 2105,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/ed2043d7c1b88b7f7fe805f1811fc4ed81594daa",
+      "sha256": "7c975fb7e3d60f8e83fa76284bdcf6e15200ffc25baa6edde751856147ebeae1"
+    },
+    {
+      "path": "src/characters/umbrella/ProceduralUmbrella.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a16cfbb07bd5cd5c2ba0feb93009bb2acbbadf5f",
+      "size": 20550,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/a16cfbb07bd5cd5c2ba0feb93009bb2acbbadf5f",
+      "sha256": "4ff297e9c708487a2c574248223ad382633a85fb80b9ff45798d6c9bb8d74a1d"
+    },
+    {
+      "path": "src/characters/umbrella/UmbrellaRig.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "199686c6b0453f166581140b4bd8c60a665df8df",
+      "size": 5478,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/199686c6b0453f166581140b4bd8c60a665df8df",
+      "sha256": "a2a254676c97fb1e9a8bcd24de82151a4f35890bb9ac5b258c8634a6e24fd019"
+    },
+    {
+      "path": "src/config/assets.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0df5af68991f4bcab7e3cd4cac87a14e7f29925d",
+      "size": 7179,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/0df5af68991f4bcab7e3cd4cac87a14e7f29925d",
+      "sha256": "77a6d1ca988c85869ebcb5b06aa5bcd6dc1c0ac9121e0fb0c8c00f4b7ce82781"
+    },
+    {
+      "path": "src/core/math.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7cb9cee969417c347c2a690e26402ca74852db2a",
+      "size": 3359,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/7cb9cee969417c347c2a690e26402ca74852db2a",
+      "sha256": "cdde652ef88c7610b36f61a0720d2cb0619e91d5316b9cb5427aa17f7d2799f2"
+    },
+    {
+      "path": "src/core/noise.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "688877f8877a7f562ae0a9d703251c37eb094052",
+      "size": 4324,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/688877f8877a7f562ae0a9d703251c37eb094052",
+      "sha256": "9a37654b137e11023751f5d53551aa2ac6c37a145545b76a12e4ddf7edc7fdd1"
+    },
+    {
+      "path": "src/core/patch.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dcace99bbd1c4d35afdbb7fa675e20e38ed2fcbe",
+      "size": 2167,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/dcace99bbd1c4d35afdbb7fa675e20e38ed2fcbe",
+      "sha256": "858eec4e409c982744890977942ce77ecdfc36c30d980411785b5ca22f2f8a83"
+    },
+    {
+      "path": "src/fx/DepthOfFieldPass.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7cc86abb6544d74690406ee7531d8374c19ef041",
+      "size": 6351,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/7cc86abb6544d74690406ee7531d8374c19ef041",
+      "sha256": "0e100eb75f910e19654599920340783efcc625d4c9b6495b405c8e513693908d"
+    },
+    {
+      "path": "src/fx/LensPass.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ad9966b5907a3a46901e35e84362adc8616e3af4",
+      "size": 4283,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/ad9966b5907a3a46901e35e84362adc8616e3af4",
+      "sha256": "f335f6cf5bf45b57830f5f1cdb8ba491cd77ab61f7f86bc28d4cee99517f0fdb"
+    },
+    {
+      "path": "src/fx/PostFX.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5c75969fd8ac333f85b297f7c342a8ec37163bb2",
+      "size": 3986,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/5c75969fd8ac333f85b297f7c342a8ec37163bb2",
+      "sha256": "e3043df86d878857217962460f7790a6e892d6c8a5cadc4ae003f8a79125c507"
+    },
+    {
+      "path": "src/fx/shaders.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7d2561f063749a4fcf72b206bd452940f34d0b80",
+      "size": 7069,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/7d2561f063749a4fcf72b206bd452940f34d0b80",
+      "sha256": "61f81c30ba78a957db242c78b3176c25be3c2d20bccf860736be2e461d7d1b86"
+    },
+    {
+      "path": "src/lib/WeatherScene.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8b78b13ba22fb3bb836c12c354cad8536e15e6fd",
+      "size": 17437,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/8b78b13ba22fb3bb836c12c354cad8536e15e6fd",
+      "sha256": "5eb173896ee95bed221390d28b174099c11786ff6ad7a96071eac0c918c3a2e7"
+    },
+    {
+      "path": "src/lib/config.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "057b09ab1f0998d5b97c3123a5f089fa3b54b433",
+      "size": 4318,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/057b09ab1f0998d5b97c3123a5f089fa3b54b433",
+      "sha256": "f51fcd5e6092152211428cbc023304add669d5d220f80142e1cb9f0401a1d8e9"
+    },
+    {
+      "path": "src/lib/emitter.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "40e6da751dff7a60cef09a981ca99fc170d25e8d",
+      "size": 1109,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/40e6da751dff7a60cef09a981ca99fc170d25e8d",
+      "sha256": "b2c0648550905a022b04d33e2227aed6e15ed8b16482a81a15711065022422f1"
+    },
+    {
+      "path": "src/lib/index.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fbb17f3be1e3e584860c6bc8e370353c6e4a02db",
+      "size": 1237,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/fbb17f3be1e3e584860c6bc8e370353c6e4a02db",
+      "sha256": "7b814c597e0cf6fb948ced4f52c0605c7c22f21a879a9193c0b29deeb1802fe9"
+    },
+    {
+      "path": "src/main.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "188ec50fefa955f2d53c5f4605da26b5a1cdb79e",
+      "size": 3043,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/188ec50fefa955f2d53c5f4605da26b5a1cdb79e",
+      "sha256": "149c457f60ad7174520f0f37baa7868c436884850b02d45d4a0db5763ca5adfa"
+    },
+    {
+      "path": "src/styles.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d11403ba83274a26fdd2c972e93bf141b33c7308",
+      "size": 12033,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/d11403ba83274a26fdd2c972e93bf141b33c7308",
+      "sha256": "6d89c15c28d23ad33ab82647cc1848ce91281f9e84685e07e77837f53b1e824c"
+    },
+    {
+      "path": "src/ui/UI.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b88583f929f04752a40e393003d4f130789e9075",
+      "size": 4454,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/b88583f929f04752a40e393003d4f130789e9075",
+      "sha256": "350c71284cd95180223c0f596ca73170486b80b0d204c859cd7dc78776d85b1f"
+    },
+    {
+      "path": "src/weather/ParticleRenderer.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "41fdb68999ebbe8789debe4509e52ff84cda282d",
+      "size": 8421,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/41fdb68999ebbe8789debe4509e52ff84cda282d",
+      "sha256": "bd8f2211c4f504ac9aee836a30c1e4892f2012977a7786359caf5c22484b51af"
+    },
+    {
+      "path": "src/weather/ParticleSystem.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0af085b2b6012628008120e2f723d757f2f62da4",
+      "size": 16985,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/0af085b2b6012628008120e2f723d757f2f62da4",
+      "sha256": "446924fb5a420cdb67456ae128318b548513709be72d94a96622b307aaaa765d"
+    },
+    {
+      "path": "src/weather/TimeOfDay.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "06ff607e7c11df46a7ad69631b9a5d8526dd0e9d",
+      "size": 7556,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/06ff607e7c11df46a7ad69631b9a5d8526dd0e9d",
+      "sha256": "e2dbeb109b6dfd8e372f5bfc72197d2ad6ead2ed6f1026c00a1df32ef41ecc9a"
+    },
+    {
+      "path": "src/weather/Weather.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bafe0c35d974ef42a4b9fdd61f7d1fa14fe440da",
+      "size": 4265,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/bafe0c35d974ef42a4b9fdd61f7d1fa14fe440da",
+      "sha256": "5abb41fc004b1bcc63730488f33b72674a8413f67e9825852bb0070346ce692b"
+    },
+    {
+      "path": "src/weather/presets.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "421f3c629098fb3cca0a4345f93161c8396df264",
+      "size": 8624,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/421f3c629098fb3cca0a4345f93161c8396df264",
+      "sha256": "97a061eb4a4913879f7e91cc9826e6de190f4350c556b3945f296f7ce9b45345"
+    },
+    {
+      "path": "src/world/EnvAssets.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a78f88f3a6bc485825260356af2e6beda7e71009",
+      "size": 10893,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/a78f88f3a6bc485825260356af2e6beda7e71009",
+      "sha256": "228e19ae45084c18153bcff73cc7dbd86a0f537b51df9a957383da86eede7e5f"
+    },
+    {
+      "path": "src/world/Ground.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c3c94da87a0adc8efd0ff48f39f4a2a9538e45c8",
+      "size": 18555,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/c3c94da87a0adc8efd0ff48f39f4a2a9538e45c8",
+      "sha256": "fe14d720ecb4390586c431b0387ed9a5b1726968fc3b2118e8b73db05eb05e6d"
+    },
+    {
+      "path": "src/world/InteractionMap.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7dc1fdab9754cee0147b75d4ad27b397b8c9e599",
+      "size": 6048,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/7dc1fdab9754cee0147b75d4ad27b397b8c9e599",
+      "sha256": "a7525e094870ffda07ca3b9fa4421351d396f80d70fd9a6f22f43960379ae6fc"
+    },
+    {
+      "path": "src/world/Lighting.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "31a840b04ee8e459e0fa93f012874b81691cd206",
+      "size": 3227,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/31a840b04ee8e459e0fa93f012874b81691cd206",
+      "sha256": "6e3fe8ec7e8ba6252a05ef56cf55a1e4466a7adcc5297a4fe8a1ad8279952f5f"
+    },
+    {
+      "path": "src/world/PlanarReflection.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "802d1432f60aa95826a379ae2422d7b7fdb2dbe7",
+      "size": 4055,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/802d1432f60aa95826a379ae2422d7b7fdb2dbe7",
+      "sha256": "a79fc4abde5f191ce4a1eced1ba148e6f17d8e909e9cca4c48472805bd2116ae"
+    },
+    {
+      "path": "src/world/Sky.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fb8eaa9be263a81be0609638978783cc83dd6509",
+      "size": 15615,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/fb8eaa9be263a81be0609638978783cc83dd6509",
+      "sha256": "af1d55b81354b374da8992d2c5c43b462a5c8642ab5114ae03f37d2d2a682bfa"
+    },
+    {
+      "path": "src/world/Terrain.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8ba5603a6a7b3ca7cfbed6f9cb4f09613b36dca4",
+      "size": 18201,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/8ba5603a6a7b3ca7cfbed6f9cb4f09613b36dca4",
+      "sha256": "4265263fed1fb018341965b4ea45409aeb30b6e7ac3430ef061632a4e7c52b13"
+    },
+    {
+      "path": "src/world/atmosphere.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6a4cf0a2fbca59564b791e084137d60f30a5ae79",
+      "size": 6534,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/6a4cf0a2fbca59564b791e084137d60f30a5ae79",
+      "sha256": "badbcfe5392c7cabfe5121755b37f51174efb6908c6e245124d41af3bcdf32b9"
+    },
+    {
+      "path": "src/world/clouds/CloudNoise.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d573bb945dd9a6b90e9074366e3dfdd97244aa6c",
+      "size": 3947,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/d573bb945dd9a6b90e9074366e3dfdd97244aa6c",
+      "sha256": "e15c339c7597c1fa1849ac8c6aca619b34b9ac1155159fbc99693593a4e3e756"
+    },
+    {
+      "path": "src/world/clouds/cloudsGlsl.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7a4855d125306b88f1c41208423c878006d02878",
+      "size": 6929,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/7a4855d125306b88f1c41208423c878006d02878",
+      "sha256": "78a1b9e3094c0ecdb1268afae61f24ff68bb65d8e1e9f3db0dde476eccc7bb5b"
+    },
+    {
+      "path": "tools/terrain/build_dem.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ca2f4d4c08ecdf5b34fb96f5416285ed07334cde",
+      "size": 5704,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/ca2f4d4c08ecdf5b34fb96f5416285ed07334cde",
+      "sha256": "a561f9532561de7d1dc0de21daf95a64271159e63eb6c26f4711228664b8041b"
+    },
+    {
+      "path": "tools/terrain/build_detail_z13.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0feed5c1d8e2db7edb06472fcf278f6155aa9f68",
+      "size": 3679,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/0feed5c1d8e2db7edb06472fcf278f6155aa9f68",
+      "sha256": "7185d73d55b40cce961a45a7c46c574c22b116d237e73680bdf1b00fc1bc5a84"
+    },
+    {
+      "path": "tools/terrain/get_tiles.sh",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "86a96a1b9c14344e701facc6b229f1c47b0bd340",
+      "size": 413,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/86a96a1b9c14344e701facc6b229f1c47b0bd340",
+      "sha256": "ce53ef1be8d994d2452c8ff849b4865b7c80ec8b43dc0d17ddad92dea8794caa"
+    },
+    {
+      "path": "tools/terrain/get_tiles_z13.sh",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cd022ab663a2385059762cb04dd4529984592df7",
+      "size": 295,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/cd022ab663a2385059762cb04dd4529984592df7",
+      "sha256": "b03c0e341d98b42f69e868e3d2f9d25ebe081bce4a259aaef1bbb0209a970f50"
+    },
+    {
+      "path": "tsconfig.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "07458233dac64d003903e12b7a5fc19e5d458d77",
+      "size": 454,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/07458233dac64d003903e12b7a5fc19e5d458d77",
+      "sha256": "a9e653c6ac39fe7d4142a8618f5a62e26ffee9e20f76b166bba6b38981a10d02"
+    },
+    {
+      "path": "tsconfig.lib.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "571661e5ed95fae2849a5fdf49186f6ba1d5cb39",
+      "size": 247,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/571661e5ed95fae2849a5fdf49186f6ba1d5cb39",
+      "sha256": "de73627d085b2564d4d92d211f8f3a5713907e4cbeda1d00945eb4970782b914"
+    },
+    {
+      "path": "vite.config.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0015996fb340ddf3bdd7e245b0fe3f803b4dca76",
+      "size": 283,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/0015996fb340ddf3bdd7e245b0fe3f803b4dca76",
+      "sha256": "ac9fbffb0149dcdcf1b165ba4ed40072ca650d843de430f0736b6af9bec915d4"
+    },
+    {
+      "path": "vite.lib.config.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "affa2f06799048823b91923def6afe8945b2dc4d",
+      "size": 531,
+      "url": "https://api.github.com/repos/Mamba-working/motion-ball/git/blobs/affa2f06799048823b91923def6afe8945b2dc4d",
+      "sha256": "1a21cfa84115450f9a6f0b542d8e623579cff2820a589906be7b9c675932a4d5"
+    }
+  ]
+}

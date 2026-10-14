@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>motion-ball 候选素材（Poly Haven · CC0）</title>
+<style>
+  body { margin: 0; padding: 32px 40px 60px; font: 14px/1.6 -apple-system, "PingFang SC", sans-serif; background: #eef1f5; color: #18223d; }
+  h1 { font-weight: 500; margin: 0 0 4px; }
+  .note { color: #5a6378; margin: 0 0 28px; }
+  h2 { font-weight: 500; margin: 36px 0 4px; }
+  h2 small { font-weight: 400; color: #5a6378; font-size: 13px; margin-left: 8px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-top: 12px; }
+  .hdri .grid { grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); }
+  a.card { display: block; background: #fff; border-radius: 10px; overflow: hidden; text-decoration: none; color: inherit; box-shadow: 0 1px 3px rgba(24,34,61,.08); }
+  a.card:hover { box-shadow: 0 4px 16px rgba(24,34,61,.16); }
+  .card img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; background: #dde2ea; }
+  .hdri .card img { aspect-ratio: 2; }
+  .meta { padding: 10px 12px 12px; }
+  .id { font: 12px ui-monospace, Menlo, monospace; color: #5a6378; }
+  .why { font-size: 13px; margin-top: 2px; }
+  .pick { display: inline-block; font-size: 11px; background: #18223d; color: #fff; border-radius: 4px; padding: 0 6px; margin-left: 6px; vertical-align: 1px; }
+</style>
+</head>
+<body>
+<h1>候选素材预览</h1>
+<p class="note">全部来自 Poly Haven，CC0 授权（个人/商业均可，无需署名）。点卡片打开素材页可看大图和 3D 预览。标「推荐」的是我的首选。告诉我每组选哪个（或都不要），我再下载接入。</p>
+
+<section id="ground"></section>
+<section class="hdri" id="sky"></section>
+
+<script>
+const T = (id) => `https://cdn.polyhaven.com/asset_img/thumbs/${id}.png?width=512&height=512`;
+const H = (id) => `https://cdn.polyhaven.com/asset_img/thumbs/${id}.png?width=840&height=420`;
+const groups = [
+  ['ground', '盐滩 / 干地面', '晴天、大风的主地面', [
+    ['aerial_beach_01', '细沙，俯拍、均匀，最接近盐滩的平整感', true],
+    ['brown_mud_dry', '干裂泥地，龟裂纹理，适合做盐壳'],
+    ['sandstone_cracks', '砂岩裂纹，更硬朗的裂缝'],
+    ['dry_ground_rocks', '干燥地面夹碎石，更粗犷'],
+    ['coast_sand_rocks_02', '海岸沙 + 石，最热门的地面素材'],
+  ]],
+  ['ground', '湿地 / 泥', '雨天、雾天的积水地面（叠在干地面上混合）', [
+    ['brown_mud_03', '湿泥，表面平滑，积水反光好', true],
+    ['brown_mud_02', '湿泥，纹理更明显'],
+    ['brown_mud', '偏深色的泥地'],
+  ]],
+  ['ground', '雪地', '雪天的地面', [
+    ['snow_02', '新雪颗粒，最常用', true],
+    ['snow_field_aerial', '俯拍雪原，大尺度起伏'],
+    ['snow_01', '略硬的雪面'],
+    ['snow_03', '有脚印 / 不平的雪'],
+  ]],
+  ['ground', '远山岩石', '贴到远山上，替换现在的程序化岩石', [
+    ['rock_face_03', '岩壁，层理和冲沟清晰', true],
+    ['aerial_rocks_02', '俯拍岩石地貌'],
+    ['rocky_terrain_02', '碎石山地'],
+    ['gray_rocks', '灰色岩石，冷色调'],
+  ]],
+  ['sky', '晴天 HDRI', '环境光与反射（球、伞、积水里看到的天空）', [
+    ['kloofendal_48d_partly_cloudy_puresky', '正午，少云，高对比，干净的蓝天', true],
+    ['kloppenheim_06_puresky', '低太阳，柔和'],
+    ['golden_gate_hills', '有远山轮廓，正午'],
+    ['goegap_road', '荒漠道路，日出'],
+  ]],
+  ['sky', '阴天 / 雨天 HDRI', '多云、雨天', [
+    ['kloofendal_overcast_puresky', '均匀阴天，低对比', true],
+    ['overcast_soil_puresky', '阴天，略暖'],
+    ['fouriesburg_mountain_cloudy', '阴天 + 山'],
+  ]],
+  ['sky', '雪 / 雾 HDRI', '雪天、雾天', [
+    ['snow_field', '雪原，阴天', true],
+    ['kloofendal_misty_morning_puresky', '晨雾，柔和', true],
+    ['snowy_field', '雪地，部分多云，高对比'],
+    ['misty_pines', '雾中松林'],
+  ]],
+];
+for (const [sec, title, sub, items] of groups) {
+  const el = document.getElementById(sec);
+  const h = document.createElement('h2');
+  h.innerHTML = `${title}<small>${sub}</small>`;
+  const g = document.createElement('div');
+  g.className = 'grid';
+  for (const [id, why, pick] of items) {
+    g.insertAdjacentHTML('beforeend', `<a class="card" href="https://polyhaven.com/a/${id}" target="_blank" rel="noopener">
+      <img loading="lazy" src="${sec === 'sky' ? H(id) : T(id)}" alt="${id}">
+      <div class="meta"><div class="id">${id}${pick ? '<span class="pick">推荐</span>' : ''}</div><div class="why">${why}</div></div></a>`);
+  }
+  el.append(h, g);
+}
+</script>
+</body>
+</html>

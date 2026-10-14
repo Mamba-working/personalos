@@ -21,11 +21,11 @@ jobs:
           package-manager-cache: false
       - name: Install repository workspace links
         run: npm ci --ignore-scripts --no-audit --no-fund
-      - name: Reconstruct exact pinned Three.js browser and fixture builds
-        run: npm run setup:vendor
-      - name: Install locked web regression dependencies
-        run: npm run setup:tests
-      - name: Check imported bytes, JavaScript syntax and public-file patterns
+      - name: Prepare and install exact pinned motion-ball build dependencies
+        run: npm run setup
+      - name: Build the current alpha.8 web runtime
+        run: npm run build:web
+      - name: Check source provenance, JavaScript syntax and public-file patterns
         run: npm run check
-      - name: Run contracts, real API/static HTTP smoke and web source regressions
+      - name: Run contracts, real API/static HTTP smoke and current web regressions
         run: npm test

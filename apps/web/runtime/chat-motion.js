@@ -32,8 +32,16 @@ export function createChatMotion(){
   shellReleased=false;returnReleased=false;interactive=false;initialized=true;phase='positioning';
  }
  function setWanted(value){wanted=value;if(value){returnReleased=false;shellReleased=pose.p>.01||presentation==='control';}interactive=false;}
+ // Exact springs are stable for any dt. Substeps resolve choreography gates at
+ // the existing 60 Hz cadence, but never render or emit per missed frame. Bound
+ // the work to 120 steps even after a long visible stall; no elapsed time is lost.
  function advance(dt,returnBounds,reduced=false){
-  dt=Math.min(.04,Math.max(0,dt));
+  dt=Number.isFinite(dt)?Math.max(0,dt):0;
+  const count=reduced?1:Math.max(1,Math.min(120,Math.ceil(dt*60-1e-9)));
+  for(let i=0;i<count;i++)if(advanceStep(dt/count,returnBounds,reduced))return true;
+  return false;
+ }
+ function advanceStep(dt,returnBounds,reduced=false){
   if(reduced){shellReleased=wanted;returnReleased=!wanted;}
   // Release only after the Ball's own spring settles at its destination.
   if(!wanted&&pose.p===0&&content.p<=CHAT_MOTION.concealedAt)returnReleased=true;

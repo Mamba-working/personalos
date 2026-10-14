@@ -1,16 +1,15 @@
 {
   "schemaVersion": 1,
-  "originalSourceCommit": "74cbbad5c83ad2297f1598138ddc72140d4492df",
-  "originalRuntimeSHA256": "7dc1d4eb903df03745d36b8424041978f6871b414a7b970d5caffed48fa8f41e",
-  "algorithm": "sha256-canonical-path-inventory-v1",
-  "pathMapping": {
-    "from": "runtime/",
-    "to": "apps/web/runtime/"
+  "productVersion": "v0.1.0-alpha.8",
+  "source": {
+    "motionBallRepository": "Mamba-working/motion-ball",
+    "motionBallCommit": "957cec0acf327ef5a79f754c94b70142792b0133",
+    "hostSourceCommit": "b66155188b87cb05ba8251590240d7ac0ee506e3"
   },
   "files": [
     {
       "path": "runtime/app.js",
-      "sha256": "31f1c02da981bf142f94fd29e4cc3b168f8971132ac918f032551c691f1313ff"
+      "sha256": "b03fbf9dc7ee0dd80b6f1d91dc5c78757e1fa5ad1f5d1383fbc1ae5560335c1e"
     },
     {
       "path": "runtime/chat/chat-fluid-send.js",
@@ -22,7 +21,7 @@
     },
     {
       "path": "runtime/chat/chat-mobile-flow.css",
-      "sha256": "b632f738c2e4fc9dd059d1182f4552b569956b72b45dbd49a9a25f45a11b1b96"
+      "sha256": "240779437375a093a11cbc1293b4a8d21c6a48eb9077006ba34d40efbeead6f9"
     },
     {
       "path": "runtime/chat/chat-page-lock.js",
@@ -90,15 +89,15 @@
     },
     {
       "path": "runtime/chat-host.css",
-      "sha256": "8c21f0abce05c510a6f9c8055b230b1446f4164b5009492a03c51f9826c7c4bd"
+      "sha256": "cb5649d05e9132168265d9911e141ddb9afdf8b4e8d91b578423c7ed96096340"
     },
     {
       "path": "runtime/chat-host.js",
-      "sha256": "47b29b47c92e7642a3e4e36ead2d50b181788af0e59c086a2d180348d152bf90"
+      "sha256": "7c9d25707f050b0626c00e63df281468d529de76196b3ebe4c881e70e035b22d"
     },
     {
       "path": "runtime/chat-motion.js",
-      "sha256": "51f7e3ffa771ea947553c4cb8ef19c3611a59567c1e2121e7a9a4d4fc1f5ecf9"
+      "sha256": "f169d72a5284cdbdadffdc1754a049e5226290ceae424aa28a71e0a326df88bc"
     },
     {
       "path": "runtime/comparison-status.js",
@@ -114,7 +113,7 @@
     },
     {
       "path": "runtime/diagnostics/keyboard-diagnostics.js",
-      "sha256": "ebb1e4747975d41a5e74eabb89d36d93335f385d39d9bf93d3b9fc78955e8819"
+      "sha256": "255f6413fa67b370ebedde24ed4a8fe8380304afbd7c48287009a6949223a447"
     },
     {
       "path": "runtime/feed-compact.css",
@@ -130,15 +129,15 @@
     },
     {
       "path": "runtime/host.css",
-      "sha256": "67c0c1e9568da91da8ae23cd7c8e7d3eddb62171bddf405214accf49af2a0a29"
+      "sha256": "410f186d615c7be61a7065bc423d02b966fce231d0c45262efc93e86680550a1"
     },
     {
       "path": "runtime/host.js",
-      "sha256": "f59013dcae0b90dd6655778458e92fc22cb4589b0a9939063112899f5d05e7f8"
+      "sha256": "b3ab5f7e05e177e950155794aa6f40676e831cc35fa5e4dbaaf3a5d76986f763"
     },
     {
       "path": "runtime/index.html",
-      "sha256": "67a7f0b908b16220b5a8584528a2fb9db2d0f970fff8fb1e7231f3bd4cafb6ce"
+      "sha256": "6b23281ea1259318583ca53d8fbe51a767b8d584eb377b859e2e42661203bc1e"
     },
     {
       "path": "runtime/material.css",
@@ -153,28 +152,188 @@
       "sha256": "1ce918555505fe611318c55f100cbba879d1e6c8aaea7029cd80eb5f30d729d1"
     },
     {
-      "path": "runtime/modules/mount.js",
-      "sha256": "693f27d090a56f3a925b68ff3f2ace911ae0e77285a653bfabef1fe2f76b7e3a"
+      "path": "runtime/modules/motion-scene.js",
+      "sha256": "9c8a1c552ca6cba56aee37f8396727b75acdbba5ea3ad361a838e99824506787"
     },
     {
-      "path": "runtime/modules/weather.css",
-      "sha256": "030bf683d00d61346d8bd4d70e5346461866f8b6203128ca9d3c93a68a12bbb9"
+      "path": "runtime/modules/mount.js",
+      "sha256": "0feea82ff35fe374faed596980ccb046338f30e2381c4f671145fe3b287b89c6"
     },
     {
       "path": "runtime/modules/weather.js",
-      "sha256": "e4ac614e57005b4e46bd89cef9b2937fb3e5e4dd74e2820076823861ddd0b474"
+      "sha256": "85967bca60769f1d5c4434f4c2ae320ea8297ded33a8e667c3324190429c0308"
+    },
+    {
+      "path": "runtime/motion/assets/hdri/kloofendal_48d_partly_cloudy_puresky.hdr",
+      "sha256": "7c6b47006ca735814b0730ffcef55435120c2856f8f37a7c4556b876643810b6"
+    },
+    {
+      "path": "runtime/motion/assets/hdri/kloofendal_misty_morning_puresky.hdr",
+      "sha256": "44174e7bfe108e350465d5c1c5d767eab36d7ffcb616015fffda8095bbffb800"
+    },
+    {
+      "path": "runtime/motion/assets/hdri/kloofendal_overcast_puresky.hdr",
+      "sha256": "87e5a0696d4e40d123606074ac7d89905ab56aaae13137f093a8bc4d7bf82c1e"
+    },
+    {
+      "path": "runtime/motion/assets/hdri/snow_field.hdr",
+      "sha256": "7c18c31559e217976f5fd3384cb92a2de86c97e6becc545d2f7308b7d108acaa"
+    },
+    {
+      "path": "runtime/motion/assets/moon/albedo.webp",
+      "sha256": "b4c1a4e08713f7fe5c4de480865cdeea8b7f029520fc9d36069a6daf70092e99"
+    },
+    {
+      "path": "runtime/motion/assets/moon/height.webp",
+      "sha256": "c14cbca6e20e88331ca571d8e2fc291a371b1dbb94660c6c3a99f08194c74961"
+    },
+    {
+      "path": "runtime/motion/assets/terrain/kawaguchi_detail.webp",
+      "sha256": "265dd3c1f1914c4eda04d0a1141e1a69f2f0bc75f204bd178263f7c01d6668eb"
+    },
+    {
+      "path": "runtime/motion/assets/terrain/kawaguchi_polar.u16",
+      "sha256": "acf358ed6645817dde811d8633884f9f51227e09ccb49edf38e0cf5261da62cb"
+    },
+    {
+      "path": "runtime/motion/assets/textures/aerial_beach_01/diff.webp",
+      "sha256": "492b8f6c1b010795a7f67249639ce6634d7fc277b28b4f6cb936224eb245f9a9"
+    },
+    {
+      "path": "runtime/motion/assets/textures/aerial_beach_01/nor.webp",
+      "sha256": "b45e31ecfde2a203ca7e3ca01f0859d2097acf187b5f1e27dd66284c108d0d2e"
+    },
+    {
+      "path": "runtime/motion/assets/textures/brown_mud_03/diff.webp",
+      "sha256": "54ad47c7db80f8cb19283bdfdd26dd599cdfc3b2837c79eb3cfb1d399ef5c0c0"
+    },
+    {
+      "path": "runtime/motion/assets/textures/brown_mud_03/nor.webp",
+      "sha256": "c6a76002dc4d53c8c3346251d5737b26f1e5c6c7a8c678a6aef5b8b96e778340"
+    },
+    {
+      "path": "runtime/motion/assets/textures/brown_mud_03/rough.webp",
+      "sha256": "142f08eb5a1b030203eb00f061fe3f75911c0fc8ec52bcbb4d6685f5336f599a"
+    },
+    {
+      "path": "runtime/motion/assets/textures/rock_face_03/diff.webp",
+      "sha256": "3d35bad085e281f6141e3145d50b922dca446a9e9ea6dc5cfc0d9e1279f7d491"
+    },
+    {
+      "path": "runtime/motion/assets/textures/rock_face_03/nor.webp",
+      "sha256": "a6108c55363345d7ad2f728f60c2c64d8235ef1e60e5641ea18db8e0d9c6bb6d"
+    },
+    {
+      "path": "runtime/motion/assets/textures/snow_02/diff.webp",
+      "sha256": "43c0209460823be30b2befe2b067747bd03ef1b88d2389b209fadb9459c131f5"
+    },
+    {
+      "path": "runtime/motion/assets/textures/snow_02/nor.webp",
+      "sha256": "5233eb64c38abca381f50c875a2216404491476d84727c7574feacac2b5c71d9"
+    },
+    {
+      "path": "runtime/motion/debug-pqTzl7QU.js",
+      "sha256": "27264e26f53017cb1f6974583cfaaac15cf595cd72c29962be8a9b552436b06f"
+    },
+    {
+      "path": "runtime/motion/factory-fttR10Kb.js",
+      "sha256": "e08d315d710dddc09b4e88daf5bb6ee08b0084fa46a1fbc1acc5a65703b960f8"
+    },
+    {
+      "path": "runtime/motion/vendor/three/LICENSE",
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+    },
+    {
+      "path": "runtime/motion/vendor/three/addons/exporters/GLTFExporter.js",
+      "sha256": "d766b04f233fa8bc72bfaebacaac5ecb832c30ca3695ce8d84bbb7dccccdc842"
+    },
+    {
+      "path": "runtime/motion/vendor/three/addons/libs/meshopt_decoder.module.js",
+      "sha256": "d428e73a000057c6c94bfcedc3412d0c2dc14ca8800e88553aab05113ad2bf19"
+    },
+    {
+      "path": "runtime/motion/vendor/three/addons/loaders/GLTFLoader.js",
+      "sha256": "131c0f78c01d19368ae495caa65b3adaa10487810a36a05bb5901b769a35ac16"
+    },
+    {
+      "path": "runtime/motion/vendor/three/addons/loaders/HDRLoader.js",
+      "sha256": "0986b578f9acd14cec74e5ee85e07f45e681b40bcd229a601a0391201f9b5ff1"
+    },
+    {
+      "path": "runtime/motion/vendor/three/addons/postprocessing/EffectComposer.js",
+      "sha256": "4e079a5886152d7e529a59aef644e968ab4d32c6a33ce016b36bf29b2eac26f7"
+    },
+    {
+      "path": "runtime/motion/vendor/three/addons/postprocessing/MaskPass.js",
+      "sha256": "7cd08eee9d5d6f5578beaddbdcbe9c384f6873810af27f22ab7db3ceeb127aa3"
+    },
+    {
+      "path": "runtime/motion/vendor/three/addons/postprocessing/OutputPass.js",
+      "sha256": "02e4a261af34de71338185e9e87f0cbe5cba9115608d984363e1269dec1d2272"
+    },
+    {
+      "path": "runtime/motion/vendor/three/addons/postprocessing/Pass.js",
+      "sha256": "444b409c235ead986893c472e720da1b779a56985c7d10b279c7944b52bd61c5"
+    },
+    {
+      "path": "runtime/motion/vendor/three/addons/postprocessing/RenderPass.js",
+      "sha256": "817f6c3cdcd0fd41515d112359ea0532568eefb5aabd3b33903957ebca1b8a6a"
+    },
+    {
+      "path": "runtime/motion/vendor/three/addons/postprocessing/ShaderPass.js",
+      "sha256": "e2500a5913b26bbf5148ceaae644c6edcff06a18b01494ee37bf856353d2ab9d"
+    },
+    {
+      "path": "runtime/motion/vendor/three/addons/postprocessing/UnrealBloomPass.js",
+      "sha256": "ba8f2fcadfa6588384c9473498f974d81d120f02f0e63a0e59c265202a006b5a"
+    },
+    {
+      "path": "runtime/motion/vendor/three/addons/shaders/CopyShader.js",
+      "sha256": "a33057d5ac91c43304c186ac0e8816e62bb2ed471d3a00ff3018dfd5c0389718"
+    },
+    {
+      "path": "runtime/motion/vendor/three/addons/shaders/LuminosityHighPassShader.js",
+      "sha256": "5044f780b6e6cf863947f64c36fe1587132f7fbe395ada863cd1e5f0388dcf1e"
+    },
+    {
+      "path": "runtime/motion/vendor/three/addons/shaders/OutputShader.js",
+      "sha256": "353479f77a8d7e2629d49ccac9fc2f5dbfdda5442e0adf867b00377a2fcb0cb2"
+    },
+    {
+      "path": "runtime/motion/vendor/three/addons/utils/BufferGeometryUtils.js",
+      "sha256": "9fb63427ce6641fa14fd0baff9cc4d1b5f9c3d85fd084bf2e90e803c44ec1797"
+    },
+    {
+      "path": "runtime/motion/vendor/three/addons/utils/SkeletonUtils.js",
+      "sha256": "b1632a703206c3d830de9fcbe515696770d04b71a15ee6b50afa6d2c3298c86f"
+    },
+    {
+      "path": "runtime/motion/vendor/three/three.core.js",
+      "sha256": "9edde002b066a9a05676a6127f67735b62baf399bdea529f2f7e31657da769e6"
+    },
+    {
+      "path": "runtime/motion/vendor/three/three.module.js",
+      "sha256": "9052042d676cb0fdc1ddfefe193053f34b7ac0513a616fdac4535d49987812ea"
+    },
+    {
+      "path": "runtime/motion/weather-scene.js",
+      "sha256": "de6b855c72bb45bc4bf7a036131ba5d6f4b4436f59738f0e629830b536104a87"
+    },
+    {
+      "path": "runtime/native-card/layout.js",
+      "sha256": "e072229df9a7a5bf7f3304e65bf6385e967920d43a3e5dbc0cc88bfc09341c1c"
+    },
+    {
+      "path": "runtime/native-card/reader.css",
+      "sha256": "24b5c2f2858d411638240c482cbd995cdc005fa49ae17110f4833e686d27bd4f"
     },
     {
       "path": "runtime/palette.css",
-      "sha256": "c4deab976ada8f17bdc9cd9ecc01d1346b0c21a878d3aa6366645fcd48778ef5"
+      "sha256": "53bf6f8a2c10d94737148fbfc97299d5f9a8356de675a373b1c0674ac38939b3"
     },
     {
       "path": "runtime/release-meta.json",
-      "sha256": "9a1ed1670f9accb5b5391108bb1f9757ce720c850276e580bcc8fa08852845c9"
-    },
-    {
-      "path": "runtime/scene-bridge.js",
-      "sha256": "275b8cb623fa45ea102f8fedfd8ee6f86ced3b8edb6cc7406f5116104eced6c6"
+      "sha256": "9c5146052bb65449ee765b509c853d7fcd671335ffbf1c1e03eb23c7d533f142"
     },
     {
       "path": "runtime/send-comparison.css",
@@ -189,111 +348,14 @@
       "sha256": "74a355e517d30e2a7febf5e64a04a4fe74c60aca11027ce7f67b4237ffbfbf22"
     },
     {
-      "path": "runtime/story/book-story.js",
-      "sha256": "a6e57153d8efaf3f3c10d1625cba49c9f29d9563ba45b34b7cf8d17c2dcc3007"
-    },
-    {
       "path": "runtime/story/content-presentation.js",
       "sha256": "bfd411599ba98ceee92cfaba302a66abade14251d7c1be995438c8426083adc2"
     },
     {
-      "path": "runtime/story/frame-clock.js",
-      "sha256": "598d87045d44611bf89dff6585a66b2cec59e747cd92181cd6aea24f37bc3f60"
-    },
-    {
-      "path": "runtime/story/geometry.js",
-      "sha256": "b4983a87eece5b9e8e84773d39b7747e2782c11c43d987162051832348cd58fc"
-    },
-    {
-      "path": "runtime/story/lifecycle.js",
-      "sha256": "558769f362c6bbef9977d3d264907eb4cfc24a805a537f40e706ba3e98df0b24"
-    },
-    {
-      "path": "runtime/story/props.js",
-      "sha256": "8616b030a66656a77e6236569f485d37fb659ed5e5996bad8a1039d8ca7cc0dd"
-    },
-    {
-      "path": "runtime/story/story.css",
-      "sha256": "0c3679abfe9b00343c490d63b7f4ecb4ee574c5bf766684911e56bf1c38117db"
-    },
-    {
       "path": "runtime/style.css",
       "sha256": "69afa74e3bc89fc6758c39585ae789345cfdce80efb591ba0829031ad0783a03"
-    },
-    {
-      "path": "runtime/world/scene.js",
-      "sha256": "809c39ebf0a8f82acb3c319e7c4731ccdd732edd0a5dcd23c6e63b5115ae13c7"
-    },
-    {
-      "path": "runtime/world/scoped.css",
-      "sha256": "be8e379244be28eee5155b518b8ce8af8f40b1f9e574e1761cdf298c09fd1c01"
-    },
-    {
-      "path": "runtime/world/style.css",
-      "sha256": "7262149614ee034bf52d7fdcadadba1b162b8e6841975c350e48ab84658b3186"
-    },
-    {
-      "path": "runtime/world/theme.js",
-      "sha256": "d0dbf2ccb0ea7dab7ec6a4383eb24ce8d66b8d53aa71f1876cd30a9e8aeba489"
-    },
-    {
-      "path": "runtime/world/theme.json",
-      "sha256": "17b25dd7088e1866a849e2397a08ef23ebe0ed96c548a44d72f059902d655a0e"
-    },
-    {
-      "path": "runtime/world/vendor/aora/ATTRIBUTION.txt",
-      "sha256": "5df50aa8fcee9acb4e80f9baab7d154106120d36e3e9fbd2bed0146cb8db35be"
-    },
-    {
-      "path": "runtime/world/vendor/aora/LICENSE",
-      "sha256": "cd25a8e1b00d05b2bb29d3a626599526db960b5bf3ba94fd726565b9bec7f8ea"
-    },
-    {
-      "path": "runtime/world/vendor/aora/NOTICE.md",
-      "sha256": "549d6607c9dd13c9add2fa5faeccca488bd78cf30cac2b0b4d3dbcd8b45b721d"
-    },
-    {
-      "path": "runtime/world/vendor/aora/SOURCE-MANIFEST.json",
-      "sha256": "1def92868ff495d9098778a7a53532b85a288c1e19de27e8bb8780ecefde1d49"
-    },
-    {
-      "path": "runtime/world/vendor/aora/rings.js",
-      "sha256": "7fd196046650b8273d87c9b85a899554d90f35c62d676eea1c681630e721ec20"
-    },
-    {
-      "path": "runtime/world/vendor/three/LICENSE",
-      "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
-    },
-    {
-      "path": "runtime/world/vendor/three/RoomEnvironment.js",
-      "sha256": "c20f0b4677f6128a138d7152b85cbef9091f4f45cdfa05adca04d40c1697c7ae"
-    },
-    {
-      "path": "runtime/world/vendor/three/three.core.js",
-      "sha256": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20"
-    },
-    {
-      "path": "runtime/world/vendor/three/three.module.js",
-      "sha256": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a"
-    },
-    {
-      "path": "runtime/world/world-adapter.js",
-      "sha256": "57c1a391b0be7c237eba1711a1fae77fec4c32533e8e518434af6b7f5704730e"
-    },
-    {
-      "path": "runtime/world-availability.js",
-      "sha256": "a802daffb2300ae96826e0d60d718ca95d767b816876aca951f4d7479fe99b0d"
     }
   ],
-  "generatedPublicPaths": [
-    "apps/web/runtime/world/vendor/three/three.core.js",
-    "apps/web/runtime/world/vendor/three/three.module.js"
-  ],
-  "setupRequirement": "npm ci --ignore-scripts --no-audit --no-fund && npm run setup:vendor",
-  "previousCandidate": {
-    "sourceCommit": "ab28fd1f02f84036ac05d5a1e9551bf26d6b7bf2",
-    "publicGitCommit": "b6c1a197dddc737b36858632f8617de5918ad613",
-    "runtimeSHA256": "f33404dc66779e042b9197c6f6459b3a139d662d22bacb0a19dc16d5fe01922f",
-    "inventoryAt": "https://github.com/Mamba-working/personalos/blob/b6c1a197dddc737b36858632f8617de5918ad613/provenance/runtime-files.json"
-  }
+  "originalRuntimeSHA256": "c6e2cabc518cea90cf8b273ddc9d3809ac9a1fd8d52b77156c673e4acd9c8a9c",
+  "acceptance": "Exact source/runtime snapshot; full GPU/mobile/performance acceptance incomplete"
 }

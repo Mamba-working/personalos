@@ -1,19 +1,19 @@
 {
   "product": "PersonalOS",
-  "productVersion": "v0.1.0-alpha.4",
+  "productVersion": "v0.1.0-alpha.8",
   "channel": "alpha",
-  "reviewLabel": "Alpha QA candidate · acceptance pending",
+  "reviewLabel": "Public-API-only motion-ball integration preview; real GPU acceptance pending",
   "fullUnifiedAcceptance": false,
-  "deferredGates": [
-    "final-user-signoff",
-    "measured-performance",
-    "physical-device",
-    "rendered-visual-motion"
-  ],
+  "source": {
+    "siteVersion": 117,
+    "siteCommit": "995f664cec19a6214aec3a069b90ef3032535788",
+    "motionBallCommit": "957cec0acf327ef5a79f754c94b70142792b0133",
+    "three": "0.186.1"
+  },
   "limitations": [
-    "Rendered Ball/GPU and complete motion acceptance pending",
-    "Physical-device native keyboard/IME acceptance pending",
-    "Validated measured-performance acceptance pending",
-    "Final unified-product user signoff pending"
+    "CPU/source/build checks are separate from real GPU, pixels, normal-speed motion and physical-device acceptance",
+    "Native chat is a local demonstration, not connected to AI",
+    "Original upstream module is used without internal patches; one scene per page, no in-page re-instantiation",
+    "Old renderer/story/actor placement removed; native chat uses its own stable DOM button"
   ]
 }

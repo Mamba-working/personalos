@@ -2,31 +2,39 @@
 
 ## Version identifiers
 
-- Product version: vX.Y.Z, with alpha/beta/rc suffixes for prereleases
-- API scaffold/package version: independently truthful; initially 0.0.1
-- A hosting snapshot ID is deployment provenance, not a semantic product version or acceptance grade
-- Current imported web: v0.1.0-alpha.4; full unified acceptance is pending
+- Product/web version: vX.Y.Z, with alpha/beta/rc suffixes for prereleases
+- Current web candidate: v0.1.0-alpha.8; actual GPU/mobile/performance and final unified acceptance are incomplete
+- API scaffold/package version is independently truthful: the unchanged scaffold is 0.0.1
+- The unchanged API/contracts status metadata retains productVersion 0.1.0-alpha.4; this is not the alpha.8 web identifier
+- A hosting snapshot or source digest is deployment provenance, not a semantic product version or acceptance grade
 
-## Clean public import
+A candidate source branch does not change GitHub main or the default deployment. No merge, release tag, publication of a stable release or deployment follows automatically from passing build/tests.
 
-The original development history contained private QA captures and operational details. The public repository begins with a fresh sanitized import commit. Original branches/tags and their exact objects remain in private local recovery, while provenance/releases.json records historical source/runtime pointers.
+## Clean public import and history
 
-Never create an old release tag on an unrelated clean import commit and describe it as the old SHA. Original source hashes in provenance are references only. Any future sanitized historical reimport needs a new commit and an explicit import label/mapping.
+The public repository began with a sanitized import. Private QA captures, raw conversation feedback and operational details were excluded. Historical source hashes in provenance are references only, not recreated original public ancestry.
+
+Never create an old release tag on an unrelated clean import commit and describe it as the old SHA. A sanitized historical reimport needs a new commit and an explicit import label/mapping.
+
+The earlier alpha.3/alpha.4 inventories, vendor reconstruction and portable source-test adjustments belong to their exact public commits. Alpha.8 intentionally replaces the old renderer and its current runtime inventory; do not silently rewrite an earlier candidate's recorded hashes or call its browser observations fresh alpha.8 evidence. Recovery uses existing Git history rather than served duplicate legacy source.
 
 ## Candidate identity and verification
 
-1. Install locked dependencies and reconstruct verified vendor artifacts; freeze source and record the real PUBLIC candidate commit plus current file inventory
-2. Run public-file review and automated source/contracts/HTTP checks on that exact commit
-3. Collect sanitized current-candidate browser/device/performance observations appropriate to the claim
-4. Label deferred gates explicitly in release notes and UI
-5. Require final user/product acceptance before a stable v0.1.0 claim
-6. Record deployed route, exact commit, source digests and observed environment without private paths/account metadata
-7. Never reuse historical browser success as fresh current-candidate observation
+1. Install locked workspace dependencies, run npm run setup and npm run build:web; freeze canonical sources and record the real PUBLIC candidate commit plus current source/runtime inventory
+2. Verify the original 84-file motion-ball tree, effective build source and generated 87-file runtime; record registry-only lock adaptation separately
+3. Run public-file review and automated source/contracts/HTTP/current-web checks on that exact candidate
+4. Collect sanitized current-candidate browser/device/performance observations appropriate to the claim
+5. Label failed, blocked, unrun and deferred gates explicitly in release notes and UI
+6. Require final user/product acceptance before a stable v0.1.0 claim
+7. For an authorized deployment, record route, exact commit, source/runtime digests and observed environment without private paths or account metadata
+8. Never reuse historical browser success as current-candidate observation
 
-The provenance guard now preserves the frozen alpha.4 bytes. The alpha.3 inventory and source mapping remain available at its exact public commit, recorded as previousCandidate in the current provenance files. The alpha.4 delta changes only weather.js and release-meta.json in the 69-file runtime; it also imports the portable solar consumer tests and the byte-pinned alpha.3 negative control. Before intentional later web changes, introduce a new explicit candidate inventory/commit mapping in a reviewable change. Do not silently update an old import's recorded source hashes.
+The 59 current web tests are host/weather/native-card source/state/layout-model checks. They are not real WebGL pixels, native browser layout, physical-device behavior or GPU performance. No old-renderer fallback is included in the current candidate.
 
 ## CI and publication
 
-CI checks source/import safety and backend smoke. It neither deploys nor publishes releases. Build/deploy/merge/tag publishing must be separately authorized. Use least-privilege CI and approved hosting/provider credentials stored in platform secrets, never committed.
+CI uses Node 24 from .nvmrc, installs workspace links with npm ci --ignore-scripts, prepares pinned official motion-ball dependencies, builds the web runtime, checks provenance/syntax/public patterns and runs contracts, API/static HTTP and current web tests. It does not install a browser, deploy or publish releases.
 
-The initial workflow pins official actions to verified source commits. Reference: [actions/checkout](https://github.com/actions/checkout/commit/3d3c42e5aac5ba805825da76410c181273ba90b1), [actions/setup-node](https://github.com/actions/setup-node/commit/820762786026740c76f36085b0efc47a31fe5020)
+Build/deploy/merge/tag publication must be separately authorized. Use least-privilege CI and approved platform secrets; never commit credentials or private captures. The export-pattern guard is a heuristic, not a complete security audit.
+
+The workflow retains official actions pinned to verified source commits: [actions/checkout](https://github.com/actions/checkout/commit/3d3c42e5aac5ba805825da76410c181273ba90b1), [actions/setup-node](https://github.com/actions/setup-node/commit/820762786026740c76f36085b0efc47a31fe5020).

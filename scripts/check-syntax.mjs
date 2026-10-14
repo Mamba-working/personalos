@@ -1,8 +1,19 @@
-import fs from 'node:fs';
+import { readdirSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
 import path from 'node:path';
-import {spawnSync} from 'node:child_process';
-const excluded=new Set(['node_modules','.git','evidence','.npm-cache']);
-function files(dir){return fs.readdirSync(dir,{withFileTypes:true}).flatMap(entry=>excluded.has(entry.name)?[]:entry.isDirectory()?files(path.join(dir,entry.name)):[path.join(dir,entry.name)]);}
-const source=files('.').filter(file=>/\.(?:js|mjs)$/.test(file));
-for(const file of source){const result=spawnSync(process.execPath,['--check',file],{encoding:'utf8'});if(result.status!==0){process.stderr.write(result.stderr);process.exit(1);}}
-console.log(`Syntax checked ${source.length} JavaScript files`);
+const ignored = new Set(['.git', '.build', 'node_modules']);
+let checked = 0;
+function walk(dir) {
+  for (const f of readdirSync(dir, { withFileTypes: true })) {
+    if (ignored.has(f.name)) continue;
+    const p = path.join(dir, f.name);
+    if (f.isDirectory()) walk(p);
+    else if (/\.(?:js|mjs|cjs)$/.test(f.name)) {
+      const result = spawnSync(process.execPath, ['--check', p], { encoding: 'utf8' });
+      if (result.status !== 0) throw new Error(result.stderr || p);
+      checked++;
+    }
+  }
+}
+walk('.');
+console.log(`${checked} JavaScript files parse; upstream TypeScript is checked during build:web`);

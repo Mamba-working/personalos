@@ -1,0 +1,35 @@
+{
+  "name": "motion-ball",
+  "private": true,
+  "version": "0.2.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "build:lib": "vite build -c vite.lib.config.ts && tsc -p tsconfig.lib.json && node scripts/copy-lib-assets.mjs"
+  },
+  "dependencies": {
+    "three": "0.186.1"
+  },
+  "devDependencies": {
+    "@types/three": "0.186.0",
+    "typescript": "5.8.3",
+    "vite": "8.3.4"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist-lib/types/lib/index.d.ts",
+      "import": "./dist-lib/weather-scene.js"
+    }
+  },
+  "module": "./dist-lib/weather-scene.js",
+  "types": "./dist-lib/types/lib/index.d.ts",
+  "files": [
+    "dist-lib"
+  ],
+  "peerDependencies": {
+    "three": ">=0.186.0 <0.187.0"
+  }
+}

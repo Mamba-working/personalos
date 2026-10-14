@@ -1,46 +1,59 @@
 # Test boundaries
 
-## Automated import checks
+## Reproducible setup and checks
 
-npm run check verifies all imported runtime paths and SHA-256 digests, JavaScript syntax and public-file credential/private-path/conversation-reference heuristics. The pattern scan is not a complete secret/security audit.
+Use Node 24.19.0 from .nvmrc in a cloud environment:
+
+    npm ci --ignore-scripts --no-audit --no-fund
+    npm run setup
+    npm run build:web
+    npm run check
+    npm test
+
+npm run setup copies the original motion-ball tree into an ignored build directory and installs the exact locked dependencies from official npm. Only registry URLs in the copied lockfile change; original source, lockfile, versions and integrity values remain unchanged.
+
+npm run build:web type-checks/builds the original library and assembles apps/web/runtime from canonical integrations. Current runtime: 87 alpha.8 files, with original assets, Three.js 0.186.1 and its license. The old Three.js 0.180.0 runtime/fixture reconstruction is historical and is not a current prerequisite.
+
+npm run check covers recorded source/runtime hashes, original module integrity, effective unpatched source, import closure, obsolete-renderer absence, JavaScript syntax and public-export heuristics. The pattern scan is not a complete secret/security audit.
+
+## Automated test layers
 
 npm test runs:
 
 - Shared health/demo-content contracts
 - Real local HTTP health/status API, missing capabilities/routes, rejected methods and headers
-- Real local HTTP static-source serving and repo-file/traversal/method boundaries
-- Original web integration plus menu/weather source/DOM regressions through their bounded runner
+- Real local HTTP static serving, current assets/MIME types and repo-file/traversal/method boundaries
+- npm run test:web: 59 current host, weather-bridge and native-card tests
 
-Run root npm ci followed by npm run setup before checks/tests. The pinned official three@0.180.0 package reconstructs two omitted runtime builds and their two fixture copies with exact SHA-256 checks; npm run setup:tests installs the web test dependency. Its original lockfile pins jsdom 27.0.1. The API and contracts use Node built-ins and add no server framework dependency. Three.js is the pinned browser-build reconstruction dependency.
+The API and contracts use Node built-ins and add no server framework dependency. Their source/tests are unchanged, including status metadata productVersion 0.1.0-alpha.4 and apiScaffoldVersion 0.0.1; the current web is alpha.8.
 
-## Web source verification
+The 59 web tests replace WeatherScene at its documented public-API boundary and use bounded host/DOM/layout models. They exercise input ownership, pause/resume/lifecycle, weather/time control and card layout/projection continuity. They do not run a real WebGL renderer or prove real CSS pixels and physical-device behavior.
 
-The imported runner executes candidate browser modules and preserves accepted-byte references and negative controls. Geometry, observers, frame timing and parts of DOM/GSAP/WAAPI are synthetic. These are source/state/controller checks, not proof of real browser rendering or native device behavior.
+Generated local evidence stays ignored. Do not upload screenshots/logs containing personal UI, raw messages or absolute environment paths to public Actions artifacts or releases by default.
 
-Generated local evidence stays ignored. Do not upload screenshots/logs containing personal UI or absolute environment paths to a public Actions artifact or release by default.
+## Separate current-candidate acceptance
 
-## Separate acceptance
+Still required:
 
-Required future observations include actual mixed feed density, long Chinese rendering, menu intermediate frames/reversal, native reader/history/focus, chat/Send retention, weather hit-testing and scrolling, reduced motion and interrupted/repeated flows. Test relevant desktop/mobile/short/landscape states.
+- Actual scene loading, shader/WebGL errors, six weather modes and day/night behavior
+- Native touch scrolling, interrupted gestures and overlay/canvas input arbitration
+- Actual native feed density, long Chinese rendering, reader/history/focus and same-node identity
+- Source-to-lifted and airborne-to-reparented card continuity, scrolled close, reopen and resize during return
+- Menu reversal/intermediate frames; chat/Send retention, native keyboard and IME
+- Reduced motion, hidden/background/BFCache restoration, repeated and interrupted flows, loading/context failures
+- Desktop, mobile, short viewport and landscape observations
+- Measured frame timing/GPU performance and final visual/user signoff
 
-GPU/world rendering, physical-device keyboard/IME, measured performance and final visual/user signoff stay separate. No new cloud browser, GPU, iOS/Safari or device pass is established by this repository import.
+Actual GPU/mobile acceptance remains incomplete. Synthetic frame.dt and module diagnostics are not measured display FPS. Upstream asynchronous asset/disposal/remount limitations remain documented in [motion-ball integration](MOTION_BALL_INTEGRATION.md); passing host mocks does not resolve them.
 
-The original private release validator/evidence registry is not copied. A public release process must use newly collected sanitized current-candidate evidence; it cannot treat excluded private records as public proof.
+## Historical evidence
 
-## Import harness adjustment
+Earlier public alpha.3/alpha.4 imports retained portable integration/menu/weather suites, byte-pinned negative controls and documented popstate/concurrency harness repairs. Their inventories, tests and vendor reconstruction remain scoped to those historical commits.
 
-The public-copy-only compact-feed history test replaces a fixed 35 ms delay with the actual popstate event and a 2,000 ms timeout. All original state/node/focus/history assertions remain. The original and public test digests and exact transformation are recorded in provenance/source-allowlist.json. No imported runtime file was changed by that initial harness adjustment. The initial load-sensitive failure is not counted as a pass; full verification is rerun after the synchronization repair.
+The current source retires the old renderer. Historical mixed full-page and old-renderer suites are not part of the 59 current web tests and are not represented as current-page passes. Preserve historical provenance and relevant negative controls when deliberately adapting a future suite; do not remove controls to obtain a pass.
+
+The original private release validator/evidence registry is not included. Public acceptance requires newly collected sanitized evidence for the exact current candidate; excluded private records cannot serve as public proof.
 
 ## Tool version basis
 
-Node v24.19.0 and npm 11.9.0 were observed from actual shell version output. Node is pinned to that tested environment version, not asserted to be the latest version. See provenance/tooling-verification.json for official action commit sources.
-
-The public runner also bounds simultaneous test files to four. Every original suite remains, as does the 60-second run ceiling. This avoids resource kills from automatic file fan-out; it is a test-runner scheduling change, not a runtime or acceptance-criteria change.
-
-## Exact generated dependency builds
-
-provenance/vendor-dependencies.json records the four generated destinations, exact npm version/integrity and per-file SHA-256. npm run setup:vendor checks package version and all source bytes before writing, refuses approximate files and changed existing output, and is idempotent. npm run check:vendor verifies the reconstructed outputs. Five installer tests cover exact/idempotent reconstruction, missing package, wrong version, wrong bytes and missing/changed outputs.
-
-## Alpha.4 incremental source gates
-
-The alpha.4 candidate imports the exact frozen weather projection and release metadata, the new solar consumer/transition/policy tests, and a byte-pinned alpha.3 negative control. The source content-history test now also waits for actual popstate; the existing public compact-feed popstate repair and concurrency-four runner are preserved. The public provenance guard and source/HTTP aggregates verify this portable snapshot without copying the private release validator, private evidence registry or operational source-checkpoint verifier. These gates remain source/model/DOM checks and do not establish new browser, GPU, device, performance or user acceptance.
+.nvmrc retains Node 24.19.0. It identifies the pinned test environment, not a claim that it is the latest available Node release. CI retains official actions pinned to verified source commits and has no browser-install or deployment step.

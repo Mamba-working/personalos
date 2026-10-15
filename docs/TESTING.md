@@ -8,6 +8,7 @@ Use Node 24.19.0 from .nvmrc in a cloud environment:
     npm run setup
     npm run build:web
     npm run check
+    npm run build --workspace apps/api
     npm test
 
 npm run setup copies the original motion-ball tree into an ignored build directory and installs the exact locked dependencies from official npm. Only registry URLs in the copied lockfile change; original source, lockfile, versions and integrity values remain unchanged.
@@ -25,7 +26,7 @@ npm test runs:
 - Real local HTTP static serving, current assets/MIME types and repo-file/traversal/method boundaries
 - npm run test:web: 72 current host, asynchronous-weather, native-card and navigation-A tests
 
-The API and contracts use Node built-ins and add no server framework dependency. Their source/tests are unchanged, including status metadata productVersion 0.1.0-alpha.4 and apiScaffoldVersion 0.0.1; the current web is alpha.8.
+The API now compiles strict TypeScript and runs NestJS/Fastify. The content suite tests both an explicit SQLite demo adapter and actual PostgreSQL when DATABASE_URL is present. A missing PostgreSQL URL is an explicit skip, not a PG pass. See [backend demo commands and limits](CONTENT_DEMOS.md). Historical health metadata remains compatible; current backendDemoVersion is separate from native web alpha.8.
 
 The 72 web tests replace WeatherScene at its documented public-API boundary and use bounded host/DOM/layout models. They exercise input ownership, pause/resume/lifecycle, headless weather-provider state, card layout/projection continuity and navigation-A DOM/style semantics. They do not run a real WebGL renderer or prove real CSS pixels and physical-device behavior.
 

@@ -12,21 +12,31 @@
     "node": ">=24 <25"
   },
   "scripts": {
-    "dev": "node scripts/dev.mjs",
+    "dev": "npm run build:api && node scripts/dev.mjs",
     "dev:web": "node apps/web/dev-server.mjs",
-    "dev:api": "node apps/api/src/server.mjs",
+    "dev:api": "npm run build:api && node apps/api/scripts/dev-demo.mjs",
     "setup": "node scripts/prepare-motion-ball.mjs && npm ci --prefix .build/motion-ball --registry=https://registry.npmjs.org --ignore-scripts --no-audit --no-fund",
     "build:web": "node scripts/build-motion-ball.mjs",
     "test:web": "node --experimental-vm-modules --test scripts/test-motion-host.mjs scripts/test-motion-weather.mjs scripts/test-native-card-layout.mjs scripts/test-navigation-host.mjs",
-    "test:api": "node --test apps/api/test/*.test.mjs",
+    "test:api": "npm run build:api && node --test apps/api/test/*.test.mjs",
     "test:contracts": "node --test packages/contracts/test/*.test.mjs",
     "test:static": "node --test apps/web/static-server.test.mjs",
-    "test": "npm run test:contracts && npm run test:api && npm run test:static && npm run test:web",
+    "test": "npm run test:contracts && npm run test:api && npm run test:static && npm run test:web && npm run test:studio",
     "check:provenance": "node scripts/check-provenance.mjs",
     "check:motion": "node scripts/check-motion-ball-source.mjs",
     "check:syntax": "node scripts/check-syntax.mjs",
     "check:public": "node scripts/check-public-export.mjs",
-    "check": "npm run check:provenance && npm run check:motion && npm run check:syntax && npm run check:public"
+    "check": "npm run check:provenance && npm run check:motion && npm run check:syntax && npm run check:public && npm run check:api",
+    "build:api": "npm run build --workspace apps/api",
+    "demo:api": "npm run build:api && node apps/api/scripts/demo.mjs",
+    "db:migrate": "npm run build:api && node apps/api/scripts/migrate.mjs",
+    "mcp:content": "npm run build:api --silent >&2 && node .build/api/apps/api/src/mcp/stdio.js",
+    "setup:studio": "npm ci --prefix apps/studio --ignore-scripts --no-audit --no-fund",
+    "dev:studio": "npm --prefix apps/studio run dev",
+    "build:studio": "npm --prefix apps/studio run build",
+    "test:studio": "npm --prefix apps/studio test",
+    "check:studio": "npm --prefix apps/studio run typecheck",
+    "check:api": "npm run build:api"
   },
   "devDependencies": {
     "jsdom": "30.1.1"

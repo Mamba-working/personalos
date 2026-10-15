@@ -4,9 +4,9 @@
 
 One monorepo coordinates web, API, data contracts, tests and release evidence. It does not imply all product capabilities already exist.
 
-The alpha.8 web is a native static browser application with authored demo content, simulated weather and canned local chat answers. Local scene assets are loaded by motion-ball. There is no provider integration, server session, database, real authentication or web-to-API connection.
+The alpha.8 web is a native static browser application with authored demo content, simulated weather and canned local chat answers. Local scene assets are loaded by motion-ball. Its native runtime still has no provider integration, server session, real authentication or web-to-API connection. The independent content studio is a separate application; its API does not change the accepted native page.
 
-The API/contracts scaffold is intentionally unchanged. Its status response retains productVersion 0.1.0-alpha.4 and apiScaffoldVersion 0.0.1; alpha.8 identifies the current web candidate, not a newly implemented backend.
+The TypeScript content backend now uses NestJS/Fastify, PostgreSQL and a separate durable worker. Its status retains historical productVersion 0.1.0-alpha.4 and apiScaffoldVersion 0.0.1, adds backendDemoVersion 0.1.0-demo.1, and reports real capability limits. Article generation is an explicitly labeled controlled mock with zero external model calls. See [content API](CONTENT_API.md) and [demo journeys](CONTENT_DEMOS.md).
 
 ## Minimal layout
 
@@ -16,8 +16,8 @@ The API/contracts scaffold is intentionally unchanged. Its status response retai
 - modules/motion-ball preserves the 84-file original source/assets/docs. It owns its renderer, character behavior, weather, scene clock and GPU resources
 - apps/web/runtime is generated serving output. The 87-file alpha.8 inventory contains the native shell, host adapters, compiled motion-ball library, original assets and required Three.js 0.186.1 dependency files
 - apps/web/dev-server.mjs serves only that runtime, including its image/WebGL asset MIME types; it does not expose repository source
-- apps/api owns the existing health/status HTTP service
-- packages/contracts owns the existing health response builder and demo-record validation/schema
+- apps/api owns the NestJS/Fastify HTTP adapter, framework-independent content use cases, PostgreSQL/SQLite adapters, separate durable generation worker, stdio MCP adapter and workflow Skill
+- packages/contracts owns shared content types, strict article-spec runtime validation, the trusted concurrency calculator, health builders and original native demo-record schemas
 - scripts owns reproducible setup/build, source/syntax/export checks and current host/weather/card tests
 - docs and provenance own public implementation truth, responsibilities and source/runtime mapping
 
@@ -47,4 +47,4 @@ No legacy dist tree is exported. A source/build check is not a deployment or a d
 4. Design real provider streaming, cancellation, errors and retention; keys stay server-side
 5. Add authentication/authorization, CSRF/CORS, rate limits, retention/deletion and redacted observability before handling private user data
 
-The status API must report false for capabilities until implementation and applicable integration tests exist. Health-check success does not establish an AI/backend product.
+The status API reports content/persistence as implemented by this demo; real chat and production authentication remain false. Other capabilities must stay false until implementation and applicable integration tests exist. Health-check success does not establish an AI/backend product.

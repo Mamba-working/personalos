@@ -1,0 +1,37 @@
+{
+  "repository": "https://github.com/CopilotKit/OpenIntelligentUI",
+  "commit": "8391a94c1c3939c679e40ddd7bfc08a9ef690e70",
+  "license": "MIT",
+  "files": [
+    {
+      "upstreamPath": "apps/app/src/components/generative-ui/open-generative-ui/schema.ts",
+      "localFile": "schema.ts",
+      "sha256": "aab46ad19de7f8382ac2267c8bea1e9b156c66b7403993a2fc3d2be8a64eaaa9"
+    },
+    {
+      "upstreamPath": "apps/app/src/components/generative-ui/open-generative-ui/websandbox-loader.ts",
+      "localFile": "websandbox-loader.ts",
+      "sha256": "503fc6c2f11c23a59af422be0ff22762e3437606ed1d9a1fb2d510fa82d76b9a"
+    },
+    {
+      "upstreamPath": "packages/design-system/src/index.ts",
+      "localFile": "design-system.ts",
+      "sha256": "220d87b7b1a6d416b1a71e2b884205d0f05afe422b42ec4fd43e1baff97af607"
+    },
+    {
+      "upstreamPath": "apps/app/src/components/generative-ui/open-generative-ui/renderer.tsx",
+      "localFile": "reference/renderer.tsx.txt",
+      "sha256": "d02b0df5afad48e8a3b8ac64fbd57bc43687b9395695b72d00d4f26772ad3d85"
+    },
+    {
+      "upstreamPath": "apps/app/src/components/generative-ui/open-generative-ui/frame-content.ts",
+      "localFile": "reference/frame-content.ts.txt",
+      "sha256": "5357b93e719da8ae65106192b2f79cba499a52465dd7e87eeb49f4e377f7b87c"
+    },
+    {
+      "upstreamPath": "apps/app/src/components/generative-ui/open-generative-ui/process-partial-html.ts",
+      "localFile": "reference/process-partial-html.ts.txt",
+      "sha256": "6a5cf9f0ed122f690a77ca308df504098259d3177791e4048f820ec60e2d693b"
+    }
+  ]
+}

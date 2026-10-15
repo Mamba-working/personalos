@@ -9,10 +9,10 @@ test('health contract and schema agree on literal identifiers', async () => {
   assert.deepEqual(Object.keys(health).sort(), schema.required.slice().sort());
   for(const key of schema.required)assert.equal(health[key],schema.properties[key].const);
 });
-test('status only claims implemented health/status endpoints', () => {
+test('status distinguishes content demo from real chat/auth', () => {
   const status=serviceStatus();
   assert.equal(status.productVersion,'0.1.0-alpha.4');
-  assert.deepEqual(status.capabilities,{health:true,status:true,contentApi:false,chatApi:false,authentication:false,persistence:false});
+  assert.deepEqual(status.capabilities,{health:true,status:true,contentApi:true,chatApi:false,authentication:false,persistence:true});
   assert.equal(status.frontendConnected,false);
 });
 test('18 authored demo records meet the explicit content contract', () => {

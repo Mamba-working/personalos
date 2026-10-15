@@ -10,7 +10,21 @@ concurrency:
 jobs:
   source-and-api:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:17.11
+        env:
+          POSTGRES_USER: personalos
+          POSTGRES_DB: personalos_demo
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - 55432:5432
+        options: >-
+          --health-cmd "pg_isready -U personalos -d personalos_demo"
+          --health-interval 2s --health-timeout 2s --health-retries 15
+    env:
+      DATABASE_URL: postgresql://personalos@127.0.0.1:55432/personalos_demo
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -29,3 +43,7 @@ jobs:
         run: npm run check
       - name: Run contracts, real API/static HTTP smoke and current web regressions
         run: npm test
+      - name: Install independent studio dependencies
+        run: npm run setup:studio
+      - name: Type-check and build independent studio
+        run: npm run check:studio && npm run build:studio

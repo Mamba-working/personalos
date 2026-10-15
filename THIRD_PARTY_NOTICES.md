@@ -48,3 +48,23 @@ The unchanged root LICENSE retains this historical notice. Removing a component 
 ## Other design references
 
 The interface contains links to motion/design research. Those links are references, not permission to reuse third-party designs or an assertion of third-party acceptance. Keep author attribution and reference links accurate.
+
+## Content backend and studio dependencies
+
+The new demo dependencies are pinned in their package/lock files; preserve the upstream packages' license files when distributing installed/bundled outputs. Their licenses apply to those dependencies, not to this whole repository.
+
+- NestJS common/core/platform-fastify 11.2.7 and Fastify 5.11.3: MIT; [NestJS source](https://github.com/nestjs/nest), [Fastify source](https://github.com/fastify/fastify)
+- node-postgres (`pg`) 8.23.1: MIT; [upstream source](https://github.com/brianc/node-postgres)
+- PostgreSQL 17.11 local test server / optional official container: PostgreSQL License; [official license](https://www.postgresql.org/about/licence/). The database binary/data are not committed
+- Zod, RxJS and reflect-metadata retain their upstream package notices; TypeScript is Apache-2.0
+- Historical checkpoint only: json-render core/react 0.21.1, Apache-2.0. It is not the current selected renderer
+- Next.js and React retain their upstream MIT licenses. Studio dependencies and exact transitive pins are isolated in `apps/studio/package-lock.json`
+
+Cloud-only browser/test tools installed into ignored build storage are not shipped dependencies. Synthetic workshop fixtures are newly authored demonstration data and are not user conversations. Public reference links inside those fixtures do not imply endorsement or reuse rights to third-party text.
+
+## OpenIntelligentUI native renderer
+
+- Source: [CopilotKit/OpenIntelligentUI](https://github.com/CopilotKit/OpenIntelligentUI/tree/8391a94c1c3939c679e40ddd7bfc08a9ef690e70), pinned commit 8391a94c1c3939c679e40ddd7bfc08a9ef690e70; MIT, copyright Atai Barkai
+- Copied renderer/design-system source retains the complete MIT text at `apps/studio/src/vendor/openintelligentui/LICENSE`; `UPSTREAM.md` records adaptation and source pin details
+- Actual runtime: `@jetbrains/websandbox` 1.2.1, Apache-2.0; preserve its upstream package license/notices
+- The adaptation replays completed native activities inside an opaque sandbox and tightens the host message/bridge/CSP policy. No upstream OpenAI/Jev service, credentials, provider SDK or paid API is enabled

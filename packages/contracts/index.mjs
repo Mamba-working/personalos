@@ -7,7 +7,7 @@ export function healthResponse() {
 export function serviceStatus() {
   return {
     product: 'PersonalOS', productVersion: PRODUCT_VERSION, apiScaffoldVersion: API_SCAFFOLD_VERSION,
-    capabilities: {health: true, status: true, contentApi: false, chatApi: false, authentication: false, persistence: false},
+    capabilities: {health: true, status: true, contentApi: true, chatApi: false, authentication: false, persistence: true},
     frontendConnected: false,
   };
 }

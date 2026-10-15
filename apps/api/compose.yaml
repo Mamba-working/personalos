@@ -1,0 +1,19 @@
+# Synthetic local demo only. No production auth, TLS, backups, or managed service is implied.
+services:
+  postgres:
+    image: postgres:17.11
+    environment:
+      POSTGRES_USER: personalos
+      POSTGRES_DB: personalos_demo
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - '127.0.0.1:55432:5432'
+    volumes:
+      - personalos-demo-pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U personalos -d personalos_demo']
+      interval: 2s
+      timeout: 2s
+      retries: 15
+volumes:
+  personalos-demo-pg:

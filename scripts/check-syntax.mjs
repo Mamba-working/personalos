@@ -1,7 +1,7 @@
 import { readdirSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import path from 'node:path';
-const ignored = new Set(['.git', '.build', 'node_modules']);
+const ignored = new Set(['.git', '.build', '.next', 'node_modules']);
 let checked = 0;
 function walk(dir) {
   for (const f of readdirSync(dir, { withFileTypes: true })) {
@@ -16,4 +16,4 @@ function walk(dir) {
   }
 }
 walk('.');
-console.log(`${checked} JavaScript files parse; upstream TypeScript is checked during build:web`);
+console.log(`${checked} JavaScript files parse; backend TypeScript is checked during check:api; upstream TypeScript during build:web`);

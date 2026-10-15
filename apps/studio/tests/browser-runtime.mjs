@@ -1,0 +1,2 @@
+import {chromium} from 'playwright';
+export async function launchBrowser(){let executablePath=process.env.CHROMIUM_PATH||'/usr/bin/chromium';let args=['--no-sandbox','--disable-dev-shm-usage'];if(process.env.CHROMIUM_RUNTIME_MODULE){const runtime=(await import(process.env.CHROMIUM_RUNTIME_MODULE)).default;executablePath=await runtime.executablePath();args=runtime.args.filter(flag=>!['--disable-web-security','--allow-running-insecure-content'].includes(flag));}return chromium.launch({executablePath,args,headless:true});}

@@ -1,0 +1,18 @@
+import {spawnSync} from 'node:child_process';
+import {mkdirSync, readFileSync, writeFileSync, rmSync} from 'node:fs';
+import {fileURLToPath} from 'node:url';
+const render = process.argv.includes('--render');
+const tag = render ? '@negative-render' : '@negative-feed';
+const diagnostic = render ? 'RENDER_PIXELS: isolated renderer output is blank/solid' : 'FEED_COLUMNS: expected 2, observed 1';
+const proofFile = render ? 'render-negative-control-proof.json' : 'negative-control-proof.json';
+const cwd = fileURLToPath(new URL('.', import.meta.url));
+const report = fileURLToPath(new URL('../../../../evidence/browser-run/', import.meta.url));
+rmSync(report+'run-manifest.json', {force:true});
+const result = spawnSync(process.execPath, [fileURLToPath(new URL('./node_modules/@playwright/test/cli.js', import.meta.url)), 'test', '--grep', tag, '--project', 'mobile-390'], {cwd, encoding:'utf8', env:process.env});
+const manifest = JSON.parse(readFileSync(report+'run-manifest.json', 'utf8'));
+const test = manifest.tests.find(item => item.title.includes(tag));
+const detected = result.status === 1 && manifest.tests.length === 1 && test?.status === 'failed' && test.errors.some(error => error.includes(diagnostic));
+mkdirSync(report, {recursive:true});
+writeFileSync(report+proofFile, JSON.stringify({fixture:render ? 'initialized blank WebGL canvas with surrounding CSS and DOM colors' : 'deliberately collapse the demo feed into one column', expectedDiagnostic:diagnostic, detected, testStatus:test?.status, browserLaunchFailureDoesNotCount:true}, null, 2)+'\n');
+process.stdout.write(detected ? `Negative control detected ${diagnostic}.\n` : result.stdout+result.stderr);
+if (!detected) process.exit(1);

@@ -1,0 +1,13 @@
+output/
+assets/
+.dependencies/
+__pycache__/
+*.pyc
+*.blend
+*.blend1
+*.npy
+*.exr
+*.pfm
+*.png
+*.jpg
+*.jpeg

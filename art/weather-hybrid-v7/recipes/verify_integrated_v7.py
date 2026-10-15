@@ -1,0 +1,15 @@
+import bpy,numpy as np,json,hashlib,importlib.util
+from pathlib import Path
+D=Path(__file__).resolve().parent
+sp=importlib.util.spec_from_file_location('ceramic',D/'materials/patch_ceramic.py');c=importlib.util.module_from_spec(sp);sp.loader.exec_module(c)
+sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def scene_signature():
+ s=bpy.context.scene;bpy.context.view_layer.update()
+ return {'meshes':{m.name:c.mesh_hash(m) for m in bpy.data.meshes},'objects':{o.name:{'matrix':[list(r) for r in o.matrix_world],'data':o.data.name if o.data else None,'hidden':o.hide_render,'shadow':o.visible_shadow} for o in s.objects},'camera':{'matrix':[list(r) for r in s.camera.matrix_world],'lens':s.camera.data.lens,'sensor':s.camera.data.sensor_width}}
+bpy.ops.wm.open_mainfile(filepath=str(D/'hybrid-rain-hero-v4.blend'));old=scene_signature()
+bpy.ops.wm.open_mainfile(filepath=str(D/'inputs/ball-ceramic-v2.blend'));mats={name:c.original_material_signature(bpy.data.materials[name]) for name in [c.MATERIAL,c.EYES]}
+SRC=D/'hybrid-hero-structured-v7.blend';expected='3f585ba68ed972b3013eb23fcec7da99ab26671fa68502c10c0ac702432b2555';assert sha(SRC)==expected;bpy.ops.wm.open_mainfile(filepath=str(SRC));new=scene_signature();assert old==new;assert mats=={name:c.original_material_signature(bpy.data.materials[name]) for name in mats}
+im=bpy.data.images.get('structured-storm-radiance.exr');assert im and im.packed_file;w,h=im.size;f=np.empty(w*h*4,np.float32);im.pixels.foreach_get(f);assert np.array_equal(f.reshape(h,w,4)[:,:,:3],np.load(D/'structured-storm-radiance.npy'))
+plate=bpy.data.images.get('plate-scene-linear-verified.exr');assert plate and plate.packed_file;w,h=plate.size;f=np.empty(w*h*4,np.float32);plate.pixels.foreach_get(f);assert np.array_equal(f.reshape(h,w,4)[:,:,:3],np.load(D/'plate-scene-linear.npy')[::-1]);can=bpy.data.objects['UmbrellaCanopy / continuous curved 8-panel membrane'];so=next(m for m in can.modifiers if m.type=='SOLIDIFY');assert not so.show_render and not so.show_viewport
+s=bpy.context.scene;assert s.world.name=='Shared structured storm / SDR-derived calibrated radiance';assert not any(o.type=='LIGHT' for o in s.objects);assert not any(n.type=='LIGHT_PATH' for n in s.world.node_tree.nodes)
+r={'source_sha256':expected,'saved_source_reopened':True,'all_original_base_mesh_geometry_unchanged':True,'base_mesh_count':len(old['meshes']),'all_original_object_transform_visibility_unchanged':True,'camera_unchanged':True,'body_and_eye_materials_exactly_selected_v2':mats,'packed_structured_radiance_bitwise_equal':True,'packed_environment_plate_bitwise_equal':True,'explicit_optical_geometry_change':'Only canopy Solidify disabled for single effective thin-sheet surface; original curved base mesh and both spatial wall crossings retained','all_objects_rays_share_one_world':True,'no_LIGHT_objects':True,'scope':'Fixed-view hybrid source only; no renderer/runtime/fidelity claim'};(D/'V7-SAVED-SOURCE-VERIFICATION.json').write_text(json.dumps(r,indent=2));print(json.dumps(r),flush=True)

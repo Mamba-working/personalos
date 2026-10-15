@@ -1,0 +1,60 @@
+{
+  "schema": "source-only-public-inventory-v1",
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "2181f249ddebdc7955c6dc2f3c2389805eb057333317738903778b139487f3b4",
+      "bytes": 104
+    },
+    {
+      "path": "CHECKPOINT-MANIFEST.json",
+      "sha256": "c4ba03fedbbe757b163915ee6d9c57012221979832ff296f16d05eeb8415b3cb",
+      "bytes": 12246
+    },
+    {
+      "path": "README.md",
+      "sha256": "83de9b6f252c411f9f3a20dd284f4b0698e0ffedbdfbb9401e51eb231ab2a029",
+      "bytes": 5957
+    },
+    {
+      "path": "SOURCE-COPY-MAPPING.json",
+      "sha256": "2c4f1c35af615f1a2de6dfd70af8075d001a9d9dfca2141b4093a5c753767285",
+      "bytes": 2019
+    },
+    {
+      "path": "src/contract.py",
+      "sha256": "c3fad5f87525d53848fa0c0292f6af2ef622cca3fc27001bcfa60e6cf9cfb137",
+      "bytes": 1142
+    },
+    {
+      "path": "src/denoise_hybrid.py",
+      "sha256": "f9dbe3bd56473026992d80e277c0fa6899af7f0373ba616fe03ba5a622961aa9",
+      "bytes": 1973
+    },
+    {
+      "path": "src/process_hybrid.py",
+      "sha256": "18af78af39dc3eeb598c8574d38c3f33872ecd3f4df65155e3217088a2e186e1",
+      "bytes": 4632
+    },
+    {
+      "path": "src/render_full.py",
+      "sha256": "8b68921012f6de5f57d38abeea8fbe5ac250302a08775425c78d1563d818c70a",
+      "bytes": 3526
+    },
+    {
+      "path": "src/run_guarded.py",
+      "sha256": "ac5eb3a5e259b8354b1607bff3772fa4e0509c00896c4396ad53d01225c9c709",
+      "bytes": 2642
+    },
+    {
+      "path": "tools/guard.py",
+      "sha256": "4164fa574efb933a8168f3440b68cabfed35258039e6f90374d7c1642f9a183b",
+      "bytes": 831
+    },
+    {
+      "path": "tools/reproduce.py",
+      "sha256": "973aeb18c1ad3e69d9b2bac88e2f4cd8f57b9bc470b1b853b90694217a26e22d",
+      "bytes": 5275
+    }
+  ]
+}

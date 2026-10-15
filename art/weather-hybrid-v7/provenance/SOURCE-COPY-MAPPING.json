@@ -1,0 +1,187 @@
+{
+  "scope": "Only allowlisted art sources and retained public notices; no runtime/API files or historical QA imported",
+  "files": [
+    {
+      "path": "src/render_full_v7.py",
+      "original_sha256": "e7bd9a1da4cc16098f6c2cf189f89df9284e9cb930bdacd235537d4654fbe26b",
+      "published_sha256": "e7bd9a1da4cc16098f6c2cf189f89df9284e9cb930bdacd235537d4654fbe26b",
+      "bytes": 2576,
+      "transform": "none"
+    },
+    {
+      "path": "src/process_hybrid.py",
+      "original_sha256": "39fa3ad67be9ff37868e34a7909c96e767f9a096282b063995054cdcf384e035",
+      "published_sha256": "39fa3ad67be9ff37868e34a7909c96e767f9a096282b063995054cdcf384e035",
+      "bytes": 3091,
+      "transform": "none"
+    },
+    {
+      "path": "src/denoise_hybrid.py",
+      "original_sha256": "7353e2bcee57ef6f7c5b92b51e795c3fabb678c6a920d6fefe6cf120b761f514",
+      "published_sha256": "7353e2bcee57ef6f7c5b92b51e795c3fabb678c6a920d6fefe6cf120b761f514",
+      "bytes": 1595,
+      "transform": "none"
+    },
+    {
+      "path": "src/run_guarded.py",
+      "original_sha256": "ac5eb3a5e259b8354b1607bff3772fa4e0509c00896c4396ad53d01225c9c709",
+      "published_sha256": "ac5eb3a5e259b8354b1607bff3772fa4e0509c00896c4396ad53d01225c9c709",
+      "bytes": 2642,
+      "transform": "none"
+    },
+    {
+      "path": "recipes/materials/clear_wet_canopy.py",
+      "original_sha256": "e41960160b77f62050c13e2e2903f379d4e17a22eae2ff19f672ee8037b1c2f6",
+      "published_sha256": "e41960160b77f62050c13e2e2903f379d4e17a22eae2ff19f672ee8037b1c2f6",
+      "bytes": 10849,
+      "transform": "none"
+    },
+    {
+      "path": "recipes/materials/thin_sheet_canopy.py",
+      "original_sha256": "63edc70bf727a9c568a707e5261034a2f49792c3219fed65bbb17d9900d82ca9",
+      "published_sha256": "63edc70bf727a9c568a707e5261034a2f49792c3219fed65bbb17d9900d82ca9",
+      "bytes": 4500,
+      "transform": "none"
+    },
+    {
+      "path": "recipes/materials/patch_ceramic.py",
+      "original_sha256": "7e92c628a8821d649e8a4abbe4d0a11e9fee808bde5b289ca72edaba4dd668a6",
+      "published_sha256": "7e92c628a8821d649e8a4abbe4d0a11e9fee808bde5b289ca72edaba4dd668a6",
+      "bytes": 13125,
+      "transform": "none"
+    },
+    {
+      "path": "recipes/prepare_plate.py",
+      "original_sha256": "296f721f8cf59ec9515f63e0606631a64868bd69e24b61f85cd534b796ea8749",
+      "published_sha256": "342571cc1b1b5b0ec45ce5a81f1a28904a470bae18c3e5951bb0093efe24b088",
+      "bytes": 1758,
+      "transform": "Metadata identifiers removed and old sibling-layout inputs redirected; scene/material calculations unchanged"
+    },
+    {
+      "path": "recipes/save_linear_plate.py",
+      "original_sha256": "c4adc7c4d77b2ee3a30ea784a5f19c7e0ec33573dec821f9f66531c8598f876b",
+      "published_sha256": "c4adc7c4d77b2ee3a30ea784a5f19c7e0ec33573dec821f9f66531c8598f876b",
+      "bytes": 1016,
+      "transform": "Metadata identifiers removed and old sibling-layout inputs redirected; scene/material calculations unchanged"
+    },
+    {
+      "path": "recipes/render_hybrid_v4.py",
+      "original_sha256": "af6461e864390ddc37777a7a70cdf0f4b3d3185d711144134d6670546615062e",
+      "published_sha256": "214fb30ed530a911ce411a615744f3eeff26b6c352063b866290b934a199fcad",
+      "bytes": 10891,
+      "transform": "Metadata identifiers removed and old sibling-layout inputs redirected; scene/material calculations unchanged"
+    },
+    {
+      "path": "recipes/build_canopy_candidate.py",
+      "original_sha256": "d409a9c7cdf878f5d7a58e17c8b11f31104f3cd7a6c8ea6f5f108b72a455eee6",
+      "published_sha256": "48365f469dec0879a18af9e9c12ca5783c0c44d4f60c24e3bf93d87f3a239314",
+      "bytes": 1032,
+      "transform": "Metadata identifiers removed and old sibling-layout inputs redirected; scene/material calculations unchanged"
+    },
+    {
+      "path": "recipes/build_thin_sheet_candidate.py",
+      "original_sha256": "6b9b58f9bf4dc79446c804fd632f6c7efe80ec47da66d10ebbf524cca7c17585",
+      "published_sha256": "a172da40da6b62a3e3c69661bc4ea1c9f2d9c0f3f1ad19392f47dddc58a037af",
+      "bytes": 1388,
+      "transform": "Metadata identifiers removed and old sibling-layout inputs redirected; scene/material calculations unchanged"
+    },
+    {
+      "path": "recipes/build_structured_radiance.py",
+      "original_sha256": "ad17e149c7815c258ae304c7c0302e5059b957d5cccaa6f4d9dcb4c393f35b29",
+      "published_sha256": "ccfed070396a75505b5b5a19a48ebbb86002052ef0402da9f904a53a6321486b",
+      "bytes": 4232,
+      "transform": "Metadata identifiers removed and old sibling-layout inputs redirected; scene/material calculations unchanged"
+    },
+    {
+      "path": "recipes/build_integrated_structured.py",
+      "original_sha256": "378ace1a25783966625dcdac6b1afee33b45d5f4c02c4cd454205a33b6aca6df",
+      "published_sha256": "df0f0146825b545f3b458871aa19b334e2360156e02c6f95ddfb2926b1fcbb46",
+      "bytes": 3815,
+      "transform": "Metadata identifiers removed and old sibling-layout inputs redirected; scene/material calculations unchanged"
+    },
+    {
+      "path": "recipes/verify_integrated_v7.py",
+      "original_sha256": "c11bcf3ca5c4b3a8930834fcfdea7944f27f28b7fe40051378bc197f843a5934",
+      "published_sha256": "09105df2df0fb88c8157c2c860220e296c6d5173bd60b2136ac6d44ccbc131f1",
+      "bytes": 3036,
+      "transform": "Metadata identifiers removed and old sibling-layout inputs redirected; scene/material calculations unchanged"
+    },
+    {
+      "path": "recipes/render_hero_crop.py",
+      "original_sha256": "c50f9e602941db54d05c644e928bed01f781804f18f78c80db0939f6d9904eae",
+      "published_sha256": "c50f9e602941db54d05c644e928bed01f781804f18f78c80db0939f6d9904eae",
+      "bytes": 3227,
+      "transform": "Metadata identifiers removed and old sibling-layout inputs redirected; scene/material calculations unchanged"
+    },
+    {
+      "path": "notices/CC0-1.0.txt",
+      "original_sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+      "published_sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+      "bytes": 7048,
+      "transform": "none"
+    },
+    {
+      "path": "notices/GPL-2.0.txt",
+      "original_sha256": "edaef632cbb643e4e7a221717a6c441a4c1a7c918e6e4d56debc3d8739b233f6",
+      "published_sha256": "edaef632cbb643e4e7a221717a6c441a4c1a7c918e6e4d56debc3d8739b233f6",
+      "bytes": 17984,
+      "transform": "none"
+    },
+    {
+      "path": "notices/aora-ATTRIBUTION.txt",
+      "original_sha256": "5df50aa8fcee9acb4e80f9baab7d154106120d36e3e9fbd2bed0146cb8db35be",
+      "published_sha256": "5df50aa8fcee9acb4e80f9baab7d154106120d36e3e9fbd2bed0146cb8db35be",
+      "bytes": 386,
+      "transform": "none"
+    },
+    {
+      "path": "notices/aora-LICENSE",
+      "original_sha256": "cd25a8e1b00d05b2bb29d3a626599526db960b5bf3ba94fd726565b9bec7f8ea",
+      "published_sha256": "cd25a8e1b00d05b2bb29d3a626599526db960b5bf3ba94fd726565b9bec7f8ea",
+      "bytes": 5027,
+      "transform": "none"
+    },
+    {
+      "path": "notices/aora-NOTICE.md",
+      "original_sha256": "549d6607c9dd13c9add2fa5faeccca488bd78cf30cac2b0b4d3dbcd8b45b721d",
+      "published_sha256": "549d6607c9dd13c9add2fa5faeccca488bd78cf30cac2b0b4d3dbcd8b45b721d",
+      "bytes": 3234,
+      "transform": "none"
+    },
+    {
+      "path": "notices/aora-SOURCE-MANIFEST.json",
+      "original_sha256": "1def92868ff495d9098778a7a53532b85a288c1e19de27e8bb8780ecefde1d49",
+      "published_sha256": "1def92868ff495d9098778a7a53532b85a288c1e19de27e8bb8780ecefde1d49",
+      "bytes": 2781,
+      "transform": "none"
+    },
+    {
+      "path": "notices/oidn/LICENSE.txt",
+      "original_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "published_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358,
+      "transform": "none"
+    },
+    {
+      "path": "notices/oidn/third-party-programs.txt",
+      "original_sha256": "43905db59c86bc1de8cee0f24878d9a127c319d87c57f53f68d904043eefe98f",
+      "published_sha256": "43905db59c86bc1de8cee0f24878d9a127c319d87c57f53f68d904043eefe98f",
+      "bytes": 34574,
+      "transform": "none"
+    },
+    {
+      "path": "notices/oidn/third-party-programs-DPCPP.txt",
+      "original_sha256": "9063626e7d3dfff306d6033d84b51adadbe459c7482f0296e92f597190ad33ea",
+      "published_sha256": "9063626e7d3dfff306d6033d84b51adadbe459c7482f0296e92f597190ad33ea",
+      "bytes": 6006,
+      "transform": "none"
+    },
+    {
+      "path": "notices/oidn/third-party-programs-oneTBB.txt",
+      "original_sha256": "1634857eb058dce5278c57a832b8974190785145f4be9acdbdb511f3a0c4091c",
+      "published_sha256": "1634857eb058dce5278c57a832b8974190785145f4be9acdbdb511f3a0c4091c",
+      "bytes": 11631,
+      "transform": "none"
+    }
+  ]
+}

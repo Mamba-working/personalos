@@ -1,0 +1,116 @@
+{
+  "scope": "Source-only art handoff; no complete public scene rebuild; no dependency binary bundled",
+  "master_scene": {
+    "filename": "hybrid-hero-structured-v7.blend",
+    "suggested_path": "assets/scene/master.blend",
+    "bytes": 89486282,
+    "size_MiB": 85.34,
+    "sha256": "3f585ba68ed972b3013eb23fcec7da99ab26671fa68502c10c0ac702432b2555",
+    "origin": "Owner-provided exact packed master; public distribution not established",
+    "public_download_url": null,
+    "required_for": "All master-based render/extraction stages",
+    "license_scope": "Mixed first-party scene authorship and component licenses; retained aora character visuals noncommercial only; no blanket MIT or CC0"
+  },
+  "blender": {
+    "version": "4.3.2",
+    "official_origin": "https://download.blender.org/release/Blender4.3/",
+    "license_origin": "https://www.blender.org/about/license/",
+    "archive_hash": null,
+    "archive_hash_status": "No installation archive supplied or newly downloaded; executable version observed locally",
+    "color_configuration_hashes": "BLENDER-COLOR-CONFIG-HASHES.json",
+    "required_capabilities": [
+      "Cycles",
+      "AgX - Medium High Contrast",
+      "Linear Rec.709 images",
+      "bundled bpy and NumPy"
+    ],
+    "numpy_historical_scene_recipe_version": "2.2.4",
+    "numpy_note": "Version recorded in original reconstruction manifest; current handoff did not start Blender to remeasure it"
+  },
+  "python": {
+    "handoff_host_version_observed": "3.12.14",
+    "portable_requirement": "CPython 3.12.x on Linux; standard library and fcntl",
+    "numpy_for_optional_plate_recipe": "2.3.5",
+    "pillow_for_optional_plate_recipe": "12.3.0",
+    "opencolorio_for_optional_plate_recipe": "2.4.2",
+    "package_origins": {
+      "numpy": "https://pypi.org/project/numpy/2.3.5/",
+      "Pillow": "https://pypi.org/project/Pillow/12.3.0/",
+      "opencolorio": "https://pypi.org/project/opencolorio/2.4.2/"
+    },
+    "package_hash_status": "No new wheels downloaded; use a reviewed platform-specific lock before reinstalling optional recipe dependencies",
+    "current_optional_opencolorio_status": "Not installed in the observed host environment; not needed for master-packed plate extraction"
+  },
+  "oidn": {
+    "version": "2.5.1",
+    "platform": "x86_64.linux",
+    "official_release": "https://github.com/RenderKit/oidn/releases/tag/v2.5.1",
+    "archive_url": "https://github.com/RenderKit/oidn/releases/download/v2.5.1/oidn-2.5.1.x86_64.linux.tar.gz",
+    "archive_bytes": 66613458,
+    "archive_sha256": "743c3e2aff8c220d5d70fe6cb970fb3d36f2702d2693c61d1d148e404cf37cd6",
+    "executable_sha256": "1cb3a28ebc99b90d7548b0b8b16f70c163cb59abe8582458a254aa303338269c",
+    "required_package_relative_executable": "oidn-2.5.1.x86_64.linux/bin/oidnDenoise",
+    "license": "Apache-2.0 plus retained bundled third-party notices",
+    "settings": {
+      "device": "cpu",
+      "quality": "high",
+      "threads": 2,
+      "maxmem_MB": 1024,
+      "guides": "hero: albedo+normal; catcher: color-only"
+    },
+    "native_input_output": "RGB float32 little-endian PFM; export from Blender first"
+  },
+  "optional_original_environment": {
+    "filename": "approved-scene-clean-environment-v1.png",
+    "bytes": 1996392,
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "sha256": "63eea1f374031f247981845c3e8051170a03c8f7a8928ca4ec961c9fde48fca1",
+    "origin": "OpenAI imagegen edit of approved project reference; owner-provided optional project asset",
+    "public_download_url": null,
+    "required_for": "Earlier inverse-transform/source recipes only; not the packed-master render route",
+    "rights": "Generated project resource; no independent open-source license asserted"
+  },
+  "historical_packed_assets": [
+    {
+      "asset": "TextureCan Ground0020 2K",
+      "asset_page": "https://www.texturecan.com/details/194/",
+      "license": "CC0-1.0",
+      "license_page": "https://www.texturecan.com/terms/",
+      "original_archive_url": "https://www.texturecan.com/downloads/ground_0020/ground_0020_2k_jQ7DLJ.zip",
+      "archive_sha256": "c475ead56fc2b6b066141f5e938facb23d74752ce5be3c85f8a90539f230d268",
+      "maps": {
+        "ground_0020_color_2k.jpg": "c1c4ce6c5a0741364a3d74d7522d3cbdb8ec400fe8f093fa666264b9fa74782f",
+        "ground_0020_roughness_2k.jpg": "967ee03cc28980e29b6b8c808091f1b415c2c2cb09c0438cc4b2c44a6fc41301",
+        "ground_0020_height_2k.png": "56e4e9c85a4967a03ec470894412f3eeb5e30c95eabe0f63c4cfac4f696c0c40",
+        "ground_0020_normal_opengl_2k.png": "5f02ccf0970b6f90921a494e40497e4bd852f869a7519704a86593fd03eebbbf"
+      }
+    },
+    {
+      "asset": "TextureCan Others0004 1K droplet maps",
+      "asset_page": "https://www.texturecan.com/details/155/",
+      "license": "CC0-1.0",
+      "license_page": "https://www.texturecan.com/terms/",
+      "archive_sha256": "6e50e17e506723ef40c89380a0782c5414ed1daa26e661d112ac4d4a8e9c566f",
+      "map_hash_status": "Individual maps not copied or rehashed in this source-only handoff; exact active pixels are in the packed master"
+    },
+    {
+      "asset": "Poly Haven Wasteland Clouds PureSky 2K",
+      "asset_page": "https://polyhaven.com/a/wasteland_clouds_puresky",
+      "license": "CC0-1.0",
+      "license_page": "https://polyhaven.com/license",
+      "original_download_url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/wasteland_clouds_puresky_2k.hdr",
+      "sha256": "c9be5b722797528f2deae5969d6af061e75fca912675bcb11d467de5eea427c6",
+      "bytes": 4614016,
+      "active_v7_world": false
+    }
+  ],
+  "existing_web_dependencies": {
+    "three": "0.180.0; existing repository npm lock/setup unchanged; MIT notice retained",
+    "GSAP_Flip": "3.15.0; existing runtime notice/license unchanged; no code copied"
+  },
+  "reproduction_claim": "Code can be checked without external assets. Master-based rendering requires exact owner-provided packed master and official toolchain; no from-scratch or bitwise-identical-render claim.",
+  "heavy_work_performed_for_this_handoff": false
+}

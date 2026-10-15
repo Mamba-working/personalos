@@ -1,0 +1,13 @@
+output/
+.dependencies/
+__pycache__/
+*.pyc
+assets/scene/*.blend
+assets/scene/*.blend1
+assets/environment/*.png
+recipes/inputs/
+recipes/*.blend
+recipes/*.exr
+recipes/*.npy
+recipes/preview*/
+recipes/hero*/

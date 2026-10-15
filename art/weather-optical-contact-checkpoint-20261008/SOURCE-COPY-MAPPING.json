@@ -1,0 +1,33 @@
+{
+  "scope": "Three adapted core modules and retained resource guard only; new contract/launcher glue is source-only and not render-validated",
+  "files": [
+    {
+      "original_filename": "render_full.py",
+      "original_sha256": "ce01f3e1b6c2f9614fa919e9792c9ce0c02e7331cb9658fe8e1f5b71bb832234",
+      "adapted_path": "src/render_full.py",
+      "adapted_sha256": "8b68921012f6de5f57d38abeea8fbe5ac250302a08775425c78d1563d818c70a",
+      "adaptation": "Explicit external paths and fixed checkpoint dimensions/frame; no historical labels/private paths. Render CPU/thread setup made explicit; all guides required; no render executed."
+    },
+    {
+      "original_filename": "process_hybrid.py",
+      "original_sha256": "37a955639eea449668b1ad8dac4f17486eaa15cfaeb22cb0b328e374c3a821a1",
+      "adapted_path": "src/process_hybrid.py",
+      "adapted_sha256": "18af78af39dc3eeb598c8574d38c3f33872ecd3f4df65155e3217088a2e186e1",
+      "adaptation": "Explicit external paths and fixed checkpoint dimensions/frame; no historical labels/private paths. Render CPU/thread setup made explicit; all guides required; no render executed."
+    },
+    {
+      "original_filename": "denoise_hybrid.py",
+      "original_sha256": "b111de56cb66fad5326111115d61dd1c605c9f201447476c48f3f456f544df40",
+      "adapted_path": "src/denoise_hybrid.py",
+      "adapted_sha256": "f9dbe3bd56473026992d80e277c0fa6899af7f0373ba616fe03ba5a622961aa9",
+      "adaptation": "Explicit external paths and fixed checkpoint dimensions/frame; no historical labels/private paths. Render CPU/thread setup made explicit; all guides required; no render executed."
+    },
+    {
+      "original_public_path": "art/weather-hybrid-v7/src/run_guarded.py",
+      "original_sha256": "ac5eb3a5e259b8354b1607bff3772fa4e0509c00896c4396ad53d01225c9c709",
+      "adapted_path": "src/run_guarded.py",
+      "adapted_sha256": "ac5eb3a5e259b8354b1607bff3772fa4e0509c00896c4396ad53d01225c9c709",
+      "adaptation": "None; byte-identical existing public guard"
+    }
+  ]
+}

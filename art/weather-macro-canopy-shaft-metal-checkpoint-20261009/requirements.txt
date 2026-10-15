@@ -1,0 +1,2 @@
+# Host-only source checks and OIDN orchestration; bpy/mathutils come from official Blender 4.3.2
+numpy==2.3.5

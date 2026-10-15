@@ -1,0 +1,11 @@
+"""Blender4.3.2 standalone render stage. Uses the exact packed master, no other scene assets."""
+import bpy,sys,argparse,hashlib,json,time
+from pathlib import Path
+p=argparse.ArgumentParser();p.add_argument('--blend',required=True);p.add_argument('--output',required=True);a=p.parse_args(sys.argv[sys.argv.index('--')+1:]);src=Path(a.blend).resolve();out=Path(a.output).resolve();out.mkdir(parents=True,exist_ok=True);expected='92916e52cb240c30a239327462b067053cce1d6bc2a3c43b9ad5a151fbbb67ab';assert hashlib.sha256(src.read_bytes()).hexdigest()==expected;assert not(out/'composite.exr').exists(),'Use a fresh output directory';bpy.ops.wm.open_mainfile(filepath=str(src));s=bpy.context.scene;s.frame_set(49);s.render.resolution_x=900;s.render.resolution_y=600;s.render.resolution_percentage=100;s.render.use_border=True;s.render.use_crop_to_border=True;s.render.border_min_x=470/900;s.render.border_max_x=825/900;s.render.border_min_y=1-405/600;s.render.border_max_y=1-105/600;s.cycles.samples=512;s.cycles.seed=0;s.cycles.use_adaptive_sampling=False;s.cycles.use_denoising=False;assert not s.camera.data.dof.use_dof and abs(s.render.motion_blur_shutter-.075)<1e-7
+for n in s.node_tree.nodes:
+ if n.type=='SCALE':n.inputs['X'].default_value=900;n.inputs['Y'].default_value=600
+ if n.type=='OUTPUT_FILE':n.base_path=str(out)
+bpy.context.view_layer.cycles.denoising_store_passes=True;rl=next(n for n in s.node_tree.nodes if n.type=='R_LAYERS')
+for socket,name in [('Denoising Albedo','albedo'),('Denoising Normal','normal')]:
+ n=s.node_tree.nodes.new('CompositorNodeOutputFile');n.base_path=str(out);n.format.file_format='OPEN_EXR';n.format.color_mode='RGB';n.format.color_depth='32';n.file_slots[0].path=name+'-';s.node_tree.links.new(rl.outputs[socket],n.inputs[0])
+s.render.image_settings.file_format='OPEN_EXR';s.render.image_settings.color_mode='RGBA';s.render.image_settings.color_depth='32';s.render.filepath=str(out/'composite.exr');t=time.monotonic();bpy.ops.render.render(write_still=True);(out/'render-receipt.json').write_text(json.dumps({'master_sha256':expected,'Blender':bpy.app.version_string,'native_full_frame':[900,600],'crop_box_top_left':[470,105,825,405],'expected_crop_size':[355,300],'samples':512,'seed':0,'seconds':time.monotonic()-t},indent=2));assert hashlib.sha256(src.read_bytes()).hexdigest()==expected

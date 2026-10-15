@@ -1,0 +1,14 @@
+{
+  "source_sha256": "63eea1f374031f247981845c3e8051170a03c8f7a8928ca4ec961c9fde48fca1",
+  "purpose": "Invert the same AgX display transform so the static plate remains display-matched when composited with rendered CG. This is NOT HDR recovery. Dynamic range is reconstructed only for compositing consistency.",
+  "ocio": "2.4.2",
+  "display": "sRGB",
+  "view": "AgX",
+  "look": "AgX - Medium High Contrast",
+  "scene_linear_range": [
+    -0.08865690231323242,
+    7.753604412078857
+  ],
+  "roundtrip_rgb_error_mean": 0.0009564312640577555,
+  "roundtrip_rgb_error_max": 0.0869932472705841
+}

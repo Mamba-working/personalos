@@ -1,0 +1,80 @@
+{
+  "label": "SDR-derived art-directed radiance calibration, not recovered HDR",
+  "map_dimensions": [
+    1024,
+    512
+  ],
+  "map_orientation": "array bottom-up, phi=(u-.5)*2pi where direction=(cos(el)sin(phi),cos(el)cos(phi),sin(el)), el=(v-.5)*pi",
+  "mapping": "Upper59% source sky remapped onto hemisphere; source warm-opening centroid aligned to exact plate world direction. Off-camera radiance is an explicit constructed continuation, not measured sky.",
+  "source_luminance_contrast_exponent": 1.4,
+  "contrast_multiplier_clip": [
+    0.4,
+    2.0
+  ],
+  "seam_fraction": 0.025,
+  "lower_world_RGB": [
+    0.05,
+    0.07,
+    0.1
+  ],
+  "opening_direction": [
+    -0.22311239047204448,
+    0.9686136341170337,
+    0.10958325155078678
+  ],
+  "opening_peak_RGB": [
+    12,
+    9,
+    5.64
+  ],
+  "opening_sigma_degrees": 6,
+  "front_upper_left_direction": [
+    -0.7010875291595074,
+    -0.3505437645797537,
+    0.6209632401127066
+  ],
+  "front_upper_left_peak_RGB": [
+    18,
+    15.3,
+    11.7
+  ],
+  "front_upper_left_sigma_degrees": 12,
+  "front_source_structure_multiplier_range": [
+    0.35,
+    1.6
+  ],
+  "uniform_frontal_fill_removed": true,
+  "all_objects_all_rays_same_field": true,
+  "no_LIGHT_objects": true,
+  "diffuse_irradiance_over_pi_probes_RGB": {
+    "front": [
+      0.6194607832319149,
+      0.5510123570842689,
+      0.4773222636856983
+    ],
+    "front_left": [
+      1.1567422317250804,
+      1.0044669831691542,
+      0.8193808083832331
+    ],
+    "front_right": [
+      0.17173986445310868,
+      0.16289878405554148,
+      0.18170650616454975
+    ],
+    "upper_front": [
+      1.1070694823995442,
+      0.9695423749971668,
+      0.8201259864769999
+    ]
+  },
+  "luminance_percentiles": {
+    "0": 0.04094255602955818,
+    "10": 0.06791400047913193,
+    "50": 0.07260770920477808,
+    "90": 1.7712550831151004,
+    "99": 12.739373551599503,
+    "100": 22.53389598903656
+  },
+  "mean_spherical_Y": 0.9750720930670345
+}

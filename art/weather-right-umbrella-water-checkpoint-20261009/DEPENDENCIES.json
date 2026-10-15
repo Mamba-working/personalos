@@ -1,0 +1,174 @@
+{
+  "schema": "weather-right-umbrella-water-dependencies-v1",
+  "final_replay_external_inputs": {
+    "master": {
+      "suggested_input": "assets/master.blend",
+      "original_filename": "right-umbrella-wet-correction-milestone.blend",
+      "bytes": 153559476,
+      "sha256": "4a4b2c998e7334b053fedd39a964cc9c629e6467060a56e7241952a13e4911e8",
+      "distribution": "Owner-held packed input; omitted from Git, no public download URL",
+      "rebuild": "Supported replay starts from this exact final master. Historical construction sources are not a clean single-command or from-scratch reconstruction."
+    },
+    "linear_plate": {
+      "suggested_input": "assets/plate-scene-linear.npy",
+      "bytes": 18874496,
+      "sha256": "1039d1f48c5ac373e1da1c4ba199ddeb333c83afba64f4aecce3c59a7f1aa1c7",
+      "shape": [
+        1024,
+        1536,
+        3
+      ],
+      "dtype": "float32",
+      "orientation": "top-down scene-linear Rec.709",
+      "negative_samples": "Exact finite signed plate samples retained; do not clamp plate during final replay",
+      "delivery": "Owner-provided external input omitted from Git"
+    }
+  },
+  "toolchain": {
+    "blender": {
+      "version": "4.3.2",
+      "recorded_executable_sha256": "0dfe9af0f3e67643ecf15327fa5e14e7315f61d1a81afdcafe76a71b1918e2b4",
+      "origin": "https://www.blender.org/",
+      "license": "GPL-2.0-or-later per recorded installed distribution notice; external tool, not bundled"
+    },
+    "ocio": {
+      "recorded_config_sha256": "6a072a5e34fb520a35ee858b3b46271504ddd325fc112d2a78a8be75ea333f56",
+      "scope": "Matching Blender color config and referenced LUT assets required; config hash alone is incomplete"
+    },
+    "oidn": {
+      "version": "2.5.1 Linux x86-64",
+      "executable_sha256": "1cb3a28ebc99b90d7548b0b8b16f70c163cb59abe8582458a254aa303338269c",
+      "origin": "https://github.com/RenderKit/oidn/releases/tag/v2.5.1",
+      "license": "Apache-2.0; package, dependent libraries and notices external"
+    },
+    "guard": {
+      "process_group_RSS_MiB": 4096,
+      "host_headroom_MiB": 2048,
+      "worker_threads": 2,
+      "max_stage_deadline_seconds": 2400,
+      "system_settings_changed": false
+    }
+  },
+  "python": {
+    "host_recorded_numpy": "2.3.5",
+    "host_requirements": "requirements.txt",
+    "Blender_python": "Official Blender4.3.2 supplies bpy/bmesh/mathutils and its NumPy; do not install pip bpy"
+  },
+  "historical_recipe_external_inventory": [
+    {
+      "recipe_relative_path": "weather-rounded-water-rim-milestone-20261008-2354/rounded-water-visible-rim-milestone.blend",
+      "bytes": 135298499,
+      "sha256": "ea4f3c4833c7f9b1c4c18ac06a19721bf86e84bbc27f2426d64e31ed644c12e7",
+      "role": "Canonical rain starting master",
+      "publicly_distributed": false
+    },
+    {
+      "recipe_relative_path": "weather-canonical-sphere-rain-20261009-0119/canonical-sphere-rain-candidate.blend",
+      "bytes": 135524613,
+      "sha256": "be19d3dd793ac283da075631acc307a15ed808cf993ec610a46267553af6aec4",
+      "role": "Right-pose historical starting master",
+      "publicly_distributed": false
+    },
+    {
+      "recipe_relative_path": "weather-right-umbrella-correction-20261009-0153/right-umbrella-fine-wet-hierarchy-lookdev.blend",
+      "bytes": 139946148,
+      "sha256": "7666a65cf86d266082a7bfaca0e13867236976b632bf0bd05061087a49c1650e",
+      "role": "Wet-readability historical starting master",
+      "publicly_distributed": false
+    },
+    {
+      "recipe_relative_path": "weather-right-wet-readability-crop-20261009-0238/coordinated-wet-readability-crop-candidate.blend",
+      "bytes": 152724474,
+      "sha256": "9a7101c2dcc760555cee189f38b441887cb06c2fe97e7db0cb85e6ae1f63640e",
+      "role": "Final pendant historical starting master",
+      "publicly_distributed": false
+    },
+    {
+      "recipe_relative_path": "weather-frozen-composition-current-wet-20261008-1952/frozen-balanced-readable-wet-robust-outlet.blend",
+      "bytes": 118063873,
+      "sha256": "9d09b57cd6bb26894a7ed49fda8f548681051077711666656ed91fac53fcda4f",
+      "role": "Fine mesh donor, three mesh datablocks only",
+      "publicly_distributed": false
+    },
+    {
+      "recipe_relative_path": "weather-frozen-composition-current-wet-20261008-1952/WATER-AFTER-STATE.json",
+      "bytes": 4970224,
+      "sha256": "ed4d4997cec65d3bf04f5b179cf1c38903106a26805b99cb7984adb8644baf7a",
+      "role": "Owner-held donor snapshot; only three FINE object data names and canonical_world matrices consumed",
+      "publicly_distributed": false
+    },
+    {
+      "recipe_relative_path": "weather-rain-optical-atlas-20261008-0713/original-900-records.json",
+      "bytes": 712646,
+      "sha256": "08ea94c683122adc1182e76b5f489a8a4f9fc14e2963cc04498bdbbd87a78370",
+      "role": "Original authored900 records: sample, camera_depth_m legacy band field, velocity_world_m_s, start_world_m, radius_m",
+      "publicly_distributed": false
+    },
+    {
+      "recipe_relative_path": "weather-hybrid-rain-hero-20261008-0515/plate-scene-linear.npy",
+      "bytes": 18874496,
+      "sha256": "1039d1f48c5ac373e1da1c4ba199ddeb333c83afba64f4aecce3c59a7f1aa1c7",
+      "role": "Original exact plate, also required separately for final replay",
+      "publicly_distributed": false
+    },
+    {
+      "recipe_relative_path": "weather-lateral-shared-field-20261008-0919/lateral-neutral-shared-field.npy",
+      "bytes": 6291584,
+      "sha256": "fdc171e7503a3fb8953a16ef919c3c9f77791eb1ad1b7c435d8ca7abef1f55e5",
+      "role": "Existing exact shared World array",
+      "publicly_distributed": false
+    },
+    {
+      "recipe_relative_path": "weather-lateral-shared-field-20261008-0919/SHARED-FIELD-CONTRACT.json",
+      "bytes": 2819,
+      "sha256": "0eca7314afa9bd03288d0ec084410848732338b57ebee9e8bd1f5d7f348d4f42",
+      "role": "Owner-held contract; only coefficients.warm consumed",
+      "publicly_distributed": false
+    },
+    {
+      "recipe_relative_path": "weather-canonical-sphere-rain-20261009-0119/SOURCE-INSPECTION.json",
+      "bytes": 959341,
+      "sha256": "ffb37f2254d7074fd8bbe524f34f27703c1d576779679df869663dce683f797c",
+      "role": "Owner-held source inspection; only camera_matrix consumed by shared opening authoring",
+      "publicly_distributed": false
+    },
+    {
+      "recipe_relative_path": "weather-right-wet-readability-crop-20261009-0238/coordinated-shared-opening.npy",
+      "bytes": 6291584,
+      "sha256": "856dee720613108e6605d5f6cd63438a85f1c9015c09ac9861e0c0bb2be0d608",
+      "role": "Generated shared opening array used by crop builder",
+      "publicly_distributed": false
+    }
+  ],
+  "historical_generated_reports": "Builders generate their own local trajectory/pose/water/invariant reports. The preserved finalizer also consumes REOPEN-DIFFERENCES from its historical first reopen attempt. Those private reports are not published. No clean fully executable historical rebuild is claimed.",
+  "historical_relative_layout": "src/recipes mirrors original source-stage names for exact relative imports and text-extracted rain recuts. Any intentional recipe execution requires an owner-managed copy outside this immutable public source tree, with exact external dependencies. No automated construction entrypoint is offered.",
+  "inherited_asset_rights": {
+    "existing_source_notice": "../weather-hybrid-v7/LICENSE",
+    "component_notices": "../weather-hybrid-v7/THIRD_PARTY_NOTICES.md and ../weather-hybrid-v7/notices/",
+    "Emotion_Ball_aora_bot": {
+      "upstream": "https://github.com/sam70361/aora-bot",
+      "pinned_commit": "e3b6148c818da4a8e1966f2bc89cdb3cee473b73",
+      "visual_rights": "Non-commercial personal technical study/research only; engine/expression terms do not expand visual rights"
+    },
+    "TextureCan": {
+      "license": "CC0-1.0",
+      "source": "https://www.texturecan.com/terms/",
+      "verified_utc_date": "2026-10-08",
+      "scope": "Ground0020 and Others0004 texture families only; does not license the whole scene"
+    },
+    "OIDN": {
+      "license": "Apache-2.0",
+      "source": "https://raw.githubusercontent.com/RenderKit/oidn/v2.5.1/LICENSE.txt",
+      "verified_utc_date": "2026-10-08",
+      "scope": "External tool; no binary or source copied"
+    },
+    "generated_plate": {
+      "sha256": "63eea1f374031f247981845c3e8051170a03c8f7a8928ca4ec961c9fde48fca1",
+      "provenance": "OpenAI imagegen edit of owner-approved reference, 2026-10-08",
+      "rights": "No separate public redistribution license established; generated plate and restricted reference omitted"
+    },
+    "project": "No blanket first-party code/art license granted by source sync; existing repository notices remain in force"
+  },
+  "inherited_component_notices": "../weather-hybrid-v7/notices/ and ../weather-hybrid-v7/THIRD_PARTY_NOTICES.md; prior checkpoint blobs remain unchanged",
+  "packed_final_assets": "Exact final master contains packed textures/World/plate scene assets; none are publicly shipped. Separate external original plate remains required by postprocess."
+}

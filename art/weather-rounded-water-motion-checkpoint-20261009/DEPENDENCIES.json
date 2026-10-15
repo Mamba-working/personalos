@@ -1,0 +1,307 @@
+{
+  "schema": "weather-rounded-water-motion-dependencies-v1",
+  "required_external_inputs": {
+    "master": {
+      "suggested_input": "assets/master.blend",
+      "original_filename": "rounded-water-visible-rim-milestone.blend",
+      "bytes": 135298499,
+      "sha256": "ea4f3c4833c7f9b1c4c18ac06a19721bf86e84bbc27f2426d64e31ed644c12e7",
+      "delivery": "Owner-held exact packed input, omitted from Git; no public download URL",
+      "rebuild": "This bundle starts from the exact saved master. It is not an independently reconstructible from-scratch scene."
+    },
+    "linear_plate": {
+      "suggested_input": "assets/plate-scene-linear.npy",
+      "bytes": 18874496,
+      "shape": [
+        1024,
+        1536,
+        3
+      ],
+      "dtype": "float32",
+      "orientation": "top-down scene-linear Rec.709",
+      "sha256": "1039d1f48c5ac373e1da1c4ba199ddeb333c83afba64f4aecce3c59a7f1aa1c7",
+      "delivery": "Owner-held external, omitted"
+    },
+    "native900_plate": {
+      "output": "output/full900/padded-plate.npy",
+      "bytes": 6480128,
+      "shape": [
+        600,
+        900,
+        3
+      ],
+      "dtype": "float32",
+      "orientation": "bottom-up scene-linear Rec.709",
+      "sha256": "9168001bf426c3570878eebf0d8fbaca7ce8a73900ec53a57c4ed0126978fc94",
+      "generation": "src/prepare_plate.py extracts unchanged Blender resampling statement; accepts exact external original plate. Public wrapper not executed."
+    }
+  },
+  "tools": {
+    "blender": {
+      "version": "4.3.2",
+      "recorded_executable_sha256": "0dfe9af0f3e67643ecf15327fa5e14e7315f61d1a81afdcafe76a71b1918e2b4",
+      "origin": "https://www.blender.org/",
+      "license": "GPL-2.0-or-later per recorded installed distribution notice; external tool, not bundled"
+    },
+    "ocio": {
+      "recorded_config_sha256": "6a072a5e34fb520a35ee858b3b46271504ddd325fc112d2a78a8be75ea333f56",
+      "scope": "Matching Blender color config and referenced LUT assets required; config hash alone is incomplete"
+    },
+    "oidn": {
+      "version": "2.5.1 Linux x86-64",
+      "executable_sha256": "1cb3a28ebc99b90d7548b0b8b16f70c163cb59abe8582458a254aa303338269c",
+      "origin": "https://github.com/RenderKit/oidn/releases/tag/v2.5.1",
+      "license": "Apache-2.0; package, dependent libraries and notices external"
+    },
+    "guard": {
+      "process_group_RSS_MiB": 4096,
+      "host_headroom_MiB": 2048,
+      "worker_threads": 2,
+      "max_stage_deadline_seconds": 2400,
+      "system_settings_changed": false
+    }
+  },
+  "python": {
+    "host_recorded_numpy": "2.3.5",
+    "host_recorded_Pillow": "12.3.0",
+    "requirements": "requirements.txt pins host source-check/encoding packages. bpy/bmesh/mathutils and Blender-bundled NumPy come from official Blender 4.3.2, not pip bpy."
+  },
+  "encoding": {
+    "executables": [
+      "ffmpeg",
+      "ffprobe"
+    ],
+    "codec": "libx264",
+    "font": "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+    "distribution": "External tools/font, not bundled. The font path is a public distribution path, not a private workspace. ffmpeg build/version and font file hash were not pinned by original proof."
+  },
+  "local_python_dependencies": {
+    "continuous_water.py": [
+      "contract.py",
+      "mesh_helpers.py",
+      "state_guard.py",
+      "state_values.py"
+    ],
+    "render_frames.py": [
+      "continuous_water.py",
+      "contract.py"
+    ],
+    "package_preview.py": [
+      "contract.py",
+      "Pillow",
+      "numpy",
+      "ffmpeg",
+      "ffprobe",
+      "DejaVuSans.ttf"
+    ]
+  },
+  "packed_resources_in_external_master": [
+    {
+      "name": "Connected mid-scale physical support",
+      "packed": true
+    },
+    {
+      "name": "Connected mid-scale surface height",
+      "packed": true
+    },
+    {
+      "name": "ground_0020_color_2k.jpg",
+      "packed": true
+    },
+    {
+      "name": "ground_0020_normal_opengl_2k.png",
+      "packed": true
+    },
+    {
+      "name": "ground_0020_roughness_2k.jpg",
+      "packed": true
+    },
+    {
+      "name": "lateral-neutral-shared-field.exr",
+      "packed": true
+    },
+    {
+      "name": "Original uint16 height / packed reconstruction input",
+      "packed": true
+    },
+    {
+      "name": "others_0004_height_1k.png",
+      "packed": true
+    },
+    {
+      "name": "others_0004_opacity_1k.jpg",
+      "packed": true
+    },
+    {
+      "name": "others_0004_roughness_1k.jpg",
+      "packed": true
+    },
+    {
+      "name": "Paired irregular panel fold height metres",
+      "packed": true
+    },
+    {
+      "name": "plate-scene-linear-verified.exr",
+      "packed": true
+    },
+    {
+      "name": "Wet field absorbed beneath rounded middle bodies",
+      "packed": true
+    },
+    {
+      "name": "Wet PVC quiet variable roughness",
+      "packed": true
+    },
+    {
+      "name": "Wet support absorbed beneath rounded middle bodies",
+      "packed": true
+    }
+  ],
+  "inherited_asset_contracts": [
+    {
+      "name": "ground_0020_color_2k.jpg",
+      "sha256": "c1c4ce6c5a0741364a3d74d7522d3cbdb8ec400fe8f093fa666264b9fa74782f",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "colorspace": "sRGB",
+      "provenance": "TextureCan",
+      "asset_page": "https://www.texturecan.com/details/194/",
+      "license": "CC0-1.0",
+      "delivery": "Packed in owner-held external master; omitted from Git"
+    },
+    {
+      "name": "ground_0020_normal_opengl_2k.png",
+      "sha256": "5f02ccf0970b6f90921a494e40497e4bd852f869a7519704a86593fd03eebbbf",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "colorspace": "Non-Color",
+      "provenance": "TextureCan",
+      "asset_page": "https://www.texturecan.com/details/194/",
+      "license": "CC0-1.0",
+      "delivery": "Packed in owner-held external master; omitted from Git"
+    },
+    {
+      "name": "ground_0020_roughness_2k.jpg",
+      "sha256": "967ee03cc28980e29b6b8c808091f1b415c2c2cb09c0438cc4b2c44a6fc41301",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "colorspace": "Non-Color",
+      "provenance": "TextureCan",
+      "asset_page": "https://www.texturecan.com/details/194/",
+      "license": "CC0-1.0",
+      "delivery": "Packed in owner-held external master; omitted from Git"
+    },
+    {
+      "name": "lateral-neutral-shared-field.exr",
+      "sha256": "3587bb5700844c21519e8007a49c005f28336b96b23808c83fbfe30fbab69f27",
+      "dimensions": [
+        1024,
+        512
+      ],
+      "colorspace": "Linear Rec.709",
+      "provenance": "Project-authored derivative",
+      "asset_page": null,
+      "license": "No separate public asset license established",
+      "delivery": "Packed in owner-held external master; omitted from Git"
+    },
+    {
+      "name": "Original uint16 height / packed reconstruction input",
+      "sha256": "56e4e9c85a4967a03ec470894412f3eeb5e30c95eabe0f63c4cfac4f696c0c40",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "colorspace": "Non-Color",
+      "provenance": "TextureCan",
+      "asset_page": "https://www.texturecan.com/details/194/",
+      "license": "CC0-1.0",
+      "delivery": "Packed in owner-held external master; omitted from Git"
+    },
+    {
+      "name": "others_0004_height_1k.png",
+      "sha256": "fa15476dd88a313fc3c38f0f61cb072aa123b7d67e55eccd6cdb5365dbe867b5",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "colorspace": "Non-Color",
+      "provenance": "TextureCan",
+      "asset_page": "https://www.texturecan.com/details/155/",
+      "license": "CC0-1.0",
+      "delivery": "Packed in owner-held external master; omitted from Git"
+    },
+    {
+      "name": "others_0004_opacity_1k.jpg",
+      "sha256": "ae9cb4d2b451db4efce10fa542bf97d68806a41ef27669af4ce0c113a2558c3a",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "colorspace": "Non-Color",
+      "provenance": "TextureCan",
+      "asset_page": "https://www.texturecan.com/details/155/",
+      "license": "CC0-1.0",
+      "delivery": "Packed in owner-held external master; omitted from Git"
+    },
+    {
+      "name": "others_0004_roughness_1k.jpg",
+      "sha256": "f548f6dcac7e7ed2e7ed028870c472f68cd5692f4455d57a100dec2c856a32f0",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "colorspace": "Non-Color",
+      "provenance": "TextureCan",
+      "asset_page": "https://www.texturecan.com/details/155/",
+      "license": "CC0-1.0",
+      "delivery": "Packed in owner-held external master; omitted from Git"
+    },
+    {
+      "name": "plate-scene-linear-verified.exr",
+      "sha256": "77fabb14e984eaaacb2f652d2005e4238b2aae27ec3125c18bd372fe77c920dd",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "colorspace": "Linear Rec.709",
+      "provenance": "Project-authored derivative",
+      "asset_page": null,
+      "license": "No separate public asset license established",
+      "delivery": "Packed in owner-held external master; omitted from Git"
+    }
+  ],
+  "licenses_and_provenance": {
+    "existing_source_notice": "../weather-hybrid-v7/LICENSE",
+    "component_notices": "../weather-hybrid-v7/THIRD_PARTY_NOTICES.md and ../weather-hybrid-v7/notices/",
+    "Emotion_Ball_aora_bot": {
+      "upstream": "https://github.com/sam70361/aora-bot",
+      "pinned_commit": "e3b6148c818da4a8e1966f2bc89cdb3cee473b73",
+      "visual_rights": "Non-commercial personal technical study/research only; engine/expression terms do not expand visual rights"
+    },
+    "TextureCan": {
+      "license": "CC0-1.0",
+      "source": "https://www.texturecan.com/terms/",
+      "verified_utc_date": "2026-10-08",
+      "scope": "Ground0020 and Others0004 texture families only; does not license the whole scene"
+    },
+    "OIDN": {
+      "license": "Apache-2.0",
+      "source": "https://raw.githubusercontent.com/RenderKit/oidn/v2.5.1/LICENSE.txt",
+      "verified_utc_date": "2026-10-08",
+      "scope": "External tool; no binary or source copied"
+    },
+    "generated_plate": {
+      "sha256": "63eea1f374031f247981845c3e8051170a03c8f7a8928ca4ec961c9fde48fca1",
+      "provenance": "OpenAI imagegen edit of owner-approved reference, 2026-10-08",
+      "rights": "No separate public redistribution license established; generated plate and restricted reference omitted"
+    },
+    "project": "No blanket first-party code/art license granted by source sync; existing repository notices remain in force"
+  },
+  "missing_public_reconstruction": "The exact retained master contains authored geometry/materials and packed images not distributed by this commit. Four helpers extracted from rim_refinement do not include its apply/build or generate_primary dependencies. No original source is represented as standalone without the external master."
+}

@@ -1,0 +1,253 @@
+{
+  "schema": "weather-macro-canopy-shaft-metal-dependencies-v1",
+  "selected_replay_external_inputs": {
+    "master": {
+      "suggested_input": "assets/master.blend",
+      "original_filename": "PersonalOS-soft-reflection-scrim-candidate.blend",
+      "bytes": 210031083,
+      "sha256": "92916e52cb240c30a239327462b067053cce1d6bc2a3c43b9ad5a151fbbb67ab",
+      "distribution": "Owner-held packed input omitted from Git; no public download URL"
+    },
+    "linear_crop_plate": {
+      "suggested_input": "assets/plate-crop.npy",
+      "bytes": 1278128,
+      "sha256": "06658ced2144d6afb80f7a05cbb6c8cbb24196dbf0e6968577aae3d6709d4899",
+      "shape": [
+        300,
+        355,
+        3
+      ],
+      "dtype": "float32",
+      "orientation": "bottom-up scene-linear Rec.709",
+      "derivation": "Exact retained bottom-up native900 resample [195:495,470:825]; original signed linear plate SHA-256 1039d1f48c5ac373e1da1c4ba199ddeb333c83afba64f4aecce3c59a7f1aa1c7",
+      "publicly_distributed": false
+    }
+  },
+  "toolchain": {
+    "blender": {
+      "version": "4.3.2",
+      "recorded_executable_sha256": "0dfe9af0f3e67643ecf15327fa5e14e7315f61d1a81afdcafe76a71b1918e2b4",
+      "origin": "https://www.blender.org/",
+      "license": "GPL-2.0-or-later per recorded installed distribution notice; external tool, not bundled"
+    },
+    "ocio": {
+      "recorded_config_sha256": "6a072a5e34fb520a35ee858b3b46271504ddd325fc112d2a78a8be75ea333f56",
+      "scope": "Matching Blender color config and referenced LUT assets required; config hash alone is incomplete"
+    },
+    "oidn": {
+      "version": "2.5.1 Linux x86-64",
+      "executable_sha256": "1cb3a28ebc99b90d7548b0b8b16f70c163cb59abe8582458a254aa303338269c",
+      "origin": "https://github.com/RenderKit/oidn/releases/tag/v2.5.1",
+      "license": "Apache-2.0; package, dependent libraries and notices external"
+    },
+    "guard": {
+      "process_group_RSS_MiB": 4096,
+      "host_headroom_MiB": 2048,
+      "worker_threads": 2,
+      "max_stage_deadline_seconds": 900,
+      "system_settings_changed": false,
+      "processing_stage_deadline_seconds": 180
+    }
+  },
+  "python": {
+    "host_recorded_numpy": "2.3.5",
+    "host_requirements": "requirements.txt",
+    "Blender_python": "Official Blender4.3.2 supplies bpy/bmesh/mathutils and its NumPy; do not install pip bpy"
+  },
+  "historical_recipe_external_inventory": [
+    {
+      "recipe_relative_path": "PersonalOS-coordinated-macro-shot-master.blend",
+      "bytes": 153864031,
+      "sha256": "d9cd1d03d6a6006d0719a9c29c4e71d69e739aa3530fbaeed3495cd4dd38dbdd",
+      "publicly_distributed": false,
+      "role": "Owner-held historical input or generated intermediate; required only by the historical stage that names it"
+    },
+    {
+      "recipe_relative_path": "PersonalOS-continuous-roof-relief-crop-candidate.blend",
+      "bytes": 198492927,
+      "sha256": "1a0cad1a60742bd2365fab190792c781f4bd6e18087350c00b916cb8c2d5d6e9",
+      "publicly_distributed": false,
+      "role": "Owner-held historical input or generated intermediate; required only by the historical stage that names it"
+    },
+    {
+      "recipe_relative_path": "PersonalOS-visible-straight-shaft-geometry-candidate.blend",
+      "bytes": 198493533,
+      "sha256": "c0d88ae98880486fca4fbc4f1703c01413d93af841ce23014800e6e642267c94",
+      "publicly_distributed": false,
+      "role": "Owner-held historical input or generated intermediate; required only by the historical stage that names it"
+    },
+    {
+      "recipe_relative_path": "PersonalOS-visible-shaft-and-reflection-card-candidate.blend",
+      "bytes": 198497007,
+      "sha256": "da2bf4fac431c9b077aa06dd4ce3d3ed94d5a2630060f365634b8312f53afd9a",
+      "publicly_distributed": false,
+      "role": "Owner-held historical input or generated intermediate; required only by the historical stage that names it"
+    },
+    {
+      "recipe_relative_path": "PersonalOS-half-scale-roof-stage.blend",
+      "bytes": 198501430,
+      "sha256": "212570b6628bae8df60e497f0c2478405108c48e78b3ad9dd9a9b0841d5b4831",
+      "publicly_distributed": false,
+      "role": "Owner-held historical input or generated intermediate; required only by the historical stage that names it"
+    },
+    {
+      "recipe_relative_path": "PersonalOS-half-scale-wet-reflection-candidate.blend",
+      "bytes": 210005347,
+      "sha256": "b0f228cdc2e7a3e4b1db3f4edcc95e2b4f34988936cb9a9b298114dacab4fa92",
+      "publicly_distributed": false,
+      "role": "Owner-held historical input or generated intermediate; required only by the historical stage that names it"
+    },
+    {
+      "recipe_relative_path": "PersonalOS-half-scale-satin-shaft-stage.blend",
+      "bytes": 210027956,
+      "sha256": "f0bfc7b7a314a78c494eb9b2e1345c81da019a16ff5eac0c5b97a37f753a188c",
+      "publicly_distributed": false,
+      "role": "Owner-held historical input or generated intermediate; required only by the historical stage that names it"
+    },
+    {
+      "recipe_relative_path": "PersonalOS-soft-reflection-scrim-candidate.blend",
+      "bytes": 210031083,
+      "sha256": "92916e52cb240c30a239327462b067053cce1d6bc2a3c43b9ad5a151fbbb67ab",
+      "publicly_distributed": false,
+      "role": "Owner-held historical input or generated intermediate; required only by the historical stage that names it"
+    },
+    {
+      "recipe_relative_path": "plate-scene-linear.npy",
+      "bytes": 18874496,
+      "sha256": "1039d1f48c5ac373e1da1c4ba199ddeb333c83afba64f4aecce3c59a7f1aa1c7",
+      "publicly_distributed": false,
+      "role": "Owner-held historical input or generated intermediate; required only by the historical stage that names it"
+    },
+    {
+      "recipe_relative_path": "curvature-shared-cloud-field.npy",
+      "bytes": 6291584,
+      "sha256": "284cfee62d0d2b50dd2ce109c462bfa91912bcde51ab230ee810498b01bd050b",
+      "publicly_distributed": false,
+      "role": "Owner-held historical input or generated intermediate; required only by the historical stage that names it"
+    },
+    {
+      "recipe_relative_path": "HALF-SCALE-SCENE-GEOMETRY-AUDIT.json",
+      "bytes": 2322,
+      "sha256": "488715db924bbf8dbc760fc7b1f759a9faa542e7a7391cc2b87e9c629a8f11bf",
+      "publicly_distributed": false,
+      "role": "Owner-held historical input or generated intermediate; required only by the historical stage that names it"
+    },
+    {
+      "recipe_relative_path": "HALF-SCALE-SELECTED-SHOT-MERGE.json",
+      "bytes": 1457,
+      "sha256": "e6125940ac8eea8a2f17185b1f40267cf04295210a5811cd855e1c1f36f310b1",
+      "publicly_distributed": false,
+      "role": "Owner-held historical input or generated intermediate; required only by the historical stage that names it"
+    },
+    {
+      "recipe_relative_path": "SATIN-SHAFT-COMPONENT-BUILD.json",
+      "bytes": 3607,
+      "sha256": "377ad0f67128827687e6fbe317c3ebece3afdb3ab87cf284b558e8c37cec6550",
+      "publicly_distributed": false,
+      "role": "Owner-held historical input or generated intermediate; required only by the historical stage that names it"
+    },
+    {
+      "recipe_relative_path": "SHARED-METAL-FLAG-WIDE-PLACEMENT.json",
+      "bytes": 18884,
+      "sha256": "52a1a046b7d18f84daee59f9a2a408d03cf328e3ad3ff6072f357891ed93b432",
+      "publicly_distributed": false,
+      "role": "Owner-held historical input or generated intermediate; required only by the historical stage that names it"
+    },
+    {
+      "recipe_relative_path": "VISIBLE-SHAFT-GEOMETRY-DRAFT.npz",
+      "bytes": 95100,
+      "sha256": "13e3bd689152d08e46ada6059b334e17dd796368679098b092f9b3ad6bf301fc",
+      "publicly_distributed": false,
+      "role": "Owner-held historical input or generated intermediate; required only by the historical stage that names it"
+    },
+    {
+      "recipe_relative_path": "CONTINUOUS-BALL-EXACT-GEOMETRY.npz",
+      "bytes": 160963,
+      "sha256": "1df946f5096fa7d2b1d59fd3bdb3ba85e454e8c4add57476df87c27c106f171b",
+      "publicly_distributed": false,
+      "role": "Owner-held historical input or generated intermediate; required only by the historical stage that names it"
+    },
+    {
+      "recipe_relative_path": "CONTINUOUS-BALL-EXPOSURE-ANALYTIC.npz",
+      "bytes": 436364,
+      "sha256": "d08b64d18b88cc0ff2ae92121629c01963db8de3bc2fdd6ecaedb94323252f12",
+      "publicly_distributed": false,
+      "role": "Owner-held historical input or generated intermediate; required only by the historical stage that names it"
+    },
+    {
+      "recipe_relative_path": "CONTINUOUS-LOWER-CARD-REACH.npz",
+      "bytes": 850625,
+      "sha256": "bde4fc3b2004e67c91f5d430612a335b2f2a47cf032cb862949fadf662ac38ac",
+      "publicly_distributed": false,
+      "role": "Owner-held historical input or generated intermediate; required only by the historical stage that names it"
+    },
+    {
+      "recipe_relative_path": "CONTINUOUS-ROOF-REFLECTION-DIRECTIONS.npz",
+      "bytes": 6117338,
+      "sha256": "f77092b1078c4c3913c4937df24efd830d7eb56bcf403ca994dcab6bbf99320e",
+      "publicly_distributed": false,
+      "role": "Owner-held historical input or generated intermediate; required only by the historical stage that names it"
+    },
+    {
+      "recipe_relative_path": "CONTINUOUS-ROOF-REFLECTION-NATIVE-RAYS.npz",
+      "bytes": 5148973,
+      "sha256": "dac467d1f66354550389221f80214a3f8edd347b91aaa392414b11b1f11fe619",
+      "publicly_distributed": false,
+      "role": "Owner-held historical input or generated intermediate; required only by the historical stage that names it"
+    },
+    {
+      "recipe_relative_path": "weather-library-recovery-20261009-0417/PersonalOS-right-umbrella-wet-correction-master.blend",
+      "bytes": 153559476,
+      "sha256": "4a4b2c998e7334b053fedd39a964cc9c629e6467060a56e7241952a13e4911e8",
+      "publicly_distributed": false,
+      "role": "Macro geometry historical starting master, in sibling directory above the macro recipe stage"
+    }
+  ],
+  "historical_report_fields_consumed": {
+    "HALF-SCALE-SCENE-GEOMETRY-AUDIT.json": [
+      "master_sha256"
+    ],
+    "HALF-SCALE-SELECTED-SHOT-MERGE.json": [
+      "candidate_sha256"
+    ],
+    "SATIN-SHAFT-COMPONENT-BUILD.json": [
+      "candidate_sha256",
+      "foot_anchor_world"
+    ],
+    "SHARED-METAL-FLAG-WIDE-PLACEMENT.json": [
+      "long_axis",
+      "view_facing_cylinder_normal",
+      "visible_right_tangent"
+    ]
+  },
+  "historical_boundary": "Generated private report/cache contents omitted. Recipes preserve exact source, not a clean single-command/from-scratch rebuild. Final replay starts only from selected exact packed master and exact separate crop plate.",
+  "inherited_asset_rights": {
+    "existing_source_notice": "../weather-hybrid-v7/LICENSE",
+    "component_notices": "../weather-hybrid-v7/THIRD_PARTY_NOTICES.md and ../weather-hybrid-v7/notices/",
+    "Emotion_Ball_aora_bot": {
+      "upstream": "https://github.com/sam70361/aora-bot",
+      "pinned_commit": "e3b6148c818da4a8e1966f2bc89cdb3cee473b73",
+      "visual_rights": "Non-commercial personal technical study/research only; engine/expression terms do not expand visual rights"
+    },
+    "TextureCan": {
+      "license": "CC0-1.0",
+      "source": "https://www.texturecan.com/terms/",
+      "verified_utc_date": "2026-10-08",
+      "scope": "Ground0020 and Others0004 texture families only; does not license the whole scene"
+    },
+    "OIDN": {
+      "license": "Apache-2.0",
+      "source": "https://raw.githubusercontent.com/RenderKit/oidn/v2.5.1/LICENSE.txt",
+      "verified_utc_date": "2026-10-08",
+      "scope": "External tool; no binary or source copied"
+    },
+    "generated_plate": {
+      "sha256": "63eea1f374031f247981845c3e8051170a03c8f7a8928ca4ec961c9fde48fca1",
+      "provenance": "OpenAI imagegen edit of owner-approved reference, 2026-10-08",
+      "rights": "No separate public redistribution license established; generated plate and restricted reference omitted"
+    },
+    "project": "No blanket first-party code/art license granted by source sync; existing repository notices remain in force"
+  },
+  "inherited_component_notices": "../weather-hybrid-v7/notices/ and ../weather-hybrid-v7/THIRD_PARTY_NOTICES.md; prior checkpoint blobs remain unchanged",
+  "packed_assets": "Packed selected scene resources remain owner-held; external applications, arrays, reference, texture media, raw proof and cache/report contents not bundled"
+}

@@ -1,0 +1,116 @@
+{
+  "schema": "weather-rounded-water-motion-source-checkpoint-v1",
+  "date_utc": "2026-10-09",
+  "scope": "Additive source-only offline art checkpoint. No product code, repository history rewrite, merge, Site publication or deployment.",
+  "status": {
+    "whole_art_accepted": false,
+    "retained_full_frame": "Native 900x600 frame, 512 samples, actually rendered, visually reviewed and delivered from the retained master",
+    "retained_motion": "75 independently rendered deformed-geometry frames, 128 samples/frame, native 100x72 rim crop, 2.5 seconds at 30 fps playback, actually rendered and reviewed as a bounded offline proof",
+    "public_adaptations": "AST/hash/source-helper/command-plan checks only. Public adapted Blender/OIDN/encoding scripts have not been executed."
+  },
+  "external_master": {
+    "suggested_input": "assets/master.blend",
+    "original_filename": "rounded-water-visible-rim-milestone.blend",
+    "bytes": 135298499,
+    "sha256": "ea4f3c4833c7f9b1c4c18ac06a19721bf86e84bbc27f2426d64e31ed644c12e7",
+    "delivery": "Owner-held exact packed input, omitted from Git; no public download URL",
+    "rebuild": "This bundle starts from the exact saved master. It is not an independently reconstructible from-scratch scene."
+  },
+  "source_lineage": {
+    "retained_milestone_parent": {
+      "original_filename": "rounded-middle-water-population.blend",
+      "sha256": "807aaec1edf459e7f3198bf004d72dec59d483fd6a55e1f7f2139bc1a12cc1f9",
+      "role": "Pre-visible-rim parent, not a substitute for the required retained master"
+    },
+    "clear_water_material_ancestor_sha256": "0ec1746387e9a325b68d9a93223da6ccad1aa9f97f631df869378480f68f31da",
+    "earlier_checkpoints": "../weather-hybrid-v7/ and ../weather-optical-contact-checkpoint-20261008/ remain retained; their master files are different inputs"
+  },
+  "retained_scene": {
+    "rounded_middle_population": {
+      "singles": 340,
+      "joined_forms": 28
+    },
+    "primary_visible_rim_angle_deg": -44.5,
+    "canonical_metres_per_authoring_unit": 0.17045454545454544,
+    "scope": "Keep retained Ball identity, straight coaxial shaft/eight gores, wet PVC materials, world/camera/lighting, ground/receiver and all non-primary-water state. Do not rescale master based on Blender unit scale."
+  },
+  "motion_recipe": {
+    "native_buffer": [
+      900,
+      600
+    ],
+    "crop_top_origin": [
+      710,
+      305,
+      810,
+      377
+    ],
+    "native_crop": [
+      100,
+      72
+    ],
+    "frames": 75,
+    "playback_fps": 30,
+    "duration_s": 2.5,
+    "samples": 128,
+    "seed": 0,
+    "animated_seed": false,
+    "elongation_s": 1.8333333333333333,
+    "release_s": 2.1333333333333333,
+    "gravity_m_s2": 9.81,
+    "post_release_rounding_seconds": 0.1,
+    "mechanism": "Continuously evaluated vertex coordinates and volume-conserving necking; split closed shells at unchanged boundary coordinates; only afterward gradual rounding and gravity. Daughter retired only after leaving the crop above the ground. Small rim remnant stays.",
+    "water_geometry_fixture": "Original 74,809-byte NPZ is not shipped; Water(audit=True) regenerates arrays from the exact master. No source/reference image or binary fixture is published."
+  },
+  "full_frame_recipe": {
+    "frame": 49,
+    "native_buffer": [
+      900,
+      600
+    ],
+    "samples": 512,
+    "seed": 0,
+    "adaptive_sampling": false,
+    "in_render_denoising": false,
+    "DOF": false,
+    "border": false,
+    "raw_passes": [
+      "hero RGBA",
+      "catcher RGBA",
+      "true denoising albedo",
+      "true denoising normal"
+    ]
+  },
+  "processing": {
+    "denoise": "OIDN 2.5.1 HDR/high CPU. Hero uses actual same-buffer albedo/normal; catcher is color-only. Original hero alpha and untouched plate are retained.",
+    "linear_formula": "hero_premultiplied_rgb + (1 - hero_alpha) * plate_rgb * shadow_catcher_rgb",
+    "display": "AgX / AgX - Medium High Contrast, exposure 0, gamma 1, applied once",
+    "encoding": "ffmpeg libx264 CRF8/yuv420p, 75 frames. Actual MP4s decoded and probed in original proof. No audio; labeled 5x nearest-neighbour copy and decoded contact-sheet code included."
+  },
+  "boundaries": [
+    "No airborne rain or UI added",
+    "No Web/runtime integration",
+    "No runtime-FPS measurement",
+    "No fluid simulation",
+    "No full-scene animation",
+    "No ground-impact or splash model",
+    "No final complete-art acceptance",
+    "No arbitrary-camera or fully reactive visible-terrain claim",
+    "No cross-machine bit-identical render guarantee"
+  ],
+  "publication_exclusions": [
+    "Packed masters and ancestor scene files",
+    "Scene-building ancestors/generator code",
+    "Restricted reference images",
+    "All NPY/NPZ/EXR/PFM/image/video/binary payloads",
+    "Private QA reports, logs and process metadata",
+    "Private artifact identifiers or signed URLs",
+    "Product code, versions, backend, frontend and CI changes"
+  ],
+  "validation_boundary": {
+    "new_heavy_render": false,
+    "adapted_pipeline_executed": false,
+    "local_full_product_tests": false,
+    "source_checks": "Python AST, exact-function/class preservation, UTF-8/file inventory/SHA-256, public privacy scan, small numpy/contract tests and dry-run command plans; exact-commit remote CI checked separately"
+  }
+}

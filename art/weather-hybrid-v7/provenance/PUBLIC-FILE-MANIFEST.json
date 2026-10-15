@@ -1,0 +1,225 @@
+{
+  "scope": "Exact source-only publication allowlist. Master, optional PNG, binaries, outputs and QA are omitted. This inventory excludes itself.",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 203,
+      "sha256": "f524c7507178a62b9db224dbc08dc3dd0bbbbad7256c7fc197bd93e1db384341"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 978,
+      "sha256": "7ea82cde9bde21524ffb5e93208b0ce706665160abe4339182badb59a045e351"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5939,
+      "sha256": "b448e6183f315b163fe9d9007460d1333a5e17cb15b5d232b087e653d11df198"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "bytes": 3566,
+      "sha256": "e49d3ccd9c7a8ce6a77c3d53fec3b02fee912f37be52b74a4c4d79b2a1c603d6"
+    },
+    {
+      "path": "assets/environment/PROVENANCE.json",
+      "bytes": 1150,
+      "sha256": "394611713ef417df87a9bb84dd2a02e2d8fffd443bac0e59125922aa995a83fa"
+    },
+    {
+      "path": "notices/CC0-1.0.txt",
+      "bytes": 7048,
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+    },
+    {
+      "path": "notices/GPL-2.0.txt",
+      "bytes": 17984,
+      "sha256": "edaef632cbb643e4e7a221717a6c441a4c1a7c918e6e4d56debc3d8739b233f6"
+    },
+    {
+      "path": "notices/aora-ATTRIBUTION.txt",
+      "bytes": 386,
+      "sha256": "5df50aa8fcee9acb4e80f9baab7d154106120d36e3e9fbd2bed0146cb8db35be"
+    },
+    {
+      "path": "notices/aora-LICENSE",
+      "bytes": 5027,
+      "sha256": "cd25a8e1b00d05b2bb29d3a626599526db960b5bf3ba94fd726565b9bec7f8ea"
+    },
+    {
+      "path": "notices/aora-NOTICE.md",
+      "bytes": 3234,
+      "sha256": "549d6607c9dd13c9add2fa5faeccca488bd78cf30cac2b0b4d3dbcd8b45b721d"
+    },
+    {
+      "path": "notices/aora-SOURCE-MANIFEST.json",
+      "bytes": 2781,
+      "sha256": "1def92868ff495d9098778a7a53532b85a288c1e19de27e8bb8780ecefde1d49"
+    },
+    {
+      "path": "notices/oidn/LICENSE.txt",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "notices/oidn/third-party-programs-DPCPP.txt",
+      "bytes": 6006,
+      "sha256": "9063626e7d3dfff306d6033d84b51adadbe459c7482f0296e92f597190ad33ea"
+    },
+    {
+      "path": "notices/oidn/third-party-programs-oneTBB.txt",
+      "bytes": 11631,
+      "sha256": "1634857eb058dce5278c57a832b8974190785145f4be9acdbdb511f3a0c4091c"
+    },
+    {
+      "path": "notices/oidn/third-party-programs.txt",
+      "bytes": 34574,
+      "sha256": "43905db59c86bc1de8cee0f24878d9a127c319d87c57f53f68d904043eefe98f"
+    },
+    {
+      "path": "notices/three/LICENSE",
+      "bytes": 1081,
+      "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+    },
+    {
+      "path": "provenance/BLENDER-COLOR-CONFIG-HASHES.json",
+      "bytes": 2304,
+      "sha256": "9cc2fdedfc1cb946bf95b1afce161a9d885121b082a52bf8d9809654f87213d8"
+    },
+    {
+      "path": "provenance/CANOPY-CANDIDATE-MANIFEST.json",
+      "bytes": 6689,
+      "sha256": "86e23ce475b7776011af0ec329a87e0e2f4c9afe75c92bf3954a56aded33b1f3"
+    },
+    {
+      "path": "provenance/DEPENDENCIES.json",
+      "bytes": 6028,
+      "sha256": "dc9bffd2c3910f85ba5b25a0ee42f81a1247c0e179f41d9a42a38d902bbb6e21"
+    },
+    {
+      "path": "provenance/PLATE-COLOR-CONTRACT.json",
+      "bytes": 591,
+      "sha256": "7853086f70164b291227c37eac6f798453420f88c820d740675336648e157613"
+    },
+    {
+      "path": "provenance/PLATE-LINEAR-STORAGE-VERIFIED.json",
+      "bytes": 79,
+      "sha256": "cb802064b544506ad293f07370ef45ca516883974e1caed692f90334cd239fd2"
+    },
+    {
+      "path": "provenance/SOURCE-COPY-MAPPING.json",
+      "bytes": 8731,
+      "sha256": "6f28fb5a912164d4eaf79fa134fda0c3f6fe512d8b93310a11c9e050cc5b3a8f"
+    },
+    {
+      "path": "provenance/STRUCTURED-RADIANCE-CONTRACT.json",
+      "bytes": 1953,
+      "sha256": "cb797f8f30f31e3d94caed7057b2a8336af1b0a8d9b5d09c472c52565dcffb85"
+    },
+    {
+      "path": "provenance/THIN-SHEET-CANDIDATE-MANIFEST.json",
+      "bytes": 2496,
+      "sha256": "906a0006ebabda06a7b82467ca3ab330b3b1e8cf731574957068990864de2b2a"
+    },
+    {
+      "path": "provenance/V7-SAVED-SOURCE-VERIFICATION.json",
+      "bytes": 988,
+      "sha256": "978a3e6881f9ac69427486808e920b246d80e8d5293c6d60ca006301febbf6ae"
+    },
+    {
+      "path": "recipes/build_canopy_candidate.py",
+      "bytes": 1032,
+      "sha256": "48365f469dec0879a18af9e9c12ca5783c0c44d4f60c24e3bf93d87f3a239314"
+    },
+    {
+      "path": "recipes/build_integrated_structured.py",
+      "bytes": 3815,
+      "sha256": "df0f0146825b545f3b458871aa19b334e2360156e02c6f95ddfb2926b1fcbb46"
+    },
+    {
+      "path": "recipes/build_structured_radiance.py",
+      "bytes": 4232,
+      "sha256": "ccfed070396a75505b5b5a19a48ebbb86002052ef0402da9f904a53a6321486b"
+    },
+    {
+      "path": "recipes/build_thin_sheet_candidate.py",
+      "bytes": 1388,
+      "sha256": "a172da40da6b62a3e3c69661bc4ea1c9f2d9c0f3f1ad19392f47dddc58a037af"
+    },
+    {
+      "path": "recipes/materials/clear_wet_canopy.py",
+      "bytes": 10849,
+      "sha256": "e41960160b77f62050c13e2e2903f379d4e17a22eae2ff19f672ee8037b1c2f6"
+    },
+    {
+      "path": "recipes/materials/patch_ceramic.py",
+      "bytes": 13125,
+      "sha256": "7e92c628a8821d649e8a4abbe4d0a11e9fee808bde5b289ca72edaba4dd668a6"
+    },
+    {
+      "path": "recipes/materials/thin_sheet_canopy.py",
+      "bytes": 4500,
+      "sha256": "63edc70bf727a9c568a707e5261034a2f49792c3219fed65bbb17d9900d82ca9"
+    },
+    {
+      "path": "recipes/prepare_plate.py",
+      "bytes": 1758,
+      "sha256": "342571cc1b1b5b0ec45ce5a81f1a28904a470bae18c3e5951bb0093efe24b088"
+    },
+    {
+      "path": "recipes/render_hero_crop.py",
+      "bytes": 3227,
+      "sha256": "c50f9e602941db54d05c644e928bed01f781804f18f78c80db0939f6d9904eae"
+    },
+    {
+      "path": "recipes/render_hybrid_v4.py",
+      "bytes": 10891,
+      "sha256": "214fb30ed530a911ce411a615744f3eeff26b6c352063b866290b934a199fcad"
+    },
+    {
+      "path": "recipes/save_linear_plate.py",
+      "bytes": 1016,
+      "sha256": "c4adc7c4d77b2ee3a30ea784a5f19c7e0ec33573dec821f9f66531c8598f876b"
+    },
+    {
+      "path": "recipes/verify_integrated_v7.py",
+      "bytes": 3036,
+      "sha256": "09105df2df0fb88c8157c2c860220e296c6d5173bd60b2136ac6d44ccbc131f1"
+    },
+    {
+      "path": "src/denoise_hybrid.py",
+      "bytes": 1595,
+      "sha256": "7353e2bcee57ef6f7c5b92b51e795c3fabb678c6a920d6fefe6cf120b761f514"
+    },
+    {
+      "path": "src/process_hybrid.py",
+      "bytes": 3091,
+      "sha256": "39fa3ad67be9ff37868e34a7909c96e767f9a096282b063995054cdcf384e035"
+    },
+    {
+      "path": "src/render_full_v7.py",
+      "bytes": 2576,
+      "sha256": "e7bd9a1da4cc16098f6c2cf189f89df9284e9cb930bdacd235537d4654fbe26b"
+    },
+    {
+      "path": "src/run_guarded.py",
+      "bytes": 2642,
+      "sha256": "ac5eb3a5e259b8354b1607bff3772fa4e0509c00896c4396ad53d01225c9c709"
+    },
+    {
+      "path": "tools/guard.py",
+      "bytes": 831,
+      "sha256": "4164fa574efb933a8168f3440b68cabfed35258039e6f90374d7c1642f9a183b"
+    },
+    {
+      "path": "tools/reproduce.py",
+      "bytes": 5509,
+      "sha256": "7c5d4919b65d1c0d7029151bdc55db225415070d1063a60e8d1850042643a967"
+    },
+    {
+      "path": "tools/run_frozen.py",
+      "bytes": 4421,
+      "sha256": "9283f8f64daca5ef8ef3ccd88f36a2ed2e96f5b4b5a47e2959f060679274a7a8"
+    }
+  ]
+}

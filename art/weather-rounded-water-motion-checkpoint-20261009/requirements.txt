@@ -1,0 +1,4 @@
+# Host-side encoding/source-check packages actually present during the original proof
+# Blender 4.3.2 supplies its own bpy/bmesh/mathutils and bundled NumPy
+numpy==2.3.5
+Pillow==12.3.0

@@ -1,0 +1,130 @@
+{
+  "scope": "Allowlisted UTF-8 source/provenance/license files only; this inventory and SHA256SUMS are excluded from its self-inventory",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 35,
+      "sha256": "91cb94768182286fbc7a9c7a349160bbbab2c0a2aa1d6880415c17e13c4cd716"
+    },
+    {
+      "path": "CHECKPOINT-MANIFEST.json",
+      "bytes": 5295,
+      "sha256": "763b204ccc6e85d79a51a06fd17dc492568e625a810d914560964a8dbd98f062"
+    },
+    {
+      "path": "DEPENDENCIES.json",
+      "bytes": 10675,
+      "sha256": "7e38304330d7e65aed10a02609660536caab48628fabadca492831d299cba44a"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 978,
+      "sha256": "7ea82cde9bde21524ffb5e93208b0ce706665160abe4339182badb59a045e351"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4923,
+      "sha256": "34083ebcd8e601d0a7ea03358c02324f33881889372a7a8212940641733f71bc"
+    },
+    {
+      "path": "SOURCE-COPY-MAPPING.json",
+      "bytes": 7586,
+      "sha256": "f6680b00b3ee35ab0c6631ef62799f9498349957166ca2c49e02a31c42356f88"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "bytes": 1556,
+      "sha256": "155b6f17a8c29fbbf966747864722469c5181d79f081f46857e2229e3db3507c"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 185,
+      "sha256": "da7496edf4f743602e611667c2eefe324e0be7164f33cd40e3a1d8ce2aa0e216"
+    },
+    {
+      "path": "src/audit_animation.py",
+      "bytes": 147,
+      "sha256": "cae3aeabe80b891e0ea676b7a6d6bb560e81cdcc1c1bdef848b2437f4efc768f"
+    },
+    {
+      "path": "src/audit_continuity_detail.py",
+      "bytes": 1884,
+      "sha256": "e0d6e8cb4c22e80b9675ab639e5d727eeb7e0245ab81647fe01e5ecf43176011"
+    },
+    {
+      "path": "src/continuous_water.py",
+      "bytes": 11130,
+      "sha256": "d0d659a4e357756f660060a580ae897896abc0c482ea126ac951039a522024f5"
+    },
+    {
+      "path": "src/contract.py",
+      "bytes": 1831,
+      "sha256": "ecab44c007ef45ba98e8ed843c53320891f41a2059561738863bff0c7dfbef90"
+    },
+    {
+      "path": "src/denoise_frame.py",
+      "bytes": 1086,
+      "sha256": "67ff986cc4dbbe5462cc4545cf6a63f72685111362ff8154ccef46323f533ea4"
+    },
+    {
+      "path": "src/mesh_helpers.py",
+      "bytes": 1331,
+      "sha256": "df727d48453b82d7c0038194571daa9663b0dee5c0c9c28143de33652f58a1f0"
+    },
+    {
+      "path": "src/package_preview.py",
+      "bytes": 4855,
+      "sha256": "36eabb709776e6b74aa6ba6c5752cd18c9e76f2ec0776f9df6d7604c12c81865"
+    },
+    {
+      "path": "src/prepare_plate.py",
+      "bytes": 773,
+      "sha256": "007fc9f86d2973984fa12d2bf4716e0fcdd4224fa040365b88f50656e6211a20"
+    },
+    {
+      "path": "src/process_frame.py",
+      "bytes": 2473,
+      "sha256": "1205f08f4b0d9753ad6d960c1a70a5d04806d7915f8debd2169dbc93a83a6b45"
+    },
+    {
+      "path": "src/render_frames.py",
+      "bytes": 5490,
+      "sha256": "b033f8ae265c24ef82dc8a04d47049a560c40d5d2cbbe4062643e09e6b5acd4b"
+    },
+    {
+      "path": "src/render_full900.py",
+      "bytes": 2203,
+      "sha256": "c3cd19ca1c2bb0db3e18ff58c52434187b1cb4af942cdbe410d3e6221841c7b1"
+    },
+    {
+      "path": "src/run_guarded.py",
+      "bytes": 2644,
+      "sha256": "a17ca6664a8eb99d6dea37052f3c356398e4f595e37b63ab9d8149866694d388"
+    },
+    {
+      "path": "src/state_guard.py",
+      "bytes": 5172,
+      "sha256": "375ed8b657b38ba506a22c05880b6b57ae478cfbdc116d9fc6a029e646291c0f"
+    },
+    {
+      "path": "src/state_values.py",
+      "bytes": 1683,
+      "sha256": "a098c2c550d4b7332bd1b8473d9ca34ec8d1bac20904bdde369d1e9759d0bb46"
+    },
+    {
+      "path": "tools/check_sources.py",
+      "bytes": 4361,
+      "sha256": "624926ff2bb21f8c96a7ff18cde50bced065592ff292eb1904f7160fbbc6a563"
+    },
+    {
+      "path": "tools/guard.py",
+      "bytes": 831,
+      "sha256": "4164fa574efb933a8168f3440b68cabfed35258039e6f90374d7c1642f9a183b"
+    },
+    {
+      "path": "tools/reproduce.py",
+      "bytes": 3207,
+      "sha256": "dc3b6715200d53b712c2163758ac2f56b0a8c81df8312eadf702ced93b36406a"
+    }
+  ]
+}

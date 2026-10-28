@@ -58,11 +58,11 @@ try {
       // Deterministic setup uses the existing reduced-motion policy/public time API.
       // Restore natural motion before any recorded interaction; never advance scene frames.
       await page.emulateMedia({ reducedMotion: 'reduce' });
-      await page.waitForFunction(() => window.personalOSHost.getState().reduced);
+      await page.waitForFunction(() => { const s = window.personalOSHost.getState(); return s.reduced && s.scene.reduced && s.scene.paused; });
       await page.evaluate(() => window.personalOSHost.scene().setTime('day'));
       await page.waitForFunction(() => window.personalOSHost.getState().scene.night === false);
       await page.emulateMedia({ reducedMotion: 'no-preference' });
-      await page.waitForFunction(() => !window.personalOSHost.getState().reduced);
+      await page.waitForFunction(() => { const s = window.personalOSHost.getState(); return !s.reduced && !s.scene.reduced; });
       result.scene = (await state()).scene;
       assert.equal(result.scene.failed, null);
       assert.equal(result.scene.canvasCount, 1);

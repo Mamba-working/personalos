@@ -55,8 +55,14 @@ try {
     try {
       await page.goto(`http://127.0.0.1:${server.address().port}/`, { waitUntil: 'networkidle' });
       await page.waitForFunction(() => window.personalOSHost?.getState().ready && window.personalOSHost.getState().scene?.ready, null, { timeout: 60000 });
+      // Deterministic setup uses the existing reduced-motion policy/public time API.
+      // Restore natural motion before any recorded interaction; never advance scene frames.
+      await page.emulateMedia({ reducedMotion: 'reduce' });
+      await page.waitForFunction(() => window.personalOSHost.getState().reduced);
       await page.evaluate(() => window.personalOSHost.scene().setTime('day'));
       await page.waitForFunction(() => window.personalOSHost.getState().scene.night === false);
+      await page.emulateMedia({ reducedMotion: 'no-preference' });
+      await page.waitForFunction(() => !window.personalOSHost.getState().reduced);
       result.scene = (await state()).scene;
       assert.equal(result.scene.failed, null);
       assert.equal(result.scene.canvasCount, 1);
@@ -178,6 +184,7 @@ try {
       await page.waitForFunction(() => window.personalOSHost.getState().scene.night === true);
       await mark('Night palette visual regression');
       await shot('night-content');
+      assert.equal(await page.locator('.card .open-label').first().evaluate(node => getComputedStyle(node).color === getComputedStyle(node.closest('.card')).color), true, 'Open action follows readable editorial ink at night');
       result.nightPalette = await page.locator('#content-root').evaluate(node => ({ color: getComputedStyle(node).color, editorialInk: getComputedStyle(node).getPropertyValue('--editorial-ink') }));
 
       assert.deepEqual(result.errors, [], 'no uncaught page errors');

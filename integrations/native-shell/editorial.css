@@ -33,7 +33,7 @@
 .card .card-visual,.card[data-preview-density=compact] .card-visual{height:auto;aspect-ratio:1.7;margin:0 0 14px;border-radius:8px;border:1px solid rgb(255 255 255 / .48);background:transparent;box-shadow:none;order:-1;flex:none}
 .editorial-cover{display:block;width:100%;height:100%;object-fit:cover}
 .card .card-foot,.card[data-preview-density=compact] .card-foot{margin-top:14px;font:10px/1.6 ui-monospace,monospace;letter-spacing:.02em;gap:12px;flex-wrap:wrap}
-.card .open-label{display:inline-flex;align-items:center;gap:8px}
+.card .open-label{color:var(--editorial-ink);display:inline-flex;align-items:center;gap:8px}
 .card .open-label::after{content:"↗";font:18px/1 Georgia,serif}
 .card .open-card{border-radius:4px}
 .card:has(.open-card:hover) .open-label{text-decoration:underline;text-underline-offset:4px}

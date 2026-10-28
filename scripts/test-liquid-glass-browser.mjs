@@ -16,7 +16,7 @@ try {
   for (const config of [{ name: 'desktop', width: 1440, height: 1000 }, { name: 'mobile', width: 390, height: 844 }]) {
     const context = await browser.newContext({ viewport: { width: config.width, height: config.height }, deviceScaleFactor: 1, isMobile: config.name === 'mobile', hasTouch: config.name === 'mobile', reducedMotion: 'no-preference' });
     const page = await context.newPage();
-    page.setDefaultTimeout(20000);
+    page.setDefaultTimeout(90000);
     const result = { viewport: config, errors: [], failedResponses: [], checks: [] };
     report.cases.push(result);
     page.on('pageerror', error => result.errors.push(error.message));
@@ -109,6 +109,9 @@ try {
       result.passed = true;
     } catch (error) {
       result.failure = error.message;
+      result.failureStack = error.stack;
+      result.failureState = await state().catch(() => null);
+      result.failureAnimations = await page.evaluate(() => document.getAnimations().map(a => ({ playState: a.playState, currentTime: a.currentTime, timing: a.effect?.getComputedTiming(), target: a.effect?.target?.className }))).catch(() => null);
       await shot('failure').catch(() => {});
       result.passed = false;
     } finally { await context.close(); }

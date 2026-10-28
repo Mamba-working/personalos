@@ -58,3 +58,18 @@
 }
 @media(max-width:380px){#content-root{padding-left:18px;padding-right:18px}.host-controls button{padding:0 7px}.topbar .brand{font-size:19px}}
 @media(prefers-reduced-transparency:reduce){.travel-shell,.travel-shell:has(.card[data-category]){background:var(--editorial-paper)!important}.filters{background:transparent}.card,.card[data-category]{background:transparent}}
+/* Match text contrast to the existing scene tone without painting over it. */
+.topbar[data-nav-tone=night] ~ .app{--editorial-ink:#f3f0e8;--editorial-muted:#d2d7df;--editorial-line:rgb(243 240 232 / .34)}
+.topbar[data-nav-tone=night] ~ .app .intro h1{text-shadow:0 1px 14px rgb(10 18 29 / .28)}
+/* The lifted reader remains a light paper surface in every scene. */
+.travel-shell{--editorial-ink:#242421;--editorial-muted:#676861;--editorial-line:rgb(49 49 43 / .28)}
+@media(max-width:650px){
+ .topbar{gap:4px;padding-left:14px;padding-right:14px}
+ .topbar .brand{font-size:18px;letter-spacing:-1px}
+ .topbar .brand-mark{display:none}
+ .host-controls{gap:4px;margin-left:auto}
+ .host-controls button,#host-menu .pos-menu-anchor>.pos-menu-toggle{padding-left:6px;padding-right:6px;min-height:44px;min-width:44px}
+ .chat-label{display:none}.chat-label-compact{display:inline}
+ #host-menu{margin-left:0}
+ #host-menu .pos-menu-anchor>.pos-menu-toggle{gap:5px}
+}

@@ -1,3 +1,5 @@
+> Historical material experiment; superseded by [the editorial scene demo](EDITORIAL_SCENE_DEMO.md). Latest acceptance evidence is in PR #10.
+
 # Liquid Glass material candidate
 
 Based on main `0c8bb70db81654c279c306fb534204cbbdad04de`.

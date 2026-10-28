@@ -3,7 +3,10 @@ export function mountMotionScene({ host, container, speech, status }) {
   let scene = null, pending = null, disposed = false, cached = false, ready = false, failed = null;
   let selected = 'sunny', time = 'auto', pointerLease = false, speechTimer = 0, paintPending = false, paintAgain = false;
   let state = host.getState(); const cleanups = [];
-  const visibleHero = () => document.scrollingElement.scrollTop < Math.max(120, innerHeight * .8);
+  const visibleHero = () => {
+    const hero = document.querySelector?.('.intro'), header = document.querySelector?.('.topbar');
+    return hero ? hero.getBoundingClientRect().bottom > (header?.getBoundingClientRect().bottom || 0) : document.scrollingElement.scrollTop < Math.max(120, innerHeight * .8);
+  };
   const blocked = () => state.chat?.phase && state.chat.phase !== 'closed' || state.content?.phase && state.content.phase !== 'preview' || state.menu?.open || state.menu?.modal;
   const exploring = () => state.sceneExplore?.inputEnabled === true;
   const staticMode = () => (state.sceneExplore && !['reading','exploring'].includes(state.sceneExplore.phase)) || state.reduced || (!visibleHero() && !exploring()) || !!blocked();

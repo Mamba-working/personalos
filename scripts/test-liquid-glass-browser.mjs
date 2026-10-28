@@ -55,6 +55,8 @@ try {
     try {
       await page.goto(`http://127.0.0.1:${server.address().port}/`, { waitUntil: 'networkidle' });
       await page.waitForFunction(() => window.personalOSHost?.getState().ready && window.personalOSHost.getState().scene?.ready, null, { timeout: 60000 });
+      await page.evaluate(() => window.personalOSHost.scene().setTime('day'));
+      await page.waitForFunction(() => window.personalOSHost.getState().scene.night === false);
       result.scene = (await state()).scene;
       assert.equal(result.scene.failed, null);
       assert.equal(result.scene.canvasCount, 1);
@@ -66,10 +68,14 @@ try {
       });
       assert.ok(result.webgl.width > 0 && result.webgl.height > 0);
       await visible('#motion-scene canvas');
+      await page.waitForFunction(() => [...document.querySelectorAll('img.editorial-cover')].every(image => image.complete && image.naturalWidth > 0));
+      result.checks.push('all editorial SVG covers decode successfully, not merely HTTP 200');
       await mark('Hero ready');
       await shot('hero');
       await hold(1600);
+      await page.mouse.move(config.width * .35, config.height * .65);
       await page.mouse.wheel(0, 420);
+      await page.waitForFunction(() => document.scrollingElement.scrollTop > 0);
       await hold(1800);
       await mark('Continuous native scroll to editorial content');
       // Exploration and return are captured before the filter/card regression below.
@@ -168,6 +174,12 @@ try {
       await page.locator('#ai-close').click();
       await phase('chat', 'closed');
       result.checks.push('chat real open/send/close/reopen, visible retained user message');
+      await page.evaluate(() => window.personalOSHost.scene().setTime('night'));
+      await page.waitForFunction(() => window.personalOSHost.getState().scene.night === true);
+      await mark('Night palette visual regression');
+      await shot('night-content');
+      result.nightPalette = await page.locator('#content-root').evaluate(node => ({ color: getComputedStyle(node).color, editorialInk: getComputedStyle(node).getPropertyValue('--editorial-ink') }));
+
       assert.deepEqual(result.errors, [], 'no uncaught page errors');
       assert.deepEqual(result.failedResponses, [], 'no failed asset responses');
       assert.equal((await state()).scene.failed, null);

@@ -139,7 +139,11 @@
     },
     {
       "path": "runtime/index.html",
-      "sha256": "196ec47670fb43978035d9c0e3f7936dff6d111cc4af04a7a2fee6bd2401523e"
+      "sha256": "f040e6d22062ab9e194ee9fae6c0ed993a4946d38c6d75b65967e7c8c9d203f6"
+    },
+    {
+      "path": "runtime/liquid-glass.css",
+      "sha256": "17019e178feec036e31c507a64408e4f30b9993ed6919b528b0fada6f18e074b"
     },
     {
       "path": "runtime/material.css",
@@ -358,6 +362,6 @@
       "sha256": "69afa74e3bc89fc6758c39585ae789345cfdce80efb591ba0829031ad0783a03"
     }
   ],
-  "originalRuntimeSHA256": "96f28cdd3e00564311fbd55d59a24d1fabc5e2f3fe9ad0cd00b3c045b2c4d90b",
-  "acceptance": "Exact source/runtime snapshot; full GPU/mobile/performance acceptance incomplete"
+  "originalRuntimeSHA256": "e4544511ae5d62a9934bf1a6ac6873c59dcf321bbeda92d8bf6cfb31e4025afc",
+  "acceptance": "Liquid Glass CSS candidate based on 0c8bb70; motion/3D sources and payload unchanged; full GPU/mobile/performance acceptance incomplete"
 }

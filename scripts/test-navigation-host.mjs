@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /** Host navigation A source/DOM checks, not browser layout or pixel acceptance. */
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { createRequire } from 'node:module';
 import path from 'node:path';
 import test from 'node:test';
@@ -18,7 +19,7 @@ async function harness(t) {
   const dom = new JSDOM(read('index.html').replace(/<link[^>]*>/g,''), {url:'https://prototype.local/alpha/v0.1.0-alpha.8/',runScripts:'outside-only',pretendToBeVisual:true});
   const w = dom.window, d = w.document, header = d.querySelector('.topbar'), hero = d.querySelector('.intro');
   const style = d.createElement('style');
-  style.textContent = ['style.css','material.css','palette.css','host.css','modules/menu.css'].map(read).join('\n'); d.head.append(style);
+  style.textContent = ['style.css','material.css','palette.css','host.css','modules/menu.css','liquid-glass.css'].map(read).join('\n'); d.head.append(style);
   // Exact class/semantic boundary of the retained native menu anchor.
   d.querySelector('#host-menu').innerHTML='<span class="pos-menu"><span class="pos-menu-anchor"><button class="pos-menu-toggle" type="button" aria-label="打开空间菜单"><span>Menu</span><span class="pos-menu-icon" aria-hidden="true"><i></i><i></i></span></button></span></span>';
   let heroBottom=700;
@@ -35,13 +36,14 @@ async function harness(t) {
   return h;
 }
 
-test('A masthead is transparent and flat, retaining native header actions',async t=>{
+test('glass controls retain a transparent masthead and native header actions',async t=>{
   const h=await harness(t);
   assert.equal(h.style(h.header).backgroundColor,'rgba(0, 0, 0, 0)');
   assert.equal(h.style(h.header).boxShadow,'none');
   for(const selector of ['#host-motion','#host-open-chat','#host-menu .pos-menu-toggle']) {
     const button=h.d.querySelector(selector), css=h.style(button);
-    assert.equal(button.tagName,'BUTTON'); assert.equal(css.backgroundColor,'rgba(0, 0, 0, 0)'); assert.equal(parseFloat(css.borderRadius),0);
+    assert.equal(button.tagName,'BUTTON'); assert.equal(parseFloat(css.borderRadius),999);
+    assert.notEqual(css.boxShadow,'none');
     assert.ok(parseFloat(css.minHeight)>=44); assert.ok(parseFloat(css.minWidth)>=44);
   }
   assert.equal(h.d.querySelector('#host-open-chat').getAttribute('aria-label'),'Ball 聊天');
@@ -62,7 +64,8 @@ test('only public ready/night host state changes masthead foreground tone',async
 test('native scroll switches only masthead surface hint, keeping the current scene tone',async t=>{
   const h=await harness(t); h.scene({ready:true,night:true});
   h.scroll(90); assert.equal(h.header.dataset.navSurface,'content'); assert.equal(h.header.dataset.navTone,'night');
-  assert.notEqual(h.style(h.d.querySelector('#host-open-chat')).textShadow,'none');
+  // jsdom normalizes the CSS `none` shadow to transparent color in this cascade.
+  assert.ok(['none','rgba(0, 0, 0, 0)'].includes(h.style(h.d.querySelector('#host-open-chat')).textShadow));
   assert.equal(h.style(h.header).backgroundColor,'rgba(0, 0, 0, 0)');
   h.scroll(700); assert.equal(h.header.dataset.navSurface,'scene');
 });
@@ -99,4 +102,30 @@ test('analytical day/night color pairs clear small-text contrast on representati
   assert.ok(contrast('3c4b64','d9dee7')>=4.5);
   assert.ok(contrast('f5f1ea','334c70')>=4.5);
   assert.ok(contrast('d0d9e7','334c70')>=4.5);
+});
+
+// UI-only boundary pinned to alpha.8 commit 0c8bb70db81654c279c306fb534204cbbdad04de.
+// Deliberate future behavior changes must explicitly review this guard, not silently refresh it.
+function treeFiles(relative) {
+  return readdirSync(path.join(root,relative),{withFileTypes:true}).flatMap(entry=>{
+    const name=`${relative}/${entry.name}`;
+    return entry.isDirectory()?treeFiles(name):[name];
+  });
+}
+test('glass update leaves every original controller, geometry stylesheet and 3D source byte-identical',()=>{
+  const files=[...treeFiles('integrations').filter(file=>/\.(js|css)$/.test(file)&&file!=='integrations/native-shell/liquid-glass.css'),...treeFiles('modules/motion-ball')].sort();
+  const hash=createHash('sha256');
+  for(const file of files) hash.update(file).update('\0').update(readFileSync(path.join(root,file))).update('\0');
+  assert.equal(hash.digest('hex'),'797df6032e4ac69ad57a936fd369b0aee1bacea02f9808fa9df9daab502164a9');
+});
+test('glass stylesheet adds no competing animation or transform ownership',()=>{
+  const css=read('liquid-glass.css').replace(/\/\*[\s\S]*?\*\//g,'');
+  assert.doesNotMatch(css,/(?:^|[;{])\s*(?:animation(?:-[\w-]+)?|transition(?:-[\w-]+)?|transform(?:-[\w-]+)?|perspective|will-change)\s*:/i);
+  assert.doesNotMatch(css,/@keyframes\b/i);
+  const rules=[...css.matchAll(/([^{}]+)\{([^{}]*)\}/g)];
+  for(const [,selector,body] of rules) {
+    if(selector.trim()==='.topbar') assert.doesNotMatch(body,/(?:backdrop-filter|filter|contain)\s*:/i);
+  }
+  assert.match(css,/\.topbar\[data-nav-surface=content\]::before\s*\{/);
+  assert.match(css,/\.topbar::before\s*\{[^}]*pointer-events:\s*none/);
 });

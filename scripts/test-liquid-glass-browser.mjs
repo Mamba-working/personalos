@@ -21,7 +21,7 @@ try {
     report.cases.push(result);
     page.on('pageerror', error => result.errors.push(error.message));
     page.on('response', response => { if (response.status() >= 400) result.failedResponses.push({ path: new URL(response.url()).pathname, status: response.status() }); });
-    const shot = async name => page.screenshot({ path: new URL(`${config.name}-${name}.png`, out).pathname, animations: 'allow' });
+    const shot = async name => page.screenshot({ path: new URL(`${config.name}-${name}.png`, out).pathname, animations: 'allow', timeout: 90000 });
     const state = () => page.evaluate(() => window.personalOSHost.getState());
     const phase = (part, value) => page.waitForFunction(({ part, value }) => window.personalOSHost?.getState()[part]?.phase === value, { part, value });
     const visible = async selector => {

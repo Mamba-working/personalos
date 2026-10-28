@@ -45,4 +45,7 @@ escalated launch then failed in environment setup before the browser ran. Thus
 normal-speed motion, actual CSS pixels, repeated/interrupted browser flows,
 Safari, GPU composition and physical mobile behavior are **not verified** by
 this candidate. Source/hash checks do not substitute for those acceptance gates.
-No deployment, publication, commit or push is included.
+The candidate is now submitted as a draft pull request. No merge or deployment
+is included. A separate Chromium/SwiftShader CI workflow captures actual
+rendering and repeated interactions; its report is software-rendered browser
+evidence, not physical GPU or mobile acceptance.

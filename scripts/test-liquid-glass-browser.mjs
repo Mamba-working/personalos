@@ -276,7 +276,9 @@ async function verifyExplore({ page, result, config, mark, hold, shot, phase }) 
   assert.equal(await page.evaluate(({ x, y }) => document.elementFromPoint(x, y)?.tagName, ground), 'CANVAS', 'ground click lands on real scene canvas');
   await mark('Click terrain to send the existing ball to a new place');
   await page.mouse.click(ground.x, ground.y);
-  await hold(1800);
+  // Wait for observed physical movement, not 1.8 seconds that may contain zero
+  // software-GPU frames. Keep the same displacement assertion and natural clock.
+  await page.waitForFunction(x => Math.abs(window.personalOSHost.getState().scene.anchors.ball.x - x) > 3, groundBefore.scene.anchors.ball.x, { timeout: 180000 });
   const groundAfter = await inspect();
   result.explore.groundClick = { point: ground, before: groundBefore.scene.anchors.ball, after: groundAfter.scene.anchors.ball };
   assert.ok(Math.abs(groundAfter.scene.anchors.ball.x - groundBefore.scene.anchors.ball.x) > 3, 'original ground-click behavior moves the ball');

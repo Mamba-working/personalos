@@ -12,8 +12,9 @@ copies it into the runtime. Runtime provenance is refreshed for these UI files.
   transform/width transition remain responsible for selection motion.
 - Chat, motion and menu triggers receive a rounded glass material while retaining
   their existing labels, hit targets, listeners and opening/closing controllers.
-- Preview cards use a 32% navy tint and only 2px backdrop blur, not the heavy fog
-  of the conceptual reference. Text is not filtered. The reader uses a stronger
+- Preview cards use a local navy reading gradient (72% at the top, 62% through
+  the text region, 20% at the lower edge) and only 2px backdrop blur.
+  Text is neither filtered nor outlined with a shadow. The reader uses a stronger
   88% tint for long-form readability without changing its measured layout.
 - The masthead receives a separate noninteractive scrim only over scrolled
   content. The header itself never becomes a filtered/transformed containing

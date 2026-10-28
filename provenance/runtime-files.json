@@ -14,6 +14,18 @@
       "sha256": "b03fbf9dc7ee0dd80b6f1d91dc5c78757e1fa5ad1f5d1383fbc1ae5560335c1e"
     },
     {
+      "path": "runtime/assets/editorial-labs.svg",
+      "sha256": "32c8e59ca9aa09b4287879006931fcff9483a66baff4517691349e18be9fdb55"
+    },
+    {
+      "path": "runtime/assets/editorial-map.svg",
+      "sha256": "b505150796a41b6a3f53330f778799b2f85b88409de2397675f73f3a4b0d7dc3"
+    },
+    {
+      "path": "runtime/assets/editorial-work.svg",
+      "sha256": "63bddf3f950dbbcc0381ba7fcfee797a690ccf78ca1c84f874fdb817bb062931"
+    },
+    {
       "path": "runtime/chat/chat-fluid-send.js",
       "sha256": "146db578b5bf2bcc65f9c550d886afcf001dbcbf35725754d4d6e8770aac9070"
     },
@@ -111,11 +123,15 @@
     },
     {
       "path": "runtime/content.js",
-      "sha256": "009f5995501d4eaf88b69fa06d81c38c716baa90549dfa1c41e08e6619e787b9"
+      "sha256": "f9c612095815ff8ca842d61e386d139b9cae4e1dde7c92e9be9cb34c6729f3f4"
     },
     {
       "path": "runtime/diagnostics/keyboard-diagnostics.js",
       "sha256": "255f6413fa67b370ebedde24ed4a8fe8380304afbd7c48287009a6949223a447"
+    },
+    {
+      "path": "runtime/editorial.css",
+      "sha256": "3bb82e213f96aa977157a4fa105bb60db836a421161b53afddf6104e2e2526f4"
     },
     {
       "path": "runtime/feed-compact.css",
@@ -123,7 +139,7 @@
     },
     {
       "path": "runtime/feed-layout.js",
-      "sha256": "7dec28dbd52bb640f0158060fed82a9f44d4731e3698066137854a55ff68a2e0"
+      "sha256": "3b2893779637edf854ced01162252346fd3ab195da1e0347fa7af9b33b10094b"
     },
     {
       "path": "runtime/feed-reflow.js",
@@ -135,11 +151,11 @@
     },
     {
       "path": "runtime/host.js",
-      "sha256": "1b2c97819d1eeb2d139e79d706bbac786876abc618d767126e435c8c27aeb32d"
+      "sha256": "f3b15f56143cf8bc2d7e5ed2e3f3715721d3013d067be1110f611787441cf13e"
     },
     {
       "path": "runtime/index.html",
-      "sha256": "f040e6d22062ab9e194ee9fae6c0ed993a4946d38c6d75b65967e7c8c9d203f6"
+      "sha256": "dec030f8df5f653a109497d663f90fb6d91d66716b587e37414d621d9229a65b"
     },
     {
       "path": "runtime/liquid-glass.css",
@@ -159,7 +175,7 @@
     },
     {
       "path": "runtime/modules/motion-scene.js",
-      "sha256": "ad5ec49740f7a9acef93bbf36100211091efbc793b8c375f1cc2739abc39730d"
+      "sha256": "415977c4e4598fdac1e64b4b1e28293a3996465324384b67dbe53592ab3b33e5"
     },
     {
       "path": "runtime/modules/mount.js",
@@ -342,6 +358,14 @@
       "sha256": "e1c4e28d818ad9f5d13f40914eaaf5bee6c8ef5ab102373b70369405f42b4650"
     },
     {
+      "path": "runtime/scene-explore.css",
+      "sha256": "ad72827cfe4b20c0f9db9cfb7a6c554e2436abf53db9773fe09af13541771b9d"
+    },
+    {
+      "path": "runtime/scene-explore.js",
+      "sha256": "ba758882bd00b1094f4fa7da9e6b7e6549d6fd4b651f905b2f6d5bef0183b6cb"
+    },
+    {
       "path": "runtime/send-comparison.css",
       "sha256": "837459bf03305288015c20aebbb9af5ab4549db4fe03989c11341d3190e4396a"
     },
@@ -362,6 +386,6 @@
       "sha256": "69afa74e3bc89fc6758c39585ae789345cfdce80efb591ba0829031ad0783a03"
     }
   ],
-  "originalRuntimeSHA256": "cabcb6b5095212cf1aea08b551b796f249648fc745a03c6ac7515f08d3d8437c",
-  "acceptance": "Liquid Glass CSS candidate based on 0c8bb70; motion/3D sources and payload unchanged; full GPU/mobile/performance acceptance incomplete"
+  "originalRuntimeSHA256": "3e28e99b0f31bc6561ddb62ee12c2af38147f62525f8eaa1b63544174ac857e0",
+  "acceptance": "Editorial composition and explicit scene-input lease; original upstream motion-ball and native card/chat/menu controllers unchanged; browser/video acceptance tracked in PR10."
 }

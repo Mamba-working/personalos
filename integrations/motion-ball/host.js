@@ -13,7 +13,7 @@ const getState = () => ({ version: 5, ready: !!(chat && window.personalOSContent
   story: { phase: 'home', reduced: reduced(), enabled: false },
   content: window.personalOSContent?.getState() || null, chat: chat?.getState() || null,
   menu: modules.get('menu')?.getState() || null, weather: modules.get('weather')?.getState() || null,
-  scene: modules.get('scene')?.getState() || null });
+  scene: modules.get('scene')?.getState() || null, sceneExplore: modules.get('sceneExplore')?.getState() || null });
 function syncHeader(state = getState()) {
   header.dataset.navTone = state.scene?.ready && !state.scene.failed && state.scene.night === true ? 'night' : 'day';
   header.dataset.navSurface = hero.getBoundingClientRect().bottom <= header.getBoundingClientRect().bottom ? 'content' : 'scene';

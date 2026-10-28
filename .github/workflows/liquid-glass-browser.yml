@@ -11,7 +11,7 @@ concurrency:
 jobs:
   chromium-software-webgl:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -26,9 +26,9 @@ jobs:
         run: npm install --prefix .build/browser --no-save --ignore-scripts --no-audit --no-fund playwright@1.56.1
       - name: Install Chromium and system dependencies
         run: node .build/browser/node_modules/playwright/cli.js install --with-deps chromium
-      - name: Render and interact at desktop and mobile viewport sizes
+      - name: Record real-time editorial interactions and verify desktop/mobile/reduced motion
         run: node scripts/test-liquid-glass-browser.mjs
-      - name: Upload public-demo-only screenshots and honest result report
+      - name: Upload original real-time WebM, screenshots and honest result report
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:

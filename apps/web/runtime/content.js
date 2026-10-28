@@ -1,8 +1,8 @@
 // All records are authored demonstration fixtures, not claims about the owner's life.
 const topics=[
-['work','Interfaces that carry context','界面变化之后，内容仍在原来的关系里。','系统设计 / 示例',400,'context'],
-['thoughts','当内容成为界面','每一段内容，都可以拥有适合它的表达方式。','阅读札记 / 示例',330,'type'],
-['labs','A small spring laboratory','改变阻尼，观察系统如何回到平衡。','可交互实验 / 示例',390,'spring'],
+['work','Interface continuity','界面变化之后，内容仍在原来的关系里。','系统设计 / 示例',400,'context'],
+['thoughts','让界面记住来时的路','每一段内容，都可以拥有适合它的表达方式。','阅读札记 / 示例',330,'type'],
+['labs','小小的弹簧实验','改变阻尼，观察系统如何回到平衡。','可交互实验 / 示例',390,'spring'],
 ['work','A map, three views','同一份数据，分别看全貌、细节和关联。','信息架构 / 示例',360,'map'],
 ['labs','Signals, in sequence','一条曲线，也可以解释连续性。','数据视图 / 示例',340,'signal'],
 ['thoughts','留住阅读的位置','返回，不应该意味着重新寻找。','界面笔记 / 示例',390,'reading'],
@@ -21,6 +21,12 @@ const topics=[
 ];
 export const records=topics.map(([category,title,summary,meta,height,kind],i)=>({id:`${category}-${kind}`,category,title,summary,meta,height,kind,index:String(i+1).padStart(2,'0'),placeholder:true}));
 export function graphic(kind){
+ const category=records.find(record=>record.kind===kind)?.category;
+ if(category==='thoughts')return '';
+ const cover=category==='labs'?'labs':kind==='map'?'map':'work';
+ return `<img class="editorial-cover" src="./assets/editorial-${cover}.svg" alt="原创界面示意，非真实项目" width="720" height="440"><span class="visual-label">原创示意 / DEMO</span>`;
+}
+export function legacyGraphic(kind){
  if(kind==='type'||kind==='notes'||kind==='long')return `<div style="padding:18px 20px;color:var(--tone);font:46px/1.15 Georgia,serif;letter-spacing:-2px">Aa<span style="font:22px sans-serif;letter-spacing:0;padding-left:22px">字</span><div style="margin-top:8px;font:10px ui-monospace,monospace;letter-spacing:2px;color:var(--muted)">CONTENT → CONTEXT</div></div>`;
  const path=Array.from({length:46},(_,i)=>`${i?'L':'M'}${(i*6.65).toFixed(2)},${(58+Math.sin(i*.31)*Math.exp(-i/55)*31).toFixed(2)}`).join(' ');
  return `<svg class="signal" viewBox="0 0 300 128" preserveAspectRatio="none" aria-label="示例波形图" role="img"><path d="M0 32H300M0 64H300M0 96H300M60 0V128M120 0V128M180 0V128M240 0V128" stroke="currentColor" opacity=".08" fill="none"/><path d="${path}" stroke="var(--tone)" stroke-width="2" fill="none"/><circle cx="149" cy="${(58+Math.sin(22*.31)*Math.exp(-22/55)*31).toFixed(2)}" r="4" fill="var(--tone)"/></svg><span class="visual-label">${kind.toUpperCase()} / EXAMPLE DATA</span>`;

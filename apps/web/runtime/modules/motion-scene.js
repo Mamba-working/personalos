@@ -5,7 +5,8 @@ export function mountMotionScene({ host, container, speech, status }) {
   let state = host.getState(); const cleanups = [];
   const visibleHero = () => document.scrollingElement.scrollTop < Math.max(120, innerHeight * .8);
   const blocked = () => state.chat?.phase && state.chat.phase !== 'closed' || state.content?.phase && state.content.phase !== 'preview' || state.menu?.open || state.menu?.modal;
-  const staticMode = () => state.reduced || !visibleHero() || !!blocked();
+  const exploring = () => state.sceneExplore?.inputEnabled === true;
+  const staticMode = () => (state.sceneExplore && !['reading','exploring'].includes(state.sceneExplore.phase)) || state.reduced || (!visibleHero() && !exploring()) || !!blocked();
   function notify() { host.moduleChanged('scene'); }
   function paintOnce() {
     if (!scene || !ready || failed || disposed || cached || document.hidden) return;
@@ -18,11 +19,13 @@ export function mountMotionScene({ host, container, speech, status }) {
     });
   }
   function inputFor(target) {
-    const allow = !!scene && ready && !failed && !document.hidden && !staticMode() && !cached && target === scene.canvas;
+    const allow = !!scene && ready && !failed && !document.hidden && !staticMode() && !cached && (!matchMedia('(pointer: coarse)').matches || exploring()) && target === scene.canvas;
     if (pointerLease !== allow) { pointerLease = allow; scene?.setInput({ pointer: allow, keyboard: false }); }
   }
   function policy() {
     if (!scene || !ready || disposed) return;
+    if (staticMode() || failed || cached || document.hidden) pointerLease = false;
+    scene.canvas.style.touchAction = exploring() ? 'none' : 'pan-y';
     scene.setInput({ pointer: pointerLease && !failed && !document.hidden && !staticMode() && !cached, keyboard: false });
     if (failed || cached || document.hidden || staticMode()) scene.pause(); else scene.resume();
   }
@@ -73,6 +76,7 @@ export function mountMotionScene({ host, container, speech, status }) {
   const ro = new ResizeObserver(resize); ro.observe(container);
   const api = {
     getState: () => ({ ready, failed, weather: selected, time, night: scene ? scene.isNight : null, paused: !scene || scene.paused, reduced: !!state.reduced,
+      pointerLease, anchors: scene?.ball?.anchors ? JSON.parse(JSON.stringify(scene.ball.anchors)) : null,
       canvasCount: container.querySelectorAll('canvas').length, source: 'motion-ball@957cec0', publicApiOnly: true }),
     setWeather(name) { selected = name; if (scene && ready) { scene.setWeather(name, { instant: staticMode() }); if (staticMode()) paintOnce(); } notify(); return true; },
     setTime(mode) { time = mode; if (scene && ready) { scene.setTime(mode, { instant: staticMode(), quiet: true }); if (staticMode()) paintOnce(); } notify(); return true; },

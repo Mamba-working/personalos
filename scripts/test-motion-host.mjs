@@ -150,7 +150,7 @@ class MockElement extends MockTarget {
 const publicEvents = new Set(['ready', 'weatherchange', 'timechange', 'daynight', 'say', 'ball', 'interact', 'cursor', 'frame', 'pause', 'dispose']);
 const publicOptions = new Set(['weather', 'time', 'moonPhase', 'assetBase', 'assets', 'environmentAssets', 'presets', 'night', 'daylight', 'quality', 'maxPixelRatio', 'pixelBudget', 'layout', 'input', 'cursor', 'audio', 'speech', 'autoCycle', 'autoPause', 'reducedMotion', 'debug']);
 
-async function makeHarness({ delayImport = false, holdCaptures = false, initial = {}, constructorError = null } = {}) {
+async function makeHarness({ delayImport = false, holdCaptures = false, initial = {}, constructorError = null, coarse = false } = {}) {
   const win = new MockTarget();
   const doc = new MockTarget();
   doc._parent = win;
@@ -337,7 +337,7 @@ async function makeHarness({ delayImport = false, holdCaptures = false, initial 
     }
   }
 
-  const context = vm.createContext({ window: win, document: doc, innerHeight: 900,
+  const context = vm.createContext({ window: win, document: doc, innerHeight: 900, matchMedia: () => ({ matches: coarse }),
     URL, Blob, AbortController, ResizeObserver: MockResizeObserver, Event: MockEvent, PointerEvent: MockEvent,
     CustomEvent: MockEvent, queueMicrotask, performance: { now: () => now },
     setTimeout(fn, delay = 0) { const id = ++timerID; timers.set(id, { fn, due: now + delay }); return id; },
@@ -776,4 +776,15 @@ test('header tone observes only public isNight state and daynight notifications'
   h.scene.night = true; h.scene.emit('daynight', { night: true });
   assert.equal(h.api.getState().night, true); assert.equal(h.notifications.length, notifications + 1);
   h.checkPublicOnly();
+});
+
+
+test('explicit scene exploration resumes off-hero without a new scene and revokes on return', async t => {
+ const h=await mounted(t,{coarse:true}); await h.ready();
+ h.over(h.scene.canvas); assert.equal(h.scene.input.pointer,false,'mobile reading preserves native pan-y');
+ h.doc.scrollingElement.scrollTop=1200;h.event(h.win,'scroll');assert.equal(h.scene.paused,true);
+ h.state({sceneExplore:{phase:'entering',inputEnabled:false}});h.over(h.scene.canvas);assert.equal(h.scene.input.pointer,false);
+ h.state({sceneExplore:{phase:'exploring',inputEnabled:true}});h.over(h.scene.canvas);assert.equal(h.scene.paused,false);assert.equal(h.scene.input.pointer,true);assert.equal(h.scene.canvas.style.touchAction,'none');
+ h.state({sceneExplore:{phase:'returning',inputEnabled:false}});assert.equal(h.scene.input.pointer,false);assert.equal(h.scene.paused,true);
+ h.state({sceneExplore:{phase:'reading',inputEnabled:false}});assert.equal(h.scene.canvas.style.touchAction,'pan-y');assert.equal(h.instances.length,1);
 });

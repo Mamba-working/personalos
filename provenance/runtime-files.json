@@ -163,7 +163,7 @@
     },
     {
       "path": "runtime/editorial.css",
-      "sha256": "0f66bd72d7ab75a630d4f0634d26e265cc59a74ea8a7be8eb329e315d347b196"
+      "sha256": "2ff83ea5c14e0c464a431b85ea084a3c4966c800ecadf420fc98a091481cecd7"
     },
     {
       "path": "runtime/feed-compact.css",
@@ -418,6 +418,6 @@
       "sha256": "69afa74e3bc89fc6758c39585ae789345cfdce80efb591ba0829031ad0783a03"
     }
   ],
-  "originalRuntimeSHA256": "f6a041e2176712d6446816328f460e628897a751d7413670312b6a4dd378313f",
+  "originalRuntimeSHA256": "86ec66098dba7dd2bf36e50f41f5ab1bbf4d596f9c2e34cbeb7b5973cb56520c",
   "acceptance": "Editorial composition and explicit scene-input lease; original upstream motion-ball and native card/chat/menu controllers unchanged; browser/video acceptance tracked in PR10."
 }

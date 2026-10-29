@@ -88,3 +88,45 @@ body:has([data-filter=all][aria-pressed=true]) .feed .feed-column:nth-child(2){p
 /* Categories moved into the masthead still release focus/input during Explore. */
 html:not([data-scene-explore=reading]) .topbar .filters{visibility:hidden;pointer-events:none}
 @media(max-width:650px){.host-controls button,#host-menu .pos-menu-anchor>.pos-menu-toggle{min-height:44px}.topbar .filters button{min-height:44px}}
+/* Reference-frame corrections: typography, column rhythm and responsive hierarchy. */
+.intro h1 span{color:inherit}
+.topbar[data-nav-surface=content]::before,.topbar[data-nav-tone=night][data-nav-surface=content]::before{background:linear-gradient(90deg,rgb(249 245 237 / .96),rgb(249 245 237 / .86) 58%,rgb(249 245 237 / .3));backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+#host-menu .pos-menu-anchor>.pos-menu-toggle{border-radius:999px}
+.card[data-category=thoughts] h2{font-family:EditorialSerif,Georgia,serif;font-weight:400;white-space:pre-line}
+.card[data-content-id=work-map] h2{white-space:pre-line}
+@media(min-width:1101px){
+ body:has([data-filter=all][aria-pressed=true]) .feed-column:nth-child(2){margin-left:-3.8vw;flex-basis:calc(100% - var(--editorial-main) - var(--editorial-gap) + 3.8vw)}
+ .card[data-category=thoughts] h2{font-size:34px;letter-spacing:-.035em;max-width:none}
+ body:has([data-filter=all][aria-pressed=true]) .feed-column:nth-child(2) .slot{margin-bottom:330px}
+ .card[data-content-id=work-map] .identity{grid-template-columns:73% 1fr;column-gap:28px}
+ .card[data-content-id=work-map] h2{font-size:27px}
+ .card[data-content-id=work-map] .card-visual{aspect-ratio:1.95}
+ .slot:has([data-content-id=labs-spring]){margin-bottom:14px}
+}
+@media(max-width:650px){
+ :root{--host-header-size:130px}
+ .topbar{height:130px;padding:12px 24px 0;grid-template-columns:1fr auto;grid-template-rows:44px 44px 30px;gap:4px 0}
+ .topbar .brand{grid-column:1;grid-row:1;font-size:23px}
+ #host-menu{grid-column:2;grid-row:1;justify-self:end}
+ .host-controls{grid-column:1/-1;grid-row:2;justify-content:flex-start;gap:8px}
+ .host-controls #host-explore{order:-1;padding:0 18px;font-size:12px;min-width:126px}
+ .host-controls #host-motion{margin-left:auto}
+ .topbar .filters{grid-row:3;margin:0;gap:24px}.topbar .filters button{min-height:30px;padding:5px 0}
+ #content-root{padding-top:18px}
+ .intro{padding:0;margin-bottom:0;min-height:270px}
+ .intro .eyebrow{display:none}
+ .intro h1{font-size:36px;line-height:1.34;letter-spacing:-.035em;margin:0}
+ .intro h1 span{display:block}
+ .intro-description{font-size:14px;max-width:310px;margin-top:14px}
+ .intro-description span{display:block}
+ .card[data-content-id=work-context] .identity{display:grid;grid-template-columns:1fr 42px;column-gap:8px;grid-template-rows:auto auto auto auto}
+ .card[data-content-id=work-context] :is(.card-meta,h2,.card-foot){position:static;width:auto;height:auto;padding:0;margin:0;overflow:visible;clip:auto;white-space:normal;border:0}
+ .card[data-content-id=work-context] .card-meta{grid-column:1/-1;grid-row:1;margin-bottom:16px}
+ .card[data-content-id=work-context] .card-visual{grid-column:1/-1;grid-row:2;aspect-ratio:1.8}
+ .card[data-content-id=work-context] h2{grid-column:1;grid-row:3;font:23px/1.35 EditorialSerif,Georgia,serif;margin-top:8px}
+ .card[data-content-id=work-context] h2::after{content:'示例';display:block;font-size:14px;color:var(--editorial-muted);margin-top:3px}
+ .card[data-content-id=work-context] .card-foot{grid-column:2;grid-row:3;margin-top:12px}
+ .card[data-category=thoughts] h2{font-size:28px;white-space:normal;line-height:1.4}
+ .card[data-content-id=work-map] h2{white-space:normal}
+}
+#host-menu .pos-menu-anchor>.pos-menu-toggle:focus-visible{border-radius:999px}

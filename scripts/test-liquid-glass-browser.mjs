@@ -5,17 +5,20 @@ import { createRequire } from 'node:module';
 import { startStatic } from '../apps/web/dev-server.mjs';
 const require = createRequire(new URL('../.build/browser/package.json', import.meta.url));
 const { chromium } = require('playwright');
-const out = new URL('../test-results/liquid-glass/', import.meta.url);
+const staticOnly = process.argv.includes('--static-only');
+const out = new URL(staticOnly ? '../test-results/liquid-glass-static/' : '../test-results/liquid-glass/', import.meta.url);
 await mkdir(out, { recursive: true });
-await writeFile(new URL('RECORDING-NOTES.txt', out), 'Original browser video captured by Playwright recordVideo in wall-clock time. No slideshow, generated frames, artificial advancement, frame interpolation or speed-up. Renderer: headless Chromium SwiftShader software WebGL. This evidence verifies behavior and visual continuity, not physical GPU or real-device smoothness. Desktop/mobile are viewport simulations. report.json includes browser-time action markers, failures, and original video names.\n');
-const report = { rendererMode: 'Chromium SwiftShader software WebGL; not physical GPU/mobile acceptance', commit: process.env.GITHUB_SHA || null, cases: [], passed: false };
+await writeFile(new URL('RECORDING-NOTES.txt', out), staticOnly
+  ? 'Early static screenshots captured directly from the actual Chromium page, with live WebGL, decoded covers and loaded fonts. Desktop hero, desktop reference scroll (Labs top 344 CSS px), and mobile hero; pointer/non-focused presentation. No video, generated frames or interaction acceptance in this artifact. Renderer: headless Chromium SwiftShader software WebGL, not physical GPU or real-device acceptance. The separate full interaction job step retains its original recording and assertions.\n'
+  : 'Original browser video captured by Playwright recordVideo in wall-clock time. No slideshow, generated frames, artificial advancement, frame interpolation or speed-up. Renderer: headless Chromium SwiftShader software WebGL. This evidence verifies behavior and visual continuity, not physical GPU or real-device smoothness. Desktop/mobile are viewport simulations. report.json includes browser-time action markers, failures, and original video names.\n');
+const report = { mode: staticOnly ? 'early-static-screenshots' : 'full-interaction-recording', rendererMode: 'Chromium SwiftShader software WebGL; not physical GPU/mobile acceptance', commit: process.env.GITHUB_SHA || null, cases: [], passed: false };
 const server = await startStatic({ port: 0 });
 let browser;
 try {
   browser = await chromium.launch({ headless: true, args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader'] });
   report.browser = browser.version();
   for (const config of [{ name: 'desktop', width: 1505, height: 1045 }, { name: 'mobile', width: 390, height: 844 }]) {
-    const context = await browser.newContext({ viewport: { width: config.width, height: config.height }, deviceScaleFactor: 1, isMobile: config.name === 'mobile', hasTouch: config.name === 'mobile', reducedMotion: 'no-preference', recordVideo: { dir: new URL('video/', out).pathname, size: { width: config.width, height: config.height } } });
+    const context = await browser.newContext({ viewport: { width: config.width, height: config.height }, deviceScaleFactor: 1, isMobile: config.name === 'mobile', hasTouch: config.name === 'mobile', reducedMotion: 'no-preference', ...(!staticOnly && { recordVideo: { dir: new URL('video/', out).pathname, size: { width: config.width, height: config.height } } }) });
     const page = await context.newPage();
     await page.addInitScript(() => {
       window.__qaMotion = [];
@@ -35,7 +38,7 @@ try {
       requestAnimationFrame(sample);
     });
     page.setDefaultTimeout(90000);
-    const result = { viewport: config, errors: [], failedResponses: [], checks: [], timeline: [], recording: 'Original Playwright WebM, wall-clock speed, Chromium SwiftShader software rendering; not physical GPU performance' };
+    const result = { viewport: config, errors: [], failedResponses: [], checks: [], timeline: [], recording: staticOnly ? 'Static screenshots only; full interaction recording is a separate step' : 'Original Playwright WebM, wall-clock speed, Chromium SwiftShader software rendering; not physical GPU performance' };
     const mark = async name => result.timeline.push({ name, browserTimeMs: await page.evaluate(() => performance.now()) });
     const hold = ms => page.waitForTimeout(ms);
     const video = page.video();
@@ -77,6 +80,7 @@ try {
       await page.waitForFunction(() => [...document.querySelectorAll('img.editorial-cover')].every(image => image.complete && image.naturalWidth > 0));
       result.checks.push('all editorial raster covers decode successfully, not merely HTTP 200');
       await page.evaluate(() => document.fonts.ready);
+      if (staticOnly) await page.evaluate(() => document.activeElement?.blur());
       await mark('Hero ready');
       await shot('hero');
       await hold(1600);
@@ -86,6 +90,15 @@ try {
         result.referenceState = await page.evaluate(() => ({width:innerWidth,height:innerHeight,scrollY, labs:document.querySelector('[data-id="labs-spring"]').getBoundingClientRect().toJSON(),thoughts:document.querySelector('[data-id="thoughts-type"]').getBoundingClientRect().toJSON()}));
         await shot('reference-scroll');
         await page.evaluate(() => window.scrollTo(0,0));
+      }
+
+      if (staticOnly) {
+        assert.deepEqual(result.errors, [], 'no uncaught page errors');
+        assert.deepEqual(result.failedResponses, [], 'no failed asset responses');
+        assert.equal((await state()).scene.failed, null);
+        result.checks.push('actual live WebGL screenshot capture only; full interaction assertions run separately');
+        result.passed = true;
+        continue;
       }
 
       await page.mouse.move(config.width * .35, config.height * .65);

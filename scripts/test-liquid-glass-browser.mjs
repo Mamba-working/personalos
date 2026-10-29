@@ -105,6 +105,24 @@ try {
           await shot('reading');
           assert.ok(Math.abs(result.readingState.workHeader.top - 140) <= 1, 'mobile Work metadata aligned at 140 CSS px');
         }
+        result.categoryGeometry = [];
+        for (const category of ['all', 'work', 'thoughts', 'labs']) {
+          await page.locator(`[data-filter=${category}]`).click();
+          await page.waitForFunction(category => window.personalOSContent.getState().category === category && !window.personalOSContent.getState().reflow.active, category);
+          await page.locator('.slot:not(.excluded)').first().evaluate(node => window.scrollBy(0, node.getBoundingClientRect().top - 140));
+          await hold(500);
+          const measures = await page.locator('.slot:not(.excluded)').evaluateAll(slots => slots.map(slot => {
+            const card = slot.querySelector('.card'); const copy = card.querySelector('.summary');
+            return { id: card.dataset.contentId, category: card.dataset.category, slot:slot.getBoundingClientRect().toJSON(), copy:copy.getBoundingClientRect().toJSON() };
+          }));
+          for (const item of measures.filter(item => item.id !== 'work-context')) {
+            assert.ok(item.copy.width >= (config.name === 'desktop' ? 140 : 120), `${category}/${item.id}: readable copy measure`);
+            assert.ok(item.copy.right <= item.slot.right + 1, `${category}/${item.id}: copy stays within clipping slot`);
+          }
+          result.categoryGeometry.push({ category, measures });
+          await page.evaluate(() => document.activeElement?.blur());
+          await shot(`category-${category}`);
+        }
         assert.deepEqual(result.errors, [], 'no uncaught page errors');
         assert.deepEqual(result.failedResponses, [], 'no failed asset responses');
         assert.equal((await state()).scene.failed, null);

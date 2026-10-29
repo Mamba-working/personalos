@@ -151,3 +151,8 @@ html:not([data-scene-explore=reading]) .topbar .filters{visibility:hidden;pointe
  .card[data-content-id=work-context] h2,.card[data-category=labs] :is(h2,.summary){background:rgb(249 245 237 / .86);box-shadow:0 0 12px 7px rgb(249 245 237 / .7);border-radius:3px}
  .card[data-content-id=work-context] h2::after,.card[data-category=labs] .summary{color:#41443c}
 }
+@media(min-width:651px){
+ /* Category views are peer columns, not the mixed feed's wide-study/narrow-note composition. */
+ body:not(:has([data-filter=all][aria-pressed=true])) .feed-column{flex:1 1 0;margin-left:0;padding-top:0}
+ body:not(:has([data-filter=all][aria-pressed=true])) .card[data-content-id=work-map] .identity{grid-template-columns:54% 1fr;column-gap:26px}
+}

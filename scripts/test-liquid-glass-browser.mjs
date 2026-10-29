@@ -14,7 +14,7 @@ let browser;
 try {
   browser = await chromium.launch({ headless: true, args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader'] });
   report.browser = browser.version();
-  for (const config of [{ name: 'desktop', width: 1440, height: 1000 }, { name: 'mobile', width: 390, height: 844 }]) {
+  for (const config of [{ name: 'desktop', width: 1505, height: 1045 }, { name: 'mobile', width: 390, height: 844 }]) {
     const context = await browser.newContext({ viewport: { width: config.width, height: config.height }, deviceScaleFactor: 1, isMobile: config.name === 'mobile', hasTouch: config.name === 'mobile', reducedMotion: 'no-preference', recordVideo: { dir: new URL('video/', out).pathname, size: { width: config.width, height: config.height } } });
     const page = await context.newPage();
     await page.addInitScript(() => {
@@ -75,10 +75,19 @@ try {
       assert.ok(result.webgl.width > 0 && result.webgl.height > 0);
       await visible('#motion-scene canvas');
       await page.waitForFunction(() => [...document.querySelectorAll('img.editorial-cover')].every(image => image.complete && image.naturalWidth > 0));
-      result.checks.push('all editorial SVG covers decode successfully, not merely HTTP 200');
+      result.checks.push('all editorial raster covers decode successfully, not merely HTTP 200');
+      await page.evaluate(() => document.fonts.ready);
       await mark('Hero ready');
       await shot('hero');
       await hold(1600);
+      if(config.name === 'desktop') {
+        await page.locator('[data-id="labs-spring"]').evaluate(node => window.scrollBy(0,node.getBoundingClientRect().top-344));
+        await hold(1200);
+        result.referenceState = await page.evaluate(() => ({width:innerWidth,height:innerHeight,scrollY, labs:document.querySelector('[data-id="labs-spring"]').getBoundingClientRect().toJSON(),thoughts:document.querySelector('[data-id="thoughts-type"]').getBoundingClientRect().toJSON()}));
+        await shot('reference-scroll');
+        await page.evaluate(() => window.scrollTo(0,0));
+      }
+
       await page.mouse.move(config.width * .35, config.height * .65);
       await page.mouse.wheel(0, 420);
       await page.waitForFunction(() => document.scrollingElement.scrollTop > 0);

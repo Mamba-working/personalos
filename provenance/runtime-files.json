@@ -18,12 +18,40 @@
       "sha256": "32c8e59ca9aa09b4287879006931fcff9483a66baff4517691349e18be9fdb55"
     },
     {
+      "path": "runtime/assets/editorial-labs.webp",
+      "sha256": "eb5b4d10761409c36698c76d509cdd205a7df5ead072d1cff14891bd9ce45ed5"
+    },
+    {
       "path": "runtime/assets/editorial-map.svg",
       "sha256": "b505150796a41b6a3f53330f778799b2f85b88409de2397675f73f3a4b0d7dc3"
     },
     {
+      "path": "runtime/assets/editorial-map.webp",
+      "sha256": "fb1cc04473b2ccc7ac1869a1a55f20d1666040a559bd6b9a85557cc2eed71b5d"
+    },
+    {
       "path": "runtime/assets/editorial-work.svg",
       "sha256": "63bddf3f950dbbcc0381ba7fcfee797a690ccf78ca1c84f874fdb817bb062931"
+    },
+    {
+      "path": "runtime/assets/editorial-work.webp",
+      "sha256": "54756e44bea76e1ddc2f6e42720c74454570ae1adbd2ff929508fa0616e0ed59"
+    },
+    {
+      "path": "runtime/assets/fonts/LICENSE-NOTO.txt",
+      "sha256": "849f4ea9c214fa4ac3593b770c699f387534b11ce671264c1b10d85bdcb5997b"
+    },
+    {
+      "path": "runtime/assets/fonts/editorial-serif.otf",
+      "sha256": "130c4999b11e1e523b063463787e33cff933fe764da31b10fe93f7c05bf9ea66"
+    },
+    {
+      "path": "runtime/assets/icons/LICENSE",
+      "sha256": "b5b1f1da112d18ea2147decfd48ddc1bf2b5aeb6c265381579340e95b15a2bb2"
+    },
+    {
+      "path": "runtime/assets/icons/arrow-right.svg",
+      "sha256": "e45bc4a12592b8723110db42c6deffdf177e4fe7704cf50324963fa0a59b2d74"
     },
     {
       "path": "runtime/chat/chat-fluid-send.js",
@@ -123,15 +151,19 @@
     },
     {
       "path": "runtime/content.js",
-      "sha256": "f9c612095815ff8ca842d61e386d139b9cae4e1dde7c92e9be9cb34c6729f3f4"
+      "sha256": "360bcef10125c2bd18a33d93a11948a9ec3ce8949daf9d3910f4319b34c992ed"
     },
     {
       "path": "runtime/diagnostics/keyboard-diagnostics.js",
       "sha256": "255f6413fa67b370ebedde24ed4a8fe8380304afbd7c48287009a6949223a447"
     },
     {
+      "path": "runtime/editorial-layout.js",
+      "sha256": "a70abee4af3032ad9f1ebdffc6ac0d2f3edd3c24cd1335c2f4fb37b3e502e27c"
+    },
+    {
       "path": "runtime/editorial.css",
-      "sha256": "2c3f5488d2c3dcef1dfe35395892f505bd31b480aef166d02f5945b161e237d1"
+      "sha256": "73cc41bdc541fc33e5e11d4f548812a38731046d2bd896535c4ecc452ea0132b"
     },
     {
       "path": "runtime/feed-compact.css",
@@ -139,7 +171,7 @@
     },
     {
       "path": "runtime/feed-layout.js",
-      "sha256": "3b2893779637edf854ced01162252346fd3ab195da1e0347fa7af9b33b10094b"
+      "sha256": "1d61d56c433a22339c6c02875348b3177fc112ec91373384e52f9a42e75bf12a"
     },
     {
       "path": "runtime/feed-reflow.js",
@@ -155,7 +187,7 @@
     },
     {
       "path": "runtime/index.html",
-      "sha256": "dec030f8df5f653a109497d663f90fb6d91d66716b587e37414d621d9229a65b"
+      "sha256": "94d05fd2946f01e4ef11d4ab5a063fc0115254bda9f34511f2c0652ef8d275cf"
     },
     {
       "path": "runtime/liquid-glass.css",
@@ -386,6 +418,6 @@
       "sha256": "69afa74e3bc89fc6758c39585ae789345cfdce80efb591ba0829031ad0783a03"
     }
   ],
-  "originalRuntimeSHA256": "ea380d5e9405bb3b8ebec9ad9b6487367bba1b55f71558f3df9345713dae8e67",
+  "originalRuntimeSHA256": "0058b726c273d978df0f3587ed95fd1abb3b014ca00ae3d60cfde43cce8175ac",
   "acceptance": "Editorial composition and explicit scene-input lease; original upstream motion-ball and native card/chat/menu controllers unchanged; browser/video acceptance tracked in PR10."
 }

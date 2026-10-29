@@ -139,4 +139,10 @@ html:not([data-scene-explore=reading]) .topbar .filters{visibility:hidden;pointe
  .card[data-category=thoughts] h2{white-space:pre-line}
 }
 .card[data-category=thoughts] .summary{color:#41443c}
-@media(min-width:1101px){.card[data-content-id=labs-spring] .summary{max-width:220px}}
+@media(min-width:1101px){.card[data-content-id=labs-spring] .summary{max-width:220px;white-space:pre-line}}
+.card[data-content-id=work-map] .summary{width:auto;max-width:none;white-space:pre-line}
+@media(max-width:650px){
+ .intro{min-height:calc(77svh - 164px)}
+ #content-root::before{background:linear-gradient(180deg,rgb(249 245 237 / .9),rgb(249 245 237 / .68) 30%,rgb(249 245 237 / .1) 44%,transparent 50%)}
+ .card[data-category=thoughts]::before{content:'';position:absolute;inset:-18px -24px;z-index:-1;background:radial-gradient(ellipse at 42% 50%,rgb(249 245 237 / .88) 0%,rgb(249 245 237 / .65) 58%,transparent 76%);pointer-events:none}
+}

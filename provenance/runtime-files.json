@@ -151,7 +151,7 @@
     },
     {
       "path": "runtime/content.js",
-      "sha256": "bd01144f9252f55969dc783eb651f5514c88b0aab3e4707b783d0a6eb0cc41ec"
+      "sha256": "b7e91fdc0baa0118d59520d3c9eb595659700b038bf6abade6ecb5b4f722d1a0"
     },
     {
       "path": "runtime/diagnostics/keyboard-diagnostics.js",
@@ -163,7 +163,7 @@
     },
     {
       "path": "runtime/editorial.css",
-      "sha256": "2d08a1e0dbac698b80aa2bb7d44b21f062d5f4c6dd883b07cc7469f08908ec00"
+      "sha256": "0f66bd72d7ab75a630d4f0634d26e265cc59a74ea8a7be8eb329e315d347b196"
     },
     {
       "path": "runtime/feed-compact.css",
@@ -418,6 +418,6 @@
       "sha256": "69afa74e3bc89fc6758c39585ae789345cfdce80efb591ba0829031ad0783a03"
     }
   ],
-  "originalRuntimeSHA256": "9bc758e53346f59a1967324dc325bab921fb5cef8674ea8636f3d3e35bdcad2e",
+  "originalRuntimeSHA256": "f6a041e2176712d6446816328f460e628897a751d7413670312b6a4dd378313f",
   "acceptance": "Editorial composition and explicit scene-input lease; original upstream motion-ball and native card/chat/menu controllers unchanged; browser/video acceptance tracked in PR10."
 }

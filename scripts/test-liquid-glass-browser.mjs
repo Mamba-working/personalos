@@ -9,7 +9,7 @@ const staticOnly = process.argv.includes('--static-only');
 const out = new URL(staticOnly ? '../test-results/liquid-glass-static/' : '../test-results/liquid-glass/', import.meta.url);
 await mkdir(out, { recursive: true });
 await writeFile(new URL('RECORDING-NOTES.txt', out), staticOnly
-  ? 'Early static screenshots captured directly from the actual Chromium page, with live WebGL, decoded covers and loaded fonts. Desktop hero, desktop reference scroll (Labs top 344 CSS px), and mobile hero; pointer/non-focused presentation. No video, generated frames or interaction acceptance in this artifact. Renderer: headless Chromium SwiftShader software WebGL, not physical GPU or real-device acceptance. The separate full interaction job step retains its original recording and assertions.\n'
+  ? 'Early static screenshots captured directly from the actual Chromium page, with live WebGL, decoded covers and loaded fonts. Desktop hero, desktop reference scroll (Labs top 344 CSS px), mobile hero and mobile reading (Work metadata top 140 CSS px); pointer/non-focused presentation. No video, generated frames or interaction acceptance in this artifact. Renderer: headless Chromium SwiftShader software WebGL, not physical GPU or real-device acceptance. The separate full interaction job step retains its original recording and assertions.\n'
   : 'Original browser video captured by Playwright recordVideo in wall-clock time. No slideshow, generated frames, artificial advancement, frame interpolation or speed-up. Renderer: headless Chromium SwiftShader software WebGL. This evidence verifies behavior and visual continuity, not physical GPU or real-device smoothness. Desktop/mobile are viewport simulations. report.json includes browser-time action markers, failures, and original video names.\n');
 const report = { mode: staticOnly ? 'early-static-screenshots' : 'full-interaction-recording', rendererMode: 'Chromium SwiftShader software WebGL; not physical GPU/mobile acceptance', commit: process.env.GITHUB_SHA || null, cases: [], passed: false };
 const server = await startStatic({ port: 0 });
@@ -93,6 +93,18 @@ try {
       }
 
       if (staticOnly) {
+        if (config.name === 'mobile') {
+          await page.locator('[data-content-id="work-context"] .card-meta').evaluate(node => window.scrollBy(0, node.getBoundingClientRect().top - 140));
+          await hold(1200);
+          result.readingState = await page.evaluate(() => ({
+            width: innerWidth, height: innerHeight, scrollY,
+            workHeader: document.querySelector('[data-content-id="work-context"] .card-meta').getBoundingClientRect().toJSON(),
+            thoughts: document.querySelector('[data-id="thoughts-type"]').getBoundingClientRect().toJSON()
+          }));
+          await mark('Mobile native reading scroll; Work metadata top 140');
+          await shot('reading');
+          assert.ok(Math.abs(result.readingState.workHeader.top - 140) <= 1, 'mobile Work metadata aligned at 140 CSS px');
+        }
         assert.deepEqual(result.errors, [], 'no uncaught page errors');
         assert.deepEqual(result.failedResponses, [], 'no failed asset responses');
         assert.equal((await state()).scene.failed, null);

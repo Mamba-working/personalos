@@ -130,3 +130,13 @@ html:not([data-scene-explore=reading]) .topbar .filters{visibility:hidden;pointe
  .card[data-content-id=work-map] h2{white-space:normal}
 }
 #host-menu .pos-menu-anchor>.pos-menu-toggle:focus-visible{border-radius:999px}
+@media(min-width:1101px){
+ .card[data-content-id=work-map] .summary{width:270px;max-width:calc(100vw - 600px)}
+}
+@media(max-width:650px){
+ /* Preserve the real actor's position: leave its center clear rather than move the scene to fit a concept image. */
+ .intro{min-height:calc(100svh - 360px)}
+ .card[data-category=thoughts] h2{white-space:pre-line}
+}
+.card[data-category=thoughts] .summary{color:#41443c}
+@media(min-width:1101px){.card[data-content-id=labs-spring] .summary{max-width:220px}}

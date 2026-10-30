@@ -788,3 +788,26 @@ test('explicit scene exploration resumes off-hero without a new scene and revoke
  h.state({sceneExplore:{phase:'returning',inputEnabled:false}});assert.equal(h.scene.input.pointer,false);assert.equal(h.scene.paused,true);
  h.state({sceneExplore:{phase:'reading',inputEnabled:false}});assert.equal(h.scene.canvas.style.touchAction,'pan-y');assert.equal(h.instances.length,1);
 });
+
+test('first canvas press after an exploration fade acquires input before the canvas handler', async t => {
+ const h=await mounted(t); await h.ready();
+ h.state({sceneExplore:{phase:'entering',inputEnabled:false}});
+ h.over(h.scene.canvas);assert.equal(h.scene.input.pointer,false);
+ h.state({sceneExplore:{phase:'exploring',inputEnabled:true}});
+ assert.equal(h.scene.input.pointer,false,'Settling does not invent a pointerover event');
+ const press=h.event(h.scene.canvas,'pointerdown');
+ assert.equal(h.scene.input.pointer,true);
+ assert.ok(h.scene.press,'The same first press reaches the upstream canvas handler with input enabled');
+ assert.equal(press.defaultPrevented,false);
+ h.event(h.scene.canvas,'pointerup');
+ for(const element of [h.button,h.textarea,h.weatherButton,h.container]){
+  h.event(element,'pointerdown');
+  assert.equal(h.scene.input.pointer,false,'Overlay presses cannot acquire canvas input');
+  assert.equal(h.scene.press,null);
+  h.event(h.scene.canvas,'pointerdown');assert.ok(h.scene.press);
+  h.event(h.scene.canvas,'pointerup');
+ }
+ h.state({sceneExplore:{phase:'returning',inputEnabled:false}});
+ h.event(h.scene.canvas,'pointerdown');assert.equal(h.scene.input.pointer,false);assert.equal(h.scene.press,null);
+ h.dispose();assert.equal(h.doc.listenerCount(),0,'Capture listener is removed on disposal');
+});

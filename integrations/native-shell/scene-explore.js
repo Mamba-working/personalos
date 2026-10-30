@@ -39,9 +39,8 @@ function retarget(next) {
   if(!frame){ last=performance.now(); frame=requestAnimationFrame(tick); }
 }
 function enter() {
-  if(disposed || phase==='exploring' || phase==='entering')return false;
+  if(disposed || phase==='exploring' || phase==='entering' || !canEnter())return false;
   if(phase==='reading') {
-    if(!canEnter())return false;
     savedScroll=scrollY; savedFocus=document.activeElement;
     layer.inert=true; layer.setAttribute('aria-hidden','true'); controls.hidden=false;
     blockedControls.forEach(node=>{if(node)node.inert=true;});
@@ -52,7 +51,7 @@ function enter() {
 }
 function exit() { if(disposed || phase==='reading' || phase==='returning')return false; retarget(1); return true; }
 enterButton.addEventListener('click',()=>target===0?exit():enter()); returnButton.addEventListener('click',exit);
-const keydown=e=>{if(phase==='reading')return;if(e.key==='Escape'){e.preventDefault();exit();}else if([' ','PageDown','PageUp','Home','End','ArrowDown','ArrowUp'].includes(e.key)){e.preventDefault();}};
+const keydown=e=>{if(phase==='reading')return;if(e.key==='Escape'){e.preventDefault();exit();}else if(e.key===' ' && e.target?.closest?.('button'))return;else if([' ','PageDown','PageUp','Home','End','ArrowDown','ArrowUp'].includes(e.key)){e.preventDefault();}};
 const stopScroll=e=>{if(phase!=='reading')e.preventDefault();};
 const keepScroll=()=>{if(phase!=='reading'&&!restoring&&Math.abs(scrollY-savedScroll)>.5){restoring=true;scrollTo({top:savedScroll,behavior:'instant'});restoring=false;}};
 const visibility=()=>{cancelAnimationFrame(frame);frame=0;last=null;if(!document.hidden&&phase!=='reading'&&phase!=='exploring'){last=performance.now();frame=requestAnimationFrame(tick);}};

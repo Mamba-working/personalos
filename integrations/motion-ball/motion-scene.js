@@ -74,6 +74,9 @@ export function mountMotionScene({ host, container, speech, status }) {
   const pagehide = event => { if (event.persisted) { cached = true; pointerLease = false; policy(); } else api.dispose(); };
   const pageshow = () => { cached = false; policy(); if (staticMode()) paintOnce(); };
   window.addEventListener('scroll', scroll, { passive: true }); document.addEventListener('pointerover', pointer, { passive: true });
+  // A pointer already over the canvas during a fade gets no new pointerover.
+  // Acquire before the unchanged canvas handler receives its first press.
+  document.addEventListener('pointerdown', pointer, { capture: true, passive: true });
   document.addEventListener('visibilitychange', visibility); window.addEventListener('pagehide', pagehide); window.addEventListener('pageshow', pageshow);
   container.addEventListener('webglcontextlost', lost, true); container.addEventListener('webglcontextrestored', restored, true);
   const ro = new ResizeObserver(resize); ro.observe(container);
@@ -85,7 +88,7 @@ export function mountMotionScene({ host, container, speech, status }) {
     setTime(mode) { time = mode; if (scene && ready) { scene.setTime(mode, { instant: staticMode(), quiet: true }); if (staticMode()) paintOnce(); } notify(); return true; },
     getStats: () => scene?.getStats() || null, capture: (...args) => scene?.capture(...args),
     dispose() { if (disposed) return; disposed = true; stopHost(); ro.disconnect(); clearTimeout(speechTimer); for (const off of cleanups.splice(0)) off(); (scene || pending)?.dispose(); speech.hidden = true;
-      window.removeEventListener('scroll', scroll); document.removeEventListener('pointerover', pointer); document.removeEventListener('visibilitychange', visibility); window.removeEventListener('pagehide', pagehide); window.removeEventListener('pageshow', pageshow); container.removeEventListener('webglcontextlost', lost, true); container.removeEventListener('webglcontextrestored', restored, true); },
+      window.removeEventListener('scroll', scroll); document.removeEventListener('pointerover', pointer); document.removeEventListener('pointerdown', pointer, true); document.removeEventListener('visibilitychange', visibility); window.removeEventListener('pagehide', pagehide); window.removeEventListener('pageshow', pageshow); container.removeEventListener('webglcontextlost', lost, true); container.removeEventListener('webglcontextrestored', restored, true); },
   };
   initialize(); return api;
 }

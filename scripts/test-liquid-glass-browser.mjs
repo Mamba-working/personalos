@@ -381,8 +381,10 @@ async function verifyExplore({ page, result, config, mark, hold, shot, phase }) 
   assert.equal(result.explore.reversal.reversed.inputEnabled, false);
   assert.equal(result.explore.reversal.resumed.inputEnabled, false);
   await phase('sceneExplore', 'exploring');
-  await page.keyboard.press('Escape');
+  await page.locator('#scene-explore-return').focus();
+  await page.keyboard.press('Space');
   await phase('sceneExplore', 'reading');
+  result.checks.push('native Space activation on the focused return button exits exploration');
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.waitForFunction(() => window.personalOSHost.getState().reduced);
   await page.locator('#host-explore').click();

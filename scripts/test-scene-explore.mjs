@@ -23,3 +23,16 @@ test('rapid reversal preserves both fade position and velocity',t=>{
 test('modal/reflow/not-ready states deny acquisition and reduced motion restores instantly',t=>{
  const h=harness();t.after(h.close);for(const patch of [{content:{phase:'detail'}},{content:{phase:'preview',reflow:{active:true}}},{content:{phase:'preview'},chat:{phase:'open'}},{chat:{phase:'closed'},menu:{open:true}},{menu:{open:false},scene:{ready:false}}]){h.patch(patch);assert.equal(h.api.enter(),false)}h.patch({scene:{ready:true},reduced:true});assert.equal(h.api.enter(),true);assert.equal(h.api.getState().phase,'exploring');h.api.exit();assert.equal(h.api.getState().phase,'reading');assert.equal(h.api.getState().contentInert,false);
 });
+test('forced returns cannot be reversed into an unavailable scene or competing UI',t=>{
+ for (const patch of [{scene:{ready:true,failed:'context-lost'}},{content:{phase:'detail'}},{chat:{phase:'open'}},{menu:{open:true}}]) {
+  const h=harness();t.after(h.close);h.button.focus();h.api.enter();h.settle();h.patch(patch);
+  assert.equal(h.api.getState().phase,'returning');assert.equal(h.api.enter(),false);
+  h.settle();assert.equal(h.api.getState().phase,'reading');assert.equal(h.api.getState().contentInert,false);assert.equal(h.api.getState().inputEnabled,false);
+ }
+});
+test('Space retains native return-button activation while scene scroll keys stay blocked',t=>{
+ const h=harness();t.after(h.close);h.api.enter();h.settle();
+ const key=node=>{const e=new h.w.KeyboardEvent('keydown',{key:' ',bubbles:true,cancelable:true});node.dispatchEvent(e);return e;};
+ assert.equal(key(h.w.document.querySelector('#scene-explore-return')).defaultPrevented,false);
+ assert.equal(key(h.w.document.body).defaultPrevented,true);
+});

@@ -207,7 +207,7 @@
     },
     {
       "path": "runtime/modules/motion-scene.js",
-      "sha256": "e5010597cca2ff2c0d3910043de20bc60f52e17001e5e44113a17a95bdf39181"
+      "sha256": "a536a85af25fb010bd752cf46e57ae3b51c733c0f86ddbf09da95399097a6d78"
     },
     {
       "path": "runtime/modules/mount.js",
@@ -395,7 +395,7 @@
     },
     {
       "path": "runtime/scene-explore.js",
-      "sha256": "ba758882bd00b1094f4fa7da9e6b7e6549d6fd4b651f905b2f6d5bef0183b6cb"
+      "sha256": "c656558d8ff760ec8f8d13389761ebbc30860b99cfd85bf0f6814319c8664054"
     },
     {
       "path": "runtime/send-comparison.css",
@@ -418,6 +418,6 @@
       "sha256": "69afa74e3bc89fc6758c39585ae789345cfdce80efb591ba0829031ad0783a03"
     }
   ],
-  "originalRuntimeSHA256": "6adea1dbca8e037f405b2f82b4c9ea2aa759681b4139d3897478ac07401defef",
+  "originalRuntimeSHA256": "21f93f1dd9499cc5ea56144e424c5d2c7f18feb0383ea9606ad582559124f5d6",
   "acceptance": "Editorial composition and explicit scene-input lease; original upstream motion-ball and native card/chat/menu controllers unchanged; browser/video acceptance tracked in PR10."
 }

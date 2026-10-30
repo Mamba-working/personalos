@@ -39,6 +39,8 @@ assert(!/intro-note|host-weather|weather-panel|weather-toggle/.test(html));
 assert(/\.intro h1,\.intro \.eyebrow\{pointer-events:none;user-select:none;-webkit-user-select:none\}/.test(hostCSS));
 assert(!/\.intro h1[^{}]*\{[^{}]*pointer-events:auto/.test(hostCSS));
 const header = html.match(/<header class="topbar">[\s\S]*?<\/header>/)[0]
+  .replace(/<nav class="filters"[\s\S]*?<\/nav>/, '')
+  .replace(/<button id="host-explore"[^>]*>探索场景<\/button>/, '')
   .replace(' aria-label="Ball 聊天"', '')
   .replace('<span class="chat-label">Ball 聊天</span><span class="chat-label-compact" aria-hidden="true">Ball</span>', 'Ball 聊天');
 assert.equal(hash(header), '55eadf6498b4d2d3b90921e99a6c669e35098d8be2b41e48dcdf4147d9334fe3', 'Retain original native header actions');

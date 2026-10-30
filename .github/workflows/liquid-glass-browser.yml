@@ -1,0 +1,49 @@
+name: Liquid glass browser evidence
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: glass-browser-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  chromium-software-webgl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version-file: .nvmrc
+          package-manager-cache: false
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npm run setup && npm run build:web
+      - name: Install isolated pinned browser harness
+        run: npm install --prefix .build/browser --no-save --ignore-scripts --no-audit --no-fund playwright@1.56.1
+      - name: Install Chromium and system dependencies
+        run: node .build/browser/node_modules/playwright/cli.js install --with-deps chromium
+      - name: Capture early actual desktop hero, reference scroll and mobile hero
+        run: node scripts/test-liquid-glass-browser.mjs --static-only
+      - name: Upload early static screenshots before the full interaction recording
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: liquid-glass-static-chromium-software-webgl-${{ github.sha }}
+          path: test-results/liquid-glass-static/
+          if-no-files-found: error
+          retention-days: 7
+      - name: Record real-time editorial interactions and verify desktop/mobile/reduced motion
+        if: ${{ !cancelled() }}
+        run: node scripts/test-liquid-glass-browser.mjs
+      - name: Upload original real-time WebM, screenshots and honest result report
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: liquid-glass-chromium-software-webgl-${{ github.sha }}
+          path: test-results/liquid-glass/
+          if-no-files-found: error
+          retention-days: 7

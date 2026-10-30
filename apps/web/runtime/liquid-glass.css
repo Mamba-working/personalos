@@ -1,0 +1,109 @@
+/* CSS glass fallback, not optical refraction. No motion or scene ownership.
+   Keep filters/springs/contours on their original elements and timelines. */
+:root {
+  --glass-edge: rgb(231 243 255 / .48);
+  --glass-rim: inset 0 1px 0 rgb(255 255 255 / .68), inset 0 -1px 0 rgb(178 211 250 / .24);
+  --glass-control: linear-gradient(155deg, rgb(221 240 255 / .27), rgb(29 53 83 / .38) 48%, rgb(167 207 245 / .16));
+}
+
+/* A separate paint plane prevents scrolled text competing with the masthead.
+   Never filter the header itself: the menu's fixed containing block is viewport. */
+.topbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.topbar[data-nav-surface=content]::before {
+  background: rgb(222 231 242 / .94);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 1px 0 rgb(255 255 255 / .35);
+}
+.topbar[data-nav-tone=night][data-nav-surface=content]::before { background: rgb(21 37 59 / .94); }
+.topbar[data-nav-surface=content] :is(.brand,.edition,.top-note,.host-controls button,.pos-menu-anchor>.pos-menu-toggle) { text-shadow: none; }
+
+.host-controls button,
+#host-menu .pos-menu-anchor>.pos-menu-toggle {
+  border-radius: 999px;
+  background: var(--glass-control);
+  box-shadow: var(--glass-rim), inset 1px 0 0 var(--glass-edge), inset -1px 0 0 rgb(255 255 255 / .2), 0 4px 16px rgb(7 20 39 / .12);
+  -webkit-backdrop-filter: blur(10px) saturate(1.2);
+  backdrop-filter: blur(10px) saturate(1.2);
+}
+#host-menu .pos-menu-anchor>.pos-menu-toggle:hover,.host-controls button:hover { background: var(--glass-control); }
+
+.filters {
+  width: max-content;
+  max-width: 100%;
+  padding: 10px 6px;
+  margin-bottom: 24px;
+  border-radius: 999px;
+  background: var(--glass-control), rgb(18 38 64 / .42);
+  color: #f4f8ff;
+  box-shadow: var(--glass-rim), inset 1px 0 0 var(--glass-edge), inset -1px 0 0 rgb(255 255 255 / .24), 0 8px 24px rgb(7 20 39 / .16);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  backdrop-filter: blur(12px) saturate(1.2);
+}
+.filters button span { color: #d5e4f7; }
+.filters button[aria-pressed=true] { color: #fff; }
+.filters button[aria-pressed=true] span { color: #eef6ff; }
+.filter-indicator {
+  background: linear-gradient(150deg, rgb(235 248 255 / .55), rgb(107 164 224 / .42) 45%, rgb(170 214 255 / .4));
+  box-shadow: var(--glass-rim), inset 1px 0 0 rgb(255 255 255 / .7), inset -1px 0 0 rgb(255 255 255 / .4), 0 2px 9px rgb(4 19 39 / .2);
+}
+
+/* Minimal fog in the card centre preserves the real ball/terrain silhouette.
+   Text is never filtered; the lifted article inherits the same ink tokens. */
+.card,.travel-shell {
+  --ink: #f5f8ff;
+  --muted: #d0dff2;
+  --summary-ink: #e0eafa;
+  --body-ink: #e0eafa;
+  --tone-work: #d8eaff;
+  --tone-thoughts: #d8eaff;
+  --tone-labs: #d8eaff;
+  --visual: rgb(20 42 70 / .13);
+  --visual-edge: rgb(220 238 255 / .25);
+  --stroke: rgb(224 240 255 / .42);
+  --close-surface: rgb(21 42 69 / .76);
+  --close-edge: rgb(220 238 255 / .4);
+  --control-surface: rgb(56 84 118 / .6);
+  --control-hover: rgb(79 111 149 / .8);
+  --image-surface: rgb(25 46 74 / .5);
+  --hover-edge: rgb(240 248 255 / .75);
+}
+.card,.card[data-category=thoughts],.card[data-category=labs] {
+  background: linear-gradient(180deg, rgb(17 35 59 / .72) 0%, rgb(17 35 59 / .62) 48%, rgb(17 35 59 / .2) 100%);
+  box-shadow: var(--glass-rim), 0 10px 26px rgb(5 17 32 / .12);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  text-shadow: none;
+}
+.travel-shell,.travel-shell:has(.card[data-category=thoughts]),.travel-shell:has(.card[data-category=labs]) {
+  background: rgb(20 38 62 / .88)!important;
+  box-shadow: var(--glass-rim), 0 28px 90px rgb(4 16 32 / .28);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+.travel-shell .card,.travel-shell .card[data-category] {
+  background: transparent;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+@media(max-width:650px) {
+  .filters { padding: 10px 4px; margin-bottom: 18px; }
+}
+/* Legible fallback when backdrop sampling is unavailable or unwanted. */
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))) {
+  .card,.card[data-category=thoughts],.card[data-category=labs] { background-color: rgb(20 38 62 / .84); }
+  .travel-shell .card,.travel-shell .card[data-category] { background: transparent; }
+}
+@media(prefers-reduced-transparency:reduce) {
+  .card,.card[data-category=thoughts],.card[data-category=labs],.filters { background: #233b59; }
+  .travel-shell,.travel-shell:has(.card[data-category]) { background: #233b59!important; }
+  .travel-shell .card,.travel-shell .card[data-category] { background: transparent; }
+}

@@ -1,0 +1,10 @@
+/* Only opacity is animated. No layout shift, scene transform, or global veil. */
+.editorial-layer { will-change: opacity; }
+.editorial-layer[inert],.editorial-layer[inert] * { pointer-events:none!important; }
+html:not([data-scene-explore=reading]) #scene-explore-controls { pointer-events:auto; }
+#scene-explore-controls { position:fixed; left:50%; bottom:calc(24px + env(safe-area-inset-bottom)); transform:translateX(-50%); z-index:40; display:flex; align-items:center; gap:20px; max-width:calc(100vw - 32px); padding:10px 12px 10px 20px; border:1px solid #ffffff75; border-radius:40px; background:#f5f1eae6; color:#283348; box-shadow:0 4px 20px #18263818; }
+#scene-explore-controls p { font:13px/1.5 system-ui; margin:0; }
+#scene-explore-return { min-height:44px; border:1px solid #28334840; border-radius:24px; padding:0 18px; white-space:nowrap; background:#ffffff70; color:inherit; }
+html[data-scene-explore=exploring] #motion-scene canvas { touch-action:none!important; }
+@media(max-width:650px) { #scene-explore-controls { width:max-content; gap:10px; padding-left:14px; } #scene-explore-controls p { max-width:150px; font-size:11px; } #host-explore { font-size:10px; } }
+@media(prefers-reduced-motion:reduce) { .editorial-layer { will-change:auto; } }

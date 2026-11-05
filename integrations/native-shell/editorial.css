@@ -3,7 +3,8 @@
 :root{--editorial-ink:#252622;--editorial-muted:#62645f;--editorial-line:rgb(66 64 58 / .3);--editorial-paper:#f5f0e7;--editorial-main:44.5vw;--editorial-gap:3vw;--host-header-size:80px}
 #content-root{max-width:none;margin:0;padding:34px 3.2vw 100px;isolation:isolate}
 /* A bounded reading scrim, fading with the content on Explore. Never a scene layer. */
-#content-root::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgb(249 245 237 / .94) 0%,rgb(249 245 237 / .88) 28%,rgb(249 245 237 / .72) 45%,rgb(249 245 237 / .34) 61%,transparent 77%)}
+:root{--reading-scrim:linear-gradient(90deg,rgb(249 245 237 / .94) 0%,rgb(249 245 237 / .88) 28%,rgb(249 245 237 / .72) 45%,rgb(249 245 237 / .34) 61%,transparent 77%)}
+#content-root::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:var(--reading-scrim)}
 .intro{display:block;min-height:0;padding:30px 0 0;margin:0 0 42px;max-width:850px}
 .intro .eyebrow{color:var(--editorial-muted);font-size:10px;letter-spacing:2.5px}
 .intro h1{font-family:EditorialSerif,Georgia,serif;font-size:clamp(38px,4.4vw,66px);font-weight:400;line-height:1.4;letter-spacing:-.04em;color:var(--editorial-ink);text-shadow:none}
@@ -67,7 +68,7 @@ body:has([data-filter=all][aria-pressed=true]) .feed .feed-column:nth-child(2){p
  :root{--host-header-size:112px;--editorial-main:100%}
  .topbar{display:grid;grid-template-columns:1fr auto auto;height:112px;gap:0 4px;align-content:start;padding:12px 16px 0}.topbar .brand{font-size:21px;min-height:44px}.topbar .brand-mark{display:none}.host-controls{gap:4px;margin:0}.host-controls button,#host-menu .pos-menu-anchor>.pos-menu-toggle{min-height:40px;padding:0 8px;font-size:10px}#host-motion{width:36px;min-width:36px}.host-controls #host-explore{padding:0 7px;font-size:10px}.chat-label{display:none}.chat-label-compact{display:inline}
  .topbar .filters{grid-column:1/-1;grid-row:2;justify-self:start;gap:22px;margin:5px 0 0}.filters button{font-size:11px;padding:10px 0}
- #content-root{padding:30px 24px 80px}#content-root::before{background:linear-gradient(90deg,rgb(249 245 237 / .93),rgb(249 245 237 / .7) 72%,rgb(249 245 237 / .32))}
+ #content-root{padding:30px 24px 80px}:root{--reading-scrim:linear-gradient(90deg,rgb(249 245 237 / .93),rgb(249 245 237 / .7) 72%,rgb(249 245 237 / .32))}
  .intro{padding:28px 0 0;margin-bottom:32px;max-width:340px}.intro h1{font-size:39px;line-height:1.5}.intro-description{font-size:14px;line-height:1.9}.intro .eyebrow{font-size:9px;letter-spacing:2px;left:0}
  .feed{width:100%;gap:0!important}.feed-column:first-child{flex:1}body:has([data-filter=all][aria-pressed=true]) .feed .feed-column:nth-child(2){padding:0}.slot{margin-bottom:34px}
  .card .identity,.card[data-preview-density=compact] .identity,.card[data-content-id=work-map] .identity{grid-template-columns:54% 1fr;column-gap:16px}
@@ -77,7 +78,7 @@ body:has([data-filter=all][aria-pressed=true]) .feed .feed-column:nth-child(2){p
  .card .card-foot,.card[data-preview-density=compact] .card-foot{margin-top:12px}.card .open-label{width:36px;height:36px}
  .card[data-content-id=work-context] .identity,.card[data-category=thoughts] .identity{display:block}.card[data-content-id=work-context] .card-visual{aspect-ratio:1.55}.card[data-category=thoughts] h2{font-size:30px;max-width:10em;margin-top:20px}.card[data-category=thoughts] .summary{font-size:16px;max-width:20em}.page-scroll footer{max-width:100%}
 }
-@media(prefers-reduced-transparency:reduce){#content-root::before{background:linear-gradient(90deg,#f5f0e7 60%,transparent 80%)}.travel-shell,.travel-shell:has(.card[data-category]){background:var(--editorial-paper)!important}}
+@media(prefers-reduced-transparency:reduce){:root{--reading-scrim:linear-gradient(90deg,#f5f0e7 60%,transparent 80%)}.travel-shell,.travel-shell:has(.card[data-category]){background:var(--editorial-paper)!important}}
 @media(prefers-reduced-motion:reduce){.card .open-label{transition:none!important}}
 .topbar[data-nav-tone=night]{--nav-ink:#292e34;--nav-muted:#4a5159;--nav-line:rgb(49 49 43 / .24)}
 .topbar[data-nav-tone=night] .host-controls button,.topbar[data-nav-tone=night] #host-menu .pos-menu-anchor>.pos-menu-toggle{background:rgb(245 242 234 / .82)}
@@ -143,7 +144,7 @@ html:not([data-scene-explore=reading]) .topbar .filters{visibility:hidden;pointe
 .card[data-content-id=work-map] .summary{width:auto;max-width:none;white-space:pre-line}
 @media(max-width:650px){
  .intro{min-height:calc(77svh - 164px)}
- #content-root::before{background:linear-gradient(180deg,rgb(249 245 237 / .9),rgb(249 245 237 / .68) 30%,rgb(249 245 237 / .1) 44%,transparent 50%)}
+ :root{--reading-scrim:linear-gradient(180deg,rgb(249 245 237 / .9),rgb(249 245 237 / .68) 30%,rgb(249 245 237 / .1) 44%,transparent 50%)}
  .card[data-category=thoughts]::before{content:'';position:absolute;inset:-18px -24px;z-index:-1;background:radial-gradient(ellipse at 42% 50%,rgb(249 245 237 / .88) 0%,rgb(249 245 237 / .65) 58%,transparent 76%);pointer-events:none}
 }
 @media(max-width:650px){
@@ -200,12 +201,12 @@ html:not([data-scene-explore=reading]) .topbar .filters{visibility:hidden;pointe
 @media(max-width:1100px) and (min-width:651px){:root{--reading-edge:80.2vw}}
 @media(min-width:651px){
  /* At night the scene behind the reading band darkens but the day scrim did not change. A second veil, bounded to the feed's right edge, fades in with the night tone. It belongs to the content, so Explore still fades it out. */
- #content-root::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;background:linear-gradient(90deg,rgb(249 245 237 / .12) 0,rgb(249 245 237 / .2) calc(var(--reading-edge) - 34vw),rgb(249 245 237 / .5) calc(var(--reading-edge) - 2vw),rgb(249 245 237 / .3) calc(var(--reading-edge) + 4vw),transparent calc(var(--reading-edge) + 12vw))}
- body:has(.topbar[data-nav-tone=night]) #content-root::after{opacity:1}
+ #content-root::after,html[data-mobile-chat-page=true] .mobile-chat-page:not([data-phase])::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;background:linear-gradient(90deg,rgb(249 245 237 / .12) 0,rgb(249 245 237 / .2) calc(var(--reading-edge) - 34vw),rgb(249 245 237 / .5) calc(var(--reading-edge) - 2vw),rgb(249 245 237 / .3) calc(var(--reading-edge) + 4vw),transparent calc(var(--reading-edge) + 12vw))}
+ body:has(.topbar[data-nav-tone=night]) :is(#content-root,.mobile-chat-page)::after{opacity:1}
  /* The Thoughts band still sits partly over the darkest scene at night; its body copy takes full ink then. */
  body:has(.topbar[data-nav-tone=night]) .card[data-category=thoughts] .summary{color:var(--editorial-ink)}
 }
-@media(min-width:651px) and (prefers-reduced-motion:no-preference){#content-root::after{transition:opacity 900ms ease}.card[data-category=thoughts] .summary{transition:color 900ms ease}}
+@media(min-width:651px) and (prefers-reduced-motion:no-preference){#content-root::after,html[data-mobile-chat-page=true] .mobile-chat-page:not([data-phase])::after{transition:opacity 900ms ease}.card[data-category=thoughts] .summary{transition:color 900ms ease}}
 @media(max-width:650px){
  /* Work copy and category labels get the same local paper support Labs copy already had. */
  .card[data-category=work] :is(h2,.summary),.card:not([data-category=thoughts]) .category{background:rgb(249 245 237 / .86);box-shadow:0 0 12px 7px rgb(249 245 237 / .7);border-radius:3px}
@@ -222,7 +223,7 @@ html:not([data-scene-explore=reading]) .topbar .filters{visibility:hidden;pointe
  .host-controls #host-motion{width:36px;min-width:36px;padding:0;font-size:0}
  .topbar[data-nav-surface=content]::before{-webkit-mask-image:linear-gradient(180deg,#000 calc(100% - 16px),transparent);mask-image:linear-gradient(180deg,#000 calc(100% - 16px),transparent)}
  /* Paper holds the hero copy, then clears before the actor instead of a long grey fog over the mountain. */
- #content-root::before{background:linear-gradient(180deg,rgb(249 245 237 / .92) 0%,rgb(249 245 237 / .84) 26%,rgb(249 245 237 / .72) 38%,rgb(249 245 237 / .3) 45%,transparent 51%)}
+ :root{--reading-scrim:linear-gradient(180deg,rgb(249 245 237 / .92) 0%,rgb(249 245 237 / .84) 26%,rgb(249 245 237 / .72) 38%,rgb(249 245 237 / .3) 45%,transparent 51%)}
  .intro-description{color:#34362f;font-size:15px;line-height:1.75;margin-top:12px}
 }
 @media(max-width:650px) and (min-width:360px){
@@ -245,7 +246,7 @@ html:not([data-scene-explore=reading]) .topbar .filters{visibility:hidden;pointe
  /* The three-row masthead pushes the hero lower on the smallest phones; a smaller title and a slightly longer paper hold keep its copy readable. */
  .intro h1{font-size:30px}
  .intro-description{font-size:14px}
- #content-root::before{background:linear-gradient(180deg,rgb(249 245 237 / .92) 0%,rgb(249 245 237 / .86) 30%,rgb(249 245 237 / .76) 44%,rgb(249 245 237 / .3) 51%,transparent 56%)}
+ :root{--reading-scrim:linear-gradient(180deg,rgb(249 245 237 / .92) 0%,rgb(249 245 237 / .86) 30%,rgb(249 245 237 / .76) 44%,rgb(249 245 237 / .3) 51%,transparent 56%)}
 }
 /* The detail sheet's paper, shadow and blur follow the card's own travel progress instead of popping at either end.
    The card controller (hash-guarded, unchanged) writes progress only as the backdrop's inline opacity, min(.58, progress * .58);
@@ -316,4 +317,17 @@ html:not([data-scene-explore=reading]) .topbar .filters{visibility:hidden;pointe
  .topbar .filters{order:4;flex:1 1 auto;min-width:0;margin:0;gap:clamp(12px,2.4vw,20px)}
  .host-controls #host-motion{order:5;margin-left:0}
  .host-controls #host-explore{order:6;margin-right:-10px}
+}
+/* Phone chat page: the site is taken out of the page while the conversation is open, which used to drop the reading scrim in one frame and leave only the 3D scene around the panel. The page now carries the same scrim, so the backdrop does not change when the panel lands. */
+html[data-mobile-chat-page=true] .mobile-chat-page:not([data-phase]){position:relative;z-index:1;isolation:isolate;background:transparent}
+html[data-mobile-chat-page=true] .mobile-chat-page:not([data-phase])::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(rgb(40 51 72 / .114),rgb(40 51 72 / .114)),var(--reading-scrim)}
+/* While closing, the restored site is shown in a fixed cover whose opaque --bg hid the scene until the end, then the scene popped back. Keep it transparent so the scene and the site's own scrim show throughout. */
+.mobile-chat-background{background:transparent}
+@media(max-width:650px){
+ /* The site leaves the page when the phone conversation lands. Fade its content (not the reading scrim) while the panel opens, so the hand-off to the page's own scrim and dim is invisible, and fade it back in while the panel returns. */
+ body[data-chat-open=true]:not(:has(.mobile-chat-background:not([hidden]))) :is(.topbar,#content-root>*){opacity:0}
+}
+@media(max-width:650px) and (prefers-reduced-motion:no-preference){
+ .topbar,#content-root>*{transition:opacity 320ms ease}
+ @starting-style{.mobile-chat-background :is(.topbar,#content-root>*){opacity:0}}
 }

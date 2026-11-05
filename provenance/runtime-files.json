@@ -183,7 +183,7 @@
     },
     {
       "path": "runtime/host.js",
-      "sha256": "f3b15f56143cf8bc2d7e5ed2e3f3715721d3013d067be1110f611787441cf13e"
+      "sha256": "8a6a864acbc574a4fddf03c4120bf9611e1b3ad5114630be0dee53931b7f371e"
     },
     {
       "path": "runtime/index.html",
@@ -418,6 +418,6 @@
       "sha256": "69afa74e3bc89fc6758c39585ae789345cfdce80efb591ba0829031ad0783a03"
     }
   ],
-  "originalRuntimeSHA256": "61d8248d7b0fc0d4f3c658fe4c046a7886bc89d8e9f91bf80b591edd9829fca4",
+  "originalRuntimeSHA256": "e38c5d3c3e001f9e435ee61596bb5f5fa34a076f4d156907dddc325bbde9ae80",
   "acceptance": "Editorial composition and explicit scene-input lease; original upstream motion-ball and native card/chat/menu controllers unchanged; browser/video acceptance tracked in PR10."
 }

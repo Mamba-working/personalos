@@ -156,3 +156,57 @@ html:not([data-scene-explore=reading]) .topbar .filters{visibility:hidden;pointe
  body:not(:has([data-filter=all][aria-pressed=true])) .feed-column{flex:1 1 0;margin-left:0;padding-top:0}
  body:not(:has([data-filter=all][aria-pressed=true])) .card[data-content-id=work-map] .identity{grid-template-columns:54% 1fr;column-gap:26px}
 }
+/* Spacing, touch and interaction refinements. Editorial layer only; scene, camera and controllers are untouched. */
+@media(min-width:1101px){
+ /* Mixed feed: Thoughts used a -3.8vw pull over a 3vw gap, overlapping the Labs/Work copy track by 0.8vw. Keep a real gutter and size the feed so Thoughts keep a ~21vw measure. */
+ .feed{width:calc(var(--editorial-main) + var(--editorial-gap) + clamp(260px,21vw,340px))}
+ body:has([data-filter=all][aria-pressed=true]) .feed-column:nth-child(2){margin-left:0;flex-basis:auto}
+ /* One vertical rhythm for the primary column (labs-spring used 14px, the rest 34px). */
+ .slot,.slot:has([data-content-id=labs-spring]){margin-bottom:56px}
+ /* Keep the first Thought's category rule level with the Labs card beside it after the larger rhythm. */
+ body:has([data-filter=all][aria-pressed=true]) .feed .feed-column:nth-child(2){padding-top:calc(var(--editorial-main) / 1.75 + 69px)}
+ /* work-map keeps its 73% study, but its copy track never drops below 140px (one-character title lines at 1101-1356px). */
+ .card[data-content-id=work-map] .identity{grid-template-columns:minmax(0,73%) minmax(140px,1fr)}
+}
+@media(max-width:1100px) and (min-width:651px){
+ .slot{margin-bottom:48px}
+ body:has([data-filter=all][aria-pressed=true]) .feed .feed-column:nth-child(2){padding-top:calc(var(--editorial-main) / 1.75 + 62px)}
+ /* The tablet Thoughts column is 177-236px wide; 27px headings left a single character on the last line at 768px. */
+ .card[data-category=thoughts] h2{font-size:clamp(21px,2.6vw,27px)}
+}
+@media(max-width:650px){
+ /* Editorial cards are transparent; the old 12px compact gap let one card's arrow run into the next card's category rule. */
+ .feed[data-compact=true] .slot{margin-bottom:40px}
+ /* Filters stay visually 30px tall; the hit area grows to 44px without moving layout. */
+ .topbar .filters button{position:relative}
+ .topbar .filters button::before{content:"";position:absolute;inset:-4px -11px -10px}
+ .host-controls #host-motion{width:44px;min-width:44px}
+}
+/* Balanced headings and fewer one-character last lines. */
+.intro h1,.card h2{text-wrap:balance}
+.card .summary,.intro-description{text-wrap:pretty}
+/* Hover and keyboard focus share one state. Transitions live on the base state so leaving hover eases back instead of snapping. */
+.topbar .filters button:hover{color:var(--editorial-ink);opacity:1}
+.card:has(.open-card:is(:hover,:focus-visible)) .open-label{background:var(--editorial-ink);border-color:var(--editorial-ink);transform:translateX(3px)}
+.card:has(.open-card:is(:hover,:focus-visible)) .open-label::after{filter:invert(1)}
+@media(prefers-reduced-motion:no-preference){
+ .topbar .filters button{transition:color 200ms ease,opacity 200ms ease}
+ .card .open-label{transition:transform 320ms cubic-bezier(.32,.72,0,1),background-color 320ms ease,border-color 320ms ease}
+ .card .open-label::after{transition:filter 320ms ease}
+}
+/* Readability over the live scene, measured on rendered pixels by day and night. */
+.card .summary,.card[data-preview-density=compact] .summary,.card .category{color:var(--body-ink)}
+@media(min-width:1101px){#content-root{--reading-edge:calc(3.2vw + min(var(--editorial-main) + var(--editorial-gap) + clamp(260px,21vw,340px),1120px))}}
+@media(max-width:1100px) and (min-width:651px){#content-root{--reading-edge:80.2vw}}
+@media(min-width:651px){
+ /* At night the scene behind the reading band darkens but the day scrim did not change. A second veil, bounded to the feed's right edge, fades in with the night tone. It belongs to the content, so Explore still fades it out. */
+ #content-root::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;background:linear-gradient(90deg,rgb(249 245 237 / .12) 0,rgb(249 245 237 / .2) calc(var(--reading-edge) - 34vw),rgb(249 245 237 / .5) calc(var(--reading-edge) - 2vw),rgb(249 245 237 / .3) calc(var(--reading-edge) + 4vw),transparent calc(var(--reading-edge) + 12vw))}
+ body:has(.topbar[data-nav-tone=night]) #content-root::after{opacity:1}
+ /* The Thoughts band still sits partly over the darkest scene at night; its body copy takes full ink then. */
+ body:has(.topbar[data-nav-tone=night]) .card[data-category=thoughts] .summary{color:var(--editorial-ink)}
+}
+@media(min-width:651px) and (prefers-reduced-motion:no-preference){#content-root::after{transition:opacity 900ms ease}.card[data-category=thoughts] .summary{transition:color 900ms ease}}
+@media(max-width:650px){
+ /* Work copy and category labels get the same local paper support Labs copy already had. */
+ .card[data-category=work] :is(h2,.summary),.card:not([data-category=thoughts]) .category{background:rgb(249 245 237 / .86);box-shadow:0 0 12px 7px rgb(249 245 237 / .7);border-radius:3px}
+}

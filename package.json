@@ -17,7 +17,7 @@
     "dev:api": "node apps/api/src/server.mjs",
     "setup": "node scripts/prepare-motion-ball.mjs && npm ci --prefix .build/motion-ball --registry=https://registry.npmjs.org --ignore-scripts --no-audit --no-fund",
     "build:web": "node scripts/build-motion-ball.mjs",
-    "test:web": "node --experimental-vm-modules --test scripts/test-motion-host.mjs scripts/test-motion-weather.mjs scripts/test-native-card-layout.mjs scripts/test-navigation-host.mjs",
+    "test:web": "node --experimental-vm-modules --test scripts/test-motion-host.mjs scripts/test-motion-weather.mjs scripts/test-native-card-layout.mjs scripts/test-navigation-host.mjs scripts/test-scene-explore.mjs",
     "test:api": "node --test apps/api/test/*.test.mjs",
     "test:contracts": "node --test packages/contracts/test/*.test.mjs",
     "test:static": "node --test apps/web/static-server.test.mjs",

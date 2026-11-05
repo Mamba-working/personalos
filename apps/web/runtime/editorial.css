@@ -1,0 +1,333 @@
+/* Editorial UI only. The original world, camera and actor remain untouched. */
+@font-face{font-family:EditorialSerif;src:url('./assets/fonts/editorial-serif.otf') format('opentype');font-style:normal;font-weight:400;font-display:swap}
+:root{--editorial-ink:#252622;--editorial-muted:#62645f;--editorial-line:rgb(66 64 58 / .3);--editorial-paper:#f5f0e7;--editorial-main:44.5vw;--editorial-gap:3vw;--host-header-size:80px}
+#content-root{max-width:none;margin:0;padding:34px 3.2vw 100px;isolation:isolate}
+/* A bounded reading scrim, fading with the content on Explore. Never a scene layer. */
+:root{--reading-scrim:linear-gradient(90deg,rgb(249 245 237 / .94) 0%,rgb(249 245 237 / .88) 28%,rgb(249 245 237 / .72) 45%,rgb(249 245 237 / .34) 61%,transparent 77%)}
+#content-root::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:var(--reading-scrim)}
+.intro{display:block;min-height:0;padding:30px 0 0;margin:0 0 42px;max-width:850px}
+.intro .eyebrow{color:var(--editorial-muted);font-size:10px;letter-spacing:2.5px}
+.intro h1{font-family:EditorialSerif,Georgia,serif;font-size:clamp(38px,4.4vw,66px);font-weight:400;line-height:1.4;letter-spacing:-.04em;color:var(--editorial-ink);text-shadow:none}
+.intro-description{font-family:EditorialSerif,Georgia,serif;font-size:17px;color:var(--editorial-muted);line-height:1.9;margin:14px 0 0}
+.topbar{gap:16px;--nav-ink:#292e34;--nav-muted:#4a5159;--nav-line:rgb(49 49 43 / .24);background:linear-gradient(90deg,rgb(249 245 237 / .8),rgb(249 245 237 / .45) 45%,transparent 80%)}
+.topbar .edition,.topbar .top-note{display:none}
+.topbar .brand{font-family:Georgia,serif;font-weight:400;font-size:27px;letter-spacing:-1.3px}
+.topbar .brand-mark{font-size:14px}
+.topbar :is(.brand,button){text-shadow:none!important}
+.host-controls{margin-left:auto;gap:12px}
+.host-controls button,#host-menu .pos-menu-anchor>.pos-menu-toggle{min-height:46px;border-radius:999px;border:1px solid rgb(255 255 255 / .45);padding:0 16px;background:rgb(245 248 245 / .12);box-shadow:inset 0 1px 0 rgb(255 255 255 / .45),0 3px 12px rgb(40 45 39 / .05);font:12px ui-monospace,monospace;backdrop-filter:blur(8px)}
+#host-motion{width:46px;padding:0}.host-controls #host-explore{font-size:11px;padding:0 12px}
+#host-menu{margin-left:0}
+.topbar .filters{position:relative;inset:auto;margin:0 0 0 auto;padding:0;gap:16px;background:transparent;border:0;box-shadow:none;border-radius:0;backdrop-filter:none;-webkit-backdrop-filter:none;overflow:visible}
+.filters button{padding:14px 0;border-radius:0;color:var(--editorial-muted);font:12px/1.4 ui-monospace,monospace;letter-spacing:.035em}
+.filters button span{display:none}
+.filters button[data-filter=all]{font-size:10px;opacity:.7}
+.filters button[aria-pressed=true]{color:var(--editorial-ink)}
+.filter-indicator{top:auto;bottom:3px;height:1px;border-radius:0;background:var(--editorial-ink);box-shadow:none}
+.feed{width:65vw;max-width:1120px;gap:var(--editorial-gap)!important}
+.feed-column:first-child{flex:0 0 var(--editorial-main)}.feed-column:nth-child(2){flex:1}
+body:has([data-filter=all][aria-pressed=true]) .feed .feed-column:nth-child(2){padding-top:calc(var(--editorial-main) / 1.75 + 52px)}
+.slot{margin-bottom:34px;border-radius:0;clip-path:inset(0)}
+.card,.card[data-category=thoughts],.card[data-category=labs],.travel-shell{--ink:var(--editorial-ink);--muted:var(--editorial-muted);--summary-ink:var(--editorial-muted);--body-ink:#41443c;--tone-work:#535b4e;--tone-thoughts:#535b4e;--tone-labs:#535b4e;--stroke:var(--editorial-line);--close-surface:rgb(248 246 239 / .92);--close-edge:var(--editorial-line);--control-surface:#e8e7de;--control-hover:#dddcd2;--image-surface:#e7e7dc;--hover-edge:transparent}
+.card,.card[data-category=thoughts],.card[data-category=labs]{border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;text-shadow:none;color:var(--editorial-ink)}
+/* Grid lives inside identity and travels unchanged into the reader. */
+.card .identity,.card[data-preview-density=compact] .identity,.travel-shell .identity{padding:0;display:grid;grid-template-columns:54% 1fr;column-gap:26px;grid-template-rows:auto auto auto 1fr;align-items:start}
+.card .card-meta,.card[data-preview-density=compact] .card-meta{grid-column:1/-1;grid-row:1;display:flex;align-items:center;font:11px/1.5 ui-monospace,monospace;letter-spacing:.14em;color:var(--editorial-muted);gap:16px;margin:0 0 22px}
+.card .category{color:var(--editorial-muted);text-transform:uppercase}
+.card .card-meta::after{content:"";height:1px;background:var(--editorial-line);width:50%;max-width:330px}
+.card .card-index{display:none}
+.card h2,.card[data-preview-density=compact] h2{grid-column:2;grid-row:2;font-family:EditorialSerif,Georgia,serif;font-size:clamp(23px,1.8vw,30px);line-height:1.5;letter-spacing:-.025em;font-weight:400;margin:32px 0 10px;overflow-wrap:anywhere}
+.card .summary,.card[data-preview-density=compact] .summary{grid-column:2;grid-row:3;font-family:EditorialSerif,Georgia,serif;font-size:clamp(15px,1.25vw,19px);line-height:1.8;margin:0;color:var(--editorial-muted)}
+.card .card-visual,.card[data-preview-density=compact] .card-visual{grid-column:1;grid-row:2/5;height:auto;width:100%;aspect-ratio:1.45;margin:0;border-radius:8px;border:1px solid rgb(255 255 255 / .48);background:transparent;box-shadow:0 2px 2px rgb(40 40 30 / .05);overflow:hidden}
+.editorial-cover{display:block;width:100%;height:100%;object-fit:cover}
+.card .card-foot,.card[data-preview-density=compact] .card-foot{grid-column:2;grid-row:4;display:block;margin-top:16px}
+.card .card-foot>span:first-child{display:none}
+.card .open-label{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid var(--editorial-line);border-radius:50%;color:var(--editorial-ink)}
+.card .open-label img{width:19px;height:19px;display:block}
+.card .open-card{border-radius:8px}
+.card:has(.open-card:hover) .open-label{background:rgb(255 255 255 / .4);transform:translateX(2px);transition:transform 180ms ease,background 180ms ease}
+.card[data-content-id=work-map] .identity{grid-template-columns:70% 1fr;column-gap:28px}
+.card[data-content-id=work-map] .card-visual{aspect-ratio:1.95}
+.card[data-content-id=work-map] h2{margin-top:20px}
+.card[data-content-id=work-context] .identity{display:block}
+.card[data-content-id=work-context] .card-visual{aspect-ratio:1.75;margin:0}
+.card[data-content-id=work-context] :is(.card-meta,h2,.summary,.card-foot){position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.card[data-category=thoughts] .identity{display:block;padding:0}
+.card[data-category=thoughts] .card-visual{display:none}
+.card[data-category=thoughts] h2{font-size:clamp(27px,2.35vw,36px);line-height:1.42;margin:28px 0 14px;max-width:9em}
+.card[data-category=thoughts] .summary{font-size:clamp(16px,1.25vw,19px);line-height:1.8}
+.card[data-category=thoughts] .card-foot{margin-top:18px}
+.travel-shell,.travel-shell:has(.card[data-category]){background:rgb(245 242 234 / .97)!important;border-color:rgb(255 255 255 / .72);box-shadow:0 28px 90px rgb(25 29 24 / .18);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.travel-shell .card,.travel-shell .card[data-category]{background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+.backdrop{background:#44483f}
+.page-scroll footer{max-width:65vw;flex-wrap:wrap;color:var(--editorial-muted);border-color:var(--editorial-line);font-size:10px;line-height:1.8}
+#scene-explore-controls{position:fixed;left:50%;bottom:max(28px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:35;pointer-events:auto}
+@media(min-width:1700px){:root{--editorial-main:740px}.feed{width:1120px}}
+@media(max-width:1100px) and (min-width:651px){:root{--editorial-main:51vw}.feed{width:77vw}.topbar .filters{gap:10px}.host-controls{gap:6px}.host-controls button,#host-menu .pos-menu-anchor>.pos-menu-toggle{padding:0 10px}.topbar .brand{font-size:22px}.card .identity{column-gap:18px}.card[data-content-id=work-map] .identity{grid-template-columns:60% 1fr;column-gap:18px}.card h2{margin-top:12px}.page-scroll footer{max-width:77vw}}
+@media(max-width:650px){
+ :root{--host-header-size:112px;--editorial-main:100%}
+ .topbar{display:grid;grid-template-columns:1fr auto auto;height:112px;gap:0 4px;align-content:start;padding:12px 16px 0}.topbar .brand{font-size:21px;min-height:44px}.topbar .brand-mark{display:none}.host-controls{gap:4px;margin:0}.host-controls button,#host-menu .pos-menu-anchor>.pos-menu-toggle{min-height:40px;padding:0 8px;font-size:10px}#host-motion{width:36px;min-width:36px}.host-controls #host-explore{padding:0 7px;font-size:10px}.chat-label{display:none}.chat-label-compact{display:inline}
+ .topbar .filters{grid-column:1/-1;grid-row:2;justify-self:start;gap:22px;margin:5px 0 0}.filters button{font-size:11px;padding:10px 0}
+ #content-root{padding:30px 24px 80px}:root{--reading-scrim:linear-gradient(90deg,rgb(249 245 237 / .93),rgb(249 245 237 / .7) 72%,rgb(249 245 237 / .32))}
+ .intro{padding:28px 0 0;margin-bottom:32px;max-width:340px}.intro h1{font-size:39px;line-height:1.5}.intro-description{font-size:14px;line-height:1.9}.intro .eyebrow{font-size:9px;letter-spacing:2px;left:0}
+ .feed{width:100%;gap:0!important}.feed-column:first-child{flex:1}body:has([data-filter=all][aria-pressed=true]) .feed .feed-column:nth-child(2){padding:0}.slot{margin-bottom:34px}
+ .card .identity,.card[data-preview-density=compact] .identity,.card[data-content-id=work-map] .identity{grid-template-columns:54% 1fr;column-gap:16px}
+ .card .card-meta,.card[data-preview-density=compact] .card-meta{margin-bottom:16px;font-size:10px}
+ .card h2,.card[data-preview-density=compact] h2{font-size:20px;line-height:1.5;margin:3px 0 8px}.card .summary,.card[data-preview-density=compact] .summary{font-size:13px;line-height:1.75}
+ .card .card-visual,.card[data-preview-density=compact] .card-visual{aspect-ratio:1.05;border-radius:7px}.card[data-content-id=work-map] .card-visual{aspect-ratio:1.05}
+ .card .card-foot,.card[data-preview-density=compact] .card-foot{margin-top:12px}.card .open-label{width:36px;height:36px}
+ .card[data-content-id=work-context] .identity,.card[data-category=thoughts] .identity{display:block}.card[data-content-id=work-context] .card-visual{aspect-ratio:1.55}.card[data-category=thoughts] h2{font-size:30px;max-width:10em;margin-top:20px}.card[data-category=thoughts] .summary{font-size:16px;max-width:20em}.page-scroll footer{max-width:100%}
+}
+@media(prefers-reduced-transparency:reduce){:root{--reading-scrim:linear-gradient(90deg,#f5f0e7 60%,transparent 80%)}.travel-shell,.travel-shell:has(.card[data-category]){background:var(--editorial-paper)!important}}
+@media(prefers-reduced-motion:reduce){.card .open-label{transition:none!important}}
+.topbar[data-nav-tone=night]{--nav-ink:#292e34;--nav-muted:#4a5159;--nav-line:rgb(49 49 43 / .24)}
+.topbar[data-nav-tone=night] .host-controls button,.topbar[data-nav-tone=night] #host-menu .pos-menu-anchor>.pos-menu-toggle{background:rgb(245 242 234 / .82)}
+
+.card .card-meta>span:not(.category){display:none}
+.card .open-label{font-size:0}
+.card .open-label::after{content:"";width:19px;height:19px;background:url('./assets/icons/arrow-right.svg') center/contain no-repeat}
+/* Categories moved into the masthead still release focus/input during Explore. */
+html:not([data-scene-explore=reading]) .topbar .filters{visibility:hidden;pointer-events:none}
+@media(max-width:650px){.host-controls button,#host-menu .pos-menu-anchor>.pos-menu-toggle{min-height:44px}.topbar .filters button{min-height:44px}}
+/* Reference-frame corrections: typography, column rhythm and responsive hierarchy. */
+.intro h1 span{color:inherit}
+.topbar[data-nav-surface=content]::before,.topbar[data-nav-tone=night][data-nav-surface=content]::before{background:linear-gradient(90deg,rgb(249 245 237 / .96),rgb(249 245 237 / .86) 58%,rgb(249 245 237 / .3));backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+#host-menu .pos-menu-anchor>.pos-menu-toggle{border-radius:999px}
+.card[data-category=thoughts] h2{font-family:EditorialSerif,Georgia,serif;font-weight:400;white-space:pre-line}
+.card[data-content-id=work-map] h2{white-space:pre-line}
+@media(min-width:1101px){
+ body:has([data-filter=all][aria-pressed=true]) .feed-column:nth-child(2){margin-left:-3.8vw;flex-basis:calc(100% - var(--editorial-main) - var(--editorial-gap) + 3.8vw)}
+ .card[data-category=thoughts] h2{font-size:34px;letter-spacing:-.035em;max-width:none}
+ body:has([data-filter=all][aria-pressed=true]) .feed-column:nth-child(2) .slot{margin-bottom:330px}
+ .card[data-content-id=work-map] .identity{grid-template-columns:73% 1fr;column-gap:28px}
+ .card[data-content-id=work-map] h2{font-size:27px}
+ .card[data-content-id=work-map] .card-visual{aspect-ratio:1.95}
+ .slot:has([data-content-id=labs-spring]){margin-bottom:14px}
+}
+@media(max-width:650px){
+ :root{--host-header-size:130px}
+ .topbar{height:130px;padding:12px 24px 0;grid-template-columns:1fr auto;grid-template-rows:44px 44px 30px;gap:4px 0}
+ .topbar .brand{grid-column:1;grid-row:1;font-size:23px}
+ #host-menu{grid-column:2;grid-row:1;justify-self:end}
+ .host-controls{grid-column:1/-1;grid-row:2;justify-content:flex-start;gap:8px}
+ .host-controls #host-explore{order:-1;padding:0 18px;font-size:12px;min-width:126px}
+ .host-controls #host-motion{margin-left:auto}
+ .topbar .filters{grid-row:3;margin:0;gap:24px}.topbar .filters button{min-height:30px;padding:5px 0}
+ #content-root{padding-top:18px}
+ .intro{padding:0;margin-bottom:0;min-height:270px}
+ .intro .eyebrow{display:none}
+ .intro h1{font-size:36px;line-height:1.34;letter-spacing:-.035em;margin:0}
+ .intro h1 span{display:block}
+ .intro-description{font-size:14px;max-width:310px;margin-top:14px}
+ .intro-description span{display:block}
+ .card[data-content-id=work-context] .identity{display:grid;grid-template-columns:1fr 42px;column-gap:8px;grid-template-rows:auto auto auto auto}
+ .card[data-content-id=work-context] :is(.card-meta,h2,.card-foot){position:static;width:auto;height:auto;padding:0;margin:0;overflow:visible;clip:auto;white-space:normal;border:0}
+ .card[data-content-id=work-context] .card-meta{grid-column:1/-1;grid-row:1;margin-bottom:16px}
+ .card[data-content-id=work-context] .card-visual{grid-column:1/-1;grid-row:2;aspect-ratio:1.8}
+ .card[data-content-id=work-context] h2{grid-column:1;grid-row:3;font:23px/1.35 EditorialSerif,Georgia,serif;margin-top:8px}
+ .card[data-content-id=work-context] h2::after{content:'示例';display:block;font-size:14px;color:var(--editorial-muted);margin-top:3px}
+ .card[data-content-id=work-context] .card-foot{grid-column:2;grid-row:3;margin-top:12px}
+ .card[data-category=thoughts] h2{font-size:28px;white-space:normal;line-height:1.4}
+ .card[data-content-id=work-map] h2{white-space:normal}
+}
+#host-menu .pos-menu-anchor>.pos-menu-toggle:focus-visible{border-radius:999px}
+@media(min-width:1101px){
+ .card[data-content-id=work-map] .summary{width:270px;max-width:calc(100vw - 600px)}
+}
+@media(max-width:650px){
+ /* Preserve the real actor's position: leave its center clear rather than move the scene to fit a concept image. */
+ .intro{min-height:calc(100svh - 360px)}
+ .card[data-category=thoughts] h2{white-space:pre-line}
+}
+.card[data-category=thoughts] .summary{color:#41443c}
+@media(min-width:1101px){.card[data-content-id=labs-spring] .summary{max-width:220px;white-space:pre-line}}
+.card[data-content-id=work-map] .summary{width:auto;max-width:none;white-space:pre-line}
+@media(max-width:650px){
+ .intro{min-height:calc(77svh - 164px)}
+ :root{--reading-scrim:linear-gradient(180deg,rgb(249 245 237 / .9),rgb(249 245 237 / .68) 30%,rgb(249 245 237 / .1) 44%,transparent 50%)}
+ .card[data-category=thoughts]::before{content:'';position:absolute;inset:-18px -24px;z-index:-1;background:radial-gradient(ellipse at 42% 50%,rgb(249 245 237 / .88) 0%,rgb(249 245 237 / .65) 58%,transparent 76%);pointer-events:none}
+}
+@media(max-width:650px){
+ /* Local copy support travels with the card; the exposed hero actor stays clear. */
+ .card[data-content-id=work-context] h2,.card[data-category=labs] :is(h2,.summary){background:rgb(249 245 237 / .86);box-shadow:0 0 12px 7px rgb(249 245 237 / .7);border-radius:3px}
+ .card[data-content-id=work-context] h2::after,.card[data-category=labs] .summary{color:#41443c}
+}
+@media(min-width:651px){
+ /* Category views are peer columns, not the mixed feed's wide-study/narrow-note composition. */
+ body:not(:has([data-filter=all][aria-pressed=true])) .feed-column{flex:1 1 0;margin-left:0;padding-top:0}
+ body:not(:has([data-filter=all][aria-pressed=true])) .card[data-content-id=work-map] .identity{grid-template-columns:54% 1fr;column-gap:26px}
+}
+/* Spacing, touch and interaction refinements. Editorial layer only; scene, camera and controllers are untouched. */
+@media(min-width:1101px){
+ /* Mixed feed: Thoughts used a -3.8vw pull over a 3vw gap, overlapping the Labs/Work copy track by 0.8vw. Keep a real gutter and size the feed so Thoughts keep a ~21vw measure. */
+ .feed{width:calc(var(--editorial-main) + var(--editorial-gap) + clamp(260px,21vw,340px))}
+ body:has([data-filter=all][aria-pressed=true]) .feed-column:nth-child(2){margin-left:0;flex-basis:auto}
+ /* One vertical rhythm for the primary column (labs-spring used 14px, the rest 34px). */
+ .slot,.slot:has([data-content-id=labs-spring]){margin-bottom:56px}
+ /* Keep the first Thought's category rule level with the Labs card beside it after the larger rhythm. */
+ body:has([data-filter=all][aria-pressed=true]) .feed .feed-column:nth-child(2){padding-top:calc(var(--editorial-main) / 1.75 + 69px)}
+ /* work-map keeps its 73% study, but its copy track never drops below 140px (one-character title lines at 1101-1356px). */
+ .card[data-content-id=work-map] .identity{grid-template-columns:minmax(0,73%) minmax(140px,1fr)}
+}
+@media(max-width:1100px) and (min-width:651px){
+ .slot{margin-bottom:48px}
+ body:has([data-filter=all][aria-pressed=true]) .feed .feed-column:nth-child(2){padding-top:calc(var(--editorial-main) / 1.75 + 62px)}
+ /* The tablet Thoughts column is 177-236px wide; 27px headings left a single character on the last line at 768px. */
+ .card[data-category=thoughts] h2{font-size:clamp(21px,2.6vw,27px)}
+}
+@media(max-width:650px){
+ /* Editorial cards are transparent; the old 12px compact gap let one card's arrow run into the next card's category rule. */
+ .feed[data-compact=true] .slot{margin-bottom:40px}
+ /* Filters stay visually 30px tall; the hit area grows to 44px without moving layout. */
+ .topbar .filters button{position:relative}
+ .topbar .filters button::before{content:"";position:absolute;inset:-4px -11px -10px}
+ .host-controls #host-motion{width:44px;min-width:44px}
+}
+/* Balanced headings and fewer one-character last lines. */
+.intro h1,.card h2{text-wrap:balance}
+.card .summary,.intro-description{text-wrap:pretty}
+/* Hover and keyboard focus share one state. Transitions live on the base state so leaving hover eases back instead of snapping. */
+.topbar .filters button:hover{color:var(--editorial-ink);opacity:1}
+/* A quiet affordance: the ring darkens and the arrow steps forward. Hover only where a pointer can hover, so taps do not leave a sticky state. */
+.card:has(.open-card:focus-visible) .open-label{background:rgb(255 255 255 / .6);border-color:var(--editorial-ink);transform:translateX(3px)}
+@media(hover:hover){.card:has(.open-card:hover) .open-label{background:rgb(255 255 255 / .6);border-color:var(--editorial-ink);transform:translateX(3px)}}
+@media(prefers-reduced-motion:no-preference){
+ .topbar .filters button{transition:color 200ms ease,opacity 200ms ease}
+ .card .open-label{transition:transform 320ms cubic-bezier(.32,.72,0,1),background-color 320ms ease,border-color 320ms ease}
+}
+/* Readability over the live scene, measured on rendered pixels by day and night. */
+.card .summary,.card[data-preview-density=compact] .summary,.card .category{color:var(--body-ink)}
+@media(min-width:1101px){:root{--reading-edge:calc(3.2vw + min(var(--editorial-main) + var(--editorial-gap) + clamp(260px,21vw,340px),1120px))}}
+@media(max-width:1100px) and (min-width:651px){:root{--reading-edge:80.2vw}}
+@media(min-width:651px){
+ /* At night the scene behind the reading band darkens but the day scrim did not change. A second veil, bounded to the feed's right edge, fades in with the night tone. It belongs to the content, so Explore still fades it out. */
+ #content-root::after,html[data-mobile-chat-page=true] .mobile-chat-page:not([data-phase])::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;background:linear-gradient(90deg,rgb(249 245 237 / .12) 0,rgb(249 245 237 / .2) calc(var(--reading-edge) - 34vw),rgb(249 245 237 / .5) calc(var(--reading-edge) - 2vw),rgb(249 245 237 / .3) calc(var(--reading-edge) + 4vw),transparent calc(var(--reading-edge) + 12vw))}
+ body:has(.topbar[data-nav-tone=night]) :is(#content-root,.mobile-chat-page)::after{opacity:1}
+ /* The Thoughts band still sits partly over the darkest scene at night; its body copy takes full ink then. */
+ body:has(.topbar[data-nav-tone=night]) .card[data-category=thoughts] .summary{color:var(--editorial-ink)}
+}
+@media(min-width:651px) and (prefers-reduced-motion:no-preference){#content-root::after,html[data-mobile-chat-page=true] .mobile-chat-page:not([data-phase])::after{transition:opacity 900ms ease}.card[data-category=thoughts] .summary{transition:color 900ms ease}}
+@media(max-width:650px){
+ /* Work copy and category labels get the same local paper support Labs copy already had. */
+ .card[data-category=work] :is(h2,.summary),.card:not([data-category=thoughts]) .category{background:rgb(249 245 237 / .86);box-shadow:0 0 12px 7px rgb(249 245 237 / .7);border-radius:3px}
+}
+/* Narrow screens: a two-row masthead at 360-650px, no band or hairline under it, lighter controls with 44px hit areas, and a paper-to-scene hero that stays clear of the actor. */
+@media(max-width:650px){
+ .topbar{background:transparent}
+ .topbar::after{display:none}
+ .host-controls button,#host-menu .pos-menu-anchor>.pos-menu-toggle{position:relative;min-height:36px;height:36px;padding:0 13px;border:1px solid rgb(37 38 34 / .14);background:rgb(255 255 255 / .4);box-shadow:inset 0 1px 0 rgb(255 255 255 / .55);font-size:11px;letter-spacing:.02em}
+ /* The 1px border sits outside the padding box, so -5px yields a 44px hit area around a 36px pill. */
+ .host-controls button::before,#host-menu .pos-menu-anchor>.pos-menu-toggle::before{content:"";position:absolute;inset:-5px}
+ #host-menu .pos-menu-anchor>.pos-menu-toggle{gap:8px}
+ .host-controls #host-explore{min-width:0;padding:0 14px;font-size:12px}
+ .host-controls #host-motion{width:36px;min-width:36px;padding:0;font-size:0}
+ .topbar[data-nav-surface=content]::before{-webkit-mask-image:linear-gradient(180deg,#000 calc(100% - 16px),transparent);mask-image:linear-gradient(180deg,#000 calc(100% - 16px),transparent)}
+ /* Paper holds the hero copy, then clears before the actor instead of a long grey fog over the mountain. */
+ :root{--reading-scrim:linear-gradient(180deg,rgb(249 245 237 / .92) 0%,rgb(249 245 237 / .84) 26%,rgb(249 245 237 / .72) 38%,rgb(249 245 237 / .3) 45%,transparent 51%)}
+ .intro-description{color:#34362f;font-size:15px;line-height:1.75;margin-top:12px}
+}
+@media(max-width:650px) and (min-width:360px){
+ :root{--host-header-size:100px}
+ .topbar{display:flex;flex-wrap:wrap;align-items:center;align-content:flex-start;height:100px;padding:10px 24px 0;gap:2px 8px}
+ /* Row 1: brand, chat, menu. Row 2: categories, then the two scene controls. */
+ .topbar::after{display:block;content:"";position:static;order:3;flex-basis:100%;height:0;background:none}
+ .topbar .brand{order:0;flex:1 1 auto}
+ .host-controls{display:contents}
+ .host-controls #host-open-chat{order:1}
+ #host-menu{order:2;margin:0}
+ .topbar .filters{order:4;flex:1 1 auto;min-width:0;margin:0;gap:18px}
+ .host-controls #host-motion{order:5;margin-left:0}
+ .host-controls #host-explore{order:6}
+ /* First card starts a little below the actor (about 76% of the viewport height) rather than touching it. */
+ .intro{min-height:calc(82svh - 118px)}
+}
+@media(max-width:359px){
+ .intro{min-height:calc(82svh - 148px)}
+ /* The three-row masthead pushes the hero lower on the smallest phones; a smaller title and a slightly longer paper hold keep its copy readable. */
+ .intro h1{font-size:30px}
+ .intro-description{font-size:14px}
+ :root{--reading-scrim:linear-gradient(180deg,rgb(249 245 237 / .92) 0%,rgb(249 245 237 / .86) 30%,rgb(249 245 237 / .76) 44%,rgb(249 245 237 / .3) 51%,transparent 56%)}
+}
+/* The detail sheet's paper, shadow and blur follow the card's own travel progress instead of popping at either end.
+   The card controller (hash-guarded, unchanged) writes progress only as the backdrop's inline opacity, min(.58, progress * .58);
+   these steps read it back and a short transition blends them. Geometry stays with the controller. */
+#stage:has(.backdrop[style*="opacity: 0.2"]) #shell{background-color:rgb(245 242 234 / .74)!important;box-shadow:0 28px 90px rgb(25 29 24 / .13)!important;backdrop-filter:blur(9px)!important;-webkit-backdrop-filter:blur(9px)!important}
+#stage:has(.backdrop[style*="opacity: 0.1"]) #shell{background-color:rgb(245 242 234 / .46)!important;box-shadow:0 28px 90px rgb(25 29 24 / .08)!important;border-color:rgb(255 255 255 / .4)!important;backdrop-filter:blur(6px)!important;-webkit-backdrop-filter:blur(6px)!important}
+#stage:has(.backdrop[style*="opacity: 0.0"]) #shell{background-color:rgb(245 242 234 / .16)!important;box-shadow:0 28px 90px rgb(25 29 24 / .03)!important;border-color:rgb(255 255 255 / .14)!important;backdrop-filter:blur(2px)!important;-webkit-backdrop-filter:blur(2px)!important}
+#stage:has(.backdrop:is(:not([style]),[style*="opacity: 0;"],[style*="e-"])) #shell{background-color:rgb(245 242 234 / 0)!important;box-shadow:0 28px 90px rgb(25 29 24 / 0)!important;border-color:transparent!important;backdrop-filter:blur(0)!important;-webkit-backdrop-filter:blur(0)!important}
+@media(prefers-reduced-motion:no-preference){#shell{transition:background-color 90ms linear,box-shadow 90ms linear,border-color 90ms linear,backdrop-filter 90ms linear,-webkit-backdrop-filter 90ms linear}}
+@media(max-width:650px){
+ /* One soft paper sheet behind the mobile feed replaces per-line text boxes and label chips. It starts just below the actor and fades with Explore like the rest of the content. */
+ .feed::before{content:"";position:absolute;inset:-64px -24px -48px;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgb(249 245 237 / 0),rgb(249 245 237 / .86) 64px,rgb(249 245 237 / .86) calc(100% - 48px),rgb(249 245 237 / 0))}
+ .card[data-content-id=work-context] h2,.card[data-category=labs] :is(h2,.summary),.card[data-category=work] :is(h2,.summary),.card:not([data-category=thoughts]) .category{background:none;box-shadow:none;border-radius:0}
+ .card[data-category=thoughts]::before{content:none}
+}
+/* "All" was 10px at 70% opacity and read as disabled; every category now shares one size and the same muted/ink states. */
+.filters button[data-filter=all]{font-size:12px;opacity:1}
+@media(max-width:650px){
+ /* Narrow masthead, second pass: quiet text controls instead of bubbles. One label style, no fill, border or shadow, 44px tall hit areas, right edge aligned with the content. */
+ .host-controls button,#host-menu .pos-menu-anchor>.pos-menu-toggle,.topbar[data-nav-tone=night] .host-controls button,.topbar[data-nav-tone=night] #host-menu .pos-menu-anchor>.pos-menu-toggle{height:44px;min-height:44px;padding:0 6px;border:0;border-radius:6px;background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;color:var(--editorial-ink);font-size:12px;letter-spacing:.02em}
+ .host-controls button::before,#host-menu .pos-menu-anchor>.pos-menu-toggle::before{content:none}
+ .host-controls #host-motion{width:44px;min-width:44px}
+ .host-controls #host-explore{padding:0 6px}
+ .host-controls button:hover,#host-menu .pos-menu-anchor>.pos-menu-toggle:hover{background:transparent}
+ .host-controls button:active,#host-menu .pos-menu-anchor>.pos-menu-toggle:active{opacity:.55}
+ .topbar :is(button,a):focus-visible{outline-color:var(--editorial-ink)}
+ .topbar .filters button{font-size:12px}
+}
+@media(max-width:650px) and (min-width:360px){
+ .topbar{padding-top:8px;column-gap:4px}
+ .topbar .filters{gap:clamp(12px,4vw,20px)}
+ /* Pull the right-hand labels onto the content edge; their 6px padding is only hit area. */
+ #host-menu{margin-right:-6px}
+ .host-controls #host-explore{margin-right:-6px}
+}
+/* Pause/resume glyph for the motion toggle at every width (the bare "≈" read as decoration). Same button, labels and states. */
+/* font-size:0 alone still drew the "≈" at the browser minimum size behind the icon; push it out of the clipped box instead. */
+.host-controls #host-motion{position:relative;font-size:0;overflow:hidden;text-indent:150%;white-space:nowrap}
+#host-motion::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:block;box-sizing:border-box;width:8px;height:10px;border-inline:2px solid currentColor}
+#host-motion[aria-pressed=true]::after{width:0;height:0;margin-left:2px;border-inline:0;border-left:8px solid currentColor;border-block:5px solid transparent}
+@media(min-width:651px){
+ /* Desktop and tablet masthead: the same quiet text controls as on phones. No band or hairline under it; the content scrim already carries the left side. */
+ .topbar{background:transparent}
+ .topbar::after{display:none}
+ .host-controls button,#host-menu .pos-menu-anchor>.pos-menu-toggle,.topbar[data-nav-tone=night] .host-controls button,.topbar[data-nav-tone=night] #host-menu .pos-menu-anchor>.pos-menu-toggle{min-height:44px;height:44px;padding:0 10px;border:0;border-radius:6px;background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;color:var(--editorial-ink);font-size:12px;letter-spacing:.02em}
+ .host-controls #host-motion{width:44px;min-width:44px;padding:0}
+ .host-controls #host-explore{font-size:12px;padding:0 10px}
+ .host-controls button:hover,#host-menu .pos-menu-anchor>.pos-menu-toggle:hover{background:transparent}
+ .host-controls button:active,#host-menu .pos-menu-anchor>.pos-menu-toggle:active{opacity:.55}
+ .topbar :is(.host-controls button,.pos-menu-toggle):focus-visible{outline-color:currentColor}
+ #host-menu{margin-right:-10px}
+ /* Scrolled over content: the frosted paper ends past the reading column and fades out, so the open scene stays clear. */
+ .topbar[data-nav-surface=content]::before,.topbar[data-nav-tone=night][data-nav-surface=content]::before{right:calc(100vw - var(--reading-edge) - 10vw);background:linear-gradient(90deg,rgb(249 245 237 / .96),rgb(249 245 237 / .9) 70%,rgb(249 245 237 / 0));-webkit-mask-image:linear-gradient(90deg,#000 70%,transparent),linear-gradient(180deg,#000 calc(100% - 16px),transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,#000 70%,transparent),linear-gradient(180deg,#000 calc(100% - 16px),transparent);mask-composite:intersect}
+}
+@media(min-width:881px){
+ /* The masthead aligns with the reading column: brand on its left edge, menu label on its right edge. The open scene to the right carries no controls. */
+ .topbar{padding-right:calc(100vw - var(--reading-edge))}
+}
+@media(min-width:651px) and (max-width:880px){
+ /* Narrow tablets: one row no longer fits inside the reading column, so use the phone's two rows within it. */
+ :root{--host-header-size:100px}
+ .topbar{flex-wrap:wrap;align-items:center;align-content:flex-start;height:100px;padding-top:8px;padding-right:calc(100vw - var(--reading-edge));gap:2px 4px}
+ .topbar::after{display:block;content:"";position:static;order:3;flex-basis:100%;height:0;background:none}
+ .topbar .brand{order:0;flex:1 1 auto}
+ .host-controls{display:contents}
+ .host-controls #host-open-chat{order:1}
+ #host-menu{order:2;margin:0 -10px 0 0}
+ .topbar .filters{order:4;flex:1 1 auto;min-width:0;margin:0;gap:clamp(12px,2.4vw,20px)}
+ .host-controls #host-motion{order:5;margin-left:0}
+ .host-controls #host-explore{order:6;margin-right:-10px}
+}
+/* Phone chat page: the site is taken out of the page while the conversation is open, which used to drop the reading scrim in one frame and leave only the 3D scene around the panel. The page now carries the same scrim, so the backdrop does not change when the panel lands. */
+html[data-mobile-chat-page=true] .mobile-chat-page:not([data-phase]){position:relative;z-index:1;isolation:isolate;background:transparent}
+html[data-mobile-chat-page=true] .mobile-chat-page:not([data-phase])::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(rgb(40 51 72 / .114),rgb(40 51 72 / .114)),var(--reading-scrim)}
+/* While closing, the restored site is shown in a fixed cover whose opaque --bg hid the scene until the end, then the scene popped back. Keep it transparent so the scene and the site's own scrim show throughout. */
+.mobile-chat-background{background:transparent}
+@media(max-width:650px){
+ /* The site leaves the page when the phone conversation lands. Fade its content (not the reading scrim) while the panel opens, so the hand-off to the page's own scrim and dim is invisible, and fade it back in while the panel returns. */
+ body[data-chat-open=true]:not(:has(.mobile-chat-background:not([hidden]))) :is(.topbar,#content-root>*){opacity:0}
+}
+@media(max-width:650px) and (prefers-reduced-motion:no-preference){
+ .topbar,#content-root>*{transition:opacity 320ms ease}
+ @starting-style{.mobile-chat-background :is(.topbar,#content-root>*){opacity:0}}
+}

@@ -25,3 +25,7 @@ test('static server serves terrain images and WebGL binaries with required MIME 
 test('old 3D renderer and exclusive vendor paths are absent',()=>withWeb(async origin=>{
   for(const route of ['/world/scene.js','/world/vendor/aora/rings.js','/scene-bridge.js','/world-availability.js','/story/story.js'])assert.equal((await fetch(origin+route)).status,404);
 }));
+
+test('original editorial SVG covers have an image MIME type with nosniff',()=>withWeb(async origin=>{
+ for(const name of ['work','labs','map']){const response=await fetch(origin+'/assets/editorial-'+name+'.svg');assert.equal(response.status,200);assert.match(response.headers.get('content-type'),/^image\/svg\+xml/);assert.equal(response.headers.get('x-content-type-options'),'nosniff');assert.match(await response.text(),/<svg/);}
+}));

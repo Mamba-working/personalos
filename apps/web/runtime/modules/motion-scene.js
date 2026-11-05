@@ -3,9 +3,13 @@ export function mountMotionScene({ host, container, speech, status }) {
   let scene = null, pending = null, disposed = false, cached = false, ready = false, failed = null;
   let selected = 'sunny', time = 'auto', pointerLease = false, speechTimer = 0, paintPending = false, paintAgain = false;
   let state = host.getState(); const cleanups = [];
-  const visibleHero = () => document.scrollingElement.scrollTop < Math.max(120, innerHeight * .8);
+  const visibleHero = () => {
+    const hero = document.querySelector?.('.intro'), header = document.querySelector?.('.topbar');
+    return hero ? hero.getBoundingClientRect().bottom > (header?.getBoundingClientRect().bottom || 0) : document.scrollingElement.scrollTop < Math.max(120, innerHeight * .8);
+  };
   const blocked = () => state.chat?.phase && state.chat.phase !== 'closed' || state.content?.phase && state.content.phase !== 'preview' || state.menu?.open || state.menu?.modal;
-  const staticMode = () => state.reduced || !visibleHero() || !!blocked();
+  const exploring = () => state.sceneExplore?.inputEnabled === true;
+  const staticMode = () => (state.sceneExplore && !['reading','exploring'].includes(state.sceneExplore.phase)) || state.reduced || (!visibleHero() && !exploring()) || !!blocked();
   function notify() { host.moduleChanged('scene'); }
   function paintOnce() {
     if (!scene || !ready || failed || disposed || cached || document.hidden) return;
@@ -18,11 +22,13 @@ export function mountMotionScene({ host, container, speech, status }) {
     });
   }
   function inputFor(target) {
-    const allow = !!scene && ready && !failed && !document.hidden && !staticMode() && !cached && target === scene.canvas;
+    const allow = !!scene && ready && !failed && !document.hidden && !staticMode() && !cached && (!matchMedia('(pointer: coarse)').matches || exploring()) && target === scene.canvas;
     if (pointerLease !== allow) { pointerLease = allow; scene?.setInput({ pointer: allow, keyboard: false }); }
   }
   function policy() {
     if (!scene || !ready || disposed) return;
+    if (staticMode() || failed || cached || document.hidden) pointerLease = false;
+    scene.canvas.style.touchAction = exploring() ? 'none' : 'pan-y';
     scene.setInput({ pointer: pointerLease && !failed && !document.hidden && !staticMode() && !cached, keyboard: false });
     if (failed || cached || document.hidden || staticMode()) scene.pause(); else scene.resume();
   }
@@ -68,17 +74,21 @@ export function mountMotionScene({ host, container, speech, status }) {
   const pagehide = event => { if (event.persisted) { cached = true; pointerLease = false; policy(); } else api.dispose(); };
   const pageshow = () => { cached = false; policy(); if (staticMode()) paintOnce(); };
   window.addEventListener('scroll', scroll, { passive: true }); document.addEventListener('pointerover', pointer, { passive: true });
+  // A pointer already over the canvas during a fade gets no new pointerover.
+  // Acquire before the unchanged canvas handler receives its first press.
+  document.addEventListener('pointerdown', pointer, { capture: true, passive: true });
   document.addEventListener('visibilitychange', visibility); window.addEventListener('pagehide', pagehide); window.addEventListener('pageshow', pageshow);
   container.addEventListener('webglcontextlost', lost, true); container.addEventListener('webglcontextrestored', restored, true);
   const ro = new ResizeObserver(resize); ro.observe(container);
   const api = {
     getState: () => ({ ready, failed, weather: selected, time, night: scene ? scene.isNight : null, paused: !scene || scene.paused, reduced: !!state.reduced,
+      pointerLease, anchors: scene?.ball?.anchors ? JSON.parse(JSON.stringify(scene.ball.anchors)) : null,
       canvasCount: container.querySelectorAll('canvas').length, source: 'motion-ball@957cec0', publicApiOnly: true }),
     setWeather(name) { selected = name; if (scene && ready) { scene.setWeather(name, { instant: staticMode() }); if (staticMode()) paintOnce(); } notify(); return true; },
     setTime(mode) { time = mode; if (scene && ready) { scene.setTime(mode, { instant: staticMode(), quiet: true }); if (staticMode()) paintOnce(); } notify(); return true; },
     getStats: () => scene?.getStats() || null, capture: (...args) => scene?.capture(...args),
     dispose() { if (disposed) return; disposed = true; stopHost(); ro.disconnect(); clearTimeout(speechTimer); for (const off of cleanups.splice(0)) off(); (scene || pending)?.dispose(); speech.hidden = true;
-      window.removeEventListener('scroll', scroll); document.removeEventListener('pointerover', pointer); document.removeEventListener('visibilitychange', visibility); window.removeEventListener('pagehide', pagehide); window.removeEventListener('pageshow', pageshow); container.removeEventListener('webglcontextlost', lost, true); container.removeEventListener('webglcontextrestored', restored, true); },
+      window.removeEventListener('scroll', scroll); document.removeEventListener('pointerover', pointer); document.removeEventListener('pointerdown', pointer, true); document.removeEventListener('visibilitychange', visibility); window.removeEventListener('pagehide', pagehide); window.removeEventListener('pageshow', pageshow); container.removeEventListener('webglcontextlost', lost, true); container.removeEventListener('webglcontextrestored', restored, true); },
   };
   initialize(); return api;
 }

@@ -13,7 +13,7 @@ const getState = () => ({ version: 5, ready: !!(chat && window.personalOSContent
   story: { phase: 'home', reduced: reduced(), enabled: false },
   content: window.personalOSContent?.getState() || null, chat: chat?.getState() || null,
   menu: modules.get('menu')?.getState() || null, weather: modules.get('weather')?.getState() || null,
-  scene: modules.get('scene')?.getState() || null });
+  scene: modules.get('scene')?.getState() || null, sceneExplore: modules.get('sceneExplore')?.getState() || null });
 function syncHeader(state = getState()) {
   header.dataset.navTone = state.scene?.ready && !state.scene.failed && state.scene.night === true ? 'night' : 'day';
   header.dataset.navSurface = hero.getBoundingClientRect().bottom <= header.getBoundingClientRect().bottom ? 'content' : 'scene';
@@ -52,7 +52,13 @@ mountChat({ getPresentation: () => 'control', getSourceBounds: bounds, getReturn
   reduced, onActivity: () => notify('chat-activity') }).then(api => {
   if (disposed) return;
   chat = api; chatButton.disabled = false; api.subscribe(state => notify('chat-' + state.action)); notify('chat-ready');
-  if (new URL(location.href).searchParams.get('chat') === 'open') api.show({ history: false });
+  if (new URL(location.href).searchParams.get('chat') === 'open') {
+    // A loaded or shared ?chat=open link has no chat history entry of its own. Opening it in place left the
+    // parameter behind after closing, so the next history.back() (closing a card) reopened the chat.
+    // Rewrite the landing entry without it and open the chat as a normal pushed entry instead.
+    if (history.state?.personalosChat) api.show({ history: false });
+    else { const u = new URL(location.href); u.searchParams.delete('chat'); history.replaceState(history.state, '', u); api.show(); }
+  }
 }).catch(error => { chatButton.title = '聊天暂时不可用，请刷新重试'; document.querySelector('#announcer').textContent = chatButton.title; console.error(error); });
 const headerChanged = () => syncHeader();
 window.addEventListener('scroll', headerChanged, { passive: true }); window.addEventListener('resize', headerChanged, { passive: true });

@@ -196,8 +196,8 @@ html:not([data-scene-explore=reading]) .topbar .filters{visibility:hidden;pointe
 }
 /* Readability over the live scene, measured on rendered pixels by day and night. */
 .card .summary,.card[data-preview-density=compact] .summary,.card .category{color:var(--body-ink)}
-@media(min-width:1101px){#content-root{--reading-edge:calc(3.2vw + min(var(--editorial-main) + var(--editorial-gap) + clamp(260px,21vw,340px),1120px))}}
-@media(max-width:1100px) and (min-width:651px){#content-root{--reading-edge:80.2vw}}
+@media(min-width:1101px){:root{--reading-edge:calc(3.2vw + min(var(--editorial-main) + var(--editorial-gap) + clamp(260px,21vw,340px),1120px))}}
+@media(max-width:1100px) and (min-width:651px){:root{--reading-edge:80.2vw}}
 @media(min-width:651px){
  /* At night the scene behind the reading band darkens but the day scrim did not change. A second veil, bounded to the feed's right edge, fades in with the night tone. It belongs to the content, so Explore still fades it out. */
  #content-root::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;background:linear-gradient(90deg,rgb(249 245 237 / .12) 0,rgb(249 245 237 / .2) calc(var(--reading-edge) - 34vw),rgb(249 245 237 / .5) calc(var(--reading-edge) - 2vw),rgb(249 245 237 / .3) calc(var(--reading-edge) + 4vw),transparent calc(var(--reading-edge) + 12vw))}
@@ -219,10 +219,7 @@ html:not([data-scene-explore=reading]) .topbar .filters{visibility:hidden;pointe
  .host-controls button::before,#host-menu .pos-menu-anchor>.pos-menu-toggle::before{content:"";position:absolute;inset:-5px}
  #host-menu .pos-menu-anchor>.pos-menu-toggle{gap:8px}
  .host-controls #host-explore{min-width:0;padding:0 14px;font-size:12px}
- /* The bare "≈" glyph read as decoration; draw pause/resume for the same button and labels. */
  .host-controls #host-motion{width:36px;min-width:36px;padding:0;font-size:0}
- #host-motion::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:block;box-sizing:border-box;width:8px;height:10px;border-inline:2px solid currentColor}
- #host-motion[aria-pressed=true]::after{width:0;height:0;margin-left:2px;border-inline:0;border-left:8px solid currentColor;border-block:5px solid transparent}
  .topbar[data-nav-surface=content]::before{-webkit-mask-image:linear-gradient(180deg,#000 calc(100% - 16px),transparent);mask-image:linear-gradient(180deg,#000 calc(100% - 16px),transparent)}
  /* Paper holds the hero copy, then clears before the actor instead of a long grey fog over the mountain. */
  #content-root::before{background:linear-gradient(180deg,rgb(249 245 237 / .92) 0%,rgb(249 245 237 / .84) 26%,rgb(249 245 237 / .72) 38%,rgb(249 245 237 / .3) 45%,transparent 51%)}
@@ -284,9 +281,39 @@ html:not([data-scene-explore=reading]) .topbar .filters{visibility:hidden;pointe
  #host-menu{margin-right:-6px}
  .host-controls #host-explore{margin-right:-6px}
 }
-/* 651-700px: the single-row tablet masthead needed about 680px, so the menu ran off-screen. Tighter gaps, padding and the compact chat label make it fit. */
-@media(min-width:651px) and (max-width:700px){
- .topbar{gap:8px}
- .host-controls button,#host-menu .pos-menu-anchor>.pos-menu-toggle{padding:0 8px}
- .chat-label{display:none}.chat-label-compact{display:inline}
+/* Pause/resume glyph for the motion toggle at every width (the bare "≈" read as decoration). Same button, labels and states. */
+/* font-size:0 alone still drew the "≈" at the browser minimum size behind the icon; push it out of the clipped box instead. */
+.host-controls #host-motion{position:relative;font-size:0;overflow:hidden;text-indent:150%;white-space:nowrap}
+#host-motion::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:block;box-sizing:border-box;width:8px;height:10px;border-inline:2px solid currentColor}
+#host-motion[aria-pressed=true]::after{width:0;height:0;margin-left:2px;border-inline:0;border-left:8px solid currentColor;border-block:5px solid transparent}
+@media(min-width:651px){
+ /* Desktop and tablet masthead: the same quiet text controls as on phones. No band or hairline under it; the content scrim already carries the left side. */
+ .topbar{background:transparent}
+ .topbar::after{display:none}
+ .host-controls button,#host-menu .pos-menu-anchor>.pos-menu-toggle,.topbar[data-nav-tone=night] .host-controls button,.topbar[data-nav-tone=night] #host-menu .pos-menu-anchor>.pos-menu-toggle{min-height:44px;height:44px;padding:0 10px;border:0;border-radius:6px;background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;color:var(--editorial-ink);font-size:12px;letter-spacing:.02em}
+ .host-controls #host-motion{width:44px;min-width:44px;padding:0}
+ .host-controls #host-explore{font-size:12px;padding:0 10px}
+ .host-controls button:hover,#host-menu .pos-menu-anchor>.pos-menu-toggle:hover{background:transparent}
+ .host-controls button:active,#host-menu .pos-menu-anchor>.pos-menu-toggle:active{opacity:.55}
+ .topbar :is(.host-controls button,.pos-menu-toggle):focus-visible{outline-color:currentColor}
+ #host-menu{margin-right:-10px}
+ /* Scrolled over content: the frosted paper ends past the reading column and fades out, so the open scene stays clear. */
+ .topbar[data-nav-surface=content]::before,.topbar[data-nav-tone=night][data-nav-surface=content]::before{right:calc(100vw - var(--reading-edge) - 10vw);background:linear-gradient(90deg,rgb(249 245 237 / .96),rgb(249 245 237 / .9) 70%,rgb(249 245 237 / 0));-webkit-mask-image:linear-gradient(90deg,#000 70%,transparent),linear-gradient(180deg,#000 calc(100% - 16px),transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,#000 70%,transparent),linear-gradient(180deg,#000 calc(100% - 16px),transparent);mask-composite:intersect}
+}
+@media(min-width:881px){
+ /* The masthead aligns with the reading column: brand on its left edge, menu label on its right edge. The open scene to the right carries no controls. */
+ .topbar{padding-right:calc(100vw - var(--reading-edge))}
+}
+@media(min-width:651px) and (max-width:880px){
+ /* Narrow tablets: one row no longer fits inside the reading column, so use the phone's two rows within it. */
+ :root{--host-header-size:100px}
+ .topbar{flex-wrap:wrap;align-items:center;align-content:flex-start;height:100px;padding-top:8px;padding-right:calc(100vw - var(--reading-edge));gap:2px 4px}
+ .topbar::after{display:block;content:"";position:static;order:3;flex-basis:100%;height:0;background:none}
+ .topbar .brand{order:0;flex:1 1 auto}
+ .host-controls{display:contents}
+ .host-controls #host-open-chat{order:1}
+ #host-menu{order:2;margin:0 -10px 0 0}
+ .topbar .filters{order:4;flex:1 1 auto;min-width:0;margin:0;gap:clamp(12px,2.4vw,20px)}
+ .host-controls #host-motion{order:5;margin-left:0}
+ .host-controls #host-explore{order:6;margin-right:-10px}
 }

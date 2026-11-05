@@ -187,12 +187,12 @@ html:not([data-scene-explore=reading]) .topbar .filters{visibility:hidden;pointe
 .card .summary,.intro-description{text-wrap:pretty}
 /* Hover and keyboard focus share one state. Transitions live on the base state so leaving hover eases back instead of snapping. */
 .topbar .filters button:hover{color:var(--editorial-ink);opacity:1}
-.card:has(.open-card:is(:hover,:focus-visible)) .open-label{background:var(--editorial-ink);border-color:var(--editorial-ink);transform:translateX(3px)}
-.card:has(.open-card:is(:hover,:focus-visible)) .open-label::after{filter:invert(1)}
+/* A quiet affordance: the ring darkens and the arrow steps forward. Hover only where a pointer can hover, so taps do not leave a sticky state. */
+.card:has(.open-card:focus-visible) .open-label{background:rgb(255 255 255 / .6);border-color:var(--editorial-ink);transform:translateX(3px)}
+@media(hover:hover){.card:has(.open-card:hover) .open-label{background:rgb(255 255 255 / .6);border-color:var(--editorial-ink);transform:translateX(3px)}}
 @media(prefers-reduced-motion:no-preference){
  .topbar .filters button{transition:color 200ms ease,opacity 200ms ease}
  .card .open-label{transition:transform 320ms cubic-bezier(.32,.72,0,1),background-color 320ms ease,border-color 320ms ease}
- .card .open-label::after{transition:filter 320ms ease}
 }
 /* Readability over the live scene, measured on rendered pixels by day and night. */
 .card .summary,.card[data-preview-density=compact] .summary,.card .category{color:var(--body-ink)}
@@ -209,4 +209,58 @@ html:not([data-scene-explore=reading]) .topbar .filters{visibility:hidden;pointe
 @media(max-width:650px){
  /* Work copy and category labels get the same local paper support Labs copy already had. */
  .card[data-category=work] :is(h2,.summary),.card:not([data-category=thoughts]) .category{background:rgb(249 245 237 / .86);box-shadow:0 0 12px 7px rgb(249 245 237 / .7);border-radius:3px}
+}
+/* Narrow screens: a two-row masthead at 360-650px, no band or hairline under it, lighter controls with 44px hit areas, and a paper-to-scene hero that stays clear of the actor. */
+@media(max-width:650px){
+ .topbar{background:transparent}
+ .topbar::after{display:none}
+ .host-controls button,#host-menu .pos-menu-anchor>.pos-menu-toggle{position:relative;min-height:36px;height:36px;padding:0 13px;border:1px solid rgb(37 38 34 / .14);background:rgb(255 255 255 / .4);box-shadow:inset 0 1px 0 rgb(255 255 255 / .55);font-size:11px;letter-spacing:.02em}
+ /* The 1px border sits outside the padding box, so -5px yields a 44px hit area around a 36px pill. */
+ .host-controls button::before,#host-menu .pos-menu-anchor>.pos-menu-toggle::before{content:"";position:absolute;inset:-5px}
+ #host-menu .pos-menu-anchor>.pos-menu-toggle{gap:8px}
+ .host-controls #host-explore{min-width:0;padding:0 14px;font-size:12px}
+ /* The bare "≈" glyph read as decoration; draw pause/resume for the same button and labels. */
+ .host-controls #host-motion{display:inline-grid;place-items:center;width:36px;min-width:36px;padding:0;font-size:0}
+ #host-motion::after{content:"";display:block;box-sizing:border-box;width:8px;height:10px;border-inline:2px solid currentColor}
+ #host-motion[aria-pressed=true]::after{width:0;height:0;margin-left:2px;border-inline:0;border-left:8px solid currentColor;border-block:5px solid transparent}
+ .topbar[data-nav-surface=content]::before{-webkit-mask-image:linear-gradient(180deg,#000 calc(100% - 16px),transparent);mask-image:linear-gradient(180deg,#000 calc(100% - 16px),transparent)}
+ /* Paper holds the hero copy, then clears before the actor instead of a long grey fog over the mountain. */
+ #content-root::before{background:linear-gradient(180deg,rgb(249 245 237 / .92) 0%,rgb(249 245 237 / .84) 26%,rgb(249 245 237 / .72) 38%,rgb(249 245 237 / .3) 45%,transparent 51%)}
+ .intro-description{color:#34362f;font-size:15px;line-height:1.75;margin-top:12px}
+}
+@media(max-width:650px) and (min-width:360px){
+ :root{--host-header-size:100px}
+ .topbar{display:flex;flex-wrap:wrap;align-items:center;align-content:flex-start;height:100px;padding:10px 24px 0;gap:2px 8px}
+ /* Row 1: brand, chat, menu. Row 2: categories, then the two scene controls. */
+ .topbar::after{display:block;content:"";position:static;order:3;flex-basis:100%;height:0;background:none}
+ .topbar .brand{order:0;flex:1 1 auto}
+ .host-controls{display:contents}
+ .host-controls #host-open-chat{order:1}
+ #host-menu{order:2;margin:0}
+ .topbar .filters{order:4;flex:1 1 auto;min-width:0;margin:0;gap:18px}
+ .host-controls #host-motion{order:5;margin-left:0}
+ .host-controls #host-explore{order:6}
+ /* First card starts a little below the actor (about 76% of the viewport height) rather than touching it. */
+ .intro{min-height:calc(82svh - 118px)}
+}
+@media(max-width:359px){
+ .intro{min-height:calc(82svh - 148px)}
+ /* The three-row masthead pushes the hero lower on the smallest phones; a smaller title and a slightly longer paper hold keep its copy readable. */
+ .intro h1{font-size:30px}
+ .intro-description{font-size:14px}
+ #content-root::before{background:linear-gradient(180deg,rgb(249 245 237 / .92) 0%,rgb(249 245 237 / .86) 30%,rgb(249 245 237 / .76) 44%,rgb(249 245 237 / .3) 51%,transparent 56%)}
+}
+/* The detail sheet's paper, shadow and blur follow the card's own travel progress instead of popping at either end.
+   The card controller (hash-guarded, unchanged) writes progress only as the backdrop's inline opacity, min(.58, progress * .58);
+   these steps read it back and a short transition blends them. Geometry stays with the controller. */
+#stage:has(.backdrop[style*="opacity: 0.2"]) #shell{background-color:rgb(245 242 234 / .74)!important;box-shadow:0 28px 90px rgb(25 29 24 / .13)!important;backdrop-filter:blur(9px)!important;-webkit-backdrop-filter:blur(9px)!important}
+#stage:has(.backdrop[style*="opacity: 0.1"]) #shell{background-color:rgb(245 242 234 / .46)!important;box-shadow:0 28px 90px rgb(25 29 24 / .08)!important;border-color:rgb(255 255 255 / .4)!important;backdrop-filter:blur(6px)!important;-webkit-backdrop-filter:blur(6px)!important}
+#stage:has(.backdrop[style*="opacity: 0.0"]) #shell{background-color:rgb(245 242 234 / .16)!important;box-shadow:0 28px 90px rgb(25 29 24 / .03)!important;border-color:rgb(255 255 255 / .14)!important;backdrop-filter:blur(2px)!important;-webkit-backdrop-filter:blur(2px)!important}
+#stage:has(.backdrop:is(:not([style]),[style*="opacity: 0;"],[style*="e-"])) #shell{background-color:rgb(245 242 234 / 0)!important;box-shadow:0 28px 90px rgb(25 29 24 / 0)!important;border-color:transparent!important;backdrop-filter:blur(0)!important;-webkit-backdrop-filter:blur(0)!important}
+@media(prefers-reduced-motion:no-preference){#shell{transition:background-color 90ms linear,box-shadow 90ms linear,border-color 90ms linear,backdrop-filter 90ms linear,-webkit-backdrop-filter 90ms linear}}
+@media(max-width:650px){
+ /* One soft paper sheet behind the mobile feed replaces per-line text boxes and label chips. It starts just below the actor and fades with Explore like the rest of the content. */
+ .feed::before{content:"";position:absolute;inset:-64px -24px -48px;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgb(249 245 237 / 0),rgb(249 245 237 / .86) 64px,rgb(249 245 237 / .86) calc(100% - 48px),rgb(249 245 237 / 0))}
+ .card[data-content-id=work-context] h2,.card[data-category=labs] :is(h2,.summary),.card[data-category=work] :is(h2,.summary),.card:not([data-category=thoughts]) .category{background:none;box-shadow:none;border-radius:0}
+ .card[data-category=thoughts]::before{content:none}
 }
